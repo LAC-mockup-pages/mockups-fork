@@ -1,7 +1,8 @@
 * {
   padding: 0;
   margin: 0;
-  font-family: "Source Sans Pro", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, Helvetica, Geneva,
+    sans-serif;
 }
 
 .blue-light-text {
@@ -20,13 +21,13 @@
   color: #2479b5;
 }
 
-#main-logo:hover{
+#main-logo:hover {
   cursor: pointer;
 }
 
 #parentMenu1 > li {
-  margin: 20px 20px;
-  font-size: 1.8em;
+  margin: 10px 10px 20px 10px;
+  font-size: 1.6em;
 }
 
 .navbar-inverse .navbar-nav > .open > a,
@@ -42,11 +43,11 @@
   border-top-right-radius: 0;
 }
 
-.navbar #main-logo{
+.navbar #main-logo {
   margin-top: 1%;
 }
 
-.caret{
+.caret {
   border-top: 10px solid;
   border-right: 10px solid transparent;
   border-left: 10px solid transparent;
@@ -75,7 +76,7 @@
   display: block;
   position: absolute;
   height: 7px;
-  width: 100%;
+  width: 7px;
   background: #d3e4f0;
   border-radius: 7px;
   opacity: 1;
@@ -121,4 +122,5 @@
   font-size: 1.2em;
   text-align: right;
   color: #fff;
+  padding-top: 20px;
 }
