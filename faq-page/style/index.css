@@ -1,0 +1,48 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+
+.blue-light-text {
+  color: #d3e4f0;
+}
+
+.blue-bg {
+  background-color: #2479b5;
+}
+
+.small-banner {
+  color: #ffffff;
+  font-size: x-large;
+  font-weight: 700;
+  margin-top: 1%;
+  text-align: center;
+}
+
+.search-keyword {
+  margin: 1% 0 6% 20%;
+  width: 60%;
+}
+
+.question {
+  font-size: x-large;
+  background-color: #d3e4f0;
+  color: #2479b5;
+  padding: 1%;
+}
+
+.answer {
+  font-weight: 600;
+  font-size: 20px;
+  margin: 1% 5% 5% 8%;
+  text-align: justify;
+}
+
+.answer p {
+  margin-left: -3%;
+  margin-top: 1%;
+}
