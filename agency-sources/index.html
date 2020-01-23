@@ -39,10 +39,10 @@
     <script src="scripts/index.js" type="text/javascript" defer></script>
     <link />
     <!-- !============================= -->
-    <!-- ! File: /agency/agencyinfo.aspx -->
+    <!-- ! File: /agency/agencysourcesinfo.aspx -->
     <!-- !============================= -->
 
-    <title>Mock-up Agency Info</title>
+    <title>Mock-up Agency Funding Sources</title>
   </head>
   <body>
     <header>
@@ -53,7 +53,7 @@
             <!-- Logo -->
             <div class="col-md-2 col-sm-1" id="main-logo">
               <img
-                src="./assets/Main-Logo.png"
+                src="/assets/Main-Logo.png"
                 alt="Main Logo"
                 width="237px"
                 height="100%"
@@ -192,7 +192,7 @@
         <div role="tabpanel" class="col-md-11">
           <ul id="sub-nav" class="nav nav-tabs nav-justified uc-true">
             <li>Agency</li>
-            <li>Funding Sources</li>
+            <li class="blue-light-bg blue-text">Funding Sources</li>
             <li>Sites</li>
             <li>Literacy Zone Partners</li>
             <li>Literacy Zone Outcome</li>
@@ -203,33 +203,14 @@
     </header>
     <!-- Hero -->
     <div class="container hero">
-      <div class="row" id="top-bloc" title="Click to Edit"></div>
-      <div class="separation"></div>
-      <div class="row" id="bottom-bloc" title="Click to Edit"></div>
-    </div>
-    <!-- Modal for Editing Top Bloc data -->
-    <div class="modal fade" id="modalTopBloc">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">
-              <span aria-hidden="true">&times;</span
-              ><span class="sr-only">Close</span>
-            </button>
-            <h4 class="modal-title">Editing</h4>
-          </div>
-          <div class="modal-body"></div>
-          <div class="modal-footer">
-            <!-- <button type="button" class="btn btn-default" data-dismiss="modal">
-              Close
-            </button> -->
-            <button type="button" class="btn btn-primary">Save changes</button>
-          </div>
+      <!-- New source entry-->
+
+      <div class="row blue-bg" id="new-source">
+        <div class="input-field">
+          <input type="text" id="name" required />
+          <label for="name">Your name:</label>
         </div>
-        <!-- /.modal-content -->
       </div>
-      <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal -->
   </body>
 </html>

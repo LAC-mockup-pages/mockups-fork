@@ -1,0 +1,84 @@
+// Actions and logic
+
+const agencyData = {
+  SEDID: "LACNYC",
+  Division: "AAA Division",
+  ProgramManager: "Raju",
+  Address: "85 Broad Street - 27th Floor",
+  City: "New York",
+  State: "NY",
+  Zip: "10004",
+  Telephone: "2128033355",
+  CSD: "3",
+  EPERate: "0.002",
+  CPD: "13",
+  CD: "5",
+  AD: "4",
+  SD: "8",
+  PrepCode: "11254",
+  AgencyEmail: "asists@gmail.com"
+};
+
+const rowLabels = {
+  SEDID: "SED ID",
+  Division: "Division",
+  ProgramManager: "Program Manager",
+  Address: "Address",
+  City: "City",
+  State: "State",
+  Zip: "ZIP",
+  Telephone: "Telephone",
+  CSD: "Community School Dist.",
+  EPERate: "EPE Rate",
+  CPD: "Community Planning Dist.",
+  CD: "Congressional Dist.",
+  AD: "Assembly Dist.",
+  SD: "Senatorial Dist.",
+  PrepCode: "Prep Code",
+  AgencyEmail: "Email"
+};
+
+// const viewBloc = (blocName, ...args) => {
+//   const rows = Array.from(args);
+//   $(`#${blocName}`).append(
+//     `<div class="table-responsive col-md-6"><table></table></div>`
+//   );
+//   for (row of rows) {
+//     $(`#${blocName} .table-responsive:last-child table`)
+//       .append(`<tr class="table-row">
+//     <td class="row-label col-md-2">${row[0]}</td>
+//     <td class="row-data col-md-3">${row[1]}</td>
+//     </tr>`);
+//   }
+// };
+
+const phoneFormat = arr => {
+  const str = arr[1];
+  const formattedStr = `${str.slice(0, 3)}-${str.slice(3, 6)}-${str.slice(6)}`;
+  return [arr[0], formattedStr];
+};
+
+$(document).ready(() => {
+  // * from navBar/index.js
+  $("#nav-icon").click(function() {
+    $(this).toggleClass("open");
+  });
+
+  $("#parentMenu1 li").click(() => {
+    $("#nav-icon").removeClass("open");
+  });
+
+  $("#main-logo").click(() => {
+    alert("Redirect to Home Page");
+  });
+
+  // * sub-navbar/index.js
+  $("#sub-nav li").click(function() {
+    $("#sub-nav li").removeClass("blue-light-bg blue-text");
+    $(this).toggleClass("blue-light-bg blue-text");
+  });
+
+  // * data viewing
+
+  //* Saving modified data while keeping track of original data
+});
