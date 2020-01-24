@@ -1,6 +1,9 @@
 // Actions and logic
 
 $(document).ready(() => {
+  $("#parentMenu1 li").mouseenter(function() {
+    $(this).removeClass("open");
+  });
   $("#nav-icon").click(function() {
     $(this).toggleClass("open");
   });
@@ -9,7 +12,7 @@ $(document).ready(() => {
     $("#nav-icon").removeClass("open");
   });
 
-  $("#main-logo").click(()=>{
-    alert("Redirect to Home Page")
-  })
+  $("#main-logo").click(() => {
+    alert("Redirect to Home Page");
+  });
 });
