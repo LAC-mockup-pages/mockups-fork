@@ -8,8 +8,6 @@ body {
 
 .hero {
   margin-top: 5px;
-  /* margin-right: 100px;
-  margin-left: 100px; */
   padding-bottom: 1%;
   border: solid #2479b5;
   border-width: 6px 3px;
@@ -31,6 +29,7 @@ body {
   font-size: 1.2em;
   padding: 0.5%;
 }
+
 #fiscal-year {
   width: 60px;
 }
@@ -41,6 +40,12 @@ body {
   width: 100px;
 }
 
-#submit-btn {
-  /* float: right; */
+:required::placeholder,
+.note-text {
+  color: rgb(197, 65, 65);
+}
+
+.note-text {
+  /* background-color: #fff; */
+  font-size: 0.9em;
 }
