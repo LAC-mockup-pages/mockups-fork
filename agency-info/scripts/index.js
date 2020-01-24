@@ -60,16 +60,21 @@ const phoneFormat = arr => {
 
 $(document).ready(() => {
   // * from navBar/index.js
-  $("#nav-icon").click(function() {
-    $(this).toggleClass("open");
-  });
+  $(document).ready(() => {
+    $("#parentMenu1 li").mouseenter(function() {
+      $(this).removeClass("open");
+    });
+    $("#nav-icon").click(function() {
+      $(this).toggleClass("open");
+    });
 
-  $("#parentMenu1 li").click(() => {
-    $("#nav-icon").removeClass("open");
-  });
+    $("#parentMenu1 li").click(() => {
+      $("#nav-icon").removeClass("open");
+    });
 
-  $("#main-logo").click(() => {
-    alert("Redirect to Home Page");
+    $("#main-logo").click(() => {
+      alert("Redirect to Home Page");
+    });
   });
 
   // * sub-navbar/index.js
