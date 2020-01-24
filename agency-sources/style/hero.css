@@ -40,12 +40,6 @@ body {
   width: 100px;
 }
 
-:required::placeholder,
-.note-text {
+:required::placeholder {
   color: rgb(197, 65, 65);
-}
-
-.note-text {
-  /* background-color: #fff; */
-  font-size: 0.9em;
 }
