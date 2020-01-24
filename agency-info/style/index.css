@@ -1,5 +1,5 @@
 /* Styling from test-navbar-lac */
-@import "./navbar.css";
+@import "../../navbar/style/index.css";
 
 @import "./sub-navbar.css";
 
