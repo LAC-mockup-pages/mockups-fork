@@ -250,15 +250,50 @@
       </div>
     </header>
     <!-- Hero -->
-    <div class="container hero">
+    <div class="container hero blue-bg">
       <!-- New source entry-->
+      <div class="source-entry blue-bg">
+        <div class="label-text blue-light-text">New Funding Source:</div>
+        <form class="form-inline blue-bg" role="form" id="new-source">
+          <input type="text" class="form-control" placeholder="FS ID" />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Amount"
+            id="amount"
+          />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Begin Date"
+            id="start"
+          />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="End Date"
+            id="end"
+          />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="FY"
+            id="fiscal-year"
+          />
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Contract or Grant Num#"
+            id="ctr-grt-num"
+          />
+          <input type="text" class="form-control" placeholder="Purpose" />
 
-      <div class="row blue-bg" id="new-source">
-        <div class="input-field col-md-3">
-          <input type="text" id="name1" required />
-          <label for="name1">Your name1: </label>
-        </div>
+          <button type="submit" id="submit-btn" class="btn btn-primary">
+            Add
+          </button>
+        </form>
       </div>
+      <!-- Data viewing -->
     </div>
   </body>
 </html>

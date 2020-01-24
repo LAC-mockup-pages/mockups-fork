@@ -2,56 +2,45 @@ body {
   background-color: #f0e2d5;
 }
 
+.dark-blue-bg {
+  background-color: #1d6294;
+}
+
 .hero {
-  background-color: white;
   margin-top: 5px;
+  /* margin-right: 100px;
+  margin-left: 100px; */
   padding-bottom: 1%;
   border: solid #2479b5;
   border-width: 6px 3px;
 }
 
-#new-source {
-  /* position: relative; */
-  /* width: 250px; */
-  height: 170px;
-  line-height: 35px;
-}
-
-.input-field {
-  position: relative;
-}
-label {
-  position: absolute;
-  top: 0;
-  left: 15px;
-  /* width: 100%; */
-  color: #d3d3d3;
-  transition: 0.2s all;
-  cursor: text;
-}
-input {
+.source-entry {
+  padding-top: 2%;
   width: 100%;
-  border: 0;
-  outline: 0;
-  padding: 0.5rem 0;
-  border-bottom: 2px solid #d3d3d3;
-  box-shadow: none;
-  color: #111;
 }
-input:invalid {
-  outline: 0;
-  /* color: #ff2300;
-  border-color: #ff2300; */
-}
-input:focus,
-input:valid {
-  border-color: #00dd22;
-  left: -5px;
-}
-input:focus ~ label,
-input:valid ~ label {
-  font-size: 14px;
-  top: -10px;
 
-  color: #00dd22;
+.label-text {
+  font-size: 1.3em;
+  font-weight: 600;
+  padding-bottom: 0.5%;
+}
+
+#new-source > .form-control {
+  color: #2479b5;
+  font-size: 1.2em;
+  padding: 0.5%;
+}
+#fiscal-year {
+  width: 60px;
+}
+
+#amount,
+#start,
+#end {
+  width: 100px;
+}
+
+#submit-btn {
+  /* float: right; */
 }
