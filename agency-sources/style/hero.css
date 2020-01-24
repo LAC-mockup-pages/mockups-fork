@@ -30,6 +30,10 @@ body {
   padding: 0.5%;
 }
 
+#new-source {
+  margin-left: 3%;
+}
+
 #fiscal-year {
   width: 60px;
 }
@@ -42,4 +46,5 @@ body {
 
 :required::placeholder {
   color: rgb(197, 65, 65);
+  text-align: center;
 }
