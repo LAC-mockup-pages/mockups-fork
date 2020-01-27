@@ -8,20 +8,21 @@ body {
 
 .hero {
   margin-top: 5px;
-  padding-bottom: 1%;
-  border: solid #2479b5;
+  padding: 0 0 1% 0;
   border-width: 6px 3px;
 }
 
 .source-entry {
-  padding-top: 2%;
+  margin: 1% 0 0 0;
+  padding: 0 0 2% 0;
   width: 100%;
+  border-bottom: 8px solid #f0e2d5;
 }
 
 .label-text {
   font-size: 1.3em;
   font-weight: 600;
-  padding-bottom: 0.5%;
+  padding: 0 0 0.5% 0.5%;
 }
 
 #new-source > .form-control {
@@ -46,5 +47,23 @@ body {
 
 :required::placeholder {
   color: rgb(197, 65, 65);
-  /* text-align: center; */
+}
+
+tbody {
+  background-color: #fff;
+  color: #283838;
+  font-size: 1.2em;
+  font-weight: 600;
+}
+
+tbody > tr:hover {
+  background-color: #d3e4f0;
+}
+
+thead,
+th {
+  text-align: center;
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #fff;
 }

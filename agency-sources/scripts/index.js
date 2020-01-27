@@ -1,20 +1,19 @@
 // Actions and logic
 
-const agencyData = {
+const agencyDataFund = {
   FundSources: {
-    // FundAbbrev = key
-    AdoLitDYCD: {
-      FSID: "Adolescent Literacy DYCD",
-      Amount: "0",
+    ALE: {
+      FSID: "ALE - Adult Literacy Education",
+      Amount: "1000",
       FundStart: "7/1/2019",
       FundEnd: "6/30/2020",
       FundNumber: "",
-      Purpose: ""
+      Purpose: "Some nefarious purpose as a matter of fact"
     },
-    ALE: {
-      FSID: "ALE - Adult Literacy Education",
-      Amount: "0",
-      FundStart: "7/1/2019",
+    AdoLitDY: {
+      FSID: "Adolescent Literacy DYCD1",
+      Amount: "100000",
+      FundStart: "7/1/2020",
       FundEnd: "6/30/2020",
       FundNumber: "",
       Purpose: ""
@@ -29,7 +28,7 @@ const agencyData = {
     },
     EPE: {
       FSID: "EPE",
-      Amount: "50000",
+      Amount: "500000",
       FundStart: "7/9/2019",
       FundEnd: "6/30/2020",
       FundNumber: "",
@@ -45,14 +44,6 @@ const agencyData = {
     },
     PERKINS: {
       FSID: "Perkins",
-      Amount: "0",
-      FundStart: "7/1/2019",
-      FundEnd: "6/30/2020",
-      FundNumber: "",
-      Purpose: ""
-    },
-    AdoLitDYCD: {
-      FSID: "Adolescent Literacy DYCD",
       Amount: "0",
       FundStart: "7/1/2019",
       FundEnd: "6/30/2020",
@@ -96,18 +87,13 @@ const currencyFormat = str => {
           .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 };
 
-// const dateFormat=dateStr=>{
-
-// }
-
 const viewData = (sources, fiscalYear) => {
   for (item in sources) {
     const { FSID, Amount, FundStart, FundEnd, FundNumber, Purpose } = sources[
       item
     ];
-
-    $(".table:last-child").append(`
-    <tr class="table-row">
+    $("tbody").append(`
+    <tr class="table-row" title="Click to Edit">
         <td>${FSID}</td>
         <td>${currencyFormat(Amount)}</td>
         <td>${FundStart}</td>
@@ -140,7 +126,8 @@ $(document).ready(() => {
   });
 
   // * data viewing
-  const { FundSources, CurrentFY } = agencyData;
+  const { FundSources, CurrentFY } = agencyDataFund;
+
   viewData(FundSources, CurrentFY);
   //* Saving modified data while keeping track of original data
 });
