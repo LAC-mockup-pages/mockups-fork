@@ -87,3 +87,26 @@ th {
   text-align: center;
   font-size: 14px;
 }
+
+.input-field {
+  line-height: 30px;
+}
+
+.input-field > label {
+  width: 25%;
+  font-size: 1.2em;
+}
+
+.input-field > input {
+  font-size: 1.3em;
+  font-weight: 700;
+  border: none;
+  text-indent: 4px;
+  width: 60%;
+  border-bottom: 1px solid #2479b5;
+}
+
+.modal-header,
+.modal-footer {
+  background-color: #d3e4f0;
+}

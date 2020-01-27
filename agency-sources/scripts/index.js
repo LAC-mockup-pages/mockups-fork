@@ -77,6 +77,15 @@ const agencyDataFund = {
   },
   CurrentFY: "2020"
 };
+const headerList = [
+  "FS ID",
+  "Amount",
+  "Begin Date",
+  "End Date",
+  "Contrat / Grant #",
+  "Purpose",
+  "FY"
+];
 
 const currencyFormat = str => {
   return str === "0"
@@ -105,6 +114,18 @@ const viewData = (sources, fiscalYear) => {
   }
 };
 
+const createListFields = row => {
+  const { FundSources, CurrentFY } = agencyDataFund;
+  const sourceName = Object.keys(FundSources)[row];
+  const listValues = Object.keys(FundSources[sourceName]).map(
+    key => FundSources[sourceName][key]
+  );
+  listValues.push(CurrentFY);
+  console.log("sourceName", sourceName, "listValues: ", listValues);
+
+  return headerList.map((item, indx) => [item, listValues[indx]]);
+};
+
 $(document).ready(() => {
   // * from navBar/index.js
   $("#nav-icon").click(function() {
@@ -129,5 +150,28 @@ $(document).ready(() => {
   const { FundSources, CurrentFY } = agencyDataFund;
   viewData(FundSources, CurrentFY);
 
-  //* Saving modified data while keeping track of original data
+  //* Adding a new funding source
+
+  //* Editing/Deleting funding source
+  $("[title^='Click'").click(function() {
+    const rowIndx = $(this)[0].rowIndex - 1;
+
+    const listFields = createListFields(rowIndx);
+
+    $("#modalBloc").modal("toggle");
+    $(".modal-body form").remove();
+    $(".modal-body").append("<form></form>");
+
+    for (field of listFields) {
+      const key = field[0],
+        val = field[1],
+        indx = listFields.indexOf(field);
+      $(".modal-body>form").append(
+        `<div class="input-field">
+          <label for=${indx}>${key}</label>
+          <input type="text" id=${indx} value='${val}' required>
+        </div>`
+      );
+    }
+  });
 });
