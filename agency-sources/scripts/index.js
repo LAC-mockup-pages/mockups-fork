@@ -1,61 +1,122 @@
 // Actions and logic
 
 const agencyData = {
-  SEDID: "LACNYC",
-  Division: "AAA Division",
-  ProgramManager: "Raju",
-  Address: "85 Broad Street - 27th Floor",
-  City: "New York",
-  State: "NY",
-  Zip: "10004",
-  Telephone: "2128033355",
-  CSD: "3",
-  EPERate: "0.002",
-  CPD: "13",
-  CD: "5",
-  AD: "4",
-  SD: "8",
-  PrepCode: "11254",
-  AgencyEmail: "asists@gmail.com"
+  FundSources: {
+    // FundAbbrev = key
+    AdoLitDYCD: {
+      FSID: "Adolescent Literacy DYCD",
+      Amount: "0",
+      FundStart: "7/1/2019",
+      FundEnd: "6/30/2020",
+      FundNumber: "",
+      Purpose: ""
+    },
+    ALE: {
+      FSID: "ALE - Adult Literacy Education",
+      Amount: "0",
+      FundStart: "7/1/2019",
+      FundEnd: "6/30/2020",
+      FundNumber: "",
+      Purpose: ""
+    },
+    CASP3DSS: {
+      FSID: "CASP 3 DSS",
+      Amount: "0",
+      FundStart: "1/1/2020",
+      FundEnd: "6/30/2020",
+      FundNumber: "",
+      Purpose: ""
+    },
+    EPE: {
+      FSID: "EPE",
+      Amount: "50000",
+      FundStart: "7/9/2019",
+      FundEnd: "6/30/2020",
+      FundNumber: "",
+      Purpose: "RS Test 12.5"
+    },
+    IELCE: {
+      FSID: "Integ Eng Lang Civics Edu",
+      Amount: "0",
+      FundStart: "10/5/2019",
+      FundEnd: "6/30/2020",
+      FundNumber: "IELCE2020/4",
+      Purpose: "ASISTS 13.1"
+    },
+    PERKINS: {
+      FSID: "Perkins",
+      Amount: "0",
+      FundStart: "7/1/2019",
+      FundEnd: "6/30/2020",
+      FundNumber: "",
+      Purpose: ""
+    },
+    AdoLitDYCD: {
+      FSID: "Adolescent Literacy DYCD",
+      Amount: "0",
+      FundStart: "7/1/2019",
+      FundEnd: "6/30/2020",
+      FundNumber: "",
+      Purpose: ""
+    },
+    UNITWAY: {
+      FSID: "United Way",
+      Amount: "0",
+      FundStart: "7/1/2019",
+      FundEnd: "6/30/2020",
+      FundNumber: "",
+      Purpose: ""
+    },
+    WIAWIOA: {
+      FSID: "WIA / WIOA",
+      Amount: "100000",
+      FundStart: "7/1/2019",
+      FundEnd: "6/30/2020",
+      FundNumber: "",
+      Purpose: "RS Test 12.5"
+    },
+    WIOAT2: {
+      FSID: "WIOA - Title II",
+      Amount: "100000",
+      FundStart: "7/1/2019",
+      FundEnd: "6/30/2020",
+      FundNumber: "",
+      Purpose: ""
+    }
+  },
+  CurrentFY: "2020"
 };
 
-const rowLabels = {
-  SEDID: "SED ID",
-  Division: "Division",
-  ProgramManager: "Program Manager",
-  Address: "Address",
-  City: "City",
-  State: "State",
-  Zip: "ZIP",
-  Telephone: "Telephone",
-  CSD: "Community School Dist.",
-  EPERate: "EPE Rate",
-  CPD: "Community Planning Dist.",
-  CD: "Congressional Dist.",
-  AD: "Assembly Dist.",
-  SD: "Senatorial Dist.",
-  PrepCode: "Prep Code",
-  AgencyEmail: "Email"
+const currencyFormat = str => {
+  return str === "0"
+    ? ""
+    : "$" +
+        Number(str)
+          .toFixed(0)
+          .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
 };
 
-// const viewBloc = (blocName, ...args) => {
-//   const rows = Array.from(args);
-//   $(`#${blocName}`).append(
-//     `<div class="table-responsive col-md-6"><table></table></div>`
-//   );
-//   for (row of rows) {
-//     $(`#${blocName} .table-responsive:last-child table`)
-//       .append(`<tr class="table-row">
-//     <td class="row-label col-md-2">${row[0]}</td>
-//     <td class="row-data col-md-3">${row[1]}</td>
-//     </tr>`);
-//   }
-// };
+// const dateFormat=dateStr=>{
 
-const phoneFormat = arr => {
-  const str = arr[1];
-  const formattedStr = `${str.slice(0, 3)}-${str.slice(3, 6)}-${str.slice(6)}`;
-  return [arr[0], formattedStr];
+// }
+
+const viewData = (sources, fiscalYear) => {
+  for (item in sources) {
+    const { FSID, Amount, FundStart, FundEnd, FundNumber, Purpose } = sources[
+      item
+    ];
+
+    $(".table:last-child").append(`
+    <tr class="table-row">
+        <td>${FSID}</td>
+        <td>${currencyFormat(Amount)}</td>
+        <td>${FundStart}</td>
+        <td>${FundEnd}</td>
+        <td>${fiscalYear}</td>
+        <td>${FundNumber}</td>
+        <td>${Purpose}</td>
+    </tr>`);
+  }
 };
 
 $(document).ready(() => {
@@ -79,6 +140,7 @@ $(document).ready(() => {
   });
 
   // * data viewing
-
+  const { FundSources, CurrentFY } = agencyData;
+  viewData(FundSources, CurrentFY);
   //* Saving modified data while keeping track of original data
 });
