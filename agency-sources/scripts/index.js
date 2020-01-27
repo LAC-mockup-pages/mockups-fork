@@ -8,7 +8,7 @@ const agencyDataFund = {
       FundStart: "7/1/2019",
       FundEnd: "6/30/2020",
       FundNumber: "",
-      Purpose: "Some nefarious purpose as a matter of fact"
+      Purpose: "Some nefarious purpose"
     },
     AdoLitDY: {
       FSID: "Adolescent Literacy DYCD1",
@@ -96,11 +96,11 @@ const viewData = (sources, fiscalYear) => {
     <tr class="table-row" title="Click to Edit">
         <td>${FSID}</td>
         <td>${currencyFormat(Amount)}</td>
-        <td>${FundStart}</td>
-        <td>${FundEnd}</td>
-        <td>${fiscalYear}</td>
+        <td class="date">${FundStart}</td>
+        <td class="date">${FundEnd}</td>
+        <td class="fiscalYear">${fiscalYear}</td>
         <td>${FundNumber}</td>
-        <td>${Purpose}</td>
+        <td class="purpose">${Purpose}</td>
     </tr>`);
   }
 };
@@ -127,7 +127,7 @@ $(document).ready(() => {
 
   // * data viewing
   const { FundSources, CurrentFY } = agencyDataFund;
-
   viewData(FundSources, CurrentFY);
+
   //* Saving modified data while keeping track of original data
 });
