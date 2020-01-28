@@ -46,7 +46,8 @@ body {
 }
 
 :required::placeholder,
-.delete-msg {
+.delete-msg,
+.red-color {
   color: rgb(197, 65, 65);
   text-align: left;
 }
@@ -116,4 +117,9 @@ th {
 .delete-msg {
   width: fit-content;
   border-bottom: 2px solid rgb(197, 65, 65);
+}
+
+#newSource-btn {
+  float: right;
+  margin-right: 3%;
 }

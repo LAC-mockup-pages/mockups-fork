@@ -91,6 +91,17 @@ const headerList = [
   "FY"
 ];
 
+const inputList = [
+  ["Funding Source Code", "FSAbbrev", "required"],
+  ["Funding Source ID", "FSID", "required"],
+  ["Amount", "amount", ""],
+  ["Begin Date", "start", "required"],
+  ["End Date", "end", "required"],
+  ["Fiscal Year", "fy", ""],
+  ["Contract or Grant Num#", "ctr-grt-num", ""],
+  ["Purpose", "purpose", ""]
+];
+
 const currencyFormat = str => {
   return str === "0"
     ? ""
@@ -155,6 +166,31 @@ $(document).ready(() => {
   viewData(FundSources, CurrentFY);
 
   //* Adding a new funding source
+  $("#newSource-btn").click(() => {
+    $("#modalBloc").modal("toggle");
+    $(".modal-body form").remove();
+    $(".modal-footer")
+      .empty()
+      .append(
+        '<button type="button" class="btn btn-primary" data-dismiss="modal" id="add-btn">Add New Source</button>'
+      );
+    $(".modal-title").text("New Funding Source (elements in red are required)");
+    $(".modal-body").append("<form id='modal-form'></form>");
+
+    for (field of inputList) {
+      const [fieldName, fieldID, fieldOption] = field;
+      let labelOption = "";
+      if (fieldOption.length > 0) {
+        labelOption = 'class="red-color"';
+      }
+      $(".modal-body>form").append(
+        `<div class="input-field">
+    <label for=${fieldID} ${labelOption}>${fieldName}</label>
+    <input type="text" id=${fieldID} ${fieldOption}>
+  </div>`
+      );
+    }
+  });
 
   //* Select funding source
   $("[title^='Click'").click(function() {
