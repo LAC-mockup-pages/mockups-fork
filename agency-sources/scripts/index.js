@@ -77,7 +77,11 @@ const agencyDataFund = {
   },
   CurrentFY: "2020"
 };
+
+let updatedAgencyDataFund = {};
+
 const headerList = [
+  "Label",
   "FS ID",
   "Amount",
   "Begin Date",
@@ -121,7 +125,7 @@ const createListFields = row => {
     key => FundSources[sourceName][key]
   );
   listValues.push(CurrentFY);
-  console.log("sourceName", sourceName, "listValues: ", listValues);
+  listValues.unshift(sourceName);
 
   return headerList.map((item, indx) => [item, listValues[indx]]);
 };
@@ -169,20 +173,25 @@ $(document).ready(() => {
       $(".modal-body>form").append(
         `<div class="input-field">
           <label for=${indx}>${key}</label>
-          <input type="text" id=${indx} value='${val}' required>
+          <input type="text" id=${indx} value='${val}' >
         </div>`
       );
     }
+    $("#modal-form>.inputField>#0").attr("disabled");
+    $("#1").attr("required");
   });
 
   //* Deleting source
   $("#delete-btn").click(() => {
-    $(".modal-footer").prepend(
-      "<h3 class='delete-msg'>Confirm deletion by double-clicking the DELETE button</h3>"
-    );
-  });
+    const deleteConfirm = $(".modal-footer>h3");
+    const sourceLabel = $("input#0").val();
 
-  $("#delete-btn").dblclick(() => {
-    $(".delete-msg").remove();
+    if (deleteConfirm.length === 0) {
+      $(".modal-footer").prepend(
+        "<h3 class='delete-msg'>Confirm deletion by clicking again the DELETE button</h3>"
+      );
+    } else {
+      deleteConfirm.remove();
+    }
   });
 });
