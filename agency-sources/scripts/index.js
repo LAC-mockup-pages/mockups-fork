@@ -170,15 +170,19 @@ $(document).ready(() => {
       const key = field[0],
         val = field[1],
         indx = listFields.indexOf(field);
+
+      let option = "";
+
+      if (!indx) option = "disabled";
+      if ([1, 3, 4].includes(indx)) option = "required";
+
       $(".modal-body>form").append(
         `<div class="input-field">
           <label for=${indx}>${key}</label>
-          <input type="text" id=${indx} value='${val}' >
+          <input type="text" id=${indx} value='${val}' ${option}>
         </div>`
       );
     }
-    $("#modal-form>.inputField>#0").attr("disabled");
-    $("#1").attr("required");
   });
 
   //* Deleting source
