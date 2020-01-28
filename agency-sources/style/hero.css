@@ -45,8 +45,10 @@ body {
   width: 100px;
 }
 
-:required::placeholder {
+:required::placeholder,
+.delete-msg {
   color: rgb(197, 65, 65);
+  text-align: left;
 }
 
 tbody {
@@ -109,4 +111,9 @@ th {
 .modal-header,
 .modal-footer {
   background-color: #d3e4f0;
+}
+
+.delete-msg {
+  width: fit-content;
+  border-bottom: 2px solid rgb(197, 65, 65);
 }

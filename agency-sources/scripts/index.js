@@ -152,7 +152,7 @@ $(document).ready(() => {
 
   //* Adding a new funding source
 
-  //* Editing/Deleting funding source
+  //* Select funding source
   $("[title^='Click'").click(function() {
     const rowIndx = $(this)[0].rowIndex - 1;
 
@@ -160,7 +160,7 @@ $(document).ready(() => {
 
     $("#modalBloc").modal("toggle");
     $(".modal-body form").remove();
-    $(".modal-body").append("<form></form>");
+    $(".modal-body").append("<form id='modal-form'></form>");
 
     for (field of listFields) {
       const key = field[0],
@@ -173,5 +173,16 @@ $(document).ready(() => {
         </div>`
       );
     }
+  });
+
+  //* Deleting source
+  $("#delete-btn").click(() => {
+    $(".modal-footer").prepend(
+      "<h3 class='delete-msg'>Confirm deletion by double-clicking the DELETE button</h3>"
+    );
+  });
+
+  $("#delete-btn").dblclick(() => {
+    $(".delete-msg").remove();
   });
 });
