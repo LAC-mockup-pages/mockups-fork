@@ -48,7 +48,7 @@ body {
 :required::placeholder,
 .delete-msg,
 .red-color {
-  color: rgb(197, 65, 65);
+  color: #c54141;
   text-align: left;
 }
 
