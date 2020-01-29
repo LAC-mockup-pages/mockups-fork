@@ -777,6 +777,23 @@ const headerList = [
   "SD"
 ];
 
+const createNewSite = () => {
+  for (let i = 1; i < headerList.length; i++) {
+    const option = ["Site Name", "Site ID", "Site Manager", "Address"].includes(
+      headerList[i]
+    )
+      ? "required"
+      : "";
+    const smallCell = headerList[i].length < 4 ? "small-cell" : "";
+    $("#new-site .input-fields").append(`<input
+    type="text"
+    class="form-control ${smallCell}"
+    placeholder='${headerList[i]}'
+    ${option}
+  />`);
+  }
+};
+
 const viewHeaders = () => {
   for (let i = 1; i < headerList.length; i++) {
     $(".table thead").append(`<th>${headerList[i]}</th>`);
@@ -885,6 +902,7 @@ $(document).ready(() => {
   // * data viewing
   viewHeaders();
   viewData(sitesData);
+  createNewSite();
 
   // //* Adding a new funding source
 

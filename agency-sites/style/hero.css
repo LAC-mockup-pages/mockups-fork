@@ -97,6 +97,10 @@ tbody > tr:hover {
   /* padding: 0 10px; */
 }
 
+.small-cell {
+  max-width: 100px;
+}
+
 .phone,
 .site-id {
   width: 100px;
