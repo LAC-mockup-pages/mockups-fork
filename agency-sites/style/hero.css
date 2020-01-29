@@ -12,7 +12,7 @@ body {
   border-width: 6px 3px;
 }
 
-.source-entry {
+.site-entry {
   margin: 1% 0 0 0;
   padding: 0 0 2% 0;
   width: 100%;
@@ -25,24 +25,39 @@ body {
   padding: 0 0 0.5% 0.5%;
 }
 
-#new-source > .form-control {
+#btn-top {
+  display: block;
+  background-color: #ff9800;
+  padding: 1%;
+  color: #fff;
+  font-size: 1.4em;
+  text-align: center;
+  border-radius: 4px;
+  margin: 30px;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  transition: background-color 0.3s;
+  z-index: 1000;
+}
+
+#btn-top:hover {
+  cursor: pointer;
+  background-color: #333;
+}
+
+#btn-top:active {
+  background-color: #555;
+}
+
+#new-site > .form-control {
   color: #2479b5;
   font-size: 1.2em;
   padding: 0.5%;
 }
 
-#new-source {
+#new-site {
   margin-left: 3%;
-}
-
-#fiscal-year {
-  width: 60px;
-}
-
-#amount,
-#start,
-#end {
-  width: 100px;
 }
 
 :required::placeholder,
@@ -70,28 +85,35 @@ tbody > tr:hover {
   line-height: 25px;
 }
 
+.county,
+.csd,
+.cpd,
+.cd,
+.ad,
+.sd {
+  max-width: 80px;
+  text-align: center;
+  font-size: 14px;
+  /* padding: 0 10px; */
+}
+
+.phone,
+.site-id {
+  width: 100px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.cpd {
+  margin-left: 4px;
+}
+
 thead,
 th {
   text-align: center;
   font-size: 1.1em;
   font-weight: 600;
   color: #fff;
-}
-
-.purpose {
-  max-width: 200px;
-}
-
-.date {
-  max-width: 80px;
-  text-align: center;
-  font-size: 14px;
-}
-
-.fiscalYear {
-  max-width: 60px;
-  text-align: center;
-  font-size: 14px;
 }
 
 .input-field {

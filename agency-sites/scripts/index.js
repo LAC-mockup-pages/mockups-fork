@@ -763,7 +763,7 @@ const sitesData = [
 ];
 
 const headerList = [
-  "ID",
+  "id",
   "Site Name",
   "Site ID",
   "Site Manager",
@@ -785,10 +785,12 @@ const viewHeaders = () => {
 
 const createDataRow = (...args) => {
   const rowData = Array.from(args);
+  const classList = headerList.slice(1);
   let row = "";
 
-  for (cell of rowData) {
-    row += `<td class="cell-data">${cell}</td>`;
+  for (let i = 0; i < rowData.length; i++) {
+    const option = classList[i].replace(/\s/gi, "-").toLowerCase();
+    row += `<td class="cell-data ${option}">${rowData[i]}</td>`;
   }
 
   return row;
@@ -835,35 +837,17 @@ const viewData = arr => {
   }
 };
 
-// const viewData = (sources, fiscalYear) => {
-//   for (item in sources) {
-//     const { FSID, Amount, FundStart, FundEnd, FundNumber, Purpose } = sources[
-//       item
-//     ];
-//     $("tbody").append(`
-//     <tr class="table-row" title="Click to Edit">
-//         <td>${FSID}</td>
-//         <td>${currencyFormat(Amount)}</td>
-//         <td class="date">${FundStart}</td>
-//         <td class="date">${FundEnd}</td>
-//         <td class="fiscalYear">${fiscalYear}</td>
-//         <td>${FundNumber}</td>
-//         <td class="purpose">${Purpose}</td>
-//     </tr>`);
-//   }
+// const createListFields = row => {
+//   const { FundSources, CurrentFY } = agencyDataFund;
+//   const sourceName = Object.keys(FundSources)[row];
+//   const listValues = Object.keys(FundSources[sourceName]).map(
+//     key => FundSources[sourceName][key]
+//   );
+//   listValues.push(CurrentFY);
+//   listValues.unshift(sourceName);
+
+//   return headerList.map((item, indx) => [item, listValues[indx]]);
 // };
-
-const createListFields = row => {
-  const { FundSources, CurrentFY } = agencyDataFund;
-  const sourceName = Object.keys(FundSources)[row];
-  const listValues = Object.keys(FundSources[sourceName]).map(
-    key => FundSources[sourceName][key]
-  );
-  listValues.push(CurrentFY);
-  listValues.unshift(sourceName);
-
-  return headerList.map((item, indx) => [item, listValues[indx]]);
-};
 
 $(document).ready(() => {
   // * from navBar/index.js
@@ -885,11 +869,22 @@ $(document).ready(() => {
     $(this).toggleClass("blue-light-bg blue-text");
   });
 
+  //* Back to Top button
+  const btnToTop = $("#btn-top");
+  $("window").scroll(() => {
+    btnToTop.style.display =
+      $("window").scrollTop() > 600 || $("body".scrollTop() > 600)
+        ? "inline-block"
+        : "none";
+  });
+  btnToTop.click(e => {
+    e.preventDefault();
+    $("html, body").animate({ scrollTop: 0 }, "600");
+  });
+
   // * data viewing
   viewHeaders();
   viewData(sitesData);
-  // const { FundSources, CurrentFY } = agencyDataFund;
-  // viewData(FundSources, CurrentFY);
 
   // //* Adding a new funding source
 
