@@ -66,6 +66,10 @@ tbody > tr:hover {
   background-color: #d3e4f0;
 }
 
+.table > tbody > tr > .cell-data {
+  line-height: 25px;
+}
+
 thead,
 th {
   text-align: center;
