@@ -14,11 +14,11 @@ const sitesData = [
     },
     Telephone: "847-623-4449",
     Email: "ewell0@wix.com",
-    CSD: 14,
-    CPD: 5,
-    CD: 13,
-    AD: 24,
-    SD: 9
+    CSD: null,
+    CPD: null,
+    CD: null,
+    AD: null,
+    SD: null
   },
   {
     id: 2,
@@ -972,21 +972,21 @@ $(document).ready(() => {
   $("[title^='click'").click(function() {
     const rowID = Number($(this).attr("id"));
     const listFields = createListFields(rowID);
-
+    console.log(listFields);
     $("#modalBloc").modal("toggle");
     $(".modal-body form").remove();
     $(".modal-body").append("<form id='modal-form'></form>");
 
     for (field of listFields) {
       const key = field[1],
-        val = field[2],
         idVal = field[0];
       let option = "",
-        classOption = "";
+        classOption = "",
+        val = field[2];
 
       if (["id", "SiteID"].includes(idVal)) option = "disabled";
       if (placeholderList.includes(key)) classOption = "class='red-text'";
-
+      if (!val) val = "";
       $(".modal-body>form").append(
         `<div class="input-field">
             <label for=${idVal} ${classOption}>${key}</label>
