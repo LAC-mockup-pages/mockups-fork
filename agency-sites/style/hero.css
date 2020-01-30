@@ -66,6 +66,10 @@ body {
   text-align: left;
 }
 
+#submit-btn {
+  margin-left: 2%;
+}
+
 tbody {
   background-color: #fff;
   color: #283838;
