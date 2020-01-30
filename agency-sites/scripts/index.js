@@ -762,6 +762,24 @@ const sitesData = [
   }
 ];
 
+const placeholderList = [
+  "id",
+  "Site Name",
+  "Site ID",
+  "Site Manager",
+  "Street Address",
+  "City",
+  "State",
+  "ZIP",
+  "County",
+  "Phone",
+  "CSD",
+  "CPD",
+  "CD",
+  "AD",
+  "SD"
+];
+
 const headerList = [
   "id",
   "Site Name",
@@ -778,20 +796,33 @@ const headerList = [
 ];
 
 const createNewSite = () => {
-  for (let i = 1; i < headerList.length; i++) {
-    const option = ["Site Name", "Site ID", "Site Manager", "Address"].includes(
-      headerList[i]
-    )
+  for (let i = 1; i < placeholderList.length; i++) {
+    const option = [
+      "Site Name",
+      "Site ID",
+      "Site Manager",
+      "Street Address",
+      "City",
+      "State",
+      "ZIP"
+    ].includes(placeholderList[i])
       ? "required"
       : "";
-    const smallCell = headerList[i].length < 4 ? "small-cell" : "";
-    $("#new-site .input-fields").append(`<input
+    const smallCell = placeholderList[i].length < 4 ? "small-cell" : "";
+    // const newLine = i % 4 === 0 ? "<br>" : "";
+    const newLine = "";
+
+    $("#new-site").append(`${newLine}<input
     type="text"
     class="form-control ${smallCell}"
-    placeholder='${headerList[i]}'
+    placeholder='${placeholderList[i]}'
     ${option}
   />`);
   }
+
+  $("#new-site").append(
+    `<button type="submit" id="submit-btn" class="btn btn-primary">Add Site</button>`
+  );
 };
 
 const viewHeaders = () => {
@@ -853,18 +884,6 @@ const viewData = arr => {
     );
   }
 };
-
-// const createListFields = row => {
-//   const { FundSources, CurrentFY } = agencyDataFund;
-//   const sourceName = Object.keys(FundSources)[row];
-//   const listValues = Object.keys(FundSources[sourceName]).map(
-//     key => FundSources[sourceName][key]
-//   );
-//   listValues.push(CurrentFY);
-//   listValues.unshift(sourceName);
-
-//   return headerList.map((item, indx) => [item, listValues[indx]]);
-// };
 
 $(document).ready(() => {
   // * from navBar/index.js
