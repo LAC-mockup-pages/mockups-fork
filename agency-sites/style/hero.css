@@ -109,6 +109,7 @@ tbody > tr:hover {
   max-width: 80px;
 }
 
+.email,
 .phone,
 .site-id {
   width: 100px;
