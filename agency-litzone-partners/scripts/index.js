@@ -714,6 +714,7 @@ const viewData = arr => {
   }
 };
 
+//* Flattens a nested JSON object
 const flatten = (obj, path = "") => {
   if (!(obj instanceof Object)) return { [path.replace(/\.$/g, "")]: obj };
 
@@ -781,7 +782,6 @@ $(document).ready(() => {
   $("[title^='click'").click(function() {
     const rowID = Number($(this).attr("id"));
     const listFields = createListFields(rowID);
-    console.log(listFields);
     $("#modalBloc").modal("toggle");
     $(".modal-body form").remove();
     $(".modal-body").append("<form id='modal-form'></form>");
