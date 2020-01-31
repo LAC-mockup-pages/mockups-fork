@@ -60,6 +60,10 @@ body {
   margin-left: 3%;
 }
 
+.new-record {
+  background-color: #b3f1cc;
+}
+
 :required::placeholder,
 .delete-msg {
   color: rgb(197, 65, 65);

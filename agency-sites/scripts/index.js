@@ -882,13 +882,27 @@ const createDataRow = (...args) => {
 
 const viewData = arr => {
   for (site of arr) {
-    const { id, SiteName, SiteID, SiteMngr, Adress, Telephone, Email } = site;
+    const {
+      id,
+      SiteName,
+      SiteID,
+      SiteMngr,
+      Adress,
+      Telephone,
+      Email,
+      CSD,
+      CPD,
+      CD,
+      AD,
+      SD
+    } = site;
 
     const { StreetAdrs, City, State, Zip, County } = Adress;
     const fullAddress = `${StreetAdrs}<br>${City.toUpperCase()}<br>${State} - ${Zip}`;
+    const newRecord = !CSD && !CPD && !CD && !AD && !SD ? " new-record" : "";
 
     $(".table tbody").append(
-      `<tr class='table-row' id=${id} title='click to Edit'></tr>`
+      `<tr class='table-row${newRecord}' id=${id} title='click to Edit'></tr>`
     );
 
     $(".table tbody tr:last-child").append(
@@ -997,16 +1011,4 @@ $(document).ready(() => {
   });
 
   // //* Deleting source
-  // $("#delete-btn").click(() => {
-  //   const deleteConfirm = $(".modal-footer>h3");
-  //   const sourceLabel = $("input#0").val();
-
-  //   if (deleteConfirm.length === 0) {
-  //     $(".modal-footer").prepend(
-  //       "<h3 class='delete-msg'>Confirm deletion by clicking again the DELETE button</h3>"
-  //     );
-  //   } else {
-  //     deleteConfirm.remove();
-  //   }
-  // });
 });

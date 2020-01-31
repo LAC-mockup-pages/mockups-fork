@@ -916,16 +916,40 @@ const flatten = (obj, path = "") => {
 };
 
 const createListFields = num => {
-  const selectedRecord = sitesData.filter(record => record.id === num);
+  const selectedRecord = num
+    ? sitesData.filter(record => record.id === num)
+    : sitesData[0];
   const flattenedRecord = flatten(selectedRecord);
   const keyList = Object.keys(flattenedRecord);
-  const list = keyList.map((key, indx) => [
-    key,
-    labelList[indx],
-    flattenedRecord[key]
-  ]);
+  const list = num
+    ? keyList.map((key, indx) => [key, labelList[indx], flattenedRecord[key]])
+    : keyList.map((key, indx) => [key, labelList[indx], null]);
 
   return list;
+};
+
+const createFieldsModal = list => {
+  $("#modalBloc").modal("toggle");
+  $(".modal-body form").remove();
+  $(".modal-body").append("<form id='modal-form'></form>");
+
+  for (field of list) {
+    const key = field[1],
+      idVal = field[0];
+    let option = "",
+      classOption = "",
+      val = field[2];
+
+    if (["id", "SiteID"].includes(idVal)) option = "disabled";
+    if (placeholderList.includes(key)) classOption = "class='red-text'";
+    if (!val) val = "";
+    $(".modal-body>form").append(
+      `<div class="input-field">
+          <label for=${idVal} ${classOption}>${key}</label>
+          <input type="text" id=${idVal} value='${val}' ${option}>
+        </div>`
+    );
+  }
 };
 
 $(document).ready(() => {
@@ -968,45 +992,18 @@ $(document).ready(() => {
 
   // //* Adding a new site
 
+  $("#submit-btn").click(() => {
+    $(".modal-title").text("Creating a New Site");
+    const listFields = createListFields();
+    createFieldsModal(listFields);
+  });
+
   // //* Select site
   $("[title^='click'").click(function() {
     const rowID = Number($(this).attr("id"));
     const listFields = createListFields(rowID);
-    console.log(listFields);
-    $("#modalBloc").modal("toggle");
-    $(".modal-body form").remove();
-    $(".modal-body").append("<form id='modal-form'></form>");
-
-    for (field of listFields) {
-      const key = field[1],
-        idVal = field[0];
-      let option = "",
-        classOption = "",
-        val = field[2];
-
-      if (["id", "SiteID"].includes(idVal)) option = "disabled";
-      if (placeholderList.includes(key)) classOption = "class='red-text'";
-      if (!val) val = "";
-      $(".modal-body>form").append(
-        `<div class="input-field">
-            <label for=${idVal} ${classOption}>${key}</label>
-            <input type="text" id=${idVal} value='${val}' ${option}>
-          </div>`
-      );
-    }
+    createFieldsModal(listFields);
   });
 
   // //* Deleting source
-  // $("#delete-btn").click(() => {
-  //   const deleteConfirm = $(".modal-footer>h3");
-  //   const sourceLabel = $("input#0").val();
-
-  //   if (deleteConfirm.length === 0) {
-  //     $(".modal-footer").prepend(
-  //       "<h3 class='delete-msg'>Confirm deletion by clicking again the DELETE button</h3>"
-  //     );
-  //   } else {
-  //     deleteConfirm.remove();
-  //   }
-  // });
 });
