@@ -323,7 +323,12 @@ const headerList = [
   "Address",
   "County",
   "Phone",
-  "Email"
+  "Email",
+  "FS ID",
+  "Projected Amount",
+  "Amount",
+  "Training Type",
+  "Credential"
 ];
 
 const labelList = [
@@ -337,14 +342,20 @@ const labelList = [
   "ZIP",
   "County",
   "Phone",
-  "Email"
+  "Email",
+  "FS ID",
+  "Projected Amount",
+  "Amount",
+  "Training Type",
+  "Credential"
 ];
 
 const createNewRecord = () => {
   for (let i = 0; i < placeholderList.length; i++) {
     const newLine = "";
+    const $newRecord = $("#new-partner");
 
-    $("#new-partner").append(`${newLine}<input
+    $newRecord.append(`${newLine}<input
     type="text"
     class="form-control"
     placeholder='${placeholderList[i]}'
@@ -352,7 +363,7 @@ const createNewRecord = () => {
   />`);
   }
 
-  $("#new-partner").append(
+  $newRecord.append(
     `<button type="submit" id="submit-btn" class="btn btn-primary">Add New Partner</button>`
   );
 };
