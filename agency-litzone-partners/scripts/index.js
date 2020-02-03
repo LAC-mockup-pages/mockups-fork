@@ -690,11 +690,6 @@ const viewData = arr => {
 
     const { StreetAdrs, City, State, Zip, County } = Address;
     const fullAddress = `${StreetAdrs}<br>${City.toUpperCase()}<br>${State} - ${Zip}`;
-    // const newRecord = !CSD && !CPD && !CD && !AD && !SD ? " new-record" : "";
-
-    // $(".table tbody").append(
-    //   `<tr class='table-row${newRecord}' id=${id} title='click to Edit'></tr>`
-    // );
 
     $(".table tbody").append(
       `<tr class='table-row' id=${id} title='click to Edit'></tr>`
