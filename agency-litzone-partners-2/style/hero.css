@@ -71,7 +71,9 @@ body {
 }
 
 #submit-btn {
-  margin-left: 2%;
+  margin: 2%;
+  font-size: 1.4em;
+  float: right;
 }
 
 tbody {

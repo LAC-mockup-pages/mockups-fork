@@ -1,4 +1,5 @@
 // Actions and logic
+
 const sitesData = [
   {
     id: 1,
@@ -844,6 +845,8 @@ const labelList = [
   "SD"
 ];
 
+const disabledFieldsList = ["id", "SiteID"];
+
 const createNewSite = () => {
   for (let i = 0; i < placeholderList.length; i++) {
     const newLine = "";
@@ -905,6 +908,7 @@ const viewData = arr => {
   }
 };
 
+//* Flattens a nested JSON object
 const flatten = (obj, path = "") => {
   if (!(obj instanceof Object)) return { [path.replace(/\.$/g, "")]: obj };
 
@@ -915,10 +919,10 @@ const flatten = (obj, path = "") => {
   }, {});
 };
 
-const createListFields = num => {
+const createFieldsList = (num, dataArr) => {
   const selectedRecord = num
-    ? sitesData.filter(record => record.id === num)
-    : sitesData[0];
+    ? dataArr.filter(record => record.id === num)
+    : dataArr[0];
   const flattenedRecord = flatten(selectedRecord);
   const keyList = Object.keys(flattenedRecord);
   const list = num
@@ -928,7 +932,7 @@ const createListFields = num => {
   return list;
 };
 
-const createFieldsModal = list => {
+const createFieldsModal = (list, arr) => {
   $("#modalBloc").modal("toggle");
   $(".modal-body form").remove();
   $(".modal-body").append("<form id='modal-form'></form>");
@@ -940,7 +944,7 @@ const createFieldsModal = list => {
       classOption = "",
       val = field[2];
 
-    if (["id", "SiteID"].includes(idVal)) option = "disabled";
+    if (arr.includes(idVal)) option = "disabled";
     if (placeholderList.includes(key)) classOption = "class='red-text'";
     if (!val) val = "";
     $(".modal-body>form").append(
@@ -994,15 +998,15 @@ $(document).ready(() => {
 
   $("#submit-btn").click(() => {
     $(".modal-title").text("Creating a New Site");
-    const listFields = createListFields();
-    createFieldsModal(listFields);
+    const fieldsList = createFieldsList(null, sitesData);
+    createFieldsModal(fieldsList, disabledFieldsList);
   });
 
   // //* Select site
   $("[title^='click'").click(function() {
     const rowID = Number($(this).attr("id"));
-    const listFields = createListFields(rowID);
-    createFieldsModal(listFields);
+    const fieldsList = createFieldsList(rowID, sitesData);
+    createFieldsModal(fieldsList, disabledFieldsList);
   });
 
   // //* Deleting source

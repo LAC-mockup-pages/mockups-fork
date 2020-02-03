@@ -640,6 +640,8 @@ const labelList = [
   "Email"
 ];
 
+const disabledFieldsList = ["id", "PartnerID"];
+
 const createNewRecord = () => {
   for (let i = 0; i < placeholderList.length; i++) {
     const newLine = "";
@@ -690,11 +692,6 @@ const viewData = arr => {
 
     const { StreetAdrs, City, State, Zip, County } = Address;
     const fullAddress = `${StreetAdrs}<br>${City.toUpperCase()}<br>${State} - ${Zip}`;
-    // const newRecord = !CSD && !CPD && !CD && !AD && !SD ? " new-record" : "";
-
-    // $(".table tbody").append(
-    //   `<tr class='table-row${newRecord}' id=${id} title='click to Edit'></tr>`
-    // );
 
     $(".table tbody").append(
       `<tr class='table-row' id=${id} title='click to Edit'></tr>`
@@ -725,17 +722,41 @@ const flatten = (obj, path = "") => {
   }, {});
 };
 
-const createListFields = num => {
-  const selectedRecord = partnersData.filter(record => record.id === num);
+const createFieldsList = (num, dataArr) => {
+  const selectedRecord = num
+    ? dataArr.filter(record => record.id === num)
+    : dataArr[0];
   const flattenedRecord = flatten(selectedRecord);
   const keyList = Object.keys(flattenedRecord);
-  const list = keyList.map((key, indx) => [
-    key,
-    labelList[indx],
-    flattenedRecord[key]
-  ]);
+  const list = num
+    ? keyList.map((key, indx) => [key, labelList[indx], flattenedRecord[key]])
+    : keyList.map((key, indx) => [key, labelList[indx], null]);
 
   return list;
+};
+
+const createFieldsModal = (list, arr) => {
+  $("#modalBloc").modal("toggle");
+  $(".modal-body form").remove();
+  $(".modal-body").append("<form id='modal-form'></form>");
+
+  for (field of list) {
+    const key = field[1],
+      idVal = field[0];
+    let option = "",
+      classOption = "",
+      val = field[2];
+
+    if (arr.includes(idVal)) option = "disabled";
+    if (placeholderList.includes(key)) classOption = "class='red-text'";
+    if (!val) val = "";
+    $(".modal-body>form").append(
+      `<div class="input-field">
+          <label for=${idVal} ${classOption}>${key}</label>
+          <input type="text" id=${idVal} value='${val}' ${option}>
+        </div>`
+    );
+  }
 };
 
 $(document).ready(() => {
@@ -777,32 +798,17 @@ $(document).ready(() => {
   viewData(partnersData);
 
   // //* Adding a new partner
+  $("#submit-btn").click(() => {
+    $(".modal-title").text("Creating a New Partner");
+    const fieldsList = createFieldsList(null, partnersData);
+    createFieldsModal(fieldsList, disabledFieldsList);
+  });
 
   // //* Select partner
   $("[title^='click'").click(function() {
     const rowID = Number($(this).attr("id"));
-    const listFields = createListFields(rowID);
-    $("#modalBloc").modal("toggle");
-    $(".modal-body form").remove();
-    $(".modal-body").append("<form id='modal-form'></form>");
-
-    for (field of listFields) {
-      const key = field[1],
-        idVal = field[0];
-      let option = "",
-        classOption = "",
-        val = field[2];
-
-      if (["id", "PartnerID"].includes(idVal)) option = "disabled";
-      if (placeholderList.includes(key)) classOption = "class='red-text'";
-      if (!val) val = "";
-      $(".modal-body>form").append(
-        `<div class="input-field">
-            <label for=${idVal} ${classOption}>${key}</label>
-            <input type="text" id=${idVal} value='${val}' ${option}>
-          </div>`
-      );
-    }
+    const fieldsList = createFieldsList(rowID, partnersData);
+    createFieldsModal(fieldsList, disabledFieldsList);
   });
 
   // //* Deleting source
