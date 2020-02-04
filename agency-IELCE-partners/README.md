@@ -1,3 +1,4 @@
-# lac-agency-LiteracyZone-Partners
+# lac-agency-IET/IELCE-Partners
 
-Agency Literacy Zone Partners - Option 2
+Agency IET/IELCE Partners
+On hold as of 2/4/2020: guide lines to be refined per State Ed.
