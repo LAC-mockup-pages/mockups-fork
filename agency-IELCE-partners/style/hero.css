@@ -117,8 +117,14 @@ th {
   font-size: 14px;
 }
 
-.email {
+.email,
+.fs-id,
+.projected-amount,
+.amount,
+.training-type,
+.credential {
   width: 80px;
+  font-size: 14px;
 }
 
 .partner-manager {

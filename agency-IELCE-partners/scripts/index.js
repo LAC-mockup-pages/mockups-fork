@@ -351,10 +351,9 @@ const labelList = [
 ];
 
 const createNewRecord = () => {
+  const newLine = "";
+  const $newRecord = $("#new-partner");
   for (let i = 0; i < placeholderList.length; i++) {
-    const newLine = "";
-    const $newRecord = $("#new-partner");
-
     $newRecord.append(`${newLine}<input
     type="text"
     class="form-control"
@@ -381,7 +380,8 @@ const createDataRow = (...args) => {
 
   for (let i = 0; i < rowData.length; i++) {
     const option = classList[i].replace(/\s/gi, "-").toLowerCase();
-    row += `<td class="cell-data ${option}">${rowData[i]}</td>`;
+    const val = rowData[i] ? rowData[i] : "";
+    row += `<td class="cell-data ${option}">${val}</td>`;
   }
 
   return row;
@@ -396,7 +396,12 @@ const viewData = arr => {
       PartnerMngr,
       Address,
       Phone,
-      Email
+      Email,
+      FSID,
+      ProjectedAmount,
+      Amount,
+      TrainingType,
+      Credential
     } = record;
 
     const { StreetAdrs, City, State, Zip, County } = Address;
@@ -414,7 +419,12 @@ const viewData = arr => {
         fullAddress,
         County,
         Phone,
-        Email
+        Email,
+        FSID,
+        ProjectedAmount,
+        Amount,
+        TrainingType,
+        Credential
       )}`
     );
   }
@@ -480,7 +490,7 @@ $(document).ready(() => {
   // * data viewing
   createNewRecord();
   viewHeaders();
-  viewData(partnersData);
+  viewData(ielcePartnersData);
 
   // //* Adding a new partner
 
