@@ -316,9 +316,9 @@ const placeholderList = [
 ];
 
 const headerList = [
-  "id",
-  "Partner Name",
-  "Partner ID",
+  // "id",
+  "Partner Name and ID",
+  // "Partner ID",
   "Partner Manager",
   "Address",
   "County",
@@ -368,19 +368,21 @@ const createNewRecord = () => {
 };
 
 const viewHeaders = () => {
-  for (let i = 1; i < headerList.length; i++) {
+  for (let i = 0; i < headerList.length; i++) {
     $(".table thead").append(`<th>${headerList[i]}</th>`);
   }
 };
 
 const createDataRow = (...args) => {
   const rowData = Array.from(args);
-  const classList = headerList.slice(1);
+  // const classList = headerList.slice(1);
   let row = "";
 
   for (let i = 0; i < rowData.length; i++) {
-    const option = classList[i].replace(/\s/gi, "-").toLowerCase();
-    const val = rowData[i] ? rowData[i] : "";
+    const option = headerList[i].replace(/\s/gi, "-").toLowerCase();
+    let val = rowData[i] ? rowData[i] : "";
+    if (val instanceof Array)
+      val = rowData[i][0] + "<br>" + "ID: " + rowData[i][1];
     row += `<td class="cell-data ${option}">${val}</td>`;
   }
 
@@ -413,8 +415,7 @@ const viewData = arr => {
 
     $(".table tbody tr:last-child").append(
       `${createDataRow(
-        PartnerName,
-        PartnerID,
+        [PartnerName, PartnerID],
         PartnerMngr,
         fullAddress,
         County,
@@ -441,8 +442,8 @@ const flatten = (obj, path = "") => {
   }, {});
 };
 
-const createListFields = num => {
-  const selectedRecord = partnersData.filter(record => record.id === num);
+const createListFields = (num, arr) => {
+  const selectedRecord = arr.filter(record => record.id === num);
   const flattenedRecord = flatten(selectedRecord);
   const keyList = Object.keys(flattenedRecord);
   const list = keyList.map((key, indx) => [
@@ -497,7 +498,7 @@ $(document).ready(() => {
   // //* Select partner
   $("[title^='click'").click(function() {
     const rowID = Number($(this).attr("id"));
-    const listFields = createListFields(rowID);
+    const listFields = createListFields(rowID, ielcePartnersData);
     $("#modalBloc").modal("toggle");
     $(".modal-body form").remove();
     $(".modal-body").append("<form id='modal-form'></form>");
