@@ -97,32 +97,14 @@ th {
   color: #fff;
 }
 
-.table > tbody > tr > .cell-data {
+.cell-data {
   line-height: 25px;
-}
-
-.county {
-  max-width: 80px;
-  text-align: center;
-  font-size: 14px;
+  font-size: 1.4em;
+  border-right: 3px solid #ddd;
 }
 
 .small-cell {
   max-width: 80px;
-}
-.phone,
-.outcome-id {
-  width: 110px;
-  text-align: center;
-  font-size: 14px;
-}
-
-.email {
-  width: 80px;
-}
-
-.outcome-manager {
-  width: 100px;
 }
 
 .input-field {

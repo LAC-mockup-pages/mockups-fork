@@ -115,7 +115,7 @@ const viewHeaders = () => {
 
 const createDataRow = arrText => {
   let insideRow = "";
-  for (let textLine of arrText) {
+  for (let textLine of arrText.sort((a, b) => (a.Text > b.Text ? 1 : -1))) {
     insideRow += `<tr class="inside-row"><td>${textLine.Text}</td></tr>`;
   }
   return insideRow;
@@ -128,7 +128,7 @@ const viewData = arr => {
     const { id, CategoryName, Descriptions } = record;
     const row = createDataRow(Descriptions);
     $(".table-body").append(
-      `<tr class="cell-data"><td>${CategoryName}</td><td><table>${row}</table></td></tr>`
+      `<tr id=${id}><td class="cell-data">${CategoryName}</td><td><table>${row}</table></td></tr>`
     );
   }
 };
