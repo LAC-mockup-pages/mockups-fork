@@ -113,14 +113,12 @@ const viewHeaders = () => {
   }
 };
 
-const createDataRow = (category, description) => {
-  let row = "";
-
-  for (let textLine of description) {
-    row += `<td class="cell-data category">${category}</td><td class="cell-data description">${textLine.Text}</td>`;
+const createDataRow = arrText => {
+  let insideRow = "";
+  for (let textLine of arrText) {
+    insideRow += `<tr class="inside-row"><td>${textLine.Text}</td></tr>`;
   }
-
-  return row;
+  return insideRow;
 };
 
 const viewData = arr => {
@@ -128,12 +126,10 @@ const viewData = arr => {
     a.CategoryName > b.CategoryName ? 1 : -1
   )) {
     const { id, CategoryName, Descriptions } = record;
-
-    for (let textLine of Descriptions) {
-      $(".table tbody").append(
-        `<tr class='table-row' id=${id} title='click to Edit'><td class="cell-data category">${CategoryName}</td><td class="cell-data description">${textLine.Text}</td></tr>`
-      );
-    }
+    const row = createDataRow(Descriptions);
+    $(".table-body").append(
+      `<tr class="cell-data"><td>${CategoryName}</td><td><table>${row}</table></td></tr>`
+    );
   }
 };
 
@@ -199,9 +195,9 @@ $(document).ready(() => {
   viewHeaders();
   viewData(outcomesData);
 
-  // //* Adding a new partner
+  // //* Adding a new outcome
 
-  // //* Select partner
+  // //* Select outcome
   $("[title^='click'").click(function() {
     const rowID = Number($(this).attr("id"));
     const listFields = createListFields(rowID);
@@ -227,6 +223,4 @@ $(document).ready(() => {
       );
     }
   });
-
-  // //* Deleting source
 });

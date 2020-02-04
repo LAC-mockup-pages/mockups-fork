@@ -85,7 +85,7 @@ tbody {
   line-height: 40px;
 }
 
-tbody > tr:hover {
+.inside-row:hover {
   background-color: #d3e4f0;
 }
 
