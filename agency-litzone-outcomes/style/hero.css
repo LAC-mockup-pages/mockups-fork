@@ -12,7 +12,7 @@ body {
   border-width: 6px 3px;
 }
 
-.partner-entry {
+.outcome-entry {
   margin: 1% 0 0 0;
   padding: 0 0 2% 0;
   width: 100%;
@@ -54,13 +54,13 @@ body {
   background-color: #555;
 }
 
-#new-partner > .form-control {
+#new-outcome > .form-control {
   color: #2479b5;
   font-size: 1.2em;
   padding: 0.5%;
 }
 
-#new-partner {
+#new-outcome {
   margin-left: 3%;
 }
 
@@ -111,7 +111,7 @@ th {
   max-width: 80px;
 }
 .phone,
-.partner-id {
+.outcome-id {
   width: 110px;
   text-align: center;
   font-size: 14px;
@@ -121,7 +121,7 @@ th {
   width: 80px;
 }
 
-.partner-manager {
+.outcome-manager {
   width: 100px;
 }
 
