@@ -103,10 +103,6 @@ th {
   border-right: 3px solid #ddd;
 }
 
-.small-cell {
-  max-width: 80px;
-}
-
 .input-field {
   line-height: 35px;
 }
@@ -125,7 +121,8 @@ th {
   border-bottom: 1px solid #2479b5;
 }
 
-#modal-select {
+#modal-select,
+#new-select {
   font-size: 1.3em;
   line-height: 50px;
   font-weight: 600;
@@ -134,14 +131,9 @@ th {
   border-bottom: 1px solid #2479b5;
 }
 
-#new-outcome > label {
-  color: #d3e4f0;
-  font-size: 1.2em;
-  margin-left: 2%;
-}
-
 #new-outcome > input {
   width: 50%;
+  line-height: 50px;
 }
 .modal-header,
 .modal-footer {
