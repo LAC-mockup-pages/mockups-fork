@@ -134,11 +134,15 @@ th {
   border-bottom: 1px solid #2479b5;
 }
 
-option {
-  margin: 3px;
-  line-height: 20px;
+#new-outcome > label {
+  color: #d3e4f0;
+  font-size: 1.2em;
+  margin-left: 2%;
 }
 
+#new-outcome > input {
+  width: 50%;
+}
 .modal-header,
 .modal-footer {
   background-color: #d3e4f0;

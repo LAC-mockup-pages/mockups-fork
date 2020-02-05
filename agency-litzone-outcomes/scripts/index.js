@@ -95,17 +95,25 @@ const categoryList = outcomesData
   .map(item => [item.id, item.CategoryName]);
 
 const createNewRecord = () => {
-  for (let i = 0; i < placeholderList.length; i++) {
-    $("#new-partner").append(`<input
-    type="text"
-    class="form-control"
-    placeholder='${placeholderList[i]}'
-    required
-  />`);
+  // for (let i = 0; i < placeholderList.length; i++) {
+  //   $("#new-partner").append(`<input
+  //   type="text"
+  //   class="form-control"
+  //   placeholder='${placeholderList[i]}'
+  //   required
+  // />`);
+  // }
+  let optionList = "";
+  for (let category of categoryList) {
+    optionList += `<option id=${category[0]} value='${category[1]}'>${category[1]}</option>`;
   }
 
-  $("#new-partner").append(
-    `<button type="submit" id="submit-btn" class="btn btn-primary">Add New Partner</button>`
+  $("#new-outcome").append(
+    ` <label for="new-select">Category</label>
+          <select id="new-select" form="new-outcome">${optionList}</select>
+        <label for="input-new-outcome">Description</label>
+        <input type="text" id="input-new-outcome" class="form-control">
+    <button type="submit" id="submit-btn" class="btn btn-primary">Add</button>`
   );
 };
 
@@ -138,30 +146,6 @@ const viewData = arr => {
     );
   }
 };
-
-//* Flattens a nested JSON object
-// const flatten = (obj, path = "") => {
-//   if (!(obj instanceof Object)) return { [path.replace(/\.$/g, "")]: obj };
-
-//   return Object.keys(obj).reduce((output, key) => {
-//     return obj instanceof Array
-//       ? { ...output, ...flatten(obj[key], path) }
-//       : { ...output, ...flatten(obj[key], key + ".") };
-//   }, {});
-// };
-
-// const createListFields = num => {
-//   const selectedRecord = partnersData.filter(record => record.id === num);
-//   const flattenedRecord = flatten(selectedRecord);
-//   const keyList = Object.keys(flattenedRecord);
-//   const list = keyList.map((key, indx) => [
-//     key,
-//     labelList[indx],
-//     flattenedRecord[key]
-//   ]);
-
-//   return list;
-// };
 
 $(document).ready(() => {
   // * from navBar/index.js
@@ -201,23 +185,22 @@ $(document).ready(() => {
   viewHeaders();
   viewData(outcomesData);
 
-  // //* Adding a new outcome
+  //* Adding a new outcome
 
-  // //* Select outcome
+  //* Select outcome
   $("[title^='click'").click(function() {
     const rowID = $(this)
       .attr("id")
       .split("-")
       .map(item => Number(item));
-    console.log("rowID :", rowID);
     $("#modalBloc").modal("toggle");
     $(".modal-body form").remove();
     $(".modal-body").append("<form id='modal-form'></form>");
+
     const textValue = outcomesData.filter(obj => obj.id === rowID[0])[0]
       .Descriptions[rowID[1]].Text;
-    console.log("textValue :", textValue);
-
     let optionList = "";
+
     for (let category of categoryList) {
       const attrOption = category[0] === rowID[0] ? "selected" : "";
       optionList += `<option id=${category[0]} value='${category[1]}' ${attrOption}>${category[1]}</option>`;
