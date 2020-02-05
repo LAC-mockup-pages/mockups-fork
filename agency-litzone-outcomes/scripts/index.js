@@ -210,41 +210,28 @@ $(document).ready(() => {
       .split("-")
       .map(item => Number(item));
     console.log("rowID :", rowID);
-    // const listFields = createListFields(rowID);
     $("#modalBloc").modal("toggle");
     $(".modal-body form").remove();
-    $(".modal-body").append("<form id='modal-form' class='row'></form>");
+    $(".modal-body").append("<form id='modal-form'></form>");
     const textValue = outcomesData.filter(obj => obj.id === rowID[0])[0]
       .Descriptions[rowID[1]].Text;
     console.log("textValue :", textValue);
 
-    // let selectCategory='<select name="categories"></select>'
     let optionList = "";
     for (let category of categoryList) {
       const attrOption = category[0] === rowID[0] ? "selected" : "";
-      optionList += `<option id=${category[0]} value=${category[1]} ${attrOption}>${category[1]}</option>`;
+      optionList += `<option id=${category[0]} value='${category[1]}' ${attrOption}>${category[1]}</option>`;
     }
 
     $("#modal-form").append(
-      `<div class="input-field"><label for="modal-select">Category: </label><select name="categories" id="modal-select" class="col-md-2">${optionList}</select>
-      <div class="text-value col-md-10">${textValue}</div></div>`
+      `<div class="input-field">
+          <label for="modal-select">Category</label>
+          <select id="modal-select" form="modal-form">${optionList}</select>
+      </div>
+      <div class="input-field">
+        <label for=${rowID.join("-")}>Description</label>
+        <input type="text" id=${rowID.join("-")} value='${textValue}'>
+      </div>`
     );
-    // for (field of listFields) {
-    //   const key = field[1],
-    //     idVal = field[0];
-    //   let option = "",
-    //     classOption = "",
-    //     val = field[2];
-
-    //   if (["id", "PartnerID"].includes(idVal)) option = "disabled";
-    //   if (placeholderList.includes(key)) classOption = "class='red-text'";
-    //   if (!val) val = "";
-    //   $(".modal-body>form").append(
-    //     `<div class="input-field">
-    //         <label for=${idVal} ${classOption}>${key}</label>
-    //         <input type="text" id=${idVal} value='${val}' ${option}>
-    //       </div>`
-    //   );
-    // }
   });
 });

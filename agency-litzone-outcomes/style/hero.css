@@ -108,22 +108,35 @@ th {
 }
 
 .input-field {
-  line-height: 30px;
+  line-height: 35px;
 }
 
 .input-field > label {
-  width: 25%;
+  width: 20%;
   font-size: 1.2em;
 }
 
-.input-field > input,
-.text-value {
+.input-field > input {
   font-size: 1.3em;
   font-weight: 700;
   border: none;
   text-indent: 4px;
-  /* width: 60%; */
+  width: 50%;
   border-bottom: 1px solid #2479b5;
+}
+
+#modal-select {
+  font-size: 1.3em;
+  line-height: 50px;
+  font-weight: 600;
+  padding: 5px;
+  border: none;
+  border-bottom: 1px solid #2479b5;
+}
+
+option {
+  margin: 3px;
+  line-height: 20px;
 }
 
 .modal-header,
