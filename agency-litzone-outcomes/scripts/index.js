@@ -190,7 +190,7 @@ $(document).ready(() => {
   });
 
   //* Select outcome
-  $("[title^='click'").click(function() {
+  $("[title^='click']").click(function() {
     const rowID = $(this)
       .attr("id")
       .split("-")
