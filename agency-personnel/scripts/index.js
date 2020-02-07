@@ -604,15 +604,15 @@ const partnersData = [
 ];
 
 const placeholderList = [
-  "Partner Name",
-  "Partner Manager",
-  "Street Address",
-  "City",
-  "State",
-  "ZIP",
-  "County",
-  "Phone",
-  "Email"
+  "First Name",
+  "Last Name",
+  "Start Date",
+  "Length of Stay (yrs)",
+  "Position",
+  "Subject",
+  "Paid / Volunteer",
+  "Time Status",
+  "Experience"
 ];
 
 const headerList = [
@@ -642,18 +642,18 @@ const labelList = [
 
 const createNewRecord = () => {
   for (let i = 0; i < placeholderList.length; i++) {
-    const newLine = "";
-
-    $("#new-partner").append(`${newLine}<input
+    const optionReq =
+      placeholderList[i] !== "Length of Stay (yrs)" ? "required" : "";
+    $("#new-personnel").append(`<input
     type="text"
     class="form-control"
     placeholder='${placeholderList[i]}'
-    required
+    ${optionReq}
   />`);
   }
 
-  $("#new-partner").append(
-    `<button type="submit" id="submit-btn" class="btn btn-primary">Add New Partner</button>`
+  $("#new-personnel").append(
+    `<button type="submit" id="submit-btn" class="btn btn-primary">Add</button>`
   );
 };
 
@@ -748,10 +748,10 @@ $(document).ready(() => {
   });
 
   // * sub-navbar/index.js
-  $("#sub-nav li").click(function() {
-    $("#sub-nav li").removeClass("blue-light-bg blue-text");
-    $(this).toggleClass("blue-light-bg blue-text");
-  });
+  // $("#sub-nav li").click(function() {
+  //   $("#sub-nav li").removeClass("blue-light-bg blue-text");
+  //   $(this).toggleClass("blue-light-bg blue-text");
+  // });
 
   //* Back to Top button
   const btnToTop = $("#btn-top");
@@ -768,10 +768,13 @@ $(document).ready(() => {
 
   // * data viewing
   createNewRecord();
-  viewHeaders();
-  viewData(partnersData);
+  // viewHeaders();
+  // viewData(partnersData);
 
-  // //* Adding a new partner
+  //* Adding a new team member
+  $("#add-new-member").click(function() {
+    $("#new-personnel").toggleClass("hidden");
+  });
 
   // //* Select partner
   $("[title^='click'").click(function() {

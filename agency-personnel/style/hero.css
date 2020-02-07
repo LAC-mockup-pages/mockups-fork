@@ -12,11 +12,23 @@ body {
   border-width: 6px 3px;
 }
 
-.partner-entry {
+.personnel-entry {
   margin: 1% 0 0 0;
   padding: 0 0 2% 0;
   width: 100%;
   border-bottom: 8px solid #f0e2d5;
+}
+
+#add-new-member {
+  text-align: center;
+  cursor: pointer;
+}
+
+#new-personnel > input {
+  margin-left: 1%;
+}
+#new-personnel .hidden {
+  display: none;
 }
 
 .label-text {
