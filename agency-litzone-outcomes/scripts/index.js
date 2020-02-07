@@ -95,24 +95,17 @@ const categoryList = outcomesData
   .map(item => [item.id, item.CategoryName]);
 
 const createNewRecord = () => {
-  // for (let i = 0; i < placeholderList.length; i++) {
-  //   $("#new-partner").append(`<input
-  //   type="text"
-  //   class="form-control"
-  //   placeholder='${placeholderList[i]}'
-  //   required
-  // />`);
-  // }
   let optionList =
     "<option class='red-text' disabled selected>Select a Category</option>";
   for (let category of categoryList) {
-    optionList += `<option id=${category[0]} value='${category[1]}'>${category[1]}</option>`;
+    optionList += `<option value='${category[0]}'>${category[1]}</option>`;
   }
 
   $("#new-outcome").append(
     `   <select id="new-select" form="new-outcome" class="form-control red-text">${optionList}</select>
-        <input type="text" id="input-new-outcome" class="form-control" placeholder="Description" required>
-    <button type="submit" id="submit-btn" class="btn btn-primary">Add</button>`
+        <input type="text" id="input-new-outcome" class="form-control" placeholder="Description" spellcheck="true" required>
+    <button type="submit" id="submit-btn" class="btn btn-primary">Add</button>
+    <button type="button" id="cancel-btn" class="btn btn-default">Cancel</button>`
   );
 };
 
@@ -185,6 +178,16 @@ $(document).ready(() => {
   viewData(outcomesData);
 
   //* Adding a new outcome
+  $("#new-select").change(function() {
+    const selectedOption = Number($(this).val());
+    const selectedObj = outcomesData.filter(obj => obj.id === selectedOption);
+    $(".table-body").empty();
+    viewData(selectedObj);
+
+    $("#cancel-btn").click(() => {
+      location.reload();
+    });
+  });
 
   //* Select outcome
   $("[title^='click'").click(function() {
