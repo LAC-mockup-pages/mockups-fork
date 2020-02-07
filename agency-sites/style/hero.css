@@ -25,31 +25,6 @@ body {
   padding: 0 0 0.5% 0.5%;
 }
 
-#btn-top {
-  display: block;
-  background-color: #ff9800;
-  padding: 1%;
-  color: #fff;
-  font-size: 1.4em;
-  text-align: center;
-  border-radius: 4px;
-  margin: 30px;
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  transition: background-color 0.3s;
-  z-index: 1000;
-}
-
-#btn-top:hover {
-  cursor: pointer;
-  background-color: #333;
-}
-
-#btn-top:active {
-  background-color: #555;
-}
-
 #new-site > .form-control {
   color: #2479b5;
   font-size: 1.2em;
