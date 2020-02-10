@@ -12,11 +12,27 @@ body {
   border-width: 6px 3px;
 }
 
-.personnel-entry {
+.personnel-entry,
+.personnel-search {
   margin: 1% 0 0 0;
-  padding: 0 0 2% 0;
+  padding: 0 0 1% 0;
   width: 100%;
   border-bottom: 8px solid #f0e2d5;
+}
+
+#search-input {
+  margin-left: 3%;
+  width: 60%;
+  font-size: 1.2em;
+}
+
+#search-input::placeholder {
+  font-size: 1.2em;
+  color: #1d6294;
+}
+
+#search-form {
+  text-align: center;
 }
 
 #add-new-member {
