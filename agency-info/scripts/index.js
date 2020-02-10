@@ -59,24 +59,6 @@ const phoneFormat = arr => {
 };
 
 $(document).ready(() => {
-  // * from navBar/index.js
-  $(document).ready(() => {
-    $("#parentMenu1 li").mouseenter(function() {
-      $(this).removeClass("open");
-    });
-    $("#nav-icon").click(function() {
-      $(this).toggleClass("open");
-    });
-
-    $("#parentMenu1 li").click(() => {
-      $("#nav-icon").removeClass("open");
-    });
-
-    $("#main-logo").click(() => {
-      alert("Redirect to Home Page");
-    });
-  });
-
   // * sub-navbar/index.js
   $("#sub-nav li").click(function() {
     $("#sub-nav li").removeClass("blue-light-bg blue-text");
