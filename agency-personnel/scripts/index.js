@@ -615,6 +615,31 @@ const placeholderList = [
   "Experience"
 ];
 
+const positionList = {
+  1: "Administrative",
+  2: "Case Manager",
+  3: "Counselor",
+  4: "Counselor / Case Manager",
+  5: "Managerial / Counselor",
+  6: "Managerial / Supervisory",
+  7: "Managerial / Teacher",
+  8: "Paraprofessional",
+  9: "Teacher",
+  10: "Teacher / Counselor",
+  11: "Other",
+  12: "Place Holder",
+  13: "Trainer",
+  14: "Tutor",
+  15: "Board Member",
+  16: "Trainer & Tutor",
+  17: "Board Member & Tutor",
+  18: "Admin Support & Tutor",
+  19: "Substitute",
+  20: "Clerical",
+  27: "Fundraiser",
+  28: "Board Member & Trainer"
+};
+
 const headerList = [
   "id",
   "Partner Name",
