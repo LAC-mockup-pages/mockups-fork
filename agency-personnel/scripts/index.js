@@ -1,17 +1,5 @@
 // Actions and logic
 
-const placeholderList = [
-  "First Name",
-  "Last Name",
-  "Start Date",
-  "Length of Stay (yrs)",
-  "Position",
-  "Subject",
-  "Paid / Volunteer",
-  "Time Status",
-  "Experience"
-];
-
 const positionList = {
   1: "Administrative",
   2: "Case Manager",
@@ -59,6 +47,34 @@ const subjectList = {
   Y: "Y"
 };
 
+const paidList = {
+  P: "Paid",
+  V: "Volunteer"
+};
+
+const timeStatusList = {
+  F: "Full-time",
+  P: "Part-time"
+};
+
+const yearsXPlist = {
+  1: "Less than one year",
+  2: "One to three years",
+  3: "More than three years"
+};
+
+const placeholderList = [
+  "First Name",
+  "Last Name",
+  "Start Date",
+  "Length of Stay (yrs)",
+  ["Position", positionList],
+  "Subject",
+  "Paid / Volunteer",
+  "Time Status",
+  "Experience"
+];
+
 const headerList = [
   "id",
   "Partner Name",
@@ -86,14 +102,28 @@ const labelList = [
 
 const createNewRecord = () => {
   for (let i = 0; i < placeholderList.length; i++) {
-    const optionReq =
-      placeholderList[i] !== "Length of Stay (yrs)" ? "required" : "";
-    $("#new-personnel").append(`<input
+    const elmnt = placeholderList[i];
+    const optionReq = elmnt !== "Length of Stay (yrs)" ? "required" : "";
+
+    if (elmnt instanceof Array) {
+      const [nameElmnt, elmntValues] = elmnt;
+      let options = `<option class='red-text' selected disabled>Select ${nameElmnt}</option>`;
+
+      for (value in elmntValues) {
+        options += `<option value=${value}>${elmntValues[value]}</option> `;
+      }
+
+      $("#new-personnel").append(
+        `<select name=${nameElmnt} class='form-control'>${options}</select>`
+      );
+    } else {
+      $("#new-personnel").append(`<input
     type="text"
     class="form-control"
-    placeholder='${placeholderList[i]}'
+    placeholder='${elmnt}'
     ${optionReq}
   />`);
+    }
   }
 
   $("#new-personnel").append(
