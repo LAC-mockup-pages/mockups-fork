@@ -98,12 +98,12 @@ const createNewRecord = () => {
   let optionList =
     "<option class='red-text' disabled selected>Select a Category</option>";
   for (let category of categoryList) {
-    optionList += `<option value='${category[0]}'>${category[1]}</option>`;
+    optionList += `<option class="blue-text" value='${category[0]}'>${category[1]}</option>`;
   }
 
   $("#new-outcome").append(
     `   <select id="new-select" form="new-outcome" class="form-control red-text">${optionList}</select>
-        <input type="text" id="input-new-outcome" class="form-control" placeholder="Description" spellcheck="true" required>
+        <input type="text" id="input-new-outcome" class="form-control blue-text" placeholder="Description" spellcheck="true" required>
     <button type="submit" id="submit-btn" class="btn btn-primary">Add</button>
     <button type="button" id="cancel-btn" class="btn btn-default">Cancel</button>`
   );
