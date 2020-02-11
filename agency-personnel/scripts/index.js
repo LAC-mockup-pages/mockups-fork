@@ -114,7 +114,7 @@ const createNewRecord = () => {
       }
 
       $("#new-personnel").append(
-        `<select name=${nameElmnt} class='form-control red-text' required>${options}</select>`
+        `<select name='${nameElmnt}' class='form-control red-text' required>${options}</select>`
       );
     } else {
       let optionClass = "";
