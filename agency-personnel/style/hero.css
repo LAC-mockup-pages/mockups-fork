@@ -42,7 +42,7 @@ body {
 
 #new-personnel > input,
 #new-personnel > select {
-  margin-left: 1%;
+  margin: 0.5%;
 }
 
 #new-personnel .hidden {
@@ -59,13 +59,12 @@ body {
   background-color: #b3f1cc;
 }
 
-#new-partner > .form-control {
-  color: #2479b5;
+#new-personnel > .form-control {
   font-size: 1.2em;
   padding: 0.5%;
 }
 
-#new-partner {
+#new-personnel {
   margin-left: 3%;
 }
 
@@ -116,6 +115,11 @@ th {
 .small-cell {
   max-width: 80px;
 }
+
+.medium-cell {
+  max-width: 120px;
+}
+
 .phone,
 .partner-id {
   width: 110px;
@@ -131,7 +135,7 @@ th {
   width: 100px;
 }
 
-.input-field {
+/* .input-field {
   line-height: 30px;
 }
 
@@ -147,7 +151,7 @@ th {
   text-indent: 4px;
   width: 60%;
   border-bottom: 1px solid #2479b5;
-}
+} */
 
 .modal-header,
 .modal-footer {

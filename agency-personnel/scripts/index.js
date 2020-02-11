@@ -67,12 +67,12 @@ const placeholderList = [
   "First Name",
   "Last Name",
   "Start Date",
-  "Length of Stay (yrs)",
+  "Seniority",
   ["Position", positionList],
-  "Subject",
-  "Paid / Volunteer",
-  "Time Status",
-  "Experience"
+  ["Subject", subjectList],
+  ["Paid / Volunteer", paidList],
+  ["Time Status", timeStatusList],
+  ["Experience", yearsXPlist]
 ];
 
 const headerList = [
@@ -110,16 +110,19 @@ const createNewRecord = () => {
       let options = `<option class='red-text' selected disabled>Select ${nameElmnt}</option>`;
 
       for (value in elmntValues) {
-        options += `<option value=${value}>${elmntValues[value]}</option> `;
+        options += `<option class='blue-text' value=${value}>${elmntValues[value]}</option> `;
       }
 
       $("#new-personnel").append(
-        `<select name=${nameElmnt} class='form-control'>${options}</select>`
+        `<select name=${nameElmnt} class='form-control red-text' required>${options}</select>`
       );
     } else {
+      let optionClass = "";
+      if (elmnt === "Start Date" || elmnt === "Seniority")
+        optionClass = "medium-cell";
       $("#new-personnel").append(`<input
     type="text"
-    class="form-control"
+    class="form-control ${optionClass}"
     placeholder='${elmnt}'
     ${optionReq}
   />`);
