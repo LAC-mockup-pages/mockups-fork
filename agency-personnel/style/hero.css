@@ -20,6 +20,10 @@ body {
   border-bottom: 8px solid #f0e2d5;
 }
 
+.year-started {
+  text-align: center;
+}
+
 #search-input {
   margin-left: 3%;
   width: 60%;
