@@ -1,4 +1,5 @@
 // Actions and logic
+let selectedStaff = [];
 
 $(document).ready(() => {
   $("#parentMenu1 li").mouseenter(function() {

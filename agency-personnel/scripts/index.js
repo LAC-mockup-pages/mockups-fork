@@ -2088,16 +2088,46 @@ const headerList = [
 
 const labelList = [
   "id",
-  "Partner Name",
-  "Partner ID",
-  "Partner Manager",
+  "First Name",
+  "Last Name",
+  "Date Started",
+  "Seniority",
+  "Position",
+  "Subject",
+  "Paid / Volunteer",
+  "Experience"
+];
+
+const addInfoList = [
+  "Gender",
+  "Ethnicity",
+  "Birth Date",
+  "Education Level",
+  "Employment Status",
+  "Occupation",
+  "Referral"
+];
+
+const homeAdrsList = [
   "Street Address",
   "City",
   "State",
   "ZIP",
-  "County",
-  "Phone",
-  "Email"
+  "Home Phone",
+  "Cell Phone",
+  "Email",
+  "Alternate Email"
+];
+
+const workAdrsList = [
+  "Street Address",
+  "City",
+  "State",
+  "ZIP",
+  "Work Phone",
+  "Work Phone Extension",
+  "Can Email?",
+  "Can Call?"
 ];
 
 const createNewRecord = () => {
@@ -2154,24 +2184,43 @@ const createDataRow = obj => {
 const viewData = arr => {
   for (let i = 0; i < arr.length; i++) {
     $(".table tbody").append(
-      `<tr class='table-row' id=${arr[i].id} title='click to Edit'>
-      ${createDataRow(arr[i])}
-      </tr>`
+      `<tr class='table-row' id=${
+        arr[i].id
+      } title='click to Edit'>${createDataRow(arr[i])}</tr>`
     );
   }
 };
 
+//* Flattens a nested JSON object
+const flatten = (obj, path = "") => {
+  if (!(obj instanceof Object)) return { [path.replace(/\.$/g, "")]: obj };
+
+  return Object.keys(obj).reduce((output, key) => {
+    return obj instanceof Array
+      ? { ...output, ...flatten(obj[key], path) }
+      : { ...output, ...flatten(obj[key], path + key + "-") };
+  }, {});
+};
+
 const createListFields = num => {
-  const selectedRecord = partnersData.filter(record => record.id === num);
+  const selectedRecord = personnelData.filter(record => record.id === num);
   const flattenedRecord = flatten(selectedRecord);
   const keyList = Object.keys(flattenedRecord);
   const list = keyList.map((key, indx) => [
-    key,
-    labelList[indx],
+    key.slice(0, key.length - 1),
     flattenedRecord[key]
   ]);
-
   return list;
+};
+
+const perso = arr => {
+  console.log("arr :", arr);
+  const [labelId, val] = arr[0];
+  let result = `<div class="input-field"><label for=${labelId}>id</label><input type="text" id=${labelId} value='${val}' disabled></div>`;
+
+  for (let i = 1; i < arr.length; i++) {}
+
+  return result;
 };
 
 $(document).ready(() => {
@@ -2184,7 +2233,7 @@ $(document).ready(() => {
         : "none";
   });
   btnToTop.click(e => {
-    e.preventDefault();
+    e.stopPropagation();
     $("html, body").animate({ scrollTop: 0 }, "600");
   });
 
@@ -2192,12 +2241,15 @@ $(document).ready(() => {
   createNewRecord();
 
   //* Adding a new team member
-  $("#add-new-member").click(function() {
+  $("#add-new-member").click(function(e) {
+    e.stopPropagation();
     $("#new-personnel").toggleClass("hidden");
   });
 
   //* Search personnel
-  $("#search-btn").click(() => {
+  $("#search-btn").click(function(e) {
+    e.stopPropagation();
+    e.preventDefault();
     const searchArg = $("#search-input")
       .val()
       .toLowerCase();
@@ -2214,36 +2266,48 @@ $(document).ready(() => {
         const fullPosition = positionList[Position];
         return { id, LastName, FirstName, yearStarted, fullPosition };
       });
+    selectedStaff = result;
     viewHeaders();
-    viewData(result);
+    viewData(selectedStaff);
   });
 
-  //* Select partner
-  $("[title^='click'").click(function() {
+  //* Select person in short list
+  $("tbody").on("click", "[title^='click']", function(e) {
+    e.stopPropagation();
+    e.preventDefault();
     const rowID = Number($(this).attr("id"));
     const listFields = createListFields(rowID);
-    $("#modalBloc").modal("toggle");
-    $(".modal-body form").remove();
-    $(".modal-body").append("<form id='modal-form'></form>");
+    $("thead").empty();
+    $("tbody").empty();
 
-    for (field of listFields) {
-      const key = field[1],
-        idVal = field[0];
-      let option = "",
-        classOption = "",
-        val = field[2];
+    const blocPerso = perso(listFields.slice(0, 9));
+    console.log("blocPerso :", blocPerso);
 
-      if (["id", "PartnerID"].includes(idVal)) option = "disabled";
-      if (placeholderList.includes(key)) classOption = "class='red-text'";
-      if (!val) val = "";
-      $(".modal-body>form").append(
-        `<div class="input-field">
-            <label for=${idVal} ${classOption}>${key}</label>
-            <input type="text" id=${idVal} value='${val}' ${option}>
-          </div>`
-      );
-    }
+    $(
+      ".hero"
+    ).append(`<div class="container personView"><div class="row"><div class="bloc-perso col-md-6">Bloc perso</div>
+    <div class="bloc-adrs col-md-6">Bloc adresse</div>
+    </div></div>`);
+
+    // for (field of listFields) {
+    //   const key = field[1],
+    //     idVal = field[0];
+    //   let option = "",
+    //     classOption = "",
+    //     val = field[2];
+
+    //   if (["id", "PartnerID"].includes(idVal)) option = "disabled";
+    //   if (placeholderList.includes(key)) classOption = "class='red-text'";
+    //   if (!val) val = "";
+    //   $(".modal-body>form").append(
+    //     `<div class="input-field">
+    //         <label for=${idVal} ${classOption}>${key}</label>
+    //         <input type="text" id=${idVal} value='${val}' ${option}>
+    //       </div>`
+    //   );
+    // }
+    return false;
   });
 
-  // //* Deleting source
+  //* Deleting source
 });

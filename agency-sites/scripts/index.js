@@ -973,7 +973,6 @@ $(document).ready(() => {
   $("[title^='click'").click(function() {
     const rowID = Number($(this).attr("id"));
     const listFields = createListFields(rowID);
-    console.log(listFields);
     $("#modalBloc").modal("toggle");
     $(".modal-body form").remove();
     $(".modal-body").append("<form id='modal-form'></form>");
