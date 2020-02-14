@@ -139,12 +139,19 @@ th {
   width: 100px;
 }
 
-/* .input-field {
-  line-height: 30px;
+.input-field,
+.checkbox-field {
+  line-height: 35px;
 }
 
-.input-field > label {
+.input-field > label,
+.checkbox-field > label {
   width: 25%;
+  font-size: 1.1em;
+}
+
+.checkbox-field > label {
+  width: 35%;
   font-size: 1.2em;
 }
 
@@ -155,14 +162,24 @@ th {
   text-indent: 4px;
   width: 60%;
   border-bottom: 1px solid #2479b5;
-} */
-
-.modal-header,
-.modal-footer {
-  background-color: #d3e4f0;
 }
 
-.delete-msg {
-  width: fit-content;
-  border-bottom: 2px solid rgb(197, 65, 65);
+.personView {
+  background-color: #fff;
+}
+
+.sub-header {
+  line-height: 25px;
+  padding-left: 5px;
+  font-size: 1.2em;
+  font-weight: 700;
+  border-top: 2px solid #fff;
+}
+
+.bloc-perso {
+  border-right: 4px solid #1d6294;
+}
+
+.bloc-adrs .input-field {
+  padding-left: 10px;
 }

@@ -2259,7 +2259,8 @@ const persoAddOn = arr => {
 };
 
 const personHomeAdrs = arr => {
-  let result = "<div class='sub-header'>Home Adress</div>";
+  let result =
+    "<div class='sub-header blue-bg blue-light-text'>Home Adress</div>";
   for (let i = 0; i < arr.length; i++) {
     const labelField = homeAdrsList[i];
     const [keyField, valueField] = arr[i];
@@ -2274,7 +2275,8 @@ const personHomeAdrs = arr => {
 };
 
 const personWorkAdrs = arr => {
-  let result = "<div class='sub-header'>Work Adress</div>";
+  let result =
+    "<div class='sub-header blue-bg blue-light-text'>Work Adress</div>";
   for (let i = 0; i < arr.length - 2; i++) {
     const labelField = workAdrsList[i];
     const [keyField, valueField] = arr[i];
@@ -2370,8 +2372,8 @@ $(document).ready(() => {
     const blocWorkAdrs = personWorkAdrs(workAdrsFields);
 
     $(".hero").append(`<div class="container personView"><div class="row">
-    <div class="bloc-perso col-md-6">${blocPerso}${blocPersoAddOn}</div>
-    <div class="bloc-adrs col-md-6">${blocHomeAdrs}${blocWorkAdrs}</div>
+    <form class="bloc-perso col-md-6">${blocPerso}${blocPersoAddOn}</form>
+    <form class="bloc-adrs col-md-6">${blocHomeAdrs}${blocWorkAdrs}</form>
     </div></div>`);
 
     return false;
