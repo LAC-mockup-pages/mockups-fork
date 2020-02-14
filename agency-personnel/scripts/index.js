@@ -2244,6 +2244,21 @@ const persoInfo = arr => {
   return result;
 };
 
+const persoAddOn = arr => {
+  let result = "";
+  for (let i = 0; i < arr.length; i++) {
+    const labelField = addInfoList[i];
+    const [keyField, valueField] = arr[i];
+    const classOption = labelField.replace(/\s/, "-").toLowerCase();
+
+    result += `<div class="input-field">
+          <label for=${keyField}>${labelField}</label>
+          <input type="text" id=${keyField} class=${classOption} value='${valueField}'>
+          </div>`;
+  }
+  return result;
+};
+
 $(document).ready(() => {
   //* Back to Top button
   const btnToTop = $("#btn-top");
@@ -2302,10 +2317,9 @@ $(document).ready(() => {
     $("tbody").empty();
 
     const blocPerso = persoInfo(listFields.slice(0, 9));
-    console.log("blocPerso :", blocPerso);
-
+    const blocPersoAddOn = persoAddOn(listFields.slice(9, 16));
     $(".hero").append(`<div class="container personView"><div class="row">
-    <div class="bloc-perso col-md-6">${blocPerso}</div>
+    <div class="bloc-perso col-md-6">${blocPerso}${blocPersoAddOn}</div>
     <div class="bloc-adrs col-md-6">Bloc adresse</div>
     </div></div>`);
 
