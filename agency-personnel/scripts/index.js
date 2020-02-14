@@ -2102,7 +2102,7 @@ const homeAdrsList = [
   "State",
   "ZIP",
   "Home Phone",
-  "Cell Phone",
+  "Mobile Phone",
   "Email",
   "Alternate Email"
 ];
@@ -2113,7 +2113,7 @@ const workAdrsList = [
   "State",
   "ZIP",
   "Work Phone",
-  "Work Phone Extension",
+  "Extension",
   "Can Email?",
   "Can Call?"
 ];
@@ -2202,7 +2202,6 @@ const createListFields = num => {
 };
 
 const persoInfo = arr => {
-  console.log("arr :", arr);
   const [labelId, val] = arr[0];
   let result = `<div class="input-field">
           <label for=${labelId}>id</label>
@@ -2248,6 +2247,36 @@ const persoAddOn = arr => {
   let result = "";
   for (let i = 0; i < arr.length; i++) {
     const labelField = addInfoList[i];
+    const [keyField, valueField] = arr[i];
+    const classOption = labelField.replace(/\s/, "-").toLowerCase();
+
+    result += `<div class="input-field">
+          <label for=${keyField}>${labelField}</label>
+          <input type="text" id=${keyField} class=${classOption} value='${valueField}'>
+          </div>`;
+  }
+  return result;
+};
+
+const personHomeAdrs = arr => {
+  let result = "<div class='sub-header'>Home Adress</div>";
+  for (let i = 0; i < arr.length; i++) {
+    const labelField = homeAdrsList[i];
+    const [keyField, valueField] = arr[i];
+    const classOption = labelField.replace(/\s/, "-").toLowerCase();
+
+    result += `<div class="input-field">
+          <label for=${keyField}>${labelField}</label>
+          <input type="text" id=${keyField} class=${classOption} value='${valueField}'>
+          </div>`;
+  }
+  return result;
+};
+
+const personWorkAdrs = arr => {
+  let result = "<div class='sub-header'>Work Adress</div>";
+  for (let i = 0; i < arr.length - 2; i++) {
+    const labelField = workAdrsList[i];
     const [keyField, valueField] = arr[i];
     const classOption = labelField.replace(/\s/, "-").toLowerCase();
 
@@ -2315,12 +2344,26 @@ $(document).ready(() => {
     const listFields = createListFields(rowID);
     $("thead").empty();
     $("tbody").empty();
-
+    $("#search-input").val("");
+    // console.log("listFields :", listFields);
     const blocPerso = persoInfo(listFields.slice(0, 9));
     const blocPersoAddOn = persoAddOn(listFields.slice(9, 16));
+    const homeAdrsFields = listFields.filter(item =>
+      item[0].startsWith("HomeAdrs")
+    );
+    const workAdrsFields = listFields.filter(item =>
+      item[0].startsWith("WorkAdrs")
+    );
+
+    console.log("homeAdrsFields :", homeAdrsFields);
+    console.log("workAdrsFields :", workAdrsFields);
+
+    const blocHomeAdrs = personHomeAdrs(homeAdrsFields);
+    const blocWorkAdrs = personWorkAdrs(workAdrsFields);
+
     $(".hero").append(`<div class="container personView"><div class="row">
     <div class="bloc-perso col-md-6">${blocPerso}${blocPersoAddOn}</div>
-    <div class="bloc-adrs col-md-6">Bloc adresse</div>
+    <div class="bloc-adrs col-md-6">${blocHomeAdrs}${blocWorkAdrs}</div>
     </div></div>`);
 
     // for (field of listFields) {
