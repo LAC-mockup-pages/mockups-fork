@@ -2114,8 +2114,8 @@ const workAdrsList = [
   "ZIP",
   "Work Phone",
   "Extension",
-  "Can Email?",
-  "Can Call?"
+  "Can receive mail?",
+  "Can be called?"
 ];
 
 const createNewRecord = () => {
@@ -2285,6 +2285,18 @@ const personWorkAdrs = arr => {
           <input type="text" id=${keyField} class=${classOption} value='${valueField}'>
           </div>`;
   }
+
+  for (const field of arr.slice(-2)) {
+    const indx = arr.indexOf(field);
+    const labelField = workAdrsList[indx];
+    const [keyField, valueField] = field;
+    const classOption = labelField.replace(/\s/, "-").toLowerCase();
+    const checkOption = valueField ? "checked" : "";
+    result += `<div class="checkbox-field">
+          <label for=${keyField}>${labelField}</label>
+          <input type="checkbox" id=${keyField} class=${classOption} ${checkOption}>
+          </div>`;
+  }
   return result;
 };
 
@@ -2345,7 +2357,6 @@ $(document).ready(() => {
     $("thead").empty();
     $("tbody").empty();
     $("#search-input").val("");
-    // console.log("listFields :", listFields);
     const blocPerso = persoInfo(listFields.slice(0, 9));
     const blocPersoAddOn = persoAddOn(listFields.slice(9, 16));
     const homeAdrsFields = listFields.filter(item =>
@@ -2355,9 +2366,6 @@ $(document).ready(() => {
       item[0].startsWith("WorkAdrs")
     );
 
-    console.log("homeAdrsFields :", homeAdrsFields);
-    console.log("workAdrsFields :", workAdrsFields);
-
     const blocHomeAdrs = personHomeAdrs(homeAdrsFields);
     const blocWorkAdrs = personWorkAdrs(workAdrsFields);
 
@@ -2366,23 +2374,6 @@ $(document).ready(() => {
     <div class="bloc-adrs col-md-6">${blocHomeAdrs}${blocWorkAdrs}</div>
     </div></div>`);
 
-    // for (field of listFields) {
-    //   const key = field[1],
-    //     idVal = field[0];
-    //   let option = "",
-    //     classOption = "",
-    //     val = field[2];
-
-    //   if (["id", "PartnerID"].includes(idVal)) option = "disabled";
-    //   if (placeholderList.includes(key)) classOption = "class='red-text'";
-    //   if (!val) val = "";
-    //   $(".modal-body>form").append(
-    //     `<div class="input-field">
-    //         <label for=${idVal} ${classOption}>${key}</label>
-    //         <input type="text" id=${idVal} value='${val}' ${option}>
-    //       </div>`
-    //   );
-    // }
     return false;
   });
 
