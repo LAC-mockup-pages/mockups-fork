@@ -140,8 +140,7 @@ th {
   line-height: 35px;
 }
 
-.input-field > label,
-.checkbox-field > label {
+.input-field > label {
   width: 25%;
   font-size: 1.1em;
 }
@@ -149,6 +148,11 @@ th {
 .checkbox-field > label {
   width: 35%;
   font-size: 1.2em;
+}
+
+.checkbox-field > input {
+  width: 15px;
+  height: 15px;
 }
 
 .input-field > input {
