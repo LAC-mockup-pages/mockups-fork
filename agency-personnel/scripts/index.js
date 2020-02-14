@@ -2073,7 +2073,7 @@ const placeholderList = [
   "Seniority",
   ["Position", positionList],
   ["Subject", subjectList],
-  ["Paid / Volunteer", paidList],
+  ["Paid/Volunteer", paidList],
   ["Time Status", timeStatusList],
   ["Experience", yearsXPlist]
 ];
@@ -2084,18 +2084,6 @@ const headerList = [
   "First Name",
   "Year Started",
   "Position"
-];
-
-const labelList = [
-  "id",
-  "First Name",
-  "Last Name",
-  "Date Started",
-  "Seniority",
-  "Position",
-  "Subject",
-  "Paid / Volunteer",
-  "Experience"
 ];
 
 const addInfoList = [
@@ -2213,13 +2201,46 @@ const createListFields = num => {
   return list;
 };
 
-const perso = arr => {
+const persoInfo = arr => {
   console.log("arr :", arr);
   const [labelId, val] = arr[0];
-  let result = `<div class="input-field"><label for=${labelId}>id</label><input type="text" id=${labelId} value='${val}' disabled></div>`;
+  let result = `<div class="input-field">
+          <label for=${labelId}>id</label>
+          <input type="text" id=${labelId} value='${val}' disabled>
+          </div>`;
 
-  for (let i = 1; i < arr.length; i++) {}
+  for (let i = 1; i < 4; i++) {
+    const labelField = placeholderList[i - 1];
+    const [keyField, valueField] = arr[i];
+    const classOption = labelField.replace(/\s/, "-").toLowerCase();
 
+    result += `<div class="input-field">
+          <label for=${keyField}>${labelField}</label>
+          <input type="text" id=${keyField} class=${classOption} value='${valueField}'>
+          </div>`;
+  }
+
+  const seniorityYears = moment(arr[3], "MM/DD/YYYY")
+    .fromNow()
+    .replace(" ago", "");
+  result += `<div class="input-field">
+<label for="seniority">Seniority</label>
+<input type="text" id="seniority" class="seniorityClass" value='${seniorityYears}' disabled>
+</div>`;
+
+  for (let j = 4; j < arr.length; j++) {
+    const labelField = placeholderList[j];
+    const [keyField, valueField] = arr[j];
+    const classOption = labelField[0].replace(/\s/, "-").toLowerCase();
+    const value =
+      keyField === "ExperienceYears"
+        ? "1 to 3 years"
+        : labelField[1][valueField];
+    result += `<div class="input-field">
+          <label for=${keyField}>${labelField[0]}</label>
+          <input type="text" id=${keyField} class=${classOption} value='${value}'>
+          </div>`;
+  }
   return result;
 };
 
@@ -2280,12 +2301,11 @@ $(document).ready(() => {
     $("thead").empty();
     $("tbody").empty();
 
-    const blocPerso = perso(listFields.slice(0, 9));
+    const blocPerso = persoInfo(listFields.slice(0, 9));
     console.log("blocPerso :", blocPerso);
 
-    $(
-      ".hero"
-    ).append(`<div class="container personView"><div class="row"><div class="bloc-perso col-md-6">Bloc perso</div>
+    $(".hero").append(`<div class="container personView"><div class="row">
+    <div class="bloc-perso col-md-6">${blocPerso}</div>
     <div class="bloc-adrs col-md-6">Bloc adresse</div>
     </div></div>`);
 
