@@ -164,9 +164,10 @@
 
 /* Back to Top Button */
 
-#btn-top {
+#btn-top,
+#btn-save {
   display: block;
-  background-color: #ff9800;
+
   padding: 1%;
   color: #fff;
   font-size: 1.4em;
@@ -174,10 +175,19 @@
   border-radius: 4px;
   margin: 30px;
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  bottom: 20px;
+  right: 20px;
   transition: background-color 0.3s;
   z-index: 1000;
+}
+
+#btn-top {
+  background-color: #ff9800;
+}
+
+#btn-save {
+  bottom: 100px;
+  background-color: #3f8fc7;
 }
 
 #btn-top:hover {
@@ -185,6 +195,10 @@
   background-color: #333;
 }
 
+#btn-save:hover {
+  cursor: pointer;
+  background-color: grey;
+}
 #btn-top:active {
   background-color: #555;
 }
