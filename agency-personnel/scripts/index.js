@@ -2302,6 +2302,28 @@ const personWorkAdrs = arr => {
   return result;
 };
 
+const searchVal = () => {
+  const searchArg = $("#search-input")
+    .val()
+    .toLowerCase();
+  const result = personnelData
+    .filter(
+      person =>
+        person.LastName.toLowerCase().includes(searchArg) ||
+        person.FirstName.toLowerCase().includes(searchArg)
+    )
+    .sort((a, b) => (a.LastName > b.LastName ? 1 : -1))
+    .map(person => {
+      const { id, LastName, FirstName, DateStarted, Position } = person;
+      const yearStarted = DateStarted.substr(-4);
+      const fullPosition = positionList[Position];
+      return { id, LastName, FirstName, yearStarted, fullPosition };
+    });
+  selectedStaff = result;
+  viewHeaders();
+  viewData(selectedStaff);
+};
+
 $(document).ready(() => {
   //* Back to Top button
   const btnToTop = $("#btn-top");
@@ -2325,29 +2347,30 @@ $(document).ready(() => {
     $("#new-personnel").toggleClass("hidden");
   });
 
-  //* Search personnel
-  $("#search-btn").click(function(e) {
+  //* Search Team Members
+  $("#search-input").keypress(e => {
     e.stopPropagation();
     e.preventDefault();
-    const searchArg = $("#search-input")
-      .val()
-      .toLowerCase();
-    const result = personnelData
-      .filter(
-        person =>
-          person.LastName.toLowerCase().includes(searchArg) ||
-          person.FirstName.toLowerCase().includes(searchArg)
-      )
-      .sort((a, b) => (a.LastName > b.LastName ? 1 : -1))
-      .map(person => {
-        const { id, LastName, FirstName, DateStarted, Position } = person;
-        const yearStarted = DateStarted.substr(-4);
-        const fullPosition = positionList[Position];
-        return { id, LastName, FirstName, yearStarted, fullPosition };
-      });
-    selectedStaff = result;
-    viewHeaders();
-    viewData(selectedStaff);
+    const keyPressed = e.keyCode ? e.keyCode : e.which;
+    if (keyPressed === "13") {
+      searchVal();
+    } else {
+      $("search-input").val += keyPressed;
+    }
+  });
+  $("#search-btn").click(e => {
+    e.stopPropagation();
+    e.preventDefault();
+    searchVal();
+  });
+
+  //* Cancel or Save
+  $("#btn-cancel").click(() => {
+    location.reload();
+  });
+
+  $("#btn-save").click(() => {
+    location.reload();
   });
 
   //* Select person in short list

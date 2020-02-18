@@ -165,9 +165,9 @@
 /* Back to Top Button */
 
 #btn-top,
-#btn-save {
+#btn-save,
+#btn-cancel {
   display: block;
-
   padding: 1%;
   color: #fff;
   font-size: 1.4em;
@@ -190,12 +190,18 @@
   background-color: #3f8fc7;
 }
 
+#btn-cancel {
+  bottom: 170px;
+  background-color: #555;
+}
+
 #btn-top:hover {
   cursor: pointer;
   background-color: #333;
 }
 
-#btn-save:hover {
+#btn-save:hover,
+#btn-cancel:hover {
   cursor: pointer;
   background-color: grey;
 }
