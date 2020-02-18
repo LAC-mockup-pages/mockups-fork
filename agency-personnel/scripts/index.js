@@ -2214,8 +2214,8 @@ const persoInfo = arr => {
     const classOption = labelField.replace(/\s/, "-").toLowerCase();
 
     result += `<div class="input-field">
-          <label for=${keyField}>${labelField}</label>
-          <input type="text" id=${keyField} class=${classOption} value='${valueField}'>
+          <label for=${keyField} class="red-text">${labelField}</label>
+          <input type="text" id=${keyField} class=${classOption} value='${valueField}' required>
           </div>`;
   }
 
@@ -2236,8 +2236,8 @@ const persoInfo = arr => {
         ? "1 to 3 years"
         : labelField[1][valueField];
     result += `<div class="input-field">
-          <label for=${keyField}>${labelField[0]}</label>
-          <input type="text" id=${keyField} class=${classOption} value='${value}'>
+          <label for=${keyField} class="red-text">${labelField[0]}</label>
+          <input type="text" id=${keyField} class=${classOption} value='${value}' required>
           </div>`;
   }
   return result;
