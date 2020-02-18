@@ -2306,7 +2306,18 @@ const searchVal = () => {
   const searchArg = $("#search-input")
     .val()
     .toLowerCase();
-  const result = personnelData
+
+  if (searchArg.length < 3) {
+    alert("Please enter at least the first 3 letters");
+    return false;
+  }
+
+  if (searchArg.match(/\W|[0-9]|[_]/gi)) {
+    alert("Please enter only alphabetical characters");
+    return false;
+  }
+
+  const selectedStaff = personnelData
     .filter(
       person =>
         person.LastName.toLowerCase().includes(searchArg) ||
@@ -2319,7 +2330,6 @@ const searchVal = () => {
       const fullPosition = positionList[Position];
       return { id, LastName, FirstName, yearStarted, fullPosition };
     });
-  selectedStaff = result;
   viewHeaders();
   viewData(selectedStaff);
 };
@@ -2348,14 +2358,14 @@ $(document).ready(() => {
   });
 
   //* Search Team Members
-  $("#search-input").keypress(e => {
+  $("#search-input").keypress(function(e) {
     e.stopPropagation();
     e.preventDefault();
-    const keyPressed = e.keyCode ? e.keyCode : e.which;
-    if (keyPressed === "13") {
+    let value = $(this).val();
+    if (e.which === 13) {
       searchVal();
     } else {
-      $("search-input").val += keyPressed;
+      $(this).val((value += String.fromCharCode(e.which)));
     }
   });
   $("#search-btn").click(e => {
