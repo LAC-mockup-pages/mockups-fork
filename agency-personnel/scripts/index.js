@@ -2049,7 +2049,7 @@ const historyData = [
 const contactData = [
   {
     id: 1,
-    personnelID: 15,
+    personnelID: 1,
     date: "10/20/2016",
     type: 5,
     notes:
@@ -2064,7 +2064,7 @@ const contactData = [
   },
   {
     id: 3,
-    personnelID: 10,
+    personnelID: 1,
     date: "09/17/2017",
     type: 1,
     notes: "Nulla tellus."
@@ -3116,6 +3116,60 @@ const searchVal = () => {
   viewData(selectedStaff);
 };
 
+const viewHistoryContact = idNum => {
+  const personHistory = historyData
+    .filter(item => item.personnelID === idNum)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  let historyLines = "";
+  for (item of personHistory) {
+    const { id, date, status } = item;
+    historyLines += `<tr id=${id}>
+  <td class="cell-data">${date}</td>
+  <td class="cell-data">${historyList[status]}</td>
+  </tr>`;
+  }
+
+  const personContact = contactData
+    .filter(item => item.personnelID === idNum)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  let contactLines = "";
+  for (item of personContact) {
+    const { id, date, type, notes } = item;
+    contactLines += `<tr id=${id}>
+<td class="cell-data">${date}</td>
+<td class="cell-data">${contactList[type]}</td>
+<td class="cell-data">${notes}</td>
+</tr>`;
+  }
+
+  console.log("personContact :", personContact);
+
+  const blocHistContact = `<div class="container" id="history-contact">
+  <div class="row">
+    <div class="history-table col-md-6">History
+      <table class="table">
+      <thead>
+        <th>Date</th>
+        <th>Status</th>
+      </thead>
+      <tbody>
+     ${historyLines}
+      </tbody></table></div>
+      <div class="contact-table col-md-6">Contact
+      <table class="table">
+      <thead>
+        <th>Date</th>
+        <th>Type</th>
+        <th>Notes</th>
+      </thead>
+      <tbody>
+      ${contactLines}
+      </tbody></table></div>
+      </div></div>`;
+
+  $(".hero").append(blocHistContact);
+};
+
 $(document).ready(() => {
   //* Back to Top button
   const btnToTop = $("#btn-top");
@@ -3190,6 +3244,8 @@ $(document).ready(() => {
     <form class="bloc-perso col-md-6">${blocPerso}${blocPersoAddOn}</form>
     <form class="bloc-adrs col-md-6">${blocHomeAdrs}${blocWorkAdrs}</form>
     </div></div>`);
+
+    viewHistoryContact(rowID);
 
     return false;
   });
