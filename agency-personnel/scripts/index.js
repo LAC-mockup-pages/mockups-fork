@@ -2003,6 +2003,788 @@ const personnelData = [
   }
 ];
 
+const historyData = [
+  { id: 1, personnelID: 15, date: "08/30/2017", status: "D" },
+  { id: 2, personnelID: 1, date: "11/24/2015", status: "N" },
+  { id: 3, personnelID: 4, date: "09/08/2018", status: "R" },
+  { id: 4, personnelID: 1, date: "02/22/2018", status: "M" },
+  { id: 5, personnelID: 9, date: "10/30/2019", status: "B" },
+  { id: 6, personnelID: 13, date: "11/17/2015", status: "A" },
+  { id: 7, personnelID: 1, date: "01/24/2016", status: "E" },
+  { id: 8, personnelID: 17, date: "09/24/2019", status: "Q" },
+  { id: 9, personnelID: 7, date: "10/28/2016", status: "H" },
+  { id: 10, personnelID: 19, date: "12/09/2017", status: "C" },
+  { id: 11, personnelID: 18, date: "04/05/2018", status: "C" },
+  { id: 12, personnelID: 9, date: "07/24/2016", status: "A" },
+  { id: 13, personnelID: 16, date: "07/14/2017", status: "Z" },
+  { id: 14, personnelID: 3, date: "03/13/2019", status: "Q" },
+  { id: 15, personnelID: 8, date: "02/11/2018", status: "E" },
+  { id: 16, personnelID: 16, date: "09/24/2019", status: "N" },
+  { id: 17, personnelID: 20, date: "11/04/2015", status: "K" },
+  { id: 18, personnelID: 16, date: "01/05/2019", status: "Z" },
+  { id: 19, personnelID: 7, date: "08/16/2018", status: "Q" },
+  { id: 20, personnelID: 18, date: "09/20/2019", status: "K" },
+  { id: 21, personnelID: 12, date: "12/09/2016", status: "P" },
+  { id: 22, personnelID: 19, date: "05/31/2015", status: "F" },
+  { id: 23, personnelID: 17, date: "05/17/2018", status: "C" },
+  { id: 24, personnelID: 6, date: "02/27/2016", status: "J" },
+  { id: 25, personnelID: 4, date: "02/10/2020", status: "I" },
+  { id: 26, personnelID: 6, date: "05/16/2016", status: "R" },
+  { id: 27, personnelID: 8, date: "03/18/2016", status: "H" },
+  { id: 28, personnelID: 20, date: "05/25/2016", status: "P" },
+  { id: 29, personnelID: 8, date: "04/21/2016", status: "M" },
+  { id: 30, personnelID: 7, date: "02/11/2018", status: "Q" },
+  { id: 31, personnelID: 6, date: "05/07/2015", status: "A" },
+  { id: 32, personnelID: 16, date: "03/21/2016", status: "I" },
+  { id: 33, personnelID: 15, date: "06/29/2015", status: "O" },
+  { id: 34, personnelID: 6, date: "11/15/2018", status: "G" },
+  { id: 35, personnelID: 20, date: "03/05/2018", status: "K" },
+  { id: 36, personnelID: 11, date: "05/12/2017", status: "A" },
+  { id: 37, personnelID: 3, date: "06/01/2019", status: "E" },
+  { id: 38, personnelID: 15, date: "03/07/2018", status: "C" },
+  { id: 39, personnelID: 9, date: "09/15/2018", status: "N" },
+  { id: 40, personnelID: 15, date: "07/10/2017", status: "R" }
+];
+
+const contactData = [
+  {
+    id: 1,
+    personnelID: 15,
+    date: "10/20/2016",
+    type: 5,
+    notes:
+      "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem."
+  },
+  {
+    id: 2,
+    personnelID: 18,
+    date: "11/25/2016",
+    type: 3,
+    notes: "Phasellus sit amet erat. Nulla tempus."
+  },
+  {
+    id: 3,
+    personnelID: 10,
+    date: "09/17/2017",
+    type: 1,
+    notes: "Nulla tellus."
+  },
+  {
+    id: 4,
+    personnelID: 6,
+    date: "07/02/2017",
+    type: 5,
+    notes: "Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl."
+  },
+  {
+    id: 5,
+    personnelID: 18,
+    date: "03/01/2015",
+    type: 4,
+    notes:
+      "Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla."
+  },
+  {
+    id: 6,
+    personnelID: 7,
+    date: "07/27/2019",
+    type: 2,
+    notes: "Donec semper sapien a libero."
+  },
+  {
+    id: 7,
+    personnelID: 18,
+    date: "07/09/2016",
+    type: 1,
+    notes:
+      "Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante."
+  },
+  {
+    id: 8,
+    personnelID: 18,
+    date: "07/04/2016",
+    type: 2,
+    notes: "Aliquam erat volutpat. In congue. Etiam justo."
+  },
+  {
+    id: 9,
+    personnelID: 20,
+    date: "08/29/2019",
+    type: 1,
+    notes:
+      "Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+  },
+  {
+    id: 10,
+    personnelID: 11,
+    date: "07/07/2019",
+    type: 2,
+    notes:
+      "Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla."
+  },
+  {
+    id: 11,
+    personnelID: 12,
+    date: "08/06/2018",
+    type: 5,
+    notes:
+      "Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla."
+  },
+  {
+    id: 12,
+    personnelID: 14,
+    date: "06/09/2019",
+    type: 4,
+    notes:
+      "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus."
+  },
+  {
+    id: 13,
+    personnelID: 12,
+    date: "02/25/2018",
+    type: 6,
+    notes:
+      "In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy."
+  },
+  {
+    id: 14,
+    personnelID: 18,
+    date: "06/14/2018",
+    type: 1,
+    notes:
+      "Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque."
+  },
+  {
+    id: 15,
+    personnelID: 2,
+    date: "07/14/2018",
+    type: 2,
+    notes:
+      "Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat."
+  },
+  {
+    id: 16,
+    personnelID: 9,
+    date: "10/29/2017",
+    type: 2,
+    notes:
+      "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui."
+  },
+  {
+    id: 17,
+    personnelID: 11,
+    date: "08/06/2019",
+    type: 4,
+    notes: "Nunc rhoncus dui vel sem. Sed sagittis."
+  },
+  {
+    id: 18,
+    personnelID: 17,
+    date: "05/23/2015",
+    type: 4,
+    notes:
+      "Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet."
+  },
+  {
+    id: 19,
+    personnelID: 20,
+    date: "12/05/2015",
+    type: 1,
+    notes:
+      "Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla."
+  },
+  {
+    id: 20,
+    personnelID: 4,
+    date: "12/15/2017",
+    type: 2,
+    notes:
+      "Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa."
+  },
+  {
+    id: 21,
+    personnelID: 6,
+    date: "12/18/2019",
+    type: 6,
+    notes:
+      "Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit."
+  },
+  {
+    id: 22,
+    personnelID: 20,
+    date: "01/31/2016",
+    type: 4,
+    notes:
+      "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet."
+  },
+  {
+    id: 23,
+    personnelID: 15,
+    date: "08/11/2017",
+    type: 1,
+    notes: "Aenean lectus. Pellentesque eget nunc."
+  },
+  {
+    id: 24,
+    personnelID: 4,
+    date: "06/11/2019",
+    type: 3,
+    notes: "Donec dapibus."
+  },
+  {
+    id: 25,
+    personnelID: 1,
+    date: "05/23/2018",
+    type: 2,
+    notes:
+      "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+  },
+  {
+    id: 26,
+    personnelID: 20,
+    date: "11/11/2018",
+    type: 4,
+    notes: "Suspendisse potenti. Cras in purus eu magna vulputate luctus."
+  },
+  {
+    id: 27,
+    personnelID: 6,
+    date: "11/15/2019",
+    type: 4,
+    notes:
+      "In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+  },
+  {
+    id: 28,
+    personnelID: 2,
+    date: "08/03/2018",
+    type: 6,
+    notes: "Mauris lacinia sapien quis libero."
+  },
+  {
+    id: 29,
+    personnelID: 18,
+    date: "07/13/2015",
+    type: 6,
+    notes: "Phasellus in felis."
+  },
+  {
+    id: 30,
+    personnelID: 9,
+    date: "03/23/2015",
+    type: 6,
+    notes:
+      "Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat."
+  },
+  {
+    id: 31,
+    personnelID: 12,
+    date: "11/11/2016",
+    type: 6,
+    notes: "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante."
+  },
+  {
+    id: 32,
+    personnelID: 13,
+    date: "10/01/2019",
+    type: 2,
+    notes:
+      "Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo."
+  },
+  {
+    id: 33,
+    personnelID: 11,
+    date: "01/20/2017",
+    type: 4,
+    notes: "Sed accumsan felis. Ut at dolor quis odio consequat varius."
+  },
+  {
+    id: 34,
+    personnelID: 3,
+    date: "07/07/2015",
+    type: 1,
+    notes:
+      "Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum."
+  },
+  {
+    id: 35,
+    personnelID: 16,
+    date: "07/15/2018",
+    type: 4,
+    notes:
+      "Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa."
+  },
+  {
+    id: 36,
+    personnelID: 3,
+    date: "02/03/2018",
+    type: 4,
+    notes: "Fusce consequat."
+  },
+  {
+    id: 37,
+    personnelID: 19,
+    date: "04/05/2015",
+    type: 1,
+    notes: "Morbi non lectus."
+  },
+  {
+    id: 38,
+    personnelID: 10,
+    date: "04/25/2019",
+    type: 2,
+    notes: "Nullam varius."
+  },
+  {
+    id: 39,
+    personnelID: 17,
+    date: "11/18/2018",
+    type: 6,
+    notes:
+      "Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci."
+  },
+  {
+    id: 40,
+    personnelID: 9,
+    date: "12/19/2018",
+    type: 4,
+    notes: "Nulla nisl. Nunc nisl."
+  }
+];
+
+const proDevData = [
+  {
+    id: 1,
+    personnelID: 2,
+    date: "05/17/2015",
+    workshopName: "Face to face stable paradigm",
+    providerName: "White Group",
+    category: "Multi-lateral",
+    hours: 8,
+    attended: "true"
+  },
+  {
+    id: 2,
+    personnelID: 13,
+    date: "07/27/2018",
+    workshopName: "Profound radical superstructure",
+    providerName: "Spinka-Eichmann",
+    category: "secured line",
+    hours: 10,
+    attended: "true"
+  },
+  {
+    id: 3,
+    personnelID: 5,
+    date: "05/23/2018",
+    workshopName: "Triple-buffered uniform analyzer",
+    providerName: "Yost Group",
+    category: "secured line",
+    hours: 11,
+    attended: "true"
+  },
+  {
+    id: 4,
+    personnelID: 13,
+    date: "01/11/2020",
+    workshopName: "Advanced real-time firmware",
+    providerName: "Waters, Prohaska and Rohan",
+    category: "utilisation",
+    hours: 4,
+    attended: "true"
+  },
+  {
+    id: 5,
+    personnelID: 8,
+    date: "11/16/2016",
+    workshopName: "Function-based mobile installation",
+    providerName: "Moore LLC",
+    category: "scalable",
+    hours: 8,
+    attended: "true"
+  },
+  {
+    id: 6,
+    personnelID: 15,
+    date: "04/23/2018",
+    workshopName: "User-centric demand-driven encryption",
+    providerName: "Bailey, Brown and Strosin",
+    category: "client-driven",
+    hours: 10,
+    attended: "true"
+  },
+  {
+    id: 7,
+    personnelID: 10,
+    date: "02/03/2016",
+    workshopName: "Customizable coherent application",
+    providerName: "Bailey, Little and Murray",
+    category: "strategy",
+    hours: 7,
+    attended: "true"
+  },
+  {
+    id: 8,
+    personnelID: 4,
+    date: "06/20/2016",
+    workshopName: "Synergistic bifurcated access",
+    providerName: "Stracke, Sauer and Schulist",
+    category: "installation",
+    hours: 6,
+    attended: "true"
+  },
+  {
+    id: 9,
+    personnelID: 9,
+    date: "07/29/2019",
+    workshopName: "Visionary interactive info-mediaries",
+    providerName: "Schaefer Inc",
+    category: "groupware",
+    hours: 6,
+    attended: "true"
+  },
+  {
+    id: 10,
+    personnelID: 9,
+    date: "12/15/2018",
+    workshopName: "Visionary user-facing concept",
+    providerName: "Ziemann LLC",
+    category: "Organic",
+    hours: 9,
+    attended: "true"
+  },
+  {
+    id: 11,
+    personnelID: 18,
+    date: "07/29/2017",
+    workshopName: "Integrated transitional toolset",
+    providerName: "Christiansen-Haley",
+    category: "Adaptive",
+    hours: 7,
+    attended: "true"
+  },
+  {
+    id: 12,
+    personnelID: 10,
+    date: "07/22/2015",
+    workshopName: "Customizable motivating Graphic Interface",
+    providerName: "Armstrong Group",
+    category: "Devolved",
+    hours: 5,
+    attended: "true"
+  },
+  {
+    id: 13,
+    personnelID: 7,
+    date: "02/09/2020",
+    workshopName: "Expanded reciprocal utilisation",
+    providerName: "Kunze-Mertz",
+    category: "hierarchy",
+    hours: 3,
+    attended: "true"
+  },
+  {
+    id: 14,
+    personnelID: 4,
+    date: "01/20/2020",
+    workshopName: "Upgradable full-range circuit",
+    providerName: "Bauch, Moen and Kulas",
+    category: "success",
+    hours: 6,
+    attended: "true"
+  },
+  {
+    id: 15,
+    personnelID: 6,
+    date: "05/07/2015",
+    workshopName: "Open-source clear-thinking interface",
+    providerName: "Kerluke-Wolf",
+    category: "Future-proofed",
+    hours: 4,
+    attended: "true"
+  },
+  {
+    id: 16,
+    personnelID: 5,
+    date: "09/28/2016",
+    workshopName: "Switchable 4th generation ability",
+    providerName: "D'Amore and Sons",
+    category: "Extended",
+    hours: 9,
+    attended: "true"
+  },
+  {
+    id: 17,
+    personnelID: 3,
+    date: "04/02/2018",
+    workshopName: "Assimilated web-enabled core",
+    providerName: "Conn, Hickle and Williamson",
+    category: "capability",
+    hours: 5,
+    attended: "true"
+  },
+  {
+    id: 18,
+    personnelID: 10,
+    date: "03/12/2017",
+    workshopName: "Cross-platform secondary infrastructure",
+    providerName: "Hodkiewicz, Robel and Marquardt",
+    category: "Switchable",
+    hours: 5,
+    attended: "true"
+  },
+  {
+    id: 19,
+    personnelID: 19,
+    date: "08/11/2018",
+    workshopName: "Progressive regional toolset",
+    providerName: "O'Reilly-Batz",
+    category: "Reactive",
+    hours: 5,
+    attended: "true"
+  },
+  {
+    id: 20,
+    personnelID: 11,
+    date: "09/15/2018",
+    workshopName: "Customizable holistic implementation",
+    providerName: "Rice-Eichmann",
+    category: "Distributed",
+    hours: 12,
+    attended: "true"
+  },
+  {
+    id: 21,
+    personnelID: 15,
+    date: "05/08/2019",
+    workshopName: "Multi-channelled multi-tasking task-force",
+    providerName: "Hudson-Bayer",
+    category: "workforce",
+    hours: 12,
+    attended: "true"
+  },
+  {
+    id: 22,
+    personnelID: 13,
+    date: "12/01/2016",
+    workshopName: "Devolved tangible definition",
+    providerName: "Haag, Bayer and VonRueden",
+    category: "portal",
+    hours: 7,
+    attended: "true"
+  },
+  {
+    id: 23,
+    personnelID: 19,
+    date: "02/21/2018",
+    workshopName: "De-engineered multi-state parallelism",
+    providerName: "Becker-Lockman",
+    category: "responsive",
+    hours: 9,
+    attended: "true"
+  },
+  {
+    id: 24,
+    personnelID: 14,
+    date: "12/29/2017",
+    workshopName: "Optional hybrid projection",
+    providerName: "Heaney-Okuneva",
+    category: "portal",
+    hours: 8,
+    attended: "true"
+  },
+  {
+    id: 25,
+    personnelID: 11,
+    date: "01/05/2018",
+    workshopName: "Managed discrete conglomeration",
+    providerName: "Larson, Witting and Murphy",
+    category: "Advanced",
+    hours: 11,
+    attended: "true"
+  },
+  {
+    id: 26,
+    personnelID: 10,
+    date: "10/15/2015",
+    workshopName: "Balanced interactive database",
+    providerName: "Mills, Olson and Streich",
+    category: "model",
+    hours: 5,
+    attended: "true"
+  },
+  {
+    id: 27,
+    personnelID: 15,
+    date: "02/11/2018",
+    workshopName: "Reverse-engineered uniform Graphical User Interface",
+    providerName: "Price-Bernhard",
+    category: "Synergized",
+    hours: 7,
+    attended: "true"
+  },
+  {
+    id: 28,
+    personnelID: 15,
+    date: "06/14/2018",
+    workshopName: "Multi-lateral multi-tasking pricing structure",
+    providerName: "Bartoletti Inc",
+    category: "User-friendly",
+    hours: 8,
+    attended: "true"
+  },
+  {
+    id: 29,
+    personnelID: 1,
+    date: "04/18/2018",
+    workshopName: "Configurable non-volatile solution",
+    providerName: "Sipes, O'Kon and Lemke",
+    category: "mobile",
+    hours: 12,
+    attended: "true"
+  },
+  {
+    id: 30,
+    personnelID: 11,
+    date: "11/02/2017",
+    workshopName: "Profit-focused homogeneous moderator",
+    providerName: "Runte, Gerlach and Boyer",
+    category: "migration",
+    hours: 6,
+    attended: "true"
+  },
+  {
+    id: 31,
+    personnelID: 7,
+    date: "10/10/2015",
+    workshopName: "Realigned 24 hour time-frame",
+    providerName: "Bednar-Hermann",
+    category: "systemic",
+    hours: 10,
+    attended: "true"
+  },
+  {
+    id: 32,
+    personnelID: 15,
+    date: "12/22/2019",
+    workshopName: "Front-line interactive frame",
+    providerName: "Labadie, Heidenreich and Conroy",
+    category: "service-desk",
+    hours: 11,
+    attended: "true"
+  },
+  {
+    id: 33,
+    personnelID: 8,
+    date: "09/20/2015",
+    workshopName: "Multi-layered even-keeled internet solution",
+    providerName: "Mertz-Barrows",
+    category: "6th generation",
+    hours: 9,
+    attended: "true"
+  },
+  {
+    id: 34,
+    personnelID: 5,
+    date: "10/21/2017",
+    workshopName: "Robust mobile encoding",
+    providerName: "O'Hara Inc",
+    category: "system engine",
+    hours: 8,
+    attended: "true"
+  },
+  {
+    id: 35,
+    personnelID: 5,
+    date: "02/10/2016",
+    workshopName: "Configurable maximized process improvement",
+    providerName: "Walter-Legros",
+    category: "Networked",
+    hours: 5,
+    attended: "true"
+  },
+  {
+    id: 36,
+    personnelID: 18,
+    date: "08/01/2019",
+    workshopName: "Re-contextualized even-keeled database",
+    providerName: "Gutmann-Ankunding",
+    category: "leading edge",
+    hours: 11,
+    attended: "true"
+  },
+  {
+    id: 37,
+    personnelID: 18,
+    date: "05/14/2019",
+    workshopName: "Reverse-engineered zero tolerance protocol",
+    providerName: "Schuppe Inc",
+    category: "Versatile",
+    hours: 12,
+    attended: "true"
+  },
+  {
+    id: 38,
+    personnelID: 12,
+    date: "05/04/2018",
+    workshopName: "Mandatory object-oriented protocol",
+    providerName: "Streich, Watsica and Kris",
+    category: "task-force",
+    hours: 6,
+    attended: "true"
+  },
+  {
+    id: 39,
+    personnelID: 20,
+    date: "12/16/2019",
+    workshopName: "Pre-emptive intermediate neural-net",
+    providerName: "Predovic and Sons",
+    category: "intangible",
+    hours: 4,
+    attended: "true"
+  },
+  {
+    id: 40,
+    personnelID: 15,
+    date: "12/20/2017",
+    workshopName: "Universal 24/7 internet solution",
+    providerName: "Kessler, Thompson and Green",
+    category: "Pre-emptive",
+    hours: 8,
+    attended: "true"
+  }
+];
+
+const historyList = {
+  C: "Active",
+  L: "Adult Education Certification",
+  F: "Assigned to Class",
+  B: "Certified and Waiting for First Match",
+  P: "K-12 Certification",
+  N: "No Certification",
+  J: "NYS Certified",
+  H: "On Hold",
+  M: "On Leave",
+  A: "Potential Tutor",
+  I: "Re-Certified",
+  E: "Retired/Terminated/Left",
+  Z: "Returned after Separation/Exit",
+  Q: "Special Education Certification",
+  R: "TESOL Certification",
+  G: "Trained & Waiting for 1st class",
+  K: "Unconfirmed Match",
+  D: "Waiting for Rematch"
+};
+
+const contactList = {
+  1: "Telephone",
+  2: "Message",
+  3: "Mail",
+  4: "Case Manager",
+  5: "Counselor",
+  6: "In Person"
+};
+
 const positionList = {
   1: "Administrative",
   2: "Case Manager",
@@ -2392,6 +3174,7 @@ $(document).ready(() => {
     $("thead").empty();
     $("tbody").empty();
     $("#search-input").val("");
+
     const blocPerso = persoInfo(listFields.slice(0, 9));
     const blocPersoAddOn = persoAddOn(listFields.slice(9, 16));
     const homeAdrsFields = listFields.filter(item =>
@@ -2400,7 +3183,6 @@ $(document).ready(() => {
     const workAdrsFields = listFields.filter(item =>
       item[0].startsWith("WorkAdrs")
     );
-
     const blocHomeAdrs = personHomeAdrs(homeAdrsFields);
     const blocWorkAdrs = personWorkAdrs(workAdrsFields);
 
