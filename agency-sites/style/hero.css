@@ -10,13 +10,19 @@ body {
   margin-top: 5px;
   padding: 0 0 1% 0;
   border-width: 6px 3px;
+  border-radius: 5px;
 }
 
 .site-entry {
-  margin: 1% 0 0 0;
-  padding: 0 0 2% 0;
+  margin: 1% 0 1% 0;
+  padding: 0 0 1% 0;
   width: 100%;
-  border-bottom: 8px solid #f0e2d5;
+  border-radius: 5px;
+}
+
+.data-viewing {
+  margin-top: 1%;
+  border-radius: 5px;
 }
 
 .label-text {
@@ -102,6 +108,7 @@ th {
   font-size: 1.1em;
   font-weight: 600;
   color: #fff;
+  line-height: 40px;
 }
 
 .input-field {
