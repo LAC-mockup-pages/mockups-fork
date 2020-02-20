@@ -8,6 +8,7 @@ body {
   padding-bottom: 1%;
   border: solid #2479b5;
   border-width: 6px 3px;
+  border-radius: 5px;
 }
 
 .table-row {
