@@ -40,16 +40,17 @@ const rowLabels = {
 
 const viewBloc = (blocName, ...args) => {
   const rows = Array.from(args);
-  $(`#${blocName}`).append(
-    `<div class="table-responsive col-md-6"><table></table></div>`
-  );
+  let fields = "";
   for (row of rows) {
-    $(`#${blocName} .table-responsive:last-child table`)
-      .append(`<tr class="table-row">
+    fields += `<tr class="table-row">
     <td class="row-label col-md-2">${row[0]}</td>
     <td class="row-data col-md-3">${row[1]}</td>
-    </tr>`);
+    </tr>`;
   }
+
+  $(`#${blocName}`).append(
+    `<div class="table-responsive col-md-6"><table>${fields}</table></div>`
+  );
 };
 
 const phoneFormat = arr => {
@@ -70,7 +71,7 @@ $(document).ready(() => {
   for (key in agencyData) {
     rowData[key] = [rowLabels[key], agencyData[key]];
   }
-
+  console.log("rowData :", rowData);
   const { SEDID, Division, ProgramManager, Telephone, AgencyEmail } = rowData;
   const formattedPhoneNum = phoneFormat(Telephone);
   viewBloc(
