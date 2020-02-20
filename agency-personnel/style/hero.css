@@ -106,18 +106,18 @@ th,
 
 .contact-table {
   text-align: right;
-  /* font-size: 1.1em; */
   padding: 0 4px;
-}
-
-.contact-table > tbody {
-  text-align: left;
 }
 
 .history-table {
   text-align: left;
-  /* font-size: 1.1em; */
   padding: 0 4px;
+}
+
+#contact,
+#history {
+  text-align: left;
+  font-size: 1em;
 }
 
 .table > tbody > tr > .cell-data {

@@ -2049,306 +2049,301 @@ const historyData = [
 const contactData = [
   {
     id: 1,
-    personnelID: 1,
-    date: "10/20/2016",
-    type: 5,
-    notes:
-      "Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem."
+    personnelID: 18,
+    date: "01/05/2018",
+    type: 3,
+    notes: "eget nunc donec quis orci eget orci vehicula condimentum"
   },
   {
     id: 2,
-    personnelID: 18,
-    date: "11/25/2016",
-    type: 3,
-    notes: "Phasellus sit amet erat. Nulla tempus."
+    personnelID: 5,
+    date: "04/18/2016",
+    type: 4,
+    notes: "odio odio elementum"
   },
   {
     id: 3,
     personnelID: 1,
-    date: "09/17/2017",
-    type: 1,
-    notes: "Nulla tellus."
+    date: "02/11/2017",
+    type: 3,
+    notes: "sed nisl nunc rhoncus dui vel sem sed sagittis nam"
   },
   {
     id: 4,
-    personnelID: 6,
-    date: "07/02/2017",
-    type: 5,
-    notes: "Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl."
+    personnelID: 5,
+    date: "01/05/2018",
+    type: 1,
+    notes:
+      "ante nulla justo aliquam quis turpis eget elit sodales scelerisque mauris sit amet"
   },
   {
     id: 5,
-    personnelID: 18,
-    date: "03/01/2015",
-    type: 4,
-    notes:
-      "Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla."
+    personnelID: 2,
+    date: "06/03/2015",
+    type: 5,
+    notes: "aliquam non mauris morbi non lectus aliquam sit amet diam"
   },
   {
     id: 6,
-    personnelID: 7,
-    date: "07/27/2019",
-    type: 2,
-    notes: "Donec semper sapien a libero."
+    personnelID: 5,
+    date: "02/28/2016",
+    type: 5,
+    notes:
+      "nisl duis ac nibh fusce lacus purus aliquet at feugiat non pretium quis lectus"
   },
   {
     id: 7,
     personnelID: 18,
-    date: "07/09/2016",
-    type: 1,
-    notes:
-      "Duis at velit eu est congue elementum. In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante."
+    date: "04/19/2019",
+    type: 3,
+    notes: "amet eros suspendisse accumsan tortor quis turpis sed ante vivamus"
   },
   {
     id: 8,
-    personnelID: 18,
-    date: "07/04/2016",
-    type: 2,
-    notes: "Aliquam erat volutpat. In congue. Etiam justo."
+    personnelID: 13,
+    date: "07/01/2016",
+    type: 1,
+    notes:
+      "at vulputate vitae nisl aenean lectus pellentesque eget nunc donec quis orci"
   },
   {
     id: 9,
-    personnelID: 20,
-    date: "08/29/2019",
-    type: 1,
-    notes:
-      "Suspendisse potenti. Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+    personnelID: 4,
+    date: "12/08/2018",
+    type: 4,
+    notes: "quisque erat eros viverra eget congue eget semper rutrum nulla"
   },
   {
     id: 10,
-    personnelID: 11,
-    date: "07/07/2019",
-    type: 2,
-    notes:
-      "Pellentesque ultrices mattis odio. Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla."
+    personnelID: 3,
+    date: "12/12/2018",
+    type: 4,
+    notes: "vel enim sit amet nunc viverra dapibus nulla suscipit ligula"
   },
   {
     id: 11,
-    personnelID: 12,
-    date: "08/06/2018",
+    personnelID: 19,
+    date: "02/14/2020",
     type: 5,
-    notes:
-      "Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla."
+    notes: "in porttitor pede justo eu massa donec dapibus duis at velit eu est"
   },
   {
     id: 12,
-    personnelID: 14,
-    date: "06/09/2019",
-    type: 4,
-    notes:
-      "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus."
+    personnelID: 1,
+    date: "06/23/2015",
+    type: 1,
+    notes: "hac habitasse platea dictumst aliquam"
   },
   {
     id: 13,
     personnelID: 12,
-    date: "02/25/2018",
-    type: 6,
+    date: "04/25/2015",
+    type: 2,
     notes:
-      "In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy."
+      "a ipsum integer a nibh in quis justo maecenas rhoncus aliquam lacus morbi"
   },
   {
     id: 14,
-    personnelID: 18,
-    date: "06/14/2018",
-    type: 1,
-    notes:
-      "Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo. Aliquam quis turpis eget elit sodales scelerisque."
+    personnelID: 4,
+    date: "09/14/2015",
+    type: 6,
+    notes: "dui nec nisi volutpat eleifend"
   },
   {
     id: 15,
-    personnelID: 2,
-    date: "07/14/2018",
+    personnelID: 17,
+    date: "09/08/2018",
     type: 2,
     notes:
-      "Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero. Nullam sit amet turpis elementum ligula vehicula consequat."
+      "molestie nibh in lectus pellentesque at nulla suspendisse potenti cras in purus"
   },
   {
     id: 16,
-    personnelID: 9,
-    date: "10/29/2017",
-    type: 2,
-    notes:
-      "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui."
+    personnelID: 13,
+    date: "07/25/2015",
+    type: 4,
+    notes: "in congue etiam justo etiam pretium iaculis justo"
   },
   {
     id: 17,
-    personnelID: 11,
-    date: "08/06/2019",
-    type: 4,
-    notes: "Nunc rhoncus dui vel sem. Sed sagittis."
+    personnelID: 9,
+    date: "06/01/2019",
+    type: 2,
+    notes: "varius integer ac leo pellentesque ultrices mattis odio donec vitae"
   },
   {
     id: 18,
-    personnelID: 17,
-    date: "05/23/2015",
-    type: 4,
+    personnelID: 2,
+    date: "07/11/2015",
+    type: 2,
     notes:
-      "Aliquam non mauris. Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet."
+      "pede justo eu massa donec dapibus duis at velit eu est congue elementum"
   },
   {
     id: 19,
-    personnelID: 20,
-    date: "12/05/2015",
-    type: 1,
+    personnelID: 10,
+    date: "02/08/2019",
+    type: 6,
     notes:
-      "Donec vitae nisi. Nam ultrices, libero non mattis pulvinar, nulla pede ullamcorper augue, a suscipit nulla elit ac nulla."
+      "eu est congue elementum in hac habitasse platea dictumst morbi vestibulum velit"
   },
   {
     id: 20,
-    personnelID: 4,
-    date: "12/15/2017",
+    personnelID: 2,
+    date: "08/17/2018",
     type: 2,
-    notes:
-      "Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa."
+    notes: "quis orci eget"
   },
   {
     id: 21,
-    personnelID: 6,
-    date: "12/18/2019",
-    type: 6,
-    notes:
-      "Nulla facilisi. Cras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit."
+    personnelID: 12,
+    date: "02/11/2017",
+    type: 5,
+    notes: "turpis eget elit sodales scelerisque"
   },
   {
     id: 22,
-    personnelID: 20,
-    date: "01/31/2016",
-    type: 4,
-    notes:
-      "Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet."
+    personnelID: 6,
+    date: "08/26/2018",
+    type: 6,
+    notes: "morbi sem mauris laoreet ut rhoncus aliquet pulvinar sed nisl nunc"
   },
   {
     id: 23,
     personnelID: 15,
-    date: "08/11/2017",
-    type: 1,
-    notes: "Aenean lectus. Pellentesque eget nunc."
+    date: "09/04/2017",
+    type: 5,
+    notes:
+      "tempor convallis nulla neque libero convallis eget eleifend luctus ultricies eu nibh"
   },
   {
     id: 24,
-    personnelID: 4,
-    date: "06/11/2019",
-    type: 3,
-    notes: "Donec dapibus."
+    personnelID: 20,
+    date: "07/16/2016",
+    type: 1,
+    notes: "ultrices libero non mattis"
   },
   {
     id: 25,
-    personnelID: 1,
-    date: "05/23/2018",
-    type: 2,
+    personnelID: 13,
+    date: "01/24/2019",
+    type: 1,
     notes:
-      "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+      "eget semper rutrum nulla nunc purus phasellus in felis donec semper sapien"
   },
   {
     id: 26,
-    personnelID: 20,
-    date: "11/11/2018",
-    type: 4,
-    notes: "Suspendisse potenti. Cras in purus eu magna vulputate luctus."
+    personnelID: 4,
+    date: "06/28/2015",
+    type: 6,
+    notes:
+      "mauris lacinia sapien quis libero nullam sit amet turpis elementum ligula vehicula consequat"
   },
   {
     id: 27,
-    personnelID: 6,
-    date: "11/15/2019",
-    type: 4,
-    notes:
-      "In blandit ultrices enim. Lorem ipsum dolor sit amet, consectetuer adipiscing elit."
+    personnelID: 2,
+    date: "10/27/2016",
+    type: 1,
+    notes: "id mauris vulputate elementum nullam varius nulla facilisi cras non"
   },
   {
     id: 28,
-    personnelID: 2,
-    date: "08/03/2018",
+    personnelID: 12,
+    date: "10/21/2019",
     type: 6,
-    notes: "Mauris lacinia sapien quis libero."
+    notes:
+      "amet cursus id turpis integer aliquet massa id lobortis convallis tortor risus dapibus augue"
   },
   {
     id: 29,
-    personnelID: 18,
-    date: "07/13/2015",
-    type: 6,
-    notes: "Phasellus in felis."
+    personnelID: 17,
+    date: "12/25/2015",
+    type: 1,
+    notes:
+      "porttitor lorem id ligula suspendisse ornare consequat lectus in est risus auctor sed tristique"
   },
   {
     id: 30,
-    personnelID: 9,
-    date: "03/23/2015",
-    type: 6,
+    personnelID: 18,
+    date: "12/28/2018",
+    type: 1,
     notes:
-      "Suspendisse ornare consequat lectus. In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat."
+      "parturient montes nascetur ridiculus mus vivamus vestibulum sagittis sapien cum sociis natoque"
   },
   {
     id: 31,
-    personnelID: 12,
-    date: "11/11/2016",
-    type: 6,
-    notes: "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante."
+    personnelID: 13,
+    date: "08/16/2018",
+    type: 3,
+    notes: "ut blandit non"
   },
   {
     id: 32,
-    personnelID: 13,
-    date: "10/01/2019",
+    personnelID: 19,
+    date: "07/10/2018",
     type: 2,
     notes:
-      "Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo."
+      "condimentum id luctus nec molestie sed justo pellentesque viverra pede"
   },
   {
     id: 33,
-    personnelID: 11,
-    date: "01/20/2017",
+    personnelID: 2,
+    date: "05/03/2015",
     type: 4,
-    notes: "Sed accumsan felis. Ut at dolor quis odio consequat varius."
+    notes:
+      "amet eros suspendisse accumsan tortor quis turpis sed ante vivamus tortor duis mattis"
   },
   {
     id: 34,
-    personnelID: 3,
-    date: "07/07/2015",
-    type: 1,
-    notes:
-      "Etiam faucibus cursus urna. Ut tellus. Nulla ut erat id mauris vulputate elementum."
+    personnelID: 16,
+    date: "03/13/2015",
+    type: 6,
+    notes: "aliquet pulvinar sed nisl nunc rhoncus dui vel sem"
   },
   {
     id: 35,
-    personnelID: 16,
-    date: "07/15/2018",
-    type: 4,
+    personnelID: 13,
+    date: "10/05/2016",
+    type: 1,
     notes:
-      "Nulla nisl. Nunc nisl. Duis bibendum, felis sed interdum venenatis, turpis enim blandit mi, in porttitor pede justo eu massa."
+      "rhoncus aliquet pulvinar sed nisl nunc rhoncus dui vel sem sed sagittis nam congue"
   },
   {
     id: 36,
-    personnelID: 3,
-    date: "02/03/2018",
-    type: 4,
-    notes: "Fusce consequat."
+    personnelID: 13,
+    date: "06/09/2017",
+    type: 3,
+    notes:
+      "sagittis dui vel nisl duis ac nibh fusce lacus purus aliquet at feugiat"
   },
   {
     id: 37,
-    personnelID: 19,
-    date: "04/05/2015",
-    type: 1,
-    notes: "Morbi non lectus."
+    personnelID: 12,
+    date: "01/17/2017",
+    type: 2,
+    notes: "sem fusce consequat nulla nisl nunc nisl duis bibendum"
   },
   {
     id: 38,
     personnelID: 10,
-    date: "04/25/2019",
+    date: "12/08/2019",
     type: 2,
-    notes: "Nullam varius."
+    notes: "sapien urna pretium nisl ut volutpat sapien arcu"
   },
   {
     id: 39,
-    personnelID: 17,
-    date: "11/18/2018",
-    type: 6,
-    notes:
-      "Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci."
+    personnelID: 20,
+    date: "10/29/2016",
+    type: 3,
+    notes: "aliquam sit amet diam in magna bibendum imperdiet nullam"
   },
   {
     id: 40,
-    personnelID: 9,
-    date: "12/19/2018",
-    type: 4,
-    notes: "Nulla nisl. Nunc nisl."
+    personnelID: 11,
+    date: "06/16/2015",
+    type: 5,
+    notes:
+      "a suscipit nulla elit ac nulla sed vel enim sit amet nunc viverra dapibus"
   }
 ];
 
@@ -3142,12 +3137,10 @@ const viewHistoryContact = idNum => {
 </tr>`;
   }
 
-  console.log("personContact :", personContact);
-
   const blocHistContact = `<div class="container" id="history-contact">
   <div class="row">
     <div class="history-table col-md-6">History
-      <table class="table">
+      <table class="table" id="history">
       <thead>
         <th>Date</th>
         <th>Status</th>
@@ -3156,7 +3149,7 @@ const viewHistoryContact = idNum => {
      ${historyLines}
       </tbody></table></div>
       <div class="contact-table col-md-6">Contact
-      <table class="table">
+      <table class="table" id="contact">
       <thead>
         <th>Date</th>
         <th>Type</th>
@@ -3168,6 +3161,25 @@ const viewHistoryContact = idNum => {
       </div></div>`;
 
   $(".hero").append(blocHistContact);
+};
+
+const viewProDev = idNum => {
+  const personProDev = proDevData
+    .filter(item => item.personnelID === idNum)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  let proDevLines = "";
+
+  for (item of personProDev) {
+    const {
+      id,
+      date,
+      workshopName,
+      providerName,
+      category,
+      hours,
+      attended
+    } = item;
+  }
 };
 
 $(document).ready(() => {
