@@ -690,21 +690,17 @@ const viewData = arr => {
 
     const { StreetAdrs, City, State, Zip, County } = Address;
     const fullAddress = `${StreetAdrs}<br>${City.toUpperCase()}<br>${State} - ${Zip}`;
-
-    $(".table tbody").append(
-      `<tr class='table-row' id=${id} title='click to Edit'></tr>`
+    const rowContent = createDataRow(
+      PartnerName,
+      PartnerID,
+      PartnerMngr,
+      fullAddress,
+      County,
+      Phone,
+      Email
     );
-
-    $(".table tbody tr:last-child").append(
-      `${createDataRow(
-        PartnerName,
-        PartnerID,
-        PartnerMngr,
-        fullAddress,
-        County,
-        Phone,
-        Email
-      )}`
+    $(".table tbody").append(
+      `<tr class='table-row' id=${id} title='click to Edit'>${rowContent}</tr>`
     );
   }
 };
