@@ -245,7 +245,7 @@
       </div>
     </header>
     <!-- Hero -->
-    <div class="container hero blue-bg">
+    <div class="container hero">
       <!-- New Personnel entry-->
       <div class="container-fluid personnel-entry blue-bg">
         <div class="label-text blue-light-text" id="add-new-member">
@@ -259,13 +259,13 @@
       </div>
       <!-- Personnel Search -->
       <div class="container personnel-search blue-bg">
-        <form class="form-inline blue-bg" role="form" id="search-form">
+        <form class="form-inline" role="form" id="search-form">
           <input
             type="text"
             id="search-input"
             class="form-control blue-text"
             autocomplete="off"
-            placeholder="Type 3 first letters of a last/first name"
+            placeholder="Type the 3 first letters of the last or first name"
           />
           <button
             type="button"
@@ -279,10 +279,12 @@
         </form>
       </div>
       <!-- Data viewing -->
-      <table class="table">
-        <thead></thead>
-        <tbody></tbody>
-      </table>
+      <div class="data-view blue-bg">
+        <table class="table" id="search-result">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
     <a id="btn-cancel"
       ><span

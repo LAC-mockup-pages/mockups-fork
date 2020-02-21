@@ -3252,6 +3252,9 @@ $(document).ready(() => {
     const blocHomeAdrs = personHomeAdrs(homeAdrsFields);
     const blocWorkAdrs = personWorkAdrs(workAdrsFields);
 
+    $(".personnel-entry").toggleClass("hidden");
+    $(".personnel-search").toggleClass("hidden");
+
     $(".hero").append(`<div class="container personView"><div class="row">
     <form class="bloc-perso col-md-6">${blocPerso}${blocPersoAddOn}</form>
     <form class="bloc-adrs col-md-6">${blocHomeAdrs}${blocWorkAdrs}</form>
