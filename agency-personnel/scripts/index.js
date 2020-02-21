@@ -3039,6 +3039,7 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
       "required"
     );
   }
+
   return result;
 };
 
