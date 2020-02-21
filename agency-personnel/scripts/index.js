@@ -2881,7 +2881,7 @@ const homeAdrsList = [
   "Home Phone",
   "Mobile Phone",
   "Email",
-  "Alternate Email"
+  "Alt. Email"
 ];
 
 const workAdrsList = [
@@ -2978,44 +2978,66 @@ const createListFields = num => {
   return list;
 };
 
-const persoInfo = arr => {
-  const [labelId, val] = arr[0];
-  let result = `<div class="input-field">
-          <label for=${labelId}>id</label>
-          <input type="text" id=${labelId} value='${val}' disabled>
-          </div>`;
+const createInputField = (
+  keyVal,
+  labelClassVal,
+  labelVal,
+  classVal,
+  value,
+  option
+) => {
+  return `<div class="input-field">
+  <label for='${keyVal}' class='${labelClassVal}'>${labelVal}</label>
+  <input type="text" id='${keyVal}' class='${classVal}' value='${value}' ${option}>
+  </div>`;
+};
 
-  for (let i = 1; i < 4; i++) {
-    const labelField = placeholderList[i - 1];
-    const [keyField, valueField] = arr[i];
+const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
+  console.log("arrPersoInfo :", arrPersoInfo);
+
+  let result = "";
+
+  for (let i = 0; i < 3; i++) {
+    const labelField = placeholderList[i];
+    const [keyField, valueField] = arrPersoInfo[i];
     const classOption = labelField.replace(/\s/, "-").toLowerCase();
 
-    result += `<div class="input-field">
-          <label for=${keyField} class="red-text">${labelField}</label>
-          <input type="text" id=${keyField} class=${classOption} value='${valueField}' required>
-          </div>`;
+    result += createInputField(
+      keyField,
+      "red-text",
+      labelField,
+      classOption,
+      valueField,
+      "required"
+    );
   }
 
-  const seniorityYears = moment(arr[3], "MM/DD/YYYY")
+  const seniorityYears = moment(arrPersoInfo[2], "MM/DD/YYYY")
     .fromNow()
     .replace(" ago", "");
-  result += `<div class="input-field">
-<label for="seniority">Seniority</label>
-<input type="text" id="seniority" class="seniorityClass" value='${seniorityYears}' disabled>
-</div>`;
+  result += createInputField(
+    "seniority",
+    "",
+    "Seniority",
+    "seniorityClass",
+    seniorityYears,
+    "disabled"
+  );
 
-  for (let j = 4; j < arr.length; j++) {
-    const labelField = placeholderList[j];
-    const [keyField, valueField] = arr[j];
-    const classOption = labelField[0].replace(/\s/, "-").toLowerCase();
-    const value =
-      keyField === "ExperienceYears"
-        ? "1 to 3 years"
-        : labelField[1][valueField];
-    result += `<div class="input-field">
-          <label for=${keyField} class="red-text">${labelField[0]}</label>
-          <input type="text" id=${keyField} class=${classOption} value='${value}' required>
-          </div>`;
+  for (let j = 3; j < arrPersoInfo.length; j++) {
+    const labelField = placeholderList[j + 1];
+    const [keyField, valueField] = arrPersoInfo[j];
+
+    const classOption = labelField[0].replace(/\s|\W/, "-").toLowerCase();
+    const value = labelField[1][valueField];
+    result += createInputField(
+      keyField,
+      "red-text",
+      labelField[0],
+      classOption,
+      value,
+      "required"
+    );
   }
   return result;
 };
@@ -3241,26 +3263,36 @@ $(document).ready(() => {
     $("tbody").empty();
     $("#search-input").val("");
 
-    const blocPerso = persoInfo(listFields.slice(0, 9));
-    const blocPersoAddOn = persoAddOn(listFields.slice(9, 16));
     const homeAdrsFields = listFields.filter(item =>
       item[0].startsWith("HomeAdrs")
     );
     const workAdrsFields = listFields.filter(item =>
       item[0].startsWith("WorkAdrs")
     );
+    //! Sending to persoInfo all required data and phone #s + emails
+    const blocPerso = persoInfo(
+      listFields.slice(1, 9),
+      homeAdrsFields.slice(4)
+    );
+    const blocPersoAddOn = persoAddOn(listFields.slice(9, 16));
     const blocHomeAdrs = personHomeAdrs(homeAdrsFields);
     const blocWorkAdrs = personWorkAdrs(workAdrsFields);
 
     $(".personnel-entry").toggleClass("hidden");
     $(".personnel-search").toggleClass("hidden");
 
-    $(".hero").append(`<div class="container personView"><div class="row">
-    <form class="bloc-perso col-md-6">${blocPerso}${blocPersoAddOn}</form>
-    <form class="bloc-adrs col-md-6">${blocHomeAdrs}${blocWorkAdrs}</form>
-    </div></div>`);
+    // $(".hero").append(`<div class="container personView"><div class="row">
+    // <form class="bloc-perso col-md-6">${blocPerso}${blocPersoAddOn}</form>
+    // <form class="bloc-adrs col-md-6">${blocHomeAdrs}${blocWorkAdrs}</form>
+    // </div></div>`);
 
-    viewHistoryContact(rowID);
+    // viewHistoryContact(rowID);
+
+    $(
+      ".hero"
+    ).append(`<div class="container personView" id=${rowID}><div class="row">
+    <form class="bloc-perso col-md-6">${blocPerso}</form>
+    </div></div>`);
 
     return false;
   });
