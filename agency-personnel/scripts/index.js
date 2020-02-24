@@ -3078,7 +3078,6 @@ const personHistory = personID => {
   const listFields = historyData
     .filter(item => item.personnelID === personID)
     .sort((a, b) => new Date(b.date) - new Date(a.date));
-  console.log("listFields :", listFields);
   const headers = `<div class='fluid-container'><div class='row'>
     <div class='bloc-history-date col-sm-4'>Date</div>
     <div class='bloc-history-status col-sm-8'>Status</div>
@@ -3231,24 +3230,24 @@ const searchVal = () => {
 //   $(".hero").append(blocHistContact);
 // };
 
-const viewProDev = idNum => {
-  const personProDev = proDevData
-    .filter(item => item.personnelID === idNum)
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
-  let proDevLines = "";
+// const viewProDev = idNum => {
+//   const personProDev = proDevData
+//     .filter(item => item.personnelID === idNum)
+//     .sort((a, b) => new Date(b.date) - new Date(a.date));
+//   let proDevLines = "";
 
-  for (item of personProDev) {
-    const {
-      id,
-      date,
-      workshopName,
-      providerName,
-      category,
-      hours,
-      attended
-    } = item;
-  }
-};
+//   for (item of personProDev) {
+//     const {
+//       id,
+//       date,
+//       workshopName,
+//       providerName,
+//       category,
+//       hours,
+//       attended
+//     } = item;
+//   }
+// };
 
 $(document).ready(() => {
   //* Back to Top button
@@ -3321,8 +3320,6 @@ $(document).ready(() => {
       listFields.slice(1, 9),
       homeAdrsFields.slice(4)
     );
-
-    //TODO: add bloc history
 
     // const blocPersoAddOn = persoAddOn(listFields.slice(9, 16));
     // const blocHomeAdrs = personHomeAdrs(homeAdrsFields);
