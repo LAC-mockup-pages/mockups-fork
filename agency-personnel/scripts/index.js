@@ -3078,7 +3078,7 @@ const personHistory = personID => {
   const listFields = historyData
     .filter(item => item.personnelID === personID)
     .sort((a, b) => new Date(b.date) - new Date(a.date));
-  const headers = `<div class='fluid-container'><div class='row'>
+  const headers = `<div class='container-fluid'><div class='row'>
     <div class='bloc-history-date col-sm-4'>Date</div>
     <div class='bloc-history-status col-sm-8'>Status</div>
   </div></div></div>`;

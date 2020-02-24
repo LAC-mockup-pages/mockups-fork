@@ -185,12 +185,12 @@ th {
 }
 
 .history-table {
-  max-height: 130px;
+  max-height: 125px;
   overflow-y: scroll;
 }
 
-.history-cell td {
-  font-size: 0.8em;
+.history-cell {
+  font-size: 1em;
   line-height: 20px;
 }
 
