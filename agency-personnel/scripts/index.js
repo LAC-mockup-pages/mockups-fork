@@ -2993,16 +2993,13 @@ const createInputField = (
 };
 
 const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
-  console.log("arrPersoInfo :", arrPersoInfo);
-
-  let result = "";
-
+  let personInfoBloc = "";
+  // first part of person bloc
   for (let i = 0; i < 3; i++) {
     const labelField = placeholderList[i];
     const [keyField, valueField] = arrPersoInfo[i];
     const classOption = labelField.replace(/\s/, "-").toLowerCase();
-
-    result += createInputField(
+    personInfoBloc += createInputField(
       keyField,
       "red-text",
       labelField,
@@ -3011,11 +3008,11 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
       "required"
     );
   }
-
+  // seniority
   const seniorityYears = moment(arrPersoInfo[2], "MM/DD/YYYY")
     .fromNow()
     .replace(" ago", "");
-  result += createInputField(
+  personInfoBloc += createInputField(
     "seniority",
     "",
     "Seniority",
@@ -3023,14 +3020,13 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
     seniorityYears,
     "disabled"
   );
-
+  //Last part of person bloc
   for (let j = 3; j < arrPersoInfo.length; j++) {
     const labelField = placeholderList[j + 1];
     const [keyField, valueField] = arrPersoInfo[j];
-
     const classOption = labelField[0].replace(/\s|\W/, "-").toLowerCase();
     const value = labelField[1][valueField];
-    result += createInputField(
+    personInfoBloc += createInputField(
       keyField,
       "red-text",
       labelField[0],
@@ -3039,8 +3035,22 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
       "required"
     );
   }
-
-  return result;
+  // Phones and Emails
+  for (item of arrPhonesEmails) {
+    const labelPhoneEmail = item[0]
+      .split("-")[1]
+      .replace(/[A-Z]/g, letter => " " + letter)
+      .trim();
+    personInfoBloc += createInputField(
+      item[0],
+      "",
+      labelPhoneEmail,
+      "",
+      item[1],
+      ""
+    );
+  }
+  return personInfoBloc;
 };
 
 const persoAddOn = arr => {
