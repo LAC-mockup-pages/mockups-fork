@@ -91,7 +91,7 @@ tbody {
   font-weight: 600;
 }
 
-.table > tbody > tr > td {
+td {
   line-height: 40px;
 }
 
@@ -100,30 +100,12 @@ tbody > tr:hover {
 }
 
 thead,
-th,
-.history-table,
-.contact-table {
+th {
   text-align: center;
   font-size: 1.1em;
   font-weight: 600;
   line-height: 35px;
   color: #fff;
-}
-
-.contact-table {
-  text-align: right;
-  padding: 0 4px;
-}
-
-.history-table {
-  text-align: left;
-  padding: 0 4px;
-}
-
-#contact,
-#history {
-  text-align: left;
-  font-size: 1em;
 }
 
 .table > tbody > tr > .cell-data {
@@ -178,7 +160,7 @@ th,
   font-weight: 700;
   border: none;
   text-indent: 4px;
-  width: 60%;
+  width: 72%;
   border-bottom: 1px solid #2479b5;
 }
 
@@ -200,4 +182,20 @@ th,
 
 .bloc-adrs .input-field {
   padding-left: 10px;
+}
+
+.history-table {
+  max-height: 130px;
+  overflow-y: scroll;
+}
+
+.history-cell td {
+  font-size: 0.8em;
+  line-height: 20px;
+}
+
+.sub-header-title {
+  text-align: right;
+  padding-right: 1%;
+  color: #fff;
 }

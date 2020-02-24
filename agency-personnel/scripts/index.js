@@ -2022,7 +2022,7 @@ const historyData = [
   { id: 16, personnelID: 16, date: "09/24/2019", status: "N" },
   { id: 17, personnelID: 20, date: "11/04/2015", status: "K" },
   { id: 18, personnelID: 16, date: "01/05/2019", status: "Z" },
-  { id: 19, personnelID: 7, date: "08/16/2018", status: "Q" },
+  { id: 19, personnelID: 1, date: "08/16/2018", status: "Q" },
   { id: 20, personnelID: 18, date: "09/20/2019", status: "K" },
   { id: 21, personnelID: 12, date: "12/09/2016", status: "P" },
   { id: 22, personnelID: 19, date: "05/31/2015", status: "F" },
@@ -2034,7 +2034,7 @@ const historyData = [
   { id: 28, personnelID: 20, date: "05/25/2016", status: "P" },
   { id: 29, personnelID: 8, date: "04/21/2016", status: "M" },
   { id: 30, personnelID: 7, date: "02/11/2018", status: "Q" },
-  { id: 31, personnelID: 6, date: "05/07/2015", status: "A" },
+  { id: 31, personnelID: 1, date: "05/07/2015", status: "A" },
   { id: 32, personnelID: 16, date: "03/21/2016", status: "I" },
   { id: 33, personnelID: 15, date: "06/29/2015", status: "O" },
   { id: 34, personnelID: 6, date: "11/15/2018", status: "G" },
@@ -2935,25 +2935,44 @@ const viewHeaders = () => {
   }
 };
 
-const createDataRow = obj => {
+const createDataRow = (obj, list) => {
   let row = "";
   const rowLabel = Object.keys(obj);
   const rowData = rowLabel.map(label => obj[label]);
-  for (let i = 1; i < rowLabel.length; i++) {
-    const option = headerList[i].replace(/\s/gi, "-").toLowerCase();
+  const lengthKeyList = rowLabel.length;
+  for (let i = 1; i < lengthKeyList; i++) {
+    const option = list[i].replace(/\s/gi, "-").toLowerCase();
     row += `<td class="cell-data ${option}">${rowData[i]}</td>`;
   }
   return row;
 };
 
-const viewData = arr => {
-  for (let i = 0; i < arr.length; i++) {
-    $(".table tbody").append(
+const viewData = (arr, element) => {
+  const len = arr.length;
+  for (let i = 0; i < len; i++) {
+    $(element).append(
       `<tr class='table-row' id=${
         arr[i].id
-      } title='click to Edit'>${createDataRow(arr[i])}</tr>`
+      } title='click to Edit'>${createDataRow(arr[i], headerList)}</tr>`
     );
   }
+};
+
+const createTableBody = (personID, arr, list) => {
+  let dataRow = "";
+
+  for (item of arr) {
+    const { id, date, status } = item;
+    dataRow += `<tr id=${id}RowHist>
+  <td class='history-cell'>${date}</td>
+  <td class='history-cell'>${list[status]}</td>
+</tr>`;
+  }
+  const result = `<div class="history-table"><table class="table" id='${personID}history'><tbody>
+    ${dataRow}
+</tbody></table></div>`;
+
+  return result;
 };
 
 //* Flattens a nested JSON object
@@ -3053,64 +3072,80 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
   return personInfoBloc;
 };
 
-const persoAddOn = arr => {
-  let result = "";
-  for (let i = 0; i < arr.length; i++) {
-    const labelField = addInfoList[i];
-    const [keyField, valueField] = arr[i];
-    const classOption = labelField.replace(/\s/, "-").toLowerCase();
+const personHistory = personID => {
+  let personHistoryBloc = `<div class='sub-header blue-bg blue-light-text'>
+  <div class='sub-header-title'>History</div>`;
+  const listFields = historyData
+    .filter(item => item.personnelID === personID)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  console.log("listFields :", listFields);
+  const headers = `<div class='fluid-container'><div class='row'>
+    <div class='bloc-history-date col-sm-4'>Date</div>
+    <div class='bloc-history-status col-sm-8'>Status</div>
+  </div></div></div>`;
 
-    result += `<div class="input-field">
-          <label for=${keyField}>${labelField}</label>
-          <input type="text" id=${keyField} class=${classOption} value='${valueField}'>
-          </div>`;
-  }
-  return result;
+  const dataRows = createTableBody(personID, listFields, historyList);
+  return personHistoryBloc + headers + dataRows;
 };
 
-const personHomeAdrs = arr => {
-  let result =
-    "<div class='sub-header blue-bg blue-light-text'>Home Adress</div>";
-  for (let i = 0; i < arr.length; i++) {
-    const labelField = homeAdrsList[i];
-    const [keyField, valueField] = arr[i];
-    const classOption = labelField.replace(/\s/, "-").toLowerCase();
+// const persoAddOn = arr => {
+//   let result = "";
+//   for (let i = 0; i < arr.length; i++) {
+//     const labelField = addInfoList[i];
+//     const [keyField, valueField] = arr[i];
+//     const classOption = labelField.replace(/\s/, "-").toLowerCase();
 
-    result += `<div class="input-field">
-          <label for=${keyField}>${labelField}</label>
-          <input type="text" id=${keyField} class=${classOption} value='${valueField}'>
-          </div>`;
-  }
-  return result;
-};
+//     result += `<div class="input-field">
+//           <label for=${keyField}>${labelField}</label>
+//           <input type="text" id=${keyField} class=${classOption} value='${valueField}'>
+//           </div>`;
+//   }
+//   return result;
+// };
 
-const personWorkAdrs = arr => {
-  let result =
-    "<div class='sub-header blue-bg blue-light-text'>Work Adress</div>";
-  for (let i = 0; i < arr.length - 2; i++) {
-    const labelField = workAdrsList[i];
-    const [keyField, valueField] = arr[i];
-    const classOption = labelField.replace(/\s/, "-").toLowerCase();
+// const personHomeAdrs = arr => {
+//   let result =
+//     "<div class='sub-header blue-bg blue-light-text'>Home Adress</div>";
+//   for (let i = 0; i < arr.length; i++) {
+//     const labelField = homeAdrsList[i];
+//     const [keyField, valueField] = arr[i];
+//     const classOption = labelField.replace(/\s/, "-").toLowerCase();
 
-    result += `<div class="input-field">
-          <label for=${keyField}>${labelField}</label>
-          <input type="text" id=${keyField} class=${classOption} value='${valueField}'>
-          </div>`;
-  }
+//     result += `<div class="input-field">
+//           <label for=${keyField}>${labelField}</label>
+//           <input type="text" id=${keyField} class=${classOption} value='${valueField}'>
+//           </div>`;
+//   }
+//   return result;
+// };
 
-  for (const field of arr.slice(-2)) {
-    const indx = arr.indexOf(field);
-    const labelField = workAdrsList[indx];
-    const [keyField, valueField] = field;
-    const classOption = labelField.replace(/\s/, "-").toLowerCase();
-    const checkOption = valueField ? "checked" : "";
-    result += `<div class="checkbox-field">
-          <label for=${keyField}>${labelField}</label>
-          <input type="checkbox" id=${keyField} class=${classOption} ${checkOption}>
-          </div>`;
-  }
-  return result;
-};
+// const personWorkAdrs = arr => {
+//   let result =
+//     "<div class='sub-header blue-bg blue-light-text'>Work Adress</div>";
+//   for (let i = 0; i < arr.length - 2; i++) {
+//     const labelField = workAdrsList[i];
+//     const [keyField, valueField] = arr[i];
+//     const classOption = labelField.replace(/\s/, "-").toLowerCase();
+
+//     result += `<div class="input-field">
+//           <label for=${keyField}>${labelField}</label>
+//           <input type="text" id=${keyField} class=${classOption} value='${valueField}'>
+//           </div>`;
+//   }
+
+//   for (const field of arr.slice(-2)) {
+//     const indx = arr.indexOf(field);
+//     const labelField = workAdrsList[indx];
+//     const [keyField, valueField] = field;
+//     const classOption = labelField.replace(/\s/, "-").toLowerCase();
+//     const checkOption = valueField ? "checked" : "";
+//     result += `<div class="checkbox-field">
+//           <label for=${keyField}>${labelField}</label>
+//           <input type="checkbox" id=${keyField} class=${classOption} ${checkOption}>
+//           </div>`;
+//   }
+//   return result;
+// };
 
 const searchVal = () => {
   const searchArg = $("#search-input")
@@ -3141,60 +3176,60 @@ const searchVal = () => {
       return { id, LastName, FirstName, yearStarted, fullPosition };
     });
   viewHeaders();
-  viewData(selectedStaff);
+  viewData(selectedStaff, ".table tbody");
 };
 
-const viewHistoryContact = idNum => {
-  const personHistory = historyData
-    .filter(item => item.personnelID === idNum)
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
-  let historyLines = "";
-  for (item of personHistory) {
-    const { id, date, status } = item;
-    historyLines += `<tr id=${id}>
-  <td class="cell-data">${date}</td>
-  <td class="cell-data">${historyList[status]}</td>
-  </tr>`;
-  }
+// const viewHistoryContact = idNum => {
+//   const personHistory = historyData
+//     .filter(item => item.personnelID === idNum)
+//     .sort((a, b) => new Date(b.date) - new Date(a.date));
+//   let historyLines = "";
+//   for (item of personHistory) {
+//     const { id, date, status } = item;
+//     historyLines += `<tr id=${id}>
+//   <td class="cell-data">${date}</td>
+//   <td class="cell-data">${historyList[status]}</td>
+//   </tr>`;
+//   }
 
-  const personContact = contactData
-    .filter(item => item.personnelID === idNum)
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
-  let contactLines = "";
-  for (item of personContact) {
-    const { id, date, type, notes } = item;
-    contactLines += `<tr id=${id}>
-<td class="cell-data">${date}</td>
-<td class="cell-data">${contactList[type]}</td>
-<td class="cell-data">${notes}</td>
-</tr>`;
-  }
+//   const personContact = contactData
+//     .filter(item => item.personnelID === idNum)
+//     .sort((a, b) => new Date(b.date) - new Date(a.date));
+//   let contactLines = "";
+//   for (item of personContact) {
+//     const { id, date, type, notes } = item;
+//     contactLines += `<tr id=${id}>
+// <td class="cell-data">${date}</td>
+// <td class="cell-data">${contactList[type]}</td>
+// <td class="cell-data">${notes}</td>
+// </tr>`;
+//   }
 
-  const blocHistContact = `<div class="container" id="history-contact">
-  <div class="row">
-    <div class="history-table col-md-6">History
-      <table class="table" id="history">
-      <thead>
-        <th>Date</th>
-        <th>Status</th>
-      </thead>
-      <tbody>
-     ${historyLines}
-      </tbody></table></div>
-      <div class="contact-table col-md-6">Contact
-      <table class="table" id="contact">
-      <thead>
-        <th>Date</th>
-        <th>Type</th>
-        <th>Notes</th>
-      </thead>
-      <tbody>
-      ${contactLines}
-      </tbody></table></div>
-      </div></div>`;
+//   const blocHistContact = `<div class="container" id="history-contact">
+//   <div class="row">
+//     <div class="history-table col-md-6">History
+//       <table class="table" id="history">
+//       <thead>
+//         <th>Date</th>
+//         <th>Status</th>
+//       </thead>
+//       <tbody>
+//      ${historyLines}
+//       </tbody></table></div>
+//       <div class="contact-table col-md-6">Contact
+//       <table class="table" id="contact">
+//       <thead>
+//         <th>Date</th>
+//         <th>Type</th>
+//         <th>Notes</th>
+//       </thead>
+//       <tbody>
+//       ${contactLines}
+//       </tbody></table></div>
+//       </div></div>`;
 
-  $(".hero").append(blocHistContact);
-};
+//   $(".hero").append(blocHistContact);
+// };
 
 const viewProDev = idNum => {
   const personProDev = proDevData
@@ -3270,8 +3305,9 @@ $(document).ready(() => {
     e.preventDefault();
     const rowID = Number($(this).attr("id"));
     const listFields = createListFields(rowID);
-    $("thead").empty();
-    $("tbody").empty();
+
+    // Cleaning up
+    $(".data-view").remove();
     $("#search-input").val("");
 
     const homeAdrsFields = listFields.filter(item =>
@@ -3285,24 +3321,21 @@ $(document).ready(() => {
       listFields.slice(1, 9),
       homeAdrsFields.slice(4)
     );
-    const blocPersoAddOn = persoAddOn(listFields.slice(9, 16));
-    const blocHomeAdrs = personHomeAdrs(homeAdrsFields);
-    const blocWorkAdrs = personWorkAdrs(workAdrsFields);
+
+    //TODO: add bloc history
+
+    // const blocPersoAddOn = persoAddOn(listFields.slice(9, 16));
+    // const blocHomeAdrs = personHomeAdrs(homeAdrsFields);
+    // const blocWorkAdrs = personWorkAdrs(workAdrsFields);
 
     $(".personnel-entry").toggleClass("hidden");
     $(".personnel-search").toggleClass("hidden");
 
-    // $(".hero").append(`<div class="container personView"><div class="row">
-    // <form class="bloc-perso col-md-6">${blocPerso}${blocPersoAddOn}</form>
-    // <form class="bloc-adrs col-md-6">${blocHomeAdrs}${blocWorkAdrs}</form>
-    // </div></div>`);
-
-    // viewHistoryContact(rowID);
-
     $(
       ".hero"
     ).append(`<div class="container personView" id=${rowID}><div class="row">
-    <form class="bloc-perso col-md-6">${blocPerso}</form>
+    <form class="bloc-perso col-md-5">${blocPerso}</form>
+    <div class="bloc-history col-md-7" id='${rowID}-history'>${personHistory(rowID)}</div>
     </div></div>`);
 
     return false;
