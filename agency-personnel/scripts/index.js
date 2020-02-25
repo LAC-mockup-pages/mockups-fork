@@ -2847,7 +2847,7 @@ const placeholderList = [
   "First Name",
   "Last Name",
   "Start Date",
-  "Seniority",
+  "Length of Stay (yrs)",
   ["Position", positionList],
   ["Subject", subjectList],
   ["Paid/Volunteer", paidList],
@@ -3034,7 +3034,7 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
   personInfoBloc += createInputField(
     "seniority",
     "",
-    "Seniority",
+    "Length of Stay (yrs)",
     "seniorityClass",
     seniorityYears,
     "disabled"
