@@ -2400,7 +2400,7 @@ const proDevData = [
   },
   {
     id: 6,
-    personnelID: 15,
+    personnelID: 1,
     date: "04/23/2018",
     workshopName: "User-centric demand-driven encryption",
     providerName: "Bailey, Brown and Strosin",
@@ -2420,7 +2420,7 @@ const proDevData = [
   },
   {
     id: 8,
-    personnelID: 4,
+    personnelID: 1,
     date: "06/20/2016",
     workshopName: "Synergistic bifurcated access",
     providerName: "Stracke, Sauer and Schulist",
@@ -2450,7 +2450,7 @@ const proDevData = [
   },
   {
     id: 11,
-    personnelID: 18,
+    personnelID: 1,
     date: "07/29/2017",
     workshopName: "Integrated transitional toolset",
     providerName: "Christiansen-Haley",
@@ -2530,7 +2530,7 @@ const proDevData = [
   },
   {
     id: 19,
-    personnelID: 19,
+    personnelID: 1,
     date: "08/11/2018",
     workshopName: "Progressive regional toolset",
     providerName: "O'Reilly-Batz",
@@ -2958,17 +2958,17 @@ const viewData = (arr, element) => {
   }
 };
 
-const createTableBody = (personID, arr, list) => {
+const createTableBody = (personID, arr, list, blockName) => {
   let dataRow = "";
 
   for (item of arr) {
     const { id, date, status } = item;
-    dataRow += `<tr id=${id}RowHist>
-  <td class='history-cell'>${date}</td>
-  <td class='history-cell'>${list[status]}</td>
+    dataRow += `<tr id=${id}-row-${blockName}>
+  <td class='${blockName}-cell'>${date}</td>
+  <td class='${blockName}-cell'>${list[status]}</td>
 </tr>`;
   }
-  const result = `<div class="history-table"><table class="table" id='${personID}history'><tbody>
+  const result = `<div class="${blockName}-table"><table class="table" id='${personID}${blockName}'><tbody>
     ${dataRow}
 </tbody></table></div>`;
 
@@ -3083,8 +3083,31 @@ const personHistory = personID => {
     <div class='bloc-history-status col-sm-8'>Status</div>
   </div></div></div>`;
 
-  const dataRows = createTableBody(personID, listFields, historyList);
+  const dataRows = createTableBody(
+    personID,
+    listFields,
+    historyList,
+    "history"
+  );
   return personHistoryBloc + headers + dataRows;
+};
+
+const personProDev = personID => {
+  let personProDevBloc = `<div class='sub-header blue-bg blue-light-text'>
+  <div class='sub-header-title'>Professional Development</div>`;
+  const listFields = proDevData
+    .filter(item => item.personnelID === personID)
+    .sort((a, b) => new Date(b.date) - new Date(a.date));
+  const headers = `<div class='container-fluid'><div class='row'>
+    <div class='bloc-proDev-date col-sm-2'>Date</div>
+    <div class='bloc-proDev-workshop col-sm-4'>Workshop/Provider</div>
+    <div class='bloc-proDev-category col-sm-3'>Category</div>
+    <div class='bloc-proDev-hrs col-sm-1'>Hrs</div>
+    <div class='bloc-proDev-attended col-sm-2'>Attended</div>
+    </div></div></div>`;
+
+  const dataRows = createTableBody(personID, listFields, null, "proDev");
+  return personProDevBloc + headers; //+ dataRows;
 };
 
 // const persoAddOn = arr => {
