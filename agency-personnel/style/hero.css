@@ -169,9 +169,9 @@ th {
 }
 
 .sub-header {
-  line-height: 25px;
+  line-height: 30px;
   padding-left: 5px;
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: 700;
   border-top: 2px solid #fff;
 }
@@ -184,18 +184,34 @@ th {
   padding-left: 10px;
 }
 
-.history-table {
-  max-height: 125px;
+.history-table,
+.proDev-table {
+  max-height: 210px;
   overflow-y: scroll;
 }
 
-.history-cell {
-  font-size: 1em;
+.history-cell,
+.proDev-cell {
+  font-size: 0.9em;
   line-height: 20px;
+}
+
+.bloc-proDev-workshop,
+.bloc-proDev-category,
+.bloc-proDev-hrs,
+.bloc-proDev-attended {
+  padding: 0;
+}
+
+.bloc-proDev-category,
+.bloc-proDev-attended {
+  margin-left: -10px;
 }
 
 .sub-header-title {
   text-align: right;
+  line-height: 22px;
   padding-right: 1%;
   color: #fff;
+  border-bottom: 1px solid #d3e4f0;
 }

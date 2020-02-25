@@ -2350,11 +2350,11 @@ const contactData = [
 const proDevData = [
   {
     id: 1,
-    personnelID: 2,
-    date: "05/17/2015",
+    personnelID: 1,
+    date: "09/17/2019",
     workshopName: "Face to face stable paradigm",
     providerName: "White Group",
-    category: "Multi-lateral",
+    category: "Multi-lateral advocacy",
     hours: 8,
     attended: "true"
   },
@@ -2968,11 +2968,10 @@ const createTableBody = (personID, arr, list, blockName) => {
   <td class='${blockName}-cell'>${list[status]}</td>
 </tr>`;
   }
-  const result = `<div class="${blockName}-table"><table class="table" id='${personID}${blockName}'><tbody>
-    ${dataRow}
-</tbody></table></div>`;
-
-  return result;
+  return `<div class="${blockName}-table">
+    <table class="table" id='${personID}-${blockName}'>
+      <tbody>${dataRow}</tbody>
+  </table></div>`;
 };
 
 //* Flattens a nested JSON object
@@ -3078,7 +3077,7 @@ const personHistory = personID => {
   const listFields = historyData
     .filter(item => item.personnelID === personID)
     .sort((a, b) => new Date(b.date) - new Date(a.date));
-  const headers = `<div class='container-fluid'><div class='row'>
+  const headers = `<div class='container-fluid'><div class='row sub-header-labels'>
     <div class='bloc-history-date col-sm-4'>Date</div>
     <div class='bloc-history-status col-sm-8'>Status</div>
   </div></div></div>`;
@@ -3092,82 +3091,55 @@ const personHistory = personID => {
   return personHistoryBloc + headers + dataRows;
 };
 
+const createProDevBody = (personID, arr, blockName) => {
+  let dataRow = "";
+
+  for (item of arr) {
+    const {
+      id,
+      date,
+      workshopName,
+      providerName,
+      category,
+      hours,
+      attended
+    } = item;
+    dataRow += `<tr id=${id}-row-${blockName}>
+  <td class='${blockName}-cell col-sm-2'>${date}</td>
+  <td class='${blockName}-cell col-sm-6'>${workshopName}<br>by: ${providerName}</td>
+  <td class='${blockName}-cell col-sm-2'>${category}</td>
+  <td class='${blockName}-cell col-sm-1'>${hours}</td>
+  <td class='${blockName}-cell col-sm-1'>${attended}</td>
+</tr>`;
+  }
+  return `<div class="${blockName}-table">
+    <table class="table" id='${personID}-${blockName}'>
+      <tbody>${dataRow}</tbody>
+  </table></div>`;
+};
+
 const personProDev = personID => {
   let personProDevBloc = `<div class='sub-header blue-bg blue-light-text'>
   <div class='sub-header-title'>Professional Development</div>`;
   const listFields = proDevData
     .filter(item => item.personnelID === personID)
-    .sort((a, b) => new Date(b.date) - new Date(a.date));
-  const headers = `<div class='container-fluid'><div class='row'>
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .map(line => {
+      const attend = line.attended === "true" ? "Yes" : "No";
+      return { ...line, attended: attend };
+    });
+  const headers = `<div class='container-fluid'><div class='row sub-header-labels'>
     <div class='bloc-proDev-date col-sm-2'>Date</div>
-    <div class='bloc-proDev-workshop col-sm-4'>Workshop/Provider</div>
-    <div class='bloc-proDev-category col-sm-3'>Category</div>
+    <div class='bloc-proDev-workshop col-sm-6'>Workshop/Provider</div>
+    <div class='bloc-proDev-category col-sm-2'>Category</div>
     <div class='bloc-proDev-hrs col-sm-1'>Hrs</div>
-    <div class='bloc-proDev-attended col-sm-2'>Attended</div>
+    <div class='bloc-proDev-attended col-sm-1'>Done?</div>
     </div></div></div>`;
 
-  const dataRows = createTableBody(personID, listFields, null, "proDev");
-  return personProDevBloc + headers; //+ dataRows;
+  console.log("listFields :", listFields);
+  const dataRows = createProDevBody(personID, listFields, "proDev");
+  return personProDevBloc + headers + dataRows;
 };
-
-// const persoAddOn = arr => {
-//   let result = "";
-//   for (let i = 0; i < arr.length; i++) {
-//     const labelField = addInfoList[i];
-//     const [keyField, valueField] = arr[i];
-//     const classOption = labelField.replace(/\s/, "-").toLowerCase();
-
-//     result += `<div class="input-field">
-//           <label for=${keyField}>${labelField}</label>
-//           <input type="text" id=${keyField} class=${classOption} value='${valueField}'>
-//           </div>`;
-//   }
-//   return result;
-// };
-
-// const personHomeAdrs = arr => {
-//   let result =
-//     "<div class='sub-header blue-bg blue-light-text'>Home Adress</div>";
-//   for (let i = 0; i < arr.length; i++) {
-//     const labelField = homeAdrsList[i];
-//     const [keyField, valueField] = arr[i];
-//     const classOption = labelField.replace(/\s/, "-").toLowerCase();
-
-//     result += `<div class="input-field">
-//           <label for=${keyField}>${labelField}</label>
-//           <input type="text" id=${keyField} class=${classOption} value='${valueField}'>
-//           </div>`;
-//   }
-//   return result;
-// };
-
-// const personWorkAdrs = arr => {
-//   let result =
-//     "<div class='sub-header blue-bg blue-light-text'>Work Adress</div>";
-//   for (let i = 0; i < arr.length - 2; i++) {
-//     const labelField = workAdrsList[i];
-//     const [keyField, valueField] = arr[i];
-//     const classOption = labelField.replace(/\s/, "-").toLowerCase();
-
-//     result += `<div class="input-field">
-//           <label for=${keyField}>${labelField}</label>
-//           <input type="text" id=${keyField} class=${classOption} value='${valueField}'>
-//           </div>`;
-//   }
-
-//   for (const field of arr.slice(-2)) {
-//     const indx = arr.indexOf(field);
-//     const labelField = workAdrsList[indx];
-//     const [keyField, valueField] = field;
-//     const classOption = labelField.replace(/\s/, "-").toLowerCase();
-//     const checkOption = valueField ? "checked" : "";
-//     result += `<div class="checkbox-field">
-//           <label for=${keyField}>${labelField}</label>
-//           <input type="checkbox" id=${keyField} class=${classOption} ${checkOption}>
-//           </div>`;
-//   }
-//   return result;
-// };
 
 const searchVal = () => {
   const searchArg = $("#search-input")
@@ -3355,7 +3327,7 @@ $(document).ready(() => {
       ".hero"
     ).append(`<div class="container personView" id=${rowID}><div class="row">
     <form class="bloc-perso col-md-5">${blocPerso}</form>
-    <div class="bloc-history col-md-7" id='${rowID}-history'>${personHistory(rowID)}</div>
+    <div class="bloc-history col-md-7" id='${rowID}-history'>${personHistory(rowID)}${personProDev(rowID)}</div>
     </div></div>`);
 
     return false;
