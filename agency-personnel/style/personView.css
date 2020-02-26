@@ -1,0 +1,62 @@
+.personView {
+  background-color: #fff;
+}
+
+.sub-header {
+  line-height: 30px;
+  padding-left: 5px;
+  font-size: 1.1em;
+  font-weight: 700;
+  /* border-radius: 5px 5px 0 0; */
+  border-top: 2px solid #fff;
+}
+
+.bloc-perso {
+  border-right: 4px solid #1d6294;
+}
+
+.bloc-adrs .input-field {
+  padding-left: 10px;
+}
+
+.history-table,
+.proDev-table {
+  max-height: 200px;
+  overflow-y: scroll;
+}
+
+.history-cell,
+.proDev-cell {
+  font-size: 0.9em;
+  line-height: 20px;
+}
+
+.bloc-proDev-workshop,
+.bloc-proDev-category,
+.bloc-proDev-hrs,
+.bloc-proDev-attended {
+  padding: 0;
+}
+
+.bloc-proDev-category,
+.bloc-proDev-attended {
+  margin-left: -10px;
+}
+
+.sub-header-title {
+  text-align: right;
+  line-height: 22px;
+  padding-right: 1%;
+  color: #fff;
+  border-bottom: 1px solid #d3e4f0;
+}
+
+.proDev-hours-view {
+  line-height: 2em;
+  padding: 0 10px 0 5px;
+}
+.proDev-hours {
+  font-size: 1em;
+  font-weight: 700;
+  text-align: right;
+}
