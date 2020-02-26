@@ -13,8 +13,14 @@
   border-top: 2px solid #fff;
 }
 
-.bloc-perso {
+.bloc-perso,
+.bloc-instr-hours {
   border-right: 4px solid #1d6294;
+}
+
+.bloc-instr-hours,
+.bloc-nonInstr-hours {
+  border-top: 5px solid #1d6294;
 }
 
 .bloc-adrs .input-field {

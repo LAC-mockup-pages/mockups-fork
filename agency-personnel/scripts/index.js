@@ -3133,9 +3133,22 @@ $(document).ready(() => {
     $(
       ".hero"
     ).append(`<div class="container personView" id=${rowID}><div class="row">
-    <form class="bloc-perso col-md-5">${blocPerso}</form>
-    <div class="bloc-history col-md-7" id='${rowID}-history'>${historyView}${proDevView}</div>
-    </div>    <div role="separator" class="divider"></div>
+        <form class="bloc-perso col-md-5">${blocPerso}</form>
+        <div class="bloc-history col-md-7" id='${rowID}-history'>${historyView}${proDevView}</div>
+    </div>    
+    <div class="row">
+      <div class="bloc-instr-hours col-md-6"><h3>Instr. Hours</h3></div>
+      <div class="bloc-nonInstr-hours col-md-6"><h3>Non Instr. Hours</h3></div>
+    </div>
+    <div class="row">
+      <div class="bloc-instr-hours col-md-6"><h3>Home Address</h3></div>
+      <div class="bloc-nonInstr-hours col-md-6"><h3>Work Address</h3></div>
+    </div>
+    <div class="row">
+      <div class="bloc-instr-hours col-md-6"><h3>Contacts</h3></div>
+      <div class="bloc-nonInstr-hours col-md-6"><h3>Notes & Comments</h3></div>
+    </div>
+
 </div>`);
 
     return false;
