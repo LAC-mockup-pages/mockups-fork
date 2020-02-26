@@ -74,7 +74,7 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
   return personInfoBloc;
 };
 
-const createTableBody = (personID, arr, list, blockName) => {
+const createHistoryBody = (personID, arr, list, blockName) => {
   let dataRow = "";
 
   for (item of arr) {
@@ -101,13 +101,32 @@ const personHistory = personID => {
       <div class='bloc-history-status col-sm-8'>Status</div>
     </div></div></div>`;
 
-  const dataRows = createTableBody(
+  const dataRows = createHistoryBody(
     personID,
     listFields,
     historyList,
     "history"
   );
   return personHistoryBloc + headers + dataRows;
+};
+
+const totalProDevHrs = list => {
+  let result = 0;
+  for (item of list) {
+    if (
+      currentFiscalYear.includes(item.fiscalYear) &&
+      item.attended === "Yes"
+    ) {
+      result += item.hours;
+    }
+  }
+  const optionText = result < 14 ? "red-text" : "";
+  const totalProDevHrsView = `<div class="proDev-hours-view">
+    <div class="proDev-hours blue-light-bg dark-blue-text">Total PD hours for the current Fiscal Year: 
+    <span class=${optionText}>${result} hrs</span>
+    </div>
+  </div>`;
+  return totalProDevHrsView;
 };
 
 const createProDevBody = (personID, arr, blockName) => {
@@ -144,7 +163,7 @@ const personProDev = personID => {
     .filter(item => item.personnelID === personID)
     .sort((a, b) => new Date(b.date) - new Date(a.date))
     .map(line => {
-      const attend = line.attended === "true" ? "Yes" : "No";
+      const attend = line.attended ? "Yes" : "No";
       return { ...line, attended: attend };
     });
   const headers = `<div class='container-fluid'><div class='row sub-header-labels'>
@@ -155,7 +174,7 @@ const personProDev = personID => {
       <div class='bloc-proDev-attended col-sm-1'>Done?</div>
       </div></div></div>`;
 
-  console.log("listFields :", listFields);
+  const hoursPD = totalProDevHrs(listFields);
   const dataRows = createProDevBody(personID, listFields, "proDev");
-  return personProDevBloc + headers + dataRows;
+  return personProDevBloc + headers + dataRows + hoursPD;
 };
