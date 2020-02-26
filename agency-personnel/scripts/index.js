@@ -2381,7 +2381,7 @@ const proDevData = [
     providerName: "Von Group",
     category: "process improvement",
     hours: 3,
-    attended: true
+    attended: false
   },
   {
     id: 4,

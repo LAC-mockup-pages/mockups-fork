@@ -1,5 +1,7 @@
 .personView {
   background-color: #fff;
+  padding-bottom: 0.5%;
+  border-bottom: 5px solid #1d6294;
 }
 
 .sub-header {
@@ -21,7 +23,7 @@
 
 .history-table,
 .proDev-table {
-  max-height: 200px;
+  max-height: 205px;
   overflow-y: scroll;
 }
 
