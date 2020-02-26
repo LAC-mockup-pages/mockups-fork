@@ -55,10 +55,10 @@
 
 .proDev-hours-view {
   line-height: 2em;
-  padding: 0 10px 0 5px;
+  padding: 0 5px 0 5px;
 }
 .proDev-hours {
   font-size: 1em;
   font-weight: 700;
-  text-align: right;
+  text-align: center;
 }

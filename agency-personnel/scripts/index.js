@@ -3135,7 +3135,8 @@ $(document).ready(() => {
     ).append(`<div class="container personView" id=${rowID}><div class="row">
     <form class="bloc-perso col-md-5">${blocPerso}</form>
     <div class="bloc-history col-md-7" id='${rowID}-history'>${historyView}${proDevView}</div>
-    </div></div>`);
+    </div>    <div role="separator" class="divider"></div>
+</div>`);
 
     return false;
   });
