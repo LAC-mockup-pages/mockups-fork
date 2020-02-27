@@ -2937,7 +2937,7 @@ const workAdrsList = [
   "Can be called?"
 ];
 
-const personNonInstrHrs = [
+const nonInstrHrsData = [
   {
     id: 1,
     personnelID: 7,
@@ -3350,7 +3350,7 @@ const nonInstrHrsList = [
   "Total"
 ];
 
-const personInstrHrs = [
+const instrHrsData = [
   { id: 1, personnelID: 17, instructionHrs: 5, course: "4AKSYDkKb" },
   { id: 2, personnelID: 8, instructionHrs: 5, course: "eGbk3Se6" },
   { id: 3, personnelID: 13, instructionHrs: 13, course: "C1iFT5" },
@@ -3393,4 +3393,7 @@ const personInstrHrs = [
   { id: 40, personnelID: 5, instructionHrs: 12, course: "MKc6SvFuN2" }
 ];
 
-const instrHrsList = ["Course", "Hours"];
+const instrHrsList = [
+  ["Course", "col-sm-8"],
+  ["Hours", "col-sm-4"]
+];

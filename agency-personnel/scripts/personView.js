@@ -184,9 +184,22 @@ const personProDev = personID => {
 
 //* Instructional hours block
 
-const personInstHrs = personID => {
+const createInstHrsBody = personID => {};
+
+const personInstHrs = (personID, labelList) => {
   let personInstHrsBloc = `<div class='sub-header blue-bg blue-light-text'>
   <div class='sub-header-title'>Instructional Hours</div>`;
+  let headers = "";
+  let dataRows = "";
+  for (label of labelList) {
+    headers += `<div class="bloc-insthrs-${label[0].toLowerCase()} ${
+      label[1]
+    }">${label[0]}</div>`;
+  }
+
+  headers = `<div class='container-fluid'><div class='row sub-header-labels'>${headers}</div></div>`;
+
+  const listFields = instrHrsData.filter(item => item.personnelID === personID);
 
   return personInstHrsBloc;
 };
