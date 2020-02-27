@@ -209,7 +209,7 @@ $(document).ready(() => {
       <div class="bloc-nonInstr-hours col-md-6"><h3>Work Address</h3></div>
     </div>
     <div class="row">
-      <div class="bloc-instr-hours col-md-6"><h3>Contacts</h3></div>
+      <div class="bloc-instr-hours col-md-6"><h3>Contact History</h3></div>
       <div class="bloc-nonInstr-hours col-md-6"><h3>Notes & Comments</h3></div>
     </div>
 

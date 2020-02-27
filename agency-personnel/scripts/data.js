@@ -2936,3 +2936,461 @@ const workAdrsList = [
   "Can receive mail?",
   "Can be called?"
 ];
+
+const personNonInstrHrs = [
+  {
+    id: 1,
+    personnelID: 7,
+    month: 1,
+    PrepHrs: 8,
+    TravelHrs: 9,
+    TrainingHrs: 1,
+    MeetingHrs: 24,
+    ExtraHrs: 5
+  },
+  {
+    id: 2,
+    personnelID: 13,
+    month: 4,
+    PrepHrs: 6,
+    TravelHrs: 8,
+    TrainingHrs: 25,
+    MeetingHrs: 22,
+    ExtraHrs: 18
+  },
+  {
+    id: 3,
+    personnelID: 9,
+    month: 2,
+    PrepHrs: 11,
+    TravelHrs: 2,
+    TrainingHrs: 10,
+    MeetingHrs: 10,
+    ExtraHrs: 18
+  },
+  {
+    id: 4,
+    personnelID: 19,
+    month: 8,
+    PrepHrs: 20,
+    TravelHrs: 7,
+    TrainingHrs: 5,
+    MeetingHrs: 22,
+    ExtraHrs: 13
+  },
+  {
+    id: 5,
+    personnelID: 14,
+    month: 6,
+    PrepHrs: 16,
+    TravelHrs: 8,
+    TrainingHrs: 18,
+    MeetingHrs: 1,
+    ExtraHrs: 14
+  },
+  {
+    id: 6,
+    personnelID: 19,
+    month: 2,
+    PrepHrs: 22,
+    TravelHrs: 25,
+    TrainingHrs: 23,
+    MeetingHrs: 21,
+    ExtraHrs: 16
+  },
+  {
+    id: 7,
+    personnelID: 20,
+    month: 7,
+    PrepHrs: 15,
+    TravelHrs: 2,
+    TrainingHrs: 8,
+    MeetingHrs: 20,
+    ExtraHrs: 20
+  },
+  {
+    id: 8,
+    personnelID: 4,
+    month: 5,
+    PrepHrs: 17,
+    TravelHrs: 11,
+    TrainingHrs: 1,
+    MeetingHrs: 25,
+    ExtraHrs: 2
+  },
+  {
+    id: 9,
+    personnelID: 9,
+    month: 8,
+    PrepHrs: 7,
+    TravelHrs: 18,
+    TrainingHrs: 24,
+    MeetingHrs: 4,
+    ExtraHrs: 9
+  },
+  {
+    id: 10,
+    personnelID: 10,
+    month: 10,
+    PrepHrs: 20,
+    TravelHrs: 5,
+    TrainingHrs: 17,
+    MeetingHrs: 14,
+    ExtraHrs: 4
+  },
+  {
+    id: 11,
+    personnelID: 5,
+    month: 1,
+    PrepHrs: 6,
+    TravelHrs: 8,
+    TrainingHrs: 7,
+    MeetingHrs: 17,
+    ExtraHrs: 9
+  },
+  {
+    id: 12,
+    personnelID: 2,
+    month: 7,
+    PrepHrs: 16,
+    TravelHrs: 22,
+    TrainingHrs: 19,
+    MeetingHrs: 13,
+    ExtraHrs: 6
+  },
+  {
+    id: 13,
+    personnelID: 15,
+    month: 12,
+    PrepHrs: 3,
+    TravelHrs: 16,
+    TrainingHrs: 5,
+    MeetingHrs: 25,
+    ExtraHrs: 4
+  },
+  {
+    id: 14,
+    personnelID: 10,
+    month: 9,
+    PrepHrs: 17,
+    TravelHrs: 18,
+    TrainingHrs: 15,
+    MeetingHrs: 5,
+    ExtraHrs: 7
+  },
+  {
+    id: 15,
+    personnelID: 10,
+    month: 11,
+    PrepHrs: 11,
+    TravelHrs: 2,
+    TrainingHrs: 5,
+    MeetingHrs: 11,
+    ExtraHrs: 25
+  },
+  {
+    id: 16,
+    personnelID: 3,
+    month: 9,
+    PrepHrs: 22,
+    TravelHrs: 25,
+    TrainingHrs: 20,
+    MeetingHrs: 12,
+    ExtraHrs: 16
+  },
+  {
+    id: 17,
+    personnelID: 6,
+    month: 5,
+    PrepHrs: null,
+    TravelHrs: null,
+    TrainingHrs: null,
+    MeetingHrs: null,
+    ExtraHrs: null
+  },
+  {
+    id: 18,
+    personnelID: 1,
+    month: 1,
+    PrepHrs: 5,
+    TravelHrs: 8,
+    TrainingHrs: 6,
+    MeetingHrs: 23,
+    ExtraHrs: 23
+  },
+  {
+    id: 19,
+    personnelID: 17,
+    month: 4,
+    PrepHrs: 3,
+    TravelHrs: 9,
+    TrainingHrs: 22,
+    MeetingHrs: 21,
+    ExtraHrs: 24
+  },
+  {
+    id: 20,
+    personnelID: 14,
+    month: 11,
+    PrepHrs: 16,
+    TravelHrs: 2,
+    TrainingHrs: 23,
+    MeetingHrs: 1,
+    ExtraHrs: 18
+  },
+  {
+    id: 21,
+    personnelID: 10,
+    month: 4,
+    PrepHrs: 7,
+    TravelHrs: 24,
+    TrainingHrs: 5,
+    MeetingHrs: 2,
+    ExtraHrs: 17
+  },
+  {
+    id: 22,
+    personnelID: 10,
+    month: 9,
+    PrepHrs: 21,
+    TravelHrs: 23,
+    TrainingHrs: 9,
+    MeetingHrs: 7,
+    ExtraHrs: 7
+  },
+  {
+    id: 23,
+    personnelID: 18,
+    month: 1,
+    PrepHrs: 4,
+    TravelHrs: 19,
+    TrainingHrs: 23,
+    MeetingHrs: 16,
+    ExtraHrs: 16
+  },
+  {
+    id: 24,
+    personnelID: 17,
+    month: 4,
+    PrepHrs: 10,
+    TravelHrs: 8,
+    TrainingHrs: 23,
+    MeetingHrs: 19,
+    ExtraHrs: 2
+  },
+  {
+    id: 25,
+    personnelID: 19,
+    month: 12,
+    PrepHrs: 5,
+    TravelHrs: 16,
+    TrainingHrs: 2,
+    MeetingHrs: 9,
+    ExtraHrs: 12
+  },
+  {
+    id: 26,
+    personnelID: 8,
+    month: 2,
+    PrepHrs: 23,
+    TravelHrs: 1,
+    TrainingHrs: 24,
+    MeetingHrs: 16,
+    ExtraHrs: 5
+  },
+  {
+    id: 27,
+    personnelID: 11,
+    month: 12,
+    PrepHrs: 16,
+    TravelHrs: 19,
+    TrainingHrs: 20,
+    MeetingHrs: 20,
+    ExtraHrs: 1
+  },
+  {
+    id: 28,
+    personnelID: 16,
+    month: 11,
+    PrepHrs: 3,
+    TravelHrs: 21,
+    TrainingHrs: 7,
+    MeetingHrs: 23,
+    ExtraHrs: 9
+  },
+  {
+    id: 29,
+    personnelID: 12,
+    month: 10,
+    PrepHrs: 16,
+    TravelHrs: 23,
+    TrainingHrs: 16,
+    MeetingHrs: 17,
+    ExtraHrs: 15
+  },
+  {
+    id: 30,
+    personnelID: 14,
+    month: 12,
+    PrepHrs: 23,
+    TravelHrs: 4,
+    TrainingHrs: 19,
+    MeetingHrs: 11,
+    ExtraHrs: 13
+  },
+  {
+    id: 31,
+    personnelID: 7,
+    month: 9,
+    PrepHrs: 13,
+    TravelHrs: 5,
+    TrainingHrs: 17,
+    MeetingHrs: 14,
+    ExtraHrs: 4
+  },
+  {
+    id: 32,
+    personnelID: 10,
+    month: 8,
+    PrepHrs: 7,
+    TravelHrs: 7,
+    TrainingHrs: 22,
+    MeetingHrs: 3,
+    ExtraHrs: 25
+  },
+  {
+    id: 33,
+    personnelID: 17,
+    month: 9,
+    PrepHrs: 7,
+    TravelHrs: 1,
+    TrainingHrs: 13,
+    MeetingHrs: 4,
+    ExtraHrs: 12
+  },
+  {
+    id: 34,
+    personnelID: 16,
+    month: 8,
+    PrepHrs: 14,
+    TravelHrs: 5,
+    TrainingHrs: 2,
+    MeetingHrs: 18,
+    ExtraHrs: 21
+  },
+  {
+    id: 35,
+    personnelID: 18,
+    month: 2,
+    PrepHrs: 21,
+    TravelHrs: 12,
+    TrainingHrs: 9,
+    MeetingHrs: 22,
+    ExtraHrs: 1
+  },
+  {
+    id: 36,
+    personnelID: 17,
+    month: 10,
+    PrepHrs: 14,
+    TravelHrs: 6,
+    TrainingHrs: 8,
+    MeetingHrs: 17,
+    ExtraHrs: 19
+  },
+  {
+    id: 37,
+    personnelID: 7,
+    month: 9,
+    PrepHrs: 8,
+    TravelHrs: 21,
+    TrainingHrs: 21,
+    MeetingHrs: 4,
+    ExtraHrs: 15
+  },
+  {
+    id: 38,
+    personnelID: 16,
+    month: 1,
+    PrepHrs: 5,
+    TravelHrs: 21,
+    TrainingHrs: 15,
+    MeetingHrs: 11,
+    ExtraHrs: 13
+  },
+  {
+    id: 39,
+    personnelID: 14,
+    month: 7,
+    PrepHrs: 6,
+    TravelHrs: 7,
+    TrainingHrs: 11,
+    MeetingHrs: 9,
+    ExtraHrs: 5
+  },
+  {
+    id: 40,
+    personnelID: 17,
+    month: 3,
+    PrepHrs: 11,
+    TravelHrs: 14,
+    TrainingHrs: 16,
+    MeetingHrs: 16,
+    ExtraHrs: 7
+  }
+];
+
+const nonInstrHrsList = [
+  "Month",
+  "Prep",
+  "Travel",
+  "Training",
+  "Meeting",
+  "Other",
+  "Total"
+];
+
+const personInstrHrs = [
+  { id: 1, personnelID: 17, instructionHrs: 5, course: "4AKSYDkKb" },
+  { id: 2, personnelID: 8, instructionHrs: 5, course: "eGbk3Se6" },
+  { id: 3, personnelID: 13, instructionHrs: 13, course: "C1iFT5" },
+  { id: 4, personnelID: 5, instructionHrs: 20, course: "cWA9ft" },
+  { id: 5, personnelID: 4, instructionHrs: 14, course: "fz4oFtnz8pR" },
+  { id: 6, personnelID: 2, instructionHrs: 17, course: "yoqOjvTHfL" },
+  { id: 7, personnelID: 17, instructionHrs: 2, course: "lWQLrL" },
+  { id: 8, personnelID: 13, instructionHrs: 22, course: "LAWNqW6P" },
+  { id: 9, personnelID: 19, instructionHrs: 17, course: "ZaFiTPYo" },
+  { id: 10, personnelID: 10, instructionHrs: 6, course: "FOcdatRYF3ss" },
+  { id: 11, personnelID: 14, instructionHrs: 14, course: "iBRj9K" },
+  { id: 12, personnelID: 10, instructionHrs: 17, course: "s6VSUp" },
+  { id: 13, personnelID: 13, instructionHrs: 7, course: "yzJQArG2" },
+  { id: 14, personnelID: 8, instructionHrs: 8, course: "NZUuO70cnxog" },
+  { id: 15, personnelID: 20, instructionHrs: 19, course: "PjFXN3" },
+  { id: 16, personnelID: 14, instructionHrs: 6, course: "zZ9vjG5yNmwt" },
+  { id: 17, personnelID: 1, instructionHrs: 3, course: "TiPyWvmQ0" },
+  { id: 18, personnelID: 20, instructionHrs: 4, course: "SFkwtacZN" },
+  { id: 19, personnelID: 16, instructionHrs: 22, course: "nd4CDJY71" },
+  { id: 20, personnelID: 6, instructionHrs: 6, course: "RwnZhxwhs5dZ" },
+  { id: 21, personnelID: 4, instructionHrs: 11, course: "KBxEe3" },
+  { id: 22, personnelID: 11, instructionHrs: 20, course: "4SUxVHw" },
+  { id: 23, personnelID: 16, instructionHrs: 25, course: "4WKv3ig7R2EZ" },
+  { id: 24, personnelID: 13, instructionHrs: 25, course: "4AKtgX" },
+  { id: 25, personnelID: 2, instructionHrs: 6, course: "ndlAzfOdt" },
+  { id: 26, personnelID: 8, instructionHrs: 16, course: "1yz1EuHO33D5" },
+  { id: 27, personnelID: 8, instructionHrs: 8, course: "GN7YacgXBicN" },
+  { id: 28, personnelID: 14, instructionHrs: 24, course: "D6HKEhz" },
+  { id: 29, personnelID: 4, instructionHrs: 13, course: "xE7JVYgqD" },
+  { id: 30, personnelID: 18, instructionHrs: 21, course: "wNioEEGQ" },
+  { id: 31, personnelID: 9, instructionHrs: 1, course: "InAVEI7jLRA" },
+  { id: 32, personnelID: 10, instructionHrs: 16, course: "07KZQgR" },
+  { id: 33, personnelID: 11, instructionHrs: 25, course: "JZEWxyU" },
+  { id: 34, personnelID: 15, instructionHrs: 11, course: "FBaKRc" },
+  { id: 35, personnelID: 18, instructionHrs: 7, course: "v3jlpUDWqsaZ" },
+  { id: 36, personnelID: 12, instructionHrs: 25, course: "YSJwUmvuU1e" },
+  { id: 37, personnelID: 17, instructionHrs: 10, course: "W6Gz95xE" },
+  { id: 38, personnelID: 19, instructionHrs: 16, course: "AaqAEz" },
+  { id: 39, personnelID: 15, instructionHrs: 13, course: "STx94xwWb" },
+  { id: 40, personnelID: 5, instructionHrs: 12, course: "MKc6SvFuN2" }
+];
+
+const instrHrsList = ["Course", "Hours"];
