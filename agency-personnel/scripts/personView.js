@@ -13,6 +13,7 @@ const createInputField = (
     </div>`;
 };
 
+//* First block ==> Info on person
 const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
   let personInfoBloc = "";
   // first part of person bloc
@@ -74,6 +75,7 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
   return personInfoBloc;
 };
 
+//* History
 const createHistoryBody = (personID, arr, list, blockName) => {
   let dataRow = "";
 
@@ -110,6 +112,7 @@ const personHistory = personID => {
   return personHistoryBloc + headers + dataRows;
 };
 
+//* Professional Development history & total hours
 const totalProDevHrs = list => {
   let result = 0;
   for (item of list) {
@@ -177,4 +180,22 @@ const personProDev = personID => {
   const hoursPD = totalProDevHrs(listFields);
   const dataRows = createProDevBody(personID, listFields, "proDev");
   return personProDevBloc + headers + dataRows + hoursPD;
+};
+
+//* Instructional hours block
+
+const personInstHrs = personID => {
+  let personInstHrsBloc = `<div class='sub-header blue-bg blue-light-text'>
+  <div class='sub-header-title'>Instructional Hours</div>`;
+
+  return personInstHrsBloc;
+};
+
+//* Non Instructional hours block
+
+const personNonInstHrs = personID => {
+  let personNonInstHrsBloc = `<div class='sub-header blue-bg blue-light-text'>
+  <div class='sub-header-title'>Non Instructional Hours</div>`;
+
+  return personNonInstHrsBloc;
 };

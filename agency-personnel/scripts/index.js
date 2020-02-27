@@ -3120,14 +3120,15 @@ $(document).ready(() => {
     const workAdrsFields = listFields.filter(item =>
       item[0].startsWith("WorkAdrs")
     );
-    // Sending to persoInfo all required data and phone #s + emails
+    // Invoking all the blocs for personView
     const blocPerso = persoInfo(
       listFields.slice(1, 9),
       homeAdrsFields.slice(4)
     );
     const historyView = personHistory(rowID);
     const proDevView = personProDev(rowID);
-    const totalHrsPD = $(".personnel-entry").toggleClass("hidden");
+
+    $(".personnel-entry").toggleClass("hidden");
     $(".personnel-search").toggleClass("hidden");
 
     $(
