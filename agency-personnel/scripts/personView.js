@@ -184,7 +184,7 @@ const personProDev = personID => {
 
 //* Instructional hours block
 
-const createInstrHrsBody = (personID, records, blockName) => {
+const createInstrHrsBody = (personID, records, blockName, title) => {
   let dataRow = "";
   let totalHours = 0;
   for (record of records) {
@@ -201,7 +201,7 @@ const createInstrHrsBody = (personID, records, blockName) => {
     </table>
     </div>
     <div class="proDev-hours-view">
-      <div class="proDev-hours blue-light-bg dark-blue-text">Total Instructional Hours: ${totalHours} hrs </div>
+      <div class="proDev-hours blue-light-bg dark-blue-text">Total ${title}: ${totalHours} hrs </div>
     </div>`;
 };
 
@@ -211,8 +211,9 @@ const personInstrHrs = (personID, dataList, labelList, title, tableBody) => {
   let headers = "";
   const blockName = title.toLowerCase().replace(/\s/gi, "-");
   const listFields = dataList.filter(record => record.personnelID === personID);
-  console.log("listFields :", listFields);
-  const dataRows = tableBody(personID, listFields, blockName);
+  const dataRows = tableBody
+    ? tableBody(personID, listFields, blockName, title)
+    : "";
 
   for (label of labelList) {
     headers += `<div class="${blockName}-${label[0].toLowerCase()} ${
@@ -221,16 +222,7 @@ const personInstrHrs = (personID, dataList, labelList, title, tableBody) => {
   }
   headers = `<div class='container-fluid'>
               <div class='row sub-header-labels'>${headers}</div>
-            </div>`;
+            </div></div>`;
 
-  return infoBloc + headers + dataRows + "</div>";
-};
-
-//* Non Instructional hours block
-
-const personNonInstrHrs = (personID, labelList) => {
-  let personNonInstHrsBloc = `<div class='sub-header blue-bg blue-light-text'>
-  <div class='sub-header-title'>Non Instructional Hours</div>`;
-
-  return personNonInstHrsBloc;
+  return infoBloc + headers + dataRows;
 };

@@ -197,7 +197,13 @@ $(document).ready(() => {
       "Instructional Hours",
       createInstrHrsBody
     );
-    // TODO: const nonInstrHoursView = personNonInstrHrs(rowID, nonInstrHrsList);
+
+    const nonInstrHoursView = personInstrHrs(
+      rowID,
+      nonInstrHrsData,
+      nonInstrHrsList,
+      "Non Instructional Hours"
+    );
 
     $(".personnel-entry").toggleClass("hidden");
     $(".personnel-search").toggleClass("hidden");
@@ -208,7 +214,7 @@ $(document).ready(() => {
         <div class="bloc-history col-md-7" id='${rowID}-history'>${historyView}${proDevView}</div>
     </div>    
     <div class="container row"><div class="bloc-instr-hours col-md-5">${instructionalHoursView}</div>
-      <div class="bloc-nonInstr-hours col-md-7"><h3>Non Instr hours View</h3></div>
+      <div class="bloc-nonInstr-hours col-md-7">${nonInstrHoursView}</div>
     </div>
 </div>`);
 

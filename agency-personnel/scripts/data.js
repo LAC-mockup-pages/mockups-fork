@@ -3341,13 +3341,13 @@ const nonInstrHrsData = [
 ];
 
 const nonInstrHrsList = [
-  "Month",
-  "Prep",
-  "Travel",
-  "Training",
-  "Meeting",
-  "Other",
-  "Total"
+  ["Month", "col-sm-2"],
+  ["Prep", "col-sm-2"],
+  ["Travel", "col-sm-2"],
+  ["Training", "col-sm-2"],
+  ["Meeting", "col-sm-2"],
+  ["Other", "col-sm-1"],
+  ["Total", "col-sm-1"]
 ];
 
 const instrHrsData = [
