@@ -190,8 +190,14 @@ $(document).ready(() => {
     );
     const historyView = personHistory(rowID);
     const proDevView = personProDev(rowID);
-    const instructionalHoursView = personInstrHrs(rowID, instrHrsList);
-    const nonInstrHoursView = personNonInstrHrs(rowID, nonInstrHrsList);
+    const instructionalHoursView = personInstrHrs(
+      rowID,
+      instrHrsData,
+      instrHrsList,
+      "Instructional Hours",
+      createInstrHrsBody
+    );
+    // TODO: const nonInstrHoursView = personNonInstrHrs(rowID, nonInstrHrsList);
 
     $(".personnel-entry").toggleClass("hidden");
     $(".personnel-search").toggleClass("hidden");

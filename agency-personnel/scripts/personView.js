@@ -184,26 +184,43 @@ const personProDev = personID => {
 
 //* Instructional hours block
 
-const createInstrHrsBody = personID => {};
+const createInstrHrsBody = (personID, records, blockName) => {
+  let dataRow = "";
+  let totalHours = 0;
+  for (record of records) {
+    const { id, instructionHrs, course } = record;
+    totalHours += instructionHrs;
+    dataRow += `<tr id=${id}-row-${blockName}>
+    <td class='${blockName}-cell col-sm-10'>${course}</td>
+    <td class='${blockName}-cell col-sm-2'>${instructionHrs}</td>
+     </tr>`;
+  }
 
-const personInstrHrs = (personID, labelList) => {
-  let personInstHrsBloc = `<div class='sub-header blue-bg blue-light-text'>
-  <div class='sub-header-title'>Instructional Hours</div>`;
+  return `<div class="${blockName}-table">
+      <table class="table" id='${personID}-${blockName}'>
+        <tbody>${dataRow}</tbody>
+    </table></div>`;
+};
+
+const personInstrHrs = (personID, dataList, labelList, title, tableBody) => {
+  let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
+  <div class='sub-header-title'>${title}</div>`;
   let headers = "";
-  let dataRows = "";
+  const blockName = title.toLowerCase().replace(/\s/gi, "-");
+  const listFields = dataList.filter(record => record.personnelID === personID);
+  console.log("listFields :", listFields);
+  const dataRows = tableBody(personID, listFields, blockName);
+
   for (label of labelList) {
-    headers += `<div class="bloc-insthrs-${label[0].toLowerCase()} ${
+    headers += `<div class="${blockName}-${label[0].toLowerCase()} ${
       label[1]
     }">${label[0]}</div>`;
   }
-
   headers = `<div class='container-fluid'>
               <div class='row sub-header-labels'>${headers}</div>
             </div>`;
 
-  const listFields = instrHrsData.filter(item => item.personnelID === personID);
-
-  return personInstHrsBloc + headers + "</div>";
+  return infoBloc + headers + dataRows + "</div>";
 };
 
 //* Non Instructional hours block

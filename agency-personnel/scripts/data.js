@@ -3351,12 +3351,12 @@ const nonInstrHrsList = [
 ];
 
 const instrHrsData = [
-  { id: 1, personnelID: 17, instructionHrs: 5, course: "4AKSYDkKb" },
+  { id: 1, personnelID: 1, instructionHrs: 5, course: "4AKSYDkKb" },
   { id: 2, personnelID: 8, instructionHrs: 5, course: "eGbk3Se6" },
   { id: 3, personnelID: 13, instructionHrs: 13, course: "C1iFT5" },
   { id: 4, personnelID: 5, instructionHrs: 20, course: "cWA9ft" },
   { id: 5, personnelID: 4, instructionHrs: 14, course: "fz4oFtnz8pR" },
-  { id: 6, personnelID: 2, instructionHrs: 17, course: "yoqOjvTHfL" },
+  { id: 6, personnelID: 1, instructionHrs: 17, course: "yoqOjvTHfL" },
   { id: 7, personnelID: 17, instructionHrs: 2, course: "lWQLrL" },
   { id: 8, personnelID: 13, instructionHrs: 22, course: "LAWNqW6P" },
   { id: 9, personnelID: 19, instructionHrs: 17, course: "ZaFiTPYo" },
