@@ -184,9 +184,9 @@ const personProDev = personID => {
 
 //* Instructional hours block
 
-const createInstHrsBody = personID => {};
+const createInstrHrsBody = personID => {};
 
-const personInstHrs = (personID, labelList) => {
+const personInstrHrs = (personID, labelList) => {
   let personInstHrsBloc = `<div class='sub-header blue-bg blue-light-text'>
   <div class='sub-header-title'>Instructional Hours</div>`;
   let headers = "";
@@ -197,16 +197,18 @@ const personInstHrs = (personID, labelList) => {
     }">${label[0]}</div>`;
   }
 
-  headers = `<div class='container-fluid'><div class='row sub-header-labels'>${headers}</div></div>`;
+  headers = `<div class='container-fluid'>
+              <div class='row sub-header-labels'>${headers}</div>
+            </div>`;
 
   const listFields = instrHrsData.filter(item => item.personnelID === personID);
 
-  return personInstHrsBloc;
+  return personInstHrsBloc + headers + "</div>";
 };
 
 //* Non Instructional hours block
 
-const personNonInstHrs = personID => {
+const personNonInstrHrs = (personID, labelList) => {
   let personNonInstHrsBloc = `<div class='sub-header blue-bg blue-light-text'>
   <div class='sub-header-title'>Non Instructional Hours</div>`;
 

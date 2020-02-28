@@ -3394,6 +3394,6 @@ const instrHrsData = [
 ];
 
 const instrHrsList = [
-  ["Course", "col-sm-8"],
-  ["Hours", "col-sm-4"]
+  ["Course", "col-sm-10"],
+  ["Hours", "col-sm-2"]
 ];

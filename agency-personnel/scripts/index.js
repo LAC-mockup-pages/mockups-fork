@@ -190,29 +190,20 @@ $(document).ready(() => {
     );
     const historyView = personHistory(rowID);
     const proDevView = personProDev(rowID);
+    const instructionalHoursView = personInstrHrs(rowID, instrHrsList);
+    const nonInstrHoursView = personNonInstrHrs(rowID, nonInstrHrsList);
 
     $(".personnel-entry").toggleClass("hidden");
     $(".personnel-search").toggleClass("hidden");
 
-    $(
-      ".hero"
-    ).append(`<div class="container personView" id=${rowID}><div class="row">
+    $(".hero").append(`<div class="container personView" id=${rowID}>
+    <div class="row">
         <form class="bloc-perso col-md-5">${blocPerso}</form>
         <div class="bloc-history col-md-7" id='${rowID}-history'>${historyView}${proDevView}</div>
     </div>    
-    <div class="row">
-      <div class="bloc-instr-hours col-md-6"><h3>Instr. Hours</h3></div>
-      <div class="bloc-nonInstr-hours col-md-6"><h3>Non Instr. Hours</h3></div>
+    <div class="container row"><div class="bloc-instr-hours col-md-5">${instructionalHoursView}</div>
+      <div class="bloc-nonInstr-hours col-md-7"><h3>Non Instr hours View</h3></div>
     </div>
-    <div class="row">
-      <div class="bloc-instr-hours col-md-6"><h3>Home Address</h3></div>
-      <div class="bloc-nonInstr-hours col-md-6"><h3>Work Address</h3></div>
-    </div>
-    <div class="row">
-      <div class="bloc-instr-hours col-md-6"><h3>Contact History</h3></div>
-      <div class="bloc-nonInstr-hours col-md-6"><h3>Notes & Comments</h3></div>
-    </div>
-
 </div>`);
 
     return false;
