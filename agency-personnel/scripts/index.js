@@ -202,7 +202,8 @@ $(document).ready(() => {
       rowID,
       nonInstrHrsData,
       nonInstrHrsList,
-      "Non Instructional Hours"
+      "Non Instructional Hours",
+      createNonInstrHrsBody
     );
 
     $(".personnel-entry").toggleClass("hidden");

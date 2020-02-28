@@ -184,6 +184,38 @@ const personProDev = personID => {
 
 //* Instructional hours block
 
+const createNonInstrHrsBody = (personID, records, blockName, title) => {
+  let dataRow = "";
+  for (record of records) {
+    const {
+      id,
+      month,
+      PrepHrs,
+      TravelHrs,
+      TrainingHrs,
+      MeetingHrs,
+      ExtraHrs
+    } = record;
+
+    const totalHours =
+      PrepHrs + TravelHrs + TrainingHrs + MeetingHrs + ExtraHrs;
+    dataRow += `<tr id=${id}-row-${blockName}>
+      <td class='${blockName}-cell col-sm-2'>${moment(month).format("MMM")}</td>
+      <td class='${blockName}-cell col-sm-2'>${PrepHrs}</td>
+      <td class='${blockName}-cell col-sm-2'>${TravelHrs}</td>
+      <td class='${blockName}-cell col-sm-2'>${TrainingHrs}</td>
+      <td class='${blockName}-cell col-sm-2'>${MeetingHrs}</td>
+      <td class='${blockName}-cell col-sm-1'>${ExtraHrs}</td>
+      <td class='${blockName}-cell col-sm-1'>${totalHours}</td>
+    </tr>`;
+  }
+  return `<div class="${blockName}-table">
+    <table class="table" id='${personID}-${blockName}'>
+      <tbody>${dataRow}</tbody>
+    </table>
+    </div>`;
+};
+
 const createInstrHrsBody = (personID, records, blockName, title) => {
   let dataRow = "";
   let totalHours = 0;
@@ -196,8 +228,8 @@ const createInstrHrsBody = (personID, records, blockName, title) => {
      </tr>`;
   }
   return `<div class="${blockName}-table">
-      <table class="table" id='${personID}-${blockName}'>
-        <tbody>${dataRow}</tbody>
+    <table class="table" id='${personID}-${blockName}'>
+      <tbody>${dataRow}</tbody>
     </table>
     </div>
     <div class="proDev-hours-view">
@@ -223,6 +255,6 @@ const personInstrHrs = (personID, dataList, labelList, title, tableBody) => {
   headers = `<div class='container-fluid'>
               <div class='row sub-header-labels'>${headers}</div>
             </div></div>`;
-
+  console.log("month :", moment("02/01/01").format("MMM"));
   return infoBloc + headers + dataRows;
 };
