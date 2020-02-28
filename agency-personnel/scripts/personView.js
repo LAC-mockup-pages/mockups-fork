@@ -195,11 +195,14 @@ const createInstrHrsBody = (personID, records, blockName) => {
     <td class='${blockName}-cell col-sm-2'>${instructionHrs}</td>
      </tr>`;
   }
-
   return `<div class="${blockName}-table">
       <table class="table" id='${personID}-${blockName}'>
         <tbody>${dataRow}</tbody>
-    </table></div>`;
+    </table>
+    </div>
+    <div class="proDev-hours-view">
+      <div class="proDev-hours blue-light-bg dark-blue-text">Total Instructional Hours: ${totalHours} hrs </div>
+    </div>`;
 };
 
 const personInstrHrs = (personID, dataList, labelList, title, tableBody) => {
