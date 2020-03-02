@@ -213,8 +213,8 @@ $(document).ready(() => {
     <div class="row">
         <form class="bloc-perso col-md-5">${blocPerso}</form>
         <div class="bloc-history col-md-7" id='${rowID}-history'>${historyView}${proDevView}</div>
-    </div>    
-    <div class="container row"><div class="bloc-instr-hours col-md-5">${instructionalHoursView}</div>
+    </div>
+    <div class="container row bloc-hours"><div class="bloc-instr-hours col-md-5">${instructionalHoursView}</div>
       <div class="bloc-nonInstr-hours col-md-7">${nonInstrHoursView}</div>
     </div>
 </div>`);

@@ -2940,7 +2940,7 @@ const workAdrsList = [
 const nonInstrHrsData = [
   {
     id: 1,
-    personnelID: 7,
+    personnelID: 1,
     month: 1,
     PrepHrs: 8,
     TravelHrs: 9,
@@ -2950,7 +2950,7 @@ const nonInstrHrsData = [
   },
   {
     id: 2,
-    personnelID: 13,
+    personnelID: 1,
     month: 4,
     PrepHrs: 6,
     TravelHrs: 8,
@@ -2960,7 +2960,7 @@ const nonInstrHrsData = [
   },
   {
     id: 3,
-    personnelID: 9,
+    personnelID: 1,
     month: 2,
     PrepHrs: 11,
     TravelHrs: 2,
@@ -2970,7 +2970,7 @@ const nonInstrHrsData = [
   },
   {
     id: 4,
-    personnelID: 19,
+    personnelID: 1,
     month: 8,
     PrepHrs: 20,
     TravelHrs: 7,
@@ -3353,9 +3353,9 @@ const nonInstrHrsList = [
 const instrHrsData = [
   { id: 1, personnelID: 1, instructionHrs: 5, course: "4AKSYDkKb" },
   { id: 2, personnelID: 8, instructionHrs: 5, course: "eGbk3Se6" },
-  { id: 3, personnelID: 13, instructionHrs: 13, course: "C1iFT5" },
+  { id: 3, personnelID: 1, instructionHrs: 13, course: "C1iFT5" },
   { id: 4, personnelID: 5, instructionHrs: 20, course: "cWA9ft" },
-  { id: 5, personnelID: 4, instructionHrs: 14, course: "fz4oFtnz8pR" },
+  { id: 5, personnelID: 1, instructionHrs: 14, course: "fz4oFtnz8pR" },
   { id: 6, personnelID: 1, instructionHrs: 17, course: "yoqOjvTHfL" },
   { id: 7, personnelID: 17, instructionHrs: 2, course: "lWQLrL" },
   { id: 8, personnelID: 13, instructionHrs: 22, course: "LAWNqW6P" },

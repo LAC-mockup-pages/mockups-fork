@@ -125,7 +125,7 @@ const totalProDevHrs = list => {
   }
   const optionText = result < 14 ? "red-text" : "";
   const totalProDevHrsView = `<div class="proDev-hours-view">
-    <div class="proDev-hours blue-light-bg dark-blue-text">Total PD hours for the current Fiscal Year: 
+    <div class="proDev-hours blue-light-bg dark-blue-text">Total PD hours for the current Fiscal Year:
     <span class=${optionText}>${result} hrs</span>
     </div>
   </div>`;
@@ -196,17 +196,19 @@ const createNonInstrHrsBody = (personID, records, blockName, title) => {
       MeetingHrs,
       ExtraHrs
     } = record;
-
+    console.log("month :", month);
     const totalHours =
       PrepHrs + TravelHrs + TrainingHrs + MeetingHrs + ExtraHrs;
     dataRow += `<tr id=${id}-row-${blockName}>
-      <td class='${blockName}-cell col-sm-2'>${moment(month).format("MMM")}</td>
+      <td class='${blockName}-cell col-sm-2'>${moment(month.toString()).format(
+      "MMM"
+    )}</td>
       <td class='${blockName}-cell col-sm-2'>${PrepHrs}</td>
       <td class='${blockName}-cell col-sm-2'>${TravelHrs}</td>
       <td class='${blockName}-cell col-sm-2'>${TrainingHrs}</td>
       <td class='${blockName}-cell col-sm-2'>${MeetingHrs}</td>
       <td class='${blockName}-cell col-sm-1'>${ExtraHrs}</td>
-      <td class='${blockName}-cell col-sm-1'>${totalHours}</td>
+      <td class='${blockName}-cell total-hours col-sm-1'>${totalHours}</td>
     </tr>`;
   }
   return `<div class="${blockName}-table">
@@ -255,6 +257,5 @@ const personInstrHrs = (personID, dataList, labelList, title, tableBody) => {
   headers = `<div class='container-fluid'>
               <div class='row sub-header-labels'>${headers}</div>
             </div></div>`;
-  console.log("month :", moment("02/01/01").format("MMM"));
   return infoBloc + headers + dataRows;
 };
