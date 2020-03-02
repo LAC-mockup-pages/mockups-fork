@@ -206,17 +206,8 @@ $(document).ready(() => {
       createNonInstrHrsBody
     );
 
-    const personHomeAddress = personAddresses(
-      rowID,
-      homeAdrsFields,
-      "Home Address"
-    );
-
-    const personWorkAddress = personAddresses(
-      rowID,
-      workAdrsFields,
-      "Work Address"
-    );
+    const personHomeAddress = personAddresses(homeAdrsFields, "Home Address");
+    const personWorkAddress = personAddresses(workAdrsFields, "Work Address");
 
     $(".personnel-entry").toggleClass("hidden");
     $(".personnel-search").toggleClass("hidden");

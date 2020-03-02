@@ -261,24 +261,22 @@ const personInstrHrs = (personID, dataList, labelList, title, tableBody) => {
 };
 
 //* Bloc Address
-const createAddresse = (personID, list, blockName) => {
+const createAddresse = (list, blockName) => {
   const cityStateZip =
     list[1][1].toUpperCase() + " - " + list[2][1] + " " + list[3][1];
 
-  return `<div class='${personID}-${blockName}'>
+  return `<div class='${blockName}'>
     <div class='${list[0][0]}'>${list[0][1]}</div>
     <div class='${list[1][0]}'>${cityStateZip}</div>
   </div>`;
 };
 
-const personAddresses = (personID, dataList, title) => {
+const personAddresses = (dataList, title) => {
   let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
   <div class='sub-header-title'>${title}</div></div>`;
   const blockName = title.toLowerCase().replace(/\s/gi, "-");
 
-  console.log("dataList :", dataList);
-
-  const content = createAddresse(personID, dataList, blockName);
+  const content = createAddresse(dataList, blockName);
 
   return infoBloc + content;
 };

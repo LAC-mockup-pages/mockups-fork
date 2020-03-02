@@ -81,3 +81,16 @@
   font-weight: 700;
   text-align: center;
 }
+
+.bloc-address {
+  padding: 0;
+  margin-top: 1%;
+}
+
+.home-address,
+.work-address {
+  line-height: 2em;
+  font-weight: 700;
+  font-size: 1.2em;
+  margin-left: 5%;
+}
