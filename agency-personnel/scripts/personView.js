@@ -261,13 +261,35 @@ const personInstrHrs = (personID, dataList, labelList, title, tableBody) => {
 };
 
 //* Bloc Address
-const createAddresse = (list, blockName) => {
+const createAddress = (list, blockName) => {
   const cityStateZip =
     list[1][1].toUpperCase() + " - " + list[2][1] + " " + list[3][1];
 
   return `<div class='${blockName}'>
-    <div class='${list[0][0]}'>${list[0][1]}</div>
-    <div class='${list[1][0]}'>${cityStateZip}</div>
+    <div class='${list[0][0]}'>${list[0][1]}
+    <span class=' ${list[1][0]}'>${cityStateZip}</span></div>
+  </div>`;
+};
+
+const createWorkAddress = (list, blockName) => {
+  const cityStateZip =
+    list[1][1].toUpperCase() + " - " + list[2][1] + " " + list[3][1];
+  const canMail = list[6][1] ? "checked" : "";
+  const canCall = list[7][1] ? "checked" : "";
+
+  return `<div class='${blockName}'>
+      <div class='${list[0][0]}'>${list[0][1]}
+      <span class='${list[1][0]}'>${cityStateZip}</span></div>
+    <div class='container-fluid row work-address-checkbox'>
+      <div class='mail-call-checkboxes col-sm-6'>
+        <label for='canMail-checkbox'>Can receive mail? </label>
+        <input type='checkbox' id='canMail-checkbox' ${canMail} disabled/>
+      </div>
+      <div class='mail-call-checkboxes col-sm-6'>
+        <label for='canCall-checkbox'>Can receive calls? </label>
+        <input type='checkbox' id='canCall-checkbox' ${canCall} disabled/>
+      </div>
+     </div>
   </div>`;
 };
 
@@ -275,8 +297,12 @@ const personAddresses = (dataList, title) => {
   let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
   <div class='sub-header-title'>${title}</div></div>`;
   const blockName = title.toLowerCase().replace(/\s/gi, "-");
+  console.log("list :", dataList);
 
-  const content = createAddresse(dataList, blockName);
+  const content =
+    blockName === "home-address"
+      ? createAddress(dataList, blockName)
+      : createWorkAddress(dataList, blockName);
 
   return infoBloc + content;
 };

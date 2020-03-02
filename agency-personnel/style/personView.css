@@ -94,3 +94,8 @@
   font-size: 1.2em;
   margin-left: 5%;
 }
+
+.mail-call-checkboxes > input {
+  width: 15px;
+  height: 15px;
+}
