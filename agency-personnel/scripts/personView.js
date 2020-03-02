@@ -297,7 +297,6 @@ const personAddresses = (dataList, title) => {
   let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
   <div class='sub-header-title'>${title}</div></div>`;
   const blockName = title.toLowerCase().replace(/\s/gi, "-");
-  console.log("list :", dataList);
 
   const content =
     blockName === "home-address"
@@ -305,4 +304,22 @@ const personAddresses = (dataList, title) => {
       : createWorkAddress(dataList, blockName);
 
   return infoBloc + content;
+};
+
+//* Bloc Comments and contact history
+
+const personComments = (dataList, title) => {
+  let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
+  <div class='sub-header-title'>${title}</div></div>`;
+  const blockName = title.toLowerCase().replace(/\s/gi, "-");
+
+  return infoBloc;
+};
+
+const personContactHistory = (dataList, title) => {
+  let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
+  <div class='sub-header-title'>${title}</div></div>`;
+  const blockName = title.toLowerCase().replace(/\s/gi, "-");
+
+  return infoBloc;
 };

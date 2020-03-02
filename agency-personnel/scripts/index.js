@@ -206,8 +206,10 @@ $(document).ready(() => {
       createNonInstrHrsBody
     );
 
-    const personHomeAddress = personAddresses(homeAdrsFields, "Home Address");
-    const personWorkAddress = personAddresses(workAdrsFields, "Work Address");
+    const homeAddressView = personAddresses(homeAdrsFields, "Home Address");
+    const workAddressView = personAddresses(workAdrsFields, "Work Address");
+    const commnentsView = personComments(null, "Notes / Comments");
+    const contactsView = personContactHistory(null, "Contact History");
 
     $(".personnel-entry").toggleClass("hidden");
     $(".personnel-search").toggleClass("hidden");
@@ -222,10 +224,13 @@ $(document).ready(() => {
       <div class="bloc-nonInstr-hours col-md-7">${nonInstrHoursView}</div>
     </div>
     <div class="container row bloc-address">
-      <div class="bloc-home col-md-5">${personHomeAddress}</div>
-      <div class="bloc-work col-md-7">${personWorkAddress}</div>
+      <div class="bloc-home col-md-5">${homeAddressView}</div>
+      <div class="bloc-work col-md-7">${workAddressView}</div>
     </div>
-
+    <div class="container row bloc-contacts">
+    <div class="bloc-comments col-md-5">${commnentsView}</div>
+    <div class="bloc-contact-history col-md-7">${contactsView}</div>
+  </div>
 </div>`);
 
     return false;
