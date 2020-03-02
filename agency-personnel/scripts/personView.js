@@ -307,6 +307,7 @@ const personAddresses = (dataList, title) => {
 };
 
 //* Bloc Comments and contact history
+//TODO: HEADERS FOR BOTH BLOCKS + DATA VISUALIZATION
 
 const personComments = (dataList, title) => {
   let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
