@@ -206,6 +206,18 @@ $(document).ready(() => {
       createNonInstrHrsBody
     );
 
+    const personHomeAddress = personAddresses(
+      rowID,
+      homeAdrsFields,
+      "Home Address"
+    );
+
+    const personWorkAddress = personAddresses(
+      rowID,
+      workAdrsFields,
+      "Work Address"
+    );
+
     $(".personnel-entry").toggleClass("hidden");
     $(".personnel-search").toggleClass("hidden");
 
@@ -214,9 +226,15 @@ $(document).ready(() => {
         <form class="bloc-perso col-md-5">${blocPerso}</form>
         <div class="bloc-history col-md-7" id='${rowID}-history'>${historyView}${proDevView}</div>
     </div>
-    <div class="container row bloc-hours"><div class="bloc-instr-hours col-md-5">${instructionalHoursView}</div>
+    <div class="container row bloc-hours">
+      <div class="bloc-instr-hours col-md-5">${instructionalHoursView}</div>
       <div class="bloc-nonInstr-hours col-md-7">${nonInstrHoursView}</div>
     </div>
+    <div class="container row bloc-address">
+      <div class="bloc-home col-md-5">${personHomeAddress}</div>
+      <div class="bloc-work col-md-7">${personWorkAddress}</div>
+    </div>
+
 </div>`);
 
     return false;

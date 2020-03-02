@@ -186,7 +186,8 @@ const personProDev = personID => {
 
 const createNonInstrHrsBody = (personID, records, blockName, title) => {
   let dataRow = "";
-  for (record of records) {
+  const sortedRecords = records.sort((a, b) => a.month - b.month);
+  for (record of sortedRecords) {
     const {
       id,
       month,
@@ -196,7 +197,6 @@ const createNonInstrHrsBody = (personID, records, blockName, title) => {
       MeetingHrs,
       ExtraHrs
     } = record;
-    console.log("month :", month);
     const totalHours =
       PrepHrs + TravelHrs + TrainingHrs + MeetingHrs + ExtraHrs;
     dataRow += `<tr id=${id}-row-${blockName}>
@@ -258,4 +258,27 @@ const personInstrHrs = (personID, dataList, labelList, title, tableBody) => {
               <div class='row sub-header-labels'>${headers}</div>
             </div></div>`;
   return infoBloc + headers + dataRows;
+};
+
+//* Bloc Address
+const createAddresse = (personID, list, blockName) => {
+  const cityStateZip =
+    list[1][1].toUpperCase() + " - " + list[2][1] + " " + list[3][1];
+
+  return `<div class='${personID}-${blockName}'>
+    <div class='${list[0][0]}'>${list[0][1]}</div>
+    <div class='${list[1][0]}'>${cityStateZip}</div>
+  </div>`;
+};
+
+const personAddresses = (personID, dataList, title) => {
+  let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
+  <div class='sub-header-title'>${title}</div></div>`;
+  const blockName = title.toLowerCase().replace(/\s/gi, "-");
+
+  console.log("dataList :", dataList);
+
+  const content = createAddresse(personID, dataList, blockName);
+
+  return infoBloc + content;
 };
