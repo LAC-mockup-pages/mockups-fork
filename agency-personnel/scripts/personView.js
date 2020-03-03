@@ -125,7 +125,7 @@ const totalProDevHrs = list => {
   }
   const optionText = result < 14 ? "red-text" : "";
   const totalProDevHrsView = `<div class="proDev-hours-view">
-    <div class="proDev-hours blue-light-bg dark-blue-text">Total PD hours for the current Fiscal Year:
+    <div class="proDev-hours total-banner blue-light-bg dark-blue-text">Total PD hours for the current Fiscal Year:
     <span class=${optionText}>${result} hrs</span>
     </div>
   </div>`;
@@ -182,12 +182,50 @@ const personProDev = personID => {
   return personProDevBloc + headers + dataRows + hoursPD;
 };
 
+//* Bloc Comments and contact history
+
+const personComment = (personID, dataList, title) => {
+  const infobloc = `<div class="sub-header blue-bg blue-light-text">
+    <div class="sub-header-title">${title}</div></div>`;
+
+  const blockName = title.toLowerCase().replace(/\s/gi, "-");
+  const commentText = dataList.filter(
+    record => record.personnelID === personID
+  )[0].comment;
+
+  const content = `<div class='${blockName} dark-text'>${commentText}</div>`;
+
+  return infobloc + content;
+};
+
+const contactBody = (personID, records, blockName) => {
+  let dataRow = "";
+  const sortedRecords = records.sort((a, b) => b.date - a.date);
+
+  for (const record of sortedRecords) {
+    const { id, date, type, notes } = record;
+    const typeValue = contactTypesList[type];
+
+    dataRow += `<tr id=${id}-row-${blockName}>
+      <td class='${blockName}-cell col-sm-2'>${date}</td>
+      <td class='${blockName}-cell col-sm-3'>${typeValue}</td>
+      <td class='${blockName}-cell col-sm-7'>${notes}</td>
+    </tr>`;
+  }
+
+  return `<div class="${blockName}-table">
+    <table class="table" id='${personID}-${blockName}'>
+      <tbody>${dataRow}</tbody>
+    </table>
+    </div>`;
+};
+
 //* Instructional hours block
 
 const createNonInstrHrsBody = (personID, records, blockName, title) => {
   let dataRow = "";
   const sortedRecords = records.sort((a, b) => a.month - b.month);
-  for (record of sortedRecords) {
+  for (const record of sortedRecords) {
     const {
       id,
       month,
@@ -235,7 +273,7 @@ const createInstrHrsBody = (personID, records, blockName, title) => {
     </table>
     </div>
     <div class="proDev-hours-view">
-      <div class="proDev-hours blue-light-bg dark-blue-text">Total ${title}: ${totalHours} hrs </div>
+      <div class="proDev-hours total-banner blue-light-bg dark-blue-text">Total ${title}: ${totalHours} hrs </div>
     </div>`;
 };
 
@@ -306,19 +344,4 @@ const personAddresses = (dataList, title) => {
       : createWorkAddress(dataList, blockName);
 
   return infoBloc + content;
-};
-
-//* Bloc Comments and contact history
-const personComment = (personID, dataList, title) => {
-  const infobloc = `<div class="sub-header blue-bg blue-light-text">
-    <div class="sub-header-title">${title}</div></div>`;
-
-  const blockName = title.toLowerCase().replace(/\s/gi, "-");
-  const commentText = dataList.filter(
-    record => record.personnelID === personID
-  )[0].comment;
-
-  const content = `<div class='${blockName} dark-text'>${commentText}</div>`;
-
-  return infobloc + content;
 };

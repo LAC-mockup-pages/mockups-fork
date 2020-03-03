@@ -217,7 +217,8 @@ $(document).ready(() => {
       rowID,
       contactData,
       contactList,
-      "Contact History"
+      "Contact History",
+      contactBody
     );
 
     $(".personnel-entry").toggleClass("hidden");
