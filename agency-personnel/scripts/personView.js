@@ -309,19 +309,16 @@ const personAddresses = (dataList, title) => {
 };
 
 //* Bloc Comments and contact history
+const personComment = (personID, dataList, title) => {
+  const infobloc = `<div class="sub-header blue-bg blue-light-text">
+    <div class="sub-header-title">${title}</div></div>`;
 
-// const personComments = (dataList, title) => {
-//   let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
-//   <div class='sub-header-title'>${title}</div></div>`;
-//   const blockName = title.toLowerCase().replace(/\s/gi, "-");
-
-//   return infoBloc;
-// };
-
-const personContactHistory = (dataList, title) => {
-  let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
-  <div class='sub-header-title'>${title}</div></div>`;
   const blockName = title.toLowerCase().replace(/\s/gi, "-");
+  const commentText = dataList.filter(
+    record => record.personnelID === personID
+  )[0].comment;
 
-  return infoBloc;
+  const content = `<div class='${blockName} dark-text'>${commentText}<div>`;
+
+  return infobloc + content;
 };

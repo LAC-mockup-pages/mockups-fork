@@ -12,16 +12,6 @@
   border-top: 2px solid #fff;
 }
 
-/* .bloc-perso,
-.bloc-instr-hours {
-  border-right: 4px solid #1d6294;
-} */
-
-/* .bloc-instr-hours,
-.bloc-nonInstr-hours {
-  border-top: 5px solid #1d6294;
-} */
-
 .bloc-adrs .input-field {
   padding-left: 10px;
 }
@@ -68,6 +58,7 @@
   text-align: right;
   line-height: 22px;
   padding-right: 1%;
+  font-size: 1.2em;
   color: #fff;
   border-bottom: 1px solid #d3e4f0;
 }
@@ -98,4 +89,11 @@
 .mail-call-checkboxes > input {
   width: 15px;
   height: 15px;
+}
+
+.notes-and-comments {
+  background-color: #fff;
+  margin: 1% 0 1% 0;
+  border: 1px solid #d3e4f0;
+  height: 10em;
 }

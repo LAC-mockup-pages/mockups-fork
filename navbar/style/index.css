@@ -21,6 +21,12 @@
   color: #c54141;
 }
 
+.dark-text {
+  color: #283838;
+  font-size: 1.3em;
+  font-weight: 700;
+}
+
 .blue-light-bg {
   background-color: #d3e4f0;
 }

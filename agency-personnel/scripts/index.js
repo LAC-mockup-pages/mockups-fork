@@ -208,10 +208,9 @@ $(document).ready(() => {
 
     const homeAddressView = personAddresses(homeAdrsFields, "Home Address");
     const workAddressView = personAddresses(workAdrsFields, "Work Address");
-    const commnentsView = personInstrHrs(
+    const commnentsView = personComment(
       rowID,
       commentsData,
-      commentsList,
       "Notes and Comments"
     );
     const contactsView = personInstrHrs(
