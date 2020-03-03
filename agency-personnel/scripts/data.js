@@ -2813,7 +2813,7 @@ const historyList = {
   D: "Waiting for Rematch"
 };
 
-const contactList = {
+const contactTypesList = {
   1: "Telephone",
   2: "Message",
   3: "Mail",
@@ -2821,6 +2821,12 @@ const contactList = {
   5: "Counselor",
   6: "In Person"
 };
+
+const contactList = [
+  ["Date", "col-sm-2"],
+  ["Type", "col-sm-4"],
+  ["Notes", "col-sm-6"]
+];
 
 const positionList = {
   1: "Administrative",
@@ -3396,4 +3402,326 @@ const instrHrsData = [
 const instrHrsList = [
   ["Course", "col-sm-10"],
   ["Hours", "col-sm-2"]
+];
+
+const commentsList = [
+  ["Date", "col-sm-2"],
+  ["Note", "col-sm-10"]
+];
+
+const commentsData = [
+  {
+    id: 1,
+    personnelID: 1,
+    date: "06/28/2016",
+    comment: "Sed vel enim sit amet nunc viverra dapibus."
+  },
+  {
+    id: 2,
+    personnelID: 2,
+    date: "07/18/2013",
+    comment: "Duis at velit eu est congue elementum."
+  },
+  {
+    id: 3,
+    personnelID: 11,
+    date: "12/19/2010",
+    comment:
+      "In eleifend quam a odio. In hac habitasse platea dictumst. Maecenas ut massa quis augue luctus tincidunt."
+  },
+  {
+    id: 4,
+    personnelID: 1,
+    date: "08/24/2017",
+    comment:
+      "Morbi porttitor lorem id ligula. Suspendisse ornare consequat lectus."
+  },
+  { id: 5, personnelID: 3, date: "07/20/2011", comment: "Integer ac neque." },
+  {
+    id: 6,
+    personnelID: 1,
+    date: "11/30/2016",
+    comment:
+      "Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus."
+  },
+  {
+    id: 7,
+    personnelID: 2,
+    date: "05/28/2019",
+    comment: "Praesent blandit lacinia erat."
+  },
+  {
+    id: 8,
+    personnelID: 19,
+    date: "05/19/2010",
+    comment:
+      "Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl."
+  },
+  {
+    id: 9,
+    personnelID: 10,
+    date: "05/21/2012",
+    comment:
+      "Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede. Morbi porttitor lorem id ligula."
+  },
+  {
+    id: 10,
+    personnelID: 18,
+    date: "05/14/2015",
+    comment:
+      "Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem. Duis aliquam convallis nunc."
+  },
+  {
+    id: 11,
+    personnelID: 15,
+    date: "01/06/2017",
+    comment: "Proin leo odio, porttitor id, consequat in, consequat ut, nulla."
+  },
+  {
+    id: 12,
+    personnelID: 1,
+    date: "12/16/2012",
+    comment:
+      "Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui."
+  },
+  {
+    id: 13,
+    personnelID: 1,
+    date: "12/06/2019",
+    comment:
+      "Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis."
+  },
+  { id: 14, personnelID: 20, date: "05/12/2014", comment: "Praesent lectus." },
+  {
+    id: 15,
+    personnelID: 4,
+    date: "04/22/2011",
+    comment:
+      "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio."
+  },
+  {
+    id: 16,
+    personnelID: 8,
+    date: "12/08/2017",
+    comment: "Nullam varius. Nulla facilisi."
+  },
+  {
+    id: 17,
+    personnelID: 18,
+    date: "09/16/2013",
+    comment:
+      "Nam dui. Proin leo odio, porttitor id, consequat in, consequat ut, nulla."
+  },
+  {
+    id: 18,
+    personnelID: 15,
+    date: "11/14/2016",
+    comment:
+      "Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis."
+  },
+  { id: 19, personnelID: 19, date: "11/01/2015", comment: "Nullam varius." },
+  {
+    id: 20,
+    personnelID: 19,
+    date: "04/23/2018",
+    comment:
+      "Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+  },
+  {
+    id: 21,
+    personnelID: 8,
+    date: "02/12/2019",
+    comment: "Aenean auctor gravida sem."
+  },
+  {
+    id: 22,
+    personnelID: 7,
+    date: "03/29/2015",
+    comment: "Integer a nibh. In quis justo."
+  },
+  {
+    id: 23,
+    personnelID: 17,
+    date: "10/26/2010",
+    comment: "In hac habitasse platea dictumst."
+  },
+  {
+    id: 24,
+    personnelID: 11,
+    date: "07/13/2014",
+    comment: "Aliquam erat volutpat. In congue. Etiam justo."
+  },
+  {
+    id: 25,
+    personnelID: 12,
+    date: "11/06/2017",
+    comment:
+      "Curabitur in libero ut massa volutpat convallis. Morbi odio odio, elementum eu, interdum eu, tincidunt in, leo. Maecenas pulvinar lobortis est."
+  },
+  {
+    id: 26,
+    personnelID: 10,
+    date: "09/26/2014",
+    comment:
+      "In est risus, auctor sed, tristique in, tempus sit amet, sem. Fusce consequat."
+  },
+  {
+    id: 27,
+    personnelID: 6,
+    date: "11/15/2019",
+    comment: "Sed accumsan felis. Ut at dolor quis odio consequat varius."
+  },
+  {
+    id: 28,
+    personnelID: 19,
+    date: "12/01/2017",
+    comment:
+      "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis."
+  },
+  {
+    id: 29,
+    personnelID: 6,
+    date: "04/25/2015",
+    comment:
+      "Donec quis orci eget orci vehicula condimentum. Curabitur in libero ut massa volutpat convallis."
+  },
+  {
+    id: 30,
+    personnelID: 20,
+    date: "05/01/2017",
+    comment:
+      "Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci."
+  },
+  {
+    id: 31,
+    personnelID: 16,
+    date: "01/22/2018",
+    comment:
+      "Suspendisse potenti. Nullam porttitor lacus at turpis. Donec posuere metus vitae ipsum."
+  },
+  {
+    id: 32,
+    personnelID: 12,
+    date: "12/21/2019",
+    comment:
+      "Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat."
+  },
+  {
+    id: 33,
+    personnelID: 8,
+    date: "04/21/2013",
+    comment: "Suspendisse ornare consequat lectus."
+  },
+  {
+    id: 34,
+    personnelID: 8,
+    date: "08/17/2010",
+    comment:
+      "In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem."
+  },
+  {
+    id: 35,
+    personnelID: 14,
+    date: "01/08/2015",
+    comment:
+      "Vestibulum ac est lacinia nisi venenatis tristique. Fusce congue, diam id ornare imperdiet, sapien urna pretium nisl, ut volutpat sapien arcu sed augue."
+  },
+  {
+    id: 36,
+    personnelID: 9,
+    date: "10/03/2016",
+    comment:
+      "Cras in purus eu magna vulputate luctus. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien."
+  },
+  {
+    id: 37,
+    personnelID: 9,
+    date: "06/21/2019",
+    comment:
+      "Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh."
+  },
+  {
+    id: 38,
+    personnelID: 16,
+    date: "05/19/2018",
+    comment: "Morbi a ipsum. Integer a nibh."
+  },
+  {
+    id: 39,
+    personnelID: 11,
+    date: "05/03/2016",
+    comment: "Nulla nisl. Nunc nisl."
+  },
+  {
+    id: 40,
+    personnelID: 11,
+    date: "09/29/2017",
+    comment:
+      "Morbi quis tortor id nulla ultrices aliquet. Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo."
+  },
+  {
+    id: 41,
+    personnelID: 15,
+    date: "08/15/2016",
+    comment:
+      "Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui. Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc."
+  },
+  {
+    id: 42,
+    personnelID: 4,
+    date: "08/09/2016",
+    comment:
+      "Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem. Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat."
+  },
+  {
+    id: 43,
+    personnelID: 20,
+    date: "01/31/2011",
+    comment: "Vivamus tortor. Duis mattis egestas metus. Aenean fermentum."
+  },
+  {
+    id: 44,
+    personnelID: 20,
+    date: "01/28/2017",
+    comment:
+      "Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede."
+  },
+  {
+    id: 45,
+    personnelID: 2,
+    date: "07/17/2012",
+    comment: "Donec semper sapien a libero. Nam dui."
+  },
+  {
+    id: 46,
+    personnelID: 15,
+    date: "04/08/2013",
+    comment: "Phasellus sit amet erat. Nulla tempus."
+  },
+  {
+    id: 47,
+    personnelID: 2,
+    date: "02/15/2011",
+    comment: "Vivamus vel nulla eget eros elementum pellentesque."
+  },
+  {
+    id: 48,
+    personnelID: 4,
+    date: "08/23/2010",
+    comment:
+      "Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem. Sed sagittis."
+  },
+  {
+    id: 49,
+    personnelID: 13,
+    date: "12/14/2012",
+    comment:
+      "Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus."
+  },
+  {
+    id: 50,
+    personnelID: 12,
+    date: "09/18/2014",
+    comment: "Aliquam sit amet diam in magna bibendum imperdiet."
+  }
 ];

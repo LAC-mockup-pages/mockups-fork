@@ -208,8 +208,18 @@ $(document).ready(() => {
 
     const homeAddressView = personAddresses(homeAdrsFields, "Home Address");
     const workAddressView = personAddresses(workAdrsFields, "Work Address");
-    const commnentsView = personComments(null, "Notes / Comments");
-    const contactsView = personContactHistory(null, "Contact History");
+    const commnentsView = personInstrHrs(
+      rowID,
+      commentsData,
+      commentsList,
+      "Notes and Comments"
+    );
+    const contactsView = personInstrHrs(
+      rowID,
+      contactData,
+      contactList,
+      "Contact History"
+    );
 
     $(".personnel-entry").toggleClass("hidden");
     $(".personnel-search").toggleClass("hidden");

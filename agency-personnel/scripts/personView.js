@@ -249,6 +249,8 @@ const personInstrHrs = (personID, dataList, labelList, title, tableBody) => {
     ? tableBody(personID, listFields, blockName, title)
     : "";
 
+  console.log("listFields :", listFields);
+
   for (label of labelList) {
     headers += `<div class="${blockName}-${label[0].toLowerCase()} ${
       label[1]
@@ -307,15 +309,14 @@ const personAddresses = (dataList, title) => {
 };
 
 //* Bloc Comments and contact history
-//TODO: HEADERS FOR BOTH BLOCKS + DATA VISUALIZATION
 
-const personComments = (dataList, title) => {
-  let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
-  <div class='sub-header-title'>${title}</div></div>`;
-  const blockName = title.toLowerCase().replace(/\s/gi, "-");
+// const personComments = (dataList, title) => {
+//   let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
+//   <div class='sub-header-title'>${title}</div></div>`;
+//   const blockName = title.toLowerCase().replace(/\s/gi, "-");
 
-  return infoBloc;
-};
+//   return infoBloc;
+// };
 
 const personContactHistory = (dataList, title) => {
   let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
