@@ -287,8 +287,6 @@ const personInstrHrs = (personID, dataList, labelList, title, tableBody) => {
     ? tableBody(personID, listFields, blockName, title)
     : "";
 
-  console.log("listFields :", listFields);
-
   for (label of labelList) {
     headers += `<div class="${blockName}-${label[0].toLowerCase()} ${
       label[1]
