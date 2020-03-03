@@ -81,8 +81,6 @@
 .home-address,
 .work-address {
   line-height: 2em;
-  font-weight: 700;
-  font-size: 1.2em;
   margin-left: 5%;
 }
 
@@ -96,4 +94,5 @@
   margin: 1% 0 1% 0;
   border: 1px solid #d3e4f0;
   height: 10em;
+  padding: 1%;
 }

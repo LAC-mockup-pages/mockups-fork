@@ -236,7 +236,7 @@ $(document).ready(() => {
       <div class="bloc-home col-md-5">${homeAddressView}</div>
       <div class="bloc-work col-md-7">${workAddressView}</div>
     </div>
-    <div class="container row bloc-contacts">
+    <div class="container row bloc-comments-contacts">
     <div class="bloc-comments col-md-5">${commnentsView}</div>
     <div class="bloc-contact-history col-md-7">${contactsView}</div>
   </div>

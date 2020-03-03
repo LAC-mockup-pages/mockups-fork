@@ -267,9 +267,9 @@ const createAddress = (list, blockName) => {
   const cityStateZip =
     list[1][1].toUpperCase() + " - " + list[2][1] + " " + list[3][1];
 
-  return `<div class='${blockName}'>
+  return `<div class='${blockName} dark-text'>
     <div class='${list[0][0]}'>${list[0][1]}
-    <span class=' ${list[1][0]}'>${cityStateZip}</span></div>
+    <span class='${list[1][0]}'>${cityStateZip}</span></div>
   </div>`;
 };
 
@@ -279,7 +279,7 @@ const createWorkAddress = (list, blockName) => {
   const canMail = list[6][1] ? "checked" : "";
   const canCall = list[7][1] ? "checked" : "";
 
-  return `<div class='${blockName}'>
+  return `<div class='${blockName} dark-text'>
       <div class='${list[0][0]}'>${list[0][1]}
       <span class='${list[1][0]}'>${cityStateZip}</span></div>
     <div class='container-fluid row work-address-checkbox'>
@@ -318,7 +318,7 @@ const personComment = (personID, dataList, title) => {
     record => record.personnelID === personID
   )[0].comment;
 
-  const content = `<div class='${blockName} dark-text'>${commentText}<div>`;
+  const content = `<div class='${blockName} dark-text'>${commentText}</div>`;
 
   return infobloc + content;
 };
