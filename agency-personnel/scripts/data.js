@@ -3430,3 +3430,8 @@ const commentsData = [
     comment: "Duis at velit eu est congue elementum."
   }
 ];
+
+const historyHeaderList = [
+  ["Date", "col-sm-2"],
+  ["Status", "col-sm-10"]
+];

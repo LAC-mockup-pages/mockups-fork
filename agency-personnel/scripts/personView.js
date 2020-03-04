@@ -76,6 +76,23 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
   return personInfoBloc;
 };
 
+//* Add button, title and headers
+const topBanner = (title, list) => {
+  let headerLine = "";
+  for (const item of list) {
+    const cellName = item[0].toLowerCase().replace(/\s/gi, "-");
+    headerLine += `<div class='container-fluid'><div class='row sub-header-labels'>
+      <div class='bloc-${title.toLowerCase()}-${cellName} ${item[1]}'>Date</div>
+      <div class='bloc-history-status col-md-8'>Status</div>
+    </div></div></div>`;
+  }
+  return `<div class='sub-header blue-bg blue-light-text'>
+  <div class="container-fluid row">
+    <button type='button' class="btn btn-default add-record-btn col-sm-2">Add</button>
+    <div class='sub-header-title col-sm-10'>${title}</div>
+  </div>${headerLine}`;
+};
+
 //* History
 const createHistoryBody = (personID, arr, list, blockName) => {
   let dataRow = "";
@@ -94,18 +111,20 @@ const createHistoryBody = (personID, arr, list, blockName) => {
 };
 
 const personHistory = personID => {
-  let personHistoryBloc = `<div class='sub-header blue-bg blue-light-text'>
-    <div class="container-fluid row">
-      <button type='button' class="btn btn-default add-record-btn col-sm-2">Add</button>
-      <div class='sub-header-title col-sm-10'>History</div>
-    </div>`;
+  // let personHistoryBloc = `<div class='sub-header blue-bg blue-light-text'>
+  //   <div class="container-fluid row">
+  //     <button type='button' class="btn btn-default add-record-btn col-sm-2">Add</button>
+  //     <div class='sub-header-title col-sm-10'>History</div>
+  //   </div>`;
+
+  const personHistoryBloc = topBanner("History", historyHeaderList);
   const listFields = historyData
     .filter(item => item.personnelID === personID)
     .sort((a, b) => new Date(b.date) - new Date(a.date));
-  const headers = `<div class='container-fluid'><div class='row sub-header-labels'>
-      <div class='bloc-history-date col-md-4'>Date</div>
-      <div class='bloc-history-status col-md-8'>Status</div>
-    </div></div></div>`;
+  // const headers = `<div class='container-fluid'><div class='row sub-header-labels'>
+  //     <div class='bloc-history-date col-md-4'>Date</div>
+  //     <div class='bloc-history-status col-md-8'>Status</div>
+  //   </div></div></div>`;
 
   const dataRows = createHistoryBody(
     personID,
@@ -113,7 +132,8 @@ const personHistory = personID => {
     historyList,
     "history"
   );
-  return personHistoryBloc + headers + dataRows;
+  return personHistoryBloc + dataRows;
+  // return personHistoryBloc + headers + dataRows;
 };
 
 //* Professional Development history & total hours
