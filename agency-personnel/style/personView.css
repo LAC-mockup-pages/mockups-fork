@@ -19,18 +19,18 @@
 .history-table,
 .proDev-table,
 .instructional-hours-table {
-  max-height: 205px;
+  height: 205px;
   overflow-y: scroll;
 }
 .contact-history-table {
-  max-height: 195px;
+  height: 195px;
   overflow-y: scroll;
 }
 .bloc-hours {
   padding: 0;
 }
 .non-instructional-hours-table {
-  max-height: 190px;
+  height: 190px;
   overflow-y: scroll;
   text-align: center;
 }

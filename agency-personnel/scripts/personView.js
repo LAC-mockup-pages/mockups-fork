@@ -187,12 +187,9 @@ const personProDev = personID => {
 const personComment = (personID, dataList, title) => {
   const infobloc = `<div class="sub-header blue-bg blue-light-text">
     <div class="sub-header-title">${title}</div></div>`;
-
   const blockName = title.toLowerCase().replace(/\s/gi, "-");
-  const commentText = dataList.filter(
-    record => record.personnelID === personID
-  )[0].comment;
-
+  const record = dataList.filter(record => record.personnelID === personID);
+  const commentText = record.length > 0 ? record[0].comment : "";
   const content = `<div class='${blockName} dark-text'>${commentText}</div>`;
 
   return infobloc + content;
