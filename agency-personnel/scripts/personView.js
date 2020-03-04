@@ -63,12 +63,13 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
       .split("-")[1]
       .replace(/[A-Z]/g, letter => " " + letter)
       .trim();
+    const value = item[1] ? item[1] : "";
     personInfoBloc += createInputField(
       item[0],
       "",
       labelPhoneEmail,
       "",
-      item[1],
+      value,
       ""
     );
   }
@@ -197,12 +198,12 @@ const personComment = (personID, dataList, title) => {
 
 const contactBody = (personID, records, blockName) => {
   let dataRow = "";
+  if (!records[0].id) return "";
   const sortedRecords = records.sort((a, b) => b.date - a.date);
 
   for (const record of sortedRecords) {
     const { id, date, type, notes } = record;
     const typeValue = contactTypesList[type];
-
     dataRow += `<tr id=${id}-row-${blockName}>
       <td class='${blockName}-cell col-sm-2'>${date}</td>
       <td class='${blockName}-cell col-sm-3'>${typeValue}</td>
@@ -221,6 +222,8 @@ const contactBody = (personID, records, blockName) => {
 
 const createNonInstrHrsBody = (personID, records, blockName, title) => {
   let dataRow = "";
+  if (!records[0]) return "";
+
   const sortedRecords = records.sort((a, b) => a.month - b.month);
   for (const record of sortedRecords) {
     const {
@@ -256,6 +259,7 @@ const createNonInstrHrsBody = (personID, records, blockName, title) => {
 const createInstrHrsBody = (personID, records, blockName, title) => {
   let dataRow = "";
   let totalHours = 0;
+  if (!records[0]) return "";
   for (record of records) {
     const { id, instructionHrs, course } = record;
     totalHours += instructionHrs;
@@ -264,6 +268,7 @@ const createInstrHrsBody = (personID, records, blockName, title) => {
     <td class='${blockName}-cell col-sm-2'>${instructionHrs}</td>
      </tr>`;
   }
+
   return `<div class="${blockName}-table">
     <table class="table" id='${personID}-${blockName}'>
       <tbody>${dataRow}</tbody>
@@ -332,7 +337,7 @@ const personAddresses = (dataList, title) => {
   let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
   <div class='sub-header-title'>${title}</div></div>`;
   const blockName = title.toLowerCase().replace(/\s/gi, "-");
-
+  if (!dataList[0][1]) return infoBloc;
   const content =
     blockName === "home-address"
       ? createAddress(dataList, blockName)

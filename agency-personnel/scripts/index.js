@@ -82,6 +82,7 @@ const createListFields = num => {
     key.slice(0, key.length - 1),
     flattenedRecord[key]
   ]);
+
   return list;
 };
 
@@ -172,6 +173,9 @@ $(document).ready(() => {
     e.preventDefault();
     const rowID = Number($(this).attr("id"));
     const listFields = createListFields(rowID);
+
+    // If ExperienceYears > 3
+    if (listFields[8][1] > 3) listFields[8][1] = 3;
 
     // Cleaning up
     $(".data-view").remove();
