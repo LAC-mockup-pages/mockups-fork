@@ -2537,7 +2537,7 @@ const proDevData = [
   },
   {
     id: 17,
-    personnelID: 2,
+    personnelID: 3,
     date: "10/03/2017",
     fiscalYear: 2017,
     workshopName: "User-centric multi-state customer loyalty",
@@ -2570,7 +2570,7 @@ const proDevData = [
   },
   {
     id: 20,
-    personnelID: 2,
+    personnelID: 4,
     date: "03/22/2016",
     fiscalYear: 2016,
     workshopName: "Extended asynchronous data-warehouse",
@@ -2790,7 +2790,7 @@ const proDevData = [
   },
   {
     id: 40,
-    personnelID: 2,
+    personnelID: 5,
     date: "08/01/2018",
     fiscalYear: 2018,
     workshopName: "Digitized interactive superstructure",

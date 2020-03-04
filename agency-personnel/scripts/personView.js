@@ -163,13 +163,6 @@ const createProDevBody = (personID, arr, blockName) => {
 const personProDev = personID => {
   let personProDevBloc = `<div class='sub-header blue-bg blue-light-text'>
     <div class='sub-header-title'>Professional Development</div>`;
-  const listFields = proDevData
-    .filter(item => item.personnelID === personID)
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .map(line => {
-      const attend = line.attended ? "Yes" : "No";
-      return { ...line, attended: attend };
-    });
   const headers = `<div class='container-fluid'><div class='row sub-header-labels'>
       <div class='bloc-proDev-date col-sm-2'>Date</div>
       <div class='bloc-proDev-workshop col-sm-6'>Workshop/Provider</div>
@@ -177,6 +170,18 @@ const personProDev = personID => {
       <div class='bloc-proDev-hrs col-sm-1'>Hrs</div>
       <div class='bloc-proDev-attended col-sm-1'>Done?</div>
       </div></div></div>`;
+  const personProDevData = proDevData.filter(
+    item => item.personnelID === personID
+  );
+  // No Pro Dev hours
+  if (!personProDevData[0]) return personProDevBloc + headers;
+
+  const listFields = personProDevData
+    .sort((a, b) => new Date(b.date) - new Date(a.date))
+    .map(line => {
+      const attend = line.attended ? "Yes" : "No";
+      return { ...line, attended: attend };
+    });
 
   const hoursPD = totalProDevHrs(listFields);
   const dataRows = createProDevBody(personID, listFields, "proDev");
