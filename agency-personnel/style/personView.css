@@ -59,11 +59,20 @@
 
 .sub-header-title {
   text-align: right;
-  line-height: 22px;
+  line-height: 34px;
   padding-right: 1%;
   font-size: 1.2em;
   color: #fff;
   border-bottom: 1px solid #d3e4f0;
+}
+
+.add-record-btn {
+  height: 28px;
+  margin-top: 2px;
+  line-height: 16px;
+  width: fit-content;
+  font-size: 1.1em;
+  font-weight: 700;
 }
 
 .proDev-hours-view {

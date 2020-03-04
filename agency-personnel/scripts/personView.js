@@ -95,13 +95,16 @@ const createHistoryBody = (personID, arr, list, blockName) => {
 
 const personHistory = personID => {
   let personHistoryBloc = `<div class='sub-header blue-bg blue-light-text'>
-    <div class='sub-header-title'>History</div>`;
+    <div class="container-fluid row">
+      <button type='button' class="btn btn-default add-record-btn col-sm-2">Add</button>
+      <div class='sub-header-title col-sm-10'>History</div>
+    </div>`;
   const listFields = historyData
     .filter(item => item.personnelID === personID)
     .sort((a, b) => new Date(b.date) - new Date(a.date));
   const headers = `<div class='container-fluid'><div class='row sub-header-labels'>
-      <div class='bloc-history-date col-sm-4'>Date</div>
-      <div class='bloc-history-status col-sm-8'>Status</div>
+      <div class='bloc-history-date col-md-4'>Date</div>
+      <div class='bloc-history-status col-md-8'>Status</div>
     </div></div></div>`;
 
   const dataRows = createHistoryBody(
@@ -203,7 +206,7 @@ const personComment = (personID, dataList, title) => {
 
 const contactBody = (personID, records, blockName) => {
   let dataRow = "";
-  if (!records[0].id) return "";
+  if (!records[0]) return "";
   const sortedRecords = records.sort((a, b) => b.date - a.date);
 
   for (const record of sortedRecords) {
