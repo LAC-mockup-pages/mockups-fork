@@ -80,10 +80,9 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
 const topBanner = (title, list) => {
   let headerLine = "<div class='container-fluid row sub-header-labels'>";
   for (const item of list) {
-    const cellName = item[0].toLowerCase().replace(/\s/gi, "-");
-    headerLine += ` <div class='bloc-${title.toLowerCase()}-${cellName} ${
-      item[1]
-    }'>${item[0]}</div>`;
+    const cellName = item[0].toLowerCase().replace(/\W/gi, "-");
+    const blockName = title.toLowerCase().replace(/\W/gi, "-");
+    headerLine += ` <div class='bloc-${blockName}-${cellName} ${item[1]}'>${item[0]}</div>`;
   }
   return `
   <div class='sub-header blue-bg blue-light-text'>

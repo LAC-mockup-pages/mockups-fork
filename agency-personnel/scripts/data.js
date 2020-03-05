@@ -3441,5 +3441,5 @@ const proDevHeaderList = [
   ["Workshop/Provider", "col-sm-6"],
   ["Category", "col-sm-2"],
   ["Hrs", "col-sm-1"],
-  ["Done?", "col-sm-1"]
+  ["Done", "col-sm-1"]
 ];
