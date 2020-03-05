@@ -78,17 +78,20 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
 
 //* Add button, title and headers
 const topBanner = (title, list) => {
-  let headerLine = "<div class='container-fluid row sub-header-labels'>";
-  for (const item of list) {
-    const cellName = item[0].toLowerCase().replace(/\W/gi, "-");
-    const blockName = title.toLowerCase().replace(/\W/gi, "-");
-    headerLine += ` <div class='bloc-${blockName}-${cellName} ${item[1]}'>${item[0]}</div>`;
+  let headerLine = "";
+  if (list) {
+    headerLine += "<div class='container-fluid row sub-header-labels'>";
+    for (const item of list) {
+      const cellName = item[0].toLowerCase().replace(/\W/gi, "-");
+      const blockName = title.toLowerCase().replace(/\W/gi, "-");
+      headerLine += ` <div class='bloc-${blockName}-${cellName} ${item[1]}'>${item[0]}</div>`;
+    }
   }
   return `
   <div class='sub-header blue-bg blue-light-text'>
     <div class="container-fluid row">
       <button type='button' class="btn btn-default add-record-btn col-sm-2">Add</button>
-      <div class='sub-header-title col-sm-10'>${title}</div>
+      <div class='sub-header-title'>${title}</div>
     </div>
       ${headerLine}</div>
   </div>
@@ -200,8 +203,11 @@ const personProDev = personID => {
 //* Bloc Comments and contact history
 
 const personComment = (personID, dataList, title) => {
-  const infobloc = `<div class="sub-header blue-bg blue-light-text">
-    <div class="sub-header-title">${title}</div></div>`;
+  const infobloc = `
+  <div class="sub-header blue-bg blue-light-text">
+    <button type='button' class="btn btn-default add-record-btn col-sm-2">Add</button>
+    <div class="sub-header-title">${title}</div>
+  </div>`;
   const blockName = title.toLowerCase().replace(/\s/gi, "-");
   const record = dataList.filter(record => record.personnelID === personID);
   const commentText = record.length > 0 ? record[0].comment : "";
@@ -294,24 +300,14 @@ const createInstrHrsBody = (personID, records, blockName, title) => {
 };
 
 const personInstrHrs = (personID, dataList, labelList, title, tableBody) => {
-  let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
-  <div class='sub-header-title'>${title}</div>`;
-  let headers = "";
+  let infoBloc = topBanner("Contact History", labelList);
   const blockName = title.toLowerCase().replace(/\s/gi, "-");
   const listFields = dataList.filter(record => record.personnelID === personID);
   const dataRows = tableBody
     ? tableBody(personID, listFields, blockName, title)
     : "";
 
-  for (label of labelList) {
-    headers += `<div class="${blockName}-${label[0].toLowerCase()} ${
-      label[1]
-    }">${label[0]}</div>`;
-  }
-  headers = `<div class='container-fluid'>
-              <div class='row sub-header-labels'>${headers}</div>
-            </div></div>`;
-  return infoBloc + headers + dataRows;
+  return infoBloc + dataRows;
 };
 
 //* Bloc Address
@@ -349,6 +345,7 @@ const createWorkAddress = (list, blockName) => {
 
 const personAddresses = (dataList, title) => {
   let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
+  <button type='button' class="btn btn-default add-record-btn col-sm-2">Add</button>
   <div class='sub-header-title'>${title}</div></div>`;
   const blockName = title.toLowerCase().replace(/\s/gi, "-");
   if (!dataList[0][1]) return infoBloc;
