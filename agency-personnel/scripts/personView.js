@@ -76,9 +76,22 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
   return personInfoBloc;
 };
 
+//* Adding a new record
+
+function addRecord(e, element) {
+  e.stopPropagation();
+  const blockName = $(element)
+    .attr("data-blockId")
+    .split("-");
+  console.log("blockName :", blockName);
+
+  return false;
+}
+
 //* Add button, title and headers
-const topBanner = (title, list) => {
+const topBanner = (personId, title, list) => {
   let headerLine = "";
+
   if (list) {
     headerLine += "<div class='container-fluid row sub-header-labels'>";
     for (const item of list) {
@@ -90,7 +103,7 @@ const topBanner = (title, list) => {
   return `
   <div class='sub-header blue-bg blue-light-text'>
     <div class="container-fluid row">
-      <button type='button' class="btn btn-default add-record-btn col-sm-2">Add</button>
+      <button type='button' class="btn btn-default add-record-btn col-sm-2" onclick="addRecord(event, this)" data-blockId="${personId}-${title}">Add</button>
       <div class='sub-header-title'>${title}</div>
     </div>
       ${headerLine}</div>
@@ -116,7 +129,7 @@ const createHistoryBody = (personID, arr, list, blockName) => {
 };
 
 const personHistory = personID => {
-  const personHistoryBloc = topBanner("History", historyHeaderList);
+  const personHistoryBloc = topBanner(personID, "History", historyHeaderList);
   const listFields = historyData
     .filter(item => item.personnelID === personID)
     .sort((a, b) => new Date(b.date) - new Date(a.date));
@@ -179,6 +192,7 @@ const createProDevBody = (personID, arr, blockName) => {
 
 const personProDev = personID => {
   let personProDevBloc = topBanner(
+    personID,
     "Professional Development",
     proDevHeaderList
   );
@@ -300,7 +314,7 @@ const createInstrHrsBody = (personID, records, blockName, title) => {
 };
 
 const personInstrHrs = (personID, dataList, labelList, title, tableBody) => {
-  let infoBloc = topBanner("Contact History", labelList);
+  let infoBloc = topBanner(personID, title, labelList);
   const blockName = title.toLowerCase().replace(/\s/gi, "-");
   const listFields = dataList.filter(record => record.personnelID === personID);
   const dataRows = tableBody
@@ -344,6 +358,7 @@ const createWorkAddress = (list, blockName) => {
 };
 
 const personAddresses = (dataList, title) => {
+  console.log("dataList :", dataList);
   let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
   <button type='button' class="btn btn-default add-record-btn col-sm-2">Add</button>
   <div class='sub-header-title'>${title}</div></div>`;

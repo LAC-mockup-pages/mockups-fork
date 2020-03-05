@@ -166,6 +166,13 @@ $(document).ready(() => {
   $("#btn-save").click(() => {
     location.reload();
   });
+  //* Adding a new record
+
+  const testClick = e => {
+    e.stopPropagation();
+    alert("this was clicked!");
+    return false;
+  };
 
   //* Select person in short list
   $("tbody").on("click", "[title^='click']", function(e) {
@@ -181,12 +188,15 @@ $(document).ready(() => {
     $(".data-view").remove();
     $("#search-input").val("");
 
-    const homeAdrsFields = listFields.filter(item =>
-      item[0].startsWith("HomeAdrs")
-    );
-    const workAdrsFields = listFields.filter(item =>
-      item[0].startsWith("WorkAdrs")
-    );
+    const homeAdrsFields = [
+      ["id", listFields[0][1]],
+      ...listFields.filter(item => item[0].startsWith("HomeAdrs"))
+    ];
+    const workAdrsFields = [
+      ["id", listFields[0][1]],
+      ...listFields.filter(item => item[0].startsWith("WorkAdrs"))
+    ];
+
     // Invoking all the blocs for personView
     const blocPerso = persoInfo(
       listFields.slice(1, 9),
