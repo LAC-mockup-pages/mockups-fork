@@ -231,7 +231,10 @@ $(document).ready(() => {
     $(".hero").append(`<div class="container personView" id=${rowID}>
     <div class="row">
         <form class="bloc-perso col-md-5">${blocPerso}</form>
-        <div class="bloc-history col-md-7" id='${rowID}-history'>${historyView}${proDevView}</div>
+          <div class="bloc-history-proDev col-md-7" id='${rowID}-history'>
+            <div class="bloc-history">${historyView}</div>
+            <div class="bloc-proDev">${proDevView}</div>
+        </div>
     </div>
     <div class="container row bloc-hours">
       <div class="bloc-instr-hours col-md-5">${instructionalHoursView}</div>

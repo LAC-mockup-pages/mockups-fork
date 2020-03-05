@@ -3432,6 +3432,14 @@ const commentsData = [
 ];
 
 const historyHeaderList = [
+  ["Date", "col-sm-4"],
+  ["Status", "col-sm-8"]
+];
+
+const proDevHeaderList = [
   ["Date", "col-sm-2"],
-  ["Status", "col-sm-10"]
+  ["Workshop/Provider", "col-sm-6"],
+  ["Category", "col-sm-2"],
+  ["Hrs", "col-sm-1"],
+  ["Done?", "col-sm-1"]
 ];
