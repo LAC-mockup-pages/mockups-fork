@@ -180,7 +180,7 @@ $(document).ready(() => {
     e.preventDefault();
     const rowID = Number($(this).attr("id"));
     const listFields = createListFields(rowID);
-
+    console.log("listFields :", listFields);
     // If ExperienceYears > 3
     if (listFields[8][1] > 3) listFields[8][1] = 3;
 
@@ -197,6 +197,12 @@ $(document).ready(() => {
       ...listFields.filter(item => item[0].startsWith("WorkAdrs"))
     ];
 
+    const additionalInfoFields = [
+      ["id", listFields[0][1]],
+      ...listFields.filter(item => item[0].startsWith("AdditionalInfo"))
+    ];
+
+    console.log("additionalInfoFields :", additionalInfoFields);
     // Invoking all the blocs for personView
     const blocPerso = persoInfo(
       listFields.slice(1, 9),
@@ -222,6 +228,12 @@ $(document).ready(() => {
 
     const homeAddressView = personAddresses(homeAdrsFields, "Home Address");
     const workAddressView = personAddresses(workAdrsFields, "Work Address");
+    const additionalInfo = personAdditionalInfo(
+      rowID,
+      null, // datalist
+      null, // labelList
+      "Additional Information"
+    );
     const commnentsView = personComment(
       rowID,
       commentsData,
@@ -254,9 +266,12 @@ $(document).ready(() => {
       <div class="bloc-home col-md-5">${homeAddressView}</div>
       <div class="bloc-work col-md-7">${workAddressView}</div>
     </div>
+    <div class="container-fluid bloc-additionalInfo">
+      <form class="bloc-perso">${additionalInfo}</form>
+    </div>
     <div class="container row bloc-comments-contacts">
-    <div class="bloc-comments col-md-5">${commnentsView}</div>
-    <div class="bloc-contact-history col-md-7">${contactsView}</div>
+      <div class="bloc-comments col-md-5">${commnentsView}</div>
+      <div class="bloc-contact-history col-md-7">${contactsView}</div>
   </div>
 </div>`);
 

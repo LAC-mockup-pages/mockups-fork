@@ -2930,6 +2930,10 @@ const addInfoList = [
   "Referral"
 ];
 
+const addInfoFieldList = [
+  { gender: { M: "Male", F: "Female", T: "They" }, label: "Gender" }
+];
+
 const homeAdrsList = [
   "Street Address",
   "City",

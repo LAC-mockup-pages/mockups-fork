@@ -203,6 +203,18 @@ const personProDev = personID => {
   return personProDevBloc + dataRows + hoursPD;
 };
 
+//* Bloc Additional Information
+
+const personAdditionalInfo = (personID, dataList, labelList, title) => {
+  const infoBloc = `
+  <div class='sub-header blue-bg blue-light-text'>
+       <div class='sub-header-title' data-blockId="${personID}-${title}">${title}</div>
+  </div>
+  `;
+
+  return infoBloc;
+};
+
 //* Bloc Comments and contact history
 
 const personComment = (personID, dataList, title) => {
