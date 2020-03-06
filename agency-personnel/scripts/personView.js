@@ -76,17 +76,6 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
   return personInfoBloc;
 };
 
-//* Adding a new record
-
-function addRecord(e, element) {
-  e.stopPropagation();
-  const blockName = $(element)
-    .attr("data-blockId")
-    .split("-");
-
-  return false;
-}
-
 //* Add button, title and headers
 const topBanner = (personId, title, list = null) => {
   let headerLine = "";
