@@ -2921,17 +2921,105 @@ const headerList = [
 ];
 
 const addInfoList = [
-  "Gender",
-  "Ethnicity",
-  "Birth Date",
-  "Education Level",
-  "Employment Status",
-  "Occupation",
-  "Referral"
-];
-
-const addInfoFieldList = [
-  { gender: { M: "Male", F: "Female", T: "They" }, label: "Gender" }
+  {
+    name: "Gender",
+    options: { M: "Male", F: "Female", T: "They" },
+    label: "Gender"
+  },
+  {
+    name: "Ethnicity",
+    options: {
+      A1: "Native American",
+      A2: "Alaskan Native",
+      B1: "Asian",
+      B2: "Pacific Islander",
+      C1: "African American",
+      C2: "Afro-Caribbean",
+      C3: "African",
+      D: "Latino",
+      E1: "White"
+    },
+    label: "Ethnicity"
+  },
+  {
+    name: "EducationLevel",
+    options: {
+      A: "Less than 12th grade",
+      B: "HS Diploma",
+      C: "Some College",
+      D: "Undergraduate degree",
+      E: "Graduate degree",
+      F: "Not Available",
+      G: "Associates Degree",
+      H: "IEP diploma"
+    },
+    label: "Education Level"
+  },
+  {
+    name: "EmploymentStatus",
+    options: {
+      A: "Employed full-time",
+      B: "Employed part-time",
+      C: "Unemployed >1yr available",
+      D: "Unemployed <1yr available",
+      E: "Not available for employment",
+      F: "Retired",
+      G: "Inmate",
+      U: "Unknown",
+      H: "Empl - Received Term. Notice",
+      I: "Empl - Military Sep. pending"
+    },
+    label: "Employment Status"
+  },
+  {
+    name: "Occupation",
+    options: {
+      1: "Clerical",
+      7: "Homemaker",
+      3: "Managerial",
+      2: "Professional",
+      6: "Sales",
+      5: "Services",
+      4: "Technical",
+      8: "Temporary"
+    },
+    label: "Ocupation"
+  },
+  {
+    name: "ReferralSource",
+    options: {
+      A: "Another Student",
+      Z: "Brochure",
+      Y: "Church",
+      T: "Doctor",
+      F: "Education program",
+      S: "Employer",
+      D: "Friend or relative",
+      I: "GED program",
+      L: "Library",
+      Q: "Literacy Hotline",
+      C: "Newspaper",
+      J: "One-Stop",
+      O: "Other Literacy Organization",
+      AD: "Other Volunteer",
+      X: "Other, specify",
+      M: "Phone Book",
+      AC: "Public Relations Talk",
+      K: "Radio",
+      H: "Recruitment poster/flyer",
+      P: "Returning Student",
+      E: "Social service agency",
+      AA: "Special Events",
+      G: "Training program",
+      B: "TV",
+      AE: "Verizon Literacy University (VLU)",
+      AB: "Volunteer Center",
+      W: "Walk-in",
+      N: "Web Site",
+      R: "Workers Union"
+    },
+    label: "Referral Source"
+  }
 ];
 
 const homeAdrsList = [
