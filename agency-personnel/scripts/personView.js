@@ -83,13 +83,12 @@ function addRecord(e, element) {
   const blockName = $(element)
     .attr("data-blockId")
     .split("-");
-  console.log("blockName :", blockName);
 
   return false;
 }
 
 //* Add button, title and headers
-const topBanner = (personId, title, list) => {
+const topBanner = (personId, title, list = null) => {
   let headerLine = "";
 
   if (list) {
@@ -99,6 +98,7 @@ const topBanner = (personId, title, list) => {
       const blockName = title.toLowerCase().replace(/\W/gi, "-");
       headerLine += ` <div class='bloc-${blockName}-${cellName} ${item[1]}'>${item[0]}</div>`;
     }
+    headerLine += "</div>";
   }
   return `
   <div class='sub-header blue-bg blue-light-text'>
@@ -106,7 +106,7 @@ const topBanner = (personId, title, list) => {
       <button type='button' class="btn btn-default add-record-btn col-sm-2" onclick="addRecord(event, this)" data-blockId="${personId}-${title}">Add</button>
       <div class='sub-header-title'>${title}</div>
     </div>
-      ${headerLine}</div>
+    ${headerLine}
   </div>
   `;
 };
@@ -217,11 +217,7 @@ const personProDev = personID => {
 //* Bloc Comments and contact history
 
 const personComment = (personID, dataList, title) => {
-  const infobloc = `
-  <div class="sub-header blue-bg blue-light-text">
-    <button type='button' class="btn btn-default add-record-btn col-sm-2">Add</button>
-    <div class="sub-header-title">${title}</div>
-  </div>`;
+  const infobloc = topBanner(personID, title);
   const blockName = title.toLowerCase().replace(/\s/gi, "-");
   const record = dataList.filter(record => record.personnelID === personID);
   const commentText = record.length > 0 ? record[0].comment : "";
@@ -358,12 +354,10 @@ const createWorkAddress = (list, blockName) => {
 };
 
 const personAddresses = (dataList, title) => {
-  console.log("dataList :", dataList);
-  let infoBloc = `<div class='sub-header blue-bg blue-light-text'>
-  <button type='button' class="btn btn-default add-record-btn col-sm-2">Add</button>
-  <div class='sub-header-title'>${title}</div></div>`;
+  const personID = dataList[0][1];
+  let infoBloc = topBanner(personID, title);
   const blockName = title.toLowerCase().replace(/\s/gi, "-");
-  if (!dataList[0][1]) return infoBloc;
+  if (!dataList[1][1]) return infoBloc;
   const content =
     blockName === "home-address"
       ? createAddress(dataList, blockName)
