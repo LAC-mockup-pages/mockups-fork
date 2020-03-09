@@ -208,9 +208,23 @@ const personProDev = personID => {
 const personAdditionalInfo = (personID, dataList, labelList, title) => {
   const infoBloc = `
   <div class='sub-header blue-bg blue-light-text'>
-       <div class='sub-header-title' data-blockId="${personID}-${title}">${title}</div>
+    <div class='sub-header-title' data-blockId="${personID}-${title}">${title}</div>
   </div>
+  <div class="container-fluid row"></div>
   `;
+
+  console.log("dataList :", dataList);
+  console.log("labelList :", labelList);
+
+  const halfLength = Math.ceil(labelList.length / 2);
+  const fullLength = labelList.length;
+  let leftSection = "";
+  let rightSection = "";
+  const fieldList = dataList.slice(1);
+
+  for (let i = 0, j = halfLength; i < halfLength, j < fullLength; i++, j++) {
+    leftSection += createInputField();
+  }
 
   return infoBloc;
 };

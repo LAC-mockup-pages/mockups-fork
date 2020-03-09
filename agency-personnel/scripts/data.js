@@ -2941,6 +2941,7 @@ const addInfoList = [
     },
     label: "Ethnicity"
   },
+  { name: "BirthDate", options: {}, label: "Birth Date" },
   {
     name: "EducationLevel",
     options: {

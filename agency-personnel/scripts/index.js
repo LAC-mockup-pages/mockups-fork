@@ -180,7 +180,7 @@ $(document).ready(() => {
     e.preventDefault();
     const rowID = Number($(this).attr("id"));
     const listFields = createListFields(rowID);
-    console.log("listFields :", listFields);
+
     // If ExperienceYears > 3
     if (listFields[8][1] > 3) listFields[8][1] = 3;
 
@@ -230,8 +230,8 @@ $(document).ready(() => {
     const workAddressView = personAddresses(workAdrsFields, "Work Address");
     const additionalInfo = personAdditionalInfo(
       rowID,
-      null, // datalist
-      null, // labelList
+      additionalInfoFields, // datalist
+      addInfoList, // labelList
       "Additional Information"
     );
     const commnentsView = personComment(
