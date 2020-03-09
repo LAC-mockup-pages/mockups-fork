@@ -1,0 +1,700 @@
+
+
+/**
+ * CONTENTS
+ *
+ * SETTINGS
+ * Global...............Globally-available variables and config.
+ *
+ * TOOLS
+ * Mixins...............Useful mixins.
+ *
+ * BASE
+ * Headings.............H1–H6 styles.
+ *
+ * OBJECTS
+ * Wrappers.............Wrapping and constraining elements.
+ *
+ * COMPONENTS
+ * Page-head............The main page header.
+ * Page-foot............The main page footer.
+ * Buttons..............Button elements.
+ *
+ * TWEAKS
+ * Sticky Footer........Footer on bottom of page.
+ * Login frame..........login form areas.
+ *
+ * TSS Styles
+ * Sticky Footer........Footer on bottom of page.
+ * Login frame..........login form areas.
+ */
+
+
+
+
+
+
+/*------------------------------------*\
+    #GLOBAL
+\*------------------------------------*/
+
+
+/**
+ * Colors are titled by custom classes and followed specific CSS selectors used
+ * for each.
+ */
+
+.blue-bg,
+.navbar-inverse,
+.heading-bar,
+.badge-primary {
+    background : #2479B5;
+}
+
+.blue-light-bg,
+body {
+	background : #D3E4F0;
+}
+
+.blue-light-text,
+.navbar-inverse .navbar-nav > li > a,
+.navbar-inverse a,
+.navbar-inverse,
+.navbar-inverse .navbar-brand {
+	color : #D3E4F0;
+}
+
+.white-bg,
+.account-info,
+.footer {
+	background : white;
+}
+
+.white-text,
+.heading-bar,
+.welcome-info {
+	color: white;
+}
+
+.student-activity { background-color: #f0e2d5; }
+
+.student-achievements { background-color: #efd3ed; }
+
+.welcome-info { background-color: #918e89; }
+
+ul, ol {
+    list-style: outside none none;
+    margin-bottom: 11px;
+    margin-top: 0;
+}
+
+
+
+/*------------------------------------*\
+    #MIXINS
+\*------------------------------------*/
+
+.float-left {
+	float: left;
+}
+
+.float-right {
+	float: right;
+}
+
+
+
+/*------------------------------------*\
+    #BASE
+\*------------------------------------*/
+
+body {
+	/* create room for top nav */
+	/*padding-top: 50px;*/
+	font-family: "Source Sans Pro", "Helvetica Neue", Arial, Helvetica, Geneva, sans-serif;
+	font-weight: 400;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #aec1cd;
+}
+
+img {
+}
+
+
+
+/**
+ * Typography
+ */
+
+ul {
+	list-style-image: url(../img/lac-bullet-triangle-primary.svg);
+	padding-left: 1em;
+}
+
+ul.quick-links {
+	padding: 0 8px 8px 28px;
+}
+
+/**
+ * Font settings
+ */
+h1, h2, h3, h4, h5, h6 {
+	/* Use semibold for headlines */
+	font-weight: 600;
+}
+
+h3, .h3 {
+    font-size: 24px;
+}
+
+strong, b,
+.panel-heading {
+    /* Use heavier weight for strong tags in body */
+	font-weight: 700;
+}
+
+.cinzel,
+.navbar-brand,
+.account-info h1 {
+    /* Custom font for ASISTS */
+	font-family: 'Cinzel', serif;
+}
+
+/**
+ * Remove top margin on header elements
+ */
+
+.section--title,
+.account-info h1,
+.account-info h4,
+.welcome-info h3,
+.heading-bar {
+    margin-top: 0;
+}
+
+/*------------------------------------*\
+    #OBJECTS
+\*------------------------------------*/
+
+/**
+ * Remove top margin on header elements
+ */
+
+.section {
+	padding: 30px 0;
+}
+
+
+/*------------------------------------*\
+    #COMPONENTS
+\*------------------------------------*/
+
+/**
+ * Topmost Navigation 
+ */
+.navbar-brand,
+.account-info h1 {
+	text-transform: uppercase;
+	letter-spacing: .3em;
+	font-weight: normal;
+	font-style: normal;
+}
+.navbar-brand {
+	padding:5px 0px;
+}
+
+.navbar-inverse {
+	border-style: none;
+}
+
+    .navbar-inverse .navbar-nav > li > a {
+        color: #d3e3ef;
+    }
+
+    .navbar-inverse .navbar-nav > .open > a,
+    .navbar-inverse .navbar-nav > .open > a:hover,
+    .navbar-inverse .navbar-nav > .open > a:focus {
+        color: #fff;
+        background-color: #3f8fc7;
+    }
+	
+
+
+	/**
+     * Navigation Drop Downs
+     */
+	
+	.dropdown-menu {
+	    background-color: #d3e3ef;
+	}
+        .dropdown-menu .divider {
+            background-color: #bfd3e2;
+        }
+
+        .dropdown-menu > li > a:hover,
+        .dropdown-menu > li > a:focus {
+            color: #262626;
+            text-decoration: none;
+            background-color: #f5f5f5;
+        }
+        .dropdown-menu > .active > a,
+        .dropdown-menu > .active > a:hover,
+        .dropdown-menu > .active > a:focus {
+            background-color: #428bca;
+        }
+
+
+.navbar-main {
+	border-bottom: 1px solid #1D6294;
+}
+
+
+@media (max-width: 767px) {
+        .navbar-inverse .navbar-nav .open .dropdown-menu > li > a {
+            color: #fff;
+        }
+}
+
+
+
+/**
+ * Home Page Account Information
+ */
+
+.footer {
+	padding: 20px;
+}
+
+
+
+
+/**
+ * Adds colored bar surrounding heading element with possible floated icons
+ */
+ 
+.heading-bar,
+.panel-heading {
+	font-size: 16px;
+	font-weight: bold;
+	padding: 8px;
+    padding-bottom: .75em;
+	padding-top: .75em;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+    /*.heading-bar*/.float-right .glyphicon {
+        padding-left: 4px;
+    }    
+
+
+
+
+
+.background,
+.content--block {
+	background-color: white;
+	margin-bottom: 1px;
+}
+
+.background p { }
+
+
+/**
+ * Content area drop downs with titles
+ */
+
+/*ul.nav*/nav-enclosed {
+
+}
+	.nav-enclosed > li > a {
+        background: url(../img/lac-symbols.png) 3px 8px #ffffff;
+        border-bottom: 1px solid #2479B5;
+        color: #333;
+        position: relative;
+        display: block;
+        padding: 10px 15px 10px 30px;
+        border-left:  none;
+        border-right:  none;
+       
+	}
+	.nav-enclosed > li > a:hover,
+	.nav-enclosed > li > a:focus {
+        text-decoration: none;
+        background-color: #eee;
+	}
+	.nav-enclosed > li.disabled > a {
+        color: #777;
+	}
+	
+	.list-group-item:first-child {
+     border-top-left-radius: none;
+     border-top-right-radius: none;
+}
+
+        /**
+         * Content area drop downs with titles - drop downs
+         */
+		.nav-enclosed.dropdown {
+            position: static;
+		}
+		.dropdown-toggle:focus {
+            outline: 0;
+		}
+		.nav-enclosed .dropdown-menu {
+            position: relative;
+            top: 100%;
+            left: 0;
+            z-index: 1000;
+            display: none;
+            min-width: 160px;
+            padding: 5px 0;
+            margin: 0;
+            list-style: none;
+            font-size: 16px;
+            text-align: left;
+            background-color: #ffffff;
+            border: 1px none rgba(0, 0, 0, 0.15);
+            border-radius: 4px;
+            background-clip: padding-box;
+            float: none;
+            -moz-box-shadow: 0 0 0 white;
+            box-shadow: 0 0 0 white;
+            -moz-border-radius: 0px;
+            border-radius: 0px;
+            border-bottom: 1px solid #2378b4;
+		}
+		.nav-enclosed .dropdown-menu .divider {
+            height: 1px;
+            margin: 10px 0;
+            overflow: hidden;
+            background-color: #e5e5e5;
+		}
+		.nav-enclosed .dropdown-menu > li > a {
+            display: block;
+            padding: 3px 20px;
+            clear: both;
+            font-weight: normal;
+            line-height: 1.42857143;
+            color: #333333;
+            white-space: nowrap;
+		}
+		.nav-enclosed .dropdown-menu > li > a:hover,
+		.nav-enclosed .dropdown-menu > li > a:focus {
+            text-decoration: none;
+            color: #262626;
+            background-color: #f5f5f5;
+		}
+		.nav-enclosed .dropdown-menu > .active > a,
+		.nav-enclosed .dropdown-menu > .active > a:hover,
+		.nav-enclosed .dropdown-menu > .active > a:focus {
+            color: #ffffff;
+            text-decoration: none;
+            outline: 0;
+            background-color: #428bca;
+		}
+		.nav-enclosed .dropdown-menu > .disabled > a,
+		.nav-enclosed .dropdown-menu > .disabled > a:hover,
+		.nav-enclosed .dropdown-menu > .disabled > a:focus {
+            color: #777777;
+		}
+		.nav-enclosed .dropdown-menu > .disabled > a:hover,
+		.nav-enclosed .dropdown-menu > .disabled > a:focus {
+		    text-decoration: none;
+		    background-color: transparent;
+		    background-image: none;
+		    filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+		    cursor: not-allowed;
+		}
+		.nav-enclosed .open > .dropdown-menu {
+		    display: block;
+		}
+		.nav-enclosed .open > a {
+		    outline: 0;
+			border-bottom-style: none !important;
+			background: url(../img/lac-symbols.png) 3px -27px #ffffff;
+		}
+		.nav-enclosed .dropdown-menu-right {
+		    left: auto;
+		    right: 0;
+		}
+		.nav-enclosed .dropdown-menu-left {
+		    left: 0;
+		    right: auto;
+		}
+		.nav-enclosed .dropdown-header {
+		    display: block;
+		    padding: 3px 20px;
+		    font-size: 14px;
+		    line-height: 1.42857143;
+		    color: #777777;
+		    white-space: nowrap;
+		}		
+		.nav-enclosed .dropdown-backdrop {
+		    position: fixed;
+		    left: 0;
+		    right: 0;
+		    bottom: 0;
+		    top: 0;
+		    z-index: 990;
+		}
+
+
+        /**
+         * Content area drop downs with titles 
+         */
+        .badge.badge-left {
+            border-bottom-right-radius: 0;
+            border-top-right-radius: 0;
+            padding-right: 4px;
+        }
+
+        .badge.badge-right {
+            border-bottom-left-radius: 0;
+            border-top-left-radius: 0;
+            padding-left: 4px;
+        }
+
+
+
+        .panel {
+            border-right-style: none;
+            border-left-style: none;
+            border-radius: 0;
+        }
+
+        .panel-heading {
+            border-radius: 0;
+        }
+
+
+        /**
+         * LIst group items - no drop downs
+         */
+        .list-group-item > .badge-right + .badge-left {
+            margin-right: 1px;
+        }
+
+        .list-group-arrows a {	
+            background: url(../img/lac-symbols.png) 3px 8px #ffffff;
+            border-bottom: 1px solid #2479B5;
+            color: #333;
+            position: relative;
+            display: block;
+            padding-left: 30px;
+
+        }
+
+        .list-group-item {
+            border: 1px solid #2479b5;
+        }
+
+
+
+
+
+
+/*------------------------------------*\
+    #TWEAKS
+\*------------------------------------*/
+
+
+/**
+ * Footer that sticks to bottom of page and scrolls
+ */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: 60px;
+    /* Some Adjustments */
+    background-color: white;
+	border-top: 1px solid #c8cceb;
+}
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+}
+
+
+/* Login Tweaks */
+.form-signin {
+}
+
+    .form-signin .form-signin-heading,
+    .form-signin .checkbox {
+        margin-bottom: 10px;
+    }
+
+    .form-signin .checkbox {
+        font-weight: normal;
+    }
+
+    .form-signin .form-control {
+        position: relative;
+        height: auto;
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .form-signin .form-control:focus {
+        z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+        margin-bottom: -1px;
+        border-bottom-right-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+        margin-bottom: 10px;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+    }
+
+
+
+/*------------------------------------*\
+    #ACTIVE CODE FOR TEST
+\*------------------------------------*/
+
+.test-001 {
+	background-color: white;
+}
+
+.paging {
+    /*display: inline-block;*/
+    padding-left: 0;
+    margin: 20px 0;
+    border-radius: 4px;
+}
+
+.paging table > tbody > tr > td {
+    display: inline;
+}
+
+.paging table > tbody > tr > td > a,
+.paging table > tbody > tr > td > span {
+    position: relative;
+    float: left;
+    padding: 8px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    color: #dd4814;
+    background-color: #ffffff;
+    border: 1px solid #dddddd;
+    margin-left: -1px;
+}
+
+.paging table > tbody > tr > td > span {
+    position: relative;
+    float: left;
+    padding: 8px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;    
+    margin-left: -1px;
+    z-index: 2;
+    color: #aea79f;
+    background-color: #f5f5f5;
+    border-color: #dddddd;
+    cursor: default;
+}
+
+.paging table > tbody > tr > td:first-child > a,
+.paging table > tbody > tr > td:first-child > span {
+    margin-left: 0;
+    border-bottom-left-radius: 4px;
+    border-top-left-radius: 4px;
+}
+
+.paging table > tbody > tr > td:last-child > a,
+.paging table > tbody > tr > td:last-child > span {
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.paging table > tbody > tr > td > a:hover,
+.paging table > tbody > tr > td > span:hover,
+.paging table > tbody > tr > td > a:focus,
+.paging table > tbody > tr > td > span:focus {
+    color: #97310e;
+    background-color: #eeeeee;
+    border-color: #dddddd;
+}
+
+/*------------------------------------*\
+    #BASE
+\*------------------------------------*/
+
+/* TSSSubmenu */
+#ulIA
+{
+    margin-left: auto;
+    margin-right: auto;
+    width:100%;
+    }
+.nav-pills > li > a {
+    font-size: 16px;
+    color: #666;
+    border-radius:0;
+}
+
+/* IA Titles */
+h3 span
+{
+    margin-top:30px;
+    /*font-weight: 300;
+    text-transform: uppercase;
+    font-size: 20px;*/
+    }
+    
+/* IA Grid Header */    
+#tblMessage, #tblRecords
+{
+       background: none repeat scroll 0 0 #fff;
+    border-color: #666;
+    border-radius: 4px;
+    border-style: solid;
+    border-width: 2px;
+    margin-bottom: 20px;
+    width: 100%;
+    }
+    
+#ulGoals
+{
+    background:#fff;
+    }  
+    
+#ulProgress
+{
+    background: #2479b5;
+    
+    }  
+    
+#ulProgress li
+{
+    width:20%;
+    
+    }   
+    
+#ulProgress > li > a {
+    border-radius: 0;
+    color: #fff;
+    font-size: 16px;
+}           
