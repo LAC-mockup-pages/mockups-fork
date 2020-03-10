@@ -1,0 +1,114 @@
+.personView {
+  background-color: #fff;
+  padding-bottom: 0.5%;
+  border-bottom: 5px solid #1d6294;
+}
+
+.sub-header {
+  line-height: 30px;
+  padding-left: 5px;
+  font-size: 1.1em;
+  font-weight: 700;
+  border-top: 2px solid #fff;
+}
+
+.bloc-adrs .input-field {
+  padding-left: 10px;
+}
+
+.history-table,
+.proDev-table,
+.instructional-hours-table {
+  height: 205px;
+  overflow-y: scroll;
+}
+.contact-history-table {
+  height: 195px;
+  overflow-y: scroll;
+}
+.bloc-hours {
+  padding: 0;
+}
+.non-instructional-hours-table {
+  height: 190px;
+  overflow-y: scroll;
+  text-align: center;
+}
+
+.total-hours {
+  border: 1px solid #d3e4f0;
+}
+
+.history-cell,
+.proDev-cell {
+  font-size: 0.9em;
+  line-height: 20px;
+}
+
+.bloc-proDev-workshop,
+.bloc-proDev-category,
+.bloc-proDev-hrs,
+.bloc-proDev-attended {
+  padding: 0;
+}
+
+.bloc-proDev-category,
+.bloc-proDev-attended {
+  margin-left: -10px;
+}
+
+.sub-header-title {
+  text-align: right;
+  line-height: 34px;
+  padding-right: 1%;
+  font-size: 1.2em;
+  color: #fff;
+  border-bottom: 1px solid #d3e4f0;
+}
+
+.add-record-btn {
+  height: 28px;
+  margin-top: 2px;
+  line-height: 16px;
+  width: fit-content;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+.proDev-hours-view {
+  line-height: 2em;
+  padding: 0 5px 0 5px;
+}
+.proDev-hours {
+  font-size: 1em;
+  font-weight: 700;
+  text-align: center;
+}
+
+.bloc-address {
+  padding: 0;
+  margin-top: 1%;
+}
+
+.home-address,
+.work-address {
+  line-height: 2em;
+  margin-left: 5%;
+}
+
+.mail-call-checkboxes > input {
+  width: 15px;
+  height: 15px;
+}
+
+.notes-and-comments {
+  background-color: #fff;
+  margin: 1% 0 1% 0;
+  border: 1px solid #d3e4f0;
+  height: 10em;
+  padding: 1%;
+}
+
+.total-banner {
+  font-size: 1.2em;
+}
