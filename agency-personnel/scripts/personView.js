@@ -210,23 +210,45 @@ const personAdditionalInfo = (personID, dataList, labelList, title) => {
   <div class='sub-header blue-bg blue-light-text'>
     <div class='sub-header-title' data-blockId="${personID}-${title}">${title}</div>
   </div>
-  <div class="container-fluid row"></div>
-  `;
+  <div class="container-fluid row">`;
 
-  console.log("dataList :", dataList);
   console.log("labelList :", labelList);
 
   const halfLength = Math.ceil(labelList.length / 2);
   const fullLength = labelList.length;
-  let leftSection = "";
-  let rightSection = "";
+  let leftSection = "<form class='bloc-perso col-md-6'>";
+  let rightSection = "<form class='bloc-perso col-md-6'>";
   const fieldList = dataList.slice(1);
 
-  for (let i = 0, j = halfLength; i < halfLength, j < fullLength; i++, j++) {
-    leftSection += createInputField();
+  console.log("fieldList :", fieldList);
+  for (
+    let i = 0, j = halfLength;
+    i < halfLength + 1, j < fullLength;
+    i++, j++
+  ) {
+    const valueInputLeft =
+      labelList[i].name === "BirthDate"
+        ? fieldList[i][1]
+        : labelList[i].options[fieldList[i][1]];
+    const valueInputRight = labelList[j].options[fieldList[j][1]];
+
+    leftSection += createInputField(
+      labelList[i].name,
+      `label-${fieldList[i][0]}`,
+      labelList[i].label,
+      fieldList[i][0],
+      valueInputLeft
+    );
+    rightSection += createInputField(
+      labelList[j].name,
+      `label-${fieldList[j][0]}`,
+      labelList[j].label,
+      fieldList[j][0],
+      valueInputRight
+    );
   }
 
-  return infoBloc;
+  return infoBloc + leftSection + "</form>" + rightSection + "</form></div>";
 };
 
 //* Bloc Comments and contact history

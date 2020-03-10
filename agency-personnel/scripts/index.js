@@ -267,7 +267,7 @@ $(document).ready(() => {
       <div class="bloc-work col-md-7">${workAddressView}</div>
     </div>
     <div class="container-fluid bloc-additionalInfo">
-      <form class="bloc-perso">${additionalInfo}</form>
+      ${additionalInfo}
     </div>
     <div class="container row bloc-comments-contacts">
       <div class="bloc-comments col-md-5">${commnentsView}</div>
