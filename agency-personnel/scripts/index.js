@@ -202,7 +202,6 @@ $(document).ready(() => {
       ...listFields.filter(item => item[0].startsWith("AdditionalInfo"))
     ];
 
-    console.log("additionalInfoFields :", additionalInfoFields);
     // Invoking all the blocs for personView
     const blocPerso = persoInfo(
       listFields.slice(1, 9),

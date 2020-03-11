@@ -212,15 +212,12 @@ const personAdditionalInfo = (personID, dataList, labelList, title) => {
   </div>
   <div class="container-fluid row">`;
 
-  console.log("labelList :", labelList);
-
   const halfLength = Math.ceil(labelList.length / 2);
   const fullLength = labelList.length;
   let leftSection = "<form class='bloc-perso col-md-6'>";
   let rightSection = "<form class='bloc-perso col-md-6'>";
   const fieldList = dataList.slice(1);
 
-  console.log("fieldList :", fieldList);
   for (let i = 0; i < halfLength; i++) {
     const valueInputLeft =
       labelList[i].name === "BirthDate"
