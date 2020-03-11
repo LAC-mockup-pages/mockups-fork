@@ -113,7 +113,7 @@ const createHistoryBody = (personID, arr, list, blockName) => {
   }
   return `<div class="${blockName}-table">
       <table class="table" id='${personID}-${blockName}'>
-        <tbody>${dataRow}</tbody>
+        <tbody class='${blockName}-body'>${dataRow}</tbody>
     </table></div>`;
 };
 
@@ -162,7 +162,7 @@ const createProDevBody = (personID, arr, blockName) => {
   }
   return `<div class="${blockName}-table">
       <table class="table" id='${personID}-${blockName}'>
-        <tbody>${dataRow}</tbody>
+        <tbody class='${blockName}-body'>${dataRow}</tbody>
     </table></div>`;
 };
 
@@ -260,7 +260,7 @@ const contactBody = (personID, records, blockName) => {
 
   return `<div class="${blockName}-table">
     <table class="table" id='${personID}-${blockName}'>
-      <tbody>${dataRow}</tbody>
+      <tbody class='${blockName}-body'>${dataRow}</tbody>
     </table>
     </div>`;
 };
@@ -298,7 +298,7 @@ const createNonInstrHrsBody = (personID, records, blockName, title) => {
   }
   return `<div class="${blockName}-table">
     <table class="table" id='${personID}-${blockName}'>
-      <tbody>${dataRow}</tbody>
+      <tbody class='${blockName}-body'>${dataRow}</tbody>
     </table>
     </div>`;
 };
@@ -318,7 +318,7 @@ const createInstrHrsBody = (personID, records, blockName, title) => {
 
   return `<div class="${blockName}-table">
     <table class="table" id='${personID}-${blockName}'>
-      <tbody>${dataRow}</tbody>
+      <tbody class='${blockName}-body'>${dataRow}</tbody>
     </table>
     </div>
     <div class="proDev-hours-view">
