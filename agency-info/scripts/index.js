@@ -41,7 +41,7 @@ const rowLabels = {
 const viewBloc = (blocName, ...args) => {
   const rows = Array.from(args);
   let fields = "";
-  for (row of rows) {
+  for (let row of rows) {
     fields += `<tr class="table-row">
     <td class="row-label col-md-2">${row[0]}</td>
     <td class="row-data col-md-3">${row[1]}</td>
@@ -68,30 +68,31 @@ $(document).ready(() => {
 
   // * data viewing
   const rowData = {};
-  for (key in agencyData) {
+
+  for (let key in agencyData) {
     rowData[key] = [rowLabels[key], agencyData[key]];
   }
-  console.log("rowData :", rowData);
-  const { SEDID, Division, ProgramManager, Telephone, AgencyEmail } = rowData;
-  const formattedPhoneNum = phoneFormat(Telephone);
+
+  const formattedPhoneNum = phoneFormat(rowData.Telephone);
   viewBloc(
     "top-bloc",
-    SEDID,
-    Division,
-    ProgramManager,
+    rowData.SEDID,
+    rowData.Division,
+    rowData.ProgramManager,
     formattedPhoneNum,
-    AgencyEmail
+    rowData.AgencyEmail
   );
 
-  const { Address, City, State, Zip, PrepCode } = rowData;
-  const stateZip = ["State and ZIP", State[1] + " - " + Zip[1]];
-  viewBloc("top-bloc", Address, City, stateZip, PrepCode);
-
-  const { CSD, CPD, CD } = rowData;
-  viewBloc("bottom-bloc", CSD, CPD, CD);
-
-  const { AD, SD } = rowData;
-  viewBloc("bottom-bloc", AD, SD);
+  const stateZip = ["State and ZIP", rowData.State[1] + " - " + rowData.Zip[1]];
+  viewBloc(
+    "top-bloc",
+    rowData.Address,
+    rowData.City,
+    stateZip,
+    rowData.PrepCode
+  );
+  viewBloc("bottom-bloc", rowData.CSD, rowData.CPD, rowData.CD);
+  viewBloc("bottom-bloc", rowData.AD, rowData.SD);
 
   //* Data bloc editing
   $("[title^='Click'").click(function() {
@@ -115,7 +116,7 @@ $(document).ready(() => {
     $(".modal-body form").remove();
     $(".modal-body").append("<form></form>");
 
-    for (field of listInputFields) {
+    for (let field of listInputFields) {
       const key = field[0],
         val = field[1],
         indx = listInputFields.indexOf(field);
