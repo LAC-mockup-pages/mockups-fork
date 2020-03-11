@@ -8,3 +8,5 @@ function addRecord(e, element) {
   console.log("blockName :", blockName);
   return false;
 }
+
+//TODO Editing a record in a table

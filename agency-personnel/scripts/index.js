@@ -166,13 +166,6 @@ $(document).ready(() => {
   $("#btn-save").click(() => {
     location.reload();
   });
-  //* Adding a new record
-
-  const testClick = e => {
-    e.stopPropagation();
-    alert("this was clicked!");
-    return false;
-  };
 
   //* Select person in short list
   $("tbody").on("click", "[title^='click']", function(e) {

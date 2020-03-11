@@ -3531,8 +3531,6 @@ const historyHeaderList = [
 
 const proDevHeaderList = [
   ["Date", "col-sm-2"],
-  ["Workshop/Provider", "col-sm-6"],
-  ["Category", "col-sm-2"],
-  ["Hrs", "col-sm-1"],
-  ["Done", "col-sm-1"]
+  ["Workshop/Provider", "col-sm-8"],
+  ["Hrs", "col-sm-2"]
 ];

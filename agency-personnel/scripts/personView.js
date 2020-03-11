@@ -136,10 +136,7 @@ const personHistory = personID => {
 const totalProDevHrs = list => {
   let result = 0;
   for (item of list) {
-    if (
-      currentFiscalYear.includes(item.fiscalYear) &&
-      item.attended === "Yes"
-    ) {
+    if (currentFiscalYear.includes(item.fiscalYear)) {
       result += item.hours;
     }
   }
@@ -156,21 +153,11 @@ const createProDevBody = (personID, arr, blockName) => {
   let dataRow = "";
 
   for (item of arr) {
-    const {
-      id,
-      date,
-      workshopName,
-      providerName,
-      category,
-      hours,
-      attended
-    } = item;
+    const { id, date, workshopName, providerName, hours } = item;
     dataRow += `<tr id=${id}-row-${blockName}>
     <td class='${blockName}-cell col-sm-2'>${date}</td>
-    <td class='${blockName}-cell col-sm-6'>${workshopName}<br>by: ${providerName}</td>
-    <td class='${blockName}-cell col-sm-2'>${category}</td>
-    <td class='${blockName}-cell col-sm-1'>${hours}</td>
-    <td class='${blockName}-cell col-sm-1'>${attended}</td>
+    <td class='${blockName}-cell col-sm-8'>${workshopName}<br>by: ${providerName}</td>
+    <td class='${blockName}-cell-hrs col-sm-2'>${hours}</td>
   </tr>`;
   }
   return `<div class="${blockName}-table">
@@ -191,15 +178,12 @@ const personProDev = personID => {
   // No Pro Dev hours
   if (!personProDevData[0]) return personProDevBloc + headers;
 
-  const listFields = personProDevData
-    .sort((a, b) => new Date(b.date) - new Date(a.date))
-    .map(line => {
-      const attend = line.attended ? "Yes" : "No";
-      return { ...line, attended: attend };
-    });
-
+  const listFields = personProDevData.sort(
+    (a, b) => new Date(b.date) - new Date(a.date)
+  );
   const hoursPD = totalProDevHrs(listFields);
   const dataRows = createProDevBody(personID, listFields, "proDev");
+
   return personProDevBloc + dataRows + hoursPD;
 };
 
