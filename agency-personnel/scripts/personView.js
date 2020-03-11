@@ -221,16 +221,11 @@ const personAdditionalInfo = (personID, dataList, labelList, title) => {
   const fieldList = dataList.slice(1);
 
   console.log("fieldList :", fieldList);
-  for (
-    let i = 0, j = halfLength;
-    i < halfLength + 1, j < fullLength;
-    i++, j++
-  ) {
+  for (let i = 0; i < halfLength; i++) {
     const valueInputLeft =
       labelList[i].name === "BirthDate"
         ? fieldList[i][1]
         : labelList[i].options[fieldList[i][1]];
-    const valueInputRight = labelList[j].options[fieldList[j][1]];
 
     leftSection += createInputField(
       labelList[i].name,
@@ -239,6 +234,10 @@ const personAdditionalInfo = (personID, dataList, labelList, title) => {
       fieldList[i][0],
       valueInputLeft
     );
+  }
+  for (let j = halfLength; j < fullLength; j++) {
+    const valueInputRight = labelList[j].options[fieldList[j][1]];
+
     rightSection += createInputField(
       labelList[j].name,
       `label-${fieldList[j][0]}`,

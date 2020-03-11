@@ -48,7 +48,9 @@
 .bloc-proDev-workshop,
 .bloc-proDev-category,
 .bloc-proDev-hrs,
-.bloc-proDev-attended {
+.bloc-proDev-attended,
+.bloc-additionalInfo,
+.bloc-comments-contacts {
   padding: 0;
 }
 
