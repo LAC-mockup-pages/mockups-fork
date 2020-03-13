@@ -32,10 +32,14 @@
   margin: 3% 0 10% 5%;
 }
 
-.bloc-hours {
-  padding: 2% 0 0 0;
+.bloc-hours,
+.bloc-address,
+.bloc-additionalInfo,
+.bloc-comments-contacts {
+  padding: 4% 0 4% 0;
   margin-top: 1%;
-  border-top: 4px solid #1d6294;
+  /* border-top: 4px solid #1d6294; */
+  border-top: 4px solid #d3e4f0;
 }
 
 .non-instructional-hours-table {
@@ -55,9 +59,7 @@
 .bloc-proDev-workshop,
 .bloc-proDev-category,
 .bloc-proDev-hrs,
-.bloc-proDev-attended,
-.bloc-additionalInfo,
-.bloc-comments-contacts {
+.bloc-proDev-attended {
   padding: 0;
 }
 
@@ -92,11 +94,6 @@
   font-size: 1em;
   font-weight: 700;
   text-align: center;
-}
-
-.bloc-address {
-  padding: 0;
-  margin-top: 1%;
 }
 
 .home-address,

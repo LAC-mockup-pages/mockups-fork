@@ -293,12 +293,12 @@ const createNonInstrHrsBody = (personID, records, blockName, title) => {
       <td class='${blockName}-cell cell-data col-sm-2'>${TravelHrs}</td>
       <td class='${blockName}-cell cell-data col-sm-2'>${TrainingHrs}</td>
       <td class='${blockName}-cell cell-data col-sm-2'>${MeetingHrs}</td>
-      <td class='${blockName}-cell cell-data col-sm-1'>${ExtraHrs}</td>
-      <td class='${blockName}-cell total-hours cell-data col-sm-1'>${totalHours}</td>
+      <td class='${blockName}-cell cell-data col-sm-2'>${ExtraHrs}</td>
+      <td class='${blockName}-cell total-hours cell-data col-sm-2'>${totalHours}</td>
     </tr>`;
   }
   return `<div class="${blockName}-table">
-    <table class="table" id='${personID}-${blockName}'>
+    <table class="table-condensed" id='${personID}-${blockName}'>
       <tbody class='${blockName}-body'>${dataRow}</tbody>
     </table>
     </div>`;

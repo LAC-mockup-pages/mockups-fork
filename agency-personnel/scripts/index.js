@@ -255,8 +255,8 @@ $(document).ready(() => {
       <div class="bloc-nonInstr-hours col-md-7">${nonInstrHoursView}</div>
     </div>
     <div class="container row bloc-address">
-      <div class="bloc-home col-md-5">${homeAddressView}</div>
-      <div class="bloc-work col-md-7">${workAddressView}</div>
+      <div class="bloc-home col-md-6">${homeAddressView}</div>
+      <div class="bloc-work col-md-6">${workAddressView}</div>
     </div>
     <div class="container-fluid bloc-additionalInfo">
       ${additionalInfo}
