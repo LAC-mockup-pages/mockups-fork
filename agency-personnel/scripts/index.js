@@ -243,11 +243,11 @@ $(document).ready(() => {
     $(".personnel-search").toggleClass("hidden");
 
     $(".hero").append(`<div class="container personView" id=${rowID}>
-    <div class="row">
-        <form class="bloc-perso col-md-5">${blocPerso}</form>
-          <div class="bloc-history-proDev col-md-7" id='${rowID}-history'>
-            <div class="bloc-history">${historyView}</div>
-            <div class="bloc-proDev">${proDevView}</div>
+    <div class="">
+        <div class="bloc-perso container row">${blocPerso}</div>
+        <div class="container row bloc-history-proDev " id='${rowID}-history'>
+          <div class="bloc-history col-md-5">${historyView}</div>
+          <div class="bloc-proDev col-md-7">${proDevView}</div>
         </div>
     </div>
     <div class="container row bloc-hours">

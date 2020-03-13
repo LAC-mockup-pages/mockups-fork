@@ -29,7 +29,11 @@
 .bloc-history,
 .bloc-proDev {
   padding: 0;
-  margin: 3% 0 10% 5%;
+  margin: 5% 0%;
+}
+
+.bloc-proDev {
+  padding-left: 3%;
 }
 
 .bloc-hours,

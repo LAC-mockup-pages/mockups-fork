@@ -15,13 +15,14 @@ const createInputField = (
 
 //* First block ==> Info on person
 const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
-  let personInfoBloc = "";
+  let personInfoBlocLeft = "<form class='bloc-perso-left col-md-6'>";
+  let personInfoBlocRight = "<form class='bloc-perso-right col-md-6'>";
   // first part of person bloc
   for (let i = 0; i < 3; i++) {
     const labelField = placeholderList[i];
     const [keyField, valueField] = arrPersoInfo[i];
     const classOption = labelField.replace(/\s/, "-").toLowerCase();
-    personInfoBloc += createInputField(
+    personInfoBlocLeft += createInputField(
       keyField,
       "red-text",
       labelField,
@@ -34,7 +35,7 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
   const seniorityYears = moment(arrPersoInfo[2], "MM/DD/YYYY")
     .fromNow()
     .replace(" ago", "");
-  personInfoBloc += createInputField(
+  personInfoBlocLeft += createInputField(
     "seniority",
     "",
     "Length of Stay (yrs)",
@@ -42,13 +43,13 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
     seniorityYears,
     "disabled"
   );
-  //Last part of person bloc
-  for (let j = 3; j < arrPersoInfo.length; j++) {
+  //Last part of person bloc left
+  for (let j = 3; j < 6; j++) {
     const labelField = placeholderList[j + 1];
     const [keyField, valueField] = arrPersoInfo[j];
     const classOption = labelField[0].replace(/\s|\W/, "-").toLowerCase();
     const value = labelField[1][valueField];
-    personInfoBloc += createInputField(
+    personInfoBlocLeft += createInputField(
       keyField,
       "red-text",
       labelField[0],
@@ -57,6 +58,22 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
       "required"
     );
   }
+  //First part of person bloc right
+  for (let k = 6; k < arrPersoInfo.length; k++) {
+    const labelField = placeholderList[k + 1];
+    const [keyField, valueField] = arrPersoInfo[k];
+    const classOption = labelField[0].replace(/\s|\W/, "-").toLowerCase();
+    const value = labelField[1][valueField];
+    personInfoBlocRight += createInputField(
+      keyField,
+      "red-text",
+      labelField[0],
+      classOption,
+      value,
+      "required"
+    );
+  }
+
   // Phones and Emails
   for (item of arrPhonesEmails) {
     const labelPhoneEmail = item[0]
@@ -64,7 +81,7 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
       .replace(/[A-Z]/g, letter => " " + letter)
       .trim();
     const value = item[1] ? item[1] : "";
-    personInfoBloc += createInputField(
+    personInfoBlocRight += createInputField(
       item[0],
       "",
       labelPhoneEmail,
@@ -73,7 +90,7 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
       ""
     );
   }
-  return personInfoBloc;
+  return personInfoBlocLeft + "</form>" + personInfoBlocRight + "</form>";
 };
 
 //* Add button, title and headers
