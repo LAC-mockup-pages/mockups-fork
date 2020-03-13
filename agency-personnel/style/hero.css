@@ -1,5 +1,7 @@
 body {
   background-color: #f0e2d5;
+  font-family: "Source Sans Pro", "Helvetica Neue", Arial, Helvetica, Geneva,
+    sans-serif;
 }
 
 .hero {
@@ -91,10 +93,6 @@ tbody {
   font-weight: 600;
 }
 
-td {
-  line-height: 40px;
-}
-
 tbody > tr:hover {
   background-color: #d3e4f0;
 }
@@ -109,7 +107,7 @@ th {
 }
 
 .table > tbody > tr > .cell-data {
-  line-height: 25px;
+  line-height: 30px;
 }
 
 .small-cell {

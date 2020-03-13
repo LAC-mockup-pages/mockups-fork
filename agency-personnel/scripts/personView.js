@@ -81,7 +81,8 @@ const topBanner = (personId, title, list = null) => {
   let headerLine = "";
 
   if (list) {
-    headerLine += "<div class='container-fluid row sub-header-labels'>";
+    headerLine +=
+      "<div class='container-fluid row sub-header-labels blue-light-bg blue-text'>";
     for (const item of list) {
       const cellName = item[0].toLowerCase().replace(/\W/gi, "-");
       const blockName = title.toLowerCase().replace(/\W/gi, "-");
@@ -107,8 +108,8 @@ const createHistoryBody = (personID, arr, list, blockName) => {
   for (item of arr) {
     const { id, date, status } = item;
     dataRow += `<tr id=${id}-row-${blockName}>
-    <td class='${blockName}-cell'>${date}</td>
-    <td class='${blockName}-cell'>${list[status]}</td>
+    <td class='${blockName}-cell cell-data'>${date}</td>
+    <td class='${blockName}-cell cell-data'>${list[status]}</td>
   </tr>`;
   }
   return `<div class="${blockName}-table">
@@ -155,9 +156,9 @@ const createProDevBody = (personID, arr, blockName) => {
   for (item of arr) {
     const { id, date, workshopName, providerName, hours } = item;
     dataRow += `<tr id=${id}-row-${blockName}>
-    <td class='${blockName}-cell col-sm-2'>${date}</td>
-    <td class='${blockName}-cell col-sm-8'>${workshopName}<br>by: ${providerName}</td>
-    <td class='${blockName}-cell-hrs col-sm-2'>${hours}</td>
+    <td class='${blockName}-cell cell-data col-sm-2'>${date}</td>
+    <td class='${blockName}-cell cell-data col-sm-8'>${workshopName}<br>by: ${providerName}</td>
+    <td class='${blockName}-cell-hrs cell-data col-sm-2'>${hours}</td>
   </tr>`;
   }
   return `<div class="${blockName}-table">
@@ -252,9 +253,9 @@ const contactBody = (personID, records, blockName) => {
     const { id, date, type, notes } = record;
     const typeValue = contactTypesList[type];
     dataRow += `<tr id=${id}-row-${blockName}>
-      <td class='${blockName}-cell col-sm-2'>${date}</td>
-      <td class='${blockName}-cell col-sm-3'>${typeValue}</td>
-      <td class='${blockName}-cell col-sm-7'>${notes}</td>
+      <td class='${blockName}-cell cell-data col-sm-2'>${date}</td>
+      <td class='${blockName}-cell cell-data col-sm-3'>${typeValue}</td>
+      <td class='${blockName}-cell cell-data col-sm-7'>${notes}</td>
     </tr>`;
   }
 
@@ -288,12 +289,12 @@ const createNonInstrHrsBody = (personID, records, blockName, title) => {
       <td class='${blockName}-cell col-sm-2'>${moment(month.toString()).format(
       "MMM"
     )}</td>
-      <td class='${blockName}-cell col-sm-2'>${PrepHrs}</td>
-      <td class='${blockName}-cell col-sm-2'>${TravelHrs}</td>
-      <td class='${blockName}-cell col-sm-2'>${TrainingHrs}</td>
-      <td class='${blockName}-cell col-sm-2'>${MeetingHrs}</td>
-      <td class='${blockName}-cell col-sm-1'>${ExtraHrs}</td>
-      <td class='${blockName}-cell total-hours col-sm-1'>${totalHours}</td>
+      <td class='${blockName}-cell cell-data col-sm-2'>${PrepHrs}</td>
+      <td class='${blockName}-cell cell-data col-sm-2'>${TravelHrs}</td>
+      <td class='${blockName}-cell cell-data col-sm-2'>${TrainingHrs}</td>
+      <td class='${blockName}-cell cell-data col-sm-2'>${MeetingHrs}</td>
+      <td class='${blockName}-cell cell-data col-sm-1'>${ExtraHrs}</td>
+      <td class='${blockName}-cell total-hours cell-data col-sm-1'>${totalHours}</td>
     </tr>`;
   }
   return `<div class="${blockName}-table">
@@ -311,8 +312,8 @@ const createInstrHrsBody = (personID, records, blockName, title) => {
     const { id, instructionHrs, course } = record;
     totalHours += instructionHrs;
     dataRow += `<tr id=${id}-row-${blockName}>
-    <td class='${blockName}-cell col-sm-10'>${course}</td>
-    <td class='${blockName}-cell col-sm-2'>${instructionHrs}</td>
+    <td class='${blockName}-cell cell-data col-sm-10'>${course}</td>
+    <td class='${blockName}-cell cell-data col-sm-2'>${instructionHrs}</td>
      </tr>`;
   }
 

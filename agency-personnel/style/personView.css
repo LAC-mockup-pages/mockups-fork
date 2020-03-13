@@ -3,7 +3,6 @@
   padding-bottom: 0.5%;
   border-bottom: 5px solid #1d6294;
 }
-
 .sub-header {
   line-height: 30px;
   padding-left: 5px;
@@ -30,12 +29,12 @@
 .bloc-history,
 .bloc-proDev {
   padding: 0;
-  margin: 1% 0 3% 1%;
+  margin: 3% 0 10% 5%;
 }
 
 .bloc-hours {
-  padding: 1% 0 0 0;
-  margin-top: 3%;
+  padding: 2% 0 0 0;
+  margin-top: 1%;
   border-top: 4px solid #1d6294;
 }
 
@@ -49,8 +48,8 @@
 
 .history-cell,
 .proDev-cell {
-  font-size: 0.9em;
-  line-height: 20px;
+  font-size: 1em;
+  line-height: 25px;
 }
 
 .bloc-proDev-workshop,
@@ -124,5 +123,12 @@
 }
 
 .proDev-cell-hrs {
+  text-align: center;
+}
+
+.sub-header-labels {
+  padding: 0;
+  margin-left: -5px;
+  margin-right: 0;
   text-align: center;
 }
