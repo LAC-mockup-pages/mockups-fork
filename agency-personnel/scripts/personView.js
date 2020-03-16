@@ -14,7 +14,15 @@ const createInputField = (
 };
 
 //* First block ==> Info on person
-const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
+const persoInfo = (personID, arrPersoInfo, arrPhonesEmails) => {
+  const personInfoBloc = `
+  <div class="sub-header blue-bg blue-light-text" data-blockId="${personID}">
+    <div class="container-fluid row">
+       <div class="sub-header-title">Personnel Information</div>
+    </div>
+  </div>
+  `;
+
   let personInfoBlocLeft = "<form class='bloc-perso-left col-md-6'>";
   let personInfoBlocRight = "<form class='bloc-perso-right col-md-6'>";
   // first part of person bloc
@@ -90,7 +98,13 @@ const persoInfo = (arrPersoInfo, arrPhonesEmails) => {
       ""
     );
   }
-  return personInfoBlocLeft + "</form>" + personInfoBlocRight + "</form>";
+  return (
+    personInfoBloc +
+    personInfoBlocLeft +
+    "</form>" +
+    personInfoBlocRight +
+    "</form>"
+  );
 };
 
 //* Add button, title and headers
