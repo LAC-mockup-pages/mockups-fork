@@ -1,83 +1,5 @@
 // Actions and logic
 
-// const agencyDataFund = {
-//   FundSources: {
-//     ALE: {
-//       FSID: "ALE - Adult Literacy Education",
-//       Amount: "1000",
-//       FundStart: "7/1/2019",
-//       FundEnd: "6/30/2020",
-//       FundNumber: "",
-//       Purpose: "Some nefarious purpose"
-//     },
-//     AdoLitDY: {
-//       FSID: "Adolescent Literacy DYCD1",
-//       Amount: "100000",
-//       FundStart: "7/1/2020",
-//       FundEnd: "6/30/2020",
-//       FundNumber: "",
-//       Purpose: ""
-//     },
-//     CASP3DSS: {
-//       FSID: "CASP 3 DSS",
-//       Amount: "0",
-//       FundStart: "1/1/2020",
-//       FundEnd: "6/30/2020",
-//       FundNumber: "",
-//       Purpose: ""
-//     },
-//     EPE: {
-//       FSID: "EPE",
-//       Amount: "500000",
-//       FundStart: "7/9/2019",
-//       FundEnd: "6/30/2020",
-//       FundNumber: "",
-//       Purpose: "RS Test 12.5"
-//     },
-//     IELCE: {
-//       FSID: "Integ Eng Lang Civics Edu",
-//       Amount: "0",
-//       FundStart: "10/5/2019",
-//       FundEnd: "6/30/2020",
-//       FundNumber: "IELCE2020/4",
-//       Purpose: "ASISTS 13.1"
-//     },
-//     PERKINS: {
-//       FSID: "Perkins",
-//       Amount: "0",
-//       FundStart: "7/1/2019",
-//       FundEnd: "6/30/2020",
-//       FundNumber: "",
-//       Purpose: ""
-//     },
-//     UNITWAY: {
-//       FSID: "United Way",
-//       Amount: "0",
-//       FundStart: "7/1/2019",
-//       FundEnd: "6/30/2020",
-//       FundNumber: "",
-//       Purpose: ""
-//     },
-//     WIAWIOA: {
-//       FSID: "WIA / WIOA",
-//       Amount: "100000",
-//       FundStart: "7/1/2019",
-//       FundEnd: "6/30/2020",
-//       FundNumber: "",
-//       Purpose: "RS Test 12.5"
-//     },
-//     WIOAT2: {
-//       FSID: "WIOA - Title II",
-//       Amount: "100000",
-//       FundStart: "7/1/2019",
-//       FundEnd: "6/30/2020",
-//       FundNumber: "",
-//       Purpose: ""
-//     }
-//   },
-//   CurrentFY: "2020"
-// };
-
 let updatedAgencyDataFund = {};
 
 const headerList = [
@@ -94,7 +16,7 @@ const headerList = [
 const currencyFormat = str => {
   return !str
     ? ""
-    : "$" +
+    : "$ " +
         Number(str)
           .toFixed(0)
           .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
@@ -117,7 +39,9 @@ const dateFormat = str => {
 
 const viewData = (sources, fiscalYear) => {
   for (let item of sources) {
-    const FSID = item.ID;
+    const ID = item.ID;
+    const FSID = item.FSID;
+    const FundAbbrev = item.FundAbbrev;
     const Amount = item.Amount;
     const Purpose = item.Purpose;
     const FundNumber = item.FundNumber;
@@ -125,8 +49,8 @@ const viewData = (sources, fiscalYear) => {
     const FundEnd = dateFormat(item.FundEnd);
 
     $("tbody").append(`
-    <tr class="table-row" title="Click to Edit">
-        <td>${FSID}</td>
+    <tr class="table-row" title="Click to Edit" data-sourceId=${ID}-${FSID}>
+        <td>${FundAbbrev}</td>
         <td>${currencyFormat(Amount)}</td>
         <td class="date">${FundStart}</td>
         <td class="date">${FundEnd}</td>
