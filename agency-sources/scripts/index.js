@@ -4,14 +4,18 @@ let updatedAgencyDataFund = {};
 
 const headerList = [
   "Label",
-  "FS ID",
+  "Source Name",
   "Amount",
   "Begin Date",
   "End Date",
   "Contrat / Grant #",
-  "Purpose",
-  "FY"
+  "Purpose"
 ];
+
+const createFiscalYear = str => {
+  const date = new Date(str);
+  return date.getFullYear();
+};
 
 const currencyFormat = str => {
   return !str
@@ -37,7 +41,8 @@ const dateFormat = str => {
   return `${month}/${day}/${date.getFullYear()}`;
 };
 
-const viewData = (sources, fiscalYear) => {
+const viewData = sources => {
+  let bodyBloc = "";
   for (let item of sources) {
     const ID = item.ID;
     const FSID = item.FSID;
@@ -47,8 +52,9 @@ const viewData = (sources, fiscalYear) => {
     const FundNumber = item.FundNumber;
     const FundStart = dateFormat(item.FundStart);
     const FundEnd = dateFormat(item.FundEnd);
+    const fiscalYear = createFiscalYear(FundEnd);
 
-    $("tbody").append(`
+    bodyBloc += `
     <tr class="table-row" title="Click to Edit" data-source-id=${ID}-${FSID}>
         <td>${FundAbbrev}</td>
         <td>${currencyFormat(Amount)}</td>
@@ -57,8 +63,9 @@ const viewData = (sources, fiscalYear) => {
         <td class="fiscalYear">${fiscalYear}</td>
         <td>${FundNumber}</td>
         <td class="purpose">${Purpose}</td>
-    </tr>`);
+    </tr>`;
   }
+  return bodyBloc;
 };
 
 const createListFields = row => {
@@ -66,9 +73,9 @@ const createListFields = row => {
   const listValues = Object.keys(agencyDataFund[sourceName]).map(
     key => agencyDataFund[sourceName][key]
   );
-  listValues.push(CurrentFY);
+  // listValues.push(CurrentFY);
   listValues.unshift(sourceName);
-
+  console.log("listValues :", listValues);
   return headerList.map((item, indx) => [item, listValues[indx]]);
 };
 
@@ -80,7 +87,7 @@ $(document).ready(() => {
   });
 
   // * data viewing
-  viewData(agencyDataFund, CurrentFY);
+  $("tbody").append(viewData(agencyDataFund));
 
   //* Adding a new funding source
 
