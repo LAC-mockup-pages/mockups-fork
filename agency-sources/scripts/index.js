@@ -49,7 +49,7 @@ const viewData = (sources, fiscalYear) => {
     const FundEnd = dateFormat(item.FundEnd);
 
     $("tbody").append(`
-    <tr class="table-row" title="Click to Edit" data-sourceId=${ID}-${FSID}>
+    <tr class="table-row" title="Click to Edit" data-source-id=${ID}-${FSID}>
         <td>${FundAbbrev}</td>
         <td>${currencyFormat(Amount)}</td>
         <td class="date">${FundStart}</td>
