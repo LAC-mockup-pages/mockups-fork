@@ -110,6 +110,13 @@ const persoInfo = (personID, arrPersoInfo, arrPhonesEmails) => {
 //* Add button, title and headers
 const topBanner = (personId, title, list = null) => {
   let headerLine = "";
+  const addButton = [
+    "Professional Development",
+    "Instructional Hours",
+    "Notes and Comments"
+  ].includes(title)
+    ? ""
+    : `<button type='button' class="btn btn-default add-record-btn col-sm-2" onclick="addRecord(event, this)" data-blockId="${personId}-${title}">Add</button>`;
 
   if (list) {
     headerLine +=
@@ -124,7 +131,7 @@ const topBanner = (personId, title, list = null) => {
   return `
   <div class='sub-header blue-bg blue-light-text'>
     <div class="container-fluid row">
-      <button type='button' class="btn btn-default add-record-btn col-sm-2" onclick="addRecord(event, this)" data-blockId="${personId}-${title}">Add</button>
+      ${addButton}
       <div class='sub-header-title'>${title}</div>
     </div>
     ${headerLine}
