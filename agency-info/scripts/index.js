@@ -5,13 +5,9 @@ const agencyData = ag[0]; //! That is all that's needed
 
 const rowLabels = {
   SEDID: "SED ID",
-  Division: "Division",
+  AgencyName: "Agency Name",
   ProgramManager: "Program Manager",
-  Address: "Address",
-  City: "City",
-  State: "State",
   Zip: "ZIP",
-  Telephone: "Telephone",
   CSD: "Community School Dist.",
   EPERate: "EPE Rate",
   CPD: "Community Planning Dist.",
@@ -20,6 +16,41 @@ const rowLabels = {
   SD: "Senatorial Dist.",
   PrepCode: "Prep Code",
   AgencyEmail: "Email"
+};
+
+const createInputField = (
+  keyVal,
+  labelClassVal,
+  labelVal,
+  classVal,
+  value,
+  option
+) => {
+  return `<div class="input-field">
+    <label for='${keyVal}' class='${labelClassVal}'>${labelVal}</label>
+    <input type="text" id='${keyVal}' class='${classVal}' value='${value}' ${option}>
+    </div>`;
+};
+
+const createRow = arr => {
+  let row = "";
+  for (let item of arr) {
+    row += `<tr class="table-row" id=${item[0]}>
+    <td class="row-label col-md-2">${item[1]}</td>
+    <td class="row-data col-md-3">${item[2]}</td>
+    </tr>`;
+  }
+  return row;
+};
+
+const createFieldList = (dataObj, labelObj) => {
+  const keyList = Object.keys(dataObj);
+  const fieldList = keyList.map(key => {
+    const label = labelObj[key] ? labelObj[key] : key;
+    return [key, label, agencyData[key]];
+  });
+
+  return fieldList;
 };
 
 const viewBloc = (blocName, ...args) => {
@@ -58,6 +89,7 @@ $(document).ready(() => {
   }
 
   const formattedPhoneNum = phoneFormat(rowData.Telephone);
+
   viewBloc(
     "top-bloc",
     rowData.SEDID,
@@ -77,6 +109,8 @@ $(document).ready(() => {
   );
   viewBloc("bottom-bloc", rowData.CSD, rowData.CPD, rowData.CD);
   viewBloc("bottom-bloc", rowData.AD, rowData.SD);
+
+  console.log("createFieldList :", createFieldList(agencyData, rowLabels));
 
   //* Data bloc editing
   $("[title^='Click'").click(function() {
