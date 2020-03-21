@@ -18,6 +18,14 @@ const rowLabels = {
   AgencyEmail: "Email"
 };
 
+// Indexes needed for each bloc, in order
+const blocItems = {
+  topLeft: [2, 3, 4, 5, 12, 17],
+  topRight: [6, 7, 8, 9, 10, 18],
+  bottomLeft: [11, 13, 14],
+  bottomRight: [15, 16]
+};
+
 const createInputField = (
   keyVal,
   labelClassVal,
@@ -32,46 +40,39 @@ const createInputField = (
     </div>`;
 };
 
+const phoneFormat = str => {
+  return `${str.slice(0, 3)}-${str.slice(3, 6)}-${str.slice(6)}`;
+};
+
 const createRow = arr => {
-  let row = "";
-  for (let item of arr) {
-    row += `<tr class="table-row" id=${item[0]}>
-    <td class="row-label col-md-2">${item[1]}</td>
-    <td class="row-data col-md-3">${item[2]}</td>
+  const text = arr[0] === "Telephone" ? phoneFormat(arr[2]) : arr[2];
+  const row = `<tr class="table-row" id=${arr[0]}>
+      <td class="row-label col-md-2">${arr[1]}</td>
+      <td class="row-data col-md-3">${text}</td>
     </tr>`;
-  }
+
   return row;
 };
 
 const createFieldList = (dataObj, labelObj) => {
   const keyList = Object.keys(dataObj);
-  const fieldList = keyList.map(key => {
+
+  return keyList.map(key => {
     const label = labelObj[key] ? labelObj[key] : key;
     return [key, label, agencyData[key]];
   });
-
-  return fieldList;
 };
 
-const viewBloc = (blocName, ...args) => {
-  const rows = Array.from(args);
-  let fields = "";
-  for (let row of rows) {
-    fields += `<tr class="table-row">
-    <td class="row-label col-md-2">${row[0]}</td>
-    <td class="row-data col-md-3">${row[1]}</td>
-    </tr>`;
+const createBloc = (blocName, listIndex, listFields) => {
+  let blocRows = "";
+  for (let indx of listIndex) {
+    blocRows += createRow(listFields[indx]);
   }
-
-  $(`#${blocName}`).append(
-    `<div class="table-responsive col-md-6"><table>${fields}</table></div>`
-  );
-};
-
-const phoneFormat = arr => {
-  const str = arr[1];
-  const formattedStr = `${str.slice(0, 3)}-${str.slice(3, 6)}-${str.slice(6)}`;
-  return [arr[0], formattedStr];
+  return `<div class=" quarter-bloc col-md-6">
+      <table class="table-responsive" id="${blocName}">
+        ${blocRows}
+      </table>
+    </div>`;
 };
 
 $(document).ready(() => {
@@ -82,70 +83,61 @@ $(document).ready(() => {
   });
 
   // * data viewing
-  const rowData = {};
+  const listFields = createFieldList(agencyData, rowLabels);
+  let topBloc = "";
+  let bottomBloc = "";
 
-  for (let key in agencyData) {
-    rowData[key] = [rowLabels[key], agencyData[key]];
+  for (const key in blocItems) {
+    if (key.startsWith("top")) {
+      topBloc += createBloc(key, blocItems[key], listFields);
+    } else {
+      bottomBloc += createBloc(key, blocItems[key], listFields);
+    }
   }
 
-  const formattedPhoneNum = phoneFormat(rowData.Telephone);
-
-  viewBloc(
-    "top-bloc",
-    rowData.SEDID,
-    rowData.Division,
-    rowData.ProgramManager,
-    formattedPhoneNum,
-    rowData.AgencyEmail
-  );
-
-  const stateZip = ["State and ZIP", rowData.State[1] + " - " + rowData.Zip[1]];
-  viewBloc(
-    "top-bloc",
-    rowData.Address,
-    rowData.City,
-    stateZip,
-    rowData.PrepCode
-  );
-  viewBloc("bottom-bloc", rowData.CSD, rowData.CPD, rowData.CD);
-  viewBloc("bottom-bloc", rowData.AD, rowData.SD);
-
-  console.log("createFieldList :", createFieldList(agencyData, rowLabels));
+  $(".hero").append(`
+  <div class=" container row" id="top-bloc" title="Click to Edit">
+    ${topBloc}
+  </div>
+  <div class="separation"></div>
+  <div class="container row" id="bottom-bloc" title="Click to Edit">
+    ${bottomBloc}
+  </div>`);
 
   //* Data bloc editing
-  $("[title^='Click'").click(function() {
-    const listInputFields =
-      $(this).attr("id") === "top-bloc"
-        ? [
-            rowData.SEDID,
-            rowData.Division,
-            rowData.ProgramManager,
-            formattedPhoneNum,
-            rowData.AgencyEmail,
-            rowData.Address,
-            rowData.City,
-            rowData.State,
-            rowData.Zip,
-            rowData.PrepCode
-          ]
-        : [rowData.CSD, rowData.CPD, rowData.CD, rowData.AD, rowData.SD];
+  // $("[title^='Click'").click(function() {
+  //   const listInputFields =
+  //     $(this).attr("id") === "top-bloc"
+  //       ? [
+  //           rowData.SEDID,
+  //           rowData.Division,
+  //           rowData.ProgramManager,
+  //           formattedPhoneNum,
+  //           rowData.AgencyEmail,
+  //           rowData.Address,
+  //           rowData.City,
+  //           rowData.State,
+  //           rowData.Zip,
+  //           rowData.PrepCode
+  //         ]
+  //       : [rowData.CSD, rowData.CPD, rowData.CD, rowData.AD, rowData.SD];
 
-    $("#modalTopBloc").modal("toggle");
-    $(".modal-body form").remove();
-    $(".modal-body").append("<form></form>");
+  //   $("#modalTopBloc").modal("toggle");
+  //   $(".modal-body form").remove();
+  //   $(".modal-body").append("<form></form>");
 
-    for (let field of listInputFields) {
-      const key = field[0],
-        val = field[1],
-        indx = listInputFields.indexOf(field);
-      $(".modal-body>form").append(
-        `<div class="input-field">
-          <label for=${indx}>${key}</label>
-          <input type="text" id=${indx} value='${val}' required>
-        </div>`
-      );
-    }
-  });
+  //   for (let field of listInputFields) {
+  //     const key = field[0],
+  //       val = field[1],
+  //       indx = listInputFields.indexOf(field);
+  //     $(".modal-body>form").append(
+  //       `<div class="input-field">
+  //         <label for=${indx}>${key}</label>
+  //         <input type="text" id=${indx} value='${val}' required>
+  //       </div>`
+  //     );
+  //   }
+  // });
 
   //* Saving modified data while keeping track of original data
 });
