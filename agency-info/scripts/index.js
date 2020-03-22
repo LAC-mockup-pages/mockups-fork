@@ -73,7 +73,7 @@ const createBloc = (blocName, listIndex, listFields) => {
   for (let indx of listIndex) {
     blocRows += createRow(listFields[indx]);
   }
-  return `<div class=" quarter-bloc col-md-6">
+  return `<div class="quarter-bloc col-md-6">
       <table class="table-responsive" id="${blocName}">
         ${blocRows}
       </table>
@@ -93,8 +93,8 @@ const updateDataObject = obj => {
   return result;
 };
 
-const renderViewBloc = () => {
-  const obj = newAgencyData.ID ? newAgencyData : ag[0];
+const renderViewBloc = obj => {
+  // const obj = newAgencyData.ID ? newAgencyData : ag[0];
   const listFields = createFieldList(obj, rowLabels);
   const identifier = `${obj.ID}-${obj.AgencyID}`;
   let topBloc = "";
@@ -108,14 +108,14 @@ const renderViewBloc = () => {
     }
   }
 
-  $(".hero").append(`
-    <div class=" container row" id="top-bloc" title="Click to Edit" data-id=${identifier}>
+  return `
+    <div class="container row" id="top-bloc" title="Click to Edit" data-id="${identifier}">
       ${topBloc}
     </div>
     <div class="separation"></div>
-    <div class="container row" id="bottom-bloc" title="Click to Edit" data-id=${identifier}>
+    <div class="container row" id="bottom-bloc" title="Click to Edit" data-id="${identifier}">
       ${bottomBloc}
-    </div>`);
+    </div>`;
 };
 
 const saveMods = (evnt, elmnt) => {
@@ -124,20 +124,19 @@ const saveMods = (evnt, elmnt) => {
   const idList = id.split("-");
   let result = { ID: idList[0], AgencyID: idList[1] };
   const list = $(`#${id} input`).get();
-
   for (let row of list) {
     const key = $(row).attr("id");
     const val = key === "Telephone" ? phoneFormat($(row).val()) : $(row).val();
     result[key] = val;
   }
+  const updatedData = updateDataObject(result);
 
   //! Data object to send back to Database
-  console.log("JSON Object :", JSON.stringify(result));
+  console.log("JSON Object :", JSON.stringify(updatedData));
 
   $("#modalTopBloc").modal("toggle");
-  // $(".hero").empty();
+
   //TODO Update page with response from Database update
-  // renderViewBloc();
 };
 
 $(document).ready(() => {
@@ -149,7 +148,7 @@ $(document).ready(() => {
 
   // * data viewing
 
-  renderViewBloc();
+  $(".hero").append(renderViewBloc(agencyData));
 
   //* Data bloc editing
 
