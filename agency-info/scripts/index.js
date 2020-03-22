@@ -1,8 +1,10 @@
 //* Actions and logic
-
 //! Add a <script> element in index.js pointing to data.js, then:
 let agencyData = ag[0]; //! That is all that's needed
+let newAgencyData = {};
 
+//!
+// Labels used when DataObject keys need modifying
 const rowLabels = {
   SEDID: "SED ID",
   AgencyName: "Agency Name",
@@ -42,10 +44,8 @@ const createInputField = (
 
 const phoneFormat = str => {
   if (str.match(/\D/)) {
-    console.log("non digits removed");
     return str.replace(/\D/gi, "");
   } else {
-    console.log("Done ");
     return `${str.slice(0, 3)}-${str.slice(3, 6)}-${str.slice(6)}`;
   }
 };
@@ -81,6 +81,44 @@ const createBloc = (blocName, listIndex, listFields) => {
     </div>`;
 };
 
+const updateDataObject = obj => {
+  const result = {};
+  const listKeys = Object.keys(ag[0]);
+  for (let key of listKeys) {
+    if (!obj[key]) {
+      result[key] = ag[0][key];
+    } else {
+      result[key] = obj[key];
+    }
+  }
+  return result;
+};
+
+const renderViewBloc = () => {
+  const obj = newAgencyData.ID ? newAgencyData : ag[0];
+  const listFields = createFieldList(obj, rowLabels);
+  const identifier = `${obj.ID}-${obj.AgencyID}`;
+  let topBloc = "";
+  let bottomBloc = "";
+
+  for (const key in blocItems) {
+    if (key.startsWith("top")) {
+      topBloc += createBloc(key, blocItems[key], listFields);
+    } else {
+      bottomBloc += createBloc(key, blocItems[key], listFields);
+    }
+  }
+
+  $(".hero").append(`
+    <div class=" container row" id="top-bloc" title="Click to Edit" data-id=${identifier}>
+      ${topBloc}
+    </div>
+    <div class="separation"></div>
+    <div class="container row" id="bottom-bloc" title="Click to Edit" data-id=${identifier}>
+      ${bottomBloc}
+    </div>`);
+};
+
 const saveMods = (evnt, elmnt) => {
   evnt.stopPropagation();
   const id = $(elmnt).attr("id");
@@ -95,8 +133,12 @@ const saveMods = (evnt, elmnt) => {
   }
 
   //! Data object to send back to Database
-  console.log("result :", JSON.stringify(result));
+  console.log("JSON Object :", JSON.stringify(result));
+
   $("#modalTopBloc").modal("toggle");
+  // $(".hero").empty();
+
+  // renderViewBloc();
 };
 
 $(document).ready(() => {
@@ -107,27 +149,8 @@ $(document).ready(() => {
   });
 
   // * data viewing
-  const listFields = createFieldList(agencyData, rowLabels);
-  const identifier = `${agencyData.ID}-${agencyData.AgencyID}`;
-  let topBloc = "";
-  let bottomBloc = "";
 
-  for (const key in blocItems) {
-    if (key.startsWith("top")) {
-      topBloc += createBloc(key, blocItems[key], listFields);
-    } else {
-      bottomBloc += createBloc(key, blocItems[key], listFields);
-    }
-  }
-
-  $(".hero").append(`
-  <div class=" container row" id="top-bloc" title="Click to Edit" data-id=${identifier}>
-    ${topBloc}
-  </div>
-  <div class="separation"></div>
-  <div class="container row" id="bottom-bloc" title="Click to Edit" data-id=${identifier}>
-    ${bottomBloc}
-  </div>`);
+  renderViewBloc();
 
   //* Data bloc editing
 
