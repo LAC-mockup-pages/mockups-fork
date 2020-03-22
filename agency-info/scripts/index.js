@@ -107,7 +107,8 @@ $(document).ready(() => {
 
   //* Data bloc editing
 
-  $("[title^='Click'").click(function() {
+  $("[title^='Click'").click(function(event) {
+    event.stopPropagation();
     $("#modalTopBloc").modal("toggle");
     $(".modal-body form").remove();
 
@@ -115,6 +116,7 @@ $(document).ready(() => {
     const blocId = $(this).attr("id");
     const listRows = $.makeArray($(`#${blocId} .table-row`).get());
     let i = 0;
+    const nestedListValues = [];
     let modalBloc = "";
 
     const listValues = $.map(listRows, function(row) {
@@ -124,42 +126,18 @@ $(document).ready(() => {
       const value = $(rowData[1]).text();
       return [rowId, label, value];
     });
-    const nestedListValues = [];
     while (i < listValues.length) {
       nestedListValues.push(listValues.slice(0 + i, 3 + i));
       i += 3;
     }
+    for (let item of nestedListValues) {
+      modalBloc += createInputField(item[0], item[1], item[2]);
+    }
+
+    $(".modal-body").append(
+      `<form role="form" id="${blocDataId}">${modalBloc}</form>`
+    );
   });
-  //   const listInputFields =
-  //     $(this).attr("id") === "top-bloc"
-  //       ? [
-  //           rowData.SEDID,
-  //           rowData.Division,
-  //           rowData.ProgramManager,
-  //           formattedPhoneNum,
-  //           rowData.AgencyEmail,
-  //           rowData.Address,
-  //           rowData.City,
-  //           rowData.State,
-  //           rowData.Zip,
-  //           rowData.PrepCode
-  //         ]
-  //       : [rowData.CSD, rowData.CPD, rowData.CD, rowData.AD, rowData.SD];
-
-  //   $(".modal-body").append("<form></form>");
-
-  //   for (let field of listInputFields) {
-  //     const key = field[0],
-  //       val = field[1],
-  //       indx = listInputFields.indexOf(field);
-  //     $(".modal-body>form").append(
-  //       `<div class="input-field">
-  //         <label for=${indx}>${key}</label>
-  //         <input type="text" id=${indx} value='${val}' required>
-  //       </div>`
-  //     );
-  //   }
-  // });
 
   //* Saving modified data while keeping track of original data
 });

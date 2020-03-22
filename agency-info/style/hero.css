@@ -13,9 +13,15 @@ body {
 .quarter-bloc {
   padding: 0 2%;
 }
+
 .table-row {
   line-height: 45px;
   color: #283838;
+}
+
+.close {
+  color: red;
+  font-size: 3em;
 }
 
 .separation {
