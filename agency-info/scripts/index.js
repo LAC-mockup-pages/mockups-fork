@@ -28,11 +28,11 @@ const blocItems = {
 
 const createInputField = (
   keyVal,
-  labelClassVal,
   labelVal,
-  classVal,
   value,
-  option
+  labelClassVal = "",
+  classVal = "",
+  option = ""
 ) => {
   return `<div class="input-field">
     <label for='${keyVal}' class='${labelClassVal}'>${labelVal}</label>
@@ -84,6 +84,7 @@ $(document).ready(() => {
 
   // * data viewing
   const listFields = createFieldList(agencyData, rowLabels);
+  const identifier = `${agencyData.ID}-${agencyData.AgencyID}`;
   let topBloc = "";
   let bottomBloc = "";
 
@@ -96,16 +97,39 @@ $(document).ready(() => {
   }
 
   $(".hero").append(`
-  <div class=" container row" id="top-bloc" title="Click to Edit">
+  <div class=" container row" id="top-bloc" title="Click to Edit" data-id=${identifier}>
     ${topBloc}
   </div>
   <div class="separation"></div>
-  <div class="container row" id="bottom-bloc" title="Click to Edit">
+  <div class="container row" id="bottom-bloc" title="Click to Edit" data-id=${identifier}>
     ${bottomBloc}
   </div>`);
 
   //* Data bloc editing
-  // $("[title^='Click'").click(function() {
+
+  $("[title^='Click'").click(function() {
+    $("#modalTopBloc").modal("toggle");
+    $(".modal-body form").remove();
+
+    const blocDataId = $(this).attr("data-id");
+    const blocId = $(this).attr("id");
+    const listRows = $.makeArray($(`#${blocId} .table-row`).get());
+    let i = 0;
+    let modalBloc = "";
+
+    const listValues = $.map(listRows, function(row) {
+      const rowId = $(row).attr("id");
+      const rowData = $(`#${rowId} td`).get();
+      const label = $(rowData[0]).text();
+      const value = $(rowData[1]).text();
+      return [rowId, label, value];
+    });
+    const nestedListValues = [];
+    while (i < listValues.length) {
+      nestedListValues.push(listValues.slice(0 + i, 3 + i));
+      i += 3;
+    }
+  });
   //   const listInputFields =
   //     $(this).attr("id") === "top-bloc"
   //       ? [
@@ -122,8 +146,6 @@ $(document).ready(() => {
   //         ]
   //       : [rowData.CSD, rowData.CPD, rowData.CD, rowData.AD, rowData.SD];
 
-  //   $("#modalTopBloc").modal("toggle");
-  //   $(".modal-body form").remove();
   //   $(".modal-body").append("<form></form>");
 
   //   for (let field of listInputFields) {
