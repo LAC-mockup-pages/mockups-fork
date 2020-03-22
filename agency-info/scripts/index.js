@@ -136,7 +136,7 @@ const saveMods = (evnt, elmnt) => {
 
   $("#modalTopBloc").modal("toggle");
   // $(".hero").empty();
-
+  //TODO Update page with response from Database update
   // renderViewBloc();
 };
 
