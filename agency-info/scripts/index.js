@@ -1,7 +1,7 @@
 //* Actions and logic
 
 //! Add a <script> element in index.js pointing to data.js, then:
-const agencyData = ag[0]; //! That is all that's needed
+let agencyData = ag[0]; //! That is all that's needed
 
 const rowLabels = {
   SEDID: "SED ID",
@@ -41,7 +41,13 @@ const createInputField = (
 };
 
 const phoneFormat = str => {
-  return `${str.slice(0, 3)}-${str.slice(3, 6)}-${str.slice(6)}`;
+  if (str.match(/\D/)) {
+    console.log("non digits removed");
+    return str.replace(/\D/gi, "");
+  } else {
+    console.log("Done ");
+    return `${str.slice(0, 3)}-${str.slice(3, 6)}-${str.slice(6)}`;
+  }
 };
 
 const createRow = arr => {
@@ -73,6 +79,24 @@ const createBloc = (blocName, listIndex, listFields) => {
         ${blocRows}
       </table>
     </div>`;
+};
+
+const saveMods = (evnt, elmnt) => {
+  evnt.stopPropagation();
+  const id = $(elmnt).attr("id");
+  const idList = id.split("-");
+  let result = { ID: idList[0], AgencyID: idList[1] };
+  const list = $(`#${id} input`).get();
+
+  for (let row of list) {
+    const key = $(row).attr("id");
+    const val = key === "Telephone" ? phoneFormat($(row).val()) : $(row).val();
+    result[key] = val;
+  }
+
+  //! Data object to send back to Database
+  console.log("result :", JSON.stringify(result));
+  $("#modalTopBloc").modal("toggle");
 };
 
 $(document).ready(() => {
@@ -107,7 +131,7 @@ $(document).ready(() => {
 
   //* Data bloc editing
 
-  $("[title^='Click'").click(function(event) {
+  $("[title^='Click']").click(function(event) {
     event.stopPropagation();
     $("#modalTopBloc").modal("toggle");
     $(".modal-body form").remove();
@@ -140,4 +164,10 @@ $(document).ready(() => {
   });
 
   //* Saving modified data while keeping track of original data
+
+  // $("#save-button").on("click", function(event) {
+  //   event.stopPropagation();
+
+  //   console.log("click working", $(this).attr("id"));
+  // });
 });

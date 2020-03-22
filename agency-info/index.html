@@ -273,7 +273,13 @@
             <button type="button" class="btn btn-default" data-dismiss="modal">
               Close
             </button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal">
+            <button
+              type="button"
+              class="btn btn-primary"
+              id="save-button"
+              onclick="saveMods(event, document.querySelector('form'))"
+              data-dismiss="modal"
+            >
               Save changes
             </button>
           </div>
