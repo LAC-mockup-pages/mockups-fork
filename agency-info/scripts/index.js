@@ -185,12 +185,4 @@ $(document).ready(() => {
       `<form role="form" id="${blocDataId}">${modalBloc}</form>`
     );
   });
-
-  //* Saving modified data while keeping track of original data
-
-  // $("#save-button").on("click", function(event) {
-  //   event.stopPropagation();
-
-  //   console.log("click working", $(this).attr("id"));
-  // });
 });
