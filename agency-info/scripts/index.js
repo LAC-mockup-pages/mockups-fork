@@ -1,8 +1,11 @@
 //* Actions and logic
+
 //! Add a <script> element in index.js pointing to data.js, then:
 let agencyData = ag[0]; //! That is all that's needed
 let newAgencyData = {};
 
+//! NB: Objects rowLabels and blocItems will need to be
+//! modified if the Data fields from server are modified
 // Labels used when DataObject keys need modifying
 const rowLabels = {
   SEDID: "SED ID",
@@ -94,7 +97,6 @@ const updateDataObject = obj => {
 };
 
 const renderViewBloc = obj => {
-  // const obj = newAgencyData.ID ? newAgencyData : ag[0];
   const listFields = createFieldList(obj, rowLabels);
   const identifier = `${obj.ID}-${obj.AgencyID}`;
   let topBloc = "";
