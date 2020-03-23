@@ -1,5 +1,6 @@
 // Actions and logic
 
+const agencyData = agencyDataFund;
 let updatedAgencyDataFund = {};
 
 const headerList = [
@@ -11,6 +12,13 @@ const headerList = [
   "Contrat / Grant #",
   "Purpose"
 ];
+
+const rowLabels = {
+  FundAbbrev: "Source Name",
+  FundStart: "Begin Date",
+  FundEnd: "End Date",
+  FundNumber: "Contrat / Grant #"
+};
 
 const createFiscalYear = str => {
   const date = new Date(str);
@@ -87,7 +95,7 @@ $(document).ready(() => {
   });
 
   // * data viewing
-  $("tbody").append(viewData(agencyDataFund));
+  $("tbody").append(viewData(agencyData));
 
   //* Adding a new funding source
 
