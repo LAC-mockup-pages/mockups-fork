@@ -14,7 +14,7 @@ const createInputField = (
     </div>`;
 };
 
-// Converts 0000000000 in 000-000-0000 and vice-versa
+// Converts 0000000000 to 000-000-0000 and vice-versa
 const phoneFormat = str => {
   if (str.match(/\D/)) {
     return str.replace(/\D/gi, "");
