@@ -30,29 +30,8 @@ const blocItems = {
   bottomRight: [15, 16]
 };
 
-const createInputField = (
-  keyVal,
-  labelVal,
-  value,
-  labelClassVal = "",
-  classVal = "",
-  option = ""
-) => {
-  return `<div class="input-field">
-    <label for='${keyVal}' class='${labelClassVal}'>${labelVal}</label>
-    <input type="text" id='${keyVal}' class='${classVal}' value='${value}' ${option}>
-    </div>`;
-};
-
-const phoneFormat = str => {
-  if (str.match(/\D/)) {
-    return str.replace(/\D/gi, "");
-  } else {
-    return `${str.slice(0, 3)}-${str.slice(3, 6)}-${str.slice(6)}`;
-  }
-};
-
 const createRow = arr => {
+  // phoneFormat() <== helpers.js
   const text = arr[0] === "Telephone" ? phoneFormat(arr[2]) : arr[2];
   const row = `<tr class="table-row" id=${arr[0]}>
       <td class="row-label col-md-2">${arr[1]}</td>
@@ -60,15 +39,6 @@ const createRow = arr => {
     </tr>`;
 
   return row;
-};
-
-const createFieldList = (dataObj, labelObj) => {
-  const keyList = Object.keys(dataObj);
-
-  return keyList.map(key => {
-    const label = labelObj[key] ? labelObj[key] : key;
-    return [key, label, agencyData[key]];
-  });
 };
 
 const createBloc = (blocName, listIndex, listFields) => {
@@ -83,20 +53,8 @@ const createBloc = (blocName, listIndex, listFields) => {
     </div>`;
 };
 
-const updateDataObject = obj => {
-  const result = {};
-  const listKeys = Object.keys(ag[0]);
-  for (let key of listKeys) {
-    if (!obj[key]) {
-      result[key] = ag[0][key];
-    } else {
-      result[key] = obj[key];
-    }
-  }
-  return result;
-};
-
 const renderViewBloc = obj => {
+  // createFieldList() <== helpers.js
   const listFields = createFieldList(obj, rowLabels);
   const identifier = `${obj.ID}-${obj.AgencyID}`;
   let topBloc = "";
@@ -128,10 +86,13 @@ const saveMods = (evnt, elmnt) => {
   const list = $(`#${id} input`).get();
   for (let row of list) {
     const key = $(row).attr("id");
+    // phoneFormat() <== helpers.js
     const val = key === "Telephone" ? phoneFormat($(row).val()) : $(row).val();
     result[key] = val;
   }
-  const updatedData = updateDataObject(result);
+
+  // updateDataObject() <== helpers.js
+  const updatedData = updateDataObject(result, agencyData);
 
   //! Data object to send back to Database
   console.log("JSON Object :", JSON.stringify(updatedData));
@@ -178,6 +139,7 @@ $(document).ready(() => {
       i += 3;
     }
     for (let item of nestedListValues) {
+      // createInputField() <== helpers.js
       modalBloc += createInputField(item[0], item[1], item[2]);
     }
 
