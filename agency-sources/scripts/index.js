@@ -1,5 +1,6 @@
 // Actions and logic
 
+const agencyData = agencyDataFund;
 let updatedAgencyDataFund = {};
 
 const headerList = [
@@ -99,7 +100,7 @@ $(document).ready(() => {
   });
 
   // * data viewing
-  $("tbody").append(viewData(agencyDataFund));
+  $("tbody").append(viewData(agencyData));
 
   //* Adding a new funding source
 
