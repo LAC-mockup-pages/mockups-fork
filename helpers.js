@@ -30,7 +30,7 @@ const createFieldList = (dataObj, labelObj) => {
 
   return keyList.map(key => {
     const label = labelObj[key] ? labelObj[key] : key;
-    return [key, label, agencyData[key]];
+    return [key, label, dataObj[key]];
   });
 };
 
