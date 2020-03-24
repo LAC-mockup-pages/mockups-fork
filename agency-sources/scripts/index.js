@@ -12,6 +12,18 @@ const headerList = [
   "Purpose"
 ];
 
+const rowLabels = {
+  FundAbbrev: "Source Name",
+  FundStart: "Begin Date",
+  FundEnd: "End Date",
+  FundNumber: "Contrat / Grant #"
+};
+
+// Indexes needed for each bloc, in order
+const blocItems = {
+  viewBloc: [3, 4, 7, 8, 6, 5]
+};
+
 const createFiscalYear = str => {
   const date = new Date(str);
   return date.getFullYear();
