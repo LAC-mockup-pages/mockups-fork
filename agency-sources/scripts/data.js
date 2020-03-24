@@ -1,3 +1,7 @@
+//* Fetching data from .NET / SQL Server back-end 
+//* Sending updated data to back-end
+    
+    
     const agencyDataFund =   [
                     {"ID":"10481","AgencyID":"PRA","FSID":"DYADL","FundAbbrev":"Adolescent Literacy DYCD","Amount":"","Purpose":"","FundNumber":"","FundStart":"7/1/2019 12:00:00 AM","FundEnd":"6/30/2020 12:00:00 AM"},
                     {"ID":"10498","AgencyID":"PRA","FSID":"L","FundAbbrev":"ALE - Adult Literacy Edu","Amount":"1000.00","Purpose":"NYC DYCD","FundNumber":"a34-347857","FundStart":"7/1/2019 12:00:00 AM","FundEnd":"6/30/2020 12:00:00 AM"},
