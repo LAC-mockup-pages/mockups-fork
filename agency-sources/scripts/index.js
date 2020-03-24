@@ -54,7 +54,41 @@ const dateFormat = str => {
   return `${month}/${day}/${date.getFullYear()}`;
 };
 
+const createTableHeader = (list, orderList) => {
+  // Create the list without the first 3 items which
+  // are identifiers used in the data view
+  const headers = list[0].map(item => item[1]).slice(3);
+  const headerLine = orderList
+    .map(indx => `<th>${headers[indx - 3]}</th>`)
+    .reduce((bloc, item) => {
+      return bloc + item;
+    });
+
+  return `<table class="table">
+  <thead>
+    <tr>
+      ${headerLine}
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>`;
+};
+
+const createDataList = (dataObj, labelObj) => {
+  const list = dataObj.map(item => {
+    // createFieldList <== helpers.js
+    return createFieldList(item, labelObj);
+  });
+
+  console.log("list :", list);
+  return list;
+};
+
 const viewData = sources => {
+  const listSources = createDataList(agencyData, rowLabels);
+
+  $(".view-sources").append(createTableHeader(listSources, blocItems.viewBloc));
+
   let bodyBloc = "";
   for (let item of sources) {
     const ID = item.ID;
