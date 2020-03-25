@@ -30,8 +30,41 @@ const createFieldList = (dataObj, labelObj) => {
 
   return keyList.map(key => {
     const label = labelObj[key] ? labelObj[key] : key;
-    return [key, label, agencyData[key]];
+    return [key, label, dataObj[key]];
   });
+};
+
+// Returns the year of a string date
+const createFiscalYear = str => {
+  const date = new Date(str);
+  return date.getFullYear();
+};
+
+// Returns amount with $ 000000.00 format
+const currencyFormat = str => {
+  return !str
+    ? ""
+    : "$ " +
+        Number(str)
+          .toFixed(0)
+          .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+};
+
+// Returns a string date formatted MM/DD/YYYY with 0 if day or month
+// is 1 digit.
+const dateFormat = str => {
+  const date = new Date(str);
+  const month =
+    date.getMonth() < 9
+      ? "0" + (date.getMonth() + 1).toString()
+      : (date.getMonth() + 1).toString();
+
+  const day =
+    date.getDate() < 10
+      ? "0" + date.getDate().toString()
+      : date.getDate().toString();
+
+  return `${month}/${day}/${date.getFullYear()}`;
 };
 
 // Creates a JS Object from 1 object result of processing page elements
