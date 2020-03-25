@@ -20,7 +20,7 @@ const rowLabels = {
   FundNumber: "Contrat / Grant #"
 };
 
-// Indexes needed for each bloc, in order
+// Indexes needed for header lone and data viewing bloc, in order
 const blocItems = {
   viewBloc: [3, 4, 7, 8, 6, 5]
 };
@@ -55,7 +55,7 @@ const dateFormat = str => {
 };
 
 const createTableHeader = (list, orderList) => {
-  // Create the list without the first 3 items which
+  // Creates the list without the first 3 items which
   // are identifiers used in the data view
   const headers = list[0].map(item => item[1]).slice(3);
   const headerLine = orderList
