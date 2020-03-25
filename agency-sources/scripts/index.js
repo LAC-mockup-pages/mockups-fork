@@ -25,35 +25,6 @@ const blocItems = {
   viewBloc: [3, 4, 7, 8, 6, 5]
 };
 
-const createFiscalYear = str => {
-  const date = new Date(str);
-  return date.getFullYear();
-};
-
-const currencyFormat = str => {
-  return !str
-    ? ""
-    : "$ " +
-        Number(str)
-          .toFixed(0)
-          .replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
-};
-
-const dateFormat = str => {
-  const date = new Date(str);
-  const month =
-    date.getMonth() < 9
-      ? "0" + (date.getMonth() + 1).toString()
-      : (date.getMonth() + 1).toString();
-
-  const day =
-    date.getDate() < 10
-      ? "0" + date.getDate().toString()
-      : date.getDate().toString();
-
-  return `${month}/${day}/${date.getFullYear()}`;
-};
-
 const createTableHeader = (list, orderList) => {
   // Creates the list without the first 3 items which
   // are identifiers used in the data view
