@@ -47,7 +47,7 @@ const createTableHeader = (list, orderList) => {
 
 const createDataList = (dataObj, labelObj) => {
   const list = dataObj.map(item => {
-    // createFieldList <== helpers.js
+    // createFieldList <== helperFunction.js
     return createFieldList(item, labelObj);
   });
 
@@ -68,10 +68,13 @@ const viewData = sources => {
     const Amount = item.Amount;
     const Purpose = item.Purpose;
     const FundNumber = item.FundNumber;
+
+    // dateFormat, createFiscalYear <== helperFunction.js
     const FundStart = dateFormat(item.FundStart);
     const FundEnd = dateFormat(item.FundEnd);
     const fiscalYear = createFiscalYear(FundEnd);
 
+    // currencyFormat <== helperFunction.js
     bodyBloc += `
     <tr class="table-row" title="Click to Edit" data-source-id=${ID}-${FSID}>
         <td>${FundAbbrev}</td>
