@@ -45,59 +45,41 @@ const createTableHeader = (list, orderList) => {
 </table>`;
 };
 
+const createTableBody = (dataList, orderList) => {
+  let rows = "";
+  for (let source of dataList) {
+    const identifier = source
+      .slice(0, 3)
+      .map(arr => arr[2])
+      .join("-");
+    let row = "";
+
+    for (let indx of orderList) {
+      const className = source[indx][0];
+      let text = source[indx][2];
+
+      // dateFormat, currencyFormat <== helperFunction.js
+      if (["FundStart", "FundEnd"].includes(className)) text = dateFormat(text);
+      if (className === "Amount") text = currencyFormat(text);
+      row += `<td class=${className}>${text}</td>`;
+    }
+    rows += `<tr id=${identifier}>${row}</tr>`;
+  }
+  return rows;
+};
+
 const createDataList = (dataObj, labelObj) => {
   const list = dataObj.map(item => {
     // createFieldList <== helperFunction.js
     return createFieldList(item, labelObj);
   });
-
-  console.log("list :", list);
   return list;
 };
 
-const viewData = sources => {
-  const listSources = createDataList(agencyData, rowLabels);
-
-  $(".view-sources").append(createTableHeader(listSources, blocItems.viewBloc));
-
-  let bodyBloc = "";
-  for (let item of sources) {
-    const ID = item.ID;
-    const FSID = item.FSID;
-    const FundAbbrev = item.FundAbbrev;
-    const Amount = item.Amount;
-    const Purpose = item.Purpose;
-    const FundNumber = item.FundNumber;
-
-    // dateFormat, createFiscalYear <== helperFunction.js
-    const FundStart = dateFormat(item.FundStart);
-    const FundEnd = dateFormat(item.FundEnd);
-    const fiscalYear = createFiscalYear(FundEnd);
-
-    // currencyFormat <== helperFunction.js
-    bodyBloc += `
-    <tr class="table-row" title="Click to Edit" data-source-id=${ID}-${FSID}>
-        <td>${FundAbbrev}</td>
-        <td>${currencyFormat(Amount)}</td>
-        <td class="date">${FundStart}</td>
-        <td class="date">${FundEnd}</td>
-        <td class="fiscalYear">${fiscalYear}</td>
-        <td>${FundNumber}</td>
-        <td class="purpose">${Purpose}</td>
-    </tr>`;
-  }
-  return bodyBloc;
-};
-
-const createListFields = row => {
-  const sourceName = Object.keys(agencyDataFund)[row];
-  const listValues = Object.keys(agencyDataFund[sourceName]).map(
-    key => agencyDataFund[sourceName][key]
-  );
-  // listValues.push(CurrentFY);
-  listValues.unshift(sourceName);
-  console.log("listValues :", listValues);
-  return headerList.map((item, indx) => [item, listValues[indx]]);
+const viewData = (sourcesList, labelsList, orderList) => {
+  const listSources = createDataList(sourcesList, labelsList);
+  $(".view-sources").append(createTableHeader(listSources, orderList));
+  $("tbody").append(createTableBody(listSources, orderList));
 };
 
 $(document).ready(() => {
@@ -108,7 +90,7 @@ $(document).ready(() => {
   });
 
   // * data viewing
-  $("tbody").append(viewData(agencyData));
+  viewData(agencyData, rowLabels, blocItems.viewBloc);
 
   //* Adding a new funding source
 
