@@ -99,6 +99,7 @@ $(document).ready(() => {
   //* Adding a new funding source
 
   //* Select funding source
+
   $("[title^='Click'").click(function(evnt) {
     evnt.stopPropagation();
     $("#modalBloc").modal("toggle");
