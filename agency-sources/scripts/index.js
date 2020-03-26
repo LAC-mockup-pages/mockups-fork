@@ -17,12 +17,13 @@ const rowLabels = {
   FundAbbrev: "Source Name",
   FundStart: "Begin Date",
   FundEnd: "End Date",
-  FundNumber: "Contrat / Grant #"
+  FundNumber: "Contrat / Grant #",
+  FiscalYear: "Fiscal Year"
 };
 
 // Indexes needed for header lone and data viewing bloc, in order
 const blocItems = {
-  viewBloc: [3, 4, 7, 8, 6, 5]
+  viewBloc: [3, 4, 7, 8, 9, 6, 5]
 };
 
 const createTableHeader = (list, orderList) => {
@@ -63,16 +64,23 @@ const createTableBody = (dataList, orderList) => {
       if (className === "Amount") text = currencyFormat(text);
       row += `<td class=${className}>${text}</td>`;
     }
-    rows += `<tr id=${identifier}>${row}</tr>`;
+    rows += `<tr id=${identifier} title="Click to Edit">${row}</tr>`;
   }
   return rows;
 };
 
-const createDataList = (dataObj, labelObj) => {
-  const list = dataObj.map(item => {
-    // createFieldList <== helperFunction.js
-    return createFieldList(item, labelObj);
-  });
+const createDataList = (dataObj, labelObj, newField) => {
+  const list = dataObj
+    .map(item => {
+      // createFieldList <== helperFunction.js
+      return createFieldList(item, labelObj, newField);
+    })
+    .map(item => {
+      // createFiscalYear <== helperFunction.js
+      const fy = createFiscalYear(item[8][2]);
+      item.push(["FiscalYear", labelObj.FiscalYear, fy]);
+      return item;
+    });
   return list;
 };
 
@@ -90,37 +98,25 @@ $(document).ready(() => {
   });
 
   // * data viewing
+
   viewData(agencyData, rowLabels, blocItems.viewBloc);
 
   //* Adding a new funding source
 
   //* Select funding source
-  $("[title^='Click'").click(function() {
-    const rowIndx = $(this)[0].rowIndex - 1;
-
-    const listFields = createListFields(rowIndx);
-
-    $("#modalBloc").modal("toggle");
+  $("[title^='Click'").click(function(evnt) {
+    evnt.stopPropagation();
+    $("#modalTopBloc").modal("toggle");
     $(".modal-body form").remove();
-    $(".modal-body").append("<form id='modal-form'></form>");
 
-    for (field of listFields) {
-      const key = field[0],
-        val = field[1],
-        indx = listFields.indexOf(field);
+    const sourceId = $(this).attr("id");
 
-      let option = "";
+    const tdList = $.makeArray($(`#${sourceId} td`).get());
+    console.log("tdList :", tdList);
 
-      if (!indx) option = "disabled";
-      if ([1, 3, 4].includes(indx)) option = "required";
-
-      $(".modal-body>form").append(
-        `<div class="input-field">
-          <label for=${indx}>${key}</label>
-          <input type="text" id=${indx} value='${val}' ${option}>
-        </div>`
-      );
-    }
+    const result = tdList.map(item => {
+      return createInputField($(item).attr("id"));
+    });
   });
 
   //* Deleting source
