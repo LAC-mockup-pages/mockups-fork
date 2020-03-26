@@ -3,16 +3,6 @@
 const agencyData = agencyDataFund;
 let updatedAgencyDataFund = {};
 
-const headerList = [
-  "Label",
-  "Source Name",
-  "Amount",
-  "Begin Date",
-  "End Date",
-  "Contrat / Grant #",
-  "Purpose"
-];
-
 const rowLabels = {
   FundAbbrev: "Source Name",
   FundStart: "Begin Date",
@@ -24,6 +14,10 @@ const rowLabels = {
 // Indexes needed for header lone and data viewing bloc, in order
 const blocItems = {
   viewBloc: [3, 4, 7, 8, 9, 6, 5]
+};
+
+const rowOptionModal = {
+  FiscalYear: "disabled"
 };
 
 const createTableHeader = (list, orderList) => {
@@ -58,11 +52,12 @@ const createTableBody = (dataList, orderList) => {
     for (let indx of orderList) {
       const className = source[indx][0];
       let text = source[indx][2];
+      const label = source[indx][1];
 
       // dateFormat, currencyFormat <== helperFunction.js
       if (["FundStart", "FundEnd"].includes(className)) text = dateFormat(text);
       if (className === "Amount") text = currencyFormat(text);
-      row += `<td class=${className}>${text}</td>`;
+      row += `<td class=${className} data-label="${label}">${text}</td>`;
     }
     rows += `<tr id=${identifier} title="Click to Edit">${row}</tr>`;
   }
@@ -106,17 +101,25 @@ $(document).ready(() => {
   //* Select funding source
   $("[title^='Click'").click(function(evnt) {
     evnt.stopPropagation();
-    $("#modalTopBloc").modal("toggle");
+    $("#modalBloc").modal("toggle");
     $(".modal-body form").remove();
 
     const sourceId = $(this).attr("id");
-
     const tdList = $.makeArray($(`#${sourceId} td`).get());
-    console.log("tdList :", tdList);
+    const result = tdList
+      .map(item => {
+        const id = $(item).attr("class");
+        const label = $(item).attr("data-label");
+        const text = $(item).text();
+        const option = rowOptionModal[id] ? rowOptionModal[id] : "";
+        // createInputField() <== helperFunction.js
+        return createInputField(id, label, text, "", "", option);
+      })
+      .join("");
 
-    const result = tdList.map(item => {
-      return createInputField($(item).attr("id"));
-    });
+    $(".modal-body").append(
+      `<form role="form" id="${sourceId}">${result}</form>`
+    );
   });
 
   //* Deleting source
