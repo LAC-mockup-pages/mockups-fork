@@ -1,7 +1,6 @@
 // Actions and logic
 
 const agencyData = agencyDataFund;
-let updatedAgencyDataFund = {};
 
 const rowLabels = {
   FundAbbrev: "Source Name",
@@ -16,6 +15,7 @@ const blocItems = {
   viewBloc: [3, 4, 7, 8, 9, 6, 5]
 };
 
+// Style options for modal
 const rowOptionModal = {
   FundAbbrev: "disabled",
   FiscalYear: "disabled"
@@ -92,6 +92,7 @@ const saveMods = (evnt, elmnt) => {
   for (let row of list) {
     const key = $(row).attr("id");
     let val = $(row).val();
+
     // Removes currency format
     if (key === "Amount") val = val.replace(/[$,\s]/g, "");
     result[key] = val;
@@ -139,6 +140,7 @@ $(document).ready(() => {
         const label = $(item).attr("data-label");
         const text = $(item).text();
         const option = rowOptionModal[id] ? rowOptionModal[id] : "";
+
         // createInputField() <== helperFunction.js
         return createInputField(id, label, text, "", "", option);
       })
@@ -178,6 +180,8 @@ $(document).ready(() => {
         "type : ",
         typeof sourceId
       );
+
+      $("#modalBloc").modal("toggle");
     }
   });
 });
