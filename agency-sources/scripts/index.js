@@ -17,6 +17,7 @@ const blocItems = {
 };
 
 const rowOptionModal = {
+  FundAbbrev: "disabled",
   FiscalYear: "disabled"
 };
 
@@ -86,7 +87,7 @@ const saveMods = (evnt, elmnt) => {
   let result = { ID: idList[0], AgencyID: idList[1], FSID: idList[2] };
   const list = $(`.modal-body>form input`)
     .get()
-    .filter(item => $(item).attr("id") !== "FiscalYear");
+    .filter(item => $(item).attr("id") !== ("FiscalYear", "FundAbbrev"));
 
   for (let row of list) {
     const key = $(row).attr("id");
@@ -149,7 +150,8 @@ $(document).ready(() => {
   });
 
   //* Deleting source
-  $("#delete-btn").click(() => {
+  $("#delete-btn").click(evnt => {
+    evnt.stopPropagation();
     const deleteConfirm = $(".modal-footer>h3");
 
     if (deleteConfirm.length === 0) {
@@ -158,14 +160,24 @@ $(document).ready(() => {
       );
     } else {
       deleteConfirm.remove();
-      const sourceId = $(".modal-body>form")
+      const valueList = $(".modal-body>form")
         .attr("id")
-        .split("-")[0];
+        .split("-");
+      const length = valueList.length;
+      let sourceId = {};
+      let keyList = ["ID", "AgencyID", "FSID"];
+      for (let i = 0; i < length; i++) {
+        sourceId[keyList[i]] = valueList[i];
+      }
 
-      //! sourceId is the string to send back to delete record in database
+      //! sourceId is the object to send back to delete record in database
       //! then update page with response data object.
-
-      console.log("sourceId :", sourceId, typeof sourceId);
+      console.log(
+        "sourceId :",
+        JSON.stringify(sourceId),
+        "type : ",
+        typeof sourceId
+      );
     }
   });
 });
