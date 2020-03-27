@@ -161,10 +161,11 @@ $(document).ready(() => {
       const sourceId = $(".modal-body>form")
         .attr("id")
         .split("-")[0];
-      console.log("sourceId :", sourceId, typeof sourceId);
 
       //! sourceId is the string to send back to delete record in database
       //! then update page with response data object.
+
+      console.log("sourceId :", sourceId, typeof sourceId);
     }
   });
 });
