@@ -79,6 +79,31 @@ const createDataList = (dataObj, labelObj, newField) => {
   return list;
 };
 
+const saveMods = (evnt, elmnt) => {
+  evnt.stopPropagation();
+  const id = $(elmnt).attr("id");
+  const idList = id.split("-");
+  let result = { ID: idList[0], AgencyID: idList[1], FSID: idList[2] };
+  const list = $(`.modal-body>form input`)
+    .get()
+    .filter(item => $(item).attr("id") !== "FiscalYear");
+
+  for (let row of list) {
+    const key = $(row).attr("id");
+    let val = $(row).val();
+    // Removes currency format
+    if (key === "Amount") val = val.replace(/[$,\s]/g, "");
+    result[key] = val;
+  }
+
+  //! Data object to send back to Database
+  console.log("JSON Object :", JSON.stringify(result));
+
+  $("#modalTopBloc").modal("toggle");
+
+  //TODO Update page with response from Database update
+};
+
 const viewData = (sourcesList, labelsList, orderList) => {
   const listSources = createDataList(sourcesList, labelsList);
   $(".view-sources").append(createTableHeader(listSources, orderList));
