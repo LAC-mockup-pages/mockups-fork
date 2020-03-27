@@ -1,6 +1,7 @@
 // Actions and logic
 
 const agencyData = agencyDataFund;
+const sourcesData = fundingData;
 
 const rowLabels = {
   FundAbbrev: "Source Name",
@@ -19,6 +20,28 @@ const blocItems = {
 const rowOptionModal = {
   FundAbbrev: "disabled",
   FiscalYear: "disabled"
+};
+
+const createNewSourceForm = (localList, selectList) => {
+  const listOption = selectList.map(item => {
+    return `<option class="form-control" value="${item.FSID}">${item.FundAbbrev}</option>`;
+  });
+  const selectElement =
+    "<select id='source-select'>" + listOption + "</select>";
+
+  const listInput = localList[0]
+    .slice(4, 9)
+    .map(item => {
+      return `<input
+    type="text"
+    class="form-control"
+    placeholder="${item[1]}"
+    name="${item[0]}"
+  />`;
+    })
+    .join("");
+
+  return selectElement + listInput;
 };
 
 const createTableHeader = (list, orderList) => {
@@ -108,6 +131,8 @@ const saveMods = (evnt, elmnt) => {
 
 const viewData = (sourcesList, labelsList, orderList) => {
   const listSources = createDataList(sourcesList, labelsList);
+  console.log("listSources :", listSources);
+  $("#new-source").append(createNewSourceForm(listSources, sourcesData));
   $(".view-sources").append(createTableHeader(listSources, orderList));
   $("tbody").append(createTableBody(listSources, orderList));
 };
@@ -172,15 +197,14 @@ $(document).ready(() => {
         sourceId[keyList[i]] = valueList[i];
       }
 
-      //! sourceId is the object to send back to delete record in database
+      //! sourceId is the object sent back to delete record in database
       //! then update page with response data object.
       console.log(
         "sourceId :",
         JSON.stringify(sourceId),
-        "type : ",
+        " - type : ",
         typeof sourceId
       );
-
       $("#modalBloc").modal("toggle");
     }
   });
