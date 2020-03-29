@@ -23,14 +23,31 @@ const rowOptionModal = {
   FiscalYear: "disabled"
 };
 
+const newSourceObject = list => {
+  const agencyId = $("table").attr("id");
+  const newSource = { AgencyID: agencyId };
+
+  for (let field of list) {
+    newSource[field.name] = field.value;
+  }
+  //!===============================================
+  //! Data object to send back to Database
+  console.log("JSON Object :", JSON.stringify(newSource));
+  //!===============================================
+
+  $("#new-source")[0].reset();
+  // location.reload();
+};
+
 const createNewSourceForm = (localList, selectList) => {
   const listOption = selectList.map(item => {
-    return `<option  value="${item.FSID}">${item.FundAbbrev}</option>`;
+    return `<option value="${item.FSID}">${item.FundAbbrev}</option>`;
   });
-  const selectElement =
-    "<select class='form-control red-text col-width-large' id='source-select' required><option>Funding Sources</option>" +
-    listOption +
-    "</select>";
+  const selectElement = `<select class='form-control red-text col-width-large' name='FSID'
+      id='source-select' required>
+        <option>Funding Sources</option>
+        ${listOption}
+    </select>`;
 
   const orderedList = blocItems.newSource.map(indx => {
     return localList[0][indx];
@@ -46,7 +63,9 @@ const createNewSourceForm = (localList, selectList) => {
   />`;
       })
       .join("") +
-    '<button type="submit" id="submit-btn" class="btn btn-primary">Add Funding</button>';
+    `<button type="submit" id="submit-btn" class="btn btn-primary">
+        Add Funding
+    </button>`;
 
   return selectElement + listInput;
 };
@@ -60,8 +79,7 @@ const createTableHeader = (list, orderList) => {
     .reduce((bloc, item) => {
       return bloc + item;
     });
-
-  return `<table class="table">
+  return `<table class="table" id="${list[0][1][2]}">
   <thead>
     <tr>
       ${headerLine}
@@ -128,8 +146,10 @@ const saveMods = (evnt, elmnt) => {
     result[key] = val;
   }
 
+  //!===============================================
   //! Data object to send back to Database
   console.log("JSON Object :", JSON.stringify(result));
+  //!===============================================
 
   $("#modalTopBloc").modal("toggle");
 
@@ -162,6 +182,10 @@ $(document).ready(() => {
   viewData(agencyData, rowLabels, blocItems.viewBloc);
 
   //* Adding a new funding source
+  $("#new-source").on("submit", function(evnt) {
+    evnt.preventDefault();
+    newSourceObject($(this).serializeArray());
+  });
 
   //* Select funding source
 
@@ -210,6 +234,7 @@ $(document).ready(() => {
         sourceId[keyList[i]] = valueList[i];
       }
 
+      //!===============================================
       //! sourceId is the object sent back to delete record in database
       //! then update page with response data object.
       console.log(
@@ -218,6 +243,8 @@ $(document).ready(() => {
         " - type : ",
         typeof sourceId
       );
+      //!===============================================
+
       $("#modalBloc").modal("toggle");
     }
   });
