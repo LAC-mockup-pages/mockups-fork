@@ -36,6 +36,9 @@ const newSourceObject = list => {
   //!===============================================
 
   $("#new-source")[0].reset();
+
+  //TODO Update page with response from Database update
+
   // location.reload();
 };
 
