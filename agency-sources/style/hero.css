@@ -26,23 +26,32 @@ body {
 }
 
 #new-source > .form-control {
-  color: #2479b5;
-  font-size: 1.2em;
+  font-size: 1.1em;
   padding: 0.5%;
 }
 
+option {
+  color: #333;
+}
+
 #new-source {
+  font-size: 1.1em;
   margin-left: 3%;
 }
 
-#fiscal-year {
-  width: 60px;
+.col-width-small {
+  max-width: 12%;
 }
 
-#amount,
-#start,
-#end {
-  width: 100px;
+.col-width-large {
+  max-width: 23%;
+}
+
+.col-width-medium {
+  max-width: 14%;
+}
+.red-text {
+  font-weight: 700;
 }
 
 :required::placeholder,
@@ -89,10 +98,9 @@ th {
   font-size: 14px;
 }
 
-.fiscalYear {
+.FiscalYear {
   max-width: 60px;
   text-align: center;
-  font-size: 14px;
 }
 
 .input-field {

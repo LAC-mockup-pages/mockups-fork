@@ -13,7 +13,8 @@ const rowLabels = {
 
 // Indexes needed for header lone and data viewing bloc, in order
 const blocItems = {
-  viewBloc: [3, 4, 7, 8, 9, 6, 5]
+  viewBloc: [3, 4, 7, 8, 9, 6, 5],
+  newSource: [4, 7, 8, 6, 5]
 };
 
 // Style options for modal
@@ -24,22 +25,28 @@ const rowOptionModal = {
 
 const createNewSourceForm = (localList, selectList) => {
   const listOption = selectList.map(item => {
-    return `<option class="form-control" value="${item.FSID}">${item.FundAbbrev}</option>`;
+    return `<option  value="${item.FSID}">${item.FundAbbrev}</option>`;
   });
   const selectElement =
-    "<select id='source-select'>" + listOption + "</select>";
+    "<select class='form-control red-text col-width-large' id='source-select' required><option>Funding Sources</option>" +
+    listOption +
+    "</select>";
 
-  const listInput = localList[0]
-    .slice(4, 9)
-    .map(item => {
-      return `<input
+  const orderedList = blocItems.newSource.map(indx => {
+    return localList[0][indx];
+  });
+  const listInput =
+    orderedList
+      .map(item => {
+        return `<input
     type="text"
     class="form-control"
     placeholder="${item[1]}"
     name="${item[0]}"
   />`;
-    })
-    .join("");
+      })
+      .join("") +
+    '<button type="submit" id="submit-btn" class="btn btn-primary">Add Funding</button>';
 
   return selectElement + listInput;
 };
@@ -131,8 +138,14 @@ const saveMods = (evnt, elmnt) => {
 
 const viewData = (sourcesList, labelsList, orderList) => {
   const listSources = createDataList(sourcesList, labelsList);
-  console.log("listSources :", listSources);
+
   $("#new-source").append(createNewSourceForm(listSources, sourcesData));
+  $("[name='FundEnd'],[name='FundStart']").prop("required", true);
+  $("[name='Amount'],[name='FundStart'],[name='FundEnd']").addClass(
+    "col-width-small"
+  );
+  $("[name='FundNumber'],[name='Purpose']").addClass("col-width-medium");
+
   $(".view-sources").append(createTableHeader(listSources, orderList));
   $("tbody").append(createTableBody(listSources, orderList));
 };
