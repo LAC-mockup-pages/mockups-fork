@@ -211,6 +211,8 @@ $(document).ready(() => {
     $(".modal-body").append(
       `<form role="form" id="${sourceId}">${result}</form>`
     );
+
+    $("#save-button").attr("form", `${sourceId}`);
   });
 
   //* Deleting source

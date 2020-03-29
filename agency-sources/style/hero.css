@@ -44,11 +44,11 @@ option {
 }
 
 .col-width-large {
-  max-width: 23%;
+  max-width: 25%;
 }
 
 .col-width-medium {
-  max-width: 14%;
+  max-width: 16%;
 }
 .red-text {
   font-weight: 700;
