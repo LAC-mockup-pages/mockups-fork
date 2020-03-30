@@ -187,7 +187,11 @@ $(document).ready(() => {
   //* Adding a new funding source
   $("#new-source").on("submit", function(evnt) {
     evnt.preventDefault();
-    newSourceObject($(this).serializeArray());
+    const newSource = $(this).serializeArray();
+
+    //TODO Add data validation for values in newSource
+
+    newSourceObject(newSource);
   });
 
   //* Select funding source
