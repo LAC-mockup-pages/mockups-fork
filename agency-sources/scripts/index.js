@@ -63,6 +63,7 @@ const createNewSourceForm = (localList, selectList) => {
     class="form-control"
     placeholder="${item[1]}"
     name="${item[0]}"
+    autocomplete="off"
   />`;
       })
       .join("") +
@@ -187,11 +188,25 @@ $(document).ready(() => {
   //* Adding a new funding source
   $("#new-source").on("submit", function(evnt) {
     evnt.preventDefault();
+    evnt.stopPropagation();
+
+    $(`#new-source input`).removeClass("yellow-bg");
+
     const newSource = $(this).serializeArray();
 
-    //TODO Add data validation for values in newSource
+    // validNewSource <== data-check.js
+    const validatedList = validNewSource(newSource);
+    const checkFlag = validatedList.some(item => !item.correct);
 
-    newSourceObject(newSource);
+    if (checkFlag) {
+      const list = validatedList.filter(obj => obj.correct === false);
+      for (let field of list) {
+        $(`[name=${field.name}]`).addClass("yellow-bg");
+      }
+      return;
+    } else {
+      newSourceObject(newSource);
+    }
   });
 
   //* Select funding source
