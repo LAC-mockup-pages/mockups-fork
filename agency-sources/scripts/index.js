@@ -47,7 +47,7 @@ const createNewSourceForm = (localList, selectList) => {
     return `<option value="${item.FSID}">${item.FundAbbrev}</option>`;
   });
   const selectElement = `<select class='form-control red-text col-width-large' name='FSID'
-      id='source-select' required>
+      id='source-select' title="Please select a source" required>
         <option>Funding Sources</option>
         ${listOption}
     </select>`;
@@ -58,11 +58,15 @@ const createNewSourceForm = (localList, selectList) => {
   const listInput =
     orderedList
       .map(item => {
+        let title = "";
+        if (["FundStart", "FundEnd"].includes(item[0]))
+          title = "title='Please fill out this field\n MM/DD/YYYY'";
         return `<input
     type="text"
     class="form-control"
     placeholder="${item[1]}"
     name="${item[0]}"
+    ${title}
     autocomplete="off"
   />`;
       })
