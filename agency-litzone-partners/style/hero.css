@@ -81,28 +81,15 @@ th {
   line-height: 25px;
 }
 
-.county {
-  max-width: 80px;
-  text-align: center;
-  font-size: 14px;
-}
-
 .small-cell {
   max-width: 80px;
 }
-.phone,
-.partner-id {
+.Telephone,
+.CountyDesc,
+.ReferralSiteEmail {
   width: 110px;
   text-align: center;
   font-size: 14px;
-}
-
-.email {
-  width: 80px;
-}
-
-.partner-manager {
-  width: 100px;
 }
 
 .input-field {

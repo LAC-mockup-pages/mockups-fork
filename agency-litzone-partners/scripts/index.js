@@ -42,8 +42,6 @@ const createHeaders = (labels) => {
 
 const createBody = (dataList, labels) => {
   let rows = "";
-
-  console.log("labels :", labels);
   for (const record of dataList) {
     const identifier = `${record.ID}-${record.AgencyID}`;
     const zipCode = record.Zip.replace(/_/g, "").replace(/-/, " ").trim();
@@ -199,7 +197,10 @@ $(document).ready(() => {
   //* Adding a new partner
 
   //* Select partner
-  $("[title^='click'").click(function () {
+  $("[title^='Click'").click(function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+
     const rowID = Number($(this).attr("id"));
     const listFields = createListFields(rowID);
     $("#modalBloc").modal("toggle");
