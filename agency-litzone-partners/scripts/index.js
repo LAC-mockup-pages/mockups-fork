@@ -50,7 +50,10 @@ const createBody = (dataList, labels) => {
     const fullAddress = `${record.Address}<br>${record.City}<br>
                           ${record.State} ${zipCode}`;
 
-    const phoneNumber = record.Telephone ? phoneFormat(record.Telephone) : "";
+    // phoneFormat() <== helperFunctions.js
+    const phoneNumber = record.Telephone
+      ? phoneFormat(phoneFormat(record.Telephone))
+      : "";
 
     const fieldsArray = Object.keys(record).filter((fieldName) =>
       labels.includes(labelObj[fieldName])
