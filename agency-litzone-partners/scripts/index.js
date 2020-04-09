@@ -39,7 +39,6 @@ const createHeaders = (labels) => {
   const headers = labels.map((label) => `<th>${label}</th>`).join("");
   return `<thead>${headers}</thead>`;
 };
-
 const createBody = (dataList, labels) => {
   let rows = "";
   for (const record of dataList) {
@@ -71,11 +70,11 @@ const createBody = (dataList, labels) => {
             value = record[key];
             break;
         }
-        return `<td class="cell-data ${key}" title="Click to edit">${value}</td>`;
+        return `<td class="cell-data ${key}">${value}</td>`;
       })
       .join("");
 
-    rows += `<tr data-identifier=${identifier}>${row}</tr>`;
+    rows += `<tr id=${identifier} title="Click to edit">${row}</tr>`;
   }
   return `<tbody>${rows}</tbody>`;
 };
@@ -96,79 +95,29 @@ const createViewBloc = (dataObj, labels) => {
       labelList.push(value);
     }
   }
+  const bodyLabelList = labelList
+    .slice(0, 4)
+    .concat(["City", "State", "ZIP", "County Code"], labelList.slice(4));
   const headerLine = createHeaders(labelList);
-  const tableBody = createBody(dataObj, labelList);
+  const tableBody = createBody(dataObj, bodyLabelList);
 
   $("#view-bloc").append(
     `<table class="table">${headerLine}${tableBody}</table>`
   );
+
+  $(".City, .State, .Zip, .County").toggleClass("hidden");
 };
 
-const createDataRow = (...args) => {
-  const rowData = Array.from(args);
-  const classList = headerList.slice(1);
-  let row = "";
+const createForm = (elmnt) => {
+  const idArray = $(elmnt).attr("id").split("-");
+  const formData = labelObj;
+  formData.ID = [formData.ID, idArray[0]];
+  formData.AgencyID = [formData.AgencyID, idArray[1]];
 
-  for (let i = 0; i < rowData.length; i++) {
-    const option = classList[i].replace(/\s/gi, "-").toLowerCase();
-    row += `<td class="cell-data ${option}">${rowData[i]}</td>`;
-  }
-
-  return row;
+  const tdList = elmnt[0].cells;
+  // console.log("tdList :", tdList);
+  const length = tdList.length;
 };
-
-// const viewData = (arr) => {
-//   for (record of arr) {
-//     const {
-//       id,
-//       PartnerName,
-//       PartnerID,
-//       PartnerMngr,
-//       Address,
-//       Phone,
-//       Email,
-//     } = record;
-
-//     const { StreetAdrs, City, State, Zip, County } = Address;
-//     const fullAddress = `${StreetAdrs}<br>${City.toUpperCase()}<br>${State} - ${Zip}`;
-//     const rowContent = createDataRow(
-//       PartnerName,
-//       PartnerID,
-//       PartnerMngr,
-//       fullAddress,
-//       County,
-//       Phone,
-//       Email
-//     );
-//     $(".table tbody").append(
-//       `<tr class='table-row' id=${id} title='click to Edit'>${rowContent}</tr>`
-//     );
-//   }
-// };
-
-// //* Flattens a nested JSON object
-// const flatten = (obj, path = "") => {
-//   if (!(obj instanceof Object)) return { [path.replace(/\.$/g, "")]: obj };
-
-//   return Object.keys(obj).reduce((output, key) => {
-//     return obj instanceof Array
-//       ? { ...output, ...flatten(obj[key], path) }
-//       : { ...output, ...flatten(obj[key], key + ".") };
-//   }, {});
-// };
-
-// const createListFields = (num) => {
-//   const selectedRecord = partData.filter((record) => record.id === num);
-//   const flattenedRecord = flatten(selectedRecord);
-//   const keyList = Object.keys(flattenedRecord);
-//   const list = keyList.map((key, indx) => [
-//     key,
-//     labelList[indx],
-//     flattenedRecord[key],
-//   ]);
-
-//   return list;
-// };
 
 $(document).ready(() => {
   // * sub-navbar/index.js
@@ -197,33 +146,36 @@ $(document).ready(() => {
   //* Adding a new partner
 
   //* Select partner
-  $("[title^='Click'").click(function (evnt) {
+  $("[title^='Click']").click(function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
 
-    const rowID = Number($(this).attr("id"));
-    const listFields = createListFields(rowID);
+    const rowID = "#" + $(this).attr("id");
+    const selectedElement = $(rowID).get();
+    const listFields = createForm(selectedElement);
     $("#modalBloc").modal("toggle");
     $(".modal-body form").remove();
-    $(".modal-body").append("<form id='modal-form'></form>");
+    $(".modal-body").append(
+      "<form id='modal-form' role='form'>" + listFields + "</form>"
+    );
 
-    for (field of listFields) {
-      const key = field[1],
-        idVal = field[0];
-      let option = "",
-        classOption = "",
-        val = field[2];
+    // for (field of listFields) {
+    //   const key = field[1],
+    //     idVal = field[0];
+    //   let option = "",
+    //     classOption = "",
+    //     val = field[2];
 
-      if (["id", "PartnerID"].includes(idVal)) option = "disabled";
-      if (placeholderList.includes(key)) classOption = "class='red-text'";
-      if (!val) val = "";
-      $(".modal-body>form").append(
-        `<div class="input-field">
-            <label for=${idVal} ${classOption}>${key}</label>
-            <input type="text" id=${idVal} value='${val}' ${option}>
-          </div>`
-      );
-    }
+    //   if (["id", "PartnerID"].includes(idVal)) option = "disabled";
+    //   if (placeholderList.includes(key)) classOption = "class='red-text'";
+    //   if (!val) val = "";
+    //   $(".modal-body>form").append(
+    //     `<div class="input-field">
+    //         <label for=${idVal} ${classOption}>${key}</label>
+    //         <input type="text" id=${idVal} value='${val}' ${option}>
+    //       </div>`
+    //   );
+    // }
   });
 
   // //* Deleting source
