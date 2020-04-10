@@ -35,15 +35,20 @@ const createNewRecord = () => {
   );
 };
 
+const zipCodeFormat = (str) => {
+  return str.replace(/_/g, "").replace(/-/, " ").trim();
+};
+
 const createHeaders = (labels) => {
   const headers = labels.map((label) => `<th>${label}</th>`).join("");
   return `<thead>${headers}</thead>`;
 };
+
 const createBody = (dataList, labels) => {
   let rows = "";
   for (const record of dataList) {
     const identifier = `${record.ID}-${record.AgencyID}`;
-    const zipCode = record.Zip.replace(/_/g, "").replace(/-/, " ").trim();
+    const zipCode = zipCodeFormat(record.Zip);
     const fullAddress = `${record.Address}<br>${record.City}<br>
                           ${record.State} ${zipCode}`;
 
@@ -105,18 +110,62 @@ const createViewBloc = (dataObj, labels) => {
     `<table class="table">${headerLine}${tableBody}</table>`
   );
 
+  // Elements hidden so they are included in the selection used to
+  // create the modal form for editing.
   $(".City, .State, .Zip, .County").toggleClass("hidden");
 };
 
 const createForm = (elmnt) => {
   const idArray = $(elmnt).attr("id").split("-");
-  const formData = labelObj;
-  formData.ID = [formData.ID, idArray[0]];
-  formData.AgencyID = [formData.AgencyID, idArray[1]];
+  const formData = {};
+  formData.ID = [labelObj.ID, idArray[0]];
+  formData.AgencyID = [labelObj.AgencyID, idArray[1]];
 
   const tdList = elmnt[0].cells;
-  // console.log("tdList :", tdList);
-  const length = tdList.length;
+  for (let item of tdList) {
+    const key = $(item).attr("class").split(" ")[1];
+    let value = $(item).text();
+    formData[key] = [labelObj[key], value];
+  }
+  const fieldList = Object.keys(formData);
+
+  const formFields = fieldList
+    .map((fieldName) => {
+      let fieldText = "";
+      let option = "";
+      switch (fieldName) {
+        case "Address":
+          fieldText = formData.Address[1].slice(
+            0,
+            formData.Address[1].indexOf(formData.City[1])
+          );
+          break;
+        case "ReferralSiteID":
+          fieldText = formData[fieldName][1];
+          option = "disabled";
+          break;
+        case "Zip":
+          fieldText = zipCodeFormat(formData.Zip[1]);
+          break;
+
+        default:
+          fieldText = formData[fieldName][1];
+          break;
+      }
+
+      // createInputField() <== helperFunctions.js
+      return createInputField(
+        fieldName,
+        formData[fieldName][0],
+        fieldText,
+        "",
+        "",
+        option
+      );
+    })
+    .join("");
+
+  return formFields;
 };
 
 $(document).ready(() => {
@@ -154,29 +203,12 @@ $(document).ready(() => {
     const selectedElement = $(rowID).get();
     const listFields = createForm(selectedElement);
     $("#modalBloc").modal("toggle");
-    $(".modal-body form").remove();
+    $("#modal-form").remove();
     $(".modal-body").append(
       "<form id='modal-form' role='form'>" + listFields + "</form>"
     );
-
-    // for (field of listFields) {
-    //   const key = field[1],
-    //     idVal = field[0];
-    //   let option = "",
-    //     classOption = "",
-    //     val = field[2];
-
-    //   if (["id", "PartnerID"].includes(idVal)) option = "disabled";
-    //   if (placeholderList.includes(key)) classOption = "class='red-text'";
-    //   if (!val) val = "";
-    //   $(".modal-body>form").append(
-    //     `<div class="input-field">
-    //         <label for=${idVal} ${classOption}>${key}</label>
-    //         <input type="text" id=${idVal} value='${val}' ${option}>
-    //       </div>`
-    //   );
-    // }
+    // Elements ID and AgencyID hidden so they are included in the
+    // serialization creating the data Object sent back to database
+    $(".input-field").slice(0, 2).toggleClass("hidden");
   });
-
-  // //* Deleting source
 });

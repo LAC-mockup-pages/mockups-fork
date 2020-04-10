@@ -10,7 +10,7 @@ const createInputField = (
 ) => {
   return `<div class="input-field">
     <label for='${keyVal}' class='${labelClassVal}'>${labelVal}</label>
-    <input type="text" id='${keyVal}' class='${classVal}' value='${value}' ${option}>
+    <input type="text" id='${keyVal}' name=${keyVal} class='${classVal}' value='${value}' ${option}>
     </div>`;
 };
 
