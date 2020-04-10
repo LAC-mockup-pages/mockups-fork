@@ -18,23 +18,6 @@ const labelObj = {
   ReferralSiteEmail: "Email",
 };
 
-const createNewRecord = () => {
-  for (let i = 0; i < placeholderList.length; i++) {
-    const newLine = "";
-
-    $("#new-partner").append(`${newLine}<input
-    type="text"
-    class="form-control"
-    placeholder='${placeholderList[i]}'
-    required
-  />`);
-  }
-
-  $("#new-partner").append(
-    `<button type="submit" id="submit-btn" class="btn btn-primary">Add New Partner</button>`
-  );
-};
-
 const zipCodeFormat = (str) => {
   return str.replace(/_/g, "").replace(/-/, " ").trim();
 };
@@ -115,7 +98,7 @@ const createViewBloc = (dataObj, labels) => {
   $(".City, .State, .Zip, .County").toggleClass("hidden");
 };
 
-const createSelect = (hashTable, keyValue, selectedValue) => {
+const createSelect = (hashTable, keyValue, selectedValue = "", numSelected) => {
   const [primary, secondary] = Object.keys(hashTable[0]);
   const optionList = hashTable
     .map((item) => {
@@ -124,10 +107,38 @@ const createSelect = (hashTable, keyValue, selectedValue) => {
           ${item[secondary]}</option>`;
     })
     .join("");
-  return ` <div class="form-group input-field">
-        <label for=${keyValue}>County</label>
-        <select id=${keyValue} class="modal-select" name=${keyValue}>${optionList}</select>
-      </div>`;
+  const elementChoice = [
+    `<div class="form-group input-field">
+  <label for=${keyValue}>County</label>
+  <select id=${keyValue} class="modal-select" name=${keyValue}>${optionList}</select>
+</div>`,
+    `<select id=${keyValue} class="modal-select form-control" name=${keyValue}><option selected disabled>Select an option</option>${optionList}</select>`,
+  ];
+
+  return elementChoice[numSelected];
+};
+
+const createNewRecord = (labelsObject) => {
+  let result = [];
+  const keyList = Object.keys(labelsObject);
+  for (key of keyList) {
+    let option = " required";
+    let classOption = "";
+    if (["ID", "AgencyID", "County"].includes(key)) {
+      option = "";
+      classOption = " hidden";
+    }
+    let inputElement = `<input type="text" class="form-control${classOption}" id=${key} name="${key}" placeholder="${labelsObject[key]}"${option}>`;
+
+    if (key === "CountyDesc") {
+      inputElement = createSelect(countyData, key, "", 1);
+    }
+    result.push(inputElement);
+  }
+  result.push(
+    '<button type="button" id="submit-btn" form="new-partner" class="btn btn-primary">Add</button><button type="button" id="cancel-btn" class="btn btn-default">Cancel</button>'
+  );
+  $("#new-partner").append(result.join(""));
 };
 
 const createForm = (elmnt) => {
@@ -151,7 +162,7 @@ const createForm = (elmnt) => {
       let fieldText = "";
       let option = "";
       if (fieldName === "CountyDesc") {
-        return createSelect(countyList, fieldName, formData.County[1]);
+        return createSelect(countyList, fieldName, formData.County[1], 0);
       }
 
       switch (fieldName) {
@@ -239,7 +250,7 @@ $(document).ready(() => {
 
   //* Data viewing
   createViewBloc(dataPartners, labelObj);
-  // createNewRecord();
+  createNewRecord(labelObj);
 
   //* Adding a new partner
 
