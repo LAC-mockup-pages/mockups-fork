@@ -189,6 +189,34 @@ const createForm = (elmnt) => {
   return formFields;
 };
 
+const saveMods = (form) => {
+  const result = {};
+  const submittedData = $(form).serializeArray();
+  for (let field of submittedData) {
+    if (field.name === "CountyDesc") {
+      result.County = field.value;
+      countyDescValue = countyList.filter(
+        (item) => item.FIPS === field.value
+      )[0].CountyDesc;
+      field.value = countyDescValue;
+    }
+    if (field.name === "Telephone") field.value = phoneFormat(field.value);
+    result[field.name] = field.value;
+  }
+  // alphaNumCheck() <== data-check.js
+  // if (!alphaNumCheck(result.Description)) {
+  //   $(form)[0].reset();
+  //   return;
+  // }
+
+  //! =================================================
+  //! JSON Object to send back to database
+  console.log("result :", JSON.stringify(result));
+  //! =================================================
+
+  //ToDO Reloading/resetting with new data
+};
+
 $(document).ready(() => {
   // * sub-navbar/index.js
   $("#sub-nav li").click(function () {
@@ -230,5 +258,14 @@ $(document).ready(() => {
     // Elements ID and AgencyID hidden so they are included in the
     // serialization creating the data Object sent back to database
     $(".input-field").slice(0, 2).toggleClass("hidden");
+  });
+
+  //* Saving mods after editing selected outcome
+  $("#save-btn").click(function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    const form = `#${$(this).attr("form")}`;
+    saveMods(form);
+    $("#modalBloc").modal("toggle");
   });
 });
