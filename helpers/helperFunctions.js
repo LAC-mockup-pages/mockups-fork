@@ -8,7 +8,7 @@ const createInputField = (
   classVal = "",
   option = ""
 ) => {
-  return `<div class="input-field">
+  return `<div class="form-group input-field">
     <label for='${keyVal}' class='${labelClassVal}'>${labelVal}</label>
     <input type="text" id='${keyVal}' name=${keyVal} class='${classVal}' value='${value}' ${option}>
     </div>`;

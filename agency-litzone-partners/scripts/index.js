@@ -122,17 +122,35 @@ const createForm = (elmnt) => {
   formData.AgencyID = [labelObj.AgencyID, idArray[1]];
 
   const tdList = elmnt[0].cells;
+
   for (let item of tdList) {
     const key = $(item).attr("class").split(" ")[1];
     let value = $(item).text();
     formData[key] = [labelObj[key], value];
   }
-  const fieldList = Object.keys(formData);
+
+  const fieldList = Object.keys(formData).filter((item) => item !== "County");
 
   const formFields = fieldList
     .map((fieldName) => {
       let fieldText = "";
       let option = "";
+      if (fieldName === "CountyDesc") {
+        const optionList = countyList
+          .map((item) => {
+            const selected =
+              item.FIPS === formData.County[1] ? " selected" : "";
+            return `<option value=${item.FIPS}${selected}>
+          ${item.CountyDesc}</option>`;
+          })
+          .join("");
+
+        return ` <div class="form-group input-field">
+        <label for=${fieldName}>County</label>
+        <select id=${fieldName} class="modal-select" name=${fieldName}>${optionList}</select>
+      </div>`;
+      }
+
       switch (fieldName) {
         case "Address":
           fieldText = formData.Address[1].slice(
@@ -200,13 +218,12 @@ $(document).ready(() => {
     evnt.stopPropagation();
 
     const rowID = "#" + $(this).attr("id");
+    console.log("rowID :", rowID);
     const selectedElement = $(rowID).get();
-    const listFields = createForm(selectedElement);
+    const editForm = createForm(selectedElement);
     $("#modalBloc").modal("toggle");
-    $("#modal-form").remove();
-    $(".modal-body").append(
-      "<form id='modal-form' role='form'>" + listFields + "</form>"
-    );
+    $("#modal-form").empty().append(editForm);
+
     // Elements ID and AgencyID hidden so they are included in the
     // serialization creating the data Object sent back to database
     $(".input-field").slice(0, 2).toggleClass("hidden");
