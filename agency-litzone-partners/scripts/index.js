@@ -115,6 +115,21 @@ const createViewBloc = (dataObj, labels) => {
   $(".City, .State, .Zip, .County").toggleClass("hidden");
 };
 
+const createSelect = (hashTable, keyValue, selectedValue) => {
+  const [primary, secondary] = Object.keys(hashTable[0]);
+  const optionList = hashTable
+    .map((item) => {
+      const selected = item[primary] === selectedValue ? " selected" : "";
+      return `<option value=${item[primary]}${selected}>
+          ${item[secondary]}</option>`;
+    })
+    .join("");
+  return ` <div class="form-group input-field">
+        <label for=${keyValue}>County</label>
+        <select id=${keyValue} class="modal-select" name=${keyValue}>${optionList}</select>
+      </div>`;
+};
+
 const createForm = (elmnt) => {
   const idArray = $(elmnt).attr("id").split("-");
   const formData = {};
@@ -136,19 +151,7 @@ const createForm = (elmnt) => {
       let fieldText = "";
       let option = "";
       if (fieldName === "CountyDesc") {
-        const optionList = countyList
-          .map((item) => {
-            const selected =
-              item.FIPS === formData.County[1] ? " selected" : "";
-            return `<option value=${item.FIPS}${selected}>
-          ${item.CountyDesc}</option>`;
-          })
-          .join("");
-
-        return ` <div class="form-group input-field">
-        <label for=${fieldName}>County</label>
-        <select id=${fieldName} class="modal-select" name=${fieldName}>${optionList}</select>
-      </div>`;
+        return createSelect(countyList, fieldName, formData.County[1]);
       }
 
       switch (fieldName) {
