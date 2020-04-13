@@ -82,3 +82,14 @@ const updateDataObject = (obj, dataObj) => {
   }
   return result;
 };
+
+// Returns ZIP code formatted 00000 0000
+const zipCodeFormat = (str) => {
+  return str.replace(/_/g, "").replace(/-/, " ").trim();
+};
+
+// Returns a string of headers for a <table> element
+const createHeaders = (labels) => {
+  const headers = labels.map((label) => `<th>${label}</th>`).join("");
+  return `<thead>${headers}</thead>`;
+};
