@@ -202,9 +202,16 @@ const createForm = (elmnt) => {
   return formFields;
 };
 
+// Used for new partner and edited partner data set
 const saveMods = (form) => {
   const result = {};
   const submittedData = $(form).serializeArray();
+
+  console.log("submittedData :", submittedData);
+  console.log(validateUserInput(submittedData));
+
+  // validateUserInput() <== data-check.js
+  if (!validateUserInput(submittedData)) $(form)[0].reset();
   for (let field of submittedData) {
     if (field.name === "CountyDesc") {
       result.County = field.value;
