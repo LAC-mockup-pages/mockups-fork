@@ -33,6 +33,19 @@ body {
   color: #2479b5;
   font-size: 1.2em;
   padding: 0.5%;
+  margin: 5px 2px;
+}
+#State,
+#Zip {
+  max-width: 100px;
+}
+
+#CountyDesc {
+  max-width: 200px;
+}
+#Telephone,
+#Email {
+  max-width: 150px;
 }
 
 #new-partner {
