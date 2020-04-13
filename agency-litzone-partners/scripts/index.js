@@ -118,17 +118,19 @@ const createSelect = (hashTable, keyValue, selectedValue = "", numSelected) => {
   return elementChoice[numSelected];
 };
 
-const createNewRecord = (labelsObject) => {
+const createNewRecord = (labelsObject, agencyId) => {
   let result = [];
-  const keyList = Object.keys(labelsObject);
+  const keyList = Object.keys(labelsObject).filter(
+    (key) => !["ID", "ReferralSiteID"].includes(key)
+  );
   for (key of keyList) {
     let option = " required";
     let classOption = "";
-    if (["ID", "AgencyID", "County"].includes(key)) {
-      option = "";
+    if (["AgencyID", "County"].includes(key)) {
+      const agency = (option = key === "AgencyID" ? ` value=${agencyId}` : "");
       classOption = " hidden";
     }
-    let inputElement = `<input type="text" class="form-control${classOption}" id=${key} name="${key}" placeholder="${labelsObject[key]}"${option}>`;
+    let inputElement = `<input type="text" class="form-control${classOption}" id=${key} name="${key}" placeholder="${labelsObject[key]}"${option} autocomplete="new-password" spellcheck="off">`;
 
     if (key === "CountyDesc") {
       inputElement = createSelect(countyData, key, "", 1);
@@ -136,7 +138,7 @@ const createNewRecord = (labelsObject) => {
     result.push(inputElement);
   }
   result.push(
-    '<button type="button" id="submit-btn" form="new-partner" class="btn btn-primary">Add</button><button type="button" id="cancel-btn" class="btn btn-default">Cancel</button>'
+    '<button type="button" id="submit-btn" form="new-partner" class="btn btn-primary">Add</button><button type="button" id="cancel-btn" form="new-partner" class="btn btn-default">Cancel</button>'
   );
   $("#new-partner").append(result.join(""));
 };
@@ -250,9 +252,24 @@ $(document).ready(() => {
 
   //* Data viewing
   createViewBloc(dataPartners, labelObj);
-  createNewRecord(labelObj);
+  createNewRecord(labelObj, dataPartners[0].AgencyID);
 
   //* Adding a new partner
+  $("#submit-btn").click(function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    const formId = "#" + $(this).attr("form");
+    saveMods(formId);
+    $(formId)[0].reset();
+  });
+
+  //* Canceling
+  $("#cancel-btn").click(function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    const formId = "#" + $(this).attr("form");
+    $(formId)[0].reset();
+  });
 
   //* Select partner
   $("[title^='Click']").click(function (evnt) {
@@ -260,7 +277,6 @@ $(document).ready(() => {
     evnt.stopPropagation();
 
     const rowID = "#" + $(this).attr("id");
-    console.log("rowID :", rowID);
     const selectedElement = $(rowID).get();
     const editForm = createForm(selectedElement);
     $("#modalBloc").modal("toggle");

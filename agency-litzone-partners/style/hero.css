@@ -45,8 +45,9 @@ body {
   text-align: left;
 }
 
-#submit-btn {
-  margin-left: 2%;
+#submit-btn,
+#cancel-btn {
+  margin-left: 1%;
 }
 
 .data-view {
@@ -123,9 +124,4 @@ th {
 .modal-header,
 .modal-footer {
   background-color: #d3e4f0;
-}
-
-.delete-msg {
-  width: fit-content;
-  border-bottom: 2px solid rgb(197, 65, 65);
 }
