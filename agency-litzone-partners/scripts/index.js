@@ -18,19 +18,12 @@ const labelObj = {
   ReferralSiteEmail: "Email",
 };
 
-const zipCodeFormat = (str) => {
-  return str.replace(/_/g, "").replace(/-/, " ").trim();
-};
-
-const createHeaders = (labels) => {
-  const headers = labels.map((label) => `<th>${label}</th>`).join("");
-  return `<thead>${headers}</thead>`;
-};
-
 const createBody = (dataList, labels) => {
   let rows = "";
   for (const record of dataList) {
     const identifier = `${record.ID}-${record.AgencyID}`;
+
+    // zipCodeFormat() <== helperFunctions.js
     const zipCode = zipCodeFormat(record.Zip);
     const fullAddress = `${record.Address}<br>${record.City}<br>
                           ${record.State} ${zipCode}`;
@@ -86,6 +79,8 @@ const createViewBloc = (dataObj, labels) => {
   const bodyLabelList = labelList
     .slice(0, 4)
     .concat(["City", "State", "ZIP", "County Code"], labelList.slice(4));
+
+  // createHeaders() <== helperFunctions()
   const headerLine = createHeaders(labelList);
   const tableBody = createBody(dataObj, bodyLabelList);
 
@@ -179,6 +174,7 @@ const createForm = (elmnt) => {
           option = "disabled";
           break;
         case "Zip":
+          // zipCodeFormat() <== helperFunctions()
           fieldText = zipCodeFormat(formData.Zip[1]);
           break;
 
@@ -207,9 +203,6 @@ const saveMods = (form) => {
   const result = {};
   const submittedData = $(form).serializeArray();
 
-  console.log("submittedData :", submittedData);
-  console.log(validateUserInput(submittedData));
-
   // validateUserInput() <== data-check.js
   if (!validateUserInput(submittedData)) $(form)[0].reset();
   for (let field of submittedData) {
@@ -220,6 +213,7 @@ const saveMods = (form) => {
       )[0].CountyDesc;
       field.value = countyDescValue;
     }
+    // phoneFormat <== helperFunctions()
     if (field.name === "Telephone") field.value = phoneFormat(field.value);
     result[field.name] = field.value;
   }
