@@ -43,7 +43,7 @@ const viewHeaders = () => {
 const createDataRow = (obj, list) => {
   let row = "";
   const rowLabel = Object.keys(obj);
-  const rowData = rowLabel.map(label => obj[label]);
+  const rowData = rowLabel.map((label) => obj[label]);
   const lengthKeyList = rowLabel.length;
   for (let i = 1; i < lengthKeyList; i++) {
     const option = list[i].replace(/\s/gi, "-").toLowerCase();
@@ -74,22 +74,20 @@ const flatten = (obj, path = "") => {
   }, {});
 };
 
-const createListFields = num => {
-  const selectedRecord = personnelData.filter(record => record.id === num);
+const createListFields = (num) => {
+  const selectedRecord = personnelData.filter((record) => record.id === num);
   const flattenedRecord = flatten(selectedRecord);
   const keyList = Object.keys(flattenedRecord);
   const list = keyList.map((key, indx) => [
     key.slice(0, key.length - 1),
-    flattenedRecord[key]
+    flattenedRecord[key],
   ]);
 
   return list;
 };
 
 const searchVal = () => {
-  const searchArg = $("#search-input")
-    .val()
-    .toLowerCase();
+  const searchArg = $("#search-input").val().toLowerCase();
 
   if (searchArg.length < 3) {
     alert("Please enter at least the first 3 letters");
@@ -103,12 +101,12 @@ const searchVal = () => {
 
   const selectedStaff = personnelData
     .filter(
-      person =>
+      (person) =>
         person.LastName.toLowerCase().includes(searchArg) ||
         person.FirstName.toLowerCase().includes(searchArg)
     )
     .sort((a, b) => (a.LastName > b.LastName ? 1 : -1))
-    .map(person => {
+    .map((person) => {
       const { id, LastName, FirstName, DateStarted, Position } = person;
       const yearStarted = DateStarted.substr(-4);
       const fullPosition = positionList[Position];
@@ -127,7 +125,7 @@ $(document).ready(() => {
         ? "inline-block"
         : "none";
   });
-  btnToTop.click(e => {
+  btnToTop.click((e) => {
     e.stopPropagation();
     $("html, body").animate({ scrollTop: 0 }, "600");
   });
@@ -136,13 +134,13 @@ $(document).ready(() => {
   createNewRecord();
 
   //* Adding a new team member
-  $("#add-new-member").click(function(e) {
+  $("#add-new-member").click(function (e) {
     e.stopPropagation();
     $("#new-personnel").toggleClass("hidden");
   });
 
   //* Search Team Members
-  $("#search-input").keypress(function(e) {
+  $("#search-input").keypress(function (e) {
     e.stopPropagation();
     e.preventDefault();
     let value = $(this).val();
@@ -152,7 +150,7 @@ $(document).ready(() => {
       $(this).val((value += String.fromCharCode(e.which)));
     }
   });
-  $("#search-btn").click(e => {
+  $("#search-btn").click((e) => {
     e.stopPropagation();
     e.preventDefault();
     searchVal();
@@ -168,7 +166,7 @@ $(document).ready(() => {
   });
 
   //* Select person in short list
-  $("tbody").on("click", "[title^='click']", function(e) {
+  $("tbody").on("click", "[title^='click']", function (e) {
     e.stopPropagation();
     e.preventDefault();
     const rowID = Number($(this).attr("id"));
@@ -183,16 +181,16 @@ $(document).ready(() => {
 
     const homeAdrsFields = [
       ["id", listFields[0][1]],
-      ...listFields.filter(item => item[0].startsWith("HomeAdrs"))
+      ...listFields.filter((item) => item[0].startsWith("HomeAdrs")),
     ];
     const workAdrsFields = [
       ["id", listFields[0][1]],
-      ...listFields.filter(item => item[0].startsWith("WorkAdrs"))
+      ...listFields.filter((item) => item[0].startsWith("WorkAdrs")),
     ];
 
     const additionalInfoFields = [
       ["id", listFields[0][1]],
-      ...listFields.filter(item => item[0].startsWith("AdditionalInfo"))
+      ...listFields.filter((item) => item[0].startsWith("AdditionalInfo")),
     ];
 
     // Invoking all the blocs for personView
