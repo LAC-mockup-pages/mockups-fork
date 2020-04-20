@@ -15,7 +15,7 @@ $(document).ready(() => {
   });
 
   //* New personnel form set-up (hidden)
-  createNewRecord();
+  createNewRecordForm();
 
   //* Adding a new team member
   $("#add-new-member").click(function (e) {

@@ -296,7 +296,19 @@ const GetProfDevRoster = [
   },
 ];
 
-const sessionVariable = [{ AgencyID: "PRA" }];
+const sessionVariable = { AgencyID: "PRA" };
+
+const ddlPaidVolunteer = { P: "Paid", V: "Volunteer" };
+
+const ddlTimeStatus = { F: "Full-time", P: "Part-time" };
+
+const ddlExperienceYears = {
+  1: "Less than one year",
+  2: "One to three years",
+  3: "More than three years",
+};
+
+const ddlGender = { M: "Male", F: "Female", N: "Non-binary" };
 
 export {
   GetEthnicity,
@@ -315,4 +327,8 @@ export {
   getReportingPeriods,
   GetSubject,
   sessionVariable,
+  ddlPaidVolunteer,
+  ddlTimeStatus,
+  ddlExperienceYears,
+  ddlGender,
 };
