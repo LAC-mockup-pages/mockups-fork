@@ -6,31 +6,26 @@ import {
   ddlExperienceYears,
 } from "./data-server.mjs";
 
-const createSelect = (hashTable, keyValue, selectedValue = "", numSelected) => {
+const createSimpleSelect = (hashTable, keyValue, labelValue) => {
   const [primary, secondary] = Object.keys(hashTable[0]);
   const optionList = hashTable
     .map((item) => {
-      const selected = item[primary] === selectedValue ? " selected" : "";
-      return `<option value=${item[primary]}${selected}>
+      return `<option value=${item[primary]}>
           ${item[secondary]}</option>`;
     })
     .join("");
-  const elementChoice = [
-    `<div class="form-group input-field">
-  <label for=${keyValue}>County</label>
-  <select id=${keyValue} class="modal-select" name=${keyValue}>${optionList}</select>
-</div>`,
-    `<select id=${keyValue} class="modal-select form-control" name=${keyValue}><option selected disabled>Select an option</option>${optionList}</select>`,
-  ];
+  const selectElement = `<select id=${keyValue} class="modal-select form-control red-text" name=${keyValue} required><option selected disabled>Select ${labelValue}</option>${optionList}</select>`;
 
-  return elementChoice[numSelected];
+  return selectElement;
 };
 
 const createNewRecordForm = () => {
   const labelList = {
     AgencyID: "Agency ID",
+    PersPersonnelID: "Personnel ID",
     PersFirst: "First name",
     PersLast: "Last name",
+    PersStartDate: "Start date",
     lengthstay: "Length of stay (yrs)",
   };
 
@@ -51,14 +46,21 @@ const createNewRecordForm = () => {
     let classOption = "";
 
     if (key === "AgencyID") classOption = " hidden";
+    if (key === "lengthstay") {
+      option = " disabled";
+    }
 
     let inputElement = `<input type="text" class="form-control${classOption}" id=${key} name="${key}" placeholder="${labelList[key]}"${option} autocomplete="new-password" spellcheck="off">`;
 
-    for (const key of selectKeyList) {
-    }
-
     formNewPers.push(inputElement);
   }
+
+  for (const key of selectKeyList) {
+    formNewPers.push(
+      createSimpleSelect(selectList[key][1], key, selectList[key][0])
+    );
+  }
+
   formNewPers.push(
     '<button type="button" id="submit-btn" form="new-personnel" class="btn btn-primary">Add</button><button type="button" id="cancel-btn" form="new-personnel" class="btn btn-default">Cancel</button>'
   );

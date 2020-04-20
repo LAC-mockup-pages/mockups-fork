@@ -298,17 +298,27 @@ const GetProfDevRoster = [
 
 const sessionVariable = { AgencyID: "PRA" };
 
-const ddlPaidVolunteer = { P: "Paid", V: "Volunteer" };
+const ddlPaidVolunteer = [
+  { objKey: "P", objValue: "Paid" },
+  { objKey: "V", objValue: "Volunteer" },
+];
 
-const ddlTimeStatus = { F: "Full-time", P: "Part-time" };
+const ddlTimeStatus = [
+  { objKey: "F", objValue: "Full-time" },
+  { objKey: "P", objValue: "Part-time" },
+];
 
-const ddlExperienceYears = {
-  1: "Less than one year",
-  2: "One to three years",
-  3: "More than three years",
-};
+const ddlExperienceYears = [
+  { objKey: "1", objValue: "Less than one year" },
+  { objKey: "2", objValue: "One to three years" },
+  { objKey: "3", objValue: "More than three years" },
+];
 
-const ddlGender = { M: "Male", F: "Female", N: "Non-binary" };
+const ddlGender = [
+  { objKey: "M", objValue: "Male" },
+  { objKey: "F", objValue: "Female" },
+  { objKey: "N", objValue: "Non-binary" },
+];
 
 export {
   GetEthnicity,

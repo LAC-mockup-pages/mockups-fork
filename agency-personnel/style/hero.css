@@ -75,6 +75,10 @@ body {
   margin-left: 3%;
 }
 
+#submit-btn,
+#cancel-btn {
+  margin-left: 1%;
+}
 :required::placeholder,
 .delete-msg {
   color: rgb(197, 65, 65);
@@ -114,7 +118,10 @@ th {
   max-width: 80px;
 }
 
-.medium-cell {
+.medium-cell,
+#PersPersonnelID,
+#PersStartDate,
+#PersTimeStatus {
   max-width: 120px;
 }
 
