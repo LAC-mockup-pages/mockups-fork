@@ -6,20 +6,20 @@ import {
   ddlExperienceYears,
 } from "./data-server.mjs";
 
-const createSimpleSelect = (hashTable, keyValue, labelValue) => {
-  const [primary, secondary] = Object.keys(hashTable[0]);
-  const optionList = hashTable
-    .map((item) => {
-      return `<option value=${item[primary]}>
-          ${item[secondary]}</option>`;
-    })
-    .join("");
-  const selectElement = `<select id=${keyValue} class="modal-select form-control red-text" name=${keyValue} required><option selected disabled>Select ${labelValue}</option>${optionList}</select>`;
-
-  return selectElement;
-};
-
 const createNewRecordForm = () => {
+  const createSimpleSelect = (hashTable, keyValue, labelValue) => {
+    const [primary, secondary] = Object.keys(hashTable[0]);
+    const optionList = hashTable
+      .map((item) => {
+        return `<option value=${item[primary]}>
+          ${item[secondary]}</option>`;
+      })
+      .join("");
+    const selectElement = `<select id=${keyValue} class="modal-select form-control red-text" name=${keyValue} required><option selected disabled>Select ${labelValue}</option>${optionList}</select>`;
+
+    return selectElement;
+  };
+
   const labelList = {
     AgencyID: "Agency ID",
     PersPersonnelID: "Personnel ID",
@@ -36,7 +36,6 @@ const createNewRecordForm = () => {
     PersTimeStatus: ["Time status", ddlTimeStatus],
     PersExpYears: ["Experience", ddlExperienceYears],
   };
-
   const formNewPers = [];
   const keyList = Object.keys(labelList);
   const selectKeyList = Object.keys(selectList);
@@ -49,7 +48,6 @@ const createNewRecordForm = () => {
     if (key === "lengthstay") {
       option = " disabled";
     }
-
     let inputElement = `<input type="text" class="form-control${classOption}" id=${key} name="${key}" placeholder="${labelList[key]}"${option} autocomplete="new-password" spellcheck="off">`;
 
     formNewPers.push(inputElement);
