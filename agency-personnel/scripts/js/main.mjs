@@ -24,4 +24,13 @@ $(document).ready(() => {
     e.stopPropagation();
     $("#new-personnel").toggleClass("hidden");
   });
+
+  //* Canceling
+  $("#cancel-btn").click(function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    const formId = "#" + $(this).attr("form");
+    $(formId)[0].reset();
+    $(formId).toggleClass("hidden");
+  });
 });
