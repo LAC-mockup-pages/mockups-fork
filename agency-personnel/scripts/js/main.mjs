@@ -7,7 +7,7 @@ import { sessionVariable } from "./data-server.mjs";
 const yearsOfExperience = (strDate) => {
   const yearInMilliseconds = 1000 * 60 * 60 * 24 * 365;
   const numberYears = Math.round(
-    (Date.now() - Date.parse(startDate)) / yearInMilliseconds
+    (Date.now() - Date.parse(strDate)) / yearInMilliseconds
   ).toString();
   return numberYears;
 };
@@ -73,6 +73,21 @@ $(document).ready(() => {
     saveMods(formId);
     $(formId)[0].reset();
     $(formId).toggleClass("hidden");
+  });
+
+  // Creates default PersPersonnelID after position is selected
+  // Can be changed manually
+  $("#PersPositionID").on("focusout", function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    const positionValue = $(this).val();
+    let personnelId = "q";
+    const first = $("#PersFirst").val();
+    const last = $("#PersLast").val();
+    if ($("#PersFirst").val() || $("PersLast").val()) {
+      personnelId = `${last}${first}${sessionVariable.AgencyID}${positionValue}`;
+    }
+    $("#PersPersonnelID").attr("value", personnelId);
   });
 
   //* Canceling
