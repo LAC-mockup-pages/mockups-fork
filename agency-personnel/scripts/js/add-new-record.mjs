@@ -43,11 +43,7 @@ const createNewRecordForm = () => {
   for (const key of keyList) {
     let option = " required";
     let classOption = "";
-
-    if (key === "AgencyID") classOption = " hidden";
-    if (key === "lengthstay") {
-      option = " disabled";
-    }
+    if (["AgencyID", "lengthstay"].includes(key)) classOption = " hidden";
     let inputElement = `<input type="text" class="form-control${classOption}" id=${key} name="${key}" placeholder="${labelList[key]}"${option} autocomplete="new-password" spellcheck="off">`;
 
     formNewPers.push(inputElement);
