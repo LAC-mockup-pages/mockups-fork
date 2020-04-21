@@ -2,6 +2,9 @@
 
 import createNewRecordForm from "./add-new-record.mjs";
 
+// saveMods()
+// ======================================================
+
 $(document).ready(() => {
   //* Back to Top button
   const btnToTop = $("#btn-top");
@@ -23,6 +26,15 @@ $(document).ready(() => {
   $("#add-new-member").click(function (e) {
     e.stopPropagation();
     $("#new-personnel").toggleClass("hidden");
+  });
+
+  $("#submit-btn").click(function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    const formId = "#" + $(this).attr("form");
+    // saveMods(formId)
+    $(formId)[0].reset();
+    $(formId).toggleClass("hidden");
   });
 
   //* Canceling
