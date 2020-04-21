@@ -3,56 +3,18 @@
 import createNewRecordForm from "./add-new-record.mjs";
 import validateUserInput from "./data-check.mjs";
 import { sessionVariable } from "./data-server.mjs";
-const submittedData = [
-  {
-    name: "AgencyID",
-    value: "PRA",
-  },
-  {
-    name: "PersPersonnelID",
-    value: "",
-  },
-  {
-    name: "PersFirst",
-    value: "Paris",
-  },
-  {
-    name: "PersLast",
-    value: "Hilton",
-  },
-  {
-    name: "PersStartDate",
-    value: "1/1/2020",
-  },
-  {
-    name: "lengthstay",
-    value: "",
-  },
-  {
-    name: "PersPositionID",
-    value: "1",
-  },
-  {
-    name: "PersSubject",
-    value: "BE",
-  },
-  {
-    name: "PersPayStatus",
-    value: "V",
-  },
-  {
-    name: "PersTimeStatus",
-    value: "P",
-  },
-  {
-    name: "PersExpYears",
-    value: "2",
-  },
-];
+
+const yearsOfExperience = (strDate) => {
+  const yearInMilliseconds = 1000 * 60 * 60 * 24 * 365;
+  const numberYears = Math.round(
+    (Date.now() - Date.parse(startDate)) / yearInMilliseconds
+  ).toString();
+  return numberYears;
+};
 // Used for new personnel
 const saveMods = (form) => {
   const result = {};
-  // const submittedData = $(form).serializeArray();
+  const submittedData = $(form).serializeArray();
 
   // validateUserInput() <== data-check.js
   if (!validateUserInput(submittedData)) $(form)[0].reset();
@@ -61,13 +23,12 @@ const saveMods = (form) => {
 
     // dateFormat() <== helperFunction.js
     if (field.name === "PersStartDate") field.value = dateFormat(field.value);
+
     if (field.name === "lengthstay") {
       const startDate = submittedData.filter(
         (item) => item.name === "PersStartDate"
       )[0].value;
-      field.value = moment(startDate, "MM/DD/YYYY")
-        .fromNow()
-        .replace(" ago", "");
+      field.value = yearsOfExperience(startDate);
     }
     result[field.name] = field.value;
   }
