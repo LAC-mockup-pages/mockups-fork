@@ -9,13 +9,15 @@ const createInputField = (
   option = ""
 ) => {
   return `<div class="input-field">
-    <label for='${keyVal}' class='${labelClassVal}'>${labelVal}</label>
-    <input type="text" id='${keyVal}' class='${classVal}' value='${value}' ${option}>
+      <label for='${keyVal}' class='${labelClassVal}'>${labelVal}</label>
+      <input type="text" id='${keyVal}' class='${classVal}' name=${keyVal}
+      value='${value}' ${option}>
     </div>`;
 };
 
 // Converts 0000000000 to 000-000-0000 and vice-versa
-const phoneFormat = str => {
+const phoneFormat = (str) => {
+  if (!str) return "";
   if (str.match(/\D/)) {
     return str.replace(/\D/gi, "");
   } else {
@@ -28,20 +30,20 @@ const phoneFormat = str => {
 const createFieldList = (dataObj, labelObj) => {
   const keyList = Object.keys(dataObj);
 
-  return keyList.map(key => {
+  return keyList.map((key) => {
     const label = labelObj[key] ? labelObj[key] : key;
     return [key, label, dataObj[key]];
   });
 };
 
 // Returns the year of a string date
-const createFiscalYear = str => {
+const createFiscalYear = (str) => {
   const date = new Date(str);
   return date.getFullYear();
 };
 
 // Returns amount with $ 000000.00 format
-const currencyFormat = str => {
+const currencyFormat = (str) => {
   return !str
     ? ""
     : "$ " +
@@ -52,7 +54,7 @@ const currencyFormat = str => {
 
 // Returns a string date formatted MM/DD/YYYY with 0 if day or month
 // is 1 digit.
-const dateFormat = str => {
+const dateFormat = (str) => {
   const date = new Date(str);
   const month =
     date.getMonth() < 9
@@ -80,4 +82,15 @@ const updateDataObject = (obj, dataObj) => {
     }
   }
   return result;
+};
+
+// Returns ZIP code formatted 00000 0000
+const zipCodeFormat = (str) => {
+  return str.replace(/_/g, "").replace(/-/, " ").trim();
+};
+
+// Returns a string of headers for a <table> element
+const createHeaders = (labels) => {
+  const headers = labels.map((label) => `<th>${label}</th>`).join("");
+  return `<thead>${headers}</thead>`;
 };
