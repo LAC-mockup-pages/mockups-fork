@@ -8,22 +8,22 @@ const rowLabels = {
   FundStart: "Begin Date",
   FundEnd: "End Date",
   FundNumber: "Contrat / Grant #",
-  FiscalYear: "Fiscal Year"
+  FiscalYear: "Fiscal Year",
 };
 
 // Indexes needed for header lone and data viewing bloc, in order
 const blocItems = {
   viewBloc: [3, 4, 7, 8, 9, 6, 5],
-  newSource: [4, 7, 8, 6, 5]
+  newSource: [4, 7, 8, 6, 5],
 };
 
 // Style options for modal
 const rowOptionModal = {
   FundAbbrev: "disabled",
-  FiscalYear: "disabled"
+  FiscalYear: "disabled",
 };
 
-const newSourceObject = list => {
+const newSourceObject = (list) => {
   const agencyId = $("table").attr("id");
   const newSource = { AgencyID: agencyId };
 
@@ -43,7 +43,7 @@ const newSourceObject = list => {
 };
 
 const createNewSourceForm = (localList, selectList) => {
-  const listOption = selectList.map(item => {
+  const listOption = selectList.map((item) => {
     return `<option value="${item.FSID}">${item.FundAbbrev}</option>`;
   });
   const selectElement = `<select class='form-control red-text col-width-large' name='FSID'
@@ -52,12 +52,12 @@ const createNewSourceForm = (localList, selectList) => {
         ${listOption}
     </select>`;
 
-  const orderedList = blocItems.newSource.map(indx => {
+  const orderedList = blocItems.newSource.map((indx) => {
     return localList[0][indx];
   });
   const listInput =
     orderedList
-      .map(item => {
+      .map((item) => {
         let title = "";
         if (["FundStart", "FundEnd"].includes(item[0]))
           title = "title='Please fill out this field\n MM/DD/YYYY'";
@@ -81,9 +81,9 @@ const createNewSourceForm = (localList, selectList) => {
 const createTableHeader = (list, orderList) => {
   // Creates the list without the first 3 items which
   // are identifiers used in the data view
-  const headers = list[0].map(item => item[1]).slice(3);
+  const headers = list[0].map((item) => item[1]).slice(3);
   const headerLine = orderList
-    .map(indx => `<th>${headers[indx - 3]}</th>`)
+    .map((indx) => `<th>${headers[indx - 3]}</th>`)
     .reduce((bloc, item) => {
       return bloc + item;
     });
@@ -102,7 +102,7 @@ const createTableBody = (dataList, orderList) => {
   for (let source of dataList) {
     const identifier = source
       .slice(0, 3)
-      .map(arr => arr[2])
+      .map((arr) => arr[2])
       .join("-");
     let row = "";
 
@@ -123,11 +123,11 @@ const createTableBody = (dataList, orderList) => {
 
 const createDataList = (dataObj, labelObj, newField) => {
   const list = dataObj
-    .map(item => {
+    .map((item) => {
       // createFieldList <== helperFunction.js
       return createFieldList(item, labelObj, newField);
     })
-    .map(item => {
+    .map((item) => {
       // createFiscalYear <== helperFunction.js
       const fy = createFiscalYear(item[8][2]);
       item.push(["FiscalYear", labelObj.FiscalYear, fy]);
@@ -136,14 +136,12 @@ const createDataList = (dataObj, labelObj, newField) => {
   return list;
 };
 
-const saveMods = (evnt, elmnt) => {
-  evnt.stopPropagation();
-  const id = $(elmnt).attr("id");
-  const idList = id.split("-");
+const saveMods = (elmnt) => {
+  const idList = elmnt.split("-");
   let result = { ID: idList[0], AgencyID: idList[1], FSID: idList[2] };
   const list = $(`.modal-body>form input`)
     .get()
-    .filter(item => $(item).attr("id") !== ("FiscalYear", "FundAbbrev"));
+    .filter((item) => $(item).attr("id") !== ("FiscalYear", "FundAbbrev"));
 
   for (let row of list) {
     const key = $(row).attr("id");
@@ -159,7 +157,7 @@ const saveMods = (evnt, elmnt) => {
   console.log("JSON Object :", JSON.stringify(result));
   //!===============================================
 
-  $("#modalTopBloc").modal("toggle");
+  $("#modalBloc").modal("toggle");
 
   //TODO Update page with response from Database update
 };
@@ -180,7 +178,7 @@ const viewData = (sourcesList, labelsList, orderList) => {
 
 $(document).ready(() => {
   // * sub-navbar/index.js
-  $("#sub-nav li").click(function() {
+  $("#sub-nav li").click(function () {
     $("#sub-nav li").removeClass("blue-light-bg blue-text");
     $(this).toggleClass("blue-light-bg blue-text");
   });
@@ -190,7 +188,7 @@ $(document).ready(() => {
   viewData(agencyData, rowLabels, blocItems.viewBloc);
 
   //* Adding a new funding source
-  $("#new-source").on("submit", function(evnt) {
+  $("#new-source").on("submit", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
 
@@ -200,10 +198,10 @@ $(document).ready(() => {
 
     // validNewSource <== data-check.js
     const validatedList = validNewSource(newSource);
-    const checkFlag = validatedList.some(item => !item.correct);
+    const checkFlag = validatedList.some((item) => !item.correct);
 
     if (checkFlag) {
-      const list = validatedList.filter(obj => obj.correct === false);
+      const list = validatedList.filter((obj) => obj.correct === false);
       for (let field of list) {
         $(`[name=${field.name}]`).addClass("yellow-bg");
       }
@@ -215,15 +213,15 @@ $(document).ready(() => {
 
   //* Select funding source
 
-  $("[title^='Click'").click(function(evnt) {
+  $("[title^='Click'").click(function (evnt) {
     evnt.stopPropagation();
     $("#modalBloc").modal("toggle");
-    $(".modal-body form").remove();
+    $("#edit-form").empty();
 
     const sourceId = $(this).attr("id");
     const tdList = $.makeArray($(`#${sourceId} td`).get());
     const result = tdList
-      .map(item => {
+      .map((item) => {
         const id = $(item).attr("class");
         const label = $(item).attr("data-label");
         const text = $(item).text();
@@ -234,15 +232,19 @@ $(document).ready(() => {
       })
       .join("");
 
-    $(".modal-body").append(
-      `<form role="form" id="${sourceId}">${result}</form>`
-    );
+    $("#edit-form").append(result).attr("data-bloc-id", sourceId);
+  });
 
-    $("#save-button").attr("form", `${sourceId}`);
+  $("#save-button").click(function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    const formID = $(this).attr("form");
+    const id = $(`#${formID}`).attr("data-bloc-id");
+    saveMods(id);
   });
 
   //* Deleting source
-  $("#delete-btn").click(evnt => {
+  $("#delete-btn").click((evnt) => {
     evnt.stopPropagation();
     const deleteConfirm = $(".modal-footer>h3");
 
@@ -252,9 +254,7 @@ $(document).ready(() => {
       );
     } else {
       deleteConfirm.remove();
-      const valueList = $(".modal-body>form")
-        .attr("id")
-        .split("-");
+      const valueList = $(".modal-body>form").attr("id").split("-");
       const length = valueList.length;
       let sourceId = {};
       let keyList = ["ID", "AgencyID", "FSID"];
