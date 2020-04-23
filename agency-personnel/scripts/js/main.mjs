@@ -49,15 +49,11 @@ const searchPersonnel = (str) => {
   for (const person of getPersonnelList) {
     if (person.First.toLowerCase().startsWith(str.toLowerCase()))
       idSet.add(person.Second);
-  }
-
-  for (const person of getPersonnelList) {
     const firstName = person.First.split(", ")[1].toLowerCase();
     if (firstName.startsWith(str.toLowerCase())) idSet.add(person.Second);
   }
-  console.log("idSet :>> ", idSet, [...idSet]);
-  const idArray = Array.from(idSet);
-  for (const id of idArray) {
+
+  for (const id of Array.from(idSet)) {
     const person = getPersonnelList.find((pers) => pers.Second === id);
     const personArray = person.First.split(", ");
     const PersLast = personArray[0];
