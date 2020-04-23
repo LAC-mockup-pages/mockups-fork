@@ -49,19 +49,29 @@ const saveMods = (form) => {
 };
 
 const createTableRow = (idValue, recordObj) => {
-  return;
+  let dataElement = "";
+  for (const property in recordObj) {
+    dataElement += `<td class="cell-data" title="Click to edit" data-name=${property}>
+        ${recordObj[property]}
+      </td>`;
+  }
+  return `<tr id=${idValue}>${dataElement}</tr>`;
 };
 
 const viewPersonnelList = (listObj) => {
   const headerList = Object.keys(labelObj).map((key) => labelObj[key]);
+
   // createHeaders() <== helperFunctions.js
   const headerLine = createHeaders(headerList);
   let rows = "";
   for (const key of Object.keys(listObj)) {
+    const row = createTableRow(key, listObj[key]);
+    rows += row;
   }
-
   $("#view-bloc").append(
-    `<table class="table">${headerLine}<tbody><td>BODY</td></tbody></table>)`
+    `<table class="table">${headerLine}
+        <tbody>${rows}</tbody>
+    </table>)`
   );
 };
 
