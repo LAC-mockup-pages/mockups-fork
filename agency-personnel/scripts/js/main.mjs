@@ -48,16 +48,6 @@ const saveMods = (form) => {
   //ToDO Reloading/resetting with new data
 };
 
-const createTableRow = (idValue, recordObj) => {
-  let dataElement = "";
-  for (const property in recordObj) {
-    dataElement += `<td class="cell-data" title="Click to edit" data-name=${property}>
-        ${recordObj[property]}
-      </td>`;
-  }
-  return `<tr id=${idValue}>${dataElement}</tr>`;
-};
-
 const viewPersonnelList = (listObj) => {
   const headerList = Object.keys(labelObj).map((key) => labelObj[key]);
 
@@ -65,10 +55,11 @@ const viewPersonnelList = (listObj) => {
   const headerLine = createHeaders(headerList);
   let rows = "";
   for (const key of Object.keys(listObj)) {
+    // createTableRow() <== helperFunctions.js
     const row = createTableRow(key, listObj[key]);
     rows += row;
   }
-  $("#view-bloc").append(
+  $("#view-bloc").empty().append(
     `<table class="table">${headerLine}
         <tbody>${rows}</tbody>
     </table>)`
@@ -93,8 +84,8 @@ const searchPersonnel = (str) => {
     const person = getPersonnelList.find((pers) => pers.Second === id);
     const personArray = person.First.split(", ");
     const PersLast = personArray[0];
-    const PersFirst = personArray[1].split(" - ")[0];
-    const PersonnelID = personArray[1].split(" - ")[1];
+    // const tempArray = personArray[1].split(" - ");
+    const [PersFirst, PersonnelID] = personArray[1].split(" - ");
     personnelObj[id] = { PersLast, PersFirst, PersonnelID };
   }
   return personnelObj;
