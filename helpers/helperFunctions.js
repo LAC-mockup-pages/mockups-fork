@@ -94,3 +94,14 @@ const createHeaders = (labels) => {
   const headers = labels.map((label) => `<th>${label}</th>`).join("");
   return `<thead>${headers}</thead>`;
 };
+
+// Returns a <tr> element as a string from a record object
+const createTableRow = (idValue, recordObj) => {
+  let dataElement = "";
+  for (const property in recordObj) {
+    dataElement += `<td class="cell-data" title="Click to edit" data-name=${property}>
+        ${recordObj[property]}
+      </td>`;
+  }
+  return `<tr id=${idValue}>${dataElement}</tr>`;
+};
