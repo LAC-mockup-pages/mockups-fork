@@ -46,6 +46,9 @@ const searchPersonnel = (str) => {
   const idSet = new Set();
   const personnelObj = {};
 
+  //Checks for non alphanumeric characters
+  if (!/\w+$/i.test(value)) return personnelObj;
+
   for (const person of getPersonnelList) {
     if (person.First.toLowerCase().startsWith(str.toLowerCase()))
       idSet.add(person.Second);
@@ -117,10 +120,7 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const value = $(this).val();
 
-    // Checks for non alphanumeric characters
-    // if (!/\w+$/i.test(value)) $("#search-form")[0].reset();
     const listPers = searchPersonnel(value);
-    console.log("listPers :>> ", listPers);
   });
 
   $("#search-input").keypress(function (e) {
