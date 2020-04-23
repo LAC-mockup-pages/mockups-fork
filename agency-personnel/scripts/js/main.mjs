@@ -4,6 +4,12 @@ import createNewRecordForm from "./add-new-record.mjs";
 import validateUserInput from "./data-check.mjs";
 import { getPersonnelList, sessionVariable } from "./data-server.mjs";
 
+const labelObj = {
+  PersFirst: "First Name",
+  PersLast: "Last Name",
+  PersonnelID: "Personnel ID",
+};
+
 const yearsOfExperience = (strDate) => {
   const yearInMilliseconds = 1000 * 60 * 60 * 24 * 365;
   const numberYears = Math.round(
