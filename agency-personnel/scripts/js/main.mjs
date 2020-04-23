@@ -42,7 +42,31 @@ const saveMods = (form) => {
   //ToDO Reloading/resetting with new data
 };
 
-const searchPersonnel = (str) => {};
+const searchPersonnel = (str) => {
+  const idSet = new Set();
+  const personnelObj = {};
+
+  for (const person of getPersonnelList) {
+    if (person.First.toLowerCase().startsWith(str.toLowerCase()))
+      idSet.add(person.Second);
+  }
+
+  for (const person of getPersonnelList) {
+    const firstName = person.First.split(", ")[1].toLowerCase();
+    if (firstName.startsWith(str.toLowerCase())) idSet.add(person.Second);
+  }
+  console.log("idSet :>> ", idSet, [...idSet]);
+  const idArray = Array.from(idSet);
+  for (const id of idArray) {
+    const person = getPersonnelList.find((pers) => pers.Second === id);
+    const personArray = person.First.split(", ");
+    const PersLast = personArray[0];
+    const PersFirst = personArray[1].split(" - ")[0];
+    const PersonnelID = personArray[1].split(" - ")[1];
+    personnelObj[id] = { PersLast, PersFirst, PersonnelID };
+  }
+  return personnelObj;
+};
 
 $(document).ready(() => {
   //* Back to Top button
@@ -92,12 +116,15 @@ $(document).ready(() => {
   });
 
   //* Search Agency personnel
-  $("#search-input").change(function (evnt) {
+  $("#search-input").keyup(function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     const value = $(this).val();
-    if (!/\w+$/i.test(value)) $("#search-form")[0].reset();
-    console.log("value :>> ", value);
+
+    // Checks for non alphanumeric characters
+    // if (!/\w+$/i.test(value)) $("#search-form")[0].reset();
+    const listPers = searchPersonnel(value);
+    console.log("listPers :>> ", listPers);
   });
 
   $("#search-input").keypress(function (e) {

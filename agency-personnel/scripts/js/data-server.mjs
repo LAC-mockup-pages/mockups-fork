@@ -3,7 +3,7 @@ const getPersonnelList = [
   { First: "Porter, Samantha - PorterSamanthaPRA9", Second: "2256" },
   { First: "Adam, Jane - AdamJanePRA9", Second: "2815" },
   { First: "Marx, Wolfgang - MarxWolfgangPRA10", Second: "5478" },
-  { First: "Martin, Robert - MartinRobertPRA10", Second: "1234" },
+  { First: "Martin, Peter - MartinRobertPRA10", Second: "1234" },
   { First: "Marvel, Mary - MarvelMaryPRA10", Second: "4567" },
   { First: "Salty, William - SaltyWilliamPRA10", Second: "8765" },
 ];
