@@ -5,8 +5,8 @@ import validateUserInput from "./data-check.mjs";
 import { getPersonnelList, sessionVariable } from "./data-server.mjs";
 
 const labelObj = {
-  PersFirst: "First Name",
   PersLast: "Last Name",
+  PersFirst: "First Name",
   PersonnelID: "Personnel ID",
 };
 
@@ -48,12 +48,29 @@ const saveMods = (form) => {
   //ToDO Reloading/resetting with new data
 };
 
+const createTableRow = (idValue, recordObj) => {
+  return;
+};
+
+const viewPersonnelList = (listObj) => {
+  const headerList = Object.keys(labelObj).map((key) => labelObj[key]);
+  // createHeaders() <== helperFunctions.js
+  const headerLine = createHeaders(headerList);
+  let rows = "";
+  for (const key of Object.keys(listObj)) {
+  }
+
+  $("#view-bloc").append(
+    `<table class="table">${headerLine}<tbody><td>BODY</td></tbody></table>)`
+  );
+};
+
 const searchPersonnel = (str) => {
   const idSet = new Set();
   const personnelObj = {};
 
   //Checks for non alphanumeric characters
-  if (!/\w+$/i.test(value)) return personnelObj;
+  if (!/\w+$/i.test(str)) return personnelObj;
 
   for (const person of getPersonnelList) {
     if (person.First.toLowerCase().startsWith(str.toLowerCase()))
@@ -127,14 +144,17 @@ $(document).ready(() => {
     const value = $(this).val();
 
     const listPers = searchPersonnel(value);
+    console.log("listPers :>> ", listPers);
+    viewPersonnelList(listPers);
   });
 
   $("#search-input").keypress(function (e) {
     e.stopPropagation();
     e.preventDefault();
     let value = $(this).val();
+    let listPers = {};
     if (e.which === 13) {
-      searchVal();
+      listPers = searchPersonnel(value);
     } else {
       $(this).val((value += String.fromCharCode(e.which)));
     }
@@ -143,15 +163,24 @@ $(document).ready(() => {
   $("#search-btn").click((e) => {
     e.stopPropagation();
     e.preventDefault();
-    searchVal();
+    const listPers = searchPersonnel(value);
   });
 
-  //* Canceling
+  //* New personnel cancel button
   $("#cancel-btn").click(function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
     $(formId)[0].reset();
     $(formId).toggleClass("hidden");
+  });
+
+  //* Cancel or Save
+  $("#btn-cancel").click(() => {
+    location.reload();
+  });
+
+  $("#btn-save").click(() => {
+    location.reload();
   });
 });
