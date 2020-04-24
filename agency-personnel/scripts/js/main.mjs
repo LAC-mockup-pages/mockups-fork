@@ -61,7 +61,7 @@ const viewPersonnelList = (listObj) => {
   }
   $("#view-bloc").empty().append(
     `<table class="table">${headerLine}
-        <tbody>${rows}</tbody>
+        <tbody class="table-body">${rows}</tbody>
     </table>)`
   );
 };
@@ -91,6 +91,8 @@ const searchPersonnel = (str) => {
   return personnelObj;
 };
 
+//* jQuery logic
+//*======================================
 $(document).ready(() => {
   //* Back to Top button
   const btnToTop = $("#btn-top");
@@ -174,6 +176,16 @@ $(document).ready(() => {
     const formId = "#" + $(this).attr("form");
     $(formId)[0].reset();
     $(formId).toggleClass("hidden");
+  });
+  //* Select personnel in short list
+  $("#view-bloc").on("click", ".row-data", function (e) {
+    e.stopPropagation();
+    e.preventDefault();
+    const rowID = Number($(this).attr("id"));
+
+    // Cleaning up
+    $("#view-bloc").empty();
+    $("#search-input").val("");
   });
 
   //* Cancel or Save

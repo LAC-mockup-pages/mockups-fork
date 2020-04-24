@@ -99,9 +99,11 @@ const createHeaders = (labels) => {
 const createTableRow = (idValue, recordObj) => {
   let dataElement = "";
   for (const property in recordObj) {
-    dataElement += `<td class="cell-data" title="Click to edit" data-name=${property}>
-        ${recordObj[property]}
-      </td>`;
+    dataElement += `<td class="cell-data" data-name=${property}>
+                      ${recordObj[property]}
+                    </td>`;
   }
-  return `<tr id=${idValue}>${dataElement}</tr>`;
+  return `<tr class="row-data" id=${idValue} title="Click to edit">
+            ${dataElement}
+          </tr>`;
 };
