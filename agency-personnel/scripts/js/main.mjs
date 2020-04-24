@@ -184,8 +184,22 @@ $(document).ready(() => {
     const rowID = Number($(this).attr("id"));
 
     // Cleaning up
-    $("#view-bloc").empty();
+    $("#view-bloc").remove();
     $("#search-input").val("");
+
+    // Adding blocs
+    $(".personnel-entry").toggleClass("hidden");
+    $(".personnel-search").toggleClass("hidden");
+
+    $(".hero").append(`<div class="container personView" id=${rowID}>
+    <div class="">
+        <div class="bloc-perso container row">${blocPerso}</div>
+        <div class="container row bloc-history-proDev " id='${rowID}-history'>
+          <div class="bloc-history col-md-5">${historyView}</div>
+          <div class="bloc-proDev col-md-7">${proDevView}</div>
+        </div>
+    </div>
+    </div>`);
   });
 
   //* Cancel or Save

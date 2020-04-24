@@ -15,6 +15,15 @@ const createInputField = (
     </div>`;
 };
 
+// obj = { keyVal, labelVal, value, labelClassVal, classVal, option}
+const elementInput = (obj) => {
+  return `<div class="input-field">
+      <label for='${obj.keyVal}' ${obj.labelClassVal}>${obj.labelVal}</label>
+      <input type="text" id='${obj.keyVal}' ${obj.classVal} name=${obj.keyVal}
+      value='${obj.value}' ${obj.option}>
+    </div>`;
+};
+
 // Converts 0000000000 to 000-000-0000 and vice-versa
 const phoneFormat = (str) => {
   if (!str) return "";
