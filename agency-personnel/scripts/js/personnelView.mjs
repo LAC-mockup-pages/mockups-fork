@@ -8,6 +8,7 @@ const personView = (selectedID) => {
   )[0];
 
   const labels = {
+    PersonnelID: "Personnel ID",
     PersFirst: "First Name",
     PersLast: "Last Name",
     PersPositionID: "Position",
@@ -26,11 +27,31 @@ const personView = (selectedID) => {
   const fieldList = Object.keys(labels);
   const fields = fieldList.map((key) => {
     const keyVal = key;
-    const labelClassVal = "";
+    let labelClassVal = "";
     const labelVal = labels[key];
     const classVal = "";
     const value = personData[key];
-    const option = "";
+    let option = "";
+
+    if (
+      [
+        "PersonnelID",
+        "PersFirst",
+        "PersLast",
+        "PersPositionID",
+        "PersSubject",
+        "PersStartDate",
+        "PersPayStatus",
+        "PersTimeStatus",
+        "PersExpYears",
+      ].includes(key)
+    ) {
+      option = "required";
+      labelClassVal = "class='red-text'";
+    }
+
+    if (key === "lengthstay") option = "disabled";
+
     const argsObj = {
       keyVal,
       labelClassVal,

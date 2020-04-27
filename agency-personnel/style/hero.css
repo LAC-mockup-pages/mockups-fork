@@ -79,6 +79,7 @@ body {
 #cancel-btn {
   margin-left: 1%;
 }
+
 :required::placeholder,
 .delete-msg {
   color: rgb(197, 65, 65);
