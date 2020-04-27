@@ -1,6 +1,14 @@
 //* Viewing personnel info: Person, History, Professional Development
 
-import { getPersonnel } from "./data-server.mjs";
+import {
+  getPersonnel,
+  GetPosition,
+  GetSubject,
+  ddlTimeStatus,
+  ddlExperienceYears,
+  ddlPaidVolunteer,
+} from "./data-server.mjs";
+import { elementSelectWithLabel } from "./main.mjs";
 
 const personView = (selectedID) => {
   const personData = getPersonnel.filter(
@@ -26,7 +34,6 @@ const personView = (selectedID) => {
 
   const fieldList = Object.keys(labels);
   const fields = fieldList.map((key) => {
-    const keyVal = key;
     let labelClassVal = "";
     const labelVal = labels[key];
     const classVal = "";
@@ -52,8 +59,8 @@ const personView = (selectedID) => {
 
     if (key === "lengthstay") option = "disabled";
 
-    const argsObj = {
-      keyVal,
+    const argumentsObj = {
+      key,
       labelClassVal,
       labelVal,
       classVal,
@@ -61,9 +68,49 @@ const personView = (selectedID) => {
       option,
     };
 
-    return elementInput(argsObj);
-  });
+    if (
+      [
+        "PersPositionID",
+        "PersSubject",
+        "PersPayStatus",
+        "PersTimeStatus",
+        "PersExpYears",
+      ].includes(key)
+    ) {
+      let hashTable = [];
+      switch (key) {
+        case "PersPositionID":
+          hashTable = GetPosition;
+          break;
+        case "PersSubject":
+          hashTable = GetSubject;
+          break;
+        case "PersPayStatus":
+          hashTable = ddlPaidVolunteer;
+          break;
+        case "PersTimeStatus":
+          hashTable = ddlTimeStatus;
+          break;
+        case "PersExpYears":
+          hashTable = ddlExperienceYears;
+          break;
 
+        default:
+          break;
+      }
+      const argumentsSelect = {
+        hashTable,
+        keyValue: key,
+        selectedValue: personData[key],
+        labelVal,
+        labelClassVal,
+        option,
+      };
+      return elementSelectWithLabel(argumentsSelect);
+    } else {
+      return elementInput(argumentsObj);
+    }
+  });
   return fields.join("");
 };
 

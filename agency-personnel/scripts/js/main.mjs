@@ -19,6 +19,38 @@ const yearsOfExperience = (strDate) => {
   return numberYears;
 };
 
+export const elementSelectWithLabel = (argsObj) => {
+  let firstOption = "<option disabled>Select an option</option>";
+  const {
+    hashTable,
+    keyValue,
+    selectedValue,
+    labelVal,
+    labelClassVal,
+    option,
+  } = argsObj;
+  const [primary, secondary] = Object.keys(hashTable[0]);
+  let optionList = hashTable
+    .map((item) => {
+      const selected =
+        item[primary].toString() === selectedValue ? "selected" : "";
+      return `<option value="${item[primary]}" ${selected}>
+          ${item[secondary]}</option>`;
+    })
+    .join("");
+
+  if (!selectedValue) {
+    firstOption = "<option selected disabled>Select an option</option>";
+  }
+
+  const elementSelect = `<div class= "input-field form-group">
+  <label for="${keyValue}" ${labelClassVal}>${labelVal}</label>
+  <select id="${keyValue}" class="modal-select" name="${keyValue}" ${option}>${firstOption}${optionList}</select>
+</div>`;
+
+  return elementSelect;
+};
+
 // Used for new personnel
 const saveMods = (form) => {
   const result = {};

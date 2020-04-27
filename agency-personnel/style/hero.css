@@ -160,11 +160,24 @@ th {
   height: 20px;
 }
 
-.input-field > input {
+.input-field > input,
+.input-field > select {
   font-size: 1.3em;
   font-weight: 700;
   border: none;
   text-indent: 4px;
   width: 72%;
+  border-bottom: 1px solid #2479b5;
+}
+
+.modal-select,
+#new-select {
+  margin-top: 0.5%;
+  font-size: 1.3em;
+  line-height: 50px;
+  font-weight: 700;
+  max-width: 50%;
+  padding: 5px;
+  border: none;
   border-bottom: 1px solid #2479b5;
 }
