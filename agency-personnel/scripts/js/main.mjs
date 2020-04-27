@@ -3,6 +3,7 @@
 import createNewRecordForm from "./add-new-record.mjs";
 import validateUserInput from "./data-check.mjs";
 import { getPersonnelList, sessionVariable } from "./data-server.mjs";
+import personView from "./personnelView.mjs";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -191,12 +192,21 @@ $(document).ready(() => {
     $(".personnel-entry").toggleClass("hidden");
     $(".personnel-search").toggleClass("hidden");
 
+    const personInfoBloc = `
+    <div class="sub-header blue-bg blue-light-text" data-blockId="${rowID}">
+      <div class="container-fluid row">
+         <div class="sub-header-title">Personnel Information</div>
+      </div>
+    </div>
+    <form role="form" id="person-info">${personView(rowID)}</form>
+    `;
+
     $(".hero").append(`<div class="container personView" id=${rowID}>
     <div class="">
-        <div class="bloc-perso container row">${blocPerso}</div>
+        <div class="bloc-perso container row">${personInfoBloc}</div>
         <div class="container row bloc-history-proDev " id='${rowID}-history'>
-          <div class="bloc-history col-md-5">${historyView}</div>
-          <div class="bloc-proDev col-md-7">${proDevView}</div>
+          <div class="bloc-history col-md-5"><h3>History View</h3></div>
+          <div class="bloc-proDev col-md-7"><h3>Pro Dev View</h3></div>
         </div>
     </div>
     </div>`);

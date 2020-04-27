@@ -3,22 +3,10 @@
 import { getPersonnel } from "./data-server.mjs";
 
 const personView = (selectedID) => {
-  const personData = getPersonnel.filter((person) => person.ID === selectedID);
-  const {
-    PersFirst,
-    PersLast,
-    PersPositionID,
-    PersSubject,
-    PersStartDate,
-    lengthstay,
-    PersPayStatus,
-    PersTimeStatus,
-    PersExpYears,
-    PersHomePhone,
-    PersMobilePhone,
-    PersEmail,
-    PersAltEmail,
-  } = personData;
+  console.log("selectedID :>> ", selectedID, typeof selectedID);
+  const personData = getPersonnel.filter(
+    (person) => person.ID === selectedID.toString()
+  )[0];
 
   const labels = {
     PersFirst: "First Name",
@@ -35,6 +23,28 @@ const personView = (selectedID) => {
     PersEmail: "Email",
     PersAltEmail: "Alt Email",
   };
+
+  const fieldList = Object.keys(labels);
+  const fields = fieldList.map((key) => {
+    const keyVal = key;
+    const labelClassVal = "";
+    const labelVal = labels[key];
+    const classVal = "";
+    const value = personData[key];
+    const option = "";
+    const argsObj = {
+      keyVal,
+      labelClassVal,
+      labelVal,
+      classVal,
+      value,
+      option,
+    };
+
+    return elementInput(argsObj);
+  });
+
+  return fields.join("");
 };
 
 export default personView;
