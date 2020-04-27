@@ -146,9 +146,7 @@ $(document).ready(() => {
     evnt.preventDefault();
     evnt.stopPropagation();
     const value = $(this).val();
-
     const listPers = searchPersonnel(value);
-    console.log("listPers :>> ", listPers);
     viewPersonnelList(listPers);
   });
 
@@ -198,17 +196,17 @@ $(document).ready(() => {
          <div class="sub-header-title">Personnel Information</div>
       </div>
     </div>
-    <form role="form" id="person-info">${personView(rowID)}</form>
-    `;
+    ${personView(rowID)}`;
 
-    $(".hero").append(`<div class="container personView" id=${rowID}>
-    <div class="">
-        <div class="bloc-perso container row">${personInfoBloc}</div>
-        <div class="container row bloc-history-proDev " id='${rowID}-history'>
-          <div class="bloc-history col-md-5"><h3>History View</h3></div>
-          <div class="bloc-proDev col-md-7"><h3>Pro Dev View</h3></div>
+    const historyView = `<h3>History View</h3>`;
+    const proDevView = `<h3>Prof Dev View</h3>`;
+
+    $(".hero").append(`<div class="container row personView" id=${rowID}>
+        <form class="bloc-perso id="person-info" col-md-5">${personInfoBloc}</form>
+        <div class="bloc-history-proDev col-md-7" id='${rowID}-history'>
+          <div class="bloc-history">${historyView}</div>
+          <div class="bloc-proDev">${proDevView}</div>
         </div>
-    </div>
     </div>`);
   });
 

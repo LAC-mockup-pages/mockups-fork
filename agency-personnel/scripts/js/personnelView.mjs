@@ -3,7 +3,6 @@
 import { getPersonnel } from "./data-server.mjs";
 
 const personView = (selectedID) => {
-  console.log("selectedID :>> ", selectedID, typeof selectedID);
   const personData = getPersonnel.filter(
     (person) => person.ID === selectedID.toString()
   )[0];
