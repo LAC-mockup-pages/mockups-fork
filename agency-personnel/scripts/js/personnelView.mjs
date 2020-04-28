@@ -111,7 +111,17 @@ const personView = (selectedID) => {
       return elementInput(argumentsObj);
     }
   });
-  return fields.join("");
+  // return fields.join("");
+
+  return `
+  <div class="sub-header blue-bg blue-light-text" data-blockId="${selectedID}">
+    <div class="container-fluid row">
+       <div class="sub-header-title">Personnel Information<span>
+       <button type="button" form="person-info" class="btn btn-default">Save</button></span>
+    </div></div>
+  </div>
+  <form class="bloc-perso id="person-info" col-md-5">${fields.join("")}</form>
+  `;
 };
 
 export default personView;

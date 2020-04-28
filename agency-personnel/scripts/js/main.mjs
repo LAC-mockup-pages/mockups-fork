@@ -222,23 +222,17 @@ $(document).ready(() => {
     $(".personnel-entry").toggleClass("hidden");
     $(".personnel-search").toggleClass("hidden");
 
-    const personInfoBloc = `
-    <div class="sub-header blue-bg blue-light-text" data-blockId="${rowID}">
-      <div class="container-fluid row">
-         <div class="sub-header-title">Personnel Information</div>
-      </div>
-    </div>
-    ${personView(rowID)}`;
+    const personInfoBloc = personView(rowID);
 
     const historyView = `<h3>History View</h3>`;
     const proDevView = `<h3>Prof Dev View</h3>`;
 
     $(".hero").append(`<div class="container row personView" id=${rowID}>
-        <form class="bloc-perso id="person-info" col-md-5">${personInfoBloc}</form>
-        <div class="bloc-history-proDev col-md-7" id='${rowID}-history'>
-          <div class="bloc-history">${historyView}</div>
-          <div class="bloc-proDev">${proDevView}</div>
-        </div>
+      ${personInfoBloc}
+      <div class="bloc-history-proDev col-md-7" id='${rowID}-history'>
+        <div class="bloc-history">${historyView}</div>
+        <div class="bloc-proDev">${proDevView}</div>
+      </div>
     </div>`);
   });
 
