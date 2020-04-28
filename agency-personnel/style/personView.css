@@ -17,7 +17,7 @@
 .table {
   margin: 0;
 }
-.history-table,
+.History-table,
 .proDev-table,
 .instructional-hours-table,
 .contact-history-table,
@@ -58,7 +58,7 @@
   border: 1px solid #d3e4f0;
 }
 
-.history-cell,
+.History-body,
 .proDev-cell {
   font-size: 1em;
   line-height: 25px;

@@ -87,22 +87,18 @@ export const topBanner = (title, list = null) => {
 
 // Returns a table body with hidden cells
 export const tableBody = (dataList, block, hiddenList) => {
-  console.log("dataList :>> ", dataList);
   const rows = dataList
     .map((record, indx) => {
       let cells = "";
       const keyList = Object.keys(record);
       for (const key of keyList) {
         let optionHidden = "";
-
-        console.log("hiddenList :>> ", hiddenList);
         if (hiddenList.includes(key)) optionHidden = "hidden";
         cells += `<td class="cell-data ${optionHidden}">${record[key]}</td>`;
       }
       return `<tr id="${block}-${indx}">${cells}</tr>`;
     })
     .join("");
-
   return `<div class="${block}-table">
   <table class="table">
     <tbody class='${block}-body'>${rows}</tbody>

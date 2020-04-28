@@ -3,13 +3,13 @@ import { topBanner, tableBody } from "./main.mjs";
 
 const historyView = () => {
   const blockName = "History";
-  const labels = {
-    ID: "id",
-    PersonnelID: "Personnel id",
-    PersStatusDate: "Date",
-    PersonnelStatID: "Code",
-    personnelStatDesc: "Status",
-  };
+  // const labels = {
+  //   ID: "id",
+  //   PersonnelID: "Personnel id",
+  //   PersStatusDate: "Date",
+  //   PersonnelStatID: "Code",
+  //   personnelStatDesc: "Status",
+  // };
 
   // Sorting data by date, most recent first
   const historyData = GetPersStatusHistory.sort(
@@ -17,8 +17,8 @@ const historyView = () => {
   );
 
   const header = topBanner(blockName, [
-    ["Date", "col-sm-4"],
-    ["Status", "col-sm-8"],
+    ["Date", "col-sm-2"],
+    ["Status", "col-sm-10"],
   ]);
 
   const body = tableBody(historyData, "History", [
