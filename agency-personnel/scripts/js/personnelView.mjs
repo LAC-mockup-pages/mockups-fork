@@ -60,7 +60,7 @@ const personView = (selectedID) => {
     if (key === "lengthstay") option = "disabled";
 
     const argumentsObj = {
-      key,
+      keyVal: key,
       labelClassVal,
       labelVal,
       classVal,
@@ -111,17 +111,17 @@ const personView = (selectedID) => {
       return elementInput(argumentsObj);
     }
   });
-  // return fields.join("");
 
-  return `
+  return `<div class="person-main col-md-5">
   <div class="sub-header blue-bg blue-light-text" data-blockId="${selectedID}">
     <div class="container-fluid row">
        <div class="sub-header-title">Personnel Information<span>
        <button type="button" form="person-info" class="btn btn-default">Save</button></span>
-    </div></div>
+    </div>
+    </div>
   </div>
-  <form class="bloc-perso id="person-info" col-md-5">${fields.join("")}</form>
-  `;
+  <form class="bloc-perso" id="person-info">${fields.join("")}</form>
+  </div>`;
 };
 
 export default personView;

@@ -4,6 +4,7 @@ import createNewRecordForm from "./add-new-record.mjs";
 import validateUserInput from "./data-check.mjs";
 import { getPersonnelList, sessionVariable } from "./data-server.mjs";
 import personView from "./personnelView.mjs";
+import historyView from "./personnelHistory.mjs";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -49,6 +50,63 @@ export const elementSelectWithLabel = (argsObj) => {
 </div>`;
 
   return elementSelect;
+};
+
+// Add button, title and headers
+export const topBanner = (title, list = null) => {
+  let headerLine = "";
+  const formName = `form="${title.toLowerCase().replace(/\W/gi, "-")}"`;
+  const addButton = [
+    "Professional Development",
+    "Instructional Hours",
+    "Notes and Comments",
+  ].includes(title)
+    ? ""
+    : `<button type='button' class="btn btn-default add-record-btn col-sm-2" ${formName}>Add</button>`;
+
+  if (list) {
+    headerLine +=
+      "<div class='container-fluid row sub-header-labels blue-light-bg blue-text'>";
+    for (const item of list) {
+      const cellName = item[0].toLowerCase().replace(/\W/gi, "-");
+      const blockName = title.toLowerCase().replace(/\W/gi, "-");
+      headerLine += ` <div class='bloc-${blockName}-${cellName} ${item[1]}'>${item[0]}</div>`;
+    }
+    headerLine += "</div>";
+  }
+  return `
+  <div class='sub-header blue-bg blue-light-text'>
+    <div class="container-fluid row">
+      ${addButton}
+      <div class='sub-header-title'>${title}</div>
+    </div>
+    ${headerLine}
+  </div>
+  `;
+};
+
+// Returns a table body with hidden cells
+export const tableBody = (dataList, block, hiddenList) => {
+  console.log("dataList :>> ", dataList);
+  const rows = dataList
+    .map((record, indx) => {
+      let cells = "";
+      const keyList = Object.keys(record);
+      for (const key of keyList) {
+        let optionHidden = "";
+
+        console.log("hiddenList :>> ", hiddenList);
+        if (hiddenList.includes(key)) optionHidden = "hidden";
+        cells += `<td class="cell-data ${optionHidden}">${record[key]}</td>`;
+      }
+      return `<tr id="${block}-${indx}">${cells}</tr>`;
+    })
+    .join("");
+
+  return `<div class="${block}-table">
+  <table class="table">
+    <tbody class='${block}-body'>${rows}</tbody>
+</table></div>`;
 };
 
 // Used for new personnel
@@ -223,14 +281,13 @@ $(document).ready(() => {
     $(".personnel-search").toggleClass("hidden");
 
     const personInfoBloc = personView(rowID);
-
-    const historyView = `<h3>History View</h3>`;
+    const historyBloc = historyView();
     const proDevView = `<h3>Prof Dev View</h3>`;
 
     $(".hero").append(`<div class="container row personView" id=${rowID}>
       ${personInfoBloc}
       <div class="bloc-history-proDev col-md-7" id='${rowID}-history'>
-        <div class="bloc-history">${historyView}</div>
+        <div class="bloc-history">${historyBloc}</div>
         <div class="bloc-proDev">${proDevView}</div>
       </div>
     </div>`);
