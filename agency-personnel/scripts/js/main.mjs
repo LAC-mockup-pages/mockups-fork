@@ -5,6 +5,7 @@ import validateUserInput from "./data-check.mjs";
 import { getPersonnelList, sessionVariable } from "./data-server.mjs";
 import personView from "./personnelView.mjs";
 import historyView from "./personnelHistory.mjs";
+import proDevView from './personnelProDev.mjs'
 
 const labelObj = {
   PersLast: "Last Name",
@@ -278,13 +279,13 @@ $(document).ready(() => {
 
     const personInfoBloc = personView(rowID);
     const historyBloc = historyView();
-    const proDevView = `<h3>Prof Dev View</h3>`;
+    const proDevBloc = proDevView()
 
     $(".hero").append(`<div class="container row personView" id=${rowID}>
       ${personInfoBloc}
       <div class="bloc-history-proDev col-md-7" id='${rowID}-history'>
         <div class="bloc-history">${historyBloc}</div>
-        <div class="bloc-proDev">${proDevView}</div>
+        <div class="bloc-proDev">${proDevBloc}</div>
       </div>
     </div>`);
   });
