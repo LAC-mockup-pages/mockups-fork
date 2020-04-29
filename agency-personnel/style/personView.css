@@ -17,7 +17,7 @@
 .table {
   margin: 0;
 }
-.History-table,
+.history-table,
 .proDev-table,
 .instructional-hours-table,
 .contact-history-table,
@@ -29,7 +29,7 @@
 .bloc-history,
 .bloc-proDev {
   padding: 0;
-  margin: 5% 0%;
+  margin: 2% 0%;
 }
 
 .bloc-perso {
@@ -58,9 +58,9 @@
   border: 1px solid #d3e4f0;
 }
 
-.History-body,
+.history-body,
 .proDev-cell {
-  font-size: 1em;
+  font-size: 1.3em;
   line-height: 25px;
 }
 
@@ -136,4 +136,8 @@
   margin-left: -5px;
   margin-right: 0;
   text-align: center;
+}
+
+.larger-font {
+  font-size: 1.5em;
 }

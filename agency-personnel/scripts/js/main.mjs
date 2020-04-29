@@ -5,7 +5,7 @@ import validateUserInput from "./data-check.mjs";
 import { getPersonnelList, sessionVariable } from "./data-server.mjs";
 import personView from "./personnelView.mjs";
 import historyView from "./personnelHistory.mjs";
-import proDevView from './personnelProDev.mjs'
+import proDevView from "./personnelProDev.mjs";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -88,6 +88,7 @@ export const topBanner = (title, list = null) => {
 
 // Returns a table body with hidden cells
 export const tableBody = (dataList, block, hiddenList) => {
+  block = block.toLowerCase();
   const rows = dataList
     .map((record, indx) => {
       let cells = "";
@@ -263,6 +264,7 @@ $(document).ready(() => {
     $(formId)[0].reset();
     $(formId).toggleClass("hidden");
   });
+
   //* Select personnel in short list
   $("#view-bloc").on("click", ".row-data", function (e) {
     e.stopPropagation();
@@ -279,7 +281,7 @@ $(document).ready(() => {
 
     const personInfoBloc = personView(rowID);
     const historyBloc = historyView();
-    const proDevBloc = proDevView()
+    const proDevBloc = proDevView();
 
     $(".hero").append(`<div class="container row personView" id=${rowID}>
       ${personInfoBloc}
