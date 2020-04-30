@@ -31,9 +31,12 @@
   margin: 2% 0%;
 }
 
-.bloc-perso,
-.bloc-proDev {
+.bloc-perso {
   margin-top: 1.7%;
+}
+
+.bloc-proDev {
+  margin-top: 15%;
 }
 .bloc-history-proDev {
   padding-left: 4%;

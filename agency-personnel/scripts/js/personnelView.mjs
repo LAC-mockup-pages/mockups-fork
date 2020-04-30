@@ -1,4 +1,4 @@
-//* Viewing personnel info: Person, History, Professional Development
+//* Viewing personnel info: Person
 
 import {
   getPersonnel,
