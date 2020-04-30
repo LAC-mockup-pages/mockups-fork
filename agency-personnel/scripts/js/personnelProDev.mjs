@@ -4,6 +4,7 @@ import { topBanner, tableBody } from "./main.mjs";
 const totalProDevHrs = (dataList) => {
   let result = 0;
   const { FiscalYear } = sessionVariable;
+
   for (const item of dataList) {
     const year = new Date(item.Date).getFullYear().toString();
     if (FiscalYear.includes(year)) {
@@ -21,6 +22,7 @@ const totalProDevHrs = (dataList) => {
 
 const proDevView = () => {
   const blockName = "Professional Development";
+
   // Sorting data by date, most recent first
   const profDevData = GetProfDevRoster.sort(
     (a, b) => new Date(b.Date) - new Date(a.Date)
@@ -36,7 +38,6 @@ const proDevView = () => {
     "Provider",
     "Attended",
   ]);
-
   const profDevHours = totalProDevHrs(profDevData);
 
   return header + body + profDevHours;
