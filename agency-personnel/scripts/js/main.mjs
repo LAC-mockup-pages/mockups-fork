@@ -314,7 +314,6 @@ $(document).ready(() => {
 
     location.reload();
   });
-  console.log($("#save01").attr("form"));
 
   $("#btn-save").click((evnt) => {
     evnt.preventDefault();

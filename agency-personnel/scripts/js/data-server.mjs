@@ -304,6 +304,7 @@ const GetProfDevRoster = [
 const sessionVariable = {
   AgencyID: "PRA",
   AuditUserID: '<%= Session["UserID"] %>',
+  FiscalYear: ["2016", "2017"],
 };
 
 const ddlPaidVolunteer = [
