@@ -57,14 +57,20 @@ export const elementSelectWithLabel = (argsObj) => {
 export const topBanner = (title, list = null) => {
   let headerLine = "";
   const formName = `form="${title.toLowerCase().replace(/\W/gi, "-")}"`;
-  const addButton = [
-    "Professional Development",
-    "Instructional Hours",
-    "Notes and Comments",
-  ].includes(title)
-    ? ""
-    : `<button type='button' class="btn btn-default add-record-btn col-sm-2" ${formName}>Add</button>`;
+  let button = "";
 
+  if (
+    ![
+      "Professional Development",
+      "Personnel Information",
+      "Instructional Hours",
+      "Notes and Comments",
+    ].includes(title)
+  ) {
+    button = `<button type='button' class="btn btn-default add-record-btn col-sm-2" ${formName}>Add</button>`;
+  } else if (title === "Personnel Information") {
+    button = `<button type='button' class="btn btn-default save-record-btn col-sm-2" ${formName}>Save</button>`;
+  }
   if (list) {
     headerLine +=
       "<div class='container-fluid row sub-header-labels blue-light-bg blue-text'>";
@@ -78,7 +84,7 @@ export const topBanner = (title, list = null) => {
   return `
   <div class='sub-header blue-bg blue-light-text'>
     <div class="container-fluid row">
-      ${addButton}
+      ${button}
       <div class='sub-header-title'>${title}</div>
     </div>
     ${headerLine}

@@ -8,14 +8,17 @@ import {
   ddlExperienceYears,
   ddlPaidVolunteer,
 } from "./data-server.mjs";
-import { elementSelectWithLabel } from "./main.mjs";
+import { elementSelectWithLabel, topBanner } from "./main.mjs";
 
 const personView = (selectedID) => {
   const personData = getPersonnel.filter(
     (person) => person.ID === selectedID.toString()
   )[0];
 
+  const title = "Personnel Information";
+
   const labels = {
+    ID: "Id",
     PersonnelID: "Personnel ID",
     PersFirst: "First Name",
     PersLast: "Last Name",
@@ -36,10 +39,13 @@ const personView = (selectedID) => {
   const fields = fieldList.map((key) => {
     let labelClassVal = "";
     const labelVal = labels[key];
-    const classVal = "";
+    let classVal = "";
     const value = personData[key];
     let option = "";
-
+    if (key === "ID") {
+      labelClassVal = "class='hidden'";
+      classVal = "class='hidden'";
+    }
     if (
       [
         "PersonnelID",
@@ -112,15 +118,13 @@ const personView = (selectedID) => {
     }
   });
 
+  const header = topBanner(title);
+
   return `<div class="person-main col-md-5">
-  <div class="sub-header blue-bg blue-light-text" data-blockId="${selectedID}">
-    <div class="container-fluid row">
-       <div class="sub-header-title">Personnel Information<span>
-       <button type="button" form="person-info" class="btn btn-default">Save</button></span>
-    </div>
-    </div>
-  </div>
-  <form class="bloc-perso" id="person-info">${fields.join("")}</form>
+ ${header}
+  <form class="bloc-perso" id='${title
+    .toLowerCase()
+    .replace(/\W/gi, "-")}'>${fields.join("")}</form>
   </div>`;
 };
 

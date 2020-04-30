@@ -26,17 +26,17 @@
   overflow-y: scroll;
 }
 
-.bloc-history,
-.bloc-proDev {
-  padding: 0;
+.bloc-history-proDev,
+.person-main {
   margin: 2% 0%;
 }
 
-.bloc-perso {
+.bloc-perso,
+.bloc-proDev {
   margin-top: 1.7%;
 }
-.bloc-proDev {
-  padding-left: 3%;
+.bloc-history-proDev {
+  padding-left: 4%;
 }
 
 .bloc-hours,
@@ -85,7 +85,8 @@
   border-bottom: 1px solid #d3e4f0;
 }
 
-.add-record-btn {
+.add-record-btn,
+.save-record-btn {
   height: 28px;
   margin-top: 2px;
   line-height: 16px;
