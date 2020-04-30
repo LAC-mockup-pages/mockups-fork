@@ -301,7 +301,10 @@ const GetProfDevRoster = [
   },
 ];
 
-const sessionVariable = { AgencyID: "PRA" };
+const sessionVariable = {
+  AgencyID: "PRA",
+  AuditUserID: '<%= Session["UserID"] %>',
+};
 
 const ddlPaidVolunteer = [
   { objKey: "P", objValue: "Paid" },
