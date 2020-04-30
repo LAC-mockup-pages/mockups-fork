@@ -282,11 +282,10 @@ $(document).ready(() => {
     // Cleaning up
     $("#view-bloc").remove();
     $("#search-input").val("");
-
-    // Adding blocs
     $(".personnel-entry").toggleClass("hidden");
     $(".personnel-search").toggleClass("hidden");
 
+    // Adding blocs
     const personInfoBloc = personView(rowID);
     const historyBloc = historyView();
     const proDevBloc = proDevView();
@@ -296,6 +295,9 @@ $(document).ready(() => {
       <div class="bloc-history-proDev col-md-7" id='${rowID}-history'>
         <div class="bloc-history">${historyBloc}</div>
         <div class="bloc-proDev">${proDevBloc}</div>
+      </div>
+      <div class="bloc-hours container row">
+
       </div>
     </div>`);
 
