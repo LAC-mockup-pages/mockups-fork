@@ -119,12 +119,12 @@ const personView = (selectedID) => {
   });
 
   const header = topBanner(title);
-
   return `<div class="person-main col-md-5">
- ${header}
-  <form class="bloc-perso" id='${title
-    .toLowerCase()
-    .replace(/\W/gi, "-")}'>${fields.join("")}</form>
+      ${header}
+    <form class="bloc-perso" id='${title
+      .toLowerCase()
+      .replace(/\W/gi, "-")}'>${fields.join("")}
+    </form>
   </div>`;
 };
 

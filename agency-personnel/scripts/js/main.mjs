@@ -56,7 +56,9 @@ export const elementSelectWithLabel = (argsObj) => {
 // Add button, title and headers
 export const topBanner = (title, list = null) => {
   let headerLine = "";
-  const formName = `form="${title.toLowerCase().replace(/\W/gi, "-")}"`;
+  const blockName = title.toLowerCase().replace(/\W/gi, "-");
+
+  const formName = `form="${blockName}"`;
   let button = "";
 
   if (
@@ -76,7 +78,6 @@ export const topBanner = (title, list = null) => {
       "<div class='container-fluid row sub-header-labels blue-light-bg blue-text'>";
     for (const item of list) {
       const cellName = item[0].toLowerCase().replace(/\W/gi, "-");
-      const blockName = title.toLowerCase().replace(/\W/gi, "-");
       headerLine += ` <div class='bloc-${blockName}-${cellName} ${item[1]}'>${item[0]}</div>`;
     }
     headerLine += "</div>";
@@ -115,7 +116,8 @@ export const tableBody = (dataList, block, hiddenList) => {
 
 // Used for new personnel
 const saveMods = (form) => {
-  const result = {};
+  const { AgencyID, AuditUserID } = sessionVariable;
+  const result = { AgencyID, AuditUserID };
   const submittedData = $(form).serializeArray();
 
   // validateUserInput() <== data-check.js
@@ -296,14 +298,28 @@ $(document).ready(() => {
         <div class="bloc-proDev">${proDevBloc}</div>
       </div>
     </div>`);
+
+    $(".add-record-btn").bind("click", function (evnt) {});
+
+    $(".save-record-btn").bind("click", function (evnt) {
+      const formName = `#${$(this).attr("form")}`;
+      saveMods(formName);
+    });
   });
 
   //* Cancel or Save
-  $("#btn-cancel").click(() => {
+  $("#btn-cancel").click((evnt) => {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+
     location.reload();
   });
+  console.log($("#save01").attr("form"));
 
-  $("#btn-save").click(() => {
+  $("#btn-save").click((evnt) => {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+
     location.reload();
   });
 });

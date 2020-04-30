@@ -119,9 +119,7 @@ th {
   max-width: 80px;
 }
 
-.medium-cell,
-#PersStartDate,
-#PersTimeStatus {
+.medium-cell {
   max-width: 120px;
 }
 
@@ -166,6 +164,7 @@ th {
   font-weight: 700;
   border: none;
   text-indent: 4px;
+  line-height: 2.5em;
   width: 72%;
   border-bottom: 1px solid #2479b5;
 }
@@ -174,9 +173,9 @@ th {
 #new-select {
   margin-top: 0.5%;
   font-size: 1.3em;
-  line-height: 50px;
+  line-height: 35px;
   font-weight: 700;
-  max-width: 50%;
+  /* max-width: 50%; */
   padding: 5px;
   border: none;
   border-bottom: 1px solid #2479b5;
