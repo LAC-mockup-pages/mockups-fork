@@ -7,8 +7,8 @@ import {
   ddlTimeStatus,
   ddlExperienceYears,
   ddlPaidVolunteer,
-} from "./data-server.mjs";
-import { elementSelectWithLabel, topBanner } from "./main.mjs";
+} from "../data-server.mjs";
+import { elementSelectWithLabel, topBanner } from "../main.mjs";
 
 const personView = (selectedID) => {
   const personData = getPersonnel.filter(

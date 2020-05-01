@@ -1,5 +1,5 @@
-import { GetProfDevRoster, sessionVariable } from "./data-server.mjs";
-import { topBanner, tableBody } from "./main.mjs";
+import { GetProfDevRoster, sessionVariable } from "../data-server.mjs";
+import { topBanner, tableBody } from "../main.mjs";
 
 const totalProDevHrs = (dataList) => {
   let result = 0;

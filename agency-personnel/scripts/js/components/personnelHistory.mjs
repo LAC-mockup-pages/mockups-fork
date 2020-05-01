@@ -1,5 +1,5 @@
-import { GetPersStatusHistory } from "./data-server.mjs";
-import { topBanner, tableBody } from "./main.mjs";
+import { GetPersStatusHistory } from "../data-server.mjs";
+import { topBanner, tableBody } from "../main.mjs";
 
 const historyView = () => {
   const blockName = "History";

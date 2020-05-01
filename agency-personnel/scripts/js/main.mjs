@@ -3,9 +3,9 @@
 import createNewRecordForm from "./add-new-record.mjs";
 import validateUserInput from "./data-check.mjs";
 import { getPersonnelList, sessionVariable } from "./data-server.mjs";
-import personView from "./personnelView.mjs";
-import historyView from "./personnelHistory.mjs";
-import proDevView from "./personnelProDev.mjs";
+import personView from "./components/personnelView.mjs";
+import historyView from "./components/personnelHistory.mjs";
+import proDevView from "./components/personnelProDev.mjs";
 
 const labelObj = {
   PersLast: "Last Name",
