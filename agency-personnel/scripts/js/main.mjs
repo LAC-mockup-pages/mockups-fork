@@ -6,6 +6,7 @@ import { getPersonnelList, sessionVariable } from "./data-server.mjs";
 import personView from "./components/personnelView.mjs";
 import historyView from "./components/personnelHistory.mjs";
 import proDevView from "./components/personnelProDev.mjs";
+import instructionalHoursView from "./components/personnelInstHours.mjs";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -289,6 +290,7 @@ $(document).ready(() => {
     const personInfoBloc = personView(rowID);
     const historyBloc = historyView();
     const proDevBloc = proDevView();
+    const instructionalHoursBloc = instructionalHoursView;
 
     $(".hero").append(`<div class="container row personView" id=${rowID}>
       ${personInfoBloc}
@@ -297,6 +299,7 @@ $(document).ready(() => {
         <div class="bloc-proDev">${proDevBloc}</div>
       </div>
       <div class="bloc-hours container row">
+      <div class="bloc-instrHours">${instructionalHoursBloc}</div>
 
       </div>
     </div>`);

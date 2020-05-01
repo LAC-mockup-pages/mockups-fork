@@ -13,7 +13,7 @@ const historyView = () => {
     ["Status", "col-sm-10"],
   ]);
 
-  const body = tableBody(historyData, "History", [
+  const body = tableBody(historyData, blockName, [
     "ID",
     "PersonnelID",
     "PersonnelStatID",
