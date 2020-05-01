@@ -40,7 +40,7 @@ const totalHoursLine = (dataList) => {
 };
 
 const instructionalHoursView = () => {
-  const blockName = "Intructional Hours";
+  const blockName = "Instructional Hours";
   const header = topBanner(blockName, [
     ["Class", "col-sm-9"],
     ["Hours", "col-m-3"],

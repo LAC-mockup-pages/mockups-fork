@@ -290,7 +290,7 @@ $(document).ready(() => {
     const personInfoBloc = personView(rowID);
     const historyBloc = historyView();
     const proDevBloc = proDevView();
-    const instructionalHoursBloc = instructionalHoursView;
+    const instructionalHoursBloc = instructionalHoursView();
 
     $(".hero").append(`<div class="container row personView" id=${rowID}>
       ${personInfoBloc}
@@ -298,10 +298,12 @@ $(document).ready(() => {
         <div class="bloc-history">${historyBloc}</div>
         <div class="bloc-proDev">${proDevBloc}</div>
       </div>
-      <div class="bloc-hours container row">
-      <div class="bloc-instrHours">${instructionalHoursBloc}</div>
-
-      </div>
+    </div>
+    <div class="bloc-hours container row">
+        <div class="bloc-instrHours col-md-5">${instructionalHoursBloc}</div>
+        <div class="bloc-nonInstrHours col-md-7">
+          <h2>Non Instr Hours Block</h2>
+        </div>
     </div>`);
 
     $(".add-record-btn").bind("click", function (evnt) {});
