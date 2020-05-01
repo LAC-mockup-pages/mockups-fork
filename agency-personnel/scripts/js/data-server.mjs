@@ -28,11 +28,21 @@ const getPersInstHours = [
     ID: "2256",
     PersonnelID: "PorterSamanthaPRA9",
     ClassID: "PRABE6CFY2020_W213.0",
-    InstHours: "0",
+    InstHours: "1",
     TestHours: "0",
     TestContHours: "0",
     LabHours: "0",
-    ExtraHoursLT12: "0",
+    ExtraHoursLT12: "1",
+  },
+  {
+    ID: "2257",
+    PersonnelID: "PorterSamanthaPRA9",
+    ClassID: "PRAClassALE",
+    InstHours: "1",
+    TestHours: "0",
+    TestContHours: "2",
+    LabHours: "0",
+    ExtraHoursLT12: "1",
   },
 ];
 
