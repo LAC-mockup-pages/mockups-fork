@@ -292,18 +292,22 @@ $(document).ready(() => {
     const proDevBloc = proDevView();
     const instructionalHoursBloc = instructionalHoursView();
 
-    $(".hero").append(`<div class="container row personView" id=${rowID}>
-      ${personInfoBloc}
-      <div class="bloc-history-proDev col-md-7" id='${rowID}-history'>
-        <div class="bloc-history">${historyBloc}</div>
-        <div class="bloc-proDev">${proDevBloc}</div>
-      </div>
-    </div>
-    <div class="bloc-hours container row">
-        <div class="bloc-instrHours col-md-5">${instructionalHoursBloc}</div>
-        <div class="bloc-nonInstrHours col-md-7">
-          <h2>Non Instr Hours Block</h2>
+    $(".hero").append(`
+    <div class="container row personView" id=${rowID}>
+      <div class="row">
+        ${personInfoBloc}
+        <div class="bloc-history-proDev col-md-7" id='${rowID}-history'>
+          <div class="bloc-history">${historyBloc}</div>
+          <div class="bloc-proDev">${proDevBloc}</div>
         </div>
+      </div>
+
+      <div class="bloc-hours container row">
+          <div class="bloc-instr-hours col-md-5">${instructionalHoursBloc}</div>
+          <div class="bloc-nonInstrHours col-md-7">
+            <h2>Non Instr Hours Block</h2>
+          </div>
+      </div>
     </div>`);
 
     $(".add-record-btn").bind("click", function (evnt) {});

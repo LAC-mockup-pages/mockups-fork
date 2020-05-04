@@ -22,18 +22,17 @@ const accumulatedHours = (dataList) => {
     className = ClassID;
     result.push({ className, totalInstrHours });
   }
-  console.log("result :>> ", result);
   return result;
 };
 
 const totalHoursLine = (dataList) => {
-  const result = dataList.reduce(
-    (accumulator, record) => (accumulator += record.totalInstrHours)
-  );
+  const result = dataList.reduce((accumulator, record) => {
+    return accumulator + record.totalInstrHours;
+  }, 0);
 
   const totalInstrHrsView = `<div class="instr-hours-view">
-  <div class="instr-hours total-banner blue-light-bg dark-blue-text">Total Instructional Hours:
-  <span> '${result}' hrs</span>
+  <div class="instr-hours total-banner blue-light-bg dark-blue-text">Total Instructional hours:
+  <span> ${result} hrs</span>
   </div>
 </div>`;
   return totalInstrHrsView;
