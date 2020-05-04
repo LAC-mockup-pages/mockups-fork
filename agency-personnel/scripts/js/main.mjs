@@ -7,6 +7,7 @@ import personView from "./components/personnelView.mjs";
 import historyView from "./components/personnelHistory.mjs";
 import proDevView from "./components/personnelProDev.mjs";
 import instructionalHoursView from "./components/personnelInstHours.mjs";
+import nonInstrHoursView from "./components/personnelNonInstrHours.mjs";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -291,6 +292,7 @@ $(document).ready(() => {
     const historyBloc = historyView();
     const proDevBloc = proDevView();
     const instructionalHoursBloc = instructionalHoursView();
+    const nonInstrHoursBloc = nonInstrHoursView();
 
     $(".hero").append(`
     <div class="container row personView" id=${rowID}>
@@ -304,13 +306,11 @@ $(document).ready(() => {
 
       <div class="bloc-hours container row">
           <div class="bloc-instr-hours col-md-5">${instructionalHoursBloc}</div>
-          <div class="bloc-nonInstrHours col-md-7">
-            <h2>Non Instr Hours Block</h2>
-          </div>
+          <div class="bloc-nonInstrHours col-md-7">${nonInstrHoursBloc}</div>
       </div>
     </div>`);
 
-    $(".add-record-btn").bind("click", function (evnt) {});
+    // $(".add-record-btn").bind("click", function (evnt) {});
 
     $(".save-record-btn").bind("click", function (evnt) {
       const formName = `#${$(this).attr("form")}`;

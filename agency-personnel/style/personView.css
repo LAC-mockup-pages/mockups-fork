@@ -38,7 +38,8 @@
 .bloc-proDev {
   margin-top: 15%;
 }
-.bloc-history-proDev {
+.bloc-history-proDev,
+.bloc-nonInstrHours {
   padding-left: 4%;
 }
 
