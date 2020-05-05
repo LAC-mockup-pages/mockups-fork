@@ -8,6 +8,7 @@ import historyView from "./components/personnelHistory.mjs";
 import proDevView from "./components/personnelProDev.mjs";
 import instructionalHoursView from "./components/personnelInstHours.mjs";
 import nonInstrHoursView from "./components/personnelNonInstrHours.mjs";
+import homeAddressView from "./components/personnelHomeAddress.mjs";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -68,6 +69,8 @@ export const topBanner = (title, list = null) => {
       "Professional Development",
       "Personnel Information",
       "Instructional Hours",
+      "Home Address",
+      "Work Address",
       "Notes and Comments",
     ].includes(title)
   ) {
@@ -293,6 +296,8 @@ $(document).ready(() => {
     const proDevBloc = proDevView();
     const instructionalHoursBloc = instructionalHoursView();
     const nonInstrHoursBloc = nonInstrHoursView();
+    const homeAddressBloc = homeAddressView();
+    const workAddressBloc = "<h2>Work Address</h2>";
 
     $(".hero").append(`
     <div class="container row personView" id=${rowID}>
@@ -307,6 +312,10 @@ $(document).ready(() => {
       <div class="bloc-hours container row">
           <div class="bloc-instr-hours col-md-5">${instructionalHoursBloc}</div>
           <div class="bloc-nonInstrHours col-md-7">${nonInstrHoursBloc}</div>
+      </div>
+      <div class="container row bloc-address">
+          <div class="bloc-home col-md-6">${homeAddressBloc}</div>
+          <div class="bloc-work col-md-6">${workAddressBloc}</div>
       </div>
     </div>`);
 

@@ -36,7 +36,6 @@ const addMonth = (recordList) => {
 const nonInstrHoursView = () => {
   const blockName = "Non Instructional Hours";
   const data = addMonth(getNonInstHours);
-
   const header = topBanner(blockName, [
     ["Period", "col-sm-2"],
     ["Prep", "col-sm-2"],
@@ -46,13 +45,13 @@ const nonInstrHoursView = () => {
     ["Extra", "col-sm-2"],
     ["Total", "col-sm-1"],
   ]);
-
   const body = tableBody(data, blockName, [
     "ID",
     "PersonnelID",
     "PeriodID",
     "Period",
   ]);
+
   return header + body;
 };
 
