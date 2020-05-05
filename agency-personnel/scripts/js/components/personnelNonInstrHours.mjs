@@ -30,7 +30,6 @@ const addMonth = (recordList) => {
     resultList.push({ Month, ...record });
   }
 
-  console.log("resultList :>> ", resultList);
   return resultList;
 };
 
