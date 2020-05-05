@@ -2,7 +2,11 @@
 
 import createNewRecordForm from "./add-new-record.mjs";
 import validateUserInput from "./data-check.mjs";
-import { getPersonnelList, sessionVariable } from "./data-server.mjs";
+import {
+  getPersonnel,
+  getPersonnelList,
+  sessionVariable,
+} from "./data-server.mjs";
 import personView from "./components/personnelView.mjs";
 import historyView from "./components/personnelHistory.mjs";
 import proDevView from "./components/personnelProDev.mjs";
@@ -15,6 +19,9 @@ const labelObj = {
   PersFirst: "First Name",
   PersonnelID: "Personnel ID",
 };
+
+// PersonnelData is detached from the original request
+export const personnelData = getPersonnel.slice(0);
 
 const yearsOfExperience = (strDate) => {
   const yearInMilliseconds = 1000 * 60 * 60 * 24 * 365;
