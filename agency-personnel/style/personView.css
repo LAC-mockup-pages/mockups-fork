@@ -114,6 +114,7 @@
 .work-address {
   line-height: 2em;
   margin-left: 5%;
+  text-align: center;
 }
 
 .mail-call-checkboxes > input {

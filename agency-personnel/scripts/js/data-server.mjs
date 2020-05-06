@@ -134,7 +134,7 @@ const getPersonnel = [
     PersWorkCity: "New York",
     PersWorkState: "NY",
     PersWorkZip: "10004",
-    PersWorkSendMail: "False",
+    PersWorkSendMail: "True",
     PersWorkPhone: "(212)-803-3300",
     PersWorkExt: "",
     PersWorkCanCall: "False",
