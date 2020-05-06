@@ -375,6 +375,30 @@ const ddlGender = [
   { objKey: "N", objValue: "Non-binary" },
 ];
 
+const ddlEducationLevel = [
+  { objKey: "A", objValue: "Less than 12th grade" },
+  { objKey: "B", objValue: "HS Diploma" },
+  { objKey: "C", objValue: "Some college" },
+  { objKey: "D", objValue: "Undergraduate degree" },
+  { objKey: "E", objValue: "Graduate degree" },
+  { objKey: "F", objValue: "Not Available" },
+  { objKey: "G", objValue: "Associate degree" },
+  { objKey: "H", objValue: "IEP Diploma" },
+];
+
+const ddlEmploymentStatus = [
+  { objKey: "A", objValue: "Employed full-time" },
+  { objKey: "B", objValue: "Employed part-time" },
+  { objKey: "C", objValue: "Unemployed >1 yr available" },
+  { objKey: "D", objValue: "Unemployed <1 yr available" },
+  { objKey: "E", objValue: "Not available for employment" },
+  { objKey: "F", objValue: "Retired" },
+  { objKey: "G", objValue: "Inmate" },
+  { objKey: "U", objValue: "Unknown" },
+  { objKey: "H", objValue: "IEP Empl - Received Term. Notice" },
+  { objKey: "I", objValue: "Empl - Military Sep. Pending" },
+];
+
 const statesUSA = {
   AL: "Alabama",
   AK: "Alaska",
@@ -458,5 +482,7 @@ export {
   ddlTimeStatus,
   ddlExperienceYears,
   ddlGender,
+  ddlEducationLevel,
+  ddlEmploymentStatus,
   statesUSA,
 };
