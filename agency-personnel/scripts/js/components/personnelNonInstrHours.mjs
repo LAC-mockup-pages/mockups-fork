@@ -1,6 +1,5 @@
 import { getNonInstHours } from "../data-server.mjs";
-import { topBanner } from "../main.mjs";
-import { tableBody } from "../main.mjs";
+import { topBanner, tableBody } from "../main.mjs";
 
 const addMonth = (recordList) => {
   const list = recordList

@@ -107,7 +107,7 @@ export const topBanner = (title, list = null) => {
 
 // Returns a table body with hidden cells
 export const tableBody = (dataList, block, hiddenList) => {
-  block = block.toLowerCase();
+  block = block.toLowerCase().replace(/\W/gi, "-");
   const rows = dataList
     .map((record, indx) => {
       let cells = "";
