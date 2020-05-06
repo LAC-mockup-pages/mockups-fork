@@ -13,6 +13,7 @@ import proDevView from "./components/personnelProDev.mjs";
 import instructionalHoursView from "./components/personnelInstHours.mjs";
 import nonInstrHoursView from "./components/personnelNonInstrHours.mjs";
 import { homeAddress, workAddress } from "./components/personnelAddress.mjs";
+import addInfoView from "./components/personnelAdditionalInfo.mjs";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -76,6 +77,7 @@ export const topBanner = (title, list = null) => {
       "Professional Development",
       "Personnel Information",
       "Instructional Hours",
+      "Additional Information",
       "Home Address",
       "Work Address",
       "Notes and Comments",
@@ -305,6 +307,7 @@ $(document).ready(() => {
     const nonInstrHoursBloc = nonInstrHoursView();
     const homeAddressBloc = homeAddress();
     const workAddressBloc = workAddress();
+    const addInfoBloc = addInfoView();
 
     $(".hero").append(`
     <div class="container row personView" id=${rowID}>
@@ -323,6 +326,9 @@ $(document).ready(() => {
       <div class="container row bloc-address">
           <div class="bloc-home col-md-6">${homeAddressBloc}</div>
           <div class="bloc-work col-md-6">${workAddressBloc}</div>
+      </div>
+      <div class="container-fluid bloc-additionalInfo">
+        ${addInfoBloc}
       </div>
     </div>`);
 
