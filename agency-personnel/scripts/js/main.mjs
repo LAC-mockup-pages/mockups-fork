@@ -12,7 +12,7 @@ import historyView from "./components/personnelHistory.mjs";
 import proDevView from "./components/personnelProDev.mjs";
 import instructionalHoursView from "./components/personnelInstHours.mjs";
 import nonInstrHoursView from "./components/personnelNonInstrHours.mjs";
-import homeAddressView from "./components/personnelHomeAddress.mjs";
+import { homeAddress, workAddress } from "./components/personnelAddress.mjs";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -303,8 +303,8 @@ $(document).ready(() => {
     const proDevBloc = proDevView();
     const instructionalHoursBloc = instructionalHoursView();
     const nonInstrHoursBloc = nonInstrHoursView();
-    const homeAddressBloc = homeAddressView();
-    const workAddressBloc = "<h2>Work Address</h2>";
+    const homeAddressBloc = homeAddress();
+    const workAddressBloc = workAddress();
 
     $(".hero").append(`
     <div class="container row personView" id=${rowID}>
