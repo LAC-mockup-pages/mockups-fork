@@ -67,7 +67,7 @@ const personView = (selectedID) => {
     if (key === "lengthstay") option = "disabled";
 
     const argumentsObj = {
-      keyVal: key + "-" + blockName,
+      keyVal: key,
       labelClassVal,
       labelVal,
       classVal,
@@ -107,7 +107,7 @@ const personView = (selectedID) => {
       }
       const argumentsSelect = {
         hashTable,
-        keyValue: key + "-" + blockName,
+        keyValue: key,
         selectedValue: personData[key],
         labelVal,
         labelClassVal,

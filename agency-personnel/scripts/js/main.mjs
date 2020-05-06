@@ -58,7 +58,9 @@ export const elementSelectWithLabel = (argsObj) => {
 
   const elementSelect = `<div class= "input-field form-group">
   <label for="${keyValue}" ${labelClassVal}>${labelVal}</label>
-  <select id="${keyValue}" class="modal-select" name="${keyValue}" ${option}>${firstOption}${optionList}</select>
+  <select id="${
+    keyValue + "-view"
+  }" class="modal-select" name="${keyValue}" ${option}>${firstOption}${optionList}</select>
 </div>`;
 
   return elementSelect;

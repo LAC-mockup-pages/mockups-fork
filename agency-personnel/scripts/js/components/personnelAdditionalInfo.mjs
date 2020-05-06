@@ -1,4 +1,4 @@
-import { personnelData, topBanner } from "../main.mjs";
+import { personnelData, topBanner, elementSelectWithLabel } from "../main.mjs";
 import {
   ddlGender,
   GetEthnicity,
@@ -8,15 +8,22 @@ import {
   GetReferralSource,
 } from "../data-server.mjs";
 
-const leftBloc = () => {
+const leftBlock = () => {
   const { PersGender, PersEthnicity, PersBirthDate } = personnelData;
+
+  return `<div><h3>Left Block</h3></div>`;
+};
+
+const rightBlock = () => {
+  return `<div><h3>Right Bloc</h3>
+  <div>Employment status</div><div>Occupation</div><div>Referral</div></div>`;
 };
 
 const addInfoView = () => {
   const blockName = "Additional Information";
 
   const header = topBanner(blockName);
-  return header;
+  return header + leftBlock() + rightBlock();
 };
 
 export default addInfoView;
