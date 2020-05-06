@@ -5,7 +5,7 @@ import {
   ddlEducationLevel,
   ddlEmploymentStatus,
   GetOccupation,
-  GetREferralSource,
+  GetReferralSource,
 } from "../data-server.mjs";
 
 const leftBloc = () => {

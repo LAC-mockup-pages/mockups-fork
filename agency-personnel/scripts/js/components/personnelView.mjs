@@ -16,6 +16,7 @@ const personView = (selectedID) => {
   )[0];
 
   const title = "Personnel Information";
+  const blockName = title.toLowerCase().replace(/\W/gi, "-");
 
   const labels = {
     ID: "Id",
@@ -66,7 +67,7 @@ const personView = (selectedID) => {
     if (key === "lengthstay") option = "disabled";
 
     const argumentsObj = {
-      keyVal: key,
+      keyVal: key + "-" + blockName,
       labelClassVal,
       labelVal,
       classVal,
@@ -106,7 +107,7 @@ const personView = (selectedID) => {
       }
       const argumentsSelect = {
         hashTable,
-        keyValue: key,
+        keyValue: key + "-" + blockName,
         selectedValue: personData[key],
         labelVal,
         labelClassVal,
