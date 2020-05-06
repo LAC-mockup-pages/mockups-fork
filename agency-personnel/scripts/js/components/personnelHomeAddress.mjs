@@ -1,6 +1,6 @@
 import { personnelData, topBanner } from "../main.mjs";
 
-const homeAddressView = () => {
+const homeAddress = () => {
   const blockName = "Home Address";
   const header = topBanner(blockName);
   const {
@@ -16,4 +16,4 @@ const homeAddressView = () => {
   return header + body;
 };
 
-export default homeAddressView;
+export default homeAddress;
