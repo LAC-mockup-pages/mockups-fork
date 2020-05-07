@@ -10,6 +10,7 @@ import {
 
 const leftBlock = () => {
   const { PersGender, PersEthnicity, PersBirthDate } = personnelData;
+  const gender = elementSelectWithLabel({ hashTable: ddlGender });
 
   return `<div><h3>Left Block</h3></div>`;
 };
