@@ -1,7 +1,7 @@
 // Actions and logic
 
-const dataPartners = partnersData;
-const countyList = countyData;
+const dataPartners = partnersData.slice(0);
+const countyList = countyData.slice(0);
 const labelObj = {
   ID: "ID",
   AgencyID: "agencyId",
@@ -135,7 +135,9 @@ const createNewRecord = (labelsObject, agencyId) => {
   result.push(
     '<button type="button" id="submit-btn" form="new-partner" class="btn btn-primary">Add</button><button type="button" id="cancel-btn" form="new-partner" class="btn btn-default">Cancel</button>'
   );
-  $("#new-partner").append(result.join(""));
+
+  const formContent = result.join("");
+  $("#new-partner").append(formContent);
 };
 
 const createForm = (elmnt) => {
@@ -217,15 +219,10 @@ const saveMods = (form) => {
     if (field.name === "Telephone") field.value = phoneFormat(field.value);
     result[field.name] = field.value;
   }
-  // alphaNumCheck() <== data-check.js
-  // if (!alphaNumCheck(result.Description)) {
-  //   $(form)[0].reset();
-  //   return;
-  // }
-
+  const message = `Result from ${form} :>>`;
   //! =================================================
   //! JSON Object to send back to database
-  console.log("result :", JSON.stringify(result));
+  console.log(message, JSON.stringify(result));
   //! =================================================
 
   //ToDO Reloading/resetting with new data
@@ -256,7 +253,7 @@ $(document).ready(() => {
   createNewRecord(labelObj, dataPartners[0].AgencyID);
 
   //* Adding a new partner
-  $("#submit-btn").click(function (evnt) {
+  $(document).on("click", "#submit-btn", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
@@ -273,7 +270,7 @@ $(document).ready(() => {
   });
 
   //* Select partner
-  $("[title^='Click']").click(function (evnt) {
+  $(document).on("click", ".table tbody tr", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
 
