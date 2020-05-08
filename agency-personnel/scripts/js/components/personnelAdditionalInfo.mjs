@@ -9,19 +9,54 @@ import {
 } from "../data-server.mjs";
 
 const leftBlock = () => {
-  const { PersGender, PersEthnicity, PersBirthDate } = personnelData[0];
-  console.log("PersGender :>> ", personnelData);
+  const {
+    PersGender,
+    PersEthnicity,
+    PersBirthDate,
+    PersEducation,
+  } = personnelData[0];
+
   const genderArgObj = {
+    hashTable: ddlGender,
     keyValue: "PersGender",
+    selectedValue: PersGender,
     labelVal: "Gender",
-    value: PersGender,
+    labelClassVal: "",
+    option: "",
+  };
+  const ethnicityArgObj = {
+    hashTable: GetEthnicity,
+    keyValue: "PersEthnicity",
+    selectedValue: PersEthnicity,
+    labelVal: "Ethnicity",
+    labelClassVal: "",
+    option: "",
+  };
+
+  const birthDateArgObj = {
+    keyVal: "PersBirthDate",
+    labelVal: "Birth Date",
+    value: PersBirthDate,
     labelClassVal: "",
     classVal: "",
     option: "",
   };
-  const gender = elementInput(genderArgObj);
+
+  const educationArgObj = {
+    hashTable: ddlEducationLevel,
+    keyValue: "PersEducation",
+    selectedValue: PersEducation,
+    labelVal: "Education Level",
+    labelClassVal: "",
+    option: "",
+  };
+
+  const gender = elementSelectWithLabel(genderArgObj);
+  const ethnicity = elementSelectWithLabel(ethnicityArgObj);
+  const birthDate = elementInput(birthDateArgObj);
+  const education = elementSelectWithLabel(educationArgObj);
   // const gender = "<h2>Left Bloc</h2>";
-  return `<form class="col-md-6" role="form">${gender}</form>`;
+  return `<form class="col-md-6" role="form">${gender}${ethnicity}${birthDate}${education}</form>`;
 };
 
 const rightBlock = () => {
