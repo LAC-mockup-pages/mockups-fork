@@ -16,7 +16,7 @@ const personView = (selectedID) => {
   )[0];
 
   const title = "Personnel Information";
-  const blockName = title.toLowerCase().replace(/\W/gi, "-");
+  // const blockName = title.toLowerCase().replace(/\W/gi, "-");
 
   const labels = {
     ID: "Id",
