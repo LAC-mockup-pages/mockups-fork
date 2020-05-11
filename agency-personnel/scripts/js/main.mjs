@@ -14,6 +14,7 @@ import instructionalHoursView from "./components/personnelInstHours.mjs";
 import nonInstrHoursView from "./components/personnelNonInstrHours.mjs";
 import { homeAddress, workAddress } from "./components/personnelAddress.mjs";
 import addInfoView from "./components/personnelAdditionalInfo.mjs";
+import commentsView from "./components/personnelComments.mjs";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -310,6 +311,7 @@ $(document).ready(() => {
     const homeAddressBloc = homeAddress();
     const workAddressBloc = workAddress();
     const addInfoBloc = addInfoView();
+    const commentsBloc = commentsView();
 
     $(".hero").append(`
     <div class="container row personView" id=${rowID}>
@@ -332,6 +334,10 @@ $(document).ready(() => {
       <div class="container-fluid bloc-additionalInfo">
         ${addInfoBloc}
       </div>
+      <div class="container row bloc-comments-contacts">
+        ${commentsBloc}
+      </div>
+
     </div>`);
 
     // $(".add-record-btn").bind("click", function (evnt) {});
