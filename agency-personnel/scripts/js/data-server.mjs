@@ -144,7 +144,7 @@ const getPersonnel = [
     PersOtherState: "",
     PersOtherZip: "",
     PersComments:
-      "Tested save 12.5 RS 06/08/2019\n\ntesting save RS 02/05/2017\n\ntested 04/01/2017- RS\n\ntested 8/5/2017 RS\n\nTested 08/17/2018",
+      "Tested save 12.5 RS 06/08/2019\ntesting save RS 02/05/2017\ntested 04/01/2017- RS\ntested 8/5/2017 RS\nTested 08/17/2018",
   },
 ];
 

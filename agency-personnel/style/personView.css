@@ -148,3 +148,8 @@
 .larger-font {
   font-size: 1.5em;
 }
+
+textarea {
+  width: 555px;
+  height: 100px;
+}
