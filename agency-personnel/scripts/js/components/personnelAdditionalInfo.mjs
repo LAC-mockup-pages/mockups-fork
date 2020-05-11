@@ -55,23 +55,60 @@ const leftBlock = () => {
   const ethnicity = elementSelectWithLabel(ethnicityArgObj);
   const birthDate = elementInput(birthDateArgObj);
   const education = elementSelectWithLabel(educationArgObj);
-  // const gender = "<h2>Left Bloc</h2>";
-  return `<form class="col-md-6" role="form">${gender}${ethnicity}${birthDate}${education}</form>`;
+  return `<div class="col-md-6" >${gender}${ethnicity}${birthDate}${education}</div>`;
 };
 
 const rightBlock = () => {
-  return `<div class="col-md-6"><h3>Right Bloc</h3>
-  <div>Employment status</div><div>Occupation</div><div>Referral</div></div>`;
+  const {
+    PersEmploymentStatus,
+    PersOccupation,
+    PersReferral,
+  } = personnelData[0];
+
+  const employmentArgObj = {
+    hashTable: ddlEmploymentStatus,
+    keyValue: "PersEmploymentStatus",
+    selectedValue: PersEmploymentStatus,
+    labelVal: "Employment Status",
+    labelClassVal: "",
+    option: "",
+  };
+
+  const occupationArgObj = {
+    hashTable: GetOccupation,
+    keyValue: "PersOccupation",
+    selectedValue: PersOccupation,
+    labelVal: "Occupation",
+    labelClassVal: "",
+    option: "",
+  };
+
+  const referralArgObj = {
+    hashTable: GetReferralSource,
+    keyValue: "PersReferral",
+    selectedValue: PersReferral,
+    labelVal: "Referral",
+    labelClassVal: "",
+    option: "",
+  };
+
+  const employment = elementSelectWithLabel(employmentArgObj);
+  const occupation = elementSelectWithLabel(occupationArgObj);
+  const referral = elementSelectWithLabel(referralArgObj);
+
+  return `<div class="col-md-6">
+              ${employment}${occupation}${referral}
+            </div>`;
 };
 
 const addInfoView = () => {
   const blockName = "Additional Information";
 
   const header = topBanner(blockName);
-  const body = `<div class="row">
+  const body = `<form class="row" role="form">
       ${leftBlock()}
       ${rightBlock()}
-    </div>`;
+    </form>`;
   return header + body;
 };
 
