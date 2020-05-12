@@ -20,7 +20,7 @@
 .history-table,
 .proDev-table,
 .instructional-hours-table,
-.contact-history-table,
+.progress-contact-table,
 .non-instructional-hours-table {
   height: 160px;
   overflow-y: scroll;
