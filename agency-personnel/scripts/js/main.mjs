@@ -1,6 +1,6 @@
 //* Logic for page
 
-import createNewRecordForm from "./add-new-record.mjs";
+import createNewRecordForm from "./components/add-new-record.mjs";
 import validateUserInput from "./data-check.mjs";
 import {
   getPersonnel,
