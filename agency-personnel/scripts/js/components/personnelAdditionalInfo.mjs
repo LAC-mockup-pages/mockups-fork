@@ -55,7 +55,12 @@ const leftBlock = () => {
   const ethnicity = elementSelectWithLabel(ethnicityArgObj);
   const birthDate = elementInput(birthDateArgObj);
   const education = elementSelectWithLabel(educationArgObj);
-  return `<div class="col-md-6" >${gender}${ethnicity}${birthDate}${education}</div>`;
+  return `<div class="col-md-6">
+            ${gender}
+            ${ethnicity}
+            ${birthDate}
+            ${education}
+          </div>`;
 };
 
 const rightBlock = () => {
@@ -97,8 +102,10 @@ const rightBlock = () => {
   const referral = elementSelectWithLabel(referralArgObj);
 
   return `<div class="col-md-6">
-              ${employment}${occupation}${referral}
-            </div>`;
+            ${employment}
+            ${occupation}
+            ${referral}
+          </div>`;
 };
 
 const addInfoView = () => {
@@ -106,9 +113,9 @@ const addInfoView = () => {
 
   const header = topBanner(blockName);
   const body = `<form class="row" role="form">
-      ${leftBlock()}
-      ${rightBlock()}
-    </form>`;
+                  ${leftBlock()}
+                  ${rightBlock()}
+                </form>`;
   return header + body;
 };
 

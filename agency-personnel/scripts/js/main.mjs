@@ -205,6 +205,7 @@ const searchPersonnel = (str) => {
   return personnelObj;
 };
 
+//*======================================
 //* jQuery logic
 //*======================================
 $(document).ready(() => {
