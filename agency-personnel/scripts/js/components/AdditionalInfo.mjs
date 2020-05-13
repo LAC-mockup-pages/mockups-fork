@@ -110,7 +110,6 @@ const rightBlock = () => {
 
 const addInfoView = () => {
   const blockName = "Additional Information";
-
   const header = topBanner(blockName);
   const body = `<form class="row" role="form">
                   ${leftBlock()}

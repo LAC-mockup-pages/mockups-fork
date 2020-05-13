@@ -23,7 +23,7 @@ const labelObj = {
   PersonnelID: "Personnel ID",
 };
 
-// PersonnelData is detached from the original request
+// Variable personnelData is detached from the original request
 export const personnelData = getPersonnel.slice(0);
 
 const yearsOfExperience = (strDate) => {
@@ -87,9 +87,11 @@ export const topBanner = (title, list = null) => {
       "Notes and Comments",
     ].includes(title)
   ) {
-    button = `<button type='button' class="btn btn-default add-record-btn col-sm-2" ${formName}>Add</button>`;
-  } else if (title === "Personnel Information") {
-    button = `<button type='button' class="btn btn-default save-record-btn col-sm-2" ${formName}>Save</button>`;
+    headerButton = `<button type='button' class="btn btn-default add-record-btn col-sm-2" ${formName}>Add</button>`;
+  } else if (
+    ["Personnel Information", "Additional Information"].includes(title)
+  ) {
+    headerButton = `<button type='button' class="btn btn-default save-record-btn col-sm-2" ${formName}>Save</button>`;
   }
   if (list) {
     headerLine +=
@@ -103,7 +105,7 @@ export const topBanner = (title, list = null) => {
   return `
   <div class='sub-header blue-bg blue-light-text'>
     <div class="container-fluid row">
-      ${button}
+      ${headerButton}
       <div class='sub-header-title'>${title}</div>
     </div>
     ${headerLine}
