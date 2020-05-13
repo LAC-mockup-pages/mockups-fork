@@ -110,8 +110,10 @@ const rightBlock = () => {
 
 const addInfoView = () => {
   const blockName = "Additional Information";
+  const { ID } = personnelData[0];
   const header = topBanner(blockName);
-  const body = `<form class="row" role="form">
+  const body = `<form class="row" role="form" id="additional-information">
+                  <input class="hidden" name="ID" value=${ID}>
                   ${leftBlock()}
                   ${rightBlock()}
                 </form>`;

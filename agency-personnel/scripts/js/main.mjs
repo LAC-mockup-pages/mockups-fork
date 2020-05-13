@@ -74,7 +74,7 @@ export const topBanner = (title, list = null) => {
   const blockName = title.toLowerCase().replace(/\W/gi, "-");
 
   const formName = `form="${blockName}"`;
-  let button = "";
+  let headerButton = "";
 
   if (
     ![
@@ -156,10 +156,11 @@ const saveMods = (form) => {
     }
     result[field.name] = field.value;
   }
-
+  const resultList = [form, JSON.stringify(result)];
+  console.table(result);
   //! =================================================
   //! JSON Object to send back to database
-  console.log("result :", JSON.stringify(result));
+  console.log("result :", resultList);
   //! =================================================
 
   //ToDO Reloading/resetting with new data
@@ -346,10 +347,19 @@ $(document).ready(() => {
 
     </div>`);
 
-    // $(".add-record-btn").bind("click", function (evnt) {});
+    $(".add-record-btn").bind("click", function (evnt) {
+      evnt.stopPropagation();
+      const formName = `#${$(this).attr("form")}`;
+      console.log("formName with ADD:>> ", formName);
+      const editForm = "<div><h2>Form for Adding a record</h2></div>";
+      $("#modalBloc").modal("toggle");
+      $("#modal-form").empty().append(editForm);
+    });
 
     $(".save-record-btn").bind("click", function (evnt) {
       const formName = `#${$(this).attr("form")}`;
+      console.log("formName with SAVE:>> ", formName);
+
       saveMods(formName);
     });
   });
