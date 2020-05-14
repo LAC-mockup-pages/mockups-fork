@@ -135,21 +135,20 @@ export const tableBody = (dataList, block, hiddenList) => {
 };
 
 // Used for new personnel
-const saveMods = (form) => {
+const saveMods = (dataObj, form) => {
   const { AgencyID, AuditUserID } = sessionVariable;
   const result = { AgencyID, AuditUserID };
-  const submittedData = $(form).serializeArray();
 
   // validateUserInput() <== data-check.js
-  if (!validateUserInput(submittedData)) $(form)[0].reset();
-  for (let field of submittedData) {
+  if (!validateUserInput(dataObj)) $(form)[0].reset();
+  for (let field of dataObj) {
     if (field.name === "AgencyID") field.value = sessionVariable.AgencyID;
 
     // dateFormat() <== helperFunction.js
     if (field.name === "PersStartDate") field.value = dateFormat(field.value);
 
     if (field.name === "lengthstay") {
-      const startDate = submittedData.filter(
+      const startDate = dataObj.filter(
         (item) => item.name === "PersStartDate"
       )[0].value;
       field.value = yearsOfExperience(startDate);
@@ -359,8 +358,9 @@ $(document).ready(() => {
     $(".save-record-btn").bind("click", function (evnt) {
       const formName = `#${$(this).attr("form")}`;
       console.log("formName with SAVE:>> ", formName);
+      const submittedData = $(formName).serializeArray();
 
-      saveMods(formName);
+      saveMods(submittedData, formName);
     });
   });
 
