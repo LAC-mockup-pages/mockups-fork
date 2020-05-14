@@ -123,15 +123,16 @@ export const tableBody = (dataList, block, hiddenList) => {
       for (const key of keyList) {
         let optionHidden = "";
         if (hiddenList.includes(key)) optionHidden = "hidden";
-        cells += `<td class="cell-data ${optionHidden}">${record[key]}</td>`;
+        cells += `<td class="cell-data ${optionHidden}" data-field=${key}>${record[key]}</td>`;
       }
       return `<tr id="${block}-${indx}">${cells}</tr>`;
     })
     .join("");
   return `<div class="${block}-table">
-  <table class="table">
-    <tbody class='${block}-body'>${rows}</tbody>
-</table></div>`;
+            <table class="table">
+              <tbody class='${block}-body'>${rows}</tbody>
+            </table>
+          </div>`;
 };
 
 // Used for new personnel
