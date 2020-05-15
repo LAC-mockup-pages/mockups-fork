@@ -16,6 +16,7 @@ import { homeAddress, workAddress } from "./components/Address.mjs";
 import addInfoView from "./components/AdditionalInfo.mjs";
 import commentsView from "./components/Comments.mjs";
 import contactsView from "./components/Contacts.mjs";
+import createForm from "./components/ModalFormAdd.mjs";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -116,7 +117,6 @@ export const topBanner = (title, list = null) => {
 // Returns a table body with hidden cells and labels
 export const tableBody = (dataList, block, hiddenList, obj = {}) => {
   block = block.toLowerCase().replace(/\W/gi, "-");
-  console.log("labels:>>", obj);
 
   const rows = dataList
     .map((record, indx) => {
@@ -353,9 +353,9 @@ $(document).ready(() => {
 
     $(".add-record-btn").bind("click", function (evnt) {
       evnt.stopPropagation();
-      const formName = `#${$(this).attr("form")}`;
+      const formName = $(this).attr("form");
       console.log("formName with ADD:>> ", formName);
-      const editForm = "<div><h2>Form for Adding a record</h2></div>";
+      const editForm = createForm(formName);
       $("#modalBloc").modal("toggle");
       $("#modal-form").empty().append(editForm);
     });
