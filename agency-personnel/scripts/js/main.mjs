@@ -121,14 +121,14 @@ export const tableBody = (dataList, block, hiddenList, obj = {}) => {
   const rows = dataList
     .map((record, indx) => {
       let cells = "";
-      // const keyList = Object.keys(record);
-      // for (const key of keyList) {
+
       for (const key in record) {
         const optionHidden = hiddenList.includes(key) ? " hidden" : "";
         const label = obj[key] ? `data-label='${obj[key]}'` : "";
 
         cells += `<td class="cell-data${optionHidden}" data-field=${key} ${label}>${record[key]}</td>`;
       }
+
       return `<tr id="${block}-${indx}">${cells}</tr>`;
     })
     .join("");
