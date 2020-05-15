@@ -13,11 +13,12 @@ const historyView = () => {
     ["Status", "col-sm-10"],
   ]);
 
-  const body = tableBody(historyData, blockName, [
-    "ID",
-    "PersonnelID",
-    "PersonnelStatID",
-  ]);
+  const body = tableBody(
+    historyData,
+    blockName,
+    ["ID", "PersonnelID", "PersonnelStatID"],
+    { PersStatusDate: "Date", PersonnelStatID: "Status" }
+  );
 
   return header + body;
 };

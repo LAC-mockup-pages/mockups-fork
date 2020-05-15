@@ -113,17 +113,21 @@ export const topBanner = (title, list = null) => {
   `;
 };
 
-// Returns a table body with hidden cells
-export const tableBody = (dataList, block, hiddenList) => {
+// Returns a table body with hidden cells and labels
+export const tableBody = (dataList, block, hiddenList, obj = {}) => {
   block = block.toLowerCase().replace(/\W/gi, "-");
+  console.log("labels:>>", obj);
+
   const rows = dataList
     .map((record, indx) => {
       let cells = "";
-      const keyList = Object.keys(record);
-      for (const key of keyList) {
-        let optionHidden = "";
-        if (hiddenList.includes(key)) optionHidden = "hidden";
-        cells += `<td class="cell-data ${optionHidden}" data-field=${key}>${record[key]}</td>`;
+      // const keyList = Object.keys(record);
+      // for (const key of keyList) {
+      for (const key in record) {
+        const optionHidden = hiddenList.includes(key) ? " hidden" : "";
+        const label = obj[key] ? `data-label='${obj[key]}'` : "";
+
+        cells += `<td class="cell-data${optionHidden}" data-field=${key} ${label}>${record[key]}</td>`;
       }
       return `<tr id="${block}-${indx}">${cells}</tr>`;
     })
