@@ -8,7 +8,7 @@ import {
   sessionVariable,
 } from "./data-server.mjs";
 import personView from "./components/PersonInfo.mjs";
-import historyView from "./components/History.mjs";
+import { historyView, createFormAdd } from "./components/History.mjs";
 import proDevView from "./components/ProDev.mjs";
 import instructionalHoursView from "./components/InstHours.mjs";
 import nonInstrHoursView from "./components/NonInstrHours.mjs";
@@ -16,7 +16,6 @@ import { homeAddress, workAddress } from "./components/Address.mjs";
 import addInfoView from "./components/AdditionalInfo.mjs";
 import commentsView from "./components/Comments.mjs";
 import contactsView from "./components/Contacts.mjs";
-import createFormAdd from "./components/ModalFormAdd.mjs";
 
 const labelObj = {
   PersLast: "Last Name",

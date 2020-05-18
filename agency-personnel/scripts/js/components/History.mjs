@@ -1,5 +1,42 @@
-import { GetPersStatusHistory } from "../data-server.mjs";
-import { topBanner, tableBody } from "../main.mjs";
+import { GetPersStatusHistory, GetPersStatusCodes } from "../data-server.mjs";
+import { topBanner, tableBody, elementSelectWithLabel } from "../main.mjs";
+
+const createFormAdd = (formName) => {
+  const firstRowID = `#${formName}-0 td`;
+  const firstRow = $(firstRowID).get();
+  let result = "";
+
+  for (const cell of firstRow) {
+    let optionHidden = $(cell).attr("class").includes("hidden") ? "hidden" : "";
+    let keyVal = $(cell).attr("data-field");
+    let labelVal = $(cell).attr("data-label") ? $(cell).attr("data-label") : "";
+
+    if (["PersonnelStatID"].includes(keyVal)) {
+      const paramsSelect = {
+        hashTable: GetPersStatusCodes,
+        keyValue: keyVal,
+        selectedValue: "",
+        labelVal,
+        labelClassVal: "",
+        option: "",
+      };
+      result += elementSelectWithLabel(paramsSelect);
+    } else {
+      if (keyVal === "PersonnelStatDesc") optionHidden = "hidden";
+      const paramsObj = {
+        keyVal,
+        labelVal,
+        value: "",
+        labelClassVal: "",
+        classVal: "",
+        option: "placeholder='MM/DD/YYYY'",
+        optionHidden,
+      };
+      result += elementInput(paramsObj);
+    }
+  }
+  return result;
+};
 
 const historyView = () => {
   const blockName = "History";
@@ -23,4 +60,4 @@ const historyView = () => {
   return header + body;
 };
 
-export default historyView;
+export { historyView, createFormAdd };
