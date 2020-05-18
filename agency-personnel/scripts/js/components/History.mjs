@@ -10,7 +10,7 @@ const createFormAdd = (formName) => {
     let optionHidden = $(cell).attr("class").includes("hidden") ? "hidden" : "";
     let keyVal = $(cell).attr("data-field");
     let labelVal = $(cell).attr("data-label") ? $(cell).attr("data-label") : "";
-
+    let option = "";
     if (["PersonnelStatID"].includes(keyVal)) {
       const paramsSelect = {
         hashTable: GetPersStatusCodes,
@@ -23,13 +23,14 @@ const createFormAdd = (formName) => {
       result += elementSelectWithLabel(paramsSelect);
     } else {
       if (keyVal === "PersonnelStatDesc") optionHidden = "hidden";
+      if (keyVal === "PersStatusDate") option = "placeholder='MM/DD/YYYY'";
       const paramsObj = {
         keyVal,
         labelVal,
         value: "",
         labelClassVal: "",
         classVal: "",
-        option: "placeholder='MM/DD/YYYY'",
+        option,
         optionHidden,
       };
       result += elementInput(paramsObj);

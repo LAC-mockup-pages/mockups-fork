@@ -370,6 +370,7 @@ $(document).ready(() => {
   });
 
   //* Cancel or Save
+  // Main Cancel button
   $("#btn-cancel").click((evnt) => {
     evnt.preventDefault();
     evnt.stopPropagation();
@@ -377,6 +378,10 @@ $(document).ready(() => {
     location.reload();
   });
 
+  $("#save-btn").on("click", function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+  });
   $("#btn-save").click((evnt) => {
     evnt.preventDefault();
     evnt.stopPropagation();
