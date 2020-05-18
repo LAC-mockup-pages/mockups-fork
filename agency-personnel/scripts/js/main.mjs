@@ -16,7 +16,7 @@ import { homeAddress, workAddress } from "./components/Address.mjs";
 import addInfoView from "./components/AdditionalInfo.mjs";
 import commentsView from "./components/Comments.mjs";
 import contactsView from "./components/Contacts.mjs";
-import createForm from "./components/ModalFormAdd.mjs";
+import createFormAdd from "./components/ModalFormAdd.mjs";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -35,6 +35,7 @@ const yearsOfExperience = (strDate) => {
   return numberYears;
 };
 
+// argsObj =
 export const elementSelectWithLabel = (argsObj) => {
   let firstOption = "<option disabled>Select an option</option>";
   const {
@@ -355,7 +356,7 @@ $(document).ready(() => {
       evnt.stopPropagation();
       const formName = $(this).attr("form");
       console.log("formName with ADD:>> ", formName);
-      const editForm = createForm(formName);
+      const editForm = createFormAdd(formName);
       $("#modalBloc").modal("toggle");
       $("#modal-form").empty().append(editForm);
     });
