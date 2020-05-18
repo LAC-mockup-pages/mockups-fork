@@ -15,9 +15,10 @@ const createInputField = (
     </div>`;
 };
 
-// obj = { keyVal, labelVal, value, labelClassVal, classVal, option}
+// obj = { keyVal, labelVal, value, labelClassVal,
+//         classVal, option, optionHidden}
 const elementInput = (obj) => {
-  return `<div class="input-field">
+  return `<div class="input-field ${obj.optionHidden}">
       <label for='${obj.keyVal}' ${obj.labelClassVal}>${obj.labelVal}</label>
       <input type="text" id='${obj.keyVal + "-view"}' ${obj.classVal} name=${
     obj.keyVal
