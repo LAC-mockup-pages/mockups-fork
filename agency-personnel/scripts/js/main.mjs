@@ -115,13 +115,19 @@ export const topBanner = (title, list = null) => {
 };
 
 // Returns a table body with hidden cells and labels
-export const tableBody = (dataList, block, hiddenList, obj = {}) => {
+export const tableBody = (
+  dataList,
+  block,
+  hiddenList,
+  obj = {},
+  tableName = ""
+) => {
   block = block.toLowerCase().replace(/\W/gi, "-");
 
   const rows = dataList
     .map((record, indx) => {
       let cells = "";
-
+      const tableData = tableName ? `data-table=${tableName}` : "";
       for (const key in record) {
         const optionHidden = hiddenList.includes(key) ? " hidden" : "";
         const label = obj[key] ? `data-label='${obj[key]}'` : "";
@@ -129,7 +135,7 @@ export const tableBody = (dataList, block, hiddenList, obj = {}) => {
         cells += `<td class="cell-data${optionHidden}" data-field=${key} ${label}>${record[key]}</td>`;
       }
 
-      return `<tr id="${block}-${indx}">${cells}</tr>`;
+      return `<tr id="${block}-${indx}" ${tableData}>${cells}</tr>`;
     })
     .join("");
   return `<div class="${block}-table">
@@ -140,7 +146,7 @@ export const tableBody = (dataList, block, hiddenList, obj = {}) => {
 };
 
 // Used for new personnel
-const saveMods = (dataObj, form) => {
+const saveMods = (dataObj, form, table = "") => {
   const { AgencyID, AuditUserID } = sessionVariable;
   const result = { AgencyID, AuditUserID };
 
@@ -160,7 +166,10 @@ const saveMods = (dataObj, form) => {
     }
     result[field.name] = field.value;
   }
-  const resultList = [form, JSON.stringify(result)];
+
+  const target = table ? table : form;
+
+  const resultList = [target, JSON.stringify(result)];
   console.table(result);
   //! =================================================
   //! JSON Object to send back to database
@@ -354,10 +363,15 @@ $(document).ready(() => {
     $(".add-record-btn").bind("click", function (evnt) {
       evnt.stopPropagation();
       const formName = $(this).attr("form");
+
       console.log("formName with ADD:>> ", formName);
+      // Modify depending on the block name
       const editForm = createFormAdd(formName);
       $("#modalBloc").modal("toggle");
-      $("#modal-form").empty().append(editForm);
+      $("#modal-form")
+        .empty()
+        .append(editForm[1])
+        .attr("data-table", editForm[0]);
     });
 
     $(".save-record-btn").bind("click", function (evnt) {
@@ -378,10 +392,18 @@ $(document).ready(() => {
     location.reload();
   });
 
+  // Save button in #modal-form
   $("#save-btn").on("click", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
+
+    const submittedData = $("#modal-form").serializeArray();
+    const tableName = $("#modal-form").attr("data-table");
+    const filteredData = submittedData.filter((obj) => obj.value);
+    saveMods(filteredData, "#modal-form", tableName);
+    $("#modalBloc").modal("toggle");
   });
+
   $("#btn-save").click((evnt) => {
     evnt.preventDefault();
     evnt.stopPropagation();

@@ -3,6 +3,7 @@ import { topBanner, tableBody, elementSelectWithLabel } from "../main.mjs";
 
 const createFormAdd = (formName) => {
   const firstRowID = `#${formName}-0 td`;
+  const tableName = $(`#${formName}-0`).attr("data-table");
   const firstRow = $(firstRowID).get();
   let result = "";
 
@@ -11,6 +12,7 @@ const createFormAdd = (formName) => {
     let keyVal = $(cell).attr("data-field");
     let labelVal = $(cell).attr("data-label") ? $(cell).attr("data-label") : "";
     let option = "";
+    let value = "";
     if (["PersonnelStatID"].includes(keyVal)) {
       const paramsSelect = {
         hashTable: GetPersStatusCodes,
@@ -24,10 +26,11 @@ const createFormAdd = (formName) => {
     } else {
       if (keyVal === "PersonnelStatDesc") optionHidden = "hidden";
       if (keyVal === "PersStatusDate") option = "placeholder='MM/DD/YYYY'";
+      if (keyVal === "PersonnelID") value = $(cell).text();
       const paramsObj = {
         keyVal,
         labelVal,
-        value: "",
+        value,
         labelClassVal: "",
         classVal: "",
         option,
@@ -36,11 +39,12 @@ const createFormAdd = (formName) => {
       result += elementInput(paramsObj);
     }
   }
-  return result;
+  return [tableName, result];
 };
 
 const historyView = () => {
   const blockName = "History";
+
   // Sorting data by date, most recent first
   const historyData = GetPersStatusHistory.sort(
     (a, b) => new Date(b.PersStatusDate) - new Date(a.PersStatusDate)
@@ -55,7 +59,8 @@ const historyView = () => {
     historyData,
     blockName,
     ["ID", "PersonnelID", "PersonnelStatID"],
-    { PersStatusDate: "Date", PersonnelStatID: "Status" }
+    { PersStatusDate: "Date", PersonnelStatID: "Status" },
+    "PersStatusHistory"
   );
 
   return header + body;
