@@ -381,8 +381,7 @@ $(document).ready(() => {
           addForm = createFormAddHistory(formName);
           break;
         case "non-instructional-hours":
-          // addForm = createFormAddNonInstructionalHours(formName);
-          addForm = defaultModal(formName);
+          addForm = createFormAddNonIntructionalHours(formName);
 
           break;
 

@@ -5,6 +5,12 @@ const createFormAddNonIntructionalHours = (formName) => {
   const firstRowID = `#${formName}-0 td`;
   const tableName = $(`#${formName}-0`).attr("data-table");
   const firstRowContent = $(firstRowID).get();
+  const firstRow = firstRowContent.map((cell) => {
+    if ($(cell).attr("data-field") !== "Month") {
+      return cell;
+    }
+  });
+  console.log("firstRow :>> ", firstRow);
   let result = "";
 
   return [tableName, result];
