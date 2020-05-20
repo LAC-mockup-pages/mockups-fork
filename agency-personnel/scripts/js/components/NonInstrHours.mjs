@@ -1,5 +1,14 @@
-import { getNonInstHours } from "../data-server.mjs";
+import { getNonInstHours, getReportingPeriods } from "../data-server.mjs";
 import { topBanner, tableBody } from "../main.mjs";
+
+const createFormAddNonIntructionalHours = (formName) => {
+  const firstRowID = `#${formName}-0 td`;
+  const tableName = $(`#${formName}-0`).attr("data-table");
+  const firstRowContent = $(firstRowID).get();
+  let result = "";
+
+  return [tableName, result];
+};
 
 const addMonth = (recordList) => {
   const list = recordList
@@ -54,4 +63,4 @@ const nonInstrHoursView = () => {
   return header + body;
 };
 
-export default nonInstrHoursView;
+export { nonInstrHoursView, createFormAddNonIntructionalHours };

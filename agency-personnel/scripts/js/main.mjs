@@ -11,7 +11,10 @@ import personView from "./components/PersonInfo.mjs";
 import { historyView, createFormAddHistory } from "./components/History.mjs";
 import proDevView from "./components/ProDev.mjs";
 import instructionalHoursView from "./components/InstHours.mjs";
-import nonInstrHoursView from "./components/NonInstrHours.mjs";
+import {
+  nonInstrHoursView,
+  createFormAddNonIntructionalHours,
+} from "./components/NonInstrHours.mjs";
 import { homeAddress, workAddress } from "./components/Address.mjs";
 import addInfoView from "./components/AdditionalInfo.mjs";
 import commentsView from "./components/Comments.mjs";
