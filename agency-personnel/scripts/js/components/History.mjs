@@ -1,7 +1,7 @@
 import { GetPersStatusHistory, GetPersStatusCodes } from "../data-server.mjs";
 import { topBanner, tableBody, elementSelectWithLabel } from "../main.mjs";
 
-const createFormAdd = (formName) => {
+const createFormAddHistory = (formName) => {
   const firstRowID = `#${formName}-0 td`;
   const tableName = $(`#${formName}-0`).attr("data-table");
   const firstRow = $(firstRowID).get();
@@ -66,4 +66,4 @@ const historyView = () => {
   return header + body;
 };
 
-export { historyView, createFormAdd };
+export { historyView, createFormAddHistory };

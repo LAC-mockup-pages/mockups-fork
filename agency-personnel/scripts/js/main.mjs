@@ -8,7 +8,7 @@ import {
   sessionVariable,
 } from "./data-server.mjs";
 import personView from "./components/PersonInfo.mjs";
-import { historyView, createFormAdd } from "./components/History.mjs";
+import { historyView, createFormAddHistory } from "./components/History.mjs";
 import proDevView from "./components/ProDev.mjs";
 import instructionalHoursView from "./components/InstHours.mjs";
 import nonInstrHoursView from "./components/NonInstrHours.mjs";
@@ -114,7 +114,7 @@ export const topBanner = (title, list = null) => {
   `;
 };
 
-// Returns a table body with hidden cells and labels
+// Returns a table body with hidden cells, label object and table name
 export const tableBody = (
   dataList,
   block,
@@ -220,6 +220,12 @@ const searchPersonnel = (str) => {
     personnelObj[id] = { PersLast, PersFirst, PersonnelID };
   }
   return personnelObj;
+};
+
+// Default modal-form
+
+const defaultModal = (nameForm) => {
+  return [nameForm, `<div><h3>Default modal for ${nameForm}</h3></div>`];
 };
 
 //*======================================
@@ -366,12 +372,27 @@ $(document).ready(() => {
 
       console.log("formName with ADD:>> ", formName);
       // Modify depending on the block name
-      const editForm = createFormAdd(formName);
+      let addForm = "";
+      switch (formName) {
+        case "history":
+          addForm = createFormAddHistory(formName);
+          break;
+        case "non-instructional-hours":
+          // addForm = createFormAddNonInstructionalHours(formName);
+          addForm = defaultModal(formName);
+
+          break;
+
+        default:
+          addForm = defaultModal("no-table-defined-yet");
+          break;
+      }
+
       $("#modalBloc").modal("toggle");
       $("#modal-form")
         .empty()
-        .append(editForm[1])
-        .attr("data-table", editForm[0]);
+        .append(addForm[1])
+        .attr("data-table", addForm[0]);
     });
 
     $(".save-record-btn").bind("click", function (evnt) {
