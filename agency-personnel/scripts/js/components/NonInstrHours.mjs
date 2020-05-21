@@ -1,12 +1,26 @@
 import { getNonInstHours, getReportingPeriods } from "../data-server.mjs";
 import { topBanner, tableBody, elementSelectWithLabel } from "../main.mjs";
 
+const handleChangeNonInstHours = () => {
+  const listInputs = $("#modal-form input").get().slice(1, 6);
+
+  $(listInputs).each(function () {
+    $(this).bind("change", function (evnt) {
+      evnt.stopPropagation();
+      const valueList = $("#modal-form").serializeArray().slice(1, 6);
+      const totalHours = valueList.reduce((total, field) => {
+        const valNum = field.value ? Number(field.value) : 0;
+        return total + valNum;
+      }, 0);
+      $("#TotalHours-view").val(totalHours);
+    });
+  });
+};
+
 const createFormAddNonIntructionalHours = (formName) => {
   const firstRowID = `#${formName}-0 td`;
   const tableName = $(`#${formName}-0`).attr("data-table");
   const firstRow = $(firstRowID).get();
-
-  console.log("firstRow :>> ", firstRow);
   let result = "";
 
   for (const cell of firstRow) {
@@ -99,10 +113,15 @@ const nonInstrHoursView = () => {
       MeetingHours: "Meeting Hrs",
       ExtraHours: "Extra Hrs",
       TotalHours: "Total Hrs",
-    }
+    },
+    "NonInstHours"
   );
 
   return header + body;
 };
 
-export { nonInstrHoursView, createFormAddNonIntructionalHours };
+export {
+  nonInstrHoursView,
+  createFormAddNonIntructionalHours,
+  handleChangeNonInstHours,
+};

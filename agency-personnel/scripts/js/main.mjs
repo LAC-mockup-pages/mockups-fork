@@ -14,6 +14,7 @@ import instructionalHoursView from "./components/InstHours.mjs";
 import {
   nonInstrHoursView,
   createFormAddNonIntructionalHours,
+  handleChangeNonInstHours,
 } from "./components/NonInstrHours.mjs";
 import { homeAddress, workAddress } from "./components/Address.mjs";
 import addInfoView from "./components/AdditionalInfo.mjs";
@@ -369,6 +370,7 @@ $(document).ready(() => {
 
     </div>`);
 
+    // Add a new record from modal
     $(".add-record-btn").bind("click", function (evnt) {
       evnt.stopPropagation();
       const formName = $(this).attr("form");
@@ -382,7 +384,6 @@ $(document).ready(() => {
           break;
         case "non-instructional-hours":
           addForm = createFormAddNonIntructionalHours(formName);
-
           break;
 
         default:
@@ -395,6 +396,8 @@ $(document).ready(() => {
         .empty()
         .append(addForm[1])
         .attr("data-table", addForm[0]);
+
+      if (formName === "non-instructional-hours") handleChangeNonInstHours();
     });
 
     $(".save-record-btn").bind("click", function (evnt) {
