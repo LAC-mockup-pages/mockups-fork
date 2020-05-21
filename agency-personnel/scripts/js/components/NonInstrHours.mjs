@@ -2,12 +2,13 @@ import { getNonInstHours, getReportingPeriods } from "../data-server.mjs";
 import { topBanner, tableBody, elementSelectWithLabel } from "../main.mjs";
 
 const handleChangeNonInstHours = () => {
-  const listInputs = $("#modal-form input").get().slice(1, 6);
+  const listInputs = $("#modal-form input").get().slice(2, 7);
 
   $(listInputs).each(function () {
     $(this).bind("change", function (evnt) {
       evnt.stopPropagation();
-      const valueList = $("#modal-form").serializeArray().slice(1, 6);
+      const valueList = $("#modal-form").serializeArray().slice(2, 7);
+      console.log("valueList :>> ", valueList);
       const totalHours = valueList.reduce((total, field) => {
         const valNum = field.value ? Number(field.value) : 0;
         return total + valNum;
@@ -42,12 +43,13 @@ const createFormAddNonIntructionalHours = (formName) => {
       result += elementSelectWithLabel(paramsSelect);
     } else {
       if (keyVal === "PersonnelID") value = $(cell).text();
+      if (keyVal === "TotalHours") option = "disabled";
       const paramsObj = {
         keyVal,
         labelVal,
         value,
         labelClassVal: "",
-        classVal: "",
+        classVal: "style='width:10%;text-align:center'",
         option,
         optionHidden,
       };

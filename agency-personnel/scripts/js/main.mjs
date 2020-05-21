@@ -426,6 +426,8 @@ $(document).ready(() => {
     const submittedData = $("#modal-form").serializeArray();
     const tableName = $("#modal-form").attr("data-table");
     const filteredData = submittedData.filter((obj) => obj.value);
+    console.log("submittedData :>> ", submittedData);
+    console.log("filteredData :>> ", filteredData);
     saveMods(filteredData, "#modal-form", tableName);
     $("#modalBloc").modal("toggle");
   });
