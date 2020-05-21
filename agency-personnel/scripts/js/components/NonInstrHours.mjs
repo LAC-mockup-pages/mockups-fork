@@ -1,18 +1,45 @@
 import { getNonInstHours, getReportingPeriods } from "../data-server.mjs";
-import { topBanner, tableBody } from "../main.mjs";
+import { topBanner, tableBody, elementSelectWithLabel } from "../main.mjs";
 
 const createFormAddNonIntructionalHours = (formName) => {
   const firstRowID = `#${formName}-0 td`;
   const tableName = $(`#${formName}-0`).attr("data-table");
-  const firstRowContent = $(firstRowID).get();
-  const firstRow = firstRowContent.map((cell) => {
-    if ($(cell).attr("data-field") !== "Month") {
-      return cell;
-    }
-  });
+  const firstRow = $(firstRowID).get();
+
   console.log("firstRow :>> ", firstRow);
   let result = "";
 
+  for (const cell of firstRow) {
+    let optionHidden = $(cell).attr("class").includes("hidden") ? "hidden" : "";
+    let keyVal = $(cell).attr("data-field");
+    let labelVal = $(cell).attr("data-label") ? $(cell).attr("data-label") : "";
+    let option = "";
+    let value = "";
+    if (["Month", "ID", "Period"].includes(keyVal)) continue;
+    if (keyVal === "PeriodID") {
+      const paramsSelect = {
+        hashTable: getReportingPeriods,
+        keyValue: keyVal,
+        selectedValue: "",
+        labelVal,
+        labelClassVal: "",
+        option,
+      };
+      result += elementSelectWithLabel(paramsSelect);
+    } else {
+      if (keyVal === "PersonnelID") value = $(cell).text();
+      const paramsObj = {
+        keyVal,
+        labelVal,
+        value,
+        labelClassVal: "",
+        classVal: "",
+        option,
+        optionHidden,
+      };
+      result += elementInput(paramsObj);
+    }
+  }
   return [tableName, result];
 };
 
@@ -49,7 +76,7 @@ const addMonth = (recordList) => {
 
 const nonInstrHoursView = () => {
   const blockName = "Non Instructional Hours";
-  const data = addMonth(getNonInstHours);
+  const blockData = addMonth(getNonInstHours);
   const header = topBanner(blockName, [
     ["Period", "col-sm-2"],
     ["Prep", "col-sm-2"],
@@ -59,12 +86,21 @@ const nonInstrHoursView = () => {
     ["Extra", "col-sm-2"],
     ["Total", "col-sm-1"],
   ]);
-  const body = tableBody(data, blockName, [
-    "ID",
-    "PersonnelID",
-    "PeriodID",
-    "Period",
-  ]);
+
+  const body = tableBody(
+    blockData,
+    blockName,
+    ["ID", "PersonnelID", "PeriodID", "Period"],
+    {
+      PeriodID: "Period",
+      PrepHours: "Prep Hrs",
+      TravelHours: "Travel Hrs",
+      TrainingHours: "Training Hrs",
+      MeetingHours: "Meeting Hrs",
+      ExtraHours: "Extra Hrs",
+      TotalHours: "Total Hrs",
+    }
+  );
 
   return header + body;
 };
