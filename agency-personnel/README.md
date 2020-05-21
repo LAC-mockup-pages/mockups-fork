@@ -35,3 +35,9 @@ Add + Consult/Edit infos on agency personnel
 
 5 directories, 20 files - NB: file size in bytes / Kbytes.
 ```
+
+## Notes for users
+
+### Non-instructional hours entry:
+
+Be mindful of starting entering a new record with the period of time.
