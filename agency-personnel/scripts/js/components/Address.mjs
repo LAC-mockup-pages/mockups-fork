@@ -4,7 +4,7 @@ export const homeAddress = () => {
   const blockName = "Home Address";
   const header = topBanner(blockName);
   const {
-    ID,
+    PersonnelID,
     PersHomeAddress,
     PersHomeState,
     PersHomeCity,
@@ -20,7 +20,7 @@ export const workAddress = () => {
   const blockName = "Work Address";
   const header = topBanner(blockName);
   const {
-    ID,
+    PersonnelID,
     PersWorkAddress,
     PersWorkState,
     PersWorkCity,

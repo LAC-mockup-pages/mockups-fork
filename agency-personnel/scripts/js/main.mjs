@@ -6,6 +6,7 @@ import {
   getPersonnel,
   getPersonnelList,
   sessionVariable,
+  statesUSA,
 } from "./data-server.mjs";
 import personView from "./components/PersonInfo.mjs";
 import { historyView, createFormAddHistory } from "./components/History.mjs";
