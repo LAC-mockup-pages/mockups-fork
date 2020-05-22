@@ -74,7 +74,8 @@ export const elementSelectWithLabel = (argsObj) => {
   return elementSelect;
 };
 
-// Add button, title and headers
+// Creates header with optional button, optional column headers
+// (from list parameter)
 export const topBanner = (title, list = null) => {
   let headerLine = "";
   const blockName = title.toLowerCase().replace(/\W/gi, "-");
