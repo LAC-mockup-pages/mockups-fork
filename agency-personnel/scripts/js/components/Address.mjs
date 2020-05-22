@@ -10,10 +10,21 @@ export const homeAddress = () => {
     PersHomeCity,
     PersHomeZip,
   } = personnelData[0];
+  const fieldObj = {
+    PersonnelID,
+    PersHomeAddress,
+    PersHomeZip,
+    PersHomeCity,
+    PersHomeState,
+  };
+  let hiddenBody = "";
+  for (const key in fieldObj) {
+    hiddenBody += `<div class="hidden" data-field=${key}>${fieldObj[key]}</div>`;
+  }
   const fullAddress = `${PersHomeAddress} - ${PersHomeZip} ${PersHomeCity.toUpperCase()} ${PersHomeState}`;
   const body = `<div class="home-address dark-text"> ${fullAddress}</div>`;
 
-  return header + body;
+  return header + body + hiddenBody;
 };
 
 export const workAddress = () => {
