@@ -15,6 +15,7 @@ import {
   nonInstrHoursView,
   createFormAddNonIntructionalHours,
   handleChangeNonInstHours,
+  addTotalHours,
 } from "./components/NonInstrHours.mjs";
 import { homeAddress, workAddress } from "./components/Address.mjs";
 import addInfoView from "./components/AdditionalInfo.mjs";
@@ -423,8 +424,12 @@ $(document).ready(() => {
     evnt.preventDefault();
     evnt.stopPropagation();
 
-    const submittedData = $("#modal-form").serializeArray();
+    let submittedData = $("#modal-form").serializeArray();
+
     const tableName = $("#modal-form").attr("data-table");
+    if (tableName === "NonInstHours")
+      submittedData.push(addTotalHours(submittedData));
+
     const filteredData = submittedData.filter((obj) => obj.value);
     console.log("submittedData :>> ", submittedData);
     console.log("filteredData :>> ", filteredData);

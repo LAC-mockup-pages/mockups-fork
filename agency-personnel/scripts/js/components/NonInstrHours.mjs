@@ -2,7 +2,7 @@ import { getNonInstHours, getReportingPeriods } from "../data-server.mjs";
 import { topBanner, tableBody, elementSelectWithLabel } from "../main.mjs";
 
 const handleChangeNonInstHours = () => {
-  const listInputs = $("#modal-form input").get().slice(2, 7);
+  const listInputs = $("#modal-form input").get().slice(1, 7);
 
   $(listInputs).each(function () {
     $(this).bind("change", function (evnt) {
@@ -16,6 +16,17 @@ const handleChangeNonInstHours = () => {
       $("#TotalHours-view").val(totalHours);
     });
   });
+};
+
+const addTotalHours = (fieldList) => {
+  const totalHours = fieldList
+    .slice(2)
+    .reduce((total, field) => {
+      const valNum = field.value ? Number(field.value) : 0;
+      return total + valNum;
+    }, 0)
+    .toString();
+  return { name: "TotalHours", value: totalHours };
 };
 
 const createFormAddNonIntructionalHours = (formName) => {
@@ -126,4 +137,5 @@ export {
   nonInstrHoursView,
   createFormAddNonIntructionalHours,
   handleChangeNonInstHours,
+  addTotalHours,
 };
