@@ -88,8 +88,6 @@ export const topBanner = (title, list = null) => {
       "Personnel Information",
       "Instructional Hours",
       "Additional Information",
-      "Home Address",
-      "Work Address",
       "Notes and Comments",
     ].includes(title)
   ) {
