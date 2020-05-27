@@ -148,6 +148,16 @@ const getPersonnel = [
   },
 ];
 
+// PersHomeAddress: "123 Main Street",
+// PersHomeState: "NY",
+// PersHomeCity: "Mount Vernon",
+// PersHomeZip: "10552",
+//
+// PersHomeAddress: "",
+// PersHomeState: "",
+// PersHomeCity: "",
+// PersHomeZip: "",
+
 const getPersProgressContacts = [
   {
     ID: "8859",

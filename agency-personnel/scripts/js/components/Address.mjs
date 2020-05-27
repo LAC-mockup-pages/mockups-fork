@@ -11,20 +11,23 @@ export const homeAddress = () => {
     PersHomeZip,
   } = personnelData[0];
   const fieldObj = {
-    PersonnelID,
-    PersHomeAddress,
-    PersHomeZip,
-    PersHomeCity,
-    PersHomeState,
+    PersonnelID: { value: PersonnelID, label: "" },
+    PersHomeAddress: { value: PersHomeAddress, label: "Address" },
+    PersHomeZip: { value: PersHomeZip, label: "ZIP code" },
+    PersHomeCity: { value: PersHomeCity, label: "City" },
+    PersHomeState: { value: PersHomeState, label: "State" },
   };
-  let hiddenBody = "";
-  for (const key in fieldObj) {
-    hiddenBody += `<div class="hidden" data-field=${key}>${fieldObj[key]}</div>`;
-  }
-  const fullAddress = `${PersHomeAddress} - ${PersHomeZip} ${PersHomeCity.toUpperCase()} ${PersHomeState}`;
-  const body = `<div class="home-address dark-text"> ${fullAddress}</div>`;
 
-  return header + body + hiddenBody;
+  const fullAddress = `${PersHomeAddress} <br> ${PersHomeZip} ${PersHomeCity.toUpperCase()} ${PersHomeState}`;
+  const body = `<div class="home-address dark-text" data-fields='${JSON.stringify(
+    fieldObj
+  )}'> ${fullAddress}</div>`;
+
+  return header + body;
+};
+
+const createFormHomeAddress = (formName) => {
+  const fieldObj = JSON.parse($(`.${formName}`).attr("data-fields"));
 };
 
 export const workAddress = () => {
