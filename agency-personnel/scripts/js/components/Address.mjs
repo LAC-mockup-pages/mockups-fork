@@ -1,4 +1,6 @@
 import { personnelData, topBanner } from "../main.mjs";
+import { ddlStates } from "../data-server.mjs";
+import { elementSelectWithLabel } from "../main.mjs";
 
 export const homeAddress = () => {
   const blockName = "Home Address";
@@ -29,22 +31,34 @@ export const homeAddress = () => {
 export const createFormHomeAddress = (formName) => {
   const fieldObj = JSON.parse($(`.${formName}`).attr("data-fields"));
   const visibleFieldsList = Object.keys(fieldObj).slice(1);
-  let result = `<input class="input-field hidden" type="text" id="PersonnelID-view" name="PersonnelID" value=${fieldObj.PersonnelID}>`;
+  let result = `<input class="input-field hidden" type="text" id="PersonnelID-view" name="PersonnelID" value=${fieldObj.PersonnelID.value}>`;
 
   for (const field of visibleFieldsList) {
     const fieldValue = fieldObj[field].value ? fieldObj[field].value : "";
-    const paramsObj = {
-      keyVal: field,
-      labelVal: fieldObj[field].label,
-      value: fieldValue,
-      labelClassVal: "",
-      classVal: "",
-      option: "",
-      optionHidden: "",
-    };
-    result += elementInput(paramsObj);
+    let paramsObj;
+    if (field === "PersHomeState") {
+      paramsObj = {
+        hashTable: ddlStates,
+        keyValue: field,
+        selectedValue: fieldObj[field].value,
+        labelVal: fieldObj[field].label,
+        labelClassVal: "",
+        option: "",
+      };
+      result += elementSelectWithLabel(paramsObj);
+    } else {
+      paramsObj = {
+        keyVal: field,
+        labelVal: fieldObj[field].label,
+        value: fieldValue,
+        labelClassVal: "",
+        classVal: "",
+        option: "",
+        optionHidden: "",
+      };
+      result += elementInput(paramsObj);
+    }
   }
-  // console.log("result :>> ", result);
   return ["Personnel", result];
 };
 

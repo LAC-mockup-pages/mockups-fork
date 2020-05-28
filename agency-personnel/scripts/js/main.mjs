@@ -415,9 +415,10 @@ $(document).ready(() => {
 
     $(".save-record-btn").bind("click", function (evnt) {
       const formName = `#${$(this).attr("form")}`;
-      console.log("formName with SAVE:>> ", formName);
-      const submittedData = $(formName).serializeArray();
 
+      console.log("formName with SAVE:>> ", formName);
+
+      const submittedData = $(formName).serializeArray();
       saveMods(submittedData, formName);
     });
   });
