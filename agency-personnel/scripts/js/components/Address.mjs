@@ -26,8 +26,26 @@ export const homeAddress = () => {
   return header + body;
 };
 
-const createFormHomeAddress = (formName) => {
+export const createFormHomeAddress = (formName) => {
   const fieldObj = JSON.parse($(`.${formName}`).attr("data-fields"));
+  const visibleFieldsList = Object.keys(fieldObj).slice(1);
+  let result = `<input class="input-field hidden" type="text" id="PersonnelID-view" name="PersonnelID" value=${fieldObj.PersonnelID}>`;
+
+  for (const field of visibleFieldsList) {
+    const fieldValue = field.value ? field.value : "";
+    const paramsObj = {
+      keyVal: field,
+      labelVal: field.label,
+      value: fieldValue,
+      labelClassVal: "",
+      classVal: "",
+      option: "",
+      optionHidden: "",
+    };
+    result += elementInput(paramsObj);
+  }
+
+  return ["Personnel", result];
 };
 
 export const workAddress = () => {

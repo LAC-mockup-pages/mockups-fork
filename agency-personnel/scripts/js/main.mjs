@@ -18,7 +18,11 @@ import {
   handleChangeNonInstHours,
   addTotalHours,
 } from "./components/NonInstrHours.mjs";
-import { homeAddress, workAddress } from "./components/Address.mjs";
+import {
+  homeAddress,
+  workAddress,
+  createFormHomeAddress,
+} from "./components/Address.mjs";
 import addInfoView from "./components/AdditionalInfo.mjs";
 import commentsView from "./components/Comments.mjs";
 import contactsView from "./components/Contacts.mjs";
@@ -390,6 +394,8 @@ $(document).ready(() => {
         case "non-instructional-hours":
           addForm = createFormAddNonIntructionalHours(formName);
           break;
+        case "home-address":
+          addForm = createFormHomeAddress(formName);
 
         default:
           addForm = defaultModal("no-table-defined-yet");
