@@ -21,7 +21,7 @@ import {
 import {
   homeAddress,
   workAddress,
-  createFormHomeAddress,
+  createModalFormAddress,
 } from "./components/Address.mjs";
 import addInfoView from "./components/AdditionalInfo.mjs";
 import commentsView from "./components/Comments.mjs";
@@ -385,6 +385,7 @@ $(document).ready(() => {
       const formName = $(this).attr("form");
 
       console.log("formName with ADD:>> ", formName);
+
       // Modify depending on the block name
       let addForm = "";
       switch (formName) {
@@ -395,9 +396,8 @@ $(document).ready(() => {
           addForm = createFormAddNonIntructionalHours(formName);
           break;
         case "home-address":
-          // console.log("Working home address");
-          addForm = createFormHomeAddress(formName);
-          console.log("addForm :>> ", addForm);
+        case "work-address":
+          addForm = createModalFormAddress(formName);
           break;
         default:
           addForm = defaultModal("no-table-defined-yet");

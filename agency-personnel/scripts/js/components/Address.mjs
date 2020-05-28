@@ -29,7 +29,7 @@ export const homeAddress = () => {
   return header + body;
 };
 
-export const createFormHomeAddress = (formName) => {
+export const createModalFormAddress = (formName) => {
   const fieldObj = JSON.parse($(`.${formName}`).attr("data-fields"));
   const visibleFieldsList = Object.keys(fieldObj).slice(1);
   let result = `<input class="input-field hidden" type="text" id="PersonnelID-view" name="PersonnelID" value=${fieldObj.PersonnelID.value}>`;
@@ -37,7 +37,7 @@ export const createFormHomeAddress = (formName) => {
   for (const field of visibleFieldsList) {
     const fieldValue = fieldObj[field].value ? fieldObj[field].value : "";
     let paramsObj;
-    if (field === "PersHomeState") {
+    if (["PersHomeState", "PersWorkState"].includes(field)) {
       paramsObj = {
         hashTable: ddlStates,
         keyValue: field,
@@ -47,6 +47,7 @@ export const createFormHomeAddress = (formName) => {
         option: "",
       };
       result += elementSelectWithLabel(paramsObj);
+    } else if (["PersWorkSendMail", "PersWorkCanCall"].includes(field)) {
     } else {
       paramsObj = {
         keyVal: field,
@@ -85,8 +86,16 @@ export const workAddress = () => {
     PersWorkCity: { value: PersWorkCity, label: "City" },
     PersWorkState: { value: PersWorkState, label: "State" },
     PersWorkZip: { value: PersWorkZip, label: "ZIP code" },
-    PersWorkSendMail: { value: canMailCheck, label: "Can receive mail?" },
-    PersWorkCanCall: { value: canCallCheck, label: "Can receive calls?" },
+    PersWorkSendMail: {
+      value: PersWorkSendMail,
+      label: "Can receive mail?",
+      option: canMailCheck,
+    },
+    PersWorkCanCall: {
+      value: PersWorkCanCall,
+      label: "Can receive calls?",
+      option: canCallCheck,
+    },
   };
   const fullAddress = `${PersWorkAddress}<br> ${PersWorkCity.toUpperCase()} ${PersWorkState} ${PersWorkZip}`;
   const body = `<div class="work-address dark-text" data-fields='${JSON.stringify(
