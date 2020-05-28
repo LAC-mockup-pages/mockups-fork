@@ -12,6 +12,7 @@ export const homeAddress = () => {
     PersHomeCity,
     PersHomeZip,
   } = personnelData[0];
+
   const fieldObj = {
     PersonnelID: { value: PersonnelID, label: "" },
     PersHomeAddress: { value: PersHomeAddress, label: "Address" },
@@ -20,7 +21,7 @@ export const homeAddress = () => {
     PersHomeState: { value: PersHomeState, label: "State" },
   };
 
-  const fullAddress = `${PersHomeAddress} <br> ${PersHomeZip} ${PersHomeCity.toUpperCase()} ${PersHomeState}`;
+  const fullAddress = `${PersHomeAddress} <br> ${PersHomeCity.toUpperCase()} ${PersHomeState} ${PersHomeZip}`;
   const body = `<div class="home-address dark-text" data-fields='${JSON.stringify(
     fieldObj
   )}'> ${fullAddress}</div>`;
@@ -77,8 +78,20 @@ export const workAddress = () => {
 
   const canMailCheck = PersWorkSendMail === "False" ? "" : "checked";
   const canCallCheck = PersWorkCanCall === "False" ? "" : "checked";
-  const fullAddress = `${PersWorkAddress} - ${PersWorkZip} ${PersWorkCity.toUpperCase()} ${PersWorkState}`;
-  const body = `<div class="work-address dark-text"> ${fullAddress}
+
+  const fieldObj = {
+    PersonnelID: { value: PersonnelID, label: "" },
+    PersWorkAddress: { value: PersWorkAddress, label: "Address" },
+    PersWorkCity: { value: PersWorkCity, label: "City" },
+    PersWorkState: { value: PersWorkState, label: "State" },
+    PersWorkZip: { value: PersWorkZip, label: "ZIP code" },
+    PersWorkSendMail: { value: canMailCheck, label: "Can receive mail?" },
+    PersWorkCanCall: { value: canCallCheck, label: "Can receive calls?" },
+  };
+  const fullAddress = `${PersWorkAddress}<br> ${PersWorkCity.toUpperCase()} ${PersWorkState} ${PersWorkZip}`;
+  const body = `<div class="work-address dark-text" data-fields='${JSON.stringify(
+    fieldObj
+  )}'> ${fullAddress}
     <div class='container-fluid row work-address-checkbox'>
         <div class='mail-call-checkboxes col-sm-6'>
           <label for='canMail-checkbox'>Can receive mail? </label>
