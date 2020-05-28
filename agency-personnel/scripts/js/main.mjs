@@ -395,8 +395,10 @@ $(document).ready(() => {
           addForm = createFormAddNonIntructionalHours(formName);
           break;
         case "home-address":
+          // console.log("Working home address");
           addForm = createFormHomeAddress(formName);
-
+          console.log("addForm :>> ", addForm);
+          break;
         default:
           addForm = defaultModal("no-table-defined-yet");
           break;

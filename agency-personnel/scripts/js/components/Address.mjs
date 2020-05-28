@@ -32,10 +32,10 @@ export const createFormHomeAddress = (formName) => {
   let result = `<input class="input-field hidden" type="text" id="PersonnelID-view" name="PersonnelID" value=${fieldObj.PersonnelID}>`;
 
   for (const field of visibleFieldsList) {
-    const fieldValue = field.value ? field.value : "";
+    const fieldValue = fieldObj[field].value ? fieldObj[field].value : "";
     const paramsObj = {
       keyVal: field,
-      labelVal: field.label,
+      labelVal: fieldObj[field].label,
       value: fieldValue,
       labelClassVal: "",
       classVal: "",
@@ -44,7 +44,7 @@ export const createFormHomeAddress = (formName) => {
     };
     result += elementInput(paramsObj);
   }
-
+  // console.log("result :>> ", result);
   return ["Personnel", result];
 };
 
