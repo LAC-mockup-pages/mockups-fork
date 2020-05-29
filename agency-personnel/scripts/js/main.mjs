@@ -162,7 +162,7 @@ export const tableBody = (
 const saveMods = (dataObj, form, table = "") => {
   const { AgencyID, AuditUserID } = sessionVariable;
   const result = { AgencyID, AuditUserID };
-
+  console.log("dataObj :>> ", dataObj);
   // validateUserInput() <== data-check.js
   if (!validateUserInput(dataObj)) $(form)[0].reset();
   for (let field of dataObj) {
@@ -437,14 +437,21 @@ $(document).ready(() => {
     evnt.preventDefault();
     evnt.stopPropagation();
 
+    // const testFunction=()=>{
+    //   const dataList = $("#modal-form ")
+    // }
+
     let submittedData = $("#modal-form").serializeArray();
+    console.log("submittedData :>> ", submittedData);
 
     const tableName = $("#modal-form").attr("data-table");
     if (tableName === "NonInstHours")
       submittedData.push(addTotalHours(submittedData));
+    // if(tableName==='Personnel')submittedData.push(addCanMailOrCall(submittedData))
 
-    const filteredData = submittedData.filter((obj) => obj.value);
-    console.log("submittedData :>> ", submittedData);
+    const filteredData = submittedData.filter(
+      (obj) => obj.value || obj.value === ""
+    );
     console.log("filteredData :>> ", filteredData);
     saveMods(filteredData, "#modal-form", tableName);
     $("#modalBloc").modal("toggle");

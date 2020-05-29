@@ -70,7 +70,11 @@ export const createModalFormAddress = (formName) => {
   return ["Personnel", result];
 };
 
-export const handleChangeCheckBox = () => {};
+// export const handleChangeCheckBox = () => {};
+
+// export const addCanMailOrCall = (fieldList) => {
+
+// }
 
 export const workAddress = () => {
   const blockName = "Work Address";
