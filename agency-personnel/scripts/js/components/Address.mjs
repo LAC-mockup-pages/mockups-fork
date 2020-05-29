@@ -88,12 +88,12 @@ export const workAddress = () => {
     PersWorkZip: { value: PersWorkZip, label: "ZIP code" },
     PersWorkSendMail: {
       value: PersWorkSendMail,
-      label: "Can receive mail?",
+      label: "Can receive mail? ",
       option: canMailCheck,
     },
     PersWorkCanCall: {
       value: PersWorkCanCall,
-      label: "Can receive calls?",
+      label: "Can receive calls? ",
       option: canCallCheck,
     },
   };
