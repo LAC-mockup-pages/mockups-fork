@@ -386,7 +386,7 @@ $(document).ready(() => {
 
       console.log("formName with ADD:>> ", formName);
 
-      // Modify depending on the block name
+      // Modify form depending on the block name
       let addForm = "";
       switch (formName) {
         case "history":
