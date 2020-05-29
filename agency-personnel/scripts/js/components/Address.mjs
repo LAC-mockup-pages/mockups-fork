@@ -48,6 +48,12 @@ export const createModalFormAddress = (formName) => {
       };
       result += elementSelectWithLabel(paramsObj);
     } else if (["PersWorkSendMail", "PersWorkCanCall"].includes(field)) {
+      const checkedStatus = fieldObj[field].value === "True" ? "checked" : "";
+
+      result += `<div class='input-field mail-call-checkboxes'>
+      <label for=${field}>${fieldObj[field].label}</label>
+      <input type='checkbox' name=${field} ${checkedStatus} value='${fieldObj[field].value}'/>
+    </div>`;
     } else {
       paramsObj = {
         keyVal: field,
@@ -63,6 +69,8 @@ export const createModalFormAddress = (formName) => {
   }
   return ["Personnel", result];
 };
+
+export const handleChangeCheckBox = () => {};
 
 export const workAddress = () => {
   const blockName = "Work Address";
@@ -86,16 +94,8 @@ export const workAddress = () => {
     PersWorkCity: { value: PersWorkCity, label: "City" },
     PersWorkState: { value: PersWorkState, label: "State" },
     PersWorkZip: { value: PersWorkZip, label: "ZIP code" },
-    PersWorkSendMail: {
-      value: PersWorkSendMail,
-      label: "Can receive mail? ",
-      option: canMailCheck,
-    },
-    PersWorkCanCall: {
-      value: PersWorkCanCall,
-      label: "Can receive calls? ",
-      option: canCallCheck,
-    },
+    PersWorkSendMail: { value: PersWorkSendMail, label: "Can receive mail? " },
+    PersWorkCanCall: { value: PersWorkCanCall, label: "Can receive calls? " },
   };
   const fullAddress = `${PersWorkAddress}<br> ${PersWorkCity.toUpperCase()} ${PersWorkState} ${PersWorkZip}`;
   const body = `<div class="work-address dark-text" data-fields='${JSON.stringify(
