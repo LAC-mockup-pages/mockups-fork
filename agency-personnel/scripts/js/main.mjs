@@ -22,6 +22,7 @@ import {
   homeAddress,
   workAddress,
   createModalFormAddress,
+  checkCanMailOrCall,
 } from "./components/Address.mjs";
 import addInfoView from "./components/AdditionalInfo.mjs";
 import commentsView from "./components/Comments.mjs";
@@ -408,7 +409,8 @@ $(document).ready(() => {
       $("#modal-form")
         .empty()
         .append(addForm[1])
-        .attr("data-table", addForm[0]);
+        .attr("data-table", addForm[0])
+        .attr("data-block", formName);
 
       if (formName === "non-instructional-hours") handleChangeNonInstHours();
     });
@@ -436,18 +438,15 @@ $(document).ready(() => {
   $("#save-btn").on("click", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
-
-    // const testFunction=()=>{
-    //   const dataList = $("#modal-form ")
-    // }
+    const tableName = $("#modal-form").attr("data-table");
+    const blockName = $("#modal-form").attr("data-block");
+    if (blockName === "work-address") checkCanMailOrCall();
 
     let submittedData = $("#modal-form").serializeArray();
     console.log("submittedData :>> ", submittedData);
 
-    const tableName = $("#modal-form").attr("data-table");
     if (tableName === "NonInstHours")
       submittedData.push(addTotalHours(submittedData));
-    // if(tableName==='Personnel')submittedData.push(addCanMailOrCall(submittedData))
 
     const filteredData = submittedData.filter(
       (obj) => obj.value || obj.value === ""

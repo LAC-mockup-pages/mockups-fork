@@ -52,7 +52,7 @@ export const createModalFormAddress = (formName) => {
 
       result += `<div class='input-field mail-call-checkboxes'>
       <label for=${field}>${fieldObj[field].label}</label>
-      <input type='checkbox' name=${field} ${checkedStatus} value='${fieldObj[field].value}'/>
+      <input type='checkbox' id=${field}-view name=${field} ${checkedStatus} value='${fieldObj[field].value}'/>
     </div>`;
     } else {
       paramsObj = {
@@ -72,9 +72,15 @@ export const createModalFormAddress = (formName) => {
 
 // export const handleChangeCheckBox = () => {};
 
-// export const addCanMailOrCall = (fieldList) => {
+export const checkCanMailOrCall = () => {
+  if (!$("#PersWorkSendMail-view").checked) {
+    $("#PersWorkSendMail-view").attr("checked", "checked");
+  }
 
-// }
+  if (!$("#PersWorkCanCall-view").checked) {
+    $("#PersWorkCanCall-view").attr("checked", "checked");
+  }
+};
 
 export const workAddress = () => {
   const blockName = "Work Address";
