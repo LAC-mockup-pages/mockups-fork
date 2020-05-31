@@ -362,7 +362,6 @@ $(document).ready(() => {
           <div class="bloc-proDev">${proDevBloc}</div>
         </div>
       </div>
-
       <div class="bloc-hours container row">
           <div class="bloc-instr-hours col-md-5">${instructionalHoursBloc}</div>
           <div class="bloc-nonInstrHours col-md-7">${nonInstrHoursBloc}</div>
@@ -378,7 +377,6 @@ $(document).ready(() => {
         ${commentsBloc}
         ${contactsBloc}
       </div>
-
     </div>`);
 
     // Add a new record from modal
