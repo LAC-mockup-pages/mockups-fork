@@ -124,7 +124,7 @@ const personView = (selectedID) => {
       ${header}
     <form class="bloc-perso" id='${title
       .toLowerCase()
-      .replace(/\W/gi, "-")}'>${fields.join("")}
+      .replace(/\W/gi, "-")}' data-table="Personnel">${fields.join("")}
     </form>
   </div>`;
 };

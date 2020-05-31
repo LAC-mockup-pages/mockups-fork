@@ -160,12 +160,13 @@ export const tableBody = (
 };
 
 // Used for new personnel
-const saveMods = (dataObj, form, table = "") => {
+const saveMods = (dataObj, formId, tableName = "") => {
+  console.log("tableName :>> ", tableName);
   const { AgencyID, AuditUserID } = sessionVariable;
   const result = { AgencyID, AuditUserID };
   console.log("dataObj :>> ", dataObj);
   // validateUserInput() <== data-check.js
-  if (!validateUserInput(dataObj)) $(form)[0].reset();
+  if (!validateUserInput(dataObj)) $(formId)[0].reset();
   for (let field of dataObj) {
     if (field.name === "AgencyID") field.value = sessionVariable.AgencyID;
 
@@ -181,7 +182,7 @@ const saveMods = (dataObj, form, table = "") => {
     result[field.name] = field.value;
   }
 
-  const target = table ? table : form;
+  const target = tableName ? tableName : formId;
 
   const resultList = [target, JSON.stringify(result)];
   console.table(result);
@@ -424,15 +425,16 @@ $(document).ready(() => {
 
     $(".save-record-btn").bind("click", function (evnt) {
       const formName = `#${$(this).attr("form")}`;
-
+      const tableName = $(formName).attr("data-table");
       console.log("formName with SAVE:>> ", formName);
 
       const submittedData = $(formName).serializeArray();
-      saveMods(submittedData, formName);
+      saveMods(submittedData, formName, tableName);
     });
   });
 
   //* Cancel or Save
+
   // Main Cancel button
   $("#btn-cancel").click((evnt) => {
     evnt.preventDefault();
