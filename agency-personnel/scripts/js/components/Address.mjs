@@ -48,7 +48,8 @@ export const createModalFormAddress = (formName) => {
       };
       result += elementSelectWithLabel(paramsObj);
     } else if (["PersWorkSendMail", "PersWorkCanCall"].includes(field)) {
-      const checkedStatus = fieldObj[field].value === "True" ? "checked" : "";
+      const checkedStatus =
+        fieldObj[field].value === "True" ? "checked='checked'" : "";
 
       result += `<div class='input-field mail-call-checkboxes'>
       <label for=${field}>${fieldObj[field].label}</label>
@@ -70,7 +71,34 @@ export const createModalFormAddress = (formName) => {
   return ["Personnel", result];
 };
 
-// export const handleChangeCheckBox = () => {};
+export const handleChangeCheckBox = () => {
+  $(".mail-call-checkboxes input").bind("change", function (evnt) {
+    evnt.stopPropagation();
+    if ($(this).attr("checked")) {
+      $(this).removeAttr("checked").removeAttr("value");
+      $(this).attr("value", "False");
+      const boxName = $(this).attr("name");
+      $(`#${boxName}-checkbox`)
+        .removeAttr("checked")
+        // .removeAttr("value")
+        .attr("value", "False");
+    } else {
+      $(this).attr("checked", "checked").attr("value", "True");
+      const boxName = $(this).attr("name");
+      $(`#${boxName}-checkbox`)
+        .attr("checked", "checked")
+        .attr("value", "True");
+    }
+
+    console.log(
+      $(this).attr("id"),
+      ">> ",
+      $(this).attr("checked"),
+      " ",
+      $(this).attr("value")
+    );
+  });
+};
 
 export const checkCanMailOrCall = () => {
   if (!$("#PersWorkSendMail-view").checked) {
@@ -114,11 +142,11 @@ export const workAddress = () => {
     <div class='container-fluid row work-address-checkbox'>
         <div class='mail-call-checkboxes col-sm-6'>
           <label for='canMail-checkbox'>Can receive mail? </label>
-          <input type='checkbox' id='canMail-checkbox' ${canMailCheck} disabled/>
+          <input type='checkbox' id='PersWorkSendMail-checkbox' ${canMailCheck} disabled/>
         </div>
         <div class='mail-call-checkboxes col-sm-6'>
           <label for='canCall-checkbox'>Can receive calls? </label>
-          <input type='checkbox' id='canCall-checkbox' ${canCallCheck} disabled/>
+          <input type='checkbox' id='PersWorkCanCall-checkbox' ${canCallCheck} disabled/>
         </div>
       </div>
   </div>`;

@@ -6,7 +6,6 @@ import {
   getPersonnel,
   getPersonnelList,
   sessionVariable,
-  statesUSA,
 } from "./data-server.mjs";
 import personView from "./components/PersonInfo.mjs";
 import { historyView, createFormAddHistory } from "./components/History.mjs";
@@ -23,6 +22,7 @@ import {
   workAddress,
   createModalFormAddress,
   checkCanMailOrCall,
+  handleChangeCheckBox,
 } from "./components/Address.mjs";
 import addInfoView from "./components/AdditionalInfo.mjs";
 import commentsView from "./components/Comments.mjs";
@@ -412,7 +412,14 @@ $(document).ready(() => {
         .attr("data-table", addForm[0])
         .attr("data-block", formName);
 
+      // Binding event triggers to blocks as needed
       if (formName === "non-instructional-hours") handleChangeNonInstHours();
+      if (formName === "work-address") {
+        console.log("canMail >>", $("#PersWorkSendMail-view").attr("checked"));
+        console.log("canCall >>", $("#PersWorkCanCall-view").attr("checked"));
+
+        handleChangeCheckBox();
+      }
     });
 
     $(".save-record-btn").bind("click", function (evnt) {
