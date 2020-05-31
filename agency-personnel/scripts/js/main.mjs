@@ -97,12 +97,14 @@ export const topBanner = (title, list = null) => {
       "Home Address",
       "Work Address",
       "Additional Information",
-      "Notes and Comments",
+      "Comments",
     ].includes(title)
   ) {
     headerButton = `<button type='button' class="btn btn-default add-record-btn col-sm-2" ${formName}>Add</button>`;
   } else if (
-    ["Personnel Information", "Additional Information"].includes(title)
+    ["Personnel Information", "Comments", "Additional Information"].includes(
+      title
+    )
   ) {
     headerButton = `<button type='button' class="btn btn-default save-record-btn col-sm-2" ${formName}>Save</button>`;
   } else if (["Home Address", "Work Address"].includes(title)) {
