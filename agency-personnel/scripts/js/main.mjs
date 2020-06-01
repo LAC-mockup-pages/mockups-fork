@@ -401,6 +401,11 @@ $(document).ready(() => {
         case "work-address":
           addForm = createModalFormAddress(formName);
           break;
+
+        case "progress-contact":
+          addForm = createFormAddContact(formName);
+          break;
+
         default:
           addForm = defaultModal("no-table-defined-yet");
           break;

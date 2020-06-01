@@ -1,4 +1,4 @@
-import { topBanner, tableBody } from "../main.mjs";
+import { topBanner, tableBody, elementSelectWithLabel } from "../main.mjs";
 import {
   getPersProgressContacts,
   getPersContactsCodes,
@@ -47,7 +47,7 @@ export const createFormAddContact = (formName) => {
     let labelVal = $(cell).attr("data-label") ? $(cell).attr("data-label") : "";
     let option = "";
     let value = "";
-    if (["ID", "Type"].includes(keyVal)) continue;
+    if (["ID", "Type", "ContactDesc"].includes(keyVal)) continue;
     if (keyVal === "ContactType") {
       const paramsSelect = {
         hashTable: getPersContactsCodes,
@@ -59,14 +59,16 @@ export const createFormAddContact = (formName) => {
       };
       result += elementSelectWithLabel(paramsSelect);
     } else {
+      let classVal = "";
       if (keyVal === "PersonnelID") value = $(cell).text();
-
+      if (keyVal === "ContactDate")
+        classVal = "style='width:20%;text-align:center'";
       const paramsObj = {
         keyVal,
         labelVal,
         value,
         labelClassVal: "",
-        classVal: "style='width:10%;text-align:center'",
+        classVal,
         option,
         optionHidden,
       };
