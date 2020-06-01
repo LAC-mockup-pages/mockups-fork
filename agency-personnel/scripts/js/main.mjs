@@ -26,7 +26,7 @@ import {
 } from "./components/Address.mjs";
 import addInfoView from "./components/AdditionalInfo.mjs";
 import commentsView from "./components/Comments.mjs";
-import contactsView from "./components/Contacts.mjs";
+import { contactsView } from "./components/Contacts.mjs";
 
 const labelObj = {
   PersLast: "Last Name",

@@ -1,14 +1,13 @@
 import { topBanner, tableBody } from "../main.mjs";
 import { getPersProgressContacts } from "../data-server.mjs";
 
-const contactsView = () => {
+export const contactsView = () => {
   const blockName = "Progress Contact";
   const header = topBanner(blockName, [
     ["Date", "col-sm-2"],
     ["Type", "col-sm-2"],
     ["Notes", "col-sm-8"],
   ]);
-
   // Sorting by date descending
   const recordList = getPersProgressContacts.sort(
     (a, b) => new Date(b.ContactDate) - new Date(a.ContactDate)
@@ -26,5 +25,3 @@ const contactsView = () => {
             ${header + body}
           </div>`;
 };
-
-export default contactsView;
