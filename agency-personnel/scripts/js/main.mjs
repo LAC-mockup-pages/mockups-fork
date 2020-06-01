@@ -381,6 +381,14 @@ $(document).ready(() => {
       </div>
     </div>`);
 
+    // Binding event triger to editable blocs for editing
+    $(
+      ".history-body > tr,.non-instructional-hours-body > tr,.progress-contact-body > tr"
+    ).bind("click", function (evnt) {
+      evnt.stopPropagation();
+      console.log(">> This is working !  >> ", $(this).attr("id"));
+    });
+
     // Add a new record from modal
     $(".add-record-btn").bind("click", function (evnt) {
       evnt.stopPropagation();
@@ -428,6 +436,7 @@ $(document).ready(() => {
       }
     });
 
+    // Save button in block top banner
     $(".save-record-btn").bind("click", function (evnt) {
       const formName = `#${$(this).attr("form")}`;
       const tableName = $(formName).attr("data-table");
@@ -470,10 +479,11 @@ $(document).ready(() => {
     $("#modalBloc").modal("toggle");
   });
 
-  $("#btn-save").click((evnt) => {
-    evnt.preventDefault();
-    evnt.stopPropagation();
+  // Main Save button
+  // $("#btn-save").click((evnt) => {
+  //   evnt.preventDefault();
+  //   evnt.stopPropagation();
 
-    location.reload();
-  });
+  //   location.reload();
+  // });
 });

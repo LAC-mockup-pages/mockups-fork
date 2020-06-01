@@ -98,6 +98,7 @@ tbody {
   font-weight: 600;
 }
 
+.table-body > tr:hover,
 .history-body > tr:hover,
 .non-instructional-hours-body > tr:hover,
 .progress-contact-body > tr:hover {
