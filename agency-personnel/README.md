@@ -41,3 +41,9 @@ Add + Consult/Edit infos on agency personnel
 ### Non-instructional hours entry:
 
 Be mindful of starting entering a new record with the period of time.
+
+## Dev Notes
+
+### Modularity
+
+All the blocks are created with JS modules with `main.js` as a central hub. If the `import` / `export` features raise an issue, it is possible to achieve the same modularity through `<script>` tags.
