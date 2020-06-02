@@ -61,8 +61,10 @@ export const createFormAddContact = (formName) => {
     } else {
       let classVal = "";
       if (keyVal === "PersonnelID") value = $(cell).text();
-      if (keyVal === "ContactDate")
-        classVal = "style='width:20%;text-align:center'";
+      if (keyVal === "ContactDate") {
+        classVal = "style='width:20%'";
+        option = "placeholder='MM/DD/YYYY'";
+      }
       const paramsObj = {
         keyVal,
         labelVal,
