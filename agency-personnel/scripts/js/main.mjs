@@ -381,12 +381,42 @@ $(document).ready(() => {
       </div>
     </div>`);
 
-    // Binding event triger to editable blocs for editing
+    // Binding event trigger to editable blocs for editing.
+    // Editable blocks are: history, non instructional hours, progress
+    // contacts.
     $(
       ".history-body > tr,.non-instructional-hours-body > tr,.progress-contact-body > tr"
     ).bind("click", function (evnt) {
       evnt.stopPropagation();
       console.log(">> This is working !  >> ", $(this).attr("id"));
+
+      const selectedRecordId = $(this).attr("id");
+      const blockName = selectedRecordId.split("-").slice(0, -1).join("-");
+      console.log("blockName :>> ", blockName);
+
+      let editForm = "";
+      switch (blockName) {
+        case "history":
+          editForm = createFormAddHistory(blockName, selectedRecordId);
+          break;
+        // case "non-instructional-hours":
+        //   editForm = createFormEditNonIntructionalHours(blockName);
+        //   break;
+        //         case "progress-contact":
+        //   editForm = createFormEditContact(blockName);
+        //   break;
+
+        default:
+          editForm = defaultModal("no-table-defined-yet");
+          break;
+      }
+
+      $("#modalBloc").modal("toggle");
+      $("#modal-form")
+        .empty()
+        .append(editForm[1])
+        .attr("data-table", editForm[0])
+        .attr("data-block", blockName);
     });
 
     // Add a new record from modal
@@ -431,8 +461,8 @@ $(document).ready(() => {
       if (formName === "work-address") {
         console.log("canMail >>", $("#PersWorkSendMail-view").attr("checked"));
         console.log("canCall >>", $("#PersWorkCanCall-view").attr("checked"));
-
-        handleChangeCheckBox();
+        // TODO ==> Issue with jQuery treatment of checkbox changes
+        // TODO handleChangeCheckBox();
       }
     });
 

@@ -1,23 +1,27 @@
 import { GetPersStatusHistory, GetPersStatusCodes } from "../data-server.mjs";
 import { topBanner, tableBody, elementSelectWithLabel } from "../main.mjs";
 
-const createFormAddHistory = (formName) => {
-  const firstRowID = `#${formName}-0 td`;
-  const tableName = $(`#${formName}-0`).attr("data-table");
-  const firstRow = $(firstRowID).get();
+const createFormAddHistory = (formName, rowId = null) => {
+  const selectedRowId = rowId ? `#${rowId} td` : `#${formName}-0 td`;
+  const tableName = rowId
+    ? $(`#${rowId}`).attr("data-table")
+    : $(`#${formName}-0`).attr("data-table");
+  const selectedRow = $(selectedRowId).get();
   let result = "";
 
-  for (const cell of firstRow) {
+  for (const cell of selectedRow) {
     let optionHidden = $(cell).attr("class").includes("hidden") ? "hidden" : "";
     let keyVal = $(cell).attr("data-field");
     let labelVal = $(cell).attr("data-label") ? $(cell).attr("data-label") : "";
     let option = "";
-    let value = "";
+    let value = rowId ? $(cell).text() : "";
+
     if (["PersonnelStatID"].includes(keyVal)) {
+      const selectedValue = rowId ? value : "";
       const paramsSelect = {
         hashTable: GetPersStatusCodes,
         keyValue: keyVal,
-        selectedValue: "",
+        selectedValue,
         labelVal,
         labelClassVal: "",
         option: "",
@@ -36,9 +40,16 @@ const createFormAddHistory = (formName) => {
         option,
         optionHidden,
       };
+
       result += elementInput(paramsObj);
     }
   }
+  return [tableName, result];
+};
+
+const createFormEditHistory = (fieldList) => {
+  let result = "";
+
   return [tableName, result];
 };
 
