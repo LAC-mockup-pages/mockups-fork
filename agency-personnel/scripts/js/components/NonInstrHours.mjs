@@ -2,12 +2,12 @@ import { getNonInstHours, getReportingPeriods } from "../data-server.mjs";
 import { topBanner, tableBody, elementSelectWithLabel } from "../main.mjs";
 
 const handleChangeNonInstHours = () => {
-  const listInputs = $("#modal-form input").get().slice(1, 7);
+  const listInputs = $("#modal-form input").get().slice(2, 8);
 
   $(listInputs).each(function () {
     $(this).bind("change", function (evnt) {
       evnt.stopPropagation();
-      const valueList = $("#modal-form").serializeArray().slice(2, 7);
+      const valueList = $("#modal-form").serializeArray().slice(3, 8);
       console.log("valueList :>> ", valueList);
       const totalHours = valueList.reduce((total, field) => {
         const valNum = field.value ? Number(field.value) : 0;
@@ -20,7 +20,7 @@ const handleChangeNonInstHours = () => {
 
 const addTotalHours = (fieldList) => {
   const totalHours = fieldList
-    .slice(2)
+    .slice(3)
     .reduce((total, field) => {
       const valNum = field.value ? Number(field.value) : 0;
       return total + valNum;
@@ -43,7 +43,7 @@ const createFormAddNonIntructionalHours = (formName, rowId = null) => {
     let labelVal = $(cell).attr("data-label") ? $(cell).attr("data-label") : "";
     let option = "";
     let value = rowId ? $(cell).text() : "";
-    if (["Month", "ID", "Period"].includes(keyVal)) continue;
+    if (["Month", "Period"].includes(keyVal)) continue;
     if (keyVal === "PeriodID") {
       const selectedValue = rowId ? value : "";
       const paramsSelect = {
@@ -56,6 +56,7 @@ const createFormAddNonIntructionalHours = (formName, rowId = null) => {
       };
       result += elementSelectWithLabel(paramsSelect);
     } else {
+      if (keyVal === "ID") optionHidden = "hidden";
       if (keyVal === "PersonnelID") value = $(cell).text();
       if (keyVal === "TotalHours") option = "disabled";
       const paramsObj = {

@@ -35,7 +35,7 @@ export const contactsView = () => {
           </div>`;
 };
 
-export const createFormAddContact = (formName) => {
+export const createFormAddContact = (formName, rowId = null) => {
   const firstRowID = `#${formName}-0 td`;
   const tableName = $(`#${formName}-0`).attr("data-table");
   const firstRow = $(firstRowID).get();

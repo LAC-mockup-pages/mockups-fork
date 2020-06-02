@@ -405,9 +405,9 @@ $(document).ready(() => {
             selectedRecordId
           );
           break;
-        //         case "progress-contact":
-        //   editForm = createFormAddContact(blockName, selectedRecordId);
-        //   break;
+        case "progress-contact":
+          editForm = createFormAddContact(blockName, selectedRecordId);
+          break;
 
         default:
           editForm = defaultModal("no-table-defined-yet");
