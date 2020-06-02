@@ -399,11 +399,14 @@ $(document).ready(() => {
         case "history":
           editForm = createFormAddHistory(blockName, selectedRecordId);
           break;
-        // case "non-instructional-hours":
-        //   editForm = createFormEditNonIntructionalHours(blockName);
-        //   break;
+        case "non-instructional-hours":
+          editForm = createFormAddNonIntructionalHours(
+            blockName,
+            selectedRecordId
+          );
+          break;
         //         case "progress-contact":
-        //   editForm = createFormEditContact(blockName);
+        //   editForm = createFormAddContact(blockName, selectedRecordId);
         //   break;
 
         default:
@@ -417,6 +420,9 @@ $(document).ready(() => {
         .append(editForm[1])
         .attr("data-table", editForm[0])
         .attr("data-block", blockName);
+
+      // Binding event trigger for real time updating total hours
+      if (blockName === "non-instructional-hours") handleChangeNonInstHours();
     });
 
     // Add a new record from modal

@@ -29,24 +29,27 @@ const addTotalHours = (fieldList) => {
   return { name: "TotalHours", value: totalHours };
 };
 
-const createFormAddNonIntructionalHours = (formName) => {
-  const firstRowID = `#${formName}-0 td`;
-  const tableName = $(`#${formName}-0`).attr("data-table");
-  const firstRow = $(firstRowID).get();
+const createFormAddNonIntructionalHours = (formName, rowId = null) => {
+  const selectedRowId = rowId ? `#${rowId} td` : `#${formName}-0 td`;
+  const tableName = rowId
+    ? $(`#${rowId}`).attr("data-table")
+    : $(`#${formName}-0`).attr("data-table");
+  const selectedRow = $(selectedRowId).get();
   let result = "";
 
-  for (const cell of firstRow) {
+  for (const cell of selectedRow) {
     let optionHidden = $(cell).attr("class").includes("hidden") ? "hidden" : "";
     let keyVal = $(cell).attr("data-field");
     let labelVal = $(cell).attr("data-label") ? $(cell).attr("data-label") : "";
     let option = "";
-    let value = "";
+    let value = rowId ? $(cell).text() : "";
     if (["Month", "ID", "Period"].includes(keyVal)) continue;
     if (keyVal === "PeriodID") {
+      const selectedValue = rowId ? value : "";
       const paramsSelect = {
         hashTable: getReportingPeriods,
         keyValue: keyVal,
-        selectedValue: "",
+        selectedValue,
         labelVal,
         labelClassVal: "",
         option,

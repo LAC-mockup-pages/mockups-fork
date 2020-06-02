@@ -47,12 +47,6 @@ const createFormAddHistory = (formName, rowId = null) => {
   return [tableName, result];
 };
 
-const createFormEditHistory = (fieldList) => {
-  let result = "";
-
-  return [tableName, result];
-};
-
 const historyView = () => {
   const blockName = "History";
 
