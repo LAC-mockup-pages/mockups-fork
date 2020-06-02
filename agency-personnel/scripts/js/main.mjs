@@ -514,12 +514,4 @@ $(document).ready(() => {
     saveMods(filteredData, "#modal-form", tableName);
     $("#modalBloc").modal("toggle");
   });
-
-  // Main Save button
-  // $("#btn-save").click((evnt) => {
-  //   evnt.preventDefault();
-  //   evnt.stopPropagation();
-
-  //   location.reload();
-  // });
 });
