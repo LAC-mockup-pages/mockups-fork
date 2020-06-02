@@ -36,23 +36,26 @@ export const contactsView = () => {
 };
 
 export const createFormAddContact = (formName, rowId = null) => {
-  const firstRowID = `#${formName}-0 td`;
-  const tableName = $(`#${formName}-0`).attr("data-table");
-  const firstRow = $(firstRowID).get();
+  const selectedRowId = rowId ? `#${rowId} td` : `#${formName}-0 td`;
+  const tableName = rowId
+    ? $(`#${rowId}`).attr("data-table")
+    : $(`#${formName}-0`).attr("data-table");
+  const selectedRow = $(selectedRowId).get();
   let result = "";
 
-  for (const cell of firstRow) {
+  for (const cell of selectedRow) {
     let optionHidden = $(cell).attr("class").includes("hidden") ? "hidden" : "";
     let keyVal = $(cell).attr("data-field");
     let labelVal = $(cell).attr("data-label") ? $(cell).attr("data-label") : "";
     let option = "";
-    let value = "";
-    if (["ID", "Type", "ContactDesc"].includes(keyVal)) continue;
+    let value = rowId ? $(cell).text() : "";
+    if (["Type", "ContactDesc"].includes(keyVal)) continue;
     if (keyVal === "ContactType") {
+      const selectedValue = rowId ? value : "";
       const paramsSelect = {
         hashTable: getPersContactsCodes,
         keyValue: keyVal,
-        selectedValue: "",
+        selectedValue,
         labelVal,
         labelClassVal: "",
         option,
@@ -60,6 +63,7 @@ export const createFormAddContact = (formName, rowId = null) => {
       result += elementSelectWithLabel(paramsSelect);
     } else {
       let classVal = "";
+      if (keyVal === "ID") optionHidden = "hidden";
       if (keyVal === "PersonnelID") value = $(cell).text();
       if (keyVal === "ContactDate") {
         classVal = "style='width:20%'";
