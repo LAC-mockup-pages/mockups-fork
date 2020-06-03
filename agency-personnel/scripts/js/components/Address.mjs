@@ -78,10 +78,7 @@ export const handleChangeCheckBox = () => {
       $(this).removeAttr("checked").removeAttr("value");
       $(this).attr("value", "False");
       const boxName = $(this).attr("name");
-      $(`#${boxName}-checkbox`)
-        .removeAttr("checked")
-        // .removeAttr("value")
-        .attr("value", "False");
+      $(`#${boxName}-checkbox`).removeAttr("checked").attr("value", "False");
     } else {
       $(this).attr("checked", "checked").attr("value", "True");
       const boxName = $(this).attr("name");
@@ -89,24 +86,16 @@ export const handleChangeCheckBox = () => {
         .attr("checked", "checked")
         .attr("value", "True");
     }
-
-    console.log(
-      $(this).attr("id"),
-      ">> ",
-      $(this).attr("checked"),
-      " ",
-      $(this).attr("value")
-    );
   });
 };
 
 export const checkCanMailOrCall = () => {
   if (!$("#PersWorkSendMail-view").checked) {
-    $("#PersWorkSendMail-view").attr("checked", "checked");
+    $("#PersWorkSendMail-view").prop("checked", true);
   }
 
   if (!$("#PersWorkCanCall-view").checked) {
-    $("#PersWorkCanCall-view").attr("checked", "checked");
+    $("#PersWorkCanCall-view").prop("checked", true);
   }
 };
 

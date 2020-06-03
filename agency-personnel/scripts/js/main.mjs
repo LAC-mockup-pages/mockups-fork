@@ -163,10 +163,8 @@ export const tableBody = (
 
 // Used for new personnel
 const saveMods = (dataObj, formId, tableName = "") => {
-  console.log("tableName :>> ", tableName);
   const { AgencyID, AuditUserID } = sessionVariable;
   const result = { AgencyID, AuditUserID };
-  console.log("dataObj :>> ", dataObj);
   // validateUserInput() <== data-check.js
   if (!validateUserInput(dataObj)) $(formId)[0].reset();
   for (let field of dataObj) {
@@ -240,7 +238,6 @@ const searchPersonnel = (str) => {
 };
 
 // Default modal-form
-
 const defaultModal = (nameForm) => {
   return [nameForm, `<div><h3>Default modal for ${nameForm}</h3></div>`];
 };
@@ -388,11 +385,8 @@ $(document).ready(() => {
       ".history-body > tr,.non-instructional-hours-body > tr,.progress-contact-body > tr"
     ).bind("click", function (evnt) {
       evnt.stopPropagation();
-      console.log(">> This is working !  >> ", $(this).attr("id"));
-
       const selectedRecordId = $(this).attr("id");
       const blockName = selectedRecordId.split("-").slice(0, -1).join("-");
-      console.log("blockName :>> ", blockName);
 
       let editForm = "";
       switch (blockName) {
@@ -430,8 +424,6 @@ $(document).ready(() => {
       evnt.stopPropagation();
       const formName = $(this).attr("form");
 
-      console.log("formName with ADD:>> ", formName);
-
       // Modify form depending on the block name
       let addForm = "";
       switch (formName) {
@@ -465,10 +457,7 @@ $(document).ready(() => {
       // Binding event triggers to blocks as needed
       if (formName === "non-instructional-hours") handleChangeNonInstHours();
       if (formName === "work-address") {
-        console.log("canMail >>", $("#PersWorkSendMail-view").attr("checked"));
-        console.log("canCall >>", $("#PersWorkCanCall-view").attr("checked"));
-        // TODO ==> Issue with jQuery treatment of checkbox changes
-        // TODO handleChangeCheckBox();
+        handleChangeCheckBox();
       }
     });
 
@@ -476,8 +465,6 @@ $(document).ready(() => {
     $(".save-record-btn").bind("click", function (evnt) {
       const formName = `#${$(this).attr("form")}`;
       const tableName = $(formName).attr("data-table");
-      console.log("formName with SAVE:>> ", formName);
-
       const submittedData = $(formName).serializeArray();
       saveMods(submittedData, formName, tableName);
     });
@@ -502,15 +489,12 @@ $(document).ready(() => {
     if (blockName === "work-address") checkCanMailOrCall();
 
     let submittedData = $("#modal-form").serializeArray();
-    console.log("submittedData :>> ", submittedData);
-
     if (tableName === "NonInstHours")
       submittedData.push(addTotalHours(submittedData));
 
     const filteredData = submittedData.filter(
       (obj) => obj.value || obj.value === ""
     );
-    console.log("filteredData :>> ", filteredData);
     saveMods(filteredData, "#modal-form", tableName);
     $("#modalBloc").modal("toggle");
   });
