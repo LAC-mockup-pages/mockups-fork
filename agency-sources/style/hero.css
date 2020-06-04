@@ -54,10 +54,6 @@ option {
   font-weight: 700;
 }
 
-.yellow-bg {
-  background-color: #f7e095;
-}
-
 :required::placeholder,
 .delete-msg {
   color: rgb(197, 65, 65);
