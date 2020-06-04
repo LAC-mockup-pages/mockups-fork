@@ -15,6 +15,18 @@ const createInputField = (
     </div>`;
 };
 
+// obj = { keyVal, labelVal, value, labelClassVal,
+//         classVal, option, optionHidden}
+const elementInput = (obj) => {
+  return `<div class="input-field ${obj.optionHidden}">
+      <label for='${obj.keyVal}' ${obj.labelClassVal}>${obj.labelVal}</label>
+      <input type="text" id='${obj.keyVal + "-view"}' ${obj.classVal} name=${
+    obj.keyVal
+  }
+      value='${obj.value}' ${obj.option}>
+    </div>`;
+};
+
 // Converts 0000000000 to 000-000-0000 and vice-versa
 const phoneFormat = (str) => {
   if (!str) return "";
@@ -93,4 +105,15 @@ const zipCodeFormat = (str) => {
 const createHeaders = (labels) => {
   const headers = labels.map((label) => `<th>${label}</th>`).join("");
   return `<thead>${headers}</thead>`;
+};
+
+// Returns a <tr> element as a string from a record object
+const createTableRow = (idValue, recordObj) => {
+  let dataElement = "";
+  for (const property in recordObj) {
+    dataElement += `<td class="cell-data" title="Click to edit" data-name=${property}>
+        ${recordObj[property]}
+      </td>`;
+  }
+  return `<tr id=${idValue}>${dataElement}</tr>`;
 };
