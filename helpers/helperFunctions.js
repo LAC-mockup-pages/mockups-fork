@@ -37,6 +37,14 @@ const elementInput = (obj) => {
 //   text-align: left;
 // }
 
+//! Needs this event trigger for font color
+// Change text color from red (required) to black
+// when a value other than default is selected. Replace the anchor id.
+//  $("#FSID-view").bind("change", function (evnt) {
+//   evnt.stopPropagation();
+//   $(this).toggleClass("dark-text").prop("required", false);
+// });
+
 const elementSelectNewRecord = (argsObj) => {
   const { hashTable, keyValue, option } = argsObj;
   const [primary, secondary] = Object.keys(hashTable[0]);
