@@ -43,14 +43,11 @@ const newSourceObject = (list) => {
 };
 
 const createNewSourceForm = (localList, selectList) => {
-  const listOption = selectList.map((item) => {
-    return `<option value="${item.FSID}">${item.FundAbbrev}</option>`;
+  const selectElement = elementSelectNewRecord({
+    hashTable: sourcesData,
+    keyValue: "FSID",
+    option: "required",
   });
-  const selectElement = `<select class='form-control red-text col-width-large' name='FSID'
-      id='source-select' title="Please select a source" required>
-        <option>Funding Sources</option>
-        ${listOption}
-    </select>`;
 
   const orderedList = blocItems.newSource.map((indx) => {
     return localList[0][indx];
@@ -71,8 +68,12 @@ const createNewSourceForm = (localList, selectList) => {
   />`;
       })
       .join("") +
-    `<button type="submit" id="submit-btn" class="btn btn-primary">
-        Add Funding
+    `<button type="submit" id="submit-btn" class="btn btn-primary" form="new-source">
+      Add
+    </button>
+    <button type="button" id="cancel-btn" form="new-source"
+      class="btn btn-default">
+      Cancel
     </button>`;
 
   return selectElement + listInput;
@@ -187,6 +188,13 @@ $(document).ready(() => {
 
   viewData(agencyData, rowLabels, blocItems.viewBloc);
 
+  // Change text color from red (required) to black
+  // when a value other than default is selected
+  $("#FSID-view").bind("change", function (evnt) {
+    evnt.stopPropagation();
+    $(this).toggleClass("dark-text").prop("required", false);
+  });
+
   //* Adding a new funding source
   $("#new-source").on("submit", function (evnt) {
     evnt.preventDefault();
@@ -196,6 +204,7 @@ $(document).ready(() => {
 
     const newSource = $(this).serializeArray();
     console.log("newSource :>> ", newSource);
+
     // validNewSource <== data-check.js
     const validatedList = validNewSource(newSource);
     const checkFlag = validatedList.some((item) => !item.correct);
@@ -235,12 +244,21 @@ $(document).ready(() => {
     $("#edit-form").append(result).attr("data-bloc-id", sourceId);
   });
 
+  // New source Add button
   $("#save-button").click(function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formID = $(this).attr("form");
     const id = $(`#${formID}`).attr("data-bloc-id");
     saveMods(id);
+  });
+
+  // New source Cancel button
+  $("#cancel-btn").click(function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    const formId = "#" + $(this).attr("form");
+    $(formId)[0].reset();
   });
 
   //* Deleting source

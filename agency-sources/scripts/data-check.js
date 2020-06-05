@@ -1,7 +1,7 @@
 //* Data check for new or edited source
 //* Using Moment.js for date validation
 
-const validNewSource = list => {
+const validNewSource = (list) => {
   const result = [];
   for (let obj of list) {
     switch (obj.name) {
@@ -27,4 +27,25 @@ const validNewSource = list => {
     result.push(obj);
   }
   return result;
+};
+
+const elementSelectNewRecord = (argsObj) => {
+  const { hashTable, keyValue, option } = argsObj;
+  const [primary, secondary] = Object.keys(hashTable[0]);
+  let optionList = hashTable
+    .map((item) => {
+      return `<option value="${item[primary]}">
+          ${item[secondary]}</option>`;
+    })
+    .join("");
+
+  const elementSelect = `
+     <select id="${
+       keyValue + "-view"
+     }" class="form-control" name="${keyValue}" ${option}>
+      <option value='' selected disabled>Select an option</option>
+      ${optionList}
+     </select>`;
+
+  return elementSelect;
 };
