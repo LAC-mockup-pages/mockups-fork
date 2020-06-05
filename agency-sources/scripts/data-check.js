@@ -28,24 +28,3 @@ const validNewSource = (list) => {
   }
   return result;
 };
-
-const elementSelectNewRecord = (argsObj) => {
-  const { hashTable, keyValue, option } = argsObj;
-  const [primary, secondary] = Object.keys(hashTable[0]);
-  let optionList = hashTable
-    .map((item) => {
-      return `<option value="${item[primary]}">
-          ${item[secondary]}</option>`;
-    })
-    .join("");
-
-  const elementSelect = `
-     <select id="${
-       keyValue + "-view"
-     }" class="form-control" name="${keyValue}" ${option}>
-      <option value='' selected disabled>Select an option</option>
-      ${optionList}
-     </select>`;
-
-  return elementSelect;
-};
