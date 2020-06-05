@@ -1,7 +1,7 @@
 // Actions and logic
 
-const agencyData = agencyDataFund;
-const sourcesData = fundingData;
+const agencyData = agencyDataFund.slice(0);
+const sourcesData = fundingData.slice(0);
 
 const rowLabels = {
   FundAbbrev: "Source Name",
@@ -195,7 +195,7 @@ $(document).ready(() => {
     $(`#new-source input`).removeClass("yellow-bg");
 
     const newSource = $(this).serializeArray();
-
+    console.log("newSource :>> ", newSource);
     // validNewSource <== data-check.js
     const validatedList = validNewSource(newSource);
     const checkFlag = validatedList.some((item) => !item.correct);
