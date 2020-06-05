@@ -152,10 +152,11 @@ const saveMods = (elmnt) => {
     if (key === "Amount") val = val.replace(/[$,\s]/g, "");
     result[key] = val;
   }
-
+  console.table(result);
+  const resultList = ["agencyDataFund", JSON.stringify(result)];
   //!===============================================
   //! Data object to send back to Database
-  console.log("JSON Object :", JSON.stringify(result));
+  console.log("result : ", resultList);
   //!===============================================
 
   $("#modalBloc").modal("toggle");
