@@ -10,14 +10,8 @@ const validateUserInput = (dataList) => {
   for (let field of dataList) {
     switch (field.name) {
       case "ReferralSiteName":
-        resultTest = alphaNumCheck(field.value);
-        break;
       case "ReferralSiteManager":
-        resultTest = alphaNumCheck(field.value);
-        break;
       case "Address":
-        resultTest = alphaNumCheck(field.value);
-        break;
       case "City":
         resultTest = alphaNumCheck(field.value);
         break;
