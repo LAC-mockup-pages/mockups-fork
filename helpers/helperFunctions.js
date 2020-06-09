@@ -65,6 +65,42 @@ const elementSelectNewRecord = (argsObj) => {
   return elementSelect;
 };
 
+// Create a select element with label for modal form
+// Input: JS object. Set value to "" for key(s) not needed.
+const elementSelectModal = (argsObj) => {
+  let firstOption = "<option disabled>Select an option</option>";
+  const {
+    hashTable,
+    keyValue,
+    selectedValue,
+    labelVal,
+    labelClassVal,
+    option,
+  } = argsObj;
+  const [primary, secondary] = Object.keys(hashTable[0]);
+  let optionList = hashTable
+    .map((item) => {
+      const selected =
+        item[primary].toString() === selectedValue ? "selected" : "";
+      return `<option value="${item[primary]}" ${selected}>
+          ${item[secondary]}</option>`;
+    })
+    .join("");
+
+  if (!selectedValue) {
+    firstOption = "<option selected disabled>Select an option</option>";
+  }
+
+  const elementSelect = `<div class= "input-field form-group">
+  <label for="${keyValue}" ${labelClassVal}>${labelVal}</label>
+  <select id="${
+    keyValue + "-view"
+  }" class="modal-select" name="${keyValue}" ${option}>${firstOption}${optionList}</select>
+</div>`;
+
+  return elementSelect;
+};
+
 // Converts 0000000000 to 000-000-0000 and vice-versa
 const phoneFormat = (str) => {
   if (!str) return "";
