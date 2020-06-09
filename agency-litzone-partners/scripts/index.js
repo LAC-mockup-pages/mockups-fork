@@ -133,7 +133,8 @@ const createNewRecord = (labelsObject, agencyId) => {
     result.push(inputElement);
   }
   result.push(
-    '<button type="button" id="submit-btn" form="new-partner" class="btn btn-primary">Add</button><button type="button" id="cancel-btn" form="new-partner" class="btn btn-default">Cancel</button>'
+    `<button type="button" id="submit-btn" form="new-partner" class="btn btn-primary">Add</button>
+    <button type="button" id="cancel-btn" form="new-partner" class="btn btn-default">Cancel</button>`
   );
 
   const formContent = result.join("");
