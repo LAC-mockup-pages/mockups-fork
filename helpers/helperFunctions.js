@@ -45,7 +45,7 @@ const elementInput = (obj) => {
 // });
 
 const elementSelectNewRecord = (argsObj) => {
-  const { hashTable, keyValue, option } = argsObj;
+  const { hashTable, keyValue, option, optionText } = argsObj;
   const [primary, secondary] = Object.keys(hashTable[0]);
   let optionList = hashTable
     .map((item) => {
@@ -53,12 +53,12 @@ const elementSelectNewRecord = (argsObj) => {
           ${item[secondary]}</option>`;
     })
     .join("");
-
+  const descriptor = optionText ? optionText : "an option";
   const elementSelect = `
      <select id="${
        keyValue + "-view"
      }" class="form-control" name="${keyValue}" ${option}>
-      <option value='' selected disabled>Select an option</option>
+      <option value='' selected disabled>Select ${descriptor}</option>
       ${optionList}
      </select>`;
 
@@ -68,7 +68,6 @@ const elementSelectNewRecord = (argsObj) => {
 // Create a select element with label for modal form
 // Input: JS object. Set value to "" for key(s) not needed.
 const elementSelectModal = (argsObj) => {
-  let firstOption = "<option disabled>Select an option</option>";
   const {
     hashTable,
     keyValue,
@@ -76,7 +75,11 @@ const elementSelectModal = (argsObj) => {
     labelVal,
     labelClassVal,
     option,
+    optionText,
   } = argsObj;
+  const descriptor = optionText ? optionText : "an option";
+  let firstOption = `<option disabled>Select ${descriptor}</option>`;
+
   const [primary, secondary] = Object.keys(hashTable[0]);
   let optionList = hashTable
     .map((item) => {
@@ -86,9 +89,8 @@ const elementSelectModal = (argsObj) => {
           ${item[secondary]}</option>`;
     })
     .join("");
-
   if (!selectedValue) {
-    firstOption = "<option selected disabled>Select an option</option>";
+    firstOption = `<option selected disabled>Select ${descriptor}</option>`;
   }
 
   const elementSelect = `<div class= "input-field form-group">
