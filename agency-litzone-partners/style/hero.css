@@ -2,10 +2,6 @@ body {
   background-color: #f0e2d5;
 }
 
-.dark-blue-bg {
-  background-color: #1d6294;
-}
-
 .hero {
   margin-top: 5px;
   padding: 0 0 1% 0;
@@ -30,7 +26,6 @@ body {
 }
 
 #new-partner > .form-control {
-  color: #2479b5;
   font-size: 1.2em;
   padding: 0.5%;
   margin: 5px 2px;
@@ -49,12 +44,14 @@ body {
 }
 
 #new-partner {
-  margin-left: 3%;
+  margin-left: 1%;
 }
 
 :required::placeholder,
+.form-control:required,
 .delete-msg {
   color: rgb(197, 65, 65);
+  font-weight: 700;
   text-align: left;
 }
 
@@ -73,6 +70,12 @@ tbody {
   color: #283838;
   font-size: 1.2em;
   font-weight: 600;
+}
+
+option {
+  color: #283838;
+  font-size: 1em;
+  font-weight: 500;
 }
 
 .table > tbody > tr > td {

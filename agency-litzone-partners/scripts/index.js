@@ -1,7 +1,10 @@
 // Actions and logic
 
+// Isolate work objects and arrays from data source.
 const dataPartners = partnersData.slice(0);
 const countyList = countyData.slice(0);
+const stateList = ddlStates.slice(0);
+
 const labelObj = {
   ID: "ID",
   AgencyID: "agencyId",
@@ -113,23 +116,34 @@ const createSelect = (hashTable, keyValue, selectedValue = "", numSelected) => {
   return elementChoice[numSelected];
 };
 
-const createNewRecord = (labelsObject, agencyId) => {
+const createNewRecord = (labelsObject) => {
   let result = [];
   const keyList = Object.keys(labelsObject).filter(
-    (key) => !["ID", "ReferralSiteID"].includes(key)
+    (key) => !["ID", "AgencyID", "ReferralSiteID"].includes(key)
   );
   for (key of keyList) {
     let option = " required";
     let classOption = "";
-    if (["AgencyID", "County"].includes(key)) {
-      const agency = (option = key === "AgencyID" ? ` value=${agencyId}` : "");
+    if (["County"].includes(key)) {
       classOption = " hidden";
     }
     let inputElement = `<input type="text" class="form-control${classOption}" id=${key} name="${key}" placeholder="${labelsObject[key]}"${option} autocomplete="new-password" spellcheck="off">`;
 
     if (key === "CountyDesc") {
-      inputElement = createSelect(countyData, key, "", 1);
+      inputElement = elementSelectNewRecord({
+        hashTable: countyList,
+        keyValue: key,
+        option: "required",
+      });
     }
+    if (key === "State") {
+      inputElement = elementSelectNewRecord({
+        hashTable: stateList,
+        keyValue: key,
+        option: "required",
+      });
+    }
+
     result.push(inputElement);
   }
   result.push(
