@@ -47,6 +47,7 @@ const createNewSourceForm = (localList, selectList) => {
     hashTable: sourcesData,
     keyValue: "FSID",
     option: "required",
+    optionText: "a funding source",
   });
 
   const orderedList = blocItems.newSource.map((indx) => {
