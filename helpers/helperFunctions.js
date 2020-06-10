@@ -69,7 +69,6 @@ const elementSelectNewRecord = (argsObj) => {
 // Create a select element with label for modal form
 // Input: JS object. Set value to "" for key(s) not needed.
 const elementSelectModal = (argsObj) => {
-  let firstOption = "<option disabled>Select an option</option>";
   const {
     hashTable,
     keyValue,
@@ -79,6 +78,9 @@ const elementSelectModal = (argsObj) => {
     option,
     optionText,
   } = argsObj;
+  const descriptor = optionText ? optionText : "an option";
+  let firstOption = `<option disabled>Select ${descriptor}</option>`;
+
   const [primary, secondary] = Object.keys(hashTable[0]);
   let optionList = hashTable
     .map((item) => {
@@ -88,7 +90,6 @@ const elementSelectModal = (argsObj) => {
           ${item[secondary]}</option>`;
     })
     .join("");
-  const descriptor = optionText ? optionText : "an option";
   if (!selectedValue) {
     firstOption = `<option selected disabled>Select ${descriptor}</option>`;
   }
