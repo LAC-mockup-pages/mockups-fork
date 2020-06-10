@@ -4,11 +4,15 @@ const agencyData = agencyDataFund.slice(0);
 const sourcesData = fundingData.slice(0);
 
 const rowLabels = {
+  ID: "ID",
+  AgencyID: "Agency ID",
   FundAbbrev: "Source Name",
   FundStart: "Begin Date",
   FundEnd: "End Date",
+  FY: "Fiscal Year",
   FundNumber: "Contrat / Grant #",
-  FiscalYear: "Fiscal Year",
+  Amount: "Amount",
+  Purpose: "Purpose",
 };
 
 // Indexes needed for header lone and data viewing bloc, in order
@@ -42,7 +46,7 @@ const newSourceObject = (list) => {
   // location.reload();
 };
 
-const createNewSourceForm = (localList, selectList) => {
+const createNewSourceForm = (labels) => {
   const selectElement = elementSelectNewRecord({
     hashTable: sourcesData,
     keyValue: "FSID",
