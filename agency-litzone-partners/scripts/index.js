@@ -132,6 +132,7 @@ const createNewRecord = (labelsObject) => {
       autocomplete="new-password" spellcheck="off">`;
 
     if (key === "CountyDesc") {
+      // elementSelectNewRecord() <== helperFunctions.js
       inputElement = elementSelectNewRecord({
         hashTable: countyList,
         keyValue: key,
@@ -140,6 +141,7 @@ const createNewRecord = (labelsObject) => {
       });
     }
     if (key === "State") {
+      // elementSelectNewRecord() <== helperFunctions.js
       inputElement = elementSelectNewRecord({
         hashTable: stateList,
         keyValue: key,
@@ -270,6 +272,12 @@ $(document).ready(() => {
   //* Data viewing
   createViewBloc(dataPartners, labelObj);
   createNewRecord(labelObj, dataPartners[0].AgencyID);
+
+  // cf elementSelectRecord() comments ==< helperFunctions.js
+  $("#new-partner select").bind("change", function (evnt) {
+    evnt.stopPropagation();
+    $(this).toggleClass("dark-text").prop("required", false);
+  });
 
   //* Adding a new partner
   $(document).on("click", "#submit-btn", function (evnt) {
