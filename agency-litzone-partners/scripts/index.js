@@ -96,26 +96,6 @@ const createViewBloc = (dataObj, labels) => {
   $(".City, .State, .Zip, .County").toggleClass("hidden");
 };
 
-const createSelect = (hashTable, keyValue, selectedValue = "", numSelected) => {
-  const [primary, secondary] = Object.keys(hashTable[0]);
-  const optionList = hashTable
-    .map((item) => {
-      const selected = item[primary] === selectedValue ? " selected" : "";
-      return `<option value=${item[primary]}${selected}>
-          ${item[secondary]}</option>`;
-    })
-    .join("");
-  const elementChoice = [
-    `<div class="form-group input-field">
-  <label for=${keyValue}>County</label>
-  <select id=${keyValue} class="modal-select" name=${keyValue}>${optionList}</select>
-</div>`,
-    `<select id=${keyValue} class="modal-select form-control" name=${keyValue}><option selected disabled>Select an option</option>${optionList}</select>`,
-  ];
-
-  return elementChoice[numSelected];
-};
-
 const createNewRecord = (labelsObject) => {
   let result = [];
   const keyList = Object.keys(labelsObject).filter(
@@ -136,7 +116,7 @@ const createNewRecord = (labelsObject) => {
       inputElement = elementSelectNewRecord({
         hashTable: countyList,
         keyValue: key,
-        option: "required",
+        option: "",
         optionText: "a county",
       });
     }
@@ -174,17 +154,35 @@ const createForm = (elmnt) => {
     let value = $(item).text();
     formData[key] = [labelObj[key], value];
   }
-
+  console.log("formData :>> ", formData);
   const fieldList = Object.keys(formData).filter((item) => item !== "County");
 
   const formFields = fieldList
     .map((fieldName) => {
       let fieldText = "";
-      let option = "";
+      let option = "required";
       if (fieldName === "CountyDesc") {
-        return createSelect(countyList, fieldName, formData.County[1], 0);
+        return elementSelectModal({
+          hashTable: countyList,
+          keyValue: fieldName,
+          selectedValue: formData.County[1],
+          labelVal: labelObj[fieldName],
+          labelClassVal: "",
+          option: "",
+          optionText: "a county",
+        });
       }
-
+      if (fieldName === "State") {
+        return elementSelectModal({
+          hashTable: stateList,
+          keyValue: fieldName,
+          selectedValue: formData.State[1],
+          labelVal: labelObj[fieldName],
+          labelClassVal: "class='red-text'",
+          option,
+          optionText: "a state",
+        });
+      }
       switch (fieldName) {
         case "Address":
           fieldText = formData.Address[1].slice(
@@ -194,7 +192,6 @@ const createForm = (elmnt) => {
           break;
         case "ReferralSiteID":
           fieldText = formData[fieldName][1];
-          option = "disabled";
           break;
         case "Zip":
           // zipCodeFormat() <== helperFunctions()
@@ -211,7 +208,7 @@ const createForm = (elmnt) => {
         fieldName,
         formData[fieldName][0],
         fieldText,
-        "",
+        "red-text",
         "",
         option
       );
@@ -226,11 +223,10 @@ const saveMods = (form) => {
   const { AuditUserID, AgencyID } = sessionVariable;
   const result = { AuditUserID, AgencyID };
   const submittedData = $(form).serializeArray();
-
-  // const submittedData = dataTestNewRecord;
   $(`${form} input`).removeClass("yellow-bg");
 
-  // Highlights invalid fields with yellow background
+  // Highlights invalid fields with yellow background and
+  // exits loop.
   // validateUserInput() <== data-check.js
   const validatedList = validateUserInput(submittedData);
   const checkFlag = validatedList.some((item) => !item.correct);
@@ -256,9 +252,10 @@ const saveMods = (form) => {
   }
   const message = `Result from ${form} :>>`;
   console.table(result);
+  const resultList = ["partnersData", JSON.stringify(result)];
   //! =================================================
   //! JSON Object to send back to database
-  console.log(message, JSON.stringify(result));
+  console.log(message, resultList);
   //! =================================================
 
   //ToDO Reloading/resetting with new data
@@ -289,7 +286,7 @@ $(document).ready(() => {
   createViewBloc(dataPartners, labelObj);
   createNewRecord(labelObj, dataPartners[0].AgencyID);
 
-  // cf elementSelectRecord() comments ==< helperFunctions.js
+  // cf elementSelectRecord() comments <== helperFunctions.js
   $("#new-partner select, input").bind("focusin", function (evnt) {
     evnt.stopPropagation();
     $(this).toggleClass("dark-text").prop("required", false);
