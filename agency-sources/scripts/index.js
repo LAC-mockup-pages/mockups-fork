@@ -69,12 +69,11 @@ const createNewSourceForm = (localList, selectList) => {
   />`;
       })
       .join("") +
-    `<button type="submit" id="submit-btn" class="btn btn-primary" form="new-source">
-      Add
+    `<button type="submit" id="submit-btn" class="btn btn-primary"
+      form="new-source">Add
     </button>
     <button type="button" id="cancel-btn" form="new-source"
-      class="btn btn-default">
-      Cancel
+      class="btn btn-default">Cancel
     </button>`;
 
   return selectElement + listInput;
