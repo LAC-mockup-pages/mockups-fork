@@ -55,3 +55,9 @@
         {"FSID":"DSN","FundAbbrev":"DYSON"},
         {"FSID":"YB","FundAbbrev":"Youth Build"}
     ];
+    
+    const sessionVariable = {
+        AgencyID: "PRA",
+        AuditUserID: '<%= Session["UserID"] %>',
+        FiscalYear: ["2016", "2017"],
+    };
