@@ -127,13 +127,16 @@ const createNewRecord = (labelsObject) => {
     if (["County"].includes(key)) {
       classOption = " hidden";
     }
-    let inputElement = `<input type="text" class="form-control${classOption}" id=${key} name="${key}" placeholder="${labelsObject[key]}"${option} autocomplete="new-password" spellcheck="off">`;
+    let inputElement = `<input type="text" class="form-control${classOption}"
+      id=${key} name="${key}" placeholder="${labelsObject[key]}"${option}
+      autocomplete="new-password" spellcheck="off">`;
 
     if (key === "CountyDesc") {
       inputElement = elementSelectNewRecord({
         hashTable: countyList,
         keyValue: key,
         option: "required",
+        optionText: "a county",
       });
     }
     if (key === "State") {
@@ -141,6 +144,7 @@ const createNewRecord = (labelsObject) => {
         hashTable: stateList,
         keyValue: key,
         option: "required",
+        optionText: "a state",
       });
     }
 
