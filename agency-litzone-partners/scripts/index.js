@@ -223,11 +223,25 @@ const createForm = (elmnt) => {
 
 // Used for new partner and edited partner data set
 const saveMods = (form) => {
-  const result = {};
+  const { AuditUserID, AgencyID } = sessionVariable;
+  const result = { AuditUserID, AgencyID };
   const submittedData = $(form).serializeArray();
 
+  // const submittedData = dataTestNewRecord;
+  $(`${form} input`).removeClass("yellow-bg");
+
+  // Highlights invalid fields with yellow background
   // validateUserInput() <== data-check.js
-  if (!validateUserInput(submittedData)) $(form)[0].reset();
+  const validatedList = validateUserInput(submittedData);
+  const checkFlag = validatedList.some((item) => !item.correct);
+  if (checkFlag) {
+    const list = validatedList.filter((obj) => obj.correct === false);
+    for (let field of list) {
+      $(`#${field.name}`).addClass("yellow-bg");
+    }
+    return;
+  }
+
   for (let field of submittedData) {
     if (field.name === "CountyDesc") {
       result.County = field.value;
@@ -241,12 +255,14 @@ const saveMods = (form) => {
     result[field.name] = field.value;
   }
   const message = `Result from ${form} :>>`;
+  console.table(result);
   //! =================================================
   //! JSON Object to send back to database
   console.log(message, JSON.stringify(result));
   //! =================================================
 
   //ToDO Reloading/resetting with new data
+  // location.reload();
 };
 
 $(document).ready(() => {
@@ -274,7 +290,7 @@ $(document).ready(() => {
   createNewRecord(labelObj, dataPartners[0].AgencyID);
 
   // cf elementSelectRecord() comments ==< helperFunctions.js
-  $("#new-partner select").bind("change", function (evnt) {
+  $("#new-partner select, input").bind("focusin", function (evnt) {
     evnt.stopPropagation();
     $(this).toggleClass("dark-text").prop("required", false);
   });
@@ -292,8 +308,7 @@ $(document).ready(() => {
   $("#cancel-btn").click(function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
-    const formId = "#" + $(this).attr("form");
-    $(formId)[0].reset();
+    location.reload();
   });
 
   //* Select partner

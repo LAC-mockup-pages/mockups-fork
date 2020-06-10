@@ -6,28 +6,43 @@ const alphaNumCheck = (str) => {
 };
 
 const validateUserInput = (dataList) => {
-  let resultTest = true;
+  let correct = true;
+  const checkedFieldList = [];
   for (let field of dataList) {
     switch (field.name) {
       case "ReferralSiteName":
       case "ReferralSiteManager":
       case "Address":
       case "City":
-        resultTest = alphaNumCheck(field.value);
+        correct = alphaNumCheck(field.value);
         break;
       case "State":
-        resultTest = field.value.length < 3;
+        correct = field.value.length < 3;
       case "Zip":
-        resultTest = field.value.length < 11;
+        correct = field.value.length < 11;
         break;
       case "Telephone":
-        resultTest = field.value.length < 13;
+        correct = field.value.length < 13;
         break;
       default:
-        resultTest = true;
+        correct = true;
         break;
     }
+    checkedFieldList.push({ ...field, correct });
   }
 
-  return resultTest;
+  return checkedFieldList;
 };
+
+const dataTestNewRecord = [
+  { name: "ReferralSiteName", value: "lkdfjghkadhfgah" },
+  { name: "ReferralSiteManager", value: "Werrr Deeer" },
+  { name: "Address", value: "123 1st st" },
+  { name: "City", value: "New City" },
+  { name: "State", value: "AS" },
+  { name: "Zip", value: "12345" },
+  { name: "County", value: "36007" },
+  { name: "CountyDesc", value: "36007 Broome" },
+  { name: "Telephone", value: "1231231234" },
+  { name: "ReferralSiteEmail", value: "myEmail@email.com" },
+];
