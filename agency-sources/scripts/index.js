@@ -106,60 +106,14 @@ const createNewRecord = () => {
   return formContent;
 };
 
-// const createNewSourceForm = (labels) => {
-//   const selectElement = elementSelectNewRecord({
-//     hashTable: sourcesData,
-//     keyValue: "FSID",
-//     option: "required",
-//     optionText: "a funding source",
-//   });
+const createTableHeader = (labelObj) => {
+  const list = Object.entries(labelObj)
+    .map((label) => label[1])
+    .filter((label) => !["ID", "Agency ID", "Source ID"].includes(label));
 
-//   const orderedList = blocItems.newSource.map((indx) => {
-//     return localList[0][indx];
-//   });
-//   const listInput =
-//     orderedList
-//       .map((item) => {
-//         let title = "";
-//         if (["FundStart", "FundEnd"].includes(item[0]))
-//           title = "title='Please fill out this field\n MM/DD/YYYY'";
-//         return `<input
-//     type="text"
-//     class="form-control"
-//     placeholder="${item[1]}"
-//     name="${item[0]}"
-//     ${title}
-//     autocomplete="off"
-//   />`;
-//       })
-//       .join("") +
-//     `<button type="submit" id="submit-btn" class="btn btn-primary"
-//       form="new-source">Add
-//     </button>
-//     <button type="button" id="cancel-btn" form="new-source"
-//       class="btn btn-default">Cancel
-//     </button>`;
-
-//   return selectElement + listInput;
-// };
-
-const createTableHeader = (list, orderList) => {
-  // Creates the list without the first 3 items which
-  // are identifiers used in the data view
-  const headers = list[0].map((item) => item[1]).slice(3);
-  const headerLine = orderList
-    .map((indx) => `<th>${headers[indx - 3]}</th>`)
-    .reduce((bloc, item) => {
-      return bloc + item;
-    });
-  return `<table class="table" id="${list[0][1][2]}">
-  <thead>
-    <tr>
-      ${headerLine}
-    </tr>
-  </thead>
-  <tbody></tbody>
-</table>`;
+  // createHeaders() <== helperFunctions.js
+  const tableHeader = createHeaders(list);
+  return `<table class="table" id="source-table">${tableHeader}</table>`;
 };
 
 const createTableBody = (dataList, orderList) => {
@@ -236,7 +190,7 @@ const viewData = (sourcesList, labelsList, orderList) => {
   );
   $("#new-source #Purpose").addClass("col-width-medium");
 
-  $(".view-sources").append(createTableHeader(listSources, orderList));
+  $("#view-bloc").append(createTableHeader(rowLabels));
   $("tbody").append(createTableBody(listSources, orderList));
 };
 
