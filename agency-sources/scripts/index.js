@@ -16,14 +16,19 @@ const rowLabels = {
   Purpose: "Purpose",
 };
 
-//! Temporary global variable
-//TODO Replace with function based on date of entry
-const fiscalYear = "2020";
+const setFiscalYear = (start, end) => {
+  const startDate = new Date(start);
+  const endDate = new Date(end);
+  const nowDay = new Date();
+  let fiscalYear = endDate.getFullYear();
+  if (fiscalYear === startDate.getFullYear() && nowDay >= endDate)
+    fiscalYear += 1;
+  return fiscalYear.toString();
+};
 
 // Indexes needed for header lone and data viewing bloc, in order
 const blocItems = {
   viewBloc: [3, 4, 7, 8, 9, 6, 5],
-  newSource: [4, 7, 8, 6, 5],
 };
 
 // Style options for modal
@@ -57,6 +62,7 @@ const createNewRecord = () => {
     FSID: "Source Name",
     FundStart: "Begin Date",
     FundEnd: "End Date",
+    FY: "Fiscal Year",
     FundNumber: "Contrat / Grant #",
     Amount: "Amount",
     Purpose: "Purpose",
@@ -65,7 +71,10 @@ const createNewRecord = () => {
   for (const key in keyList) {
     let element = "";
     let option = "";
+    let classOption = " input-field";
+
     if (key === "FSID") {
+      // elementSelectNewRecord() <== helperFunctions()
       element = elementSelectNewRecord({
         hashTable: sourcesData,
         keyValue: "FSID",
@@ -76,11 +85,14 @@ const createNewRecord = () => {
       if (["FundStart", "FundEnd"].includes(key)) {
         option = " required";
       }
-
+      if (key === "FY") {
+        classOption += " hidden";
+      }
+      // inputNoLabel() <== helperFunctions()
       element = inputNoLabel({
         key,
         placehold: keyList[key],
-        classOption: " input-field",
+        classOption,
         option,
       });
     }
