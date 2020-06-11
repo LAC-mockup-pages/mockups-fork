@@ -15,6 +15,10 @@ const rowLabels = {
   Purpose: "Purpose",
 };
 
+//! Temporary global variable
+//TODO Replace with function based on date of entry
+const fiscalYear = "2020";
+
 // Indexes needed for header lone and data viewing bloc, in order
 const blocItems = {
   viewBloc: [3, 4, 7, 8, 9, 6, 5],
@@ -44,6 +48,53 @@ const newSourceObject = (list) => {
   //TODO Update page with response from Database update
 
   // location.reload();
+};
+
+const createNewRecord = () => {
+  let result = [];
+  const keyList = {
+    FundAbbrev: "Source Name",
+    FundStart: "Begin Date",
+    FundEnd: "End Date",
+    FY: "Fiscal Year",
+    FundNumber: "Contrat / Grant #",
+    Amount: "Amount",
+    Purpose: "Purpose",
+  };
+
+  for (const key in keyList) {
+    let element = "";
+    let option = "";
+    if (key === "FSID") {
+      element = elementSelectNewRecord({
+        hashTable: sourcesData,
+        keyValue: "FSID",
+        option: "required",
+        optionText: "a funding source",
+      });
+    } else {
+      if (["FundStart", "FundEnd"].includes(key)) {
+        option = "required";
+      }
+
+      element = elementInput({
+        keyVal: key,
+        labelVal: keyList[key],
+        value: "",
+        labelClassVal: "",
+        classVal: "",
+        option,
+        optionHidden: "",
+      });
+    }
+
+    result.push(element);
+  }
+  result.push(
+    '<button type="button" id="submit-btn" form="new-source" class="btn btn-primary">Add</button><button type="button" id="cancel-btn" form="new-source" class="btn btn-default">Cancel</button>'
+  );
+  const formContent = result.join("");
+  return formContent;
 };
 
 const createNewSourceForm = (labels) => {
@@ -170,13 +221,13 @@ const saveMods = (elmnt) => {
 
 const viewData = (sourcesList, labelsList, orderList) => {
   const listSources = createDataList(sourcesList, labelsList);
-
-  $("#new-source").append(createNewSourceForm(listSources, sourcesData));
-  $("[name='FundEnd'],[name='FundStart']").prop("required", true);
-  $("[name='Amount'],[name='FundStart'],[name='FundEnd']").addClass(
-    "col-width-small"
-  );
-  $("[name='FundNumber'],[name='Purpose']").addClass("col-width-medium");
+  $("#new-source").append(createNewRecord());
+  // $("#new-source").append(createNewSourceForm(listSources, sourcesData));
+  // $("[name='FundEnd'],[name='FundStart']").prop("required", true);
+  // $("[name='Amount'],[name='FundStart'],[name='FundEnd']").addClass(
+  //   "col-width-small"
+  // );
+  // $("[name='FundNumber'],[name='Purpose']").addClass("col-width-medium");
 
   $(".view-sources").append(createTableHeader(listSources, orderList));
   $("tbody").append(createTableBody(listSources, orderList));
