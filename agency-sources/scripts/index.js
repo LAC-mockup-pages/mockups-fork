@@ -116,28 +116,38 @@ const createTableHeader = (labelObj) => {
   return `<table class="table" id="source-table">${tableHeader}</table>`;
 };
 
-const createTableBody = (dataList, orderList) => {
+const createRow = (argsObj) => {
+  return `<tr id=${idValue}>${dataElement}</tr>`;
+};
+
+const createTableBody = (dataList, labelList) => {
   let rows = "";
-  for (let source of dataList) {
-    const identifier = source
-      .slice(0, 3)
-      .map((arr) => arr[2])
-      .join("-");
-    let row = "";
+  const tempList = Object.keys(labelList).filter((item) => item !== "AgencyID");
 
-    for (let indx of orderList) {
-      const className = source[indx][0];
-      let text = source[indx][2];
-      const label = source[indx][1];
-
-      // dateFormat, currencyFormat <== helperFunction.js
-      if (["FundStart", "FundEnd"].includes(className)) text = dateFormat(text);
-      if (className === "Amount") text = currencyFormat(text);
-      row += `<td class=${className} data-label="${label}">${text}</td>`;
-    }
-    rows += `<tr id=${identifier} title="Click to Edit">${row}</tr>`;
+  for (const key of tempList) {
   }
-  return rows;
+
+  return `<tbody>${rows}</tbody>`;
+  // for (let source of dataList) {
+  //   const identifier = source
+  //     .slice(0, 3)
+  //     .map((arr) => arr[2])
+  //     .join("-");
+  //   let row = "";
+
+  //   for (let indx of orderList) {
+  //     const className = source[indx][0];
+  //     let text = source[indx][2];
+  //     const label = source[indx][1];
+
+  //     // dateFormat, currencyFormat <== helperFunction.js
+  //     if (["FundStart", "FundEnd"].includes(className)) text = dateFormat(text);
+  //     if (className === "Amount") text = currencyFormat(text);
+  //     row += `<td class=${className} data-label="${label}">${text}</td>`;
+  //   }
+  //   rows += `<tr id=${identifier} title="Click to Edit">${row}</tr>`;
+  // }
+  // return rows;
 };
 
 const createDataList = (dataObj, labelObj, newField) => {
