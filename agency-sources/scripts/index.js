@@ -51,14 +51,6 @@ const newSourceObject = (list) => {
   // location.reload();
 };
 
-const inputNoLabel = (argsObj) => {
-  const { key, placehold, classOption, option } = argsObj;
-
-  return `<input type="text" class="form-control${classOption}" id=${key}
-            name="${key}" placeholder="${placehold}"${option}
-            autocomplete="new-password" spellcheck="off"/>`;
-};
-
 const createNewRecord = () => {
   let result = [];
   const keyList = {
