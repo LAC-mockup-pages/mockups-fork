@@ -6,6 +6,7 @@ const sourcesData = fundingData.slice(0);
 const rowLabels = {
   ID: "ID",
   AgencyID: "Agency ID",
+  FSID: "Source ID",
   FundAbbrev: "Source Name",
   FundStart: "Begin Date",
   FundEnd: "End Date",
@@ -50,13 +51,20 @@ const newSourceObject = (list) => {
   // location.reload();
 };
 
+const inputNoLabel = (argsObj) => {
+  const { key, placehold, classOption, option } = argsObj;
+
+  return `<input type="text" class="form-control${classOption}" id=${key}
+            name="${key}" placeholder="${placehold}"${option}
+            autocomplete="new-password" spellcheck="off"/>`;
+};
+
 const createNewRecord = () => {
   let result = [];
   const keyList = {
-    FundAbbrev: "Source Name",
+    FSID: "Source Name",
     FundStart: "Begin Date",
     FundEnd: "End Date",
-    FY: "Fiscal Year",
     FundNumber: "Contrat / Grant #",
     Amount: "Amount",
     Purpose: "Purpose",
@@ -74,17 +82,14 @@ const createNewRecord = () => {
       });
     } else {
       if (["FundStart", "FundEnd"].includes(key)) {
-        option = "required";
+        option = " required";
       }
 
-      element = elementInput({
-        keyVal: key,
-        labelVal: keyList[key],
-        value: "",
-        labelClassVal: "",
-        classVal: "",
+      element = inputNoLabel({
+        key,
+        placehold: keyList[key],
+        classOption: " input-field",
         option,
-        optionHidden: "",
       });
     }
 
@@ -97,42 +102,42 @@ const createNewRecord = () => {
   return formContent;
 };
 
-const createNewSourceForm = (labels) => {
-  const selectElement = elementSelectNewRecord({
-    hashTable: sourcesData,
-    keyValue: "FSID",
-    option: "required",
-    optionText: "a funding source",
-  });
+// const createNewSourceForm = (labels) => {
+//   const selectElement = elementSelectNewRecord({
+//     hashTable: sourcesData,
+//     keyValue: "FSID",
+//     option: "required",
+//     optionText: "a funding source",
+//   });
 
-  const orderedList = blocItems.newSource.map((indx) => {
-    return localList[0][indx];
-  });
-  const listInput =
-    orderedList
-      .map((item) => {
-        let title = "";
-        if (["FundStart", "FundEnd"].includes(item[0]))
-          title = "title='Please fill out this field\n MM/DD/YYYY'";
-        return `<input
-    type="text"
-    class="form-control"
-    placeholder="${item[1]}"
-    name="${item[0]}"
-    ${title}
-    autocomplete="off"
-  />`;
-      })
-      .join("") +
-    `<button type="submit" id="submit-btn" class="btn btn-primary"
-      form="new-source">Add
-    </button>
-    <button type="button" id="cancel-btn" form="new-source"
-      class="btn btn-default">Cancel
-    </button>`;
+//   const orderedList = blocItems.newSource.map((indx) => {
+//     return localList[0][indx];
+//   });
+//   const listInput =
+//     orderedList
+//       .map((item) => {
+//         let title = "";
+//         if (["FundStart", "FundEnd"].includes(item[0]))
+//           title = "title='Please fill out this field\n MM/DD/YYYY'";
+//         return `<input
+//     type="text"
+//     class="form-control"
+//     placeholder="${item[1]}"
+//     name="${item[0]}"
+//     ${title}
+//     autocomplete="off"
+//   />`;
+//       })
+//       .join("") +
+//     `<button type="submit" id="submit-btn" class="btn btn-primary"
+//       form="new-source">Add
+//     </button>
+//     <button type="button" id="cancel-btn" form="new-source"
+//       class="btn btn-default">Cancel
+//     </button>`;
 
-  return selectElement + listInput;
-};
+//   return selectElement + listInput;
+// };
 
 const createTableHeader = (list, orderList) => {
   // Creates the list without the first 3 items which
@@ -222,12 +227,10 @@ const saveMods = (elmnt) => {
 const viewData = (sourcesList, labelsList, orderList) => {
   const listSources = createDataList(sourcesList, labelsList);
   $("#new-source").append(createNewRecord());
-  // $("#new-source").append(createNewSourceForm(listSources, sourcesData));
-  // $("[name='FundEnd'],[name='FundStart']").prop("required", true);
-  // $("[name='Amount'],[name='FundStart'],[name='FundEnd']").addClass(
-  //   "col-width-small"
-  // );
-  // $("[name='FundNumber'],[name='Purpose']").addClass("col-width-medium");
+  $("#new-source #FundEnd, #FundStart, #Amount, #FY, #FundNumber").addClass(
+    "col-width-small"
+  );
+  $("#new-source #Purpose").addClass("col-width-medium");
 
   $(".view-sources").append(createTableHeader(listSources, orderList));
   $("tbody").append(createTableBody(listSources, orderList));
@@ -304,17 +307,14 @@ $(document).ready(() => {
   $("#save-button").click(function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
-    const formID = $(this).attr("form");
-    const id = $(`#${formID}`).attr("data-bloc-id");
-    saveMods(id);
+    saveMods($(this).attr("form"));
   });
 
   // New source Cancel button
   $("#cancel-btn").click(function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
-    const formId = "#" + $(this).attr("form");
-    $(formId)[0].reset();
+    location.reload();
   });
 
   //* Deleting source

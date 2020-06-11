@@ -29,6 +29,7 @@ body {
   font-size: 1.1em;
   padding: 0.5%;
   font-weight: 600;
+  margin-right: 0.3%;
 }
 
 option {
@@ -36,12 +37,11 @@ option {
 }
 
 #new-source {
-  font-size: 1.1em;
-  margin-left: 3%;
+  margin-left: 1%;
 }
 
 .col-width-small {
-  max-width: 12%;
+  max-width: 11%;
 }
 
 .col-width-large {
@@ -49,7 +49,7 @@ option {
 }
 
 .col-width-medium {
-  max-width: 16%;
+  max-width: 15%;
 }
 .red-text {
   font-weight: 700;
