@@ -27,6 +27,16 @@ const elementInput = (obj) => {
     </div>`;
 };
 
+// Returns an <input .... > element with no label for new record entry bloc
+// Assign "" to keys in argsObj which are not needed.
+const inputNoLabel = (argsObj) => {
+  const { key, placehold, classOption, option } = argsObj;
+
+  return `<input type="text" class="form-control${classOption}" id=${key}
+            name="${key}" placeholder="${placehold}"${option}
+            autocomplete="new-password" spellcheck="off"/>`;
+};
+
 // Select element for new record entry
 // ! Check the CSS for this:
 // :required::placeholder,
