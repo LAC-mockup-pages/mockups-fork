@@ -220,15 +220,25 @@ $(document).ready(() => {
 
     const sourceId = $(this).attr("id");
     const tdList = $.makeArray($(`#${sourceId} td`).get());
+    console.log("tdList :>> ", tdList);
     const result = tdList
       .map((item) => {
-        const id = $(item).attr("class");
-        const label = $(item).attr("data-label");
-        const text = $(item).text();
-        const option = rowOptionModal[id] ? rowOptionModal[id] : "";
-
+        const keyVal = $(item).attr("data-name");
+        const labelVal = $(item).attr("data-label");
+        const value = $(item).text();
+        const classModal = $(item).attr("class");
+        console.log("classModal :>> ", classModal);
+        const optionHidden = classModal.includes("hidden") ? "hidden" : "";
         // createInputField() <== helperFunction.js
-        return createInputField(id, label, text, "", "", option);
+        return elementInput({
+          keyVal,
+          labelVal,
+          value,
+          labelClassVal: "",
+          classVal: "",
+          option: "",
+          optionHidden,
+        });
       })
       .join("");
 
