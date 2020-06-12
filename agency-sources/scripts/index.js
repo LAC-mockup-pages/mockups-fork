@@ -220,7 +220,6 @@ $(document).ready(() => {
 
     const sourceId = $(this).attr("id");
     const tdList = $.makeArray($(`#${sourceId} td`).get());
-    console.log("tdList :>> ", tdList);
     const result = tdList
       .map((item) => {
         const keyVal = $(item).attr("data-name");
