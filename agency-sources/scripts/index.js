@@ -116,24 +116,6 @@ const createTableHeader = (labelObj) => {
   return `<table class="table" id="source-table">${tableHeader}</table>`;
 };
 
-// argsObj = {record, labelList, labelObj, hiddenList}
-const createRow = (argsObj) => {
-  const { record, labelList, labelObj, hiddenList } = argsObj;
-  let tdList = [];
-  for (const key of labelList) {
-    const option = hiddenList.includes(key) ? " hidden" : "";
-    const cell = `<td class="cell-data${option}"
-                    data-name=${key}
-                    data-label="${labelObj[key]}">
-                      ${record[key]}
-                  </td>`;
-    tdList.push(cell);
-  }
-  return `<tr id=${record.ID} title="Click to edit">
-            ${tdList.join("")}
-          </tr>`;
-};
-
 const createTableBody = (dataList, labelList) => {
   let rows = "";
   const filteredLabelList = Object.keys(labelList).filter(
@@ -147,6 +129,8 @@ const createTableBody = (dataList, labelList) => {
     record.FundStart = dateFormat(record.FundStart);
     record.FundEnd = dateFormat(record.FundEnd);
     const hiddenList = ["FSID"];
+
+    // createRow() <== helperFunction.js
     rows += createRow({
       record,
       labelList: filteredLabelList,
