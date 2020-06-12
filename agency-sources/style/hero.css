@@ -78,6 +78,14 @@ tbody {
   line-height: 40px;
 }
 
+td {
+  text-align: center;
+}
+
+td:nth-child(2) {
+  text-align: left;
+}
+
 tbody > tr:hover {
   background-color: #d3e4f0;
 }

@@ -116,38 +116,45 @@ const createTableHeader = (labelObj) => {
   return `<table class="table" id="source-table">${tableHeader}</table>`;
 };
 
+// argsObj = {record, labelList, labelObj, hiddenList}
 const createRow = (argsObj) => {
-  return `<tr id=${idValue}>${dataElement}</tr>`;
+  const { record, labelList, labelObj, hiddenList } = argsObj;
+  let tdList = [];
+  for (const key of labelList) {
+    const option = hiddenList.includes(key) ? " hidden" : "";
+    const cell = `<td class="cell-data${option}"
+                    data-name=${key}
+                    data-label="${labelObj[key]}">
+                      ${record[key]}
+                  </td>`;
+    tdList.push(cell);
+  }
+  return `<tr id=${record.ID} title="Click to edit">
+            ${tdList.join("")}
+          </tr>`;
 };
 
 const createTableBody = (dataList, labelList) => {
   let rows = "";
-  const tempList = Object.keys(labelList).filter((item) => item !== "AgencyID");
+  const filteredLabelList = Object.keys(labelList).filter(
+    (item) => !["ID", "AgencyID"].includes(item)
+  );
+  for (const record of dataList) {
+    // currencyFormat() <== helperFunction.js
+    if (record.Amount) record.Amount = currencyFormat(record.Amount);
 
-  for (const key of tempList) {
+    // dateFormat() <== helperFunction.js
+    record.FundStart = dateFormat(record.FundStart);
+    record.FundEnd = dateFormat(record.FundEnd);
+    const hiddenList = ["FSID"];
+    rows += createRow({
+      record,
+      labelList: filteredLabelList,
+      labelObj: rowLabels,
+      hiddenList,
+    });
   }
-
   return `<tbody>${rows}</tbody>`;
-  // for (let source of dataList) {
-  //   const identifier = source
-  //     .slice(0, 3)
-  //     .map((arr) => arr[2])
-  //     .join("-");
-  //   let row = "";
-
-  //   for (let indx of orderList) {
-  //     const className = source[indx][0];
-  //     let text = source[indx][2];
-  //     const label = source[indx][1];
-
-  //     // dateFormat, currencyFormat <== helperFunction.js
-  //     if (["FundStart", "FundEnd"].includes(className)) text = dateFormat(text);
-  //     if (className === "Amount") text = currencyFormat(text);
-  //     row += `<td class=${className} data-label="${label}">${text}</td>`;
-  //   }
-  //   rows += `<tr id=${identifier} title="Click to Edit">${row}</tr>`;
-  // }
-  // return rows;
 };
 
 const createDataList = (dataObj, labelObj, newField) => {
@@ -201,7 +208,7 @@ const viewData = (sourcesList, labelsList, orderList) => {
   $("#new-source #Purpose").addClass("col-width-medium");
 
   $("#view-bloc").append(createTableHeader(rowLabels));
-  $("tbody").append(createTableBody(listSources, orderList));
+  $("#source-table").append(createTableBody(agencyData, rowLabels));
 };
 
 $(document).ready(() => {
