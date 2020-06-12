@@ -204,3 +204,21 @@ const createTableRow = (idValue, recordObj) => {
   }
   return `<tr id=${idValue}>${dataElement}</tr>`;
 };
+
+// argsObj = {record, labelList, labelObj, hiddenList}
+const createRow = (argsObj) => {
+  const { record, labelList, labelObj, hiddenList } = argsObj;
+  let tdList = [];
+  for (const key of labelList) {
+    const option = hiddenList.includes(key) ? " hidden" : "";
+    const cell = `<td class="cell-data${option}"
+                    data-name=${key}
+                    data-label="${labelObj[key]}">
+                      ${record[key]}
+                  </td>`;
+    tdList.push(cell);
+  }
+  return `<tr id=${record.ID} title="Click to edit">
+            ${tdList.join("")}
+          </tr>`;
+};
