@@ -238,20 +238,27 @@ $(document).ready(() => {
             keyValue: keyVal,
             selectedValue: value,
             labelVal: "Source Name",
-            labelClassVal: "",
+            labelClassVal: "class='red-text'",
             option: "required",
             optionText: " a source",
           });
         } else {
+          let option = "";
+          let labelClassVal = "";
           if (keyVal === "FundAbbrev") optionHidden = "form-group hidden";
+          if (["FundStart", "FundEnd"].includes(keyVal)) {
+            labelClassVal = "class='red-text'";
+            option = "required";
+          }
+          if (keyVal === "FY") option = "disabled";
           // createInputField() <== helperFunction.js
           return elementInput({
             keyVal,
             labelVal,
             value,
-            labelClassVal: "",
+            labelClassVal,
             classVal: "",
-            option: "",
+            option,
             optionHidden,
           });
         }
