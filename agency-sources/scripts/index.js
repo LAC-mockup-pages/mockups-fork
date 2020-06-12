@@ -26,17 +26,6 @@ const setFiscalYear = (start, end) => {
   return fiscalYear.toString();
 };
 
-// Indexes needed for header lone and data viewing bloc, in order
-const blocItems = {
-  viewBloc: [3, 4, 7, 8, 9, 6, 5],
-};
-
-// Style options for modal
-const rowOptionModal = {
-  FundAbbrev: "disabled",
-  FiscalYear: "disabled",
-};
-
 const newSourceObject = (list) => {
   const agencyId = $("table").attr("id");
   const newSource = { AgencyID: agencyId };
@@ -142,21 +131,6 @@ const createTableBody = (dataList, labelList) => {
   return `<tbody>${rows}</tbody>`;
 };
 
-const createDataList = (dataObj, labelObj, newField) => {
-  const list = dataObj
-    .map((item) => {
-      // createFieldList <== helperFunction.js
-      return createFieldList(item, labelObj, newField);
-    })
-    .map((item) => {
-      // createFiscalYear <== helperFunction.js
-      const fy = createFiscalYear(item[8][2]);
-      item.push(["FiscalYear", labelObj.FiscalYear, fy]);
-      return item;
-    });
-  return list;
-};
-
 const saveMods = (elmnt) => {
   const idList = elmnt.split("-");
   let result = { ID: idList[0], AgencyID: idList[1], FSID: idList[2] };
@@ -184,8 +158,7 @@ const saveMods = (elmnt) => {
   //TODO Update page with response from Database update
 };
 
-const viewData = (sourcesList, labelsList, orderList) => {
-  const listSources = createDataList(sourcesList, labelsList);
+const viewData = () => {
   $("#new-source").append(createNewRecord());
   $("#new-source #FundEnd, #FundStart, #Amount, #FY, #FundNumber").addClass(
     "col-width-small"
@@ -204,8 +177,7 @@ $(document).ready(() => {
   });
 
   // * data viewing
-
-  viewData(agencyData, rowLabels, blocItems.viewBloc);
+  viewData();
 
   // Change text color from red (required) to black
   // when a value other than default is selected
