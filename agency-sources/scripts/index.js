@@ -213,7 +213,7 @@ $(document).ready(() => {
 
   //* Select funding source
 
-  $("[title^='Click'").click(function (evnt) {
+  $(document).on("click", ".table tbody tr", function (evnt) {
     evnt.stopPropagation();
     $("#modalBloc").modal("toggle");
     $("#edit-form").empty();

@@ -82,7 +82,8 @@ td {
   text-align: center;
 }
 
-td:nth-child(2) {
+td:nth-child(2),
+td:last-child {
   text-align: left;
 }
 
