@@ -67,12 +67,10 @@ const createNewRecord = () => {
     Amount: "Amount",
     Purpose: "Purpose",
   };
-
   for (const key in keyList) {
     let element = "";
     let option = "";
     let classOption = " input-field";
-
     if (key === "FSID") {
       // elementSelectNewRecord() <== helperFunctions()
       element = elementSelectNewRecord({
@@ -96,14 +94,17 @@ const createNewRecord = () => {
         option,
       });
     }
-
     result.push(element);
   }
   result.push(
-    '<button type="button" id="submit-btn" form="new-source" class="btn btn-primary">Add</button><button type="button" id="cancel-btn" form="new-source" class="btn btn-default">Cancel</button>'
+    `<button type="button" id="submit-btn" form="new-source"
+      class="btn btn-primary">Add
+    </button>
+    <button type="button" id="cancel-btn" form="new-source"
+      class="btn btn-default">Cancel
+    </button>`
   );
-  const formContent = result.join("");
-  return formContent;
+  return result.join("");
 };
 
 const createTableHeader = (labelObj) => {
