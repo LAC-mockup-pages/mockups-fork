@@ -109,7 +109,7 @@ const createTableHeader = (labelObj) => {
 const createTableBody = (dataList, labelList) => {
   let rows = "";
   const filteredLabelList = Object.keys(labelList).filter(
-    (item) => !["ID", "AgencyID"].includes(item)
+    (item) => !["AgencyID"].includes(item)
   );
   for (const record of dataList) {
     // currencyFormat() <== helperFunction.js
@@ -118,7 +118,7 @@ const createTableBody = (dataList, labelList) => {
     // dateFormat() <== helperFunction.js
     record.FundStart = dateFormat(record.FundStart);
     record.FundEnd = dateFormat(record.FundEnd);
-    const hiddenList = ["FSID"];
+    const hiddenList = ["ID", "FSID"];
 
     // createRow() <== helperFunction.js
     rows += createRow({
@@ -225,20 +225,36 @@ $(document).ready(() => {
       .map((item) => {
         const keyVal = $(item).attr("data-name");
         const labelVal = $(item).attr("data-label");
-        const value = $(item).text();
-        const classModal = $(item).attr("class");
-        console.log("classModal :>> ", classModal);
-        const optionHidden = classModal.includes("hidden") ? "hidden" : "";
-        // createInputField() <== helperFunction.js
-        return elementInput({
-          keyVal,
-          labelVal,
-          value,
-          labelClassVal: "",
-          classVal: "",
-          option: "",
-          optionHidden,
-        });
+        const value = $(item).text().trim();
+        // const classModal = ;
+        let optionHidden = $(item).attr("class").includes("hidden")
+          ? "form-group hidden"
+          : "form-group";
+
+        if (keyVal === "FSID") {
+          // elementSelectModal() <== helperFunction.js
+          return elementSelectModal({
+            hashTable: sourcesData,
+            keyValue: keyVal,
+            selectedValue: value,
+            labelVal: "Source Name",
+            labelClassVal: "",
+            option: "required",
+            optionText: " a source",
+          });
+        } else {
+          if (keyVal === "FundAbbrev") optionHidden = "form-group hidden";
+          // createInputField() <== helperFunction.js
+          return elementInput({
+            keyVal,
+            labelVal,
+            value,
+            labelClassVal: "",
+            classVal: "",
+            option: "",
+            optionHidden,
+          });
+        }
       })
       .join("");
 
