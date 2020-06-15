@@ -18,6 +18,7 @@ const rowLabels = {
 
 const setFiscalYear = (start, end) => {
   const startDate = new Date(start);
+
   const endDate = new Date(end);
   const nowDay = new Date();
   let fiscalYear = endDate.getFullYear();
@@ -187,19 +188,26 @@ $(document).ready(() => {
   });
 
   //* Adding a new funding source
-  $("#new-source").on("submit", function (evnt) {
+  $("#submit-btn").bind("click", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
-
+    const formId = `#${$(this).attr("form")}`;
     $(`#new-source input`).removeClass("yellow-bg");
 
-    const newSource = $(this).serializeArray();
-    console.log("newSource :>> ", newSource);
+    const newSource = $(formId).serializeArray();
+
+    const startField = newSource.filter(
+      (field) => field.name === "FundStart"
+    )[0];
+    const endField = newSource.filter((field) => field.name === "FundEnd")[0];
+    const fiscalYearValue = setFiscalYear(startField.value, endField.value);
+    newSource.forEach((item) => {
+      if (item.name === "FY") item.value = fiscalYearValue;
+    });
 
     // validNewSource <== data-check.js
-    const validatedList = validNewSource(newSource);
+    const validatedList = validNewSource(newSource.slice(0));
     const checkFlag = validatedList.some((item) => !item.correct);
-
     if (checkFlag) {
       const list = validatedList.filter((obj) => obj.correct === false);
       for (let field of list) {
@@ -207,7 +215,7 @@ $(document).ready(() => {
       }
       return;
     } else {
-      newSourceObject(newSource);
+      saveMods(newSource, formId, "agencyDataFund");
     }
   });
 
@@ -273,7 +281,7 @@ $(document).ready(() => {
     $("#edit-form").append(result).attr("data-bloc-id", sourceId);
   });
 
-  // Modal form Save button
+  //* Modal form Save button
   $("#save-btn").click(function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
@@ -284,7 +292,7 @@ $(document).ready(() => {
     $("#modalBloc").modal("toggle");
   });
 
-  //* Deleting source
+  //* Modal form Delete source button
   $("#delete-btn").click((evnt) => {
     evnt.stopPropagation();
     const deleteConfirm = $(".modal-footer>h3");
