@@ -131,32 +131,32 @@ const createTableBody = (dataList, labelList) => {
   return `<tbody>${rows}</tbody>`;
 };
 
-const saveMods = (elmnt) => {
-  const idList = elmnt.split("-");
-  let result = { ID: idList[0], AgencyID: idList[1], FSID: idList[2] };
-  const list = $(`.modal-body>form input`)
-    .get()
-    .filter((item) => $(item).attr("id") !== ("FiscalYear", "FundAbbrev"));
+// const saveMods = (elmnt) => {
+//   const idList = elmnt.split("-");
+//   let result = { ID: idList[0], AgencyID: idList[1], FSID: idList[2] };
+//   const list = $(`.modal-body>form input`)
+//     .get()
+//     .filter((item) => $(item).attr("id") !== ("FiscalYear", "FundAbbrev"));
 
-  for (let row of list) {
-    const key = $(row).attr("id");
-    let val = $(row).val();
+//   for (let row of list) {
+//     const key = $(row).attr("id");
+//     let val = $(row).val();
 
-    // Removes currency format
-    if (key === "Amount") val = val.replace(/[$,\s]/g, "");
-    result[key] = val;
-  }
-  console.table(result);
-  const resultList = ["agencyDataFund", JSON.stringify(result)];
-  //!===============================================
-  //! Data object to send back to Database
-  console.log("result : ", resultList);
-  //!===============================================
+//     // Removes currency format
+//     if (key === "Amount") val = val.replace(/[$,\s]/g, "");
+//     result[key] = val;
+//   }
+//   console.table(result);
+//   const resultList = ["agencyDataFund", JSON.stringify(result)];
+//   //!===============================================
+//   //! Data object to send back to Database
+//   console.log("result : ", resultList);
+//   //!===============================================
 
-  $("#modalBloc").modal("toggle");
+//   $("#modalBloc").modal("toggle");
 
-  //TODO Update page with response from Database update
-};
+//   //TODO Update page with response from Database update
+// };
 
 const viewData = () => {
   $("#new-source").append(createNewRecord());
@@ -211,8 +211,14 @@ $(document).ready(() => {
     }
   });
 
-  //* Select funding source
+  //* New source Cancel button
+  $("#cancel-btn").click(function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    location.reload();
+  });
 
+  //* Select funding source
   $(document).on("click", ".table tbody tr", function (evnt) {
     evnt.stopPropagation();
     $("#modalBloc").modal("toggle");
@@ -267,18 +273,15 @@ $(document).ready(() => {
     $("#edit-form").append(result).attr("data-bloc-id", sourceId);
   });
 
-  // New source Add button
-  $("#save-button").click(function (evnt) {
+  // Modal form Save button
+  $("#save-btn").click(function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
-    saveMods($(this).attr("form"));
-  });
-
-  // New source Cancel button
-  $("#cancel-btn").click(function (evnt) {
-    evnt.preventDefault();
-    evnt.stopPropagation();
-    location.reload();
+    const formId = `#${$(this).attr("form")}`;
+    $("#FY-view").prop("disabled", false);
+    const formContent = $(formId).serializeArray();
+    saveMods(formContent, formId, "agencyDataFund");
+    $("#modalBloc").modal("toggle");
   });
 
   //* Deleting source
