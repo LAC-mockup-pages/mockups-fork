@@ -38,27 +38,3 @@ const validNewSource = (list) => {
   }
   return result;
 };
-
-const saveMods = (dataList, formId, tableName = "") => {
-  const { AgencyID, AuditUserID } = sessionVariable;
-  const result = { AgencyID, AuditUserID };
-  console.log("dataList :>> ", dataList);
-  // validateUserInput() <== data-check.js
-  // if (!validateUserInput(dataObj)) $(formId)[0].reset();
-  for (const field of dataList) {
-    let val = field.value;
-    let name = field.name;
-    if (name === "Amount") val = val.replace(/[$,]/gi, "").trim();
-    result[name] = val;
-  }
-
-  const target = tableName ? tableName : formId;
-  const resultList = [target, JSON.stringify(result)];
-  console.table(result);
-  //! =================================================
-  //! JSON Object to send back to database
-  console.log("result :", resultList);
-  //! =================================================
-
-  //ToDO Reloading/resetting with new data
-};

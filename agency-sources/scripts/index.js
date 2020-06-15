@@ -132,33 +132,28 @@ const createTableBody = (dataList, labelList) => {
   }
   return `<tbody>${rows}</tbody>`;
 };
+const saveMods = (dataList, formId, tableName = "") => {
+  const { AgencyID, AuditUserID } = sessionVariable;
+  const result = { AgencyID, AuditUserID };
+  console.log("dataList :>> ", dataList);
 
-// const saveMods = (elmnt) => {
-//   const idList = elmnt.split("-");
-//   let result = { ID: idList[0], AgencyID: idList[1], FSID: idList[2] };
-//   const list = $(`.modal-body>form input`)
-//     .get()
-//     .filter((item) => $(item).attr("id") !== ("FiscalYear", "FundAbbrev"));
+  for (const field of dataList) {
+    let val = field.value;
+    let name = field.name;
+    if (name === "Amount") val = val.replace(/[$,]/gi, "").trim();
+    result[name] = val;
+  }
 
-//   for (let row of list) {
-//     const key = $(row).attr("id");
-//     let val = $(row).val();
+  const target = tableName ? tableName : formId;
+  const resultList = [target, JSON.stringify(result)];
+  console.table(result);
+  //! =================================================
+  //! JSON Object to send back to database
+  console.log("result :", resultList);
+  //! =================================================
 
-//     // Removes currency format
-//     if (key === "Amount") val = val.replace(/[$,\s]/g, "");
-//     result[key] = val;
-//   }
-//   console.table(result);
-//   const resultList = ["agencyDataFund", JSON.stringify(result)];
-//   //!===============================================
-//   //! Data object to send back to Database
-//   console.log("result : ", resultList);
-//   //!===============================================
-
-//   $("#modalBloc").modal("toggle");
-
-//   //TODO Update page with response from Database update
-// };
+  //ToDO Reloading/resetting with new data
+};
 
 const viewData = () => {
   $("#new-source").append(createNewRecord());
@@ -199,7 +194,6 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const formId = `#${$(this).attr("form")}`;
     $(`#new-source input`).removeClass("yellow-bg");
-
     const newSource = $(formId).serializeArray();
 
     const startField = newSource.filter(
@@ -213,6 +207,8 @@ $(document).ready(() => {
 
     // validNewSource <== data-check.js
     const validatedList = validNewSource(newSource.slice(0));
+
+    // Background color change for invalid field values
     const checkFlag = validatedList.some((item) => !item.correct);
     if (checkFlag) {
       const list = validatedList.filter((obj) => obj.correct === false);
@@ -303,6 +299,7 @@ $(document).ready(() => {
   $("#delete-btn").click((evnt) => {
     evnt.stopPropagation();
     const deleteConfirm = $(".modal-footer>h3");
+    const formId = `#${$(this).attr("form")}`;
 
     if (deleteConfirm.length === 0) {
       $(".modal-footer").prepend(
@@ -310,24 +307,9 @@ $(document).ready(() => {
       );
     } else {
       deleteConfirm.remove();
-      const valueList = $(".modal-body>form").attr("id").split("-");
-      const length = valueList.length;
-      let sourceId = {};
-      let keyList = ["ID", "AgencyID", "FSID"];
-      for (let i = 0; i < length; i++) {
-        sourceId[keyList[i]] = valueList[i];
-      }
-
-      //!===============================================
-      //! sourceId is the object sent back to delete record in database
-      //! then update page with response data object.
-      console.log(
-        "sourceId :",
-        JSON.stringify(sourceId),
-        " - type : ",
-        typeof sourceId
-      );
-      //!===============================================
+      const recordIdToDelete = $("#ID-view").val();
+      const recordList = [{ name: "ID", value: recordIdToDelete }];
+      saveMods(recordList, `${formId}-DELETE`, "agencyDataFund");
 
       $("#modalBloc").modal("toggle");
     }
