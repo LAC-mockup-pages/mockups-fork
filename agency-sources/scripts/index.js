@@ -70,8 +70,9 @@ const createNewRecord = () => {
         optionText: "a funding source",
       });
     } else {
+      let placehold = keyList[key];
       if (["FundStart", "FundEnd"].includes(key)) {
-        option = " required";
+        option = " required title='Please fill this field\n(MM/DD/YYYY)'";
       }
       if (key === "FY") {
         classOption += " hidden";
@@ -79,7 +80,7 @@ const createNewRecord = () => {
       // inputNoLabel() <== helperFunctions()
       element = inputNoLabel({
         key,
-        placehold: keyList[key],
+        placehold,
         classOption,
         option,
       });
@@ -182,7 +183,12 @@ $(document).ready(() => {
 
   // Change text color from red (required) to black
   // when a value other than default is selected
-  $("#FSID-view").bind("change", function (evnt) {
+  $("#FSID-view, #FundStart, #FundEnd").bind("change", function (evnt) {
+    evnt.stopPropagation();
+    $(this).toggleClass("dark-text").prop("required", false);
+  });
+
+  $("#FundStart, #FundEnd").bind("focusin", function (evnt) {
     evnt.stopPropagation();
     $(this).toggleClass("dark-text").prop("required", false);
   });
@@ -216,6 +222,7 @@ $(document).ready(() => {
       return;
     } else {
       saveMods(newSource, formId, "agencyDataFund");
+      $(formId)[0].reset();
     }
   });
 

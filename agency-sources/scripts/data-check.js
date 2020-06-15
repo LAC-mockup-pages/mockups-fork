@@ -2,7 +2,13 @@
 //* Using Moment.js for date validation
 
 const validNewSource = (list) => {
+  // Returns true if input is only alphanumerical + underscore, not empty string
+  const alphaNumCheck = (str) => {
+    return /\w/i.test(str);
+  };
+  let correct = true;
   const result = [];
+  console.log("list :>> ", list);
   for (let obj of list) {
     switch (obj.name) {
       case "Amount":
@@ -21,7 +27,11 @@ const validNewSource = (list) => {
         break;
 
       default:
-        obj.correct = true;
+        if (obj.value) {
+          obj.correct = alphaNumCheck(obj.value);
+        } else {
+          obj.correct = true;
+        }
         break;
     }
     result.push(obj);
