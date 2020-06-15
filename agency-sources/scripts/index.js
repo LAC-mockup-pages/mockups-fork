@@ -27,25 +27,6 @@ const setFiscalYear = (start, end) => {
   return fiscalYear.toString();
 };
 
-const newSourceObject = (list) => {
-  const agencyId = $("table").attr("id");
-  const newSource = { AgencyID: agencyId };
-
-  for (let field of list) {
-    newSource[field.name] = field.value;
-  }
-  //!===============================================
-  //! Data object to send back to Database
-  console.log("JSON Object :", JSON.stringify(newSource));
-  //!===============================================
-
-  $("#new-source")[0].reset();
-
-  //TODO Update page with response from Database update
-
-  // location.reload();
-};
-
 const createNewRecord = () => {
   let result = [];
   const keyList = {
@@ -155,17 +136,6 @@ const saveMods = (dataList, formId, tableName = "") => {
   //ToDO Reloading/resetting with new data
 };
 
-const viewData = () => {
-  $("#new-source").append(createNewRecord());
-  $("#new-source #FundEnd, #FundStart, #Amount, #FY, #FundNumber").addClass(
-    "col-width-small"
-  );
-  $("#new-source #Purpose").addClass("col-width-medium");
-
-  $("#view-bloc").append(createTableHeader(rowLabels));
-  $("#source-table").append(createTableBody(agencyData, rowLabels));
-};
-
 $(document).ready(() => {
   // * sub-navbar/index.js
   $("#sub-nav li").click(function () {
@@ -173,8 +143,14 @@ $(document).ready(() => {
     $(this).toggleClass("blue-light-bg blue-text");
   });
 
-  // * data viewing
-  viewData();
+  // * Agency funding sources viewing
+  $("#new-source").append(createNewRecord());
+  $("#new-source #FundEnd, #FundStart, #Amount, #FY, #FundNumber").addClass(
+    "col-width-small"
+  );
+  $("#new-source #Purpose").addClass("col-width-medium");
+  $("#view-bloc").append(createTableHeader(rowLabels));
+  $("#source-table").append(createTableBody(agencyData, rowLabels));
 
   // Change text color from red (required) to black
   // when a value other than default is selected
@@ -182,7 +158,6 @@ $(document).ready(() => {
     evnt.stopPropagation();
     $(this).toggleClass("dark-text").prop("required", false);
   });
-
   $("#FundStart, #FundEnd").bind("focusin", function (evnt) {
     evnt.stopPropagation();
     $(this).toggleClass("dark-text").prop("required", false);
