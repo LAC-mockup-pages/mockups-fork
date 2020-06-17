@@ -26,6 +26,16 @@ const elementInput = (obj) => {
     </div>`;
 };
 
+// Returns an <input .... > element with no label for new record entry bloc
+// Assign "" to keys in argsObj which are not needed.
+const inputNoLabel = (argsObj) => {
+  const { key, placehold, classOption, option } = argsObj;
+
+  return `<input type="text" class="form-control${classOption}" id=${key}
+            name="${key}" placeholder="${placehold}"${option}
+            autocomplete="new-password" spellcheck="off"/>`;
+};
+
 // Select element for new record entry
 // ! Check the CSS for this:
 // :required::placeholder,
@@ -192,4 +202,22 @@ const createTableRow = (idValue, recordObj) => {
       </td>`;
   }
   return `<tr id=${idValue}>${dataElement}</tr>`;
+};
+
+// argsObj = {record, labelList, labelObj, hiddenList}
+const createRow = (argsObj) => {
+  const { record, labelList, labelObj, hiddenList } = argsObj;
+  let tdList = [];
+  for (const key of labelList) {
+    const option = hiddenList.includes(key) ? " hidden" : "";
+    const cell = `<td class="cell-data${option}"
+                    data-name=${key}
+                    data-label="${labelObj[key]}">
+                      ${record[key]}
+                  </td>`;
+    tdList.push(cell);
+  }
+  return `<tr id=${record.ID} title="Click to edit">
+            ${tdList.join("")}
+          </tr>`;
 };
