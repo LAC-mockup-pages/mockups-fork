@@ -102,11 +102,15 @@ const createNewRecord = (labelsObject) => {
     (key) => !["ID", "AgencyID", "ReferralSiteID"].includes(key)
   );
   for (key of keyList) {
-    let option = " required";
+    let option = "";
     let classOption = "";
     if (["County"].includes(key)) {
       classOption = " hidden";
     }
+    if (["ReferralSiteName", "ReferralSiteEmail"].includes(key)) {
+      option = " required";
+    }
+
     let inputElement = `<input type="text" class="form-control${classOption}"
       id=${key} name="${key}" placeholder="${labelsObject[key]}"${option}
       autocomplete="new-password" spellcheck="off">`;
@@ -125,7 +129,7 @@ const createNewRecord = (labelsObject) => {
       inputElement = elementSelectNewRecord({
         hashTable: stateList,
         keyValue: key,
-        option: "required",
+        option,
         optionText: "a state",
       });
     }
@@ -139,6 +143,7 @@ const createNewRecord = (labelsObject) => {
 
   const formContent = result.join("");
   $("#new-partner").append(formContent);
+  $("#State-view, #CountyDesc-view").addClass("modal-select");
 };
 
 const createForm = (elmnt) => {
@@ -154,20 +159,25 @@ const createForm = (elmnt) => {
     let value = $(item).text();
     formData[key] = [labelObj[key], value];
   }
-  console.log("formData :>> ", formData);
   const fieldList = Object.keys(formData).filter((item) => item !== "County");
 
   const formFields = fieldList
     .map((fieldName) => {
       let fieldText = "";
-      let option = "required";
+      let option = "";
+      let labelClassVal = "";
+      if (["ReferralSiteName", "ReferralSiteEmail"].includes(fieldName)) {
+        option = "required";
+        labelClassVal = "red-text";
+      }
+
       if (fieldName === "CountyDesc") {
         return elementSelectModal({
           hashTable: countyList,
           keyValue: fieldName,
           selectedValue: formData.County[1],
           labelVal: labelObj[fieldName],
-          labelClassVal: "",
+          labelClassVal,
           option: "",
           optionText: "a county",
         });
@@ -178,7 +188,7 @@ const createForm = (elmnt) => {
           keyValue: fieldName,
           selectedValue: formData.State[1],
           labelVal: labelObj[fieldName],
-          labelClassVal: "class='red-text'",
+          labelClassVal,
           option,
           optionText: "a state",
         });
@@ -208,7 +218,7 @@ const createForm = (elmnt) => {
         fieldName,
         formData[fieldName][0],
         fieldText,
-        "red-text",
+        labelClassVal,
         "",
         option
       );

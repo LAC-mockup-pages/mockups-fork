@@ -17,12 +17,15 @@ const validateUserInput = (dataList) => {
         correct = alphaNumCheck(field.value);
         break;
       case "State":
-        correct = field.value.length < 3;
+        correct = field.value.length < 3 && field.value.length > 0;
       case "Zip":
-        correct = field.value.length < 11;
+        correct = field.value.length < 11 && field.value.length > 0;
         break;
       case "Telephone":
-        correct = field.value.length < 13;
+        correct = field.value.length < 13 && field.value.length > 0;
+        break;
+      case "ReferralSiteEmail":
+        correct = field.value.length > 4 && field.value.length > 0;
         break;
       default:
         correct = true;
