@@ -2,19 +2,21 @@
 
 const agencyData = agencyDataFund.slice(0);
 const sourcesData = fundingData.slice(0);
-
-const rowLabels = {
-  ID: "ID",
-  AgencyID: "Agency ID",
-  FSID: "Source ID",
-  FundAbbrev: "Source Name",
-  FundStart: "Begin Date",
-  FundEnd: "End Date",
-  FY: "Fiscal Year",
-  FundNumber: "Contrat / Grant #",
-  Amount: "Amount",
-  Purpose: "Purpose",
-};
+console.log("sourcesData :>> ", sourcesData);
+const rowLabels = [
+  {
+    ID: "ID",
+    AgencyID: "Agency ID",
+    FSID: "Source ID",
+    FundAbbrev: "Source Name",
+    FundStart: "Begin Date",
+    FundEnd: "End Date",
+    FY: "Fiscal Year",
+    FundNumber: "Contrat / Grant #",
+    Amount: "Amount",
+    Purpose: "Purpose",
+  },
+];
 
 const setFiscalYear = (start, end) => {
   const startDate = new Date(start);
@@ -107,7 +109,7 @@ const createTableBody = (dataList, labelList) => {
     rows += createRow({
       record,
       labelList: filteredLabelList,
-      labelObj: rowLabels,
+      labelObj: rowLabels[0],
       hiddenList,
     });
   }
@@ -149,8 +151,8 @@ $(document).ready(() => {
     "col-width-small"
   );
   $("#new-source #Purpose").addClass("col-width-medium");
-  $("#view-bloc").append(createTableHeader(rowLabels));
-  $("#source-table").append(createTableBody(agencyData, rowLabels));
+  $("#view-bloc").append(createTableHeader(rowLabels[0]));
+  $("#source-table").append(createTableBody(agencyData, rowLabels[0]));
 
   // Change text color from red (required) to black
   // when a value other than default is selected
