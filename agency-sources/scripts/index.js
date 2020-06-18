@@ -2,7 +2,7 @@
 
 const agencyData = agencyDataFund.slice(0);
 const sourcesData = fundingData.slice(0);
-console.log("sourcesData :>> ", sourcesData);
+
 const rowLabels = [
   {
     ID: "ID",
