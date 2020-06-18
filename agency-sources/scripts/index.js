@@ -87,8 +87,7 @@ const createTableHeader = (labelObj) => {
     .filter((label) => !["ID", "Agency ID", "Source ID"].includes(label));
 
   // createHeaders() <== helperFunctions.js
-  const tableHeader = createHeaders(list);
-  return `<table class="table" id="source-table">${tableHeader}</table>`;
+  return createHeaders(list);
 };
 
 const createTableBody = (dataList, labelList) => {
@@ -115,6 +114,16 @@ const createTableBody = (dataList, labelList) => {
   }
   return `<tbody>${rows}</tbody>`;
 };
+
+const createViewBloc = () => {
+  const header = createTableHeader(rowLabels[0]);
+  const body = createTableBody(agencyData, rowLabels[0]);
+  return `<table class="table" id="source-table">
+            ${header}
+            ${body}
+          </table>`;
+};
+
 const saveMods = (dataList, formId, tableName = "") => {
   const { AgencyID, AuditUserID } = sessionVariable;
   const result = { AgencyID, AuditUserID };
@@ -151,8 +160,7 @@ $(document).ready(() => {
     "col-width-small"
   );
   $("#new-source #Purpose").addClass("col-width-medium");
-  $("#view-bloc").append(createTableHeader(rowLabels[0]));
-  $("#source-table").append(createTableBody(agencyData, rowLabels[0]));
+  $("#view-bloc").append(createViewBloc());
 
   // Change text color from red (required) to black
   // when a value other than default is selected
