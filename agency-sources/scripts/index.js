@@ -29,12 +29,13 @@ const setFiscalYear = (start, end) => {
   return fiscalYear.toString();
 };
 
-const createNewRecord = (labelObj) => {
+const createNewRecord = (labelsList) => {
   let result = [];
+  const labelObj = labelsList[0];
   const keyList = Object.keys(labelObj).filter(
-    (key) => !["ID", "AgencyID"].includes(key)
+    (key) => !["ID", "AgencyID", "FundAbbrev"].includes(key)
   );
-  for (const key in keyList) {
+  for (const key of keyList) {
     let element = "";
     let option = "";
     let classOption = " input-field";
@@ -45,9 +46,10 @@ const createNewRecord = (labelObj) => {
         keyValue: key,
         option: "required",
         optionText: "a funding source",
+        classOption,
       });
     } else {
-      let placehold = keyList[key];
+      let placehold = labelObj[key];
       if (["FundStart", "FundEnd"].includes(key)) {
         option = " required title='Please fill this field\n(MM/DD/YYYY)'";
       }
@@ -75,8 +77,8 @@ const createNewRecord = (labelObj) => {
   return result.join("");
 };
 
-const createTableHeader = (labelObj) => {
-  const list = Object.entries(labelObj)
+const createTableHeader = (labelsObject) => {
+  const list = Object.entries(labelsObject)
     .map((label) => label[1])
     .filter((label) => !["ID", "Agency ID", "Source ID"].includes(label));
 
@@ -149,7 +151,7 @@ $(document).ready(() => {
   });
 
   // * Agency funding sources viewing
-  $("#new-source").append(createNewRecord());
+  $("#new-source").append(createNewRecord(rowLabels));
   $("#new-source #FundEnd, #FundStart, #Amount, #FundNumber").addClass(
     "col-width-small"
   );
