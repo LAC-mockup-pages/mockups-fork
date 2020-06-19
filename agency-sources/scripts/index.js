@@ -145,7 +145,7 @@ const saveMods = (dataList, formId, tableName = "") => {
 
 $(document).ready(() => {
   // * sub-navbar/index.js
-  $("#sub-nav li").click(function () {
+  $("#sub-nav li").on("click", function () {
     $("#sub-nav li").removeClass("blue-light-bg blue-text");
     $(this).toggleClass("blue-light-bg blue-text");
   });
@@ -200,7 +200,7 @@ $(document).ready(() => {
   });
 
   //* New source Cancel button
-  $("#cancel-btn").click(function (evnt) {
+  $("#cancel-btn").on("click", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     location.reload();
@@ -262,7 +262,7 @@ $(document).ready(() => {
   });
 
   //* Modal form Save button
-  $("#save-btn").click(function (evnt) {
+  $("#save-btn").on("click", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formId = `#${$(this).attr("form")}`;
@@ -273,7 +273,7 @@ $(document).ready(() => {
   });
 
   //* Modal form Delete source button
-  $("#delete-btn").click((evnt) => {
+  $("#delete-btn").on("click", (evnt) => {
     evnt.stopPropagation();
     const deleteConfirm = $(".modal-footer>h3");
     const formId = `#${$(this).attr("form")}`;
