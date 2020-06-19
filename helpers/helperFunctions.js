@@ -11,7 +11,7 @@ const createInputField = (
   return `<div class="input-field">
       <label for='${keyVal}' class='${labelClassVal}'>${labelVal}</label>
       <input type="text" id='${keyVal}' class='${classVal}' name=${keyVal}
-      value='${value}' ${option}>
+      value='${value}' ${option} autocomplete="off" />
     </div>`;
 };
 
@@ -23,7 +23,7 @@ const elementInput = (obj) => {
       <input type="text" id='${obj.keyVal + "-view"}' ${obj.classVal} name=${
     obj.keyVal
   }
-      value='${obj.value}' ${obj.option}>
+      value='${obj.value}' ${obj.option} autocomplete="off"/>
     </div>`;
 };
 
@@ -34,7 +34,7 @@ const inputNoLabel = (argsObj) => {
 
   return `<input type="text" class="form-control${classOption}" id=${key}
             name="${key}" placeholder="${placehold}"${option}
-            autocomplete="new-password" spellcheck="off"/>`;
+            autocomplete="off" spellcheck="off"/>`;
 };
 
 // Select element for new record entry
@@ -56,7 +56,7 @@ const inputNoLabel = (argsObj) => {
 // });
 
 const elementSelectNewRecord = (argsObj) => {
-  const { hashTable, keyValue, option, optionText } = argsObj;
+  const { hashTable, keyValue, option, optionText, classOption } = argsObj;
   const [primary, secondary] = Object.keys(hashTable[0]);
   let optionList = hashTable
     .map((item) => {
@@ -65,10 +65,11 @@ const elementSelectNewRecord = (argsObj) => {
     })
     .join("");
   const descriptor = optionText ? optionText : "an option";
+  const classVal = classOption ? ` ${classOption.trim()}` : "";
   const elementSelect = `
      <select id="${
        keyValue + "-view"
-     }" class="form-control" name="${keyValue}" ${option}>
+     }" class="form-control${classVal}" name="${keyValue}" ${option}>
       <option value='' selected disabled>Select ${descriptor}</option>
       ${optionList}
      </select>`;
