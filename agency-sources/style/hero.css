@@ -40,7 +40,11 @@ option {
   margin-left: 1%;
 }
 
-.col-width-small {
+.col-width-small,
+#FundEnd,
+#FundStart,
+#Amount,
+#FundNumber {
   max-width: 11%;
 }
 
@@ -48,7 +52,8 @@ option {
   max-width: 25%;
 }
 
-.col-width-medium {
+.col-width-medium,
+#Purpose {
   max-width: 15%;
 }
 .red-text {

@@ -152,10 +152,6 @@ $(document).ready(() => {
 
   // * Agency funding sources viewing
   $("#new-source").append(createNewRecord(rowLabels));
-  $("#new-source #FundEnd, #FundStart, #Amount, #FundNumber").addClass(
-    "col-width-small"
-  );
-  $("#new-source #Purpose").addClass("col-width-medium");
   $("#view-bloc").append(createViewBloc(rowLabels));
 
   // Change text color from red (required) to black
