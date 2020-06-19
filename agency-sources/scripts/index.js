@@ -29,17 +29,11 @@ const setFiscalYear = (start, end) => {
   return fiscalYear.toString();
 };
 
-const createNewRecord = () => {
+const createNewRecord = (labelObj) => {
   let result = [];
-  const keyList = {
-    FSID: "Source Name",
-    FundStart: "Begin Date",
-    FundEnd: "End Date",
-    FY: "Fiscal Year",
-    FundNumber: "Contrat / Grant #",
-    Amount: "Amount",
-    Purpose: "Purpose",
-  };
+  const keyList = Object.keys(labelObj).filter(
+    (key) => !["ID", "AgencyID"].includes(key)
+  );
   for (const key in keyList) {
     let element = "";
     let option = "";
@@ -48,7 +42,7 @@ const createNewRecord = () => {
       // elementSelectNewRecord() <== helperFunctions()
       element = elementSelectNewRecord({
         hashTable: sourcesData,
-        keyValue: "FSID",
+        keyValue: key,
         option: "required",
         optionText: "a funding source",
       });
@@ -156,11 +150,11 @@ $(document).ready(() => {
 
   // * Agency funding sources viewing
   $("#new-source").append(createNewRecord());
-  $("#new-source #FundEnd, #FundStart, #Amount, #FY, #FundNumber").addClass(
+  $("#new-source #FundEnd, #FundStart, #Amount, #FundNumber").addClass(
     "col-width-small"
   );
   $("#new-source #Purpose").addClass("col-width-medium");
-  $("#view-bloc").append(createViewBloc());
+  $("#view-bloc").append(createViewBloc(rowLabels));
 
   // Change text color from red (required) to black
   // when a value other than default is selected
