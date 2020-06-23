@@ -280,7 +280,7 @@ $(document).ready(() => {
 
     if (deleteConfirm.length === 0) {
       $(".modal-footer").prepend(
-        "<h3 class='delete-msg'>Confirm deletion by clicking again the DELETE button</h3>"
+        "<h3 class='delete-msg'>Confirm deletion by clicking the DELETE button again</h3>"
       );
     } else {
       deleteConfirm.remove();
