@@ -12,7 +12,7 @@ const rowLabels = [
     FundStart: "Begin Date",
     FundEnd: "End Date",
     FY: "Fiscal Year",
-    FundNumber: "Contrat / Grant #",
+    FundNumber: "Contract / Grant #",
     Amount: "Amount",
     Purpose: "Purpose",
   },
