@@ -1,22 +1,21 @@
 //* Data check for new or edited source
 //* Using Moment.js for date validation
 
-const validNewSource = (list) => {
-  // Returns true if input is only alphanumerical + underscore, not empty string
+const validateRecord = (list) => {
+  // Returns true if input is only alphanumerical + underscore, dash,
+  // dot, whitespace, not empty string
   const alphaNumCheck = (str) => {
-    return /\w/i.test(str);
+    return !/[^\s\w-.]/g.test(str);
   };
-  let correct = true;
-  const result = [];
-  console.log("list :>> ", list);
-  for (let obj of list) {
-    switch (obj.name) {
+  const resultList = [];
+  for (const field of list) {
+    let { name, value } = field;
+    const obj = { name, value };
+    switch (name) {
       case "Amount":
-        if (obj.value) {
-          obj.correct = Number(obj.value) ? true : false;
-        } else {
-          obj.correct = true;
-        }
+        obj.correct = value
+          ? Boolean(Number(value.replace(/[$,]/gi, "").trim()))
+          : true;
         break;
       case "FundStart":
         obj.correct = moment(obj.value, "MM/DD/YYYY", true).isValid();
@@ -27,14 +26,10 @@ const validNewSource = (list) => {
         break;
 
       default:
-        if (obj.value) {
-          obj.correct = alphaNumCheck(obj.value);
-        } else {
-          obj.correct = true;
-        }
+        obj.correct = value ? alphaNumCheck(value) : true;
         break;
     }
-    result.push(obj);
+    resultList.push(obj);
   }
-  return result;
+  return resultList;
 };

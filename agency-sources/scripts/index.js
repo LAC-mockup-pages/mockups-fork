@@ -181,7 +181,7 @@ $(document).ready(() => {
     });
 
     // validNewSource <== data-check.js
-    const validatedList = validNewSource(newSource.slice(0));
+    const validatedList = validateRecord(newSource.slice(0));
 
     // Background color change for invalid field values
     const checkFlag = validatedList.some((item) => !item.correct);
