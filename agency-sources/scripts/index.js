@@ -67,10 +67,10 @@ const createNewRecord = (labelsList) => {
     result.push(element);
   }
   result.push(
-    `<button type="button" id="submit-btn" form="new-source"
+    `<button type="button" id="submit-btn" form="new-entry"
       class="btn btn-primary">Add
     </button>
-    <button type="button" id="cancel-btn" form="new-source"
+    <button type="button" id="cancel-btn" form="new-entry"
       class="btn btn-default">Cancel
     </button>`
   );
@@ -112,12 +112,10 @@ const createTableBody = (dataList, labelList) => {
 };
 
 const createViewBloc = () => {
-  const header = createTableHeader(rowLabels[0]);
-  const body = createTableBody(agencyData, rowLabels[0]);
-  return `<table class="table" id="source-table">
-            ${header}
-            ${body}
-          </table>`;
+  const tableHeader = createTableHeader(rowLabels[0]);
+  const tableBody = createTableBody(agencyData, rowLabels[0]);
+  const viewBloc = tableHeader + tableBody;
+  return viewBloc;
 };
 
 const saveMods = (dataList, formId, tableName = "") => {
@@ -151,8 +149,8 @@ $(document).ready(() => {
   });
 
   // * Agency funding sources viewing
-  $("#new-source").append(createNewRecord(rowLabels));
-  $("#view-bloc").append(createViewBloc(rowLabels));
+  $("#new-entry").append(createNewRecord(rowLabels));
+  $("#main-table").append(createViewBloc(rowLabels));
 
   // Change text color from red (required) to black
   // when a value other than default is selected
