@@ -118,27 +118,48 @@ const createViewBloc = () => {
   return viewBloc;
 };
 
-const saveMods = (dataList, formId, tableName = "") => {
+const saveMods = (fields, formName, tableName = "") => {
   const { AgencyID, AuditUserID } = sessionVariable;
   const result = { AgencyID, AuditUserID };
-  console.log("dataList :>> ", dataList);
 
-  for (const field of dataList) {
-    let val = field.value;
-    let name = field.name;
-    if (name === "Amount") val = val.replace(/[$,]/gi, "").trim();
-    result[name] = val;
+  $(`${formName} input, select`).removeClass("yellow-bg");
+  const fieldList = fields.slice(0);
+
+  // Data validation
+  // validateNewRecord() <== data-check.js
+  const validatedList = validateRecord(fieldList);
+
+  // Background color change for invalid field values
+  const checkFlag = validatedList.some((item) => !item.correct);
+  if (checkFlag) {
+    const list = validatedList.filter((obj) => obj.correct === false);
+    for (let field of list) {
+      const fieldId =
+        formName === "#new-entry" ? `#${field.name}` : `#${field.name}-view`;
+      $(fieldId).addClass("yellow-bg");
+    }
+    return;
+  } else {
+    for (const field of fieldList) {
+      let val = field.value;
+      let name = field.name;
+      if (name === "Amount") val = val.replace(/[$,]/gi, "").trim();
+      result[name] = val;
+    }
+
+    const target = tableName ? tableName : formId;
+    const resultList = [target, JSON.stringify(result)];
+    console.table(result);
+    //! =================================================
+    //! JSON Object to send back to database
+    console.log("result :", resultList);
+    //! =================================================
+
+    //ToDO Reloading/resetting with new data
+
+    if (formName === "#edit-form") $("#modalBloc").modal("toggle");
+    if (formName === "#new-entry") $(formName)[0].reset();
   }
-
-  const target = tableName ? tableName : formId;
-  const resultList = [target, JSON.stringify(result)];
-  console.table(result);
-  //! =================================================
-  //! JSON Object to send back to database
-  console.log("result :", resultList);
-  //! =================================================
-
-  //ToDO Reloading/resetting with new data
 };
 
 $(document).ready(() => {
@@ -164,7 +185,7 @@ $(document).ready(() => {
   });
 
   //* Adding a new funding source
-  $(document).bind("click", "#submit-btn", function (evnt) {
+  $(document).on("click", "#submit-btn", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formId = `#${$(this).attr("form")}`;
@@ -180,21 +201,7 @@ $(document).ready(() => {
       if (item.name === "FY") item.value = fiscalYearValue;
     });
 
-    // validNewSource <== data-check.js
-    const validatedList = validateRecord(newSource.slice(0));
-
-    // Background color change for invalid field values
-    const checkFlag = validatedList.some((item) => !item.correct);
-    if (checkFlag) {
-      const list = validatedList.filter((obj) => obj.correct === false);
-      for (let field of list) {
-        $(`[name=${field.name}]`).addClass("yellow-bg");
-      }
-      return;
-    } else {
-      saveMods(newSource, formId, "agencyDataFund");
-      $(formId)[0].reset();
-    }
+    saveMods(newSource, formId, "agencyDataFund");
   });
 
   //* New source Cancel button
@@ -267,7 +274,6 @@ $(document).ready(() => {
     $("#FY-view").prop("disabled", false);
     const formContent = $(formId).serializeArray();
     saveMods(formContent, formId, "agencyDataFund");
-    $("#modalBloc").modal("toggle");
   });
 
   //* Modal form Delete source button
