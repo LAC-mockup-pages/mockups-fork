@@ -158,13 +158,13 @@ $(document).ready(() => {
     evnt.stopPropagation();
     $(this).toggleClass("dark-text").prop("required", false);
   });
-  $("#FundStart, #FundEnd").bind("focusin", function (evnt) {
+  $(document).on("focusin", "#FundStart, #FundEnd", function (evnt) {
     evnt.stopPropagation();
     $(this).toggleClass("dark-text").prop("required", false);
   });
 
   //* Adding a new funding source
-  $("#submit-btn").bind("click", function (evnt) {
+  $(document).bind("click", "#submit-btn", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formId = `#${$(this).attr("form")}`;
@@ -198,7 +198,7 @@ $(document).ready(() => {
   });
 
   //* New source Cancel button
-  $("#cancel-btn").on("click", function (evnt) {
+  $(document).on("click", "#cancel-btn", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     location.reload();
@@ -260,7 +260,7 @@ $(document).ready(() => {
   });
 
   //* Modal form Save button
-  $("#save-btn").on("click", function (evnt) {
+  $(document).on("click", "#save-btn", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formId = `#${$(this).attr("form")}`;
@@ -271,7 +271,7 @@ $(document).ready(() => {
   });
 
   //* Modal form Delete source button
-  $("#delete-btn").on("click", (evnt) => {
+  $(document).on("click", "#delete-btn", (evnt) => {
     evnt.stopPropagation();
     const deleteConfirm = $(".modal-footer>h3");
     const formId = `#${$(this).attr("form")}`;
