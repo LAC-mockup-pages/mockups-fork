@@ -5,7 +5,6 @@ body {
 .hero {
   margin: 1% 6%;
   padding: 0;
-  /* border-width: 6px 3px; */
   border-radius: 5px;
 }
 
@@ -31,6 +30,7 @@ body {
   padding: 0.5%;
   font-weight: 600;
   margin-right: 0.3%;
+  height: 2.5em;
 }
 
 option {
@@ -108,21 +108,6 @@ th {
   font-size: 1.1em;
   font-weight: 600;
   color: #fff;
-}
-
-.purpose {
-  max-width: 200px;
-}
-
-.date {
-  max-width: 80px;
-  text-align: center;
-  font-size: 14px;
-}
-
-.FiscalYear {
-  max-width: 60px;
-  text-align: center;
 }
 
 .input-field {
