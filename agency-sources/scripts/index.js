@@ -175,7 +175,7 @@ $(document).ready(() => {
 
   // Change text color from red (required) to black
   // when a value other than default is selected
-  $("#FSID-view, #FundStart, #FundEnd").bind("change", function (evnt) {
+  $(document).on("change", "#FSID-view", function (evnt) {
     evnt.stopPropagation();
     $(this).toggleClass("dark-text").prop("required", false);
   });
