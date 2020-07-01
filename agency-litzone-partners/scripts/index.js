@@ -159,86 +159,70 @@ const getRequired = () => {
   return requiredList;
 };
 
-const createForm = (elmnt) => {
-  const idArray = $(elmnt).attr("id").split("-");
-  const formData = {};
-  formData.ID = [labelObj.ID, idArray[0]];
-  formData.AgencyID = [labelObj.AgencyID, idArray[1]];
+//? Done
+const createForm = (list) => {
+  let formContent = "";
+  const requiredList = getRequired();
+  const hiddenList = ["ID", "CountyDesc"];
 
-  const tdList = elmnt[0].cells;
+  for (const cell of list) {
+    let keyVal = $(cell).attr("data-name");
+    let labelVal = $(cell).attr("data-label");
+    let value = $(cell).text() ? $(cell).text().trim() : "";
+    let labelClassVal = "";
+    let classVal = "";
+    let optionHidden = hiddenList.includes(keyVal)
+      ? "form-group hidden"
+      : "form-group";
+    let option = "";
 
-  for (let item of tdList) {
-    const key = $(item).attr("class").split(" ")[1];
-    let value = $(item).text();
-    formData[key] = [labelObj[key], value];
-  }
-  const fieldList = Object.keys(formData).filter((item) => item !== "County");
+    if (["fullAddress"].includes(keyVal)) continue;
+    if (requiredList.includes(keyVal)) {
+      labelClassVal = "class='red-text'";
+      option = "required";
+    }
 
-  const formFields = fieldList
-    .map((fieldName) => {
-      let fieldText = "";
-      let option = "";
-      let labelClassVal = "";
-      if (["ReferralSiteName", "ReferralSiteEmail"].includes(fieldName)) {
-        option = "required";
-        labelClassVal = "red-text";
-      }
+    if (keyVal === "County") {
+      if (value === "null") value = "";
 
-      if (fieldName === "CountyDesc") {
-        return elementSelectModal({
-          hashTable: countyList,
-          keyValue: fieldName,
-          selectedValue: formData.County[1],
-          labelVal: labelObj[fieldName],
-          labelClassVal,
-          option: "",
-          optionText: "a county",
-        });
-      }
-      if (fieldName === "State") {
-        return elementSelectModal({
-          hashTable: stateList,
-          keyValue: fieldName,
-          selectedValue: formData.State[1],
-          labelVal: labelObj[fieldName],
-          labelClassVal,
-          option,
-          optionText: "a state",
-        });
-      }
-      switch (fieldName) {
-        case "Address":
-          fieldText = formData.Address[1].slice(
-            0,
-            formData.Address[1].indexOf(formData.City[1])
-          );
-          break;
-        case "ReferralSiteID":
-          fieldText = formData[fieldName][1];
-          break;
-        case "Zip":
-          // zipCodeFormat() <== helperFunctions()
-          fieldText = zipCodeFormat(formData.Zip[1]);
-          break;
-
-        default:
-          fieldText = formData[fieldName][1];
-          break;
-      }
-
-      // createInputField() <== helperFunctions.js
-      return createInputField(
-        fieldName,
-        formData[fieldName][0],
-        fieldText,
+      // elementSelectModal() <== helperFunctions.js
+      formContent += elementSelectModal({
+        hashTable: countyList,
+        keyValue: keyVal,
+        selectedValue: value,
+        labelVal: "County",
         labelClassVal,
-        "",
-        option
-      );
-    })
-    .join("");
+        option,
+        optionText: " a county",
+      });
+    } else if (keyVal === "State") {
+      if (value === "null") value = "";
 
-  return formFields;
+      // elementSelectModal() <== helperFunctions.js
+      formContent += elementSelectModal({
+        hashTable: stateList,
+        keyValue: keyVal,
+        selectedValue: value,
+        labelVal: "State",
+        labelClassVal,
+        option,
+        optionText: " a state",
+      });
+    } else {
+      // elementInput() <== helperFunctions.js
+      formContent += elementInput({
+        keyVal,
+        labelVal,
+        value,
+        labelClassVal,
+        classVal,
+        option,
+        optionHidden,
+      });
+    }
+  }
+
+  return formContent;
 };
 
 // Used for new partner and edited partner data set
@@ -340,14 +324,10 @@ $(document).ready(() => {
     evnt.stopPropagation();
 
     const rowID = "#" + $(this).attr("id");
-    const selectedElement = $(rowID).get();
-    const editForm = createForm(selectedElement);
+    const selectedRow = $(`${rowID} td`).get();
+    const editForm = createForm(selectedRow);
     $("#modalBloc").modal("toggle");
     $("#modal-form").empty().append(editForm);
-
-    // Elements ID and AgencyID hidden so they are included in the
-    // serialization creating the data Object sent back to database
-    $(".input-field").slice(0, 2).toggleClass("hidden");
   });
 
   //* Saving mods after editing selected outcome
