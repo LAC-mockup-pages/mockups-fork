@@ -29,6 +29,7 @@ const createNewRecord = (labelsList) => {
   let result = [];
   const labelObj = labelsList[0];
   const requiredList = ["ReferralSiteName", "ReferralSiteID"];
+  const hiddenList = ["CountyDesc"];
   const keyList = Object.keys(labelObj).filter(
     (key) => !["ID", "AgencyID", "fullAddress"].includes(key)
   );
@@ -60,6 +61,7 @@ const createNewRecord = (labelsList) => {
       if (requiredList.includes(key)) {
         option = " required title='Please fill this field'";
       }
+      if (hiddenList.includes(key)) classOption += " hidden";
       if (key === "ReferralSiteEmail") type = "email";
 
       // inputNoLabel() <== helperFunctions()
@@ -232,12 +234,11 @@ const saveMods = (fields, formName, tableName = "") => {
   $(`${formName} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
   console.log("fieldList :>> ", fieldList);
+
   // Data validation
   // validateRecord() <== data-check.js
+  const validatedList = validateRecord(fieldList);
 
-  //! const validatedList = validateRecord(fieldList);
-
-  const validatedList = [{ a: 1, b: 2, correct: true }];
   // Background color change for invalid field values
   const checkFlag = validatedList.some((item) => !item.correct);
   if (checkFlag) {
@@ -254,7 +255,15 @@ const saveMods = (fields, formName, tableName = "") => {
       if (field.name === "Telephone") field.value = phoneFormat(field.value);
       if (field.name === "ReferralSiteEmail")
         field.value = field.value !== "undefined" ? field.value : "";
-      if (field.name === "CountyDesc") result[field.name] = field.value;
+      if (field.name === "CountyDesc") {
+        const countyObj = fieldList.filter((item) => item.name === "County")[0];
+        const descriptionObj = countyList.filter(
+          (item) => item.FIPS === countyObj.value
+        )[0];
+        field.value = descriptionObj ? descriptionObj.CountyDesc : "";
+      }
+
+      result[field.name] = field.value;
     }
 
     const target = tableName ? tableName : "No table name";
@@ -268,7 +277,7 @@ const saveMods = (fields, formName, tableName = "") => {
     //ToDO Reloading/resetting with new data
 
     if (formName === "#edit-form") $("#modalBloc").modal("toggle");
-    if (formName === "#new-entry") location.reload();
+    if (formName === "#new-entry") $(formName)[0].reset();
   }
 };
 
@@ -321,7 +330,7 @@ $(document).ready(() => {
     location.reload();
   });
 
-  //* Select partner
+  //* Select record to edit
   $(document).on("click", ".table tbody tr", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
@@ -330,15 +339,15 @@ $(document).ready(() => {
     const selectedRow = $(`${rowID} td`).get();
     const editForm = createForm(selectedRow);
     $("#modalBloc").modal("toggle");
-    $("#modal-form").empty().append(editForm);
+    $("#edit-form").empty().append(editForm);
   });
 
-  //* Saving mods after editing selected outcome
+  //* Saving mods after editing selected record
   $(document).on("click", "#save-btn", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
-    const form = `#${$(this).attr("form")}`;
-    saveMods(form);
-    $("#modalBloc").modal("toggle");
+    const formId = "#" + $(this).attr("form");
+    const newSource = $(formId).serializeArray();
+    saveMods(newSource, formId, "partnersData");
   });
 });

@@ -1,51 +1,25 @@
 // User input data validation
 
-//* Returns true if input is only alphanumerical + underscore, not empty string
-const alphaNumCheck = (str) => {
-  return /\w+$/i.test(str);
-};
-
 const validateRecord = (dataList) => {
-  let correct = true;
-  const checkedFieldList = [];
+  // Returns true if input is only alphanumerical + underscore, not empty string
+  const alphaNumCheck = (str) => {
+    return !/[^\s\w-.]/g.test(str);
+  };
+  const resultList = [];
+
   for (let field of dataList) {
-    switch (field.name) {
-      case "ReferralSiteName":
-      case "ReferralSiteManager":
-      case "Address":
-      case "City":
-        correct = alphaNumCheck(field.value);
-        break;
-      case "State":
-        correct = field.value.length < 3 && field.value.length > 0;
-      case "Zip":
-        correct = field.value.length < 11 && field.value.length > 0;
-        break;
-      case "Telephone":
-        correct = field.value.length < 13 && field.value.length > 0;
-        break;
+    let { name, value } = field;
+    const obj = { name, value };
+    switch (name) {
       case "ReferralSiteEmail":
-        correct = field.value.length > 4 && field.value.length > 0;
+        obj.correct = true;
         break;
+
       default:
-        correct = true;
+        obj.correct = value ? alphaNumCheck(value) : true;
         break;
     }
-    checkedFieldList.push({ ...field, correct });
+    resultList.push(obj);
   }
-
-  return checkedFieldList;
+  return resultList;
 };
-
-const dataTestNewRecord = [
-  { name: "ReferralSiteName", value: "lkdfjghkadhfgah" },
-  { name: "ReferralSiteManager", value: "Werrr Deeer" },
-  { name: "Address", value: "123 1st st" },
-  { name: "City", value: "New City" },
-  { name: "State", value: "AS" },
-  { name: "Zip", value: "12345" },
-  { name: "County", value: "36007" },
-  { name: "CountyDesc", value: "36007 Broome" },
-  { name: "Telephone", value: "1231231234" },
-  { name: "ReferralSiteEmail", value: "myEmail@email.com" },
-];
