@@ -100,48 +100,6 @@ const createTableHeader = (labelsObject) => {
   return createHeaders(list);
 };
 
-const createBody = (dataList, labels) => {
-  let rows = "";
-  for (const record of dataList) {
-    const identifier = `${record.ID}-${record.AgencyID}`;
-
-    // zipCodeFormat() <== helperFunctions.js
-    const zipCode = zipCodeFormat(record.Zip);
-    const fullAddress = `${record.Address}<br>${record.City}<br>
-                          ${record.State} ${zipCode}`;
-
-    // phoneFormat() <== helperFunctions.js
-    const phoneNumber = record.Telephone
-      ? phoneFormat(phoneFormat(record.Telephone))
-      : "";
-
-    const fieldsArray = Object.keys(record).filter((fieldName) =>
-      labels.includes(labelObj[fieldName])
-    );
-
-    const row = fieldsArray
-      .map((key) => {
-        let value = "";
-        switch (key) {
-          case "Address":
-            value = fullAddress;
-            break;
-          case "Telephone":
-            value = phoneNumber;
-            break;
-          default:
-            value = record[key];
-            break;
-        }
-        return `<td class="cell-data ${key}">${value}</td>`;
-      })
-      .join("");
-
-    rows += `<tr id=${identifier} title="Click to edit">${row}</tr>`;
-  }
-  return `<tbody>${rows}</tbody>`;
-};
-
 const createTableBody = (dataList, labelObj) => {
   let rows = "";
   const hiddenList = ["ID", "Address", "State", "City", "Zip", "County"];
