@@ -5,7 +5,7 @@ const alphaNumCheck = (str) => {
   return /\w+$/i.test(str);
 };
 
-const validateUserInput = (dataList) => {
+const validateRecord = (dataList) => {
   let correct = true;
   const checkedFieldList = [];
   for (let field of dataList) {
