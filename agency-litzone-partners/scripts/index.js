@@ -212,6 +212,14 @@ const createViewBloc = () => {
   return viewBloc;
 };
 
+const getRequired = () => {
+  const list = $("#new-entry input, select").get();
+  const requiredList = list
+    .filter((item) => $(item).prop("required"))
+    .map((item) => $(item).attr("id"));
+  return requiredList;
+};
+
 // Used for new partner and edited partner data set
 const saveMods = (form) => {
   const { AuditUserID, AgencyID } = sessionVariable;
