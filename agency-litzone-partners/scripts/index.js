@@ -35,6 +35,7 @@ const createNewRecord = (labelsList) => {
   for (key of keyList) {
     let element = "";
     let option = "";
+    let type = "text";
     let classOption = " input-field";
     const placehold = labelObj[key];
     if (key === "State") {
@@ -59,12 +60,15 @@ const createNewRecord = (labelsList) => {
       if (requiredList.includes(key)) {
         option = " required title='Please fill this field'";
       }
+      if (key === "ReferralSiteEmail") type = "email";
+
       // inputNoLabel() <== helperFunctions()
       element = inputNoLabel({
         key,
         placehold,
         classOption,
         option,
+        type,
       });
     }
     result.push(element);
@@ -100,6 +104,7 @@ const createTableHeader = (labelsObject) => {
   return createHeaders(list);
 };
 
+//? Done
 const createTableBody = (dataList, labelObj) => {
   let rows = "";
   const hiddenList = ["ID", "Address", "State", "City", "Zip", "County"];
