@@ -17,13 +17,14 @@ const rowLabels = [
     City: "City",
     State: "State",
     Zip: "ZIP",
-    County: "County Code",
+    County: "County",
     CountyDesc: "County",
     Telephone: "Phone",
     ReferralSiteEmail: "Email",
   },
 ];
 
+//? Done
 const createNewRecord = (labelsList) => {
   let result = [];
   const labelObj = labelsList[0];
@@ -76,6 +77,123 @@ const createNewRecord = (labelsList) => {
   // const formContent = result.join("");
   // $("#new-partner").append(formContent);
   // $("#State-view, #CountyDesc-view").addClass("modal-select");
+};
+
+//? Done
+const createTableHeader = (labelsObject) => {
+  const list = Object.entries(labelsObject)
+    .filter(
+      (label) =>
+        ![
+          "ID",
+          "AgencyID",
+          "fullAddress",
+          "City",
+          "State",
+          "Zip",
+          "CountyDesc",
+        ].includes(label[0])
+    )
+    .map((label) => label[1]);
+
+  // createHeaders() <== helperFunctions.js
+  return createHeaders(list);
+};
+
+const createBody = (dataList, labels) => {
+  let rows = "";
+  for (const record of dataList) {
+    const identifier = `${record.ID}-${record.AgencyID}`;
+
+    // zipCodeFormat() <== helperFunctions.js
+    const zipCode = zipCodeFormat(record.Zip);
+    const fullAddress = `${record.Address}<br>${record.City}<br>
+                          ${record.State} ${zipCode}`;
+
+    // phoneFormat() <== helperFunctions.js
+    const phoneNumber = record.Telephone
+      ? phoneFormat(phoneFormat(record.Telephone))
+      : "";
+
+    const fieldsArray = Object.keys(record).filter((fieldName) =>
+      labels.includes(labelObj[fieldName])
+    );
+
+    const row = fieldsArray
+      .map((key) => {
+        let value = "";
+        switch (key) {
+          case "Address":
+            value = fullAddress;
+            break;
+          case "Telephone":
+            value = phoneNumber;
+            break;
+          default:
+            value = record[key];
+            break;
+        }
+        return `<td class="cell-data ${key}">${value}</td>`;
+      })
+      .join("");
+
+    rows += `<tr id=${identifier} title="Click to edit">${row}</tr>`;
+  }
+  return `<tbody>${rows}</tbody>`;
+};
+
+const createTableBody = (dataList, labelObj) => {
+  let rows = "";
+  const hiddenList = ["ID", "Address", "State", "City", "Zip", "County"];
+
+  const filteredLabelList = Object.keys(labelObj).filter(
+    (item) => !["AgencyID"].includes(item)
+  );
+  for (const record of dataList) {
+    const { Address, City, Zip, State, Telephone, County } = record;
+
+    // zipCodeFormat() <== helperFunction.js
+    record.fullAddress = `${Address}<br/>
+    ${City} ${State} ${zipCodeFormat(Zip)}`;
+    record.Zip = record.Zip ? zipCodeFormat(record.Zip) : "";
+
+    const countyObj = County
+      ? countyList.filter((item) => item.FIPS === County)[0]
+      : "";
+    record.countyDesc = countyObj ? countyObj.CountyDesc : countyObj;
+
+    // phoneFormat() <== helperFunction.js
+    record.Telephone = Telephone ? phoneFormat(phoneFormat(Telephone)) : "";
+
+    // createRow() <== helperFunction.js
+    rows += createRow({
+      record,
+      labelList: filteredLabelList,
+      labelObj,
+      hiddenList,
+    });
+  }
+  return `<tbody>${rows}</tbody>`;
+};
+
+//? Done
+const createViewBloc = () => {
+  const tableHeader = createTableHeader(rowLabels[0]);
+
+  // Sorting list of sites by descending ID
+  const list = dataPartners.sort((site1, site2) => site2.ID - site1.ID);
+  const tableBody = createTableBody(list, rowLabels[0]);
+  const viewBloc = tableHeader + tableBody;
+  return viewBloc;
+};
+
+//? Done
+const getRequired = () => {
+  const list = $("#new-entry input, select").get();
+  const requiredList = list
+    .filter((item) => $(item).prop("required"))
+    .map((item) => $(item).attr("id"));
+  return requiredList;
 };
 
 const createForm = (elmnt) => {
@@ -158,66 +276,6 @@ const createForm = (elmnt) => {
     .join("");
 
   return formFields;
-};
-
-const createBody = (dataList, labels) => {
-  let rows = "";
-  for (const record of dataList) {
-    const identifier = `${record.ID}-${record.AgencyID}`;
-
-    // zipCodeFormat() <== helperFunctions.js
-    const zipCode = zipCodeFormat(record.Zip);
-    const fullAddress = `${record.Address}<br>${record.City}<br>
-                          ${record.State} ${zipCode}`;
-
-    // phoneFormat() <== helperFunctions.js
-    const phoneNumber = record.Telephone
-      ? phoneFormat(phoneFormat(record.Telephone))
-      : "";
-
-    const fieldsArray = Object.keys(record).filter((fieldName) =>
-      labels.includes(labelObj[fieldName])
-    );
-
-    const row = fieldsArray
-      .map((key) => {
-        let value = "";
-        switch (key) {
-          case "Address":
-            value = fullAddress;
-            break;
-          case "Telephone":
-            value = phoneNumber;
-            break;
-          default:
-            value = record[key];
-            break;
-        }
-        return `<td class="cell-data ${key}">${value}</td>`;
-      })
-      .join("");
-
-    rows += `<tr id=${identifier} title="Click to edit">${row}</tr>`;
-  }
-  return `<tbody>${rows}</tbody>`;
-};
-
-const createViewBloc = () => {
-  const tableHeader = createTableHeader(rowLabels[0]);
-
-  // Sorting list of sites by descending ID
-  const list = dataPartners.sort((site1, site2) => site2.ID - site1.ID);
-  const tableBody = createTableBody(list, rowLabels[0]);
-  const viewBloc = tableHeader + tableBody;
-  return viewBloc;
-};
-
-const getRequired = () => {
-  const list = $("#new-entry input, select").get();
-  const requiredList = list
-    .filter((item) => $(item).prop("required"))
-    .map((item) => $(item).attr("id"));
-  return requiredList;
 };
 
 // Used for new partner and edited partner data set
