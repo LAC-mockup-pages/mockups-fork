@@ -30,7 +30,7 @@ const createNewRecord = (labelsList) => {
   const labelObj = labelsList[0];
   const requiredList = ["ReferralSiteName", "ReferralSiteID"];
   const keyList = Object.keys(labelObj).filter(
-    (key) => !["ID", "AgencyID", "fullAddress", "CountyDesc"].includes(key)
+    (key) => !["ID", "AgencyID", "fullAddress"].includes(key)
   );
   for (key of keyList) {
     let element = "";
@@ -74,8 +74,8 @@ const createNewRecord = (labelsList) => {
     result.push(element);
   }
   result.push(
-    `<button type="button" id="submit-btn" form="new-partner" class="btn btn-primary">Add</button>
-    <button type="button" id="cancel-btn" form="new-partner" class="btn btn-default">Cancel</button>`
+    `<button type="button" id="submit-btn" form="new-entry" class="btn btn-primary">Add</button>
+    <button type="button" id="cancel-btn" form="new-entry" class="btn btn-default">Cancel</button>`
   );
   return result.join("");
   // const formContent = result.join("");
@@ -226,47 +226,50 @@ const createForm = (list) => {
 };
 
 // Used for new partner and edited partner data set
-const saveMods = (form) => {
+const saveMods = (fields, formName, tableName = "") => {
   const { AuditUserID, AgencyID } = sessionVariable;
   const result = { AuditUserID, AgencyID };
-  const submittedData = $(form).serializeArray();
-  $(`${form} input`).removeClass("yellow-bg");
+  $(`${formName} input, select`).removeClass("yellow-bg");
+  const fieldList = fields.slice(0);
+  console.log("fieldList :>> ", fieldList);
+  // Data validation
+  // validateRecord() <== data-check.js
 
-  // Highlights invalid fields with yellow background and
-  // exits loop.
-  // validateUserInput() <== data-check.js
-  const validatedList = validateUserInput(submittedData);
+  //! const validatedList = validateRecord(fieldList);
+
+  const validatedList = [{ a: 1, b: 2, correct: true }];
+  // Background color change for invalid field values
   const checkFlag = validatedList.some((item) => !item.correct);
   if (checkFlag) {
     const list = validatedList.filter((obj) => obj.correct === false);
     for (let field of list) {
-      $(`#${field.name}`).addClass("yellow-bg");
+      const fieldId =
+        formName === "#new-entry" ? `#${field.name}` : `#${field.name}-view`;
+      $(fieldId).addClass("yellow-bg");
     }
     return;
-  }
-
-  for (let field of submittedData) {
-    if (field.name === "CountyDesc") {
-      result.County = field.value;
-      countyDescValue = countyList.filter(
-        (item) => item.FIPS === field.value
-      )[0].CountyDesc;
-      field.value = countyDescValue;
+  } else {
+    for (const field of fieldList) {
+      // phoneFormat <== helperFunctions()
+      if (field.name === "Telephone") field.value = phoneFormat(field.value);
+      if (field.name === "ReferralSiteEmail")
+        field.value = field.value !== "undefined" ? field.value : "";
+      if (field.name === "CountyDesc") result[field.name] = field.value;
     }
-    // phoneFormat <== helperFunctions()
-    if (field.name === "Telephone") field.value = phoneFormat(field.value);
-    result[field.name] = field.value;
-  }
-  const message = `Result from ${form} :>>`;
-  console.table(result);
-  const resultList = ["partnersData", JSON.stringify(result)];
-  //! =================================================
-  //! JSON Object to send back to database
-  console.log(message, resultList);
-  //! =================================================
 
-  //ToDO Reloading/resetting with new data
-  // location.reload();
+    const target = tableName ? tableName : "No table name";
+    const resultList = [formName, target, JSON.stringify(result)];
+    console.table(result);
+    //! =================================================
+    //! JSON Object to send back to database
+    console.log("result :", resultList);
+    //! =================================================
+
+    //ToDO Reloading/resetting with new data
+
+    if (formName === "#edit-form") $("#modalBloc").modal("toggle");
+    if (formName === "#new-entry") location.reload();
+  }
 };
 
 $(document).ready(() => {
@@ -307,8 +310,8 @@ $(document).ready(() => {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
-    saveMods(formId);
-    $(formId)[0].reset();
+    const newSource = $(formId).serializeArray();
+    saveMods(newSource, formId, "partnersData");
   });
 
   //* Canceling
