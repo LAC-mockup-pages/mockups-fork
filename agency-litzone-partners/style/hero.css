@@ -3,9 +3,10 @@ body {
 }
 
 .hero {
-  margin-top: 5px;
-  padding: 0 0 1% 0;
-  border-width: 6px 3px;
+  margin: 1% 6%;
+  padding: 0;
+  border-radius: 5px;
+  z-index: -500;
 }
 
 .partner-entry {
@@ -15,54 +16,69 @@ body {
   border-radius: 5px;
 }
 
+.view-bloc {
+  padding: 0 0 1% 0;
+  border-radius: 5px;
+}
+
 .label-text {
   font-size: 1.3em;
   font-weight: 600;
   padding: 0 0 0.5% 0.5%;
 }
 
-.new-record {
-  background-color: #b3f1cc;
-}
-
-#new-partner > .form-control {
-  font-size: 1.2em;
+#new-entry > .form-control {
+  font-size: 1.1em;
   padding: 0.5%;
-  margin: 5px 2px;
-}
-#State,
-#Zip {
-  max-width: 100px;
-}
-
-#CountyDesc {
-  max-width: 200px;
-}
-#Telephone,
-#Email {
-  max-width: 150px;
+  font-weight: 600;
+  margin-right: 0.3%;
+  margin-top: 0.3%;
+  height: 2.5em;
 }
 
-#new-partner {
+option {
+  color: #333;
+}
+
+#new-entry {
   margin-left: 1%;
 }
 
-:required::placeholder,
-.form-control:required,
-.delete-msg {
-  color: rgb(197, 65, 65);
-  font-weight: 700;
-  text-align: left;
+.col-width-small,
+#ReferralSiteID,
+#Zip,
+#Telephone,
+#ReferralSiteEmail {
+  max-width: 11%;
+}
+
+.col-width-large {
+  max-width: 25%;
+}
+
+.col-width-medium {
+  max-width: 15%;
 }
 
 #submit-btn,
 #cancel-btn {
-  margin-left: 1%;
+  margin: 0 0.5% 0 2%;
 }
 
-.data-view {
+.table {
+  margin: 0;
+}
+
+#main-table {
+  border-bottom: 1.5em solid #2479b5;
   border-radius: 5px;
-  padding-bottom: 2%;
+}
+
+:required::placeholder,
+.form-control:required {
+  color: rgb(197, 65, 65);
+  font-weight: 700;
+  text-align: left;
 }
 
 tbody {
@@ -96,17 +112,6 @@ th {
 
 .table > tbody > tr > .cell-data {
   line-height: 25px;
-}
-
-.small-cell {
-  max-width: 80px;
-}
-.Telephone,
-.CountyDesc,
-.ReferralSiteEmail {
-  width: 110px;
-  text-align: center;
-  font-size: 14px;
 }
 
 .input-field {
