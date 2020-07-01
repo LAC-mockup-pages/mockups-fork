@@ -5,145 +5,77 @@ const dataPartners = partnersData.slice(0);
 const countyList = countyData.slice(0);
 const stateList = ddlStates.slice(0);
 
-const labelObj = {
-  ID: "ID",
-  AgencyID: "agencyId",
-  ReferralSiteID: "Partner ID",
-  ReferralSiteName: "Partner Name",
-  ReferralSiteManager: "Manager",
-  Address: "Address",
-  City: "City",
-  State: "State",
-  Zip: "ZIP",
-  County: "County Code",
-  CountyDesc: "County",
-  Telephone: "Phone",
-  ReferralSiteEmail: "Email",
-};
+const rowLabels = [
+  {
+    ID: "ID",
+    AgencyID: "agencyId",
+    ReferralSiteID: "Partner ID",
+    ReferralSiteName: "Partner Name",
+    ReferralSiteManager: "Manager",
+    fullAddress: "Address",
+    Address: "Address",
+    City: "City",
+    State: "State",
+    Zip: "ZIP",
+    County: "County Code",
+    CountyDesc: "County",
+    Telephone: "Phone",
+    ReferralSiteEmail: "Email",
+  },
+];
 
-const createBody = (dataList, labels) => {
-  let rows = "";
-  for (const record of dataList) {
-    const identifier = `${record.ID}-${record.AgencyID}`;
-
-    // zipCodeFormat() <== helperFunctions.js
-    const zipCode = zipCodeFormat(record.Zip);
-    const fullAddress = `${record.Address}<br>${record.City}<br>
-                          ${record.State} ${zipCode}`;
-
-    // phoneFormat() <== helperFunctions.js
-    const phoneNumber = record.Telephone
-      ? phoneFormat(phoneFormat(record.Telephone))
-      : "";
-
-    const fieldsArray = Object.keys(record).filter((fieldName) =>
-      labels.includes(labelObj[fieldName])
-    );
-
-    const row = fieldsArray
-      .map((key) => {
-        let value = "";
-        switch (key) {
-          case "Address":
-            value = fullAddress;
-            break;
-          case "Telephone":
-            value = phoneNumber;
-            break;
-          default:
-            value = record[key];
-            break;
-        }
-        return `<td class="cell-data ${key}">${value}</td>`;
-      })
-      .join("");
-
-    rows += `<tr id=${identifier} title="Click to edit">${row}</tr>`;
-  }
-  return `<tbody>${rows}</tbody>`;
-};
-
-const createViewBloc = (dataObj, labels) => {
-  const labelList = [];
-  for (let label in labels) {
-    const value = labels[label];
-    const excludedLabels = [
-      "ID",
-      "agencyId",
-      "City",
-      "State",
-      "ZIP",
-      "County Code",
-    ];
-    if (!excludedLabels.includes(value)) {
-      labelList.push(value);
-    }
-  }
-  const bodyLabelList = labelList
-    .slice(0, 4)
-    .concat(["City", "State", "ZIP", "County Code"], labelList.slice(4));
-
-  // createHeaders() <== helperFunctions()
-  const headerLine = createHeaders(labelList);
-  const tableBody = createBody(dataObj, bodyLabelList);
-
-  $("#view-bloc").append(
-    `<table class="table">${headerLine}${tableBody}</table>`
-  );
-
-  // Elements hidden so they are included in the selection used to
-  // create the modal form for editing.
-  $(".City, .State, .Zip, .County").toggleClass("hidden");
-};
-
-const createNewRecord = (labelsObject) => {
+const createNewRecord = (labelsList) => {
   let result = [];
-  const keyList = Object.keys(labelsObject).filter(
-    (key) => !["ID", "AgencyID", "ReferralSiteID"].includes(key)
+  const labelObj = labelsList[0];
+  const requiredList = ["ReferralSiteName", "ReferralSiteID"];
+  const keyList = Object.keys(labelObj).filter(
+    (key) => !["ID", "AgencyID", "fullAddress", "CountyDesc"].includes(key)
   );
   for (key of keyList) {
+    let element = "";
     let option = "";
-    let classOption = "";
-    if (["County"].includes(key)) {
-      classOption = " hidden";
-    }
-    if (["ReferralSiteName", "ReferralSiteEmail"].includes(key)) {
-      option = " required";
-    }
-
-    let inputElement = `<input type="text" class="form-control${classOption}"
-      id=${key} name="${key}" placeholder="${labelsObject[key]}"${option}
-      autocomplete="new-password" spellcheck="off">`;
-
-    if (key === "CountyDesc") {
-      // elementSelectNewRecord() <== helperFunctions.js
-      inputElement = elementSelectNewRecord({
-        hashTable: countyList,
-        keyValue: key,
-        option: "",
-        optionText: "a county",
-      });
-    }
+    let classOption = " input-field";
+    const placehold = labelObj[key];
     if (key === "State") {
-      // elementSelectNewRecord() <== helperFunctions.js
-      inputElement = elementSelectNewRecord({
+      // elementSelectNewRecord() <== helperFunctions()
+      element = elementSelectNewRecord({
         hashTable: stateList,
         keyValue: key,
         option,
         optionText: "a state",
+        classOption,
+      });
+    } else if (key === "County") {
+      // elementSelectNewRecord() <== helperFunctions()
+      element = elementSelectNewRecord({
+        hashTable: countyList,
+        keyValue: key,
+        option,
+        optionText: "a county",
+        classOption,
+      });
+    } else {
+      if (requiredList.includes(key)) {
+        option = " required title='Please fill this field'";
+      }
+      // inputNoLabel() <== helperFunctions()
+      element = inputNoLabel({
+        key,
+        placehold,
+        classOption,
+        option,
       });
     }
-
-    result.push(inputElement);
+    result.push(element);
   }
   result.push(
     `<button type="button" id="submit-btn" form="new-partner" class="btn btn-primary">Add</button>
     <button type="button" id="cancel-btn" form="new-partner" class="btn btn-default">Cancel</button>`
   );
-
-  const formContent = result.join("");
-  $("#new-partner").append(formContent);
-  $("#State-view, #CountyDesc-view").addClass("modal-select");
+  return result.join("");
+  // const formContent = result.join("");
+  // $("#new-partner").append(formContent);
+  // $("#State-view, #CountyDesc-view").addClass("modal-select");
 };
 
 const createForm = (elmnt) => {
@@ -228,6 +160,58 @@ const createForm = (elmnt) => {
   return formFields;
 };
 
+const createBody = (dataList, labels) => {
+  let rows = "";
+  for (const record of dataList) {
+    const identifier = `${record.ID}-${record.AgencyID}`;
+
+    // zipCodeFormat() <== helperFunctions.js
+    const zipCode = zipCodeFormat(record.Zip);
+    const fullAddress = `${record.Address}<br>${record.City}<br>
+                          ${record.State} ${zipCode}`;
+
+    // phoneFormat() <== helperFunctions.js
+    const phoneNumber = record.Telephone
+      ? phoneFormat(phoneFormat(record.Telephone))
+      : "";
+
+    const fieldsArray = Object.keys(record).filter((fieldName) =>
+      labels.includes(labelObj[fieldName])
+    );
+
+    const row = fieldsArray
+      .map((key) => {
+        let value = "";
+        switch (key) {
+          case "Address":
+            value = fullAddress;
+            break;
+          case "Telephone":
+            value = phoneNumber;
+            break;
+          default:
+            value = record[key];
+            break;
+        }
+        return `<td class="cell-data ${key}">${value}</td>`;
+      })
+      .join("");
+
+    rows += `<tr id=${identifier} title="Click to edit">${row}</tr>`;
+  }
+  return `<tbody>${rows}</tbody>`;
+};
+
+const createViewBloc = () => {
+  const tableHeader = createTableHeader(rowLabels[0]);
+
+  // Sorting list of sites by descending ID
+  const list = dataPartners.sort((site1, site2) => site2.ID - site1.ID);
+  const tableBody = createTableBody(list, rowLabels[0]);
+  const viewBloc = tableHeader + tableBody;
+  return viewBloc;
+};
+
 // Used for new partner and edited partner data set
 const saveMods = (form) => {
   const { AuditUserID, AgencyID } = sessionVariable;
@@ -293,11 +277,14 @@ $(document).ready(() => {
   });
 
   //* Data viewing
-  createViewBloc(dataPartners, labelObj);
-  createNewRecord(labelObj, dataPartners[0].AgencyID);
+  $("#new-entry").append(createNewRecord(rowLabels));
+  $("#main-table").append(createViewBloc());
 
-  // cf elementSelectRecord() comments <== helperFunctions.js
-  $("#new-partner select, input").bind("focusin", function (evnt) {
+  // Change text color from red (required) to black
+  // when a value is entered
+  $(document).on("focusin", "#ReferralSiteID, #ReferralSiteName", function (
+    evnt
+  ) {
     evnt.stopPropagation();
     $(this).toggleClass("dark-text").prop("required", false);
   });
