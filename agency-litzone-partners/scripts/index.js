@@ -330,7 +330,7 @@ $(document).ready(() => {
     location.reload();
   });
 
-  //* Select record to edit
+  //* Select record to edit + display modal
   $(document).on("click", ".table tbody tr", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
