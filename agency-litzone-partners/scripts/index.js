@@ -252,7 +252,8 @@ const saveMods = (fields, formName, tableName = "") => {
   } else {
     for (const field of fieldList) {
       // phoneFormat <== helperFunctions()
-      if (field.name === "Telephone") field.value = phoneFormat(field.value);
+      if (field.name === "Telephone")
+        field.value = phoneFormat(phoneFormat(field.value));
       if (field.name === "ReferralSiteEmail")
         field.value = field.value !== "undefined" ? field.value : "";
       if (field.name === "CountyDesc") {
@@ -277,7 +278,10 @@ const saveMods = (fields, formName, tableName = "") => {
     //ToDO Reloading/resetting with new data
 
     if (formName === "#edit-form") $("#modalBloc").modal("toggle");
-    if (formName === "#new-entry") $(formName)[0].reset();
+    if (formName === "#new-entry") {
+      $(formName)[0].reset();
+      $("#ReferralSiteID, #ReferralSiteName").prop("required", true);
+    }
   }
 };
 

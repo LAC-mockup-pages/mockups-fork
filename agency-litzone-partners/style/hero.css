@@ -110,10 +110,6 @@ th {
   color: #fff;
 }
 
-.table > tbody > tr > .cell-data {
-  line-height: 25px;
-}
-
 .input-field {
   line-height: 30px;
 }
@@ -123,7 +119,8 @@ th {
   font-size: 1.2em;
 }
 
-.input-field > input {
+.input-field > input,
+.modal-select {
   font-size: 1.3em;
   font-weight: 700;
   border: none;
@@ -132,14 +129,8 @@ th {
   border-bottom: 1px solid #2479b5;
 }
 
-.modal-select,
-#new-select {
-  font-size: 1.3em;
-  line-height: 50px;
-  font-weight: 600;
-  padding: 5px;
-  border: none;
-  border-bottom: 1px solid #2479b5;
+.modal-select {
+  width: fit-content;
 }
 
 .modal-header,
