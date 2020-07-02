@@ -24,7 +24,6 @@ const rowLabels = [
   },
 ];
 
-//? Done
 const createNewRecord = (labelsList) => {
   let result = [];
   const labelObj = labelsList[0];
@@ -80,12 +79,8 @@ const createNewRecord = (labelsList) => {
     <button type="button" id="cancel-btn" form="new-entry" class="btn btn-default">Cancel</button>`
   );
   return result.join("");
-  // const formContent = result.join("");
-  // $("#new-partner").append(formContent);
-  // $("#State-view, #CountyDesc-view").addClass("modal-select");
 };
 
-//? Done
 const createTableHeader = (labelsObject) => {
   const list = Object.entries(labelsObject)
     .filter(
@@ -106,7 +101,6 @@ const createTableHeader = (labelsObject) => {
   return createHeaders(list);
 };
 
-//? Done
 const createTableBody = (dataList, labelObj) => {
   let rows = "";
   const hiddenList = ["ID", "Address", "State", "City", "Zip", "County"];
@@ -141,7 +135,6 @@ const createTableBody = (dataList, labelObj) => {
   return `<tbody>${rows}</tbody>`;
 };
 
-//? Done
 const createViewBloc = () => {
   const tableHeader = createTableHeader(rowLabels[0]);
 
@@ -152,7 +145,6 @@ const createViewBloc = () => {
   return viewBloc;
 };
 
-//? Done
 const getRequired = () => {
   const list = $("#new-entry input, select").get();
   const requiredList = list
@@ -161,7 +153,6 @@ const getRequired = () => {
   return requiredList;
 };
 
-//? Done
 const createForm = (list) => {
   let formContent = "";
   const requiredList = getRequired();
