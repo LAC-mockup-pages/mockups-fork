@@ -224,7 +224,6 @@ const saveMods = (fields, formName, tableName = "") => {
   const result = { AuditUserID, AgencyID };
   $(`${formName} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
-  console.log("fieldList :>> ", fieldList);
 
   // Data validation
   // validateRecord() <== data-check.js
@@ -233,7 +232,7 @@ const saveMods = (fields, formName, tableName = "") => {
   // Background color change for invalid field values
   const checkFlag = validatedList.some((item) => !item.correct);
   if (checkFlag) {
-    const list = validatedList.filter((obj) => obj.correct === false);
+    const list = validatedList.filter((obj) => !obj.correct);
     for (let field of list) {
       const fieldId =
         formName === "#new-entry" ? `#${field.name}` : `#${field.name}-view`;
