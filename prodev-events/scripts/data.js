@@ -1,6 +1,6 @@
 
-This object is the source for look up event dropdown on profdev_info page 
-After select, ID value is passed to GetRoster stored procedure
+// This object is the source for look up event dropdown on profdev_info page 
+// After select, ID value is passed to GetRoster stored procedure
  
 ProfDevEvents = [
   {"ProfDevActivityID":"PRA12112014_4015","ID":4015,"ActNameDesc":"Asists - 12/11/14"},
@@ -11,17 +11,17 @@ ProfDevEvents = [
   ]
   
 
-This object is the source for form on profdev_info page  
-ID value from dropdown is passed to GetProvDevInfo stored procedure
+// This object is the source for form on profdev_info page  
+// ID value from dropdown is passed to GetProvDevInfo stored procedure
 
   ProfDevEvents2= [
     {"ID":"4015","ProfDevActivityName":"Asists","ProfDevDescription":"morning","ProfDevDate":"12/11/2014","ProfDevProviderID":"528","ProfDevFY":"2014","ProfDevCategoryID":"53","ProfDevSubjectID":"1","ProfDevHours":"","ProfDevLocationID":"46","ProfDevFacilitator1":"1026","ProfDevFacilitator2":"2184","ProfDevFacilitator3":"2160","ProfDevFeeCharged":"","RAENEvent":"0","ProfDevComments":"","ProfDevTimeFrom":"","ProfDevTimeTo":""}
     ]
 
 
-This object is the source for table on profdev_roster page  
-ID value from dropdown is passed to GetProvDevRoster stored procedure 
-Key ID fields have been included 
+// This object is the source for table on profdev_roster page  
+// ID value from dropdown is passed to GetProvDevRoster stored procedure 
+// Key ID fields have been included 
 
 ProfDevRoster =[
 {"ID":"20828","AgencyID":"PRA","PDActivity_PKID":"4015","Personnel_PKID":"24224","PersonnelID":"cuesuzyPRA14","Name":"cue, suzy","Date":"12/11/2014","Attended":"True","FeesPaid":"False"},
@@ -30,14 +30,15 @@ ProfDevRoster =[
 {"ID":"20829","AgencyID":"PRA","PDActivity_PKID":"4015","Personnel_PKID":"23433","PersonnelID":"Thomas # 13MarcellasPRA9","Name":"Thomas # 13, Marcellas","Date":"12/11/2014","Attended":"False","FeesPaid":"False"}
 ]
 
- Do not Use - ProfDevRoster =[
+//  Do not Use - 
+ ProfDevRoster =[
   {"ID":"20828","AgencyID":"PRA","PersonnelID":"cuesuzyPRA14","Name":"cue, suzy","Date":"12/11/2014","Attended":"True","FeesPaid":"False"},{"ID":"20827","AgencyID":"PRA","PersonnelID":"DainMichillePRA19","Name":"Dains, Michille","Date":"12/11/2014","Attended":"True","FeesPaid":"False"},
   {"ID":"20831","AgencyID":"PRA","PersonnelID":"JonesTomPRA14","Name":"Jones, Tom","Date":"12/11/2014","Attended":"True","FeesPaid":"True"},{"ID":"20829","AgencyID":"PRA","PersonnelID":"Thomas # 13MarcellasPRA9","Name":"Thomas # 13, Marcellas","Date":"12/11/2014","Attended":"False","FeesPaid":"False"}
   ]
 
 
-This object is the source for Region dropdown on add new attendee on profdev_roster page 
-After select, ID value is passed to GetAgency stored procedure to filter agency list
+// This object is the source for Region dropdown on add new attendee on profdev_roster page 
+// After select, ID value is passed to GetAgency stored procedure to filter agency list
   
   Region = [
   {"RAENID":"CN"},
@@ -51,17 +52,17 @@ After select, ID value is passed to GetAgency stored procedure to filter agency 
   ]
   
   
-This object is the source for Agency dropdown on add new attendee on profdev_roster page 
-After select, ID value is passed to GetStaff stored procedure to filter personnel name list
+// This object is the source for Agency dropdown on add new attendee on profdev_roster page 
+// After select, ID value is passed to GetStaff stored procedure to filter personnel name list
   
   Agency = [
   {"AgencyID":"PRA","AgencyName":"Practice Agency"}
   ]
   
 
-This object is the source for Personnel Name dropdown on add new attendee on profdev_roster page 
-After select, ID and PersonnelID values should be saved to database 
-PersonnelID is saved for legacy queries 
+// This object is the source for Personnel Name dropdown on add new attendee on profdev_roster page 
+// After select, ID and PersonnelID values should be saved to database 
+// PersonnelID is saved for legacy queries 
   
 Staff = [
 {"ID":"","PersonnelID":"","Name":""},
@@ -75,7 +76,8 @@ Staff = [
 ]
 
 
-  Do Not Use - Staff = [
+  // Do Not Use - 
+  Staff = [
   {"PersonnelID":"","Name":""},
   {"PersonnelID":"AlfieriShelleyPRA1","Name":"Alfieri, Shelley"},
   {"PersonnelID":"AlisovaMurianaPRA9","Name":"Alisova, Muriana"},
