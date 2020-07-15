@@ -2,7 +2,7 @@
 // This object is the source for look up event dropdown on profdev_info page 
 // After select, ID value is passed to GetRoster stored procedure
  
-const ProfDevEvents = [
+const ProfDevEventsRoster = [
   {"ProfDevActivityID":"PRA12112014_4015","ID":4015,"ActNameDesc":"Asists - 12/11/14"},
   {"ProfDevActivityID":"PRA08052017_8898","ID":8898,"ActNameDesc":"ASISTS Build 10.4  - 08/05/17"},
   {"ProfDevActivityID":"PRA02282010_153","ID":153,"ActNameDesc":"asists Data entry Training - 02/28/10"},
@@ -14,7 +14,7 @@ const ProfDevEvents = [
 // This object is the source for form on profdev_info page  
 // ID value from dropdown is passed to GetProvDevInfo stored procedure
 
-const  ProfDevEvents2= [
+const  ProfDevEventsInfo= [
     {"ID":"4015","ProfDevActivityName":"Asists","ProfDevDescription":"morning","ProfDevDate":"12/11/2014","ProfDevProviderID":"528","ProfDevFY":"2014","ProfDevCategoryID":"53","ProfDevSubjectID":"1","ProfDevHours":"","ProfDevLocationID":"46","ProfDevFacilitator1":"1026","ProfDevFacilitator2":"2184","ProfDevFacilitator3":"2160","ProfDevFeeCharged":"","RAENEvent":"0","ProfDevComments":"","ProfDevTimeFrom":"","ProfDevTimeTo":""}
     ]
 
