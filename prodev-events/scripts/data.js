@@ -87,3 +87,93 @@ const Staff = [
 //   {"PersonnelID":"ZoroRoronoaPRA9","Name":"Zoro, Roronoa"}
 //   ]
   
+
+const Facilitator =  [
+  {"ID":"1","FacFirstName":"test1","FacLastName":"new","Address":"","City":"","State":"NY","Zip":"","HomePhone":"2125555555","Email":"qqwwqq","CellPhone":"","AlternatePhone":""},{"ID":"1026","FacFirstName":"Vutha","FacLastName":"Nguy","Address":"","City":"","State":"NY","Zip":"","HomePhone":"1111111111","Email":"vnguy@dycd.com","CellPhone":"","AlternatePhone":""},{"ID":"2184","FacFirstName":"Iglesias","FacLastName":"Lizelena","Address":"89 Broad Street","City":"New York","State":"NY","Zip":"10009","HomePhone":"2125556987","Email":"","CellPhone":"3475555896","AlternatePhone":""},{"ID":"2305","FacFirstName":"Srikanth","FacLastName":"Srinivasan","Address":"85 Broad Street ","City":"New York ","State":"NY","Zip":"11246","HomePhone":"2125554692","Email":"pra@asists.com","CellPhone":"","AlternatePhone":""},{"ID":"2160","FacFirstName":"Raju","FacLastName":"Srinivasan","Address":"455 5th Avenue ","City":"New York City ","State":"NY","Zip":"10016","HomePhone":"2125555555","Email":"rajus@lacnyc.org","CellPhone":"","AlternatePhone":""}
+  ]
+  
+const Locations =  [
+  {"ID":"1","FacilityName":"loco1","Address":"","City":"","State":"NY","Zip":"","Phone":"(___) ___-____","Email":""},{"ID":"46","FacilityName":"Utica","Address":"309 Genessee Street","City":"Utica","State":"NY","Zip":"","Phone":"","Email":""},{"ID":"812","FacilityName":"DYCD","Address":"","City":"","State":"NY","Zip":"","Phone":"","Email":""},{"ID":"1534","FacilityName":"LAC-FiDi","Address":"89 Broad Street ","City":"New York City ","State":"NY","Zip":"10003","Phone":"2125553699","Email":""},{"ID":"1591","FacilityName":"Literacy Assistance Center","Address":"85 Broad Street ","City":"New York ","State":"NY","Zip":"10004","Phone":"2125553355","Email":""}
+  ]
+  
+const Providers =  [
+  {"ID":"528","ProviderName":"DYCD","Address":"","City":"","State":"NY","Zip":"","Phone":"0000000000","Email":"000"},{"ID":"959","ProviderName":"LAC-FIDI","Address":"89 Broad Street","City":"New York","State":"NY","Zip":"10009","Phone":"2125558035","Email":""},{"ID":"992","ProviderName":"Literacy Assistance Center ","Address":"85 Broad Street ","City":"New York ","State":"NY","Zip":"10004","Phone":"2125553355","Email":"pra@asists.com"},{"ID":"1","ProviderName":"provider1","Address":"","City":"","State":"NY","Zip":"","Phone":"2125555555","Email":"ggffghgfh"}
+  ]
+  
+  const FiscalYear = [
+    {"FiscalYear":"2021"},
+    {"FiscalYear":"2020"},
+    {"FiscalYear":"2019"},
+    {"FiscalYear":"2018"},
+    {"FiscalYear":"2017"},
+    {"FiscalYear":"2016"},
+    {"FiscalYear":"2015"},
+    {"FiscalYear":"2014"}
+    ]
+  
+  const sessionVariable = {
+    AgencyID: "PRA",
+    AuditUserID: '<%= Session["UserID"] %>',
+    };
+  
+  const States = [
+    { "Abbrev": "AL", "State": "Alabama" },
+    { "Abbrev": "AS", "State": "American Samoa" },
+    { "Abbrev": "AK", "State": "Alaska" },
+    { "Abbrev": "AZ", "State": "Arizona" },
+    { "Abbrev": "AR", "State": "Arkansas" },
+    { "Abbrev": "CA", "State": "California" },
+    { "Abbrev": "CO", "State": "Colorado" },
+    { "Abbrev": "CT", "State": "Connecticut" },
+    { "Abbrev": "DE", "State": "Delaware" },
+    { "Abbrev": "DC", "State": "District Of Columbia" },
+    { "Abbrev": "FM", "State": "Federated States Of Micronesia" },
+    { "Abbrev": "FL", "State": "Florida" },
+    { "Abbrev": "GA", "State": "Georgia" },
+    { "Abbrev": "GU", "State": "Guam" },
+    { "Abbrev": "HI", "State": "Hawaii" },
+    { "Abbrev": "ID", "State": "Idaho" },
+    { "Abbrev": "IL", "State": "Illinois" },
+    { "Abbrev": "IN", "State": "Indiana" },
+    { "Abbrev": "IA", "State": "Iowa" },
+    { "Abbrev": "KS", "State": "Kansas" },
+    { "Abbrev": "KY", "State": "Kentucky" },
+    { "Abbrev": "LA", "State": "Louisiana" },
+    { "Abbrev": "ME", "State": "Maine" },
+    { "Abbrev": "MH", "State": "Marshall Islands" },
+    { "Abbrev": "MD", "State": "Maryland" },
+    { "Abbrev": "MA", "State": "Massachusetts" },
+    { "Abbrev": "MI", "State": "Michigan" },
+    { "Abbrev": "MN", "State": "Minnesota" },
+    { "Abbrev": "MS", "State": "Mississippi" },
+    { "Abbrev": "MO", "State": "Missouri" },
+    { "Abbrev": "MT", "State": "Montana" },
+    { "Abbrev": "NE", "State": "Nebraska" },
+    { "Abbrev": "NV", "State": "Nevada" },
+    { "Abbrev": "NH", "State": "New Hampshire" },
+    { "Abbrev": "NJ", "State": "New Jersey" },
+    { "Abbrev": "NM", "State": "New Mexico" },
+    { "Abbrev": "NY", "State": "New York" },
+    { "Abbrev": "NC", "State": "North Carolina" },
+    { "Abbrev": "ND", "State": "North Dakota" },
+    { "Abbrev": "MP", "State": "Northern Mariana Islands" },
+    { "Abbrev": "OH", "State": "Ohio" },
+    { "Abbrev": "OK", "State": "Oklahoma" },
+    { "Abbrev": "OR", "State": "Oregon" },
+    { "Abbrev": "PW", "State": "Palau" },
+    { "Abbrev": "PA", "State": "Pennsylvania" },
+    { "Abbrev": "PR", "State": "Puerto Rico" },
+    { "Abbrev": "RI", "State": "Rhode Island" },
+    { "Abbrev": "SC", "State": "South Carolina" },
+    { "Abbrev": "SD", "State": "South Dakota" },
+    { "Abbrev": "TN", "State": "Tennessee" },
+    { "Abbrev": "TX", "State": "Texas" },
+    { "Abbrev": "UT", "State": "Utah" },
+    { "Abbrev": "VT", "State": "Vermont" },
+    { "Abbrev": "VI", "State": "Virgin Islands" },
+    { "Abbrev": "VA", "State": "Virginia" },
+    { "Abbrev": "WA", "State": "Washington" },
+    { "Abbrev": "WV", "State": "West Virginia" },
+    { "Abbrev": "WI", "State": "Wisconsin" },
+    { "Abbrev": "WY", "State": "Wyoming" },
+      ]; 
