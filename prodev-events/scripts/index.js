@@ -2,6 +2,13 @@
 
 // Isolate work objects and arrays from data source.
 const dataSource = ProfDevEventsInfo.slice(0);
+const facilitatorList = Facilitator.slice(0);
+const providerList = Providers.slice(0);
+const locationList = Locations.slice(0);
+const fiscalYearList = FiscalYear.slice(0);
+const categoryList = Categories.slice(0);
+const subjectList = Subjects.slice(0);
+const sessionList = [{ morning: "morning" }, { afternoon: "afternoon" }];
 const stateList = States.slice(0);
 
 const rowLabels = [
