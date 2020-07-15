@@ -15,21 +15,21 @@ const rowLabels = [
   {
     ID: "ID",
     ProfDevActivityName: "Name",
-    ProfDevDescription: "Session",
     ProfDevDate: "Date",
+    ProfDevDescription: "Session",
     ProfDevProviderID: "Provider ID",
     profdevProvider: "Provider",
+    ProfDevLocationID: "LocationID",
+    profdevLocation: "Location",
     ProfDevFY: "Fiscal Year",
     ProfDevCategoryID: "Category ID",
     profdevCategory: "Category",
     ProfDevSubjectID: "Subject ID",
     profdevSubject: "Subject",
     ProfDevHours: "Hours",
-    ProfDevLocationID: "LocatioinID",
-    profdevLocation: "Location",
-    ProfDevFacilitator1ID: "Facilitator1 ID",
-    ProfDevFacilitator2ID: "Facilitator2 ID",
-    ProfDevFacilitator3ID: "Facilitator3 ID",
+    ProfDevFacilitator1: "Facilitator1 ID",
+    ProfDevFacilitator2: "Facilitator2 ID",
+    ProfDevFacilitator3: "Facilitator3 ID",
     ProfDevFeeCharged: "Fee",
     RAENEvent: "RAEN Event",
     ProfDevComments: "Comments",
@@ -49,30 +49,53 @@ const createNewRecord = (labelsList) => {
     "ProfDevProviderID",
     "ProfDevCategoryID",
     "ProfDevSubjectID",
-    "ProfDevFacilitator1ID",
+    "ProfDevFacilitator1",
     "ProfDevLocationID",
   ];
-  const keyList = Object.keys(labelObj).filter((key) => !["ID"].includes(key));
+  const hiddenList = [
+    "ProfDevHours",
+    "ProfDevFacilitator2",
+    "ProfDevFacilitator3",
+    "ProfDevFeeCharged",
+    "ProfDevComments",
+    "ProfDevTimeFrom",
+    "ProfDevTimeTo",
+  ];
+  const keyList = Object.keys(labelObj).filter(
+    (key) =>
+      ![
+        "ID",
+        "profdevProvider",
+        "profdevCategory",
+        "profdevSubject",
+        "profdevLocation",
+        "RAENEvent",
+      ].includes(key)
+  );
   for (key of keyList) {
     let element = "";
     let option = "";
     let type = "text";
     let classOption = " input-field";
     const placehold = labelObj[key];
-    if (key === "State") {
+    if (key === "ProfDevProviderID") {
+      const shortList = providerList.map((provider) => {
+        return { ID: provider.ID, name: provider.ProviderName };
+      });
+      option = " required title='Please fill this field'";
       // elementSelectNewRecord() <== helperFunctions()
       element = elementSelectNewRecord({
-        hashTable: stateList,
+        hashTable: shortList,
         keyValue: key,
         option,
-        optionText: "a state",
+        optionText: "a provider",
         classOption,
       });
     } else {
       if (requiredList.includes(key)) {
         option = " required title='Please fill this field'";
       }
-      // if (hiddenList.includes(key)) classOption += " hidden";
+      if (hiddenList.includes(key)) classOption += " hidden";
       if (key === "Email") type = "email";
 
       // inputNoLabel() <== helperFunctions()
@@ -91,6 +114,53 @@ const createNewRecord = (labelsList) => {
     <button type="button" id="cancel-btn" form="new-entry" class="btn btn-default">Cancel</button>`
   );
   return result.join("");
+};
+
+const createTableHeader = (labelsObject) => {
+  const list = Object.entries(labelsObject)
+    .filter(
+      (label) =>
+        ![
+          "ID",
+          "ProfDevProviderID",
+          "ProfDevFY",
+          "ProfDevCategoryID",
+          "ProfDevSubjectID",
+          "ProfDevLocationID",
+          "ProfDevFacilitator1",
+          "ProfDevFacilitator2",
+          "ProfDevFacilitator3",
+          "ProfDevFeeCharged",
+          "RAENEvent",
+          "ProfDevComments",
+          "ProfDevTimeFrom",
+          "ProfDevTimeTo",
+        ].includes(label[0])
+    )
+    .map((label) => label[1]);
+
+  // createHeaders() <== helperFunctions.js
+  return createHeaders(list);
+};
+
+const createViewBloc = () => {
+  const tableHeader = createTableHeader(rowLabels[0]);
+
+  // Sorting list of sites by descending ID
+  // const list = dataSource.sort((site1, site2) => site2.ID - site1.ID);
+  // const tableBody = createTableBody(list, rowLabels[0]);
+  // const viewBloc = tableHeader + tableBody;
+  // return viewBloc;
+
+  return tableHeader;
+};
+
+const getRequired = () => {
+  const list = $("#new-entry input, select").get();
+  const requiredList = list
+    .filter((item) => $(item).prop("required"))
+    .map((item) => $(item).attr("id"));
+  return requiredList;
 };
 
 $(document).ready(() => {
@@ -115,18 +185,14 @@ $(document).ready(() => {
 
   //* Data viewing
   $("#new-entry").append(createNewRecord(rowLabels));
-  // $("#main-table").append(createViewBloc());
+  $("#main-table").append(createViewBloc());
 
   // Change text color from red (required) to black
   // when a value is entered
-  // $(document).on(
-  //   "focusin",
-  //   "#FacFirstName, #FacLastName, #HomePhone, #Email",
-  //   function (evnt) {
-  //     evnt.stopPropagation();
-  //     $(this).toggleClass("dark-text").prop("required", false);
-  //   }
-  // );
+  $(document).on("focusin", "#ProfDevProviderID-view", function (evnt) {
+    evnt.stopPropagation();
+    $(this).toggleClass("dark-text").prop("required", false);
+  });
 
   //* Adding a new partner
   // $(document).on("click", "#submit-btn", function (evnt) {
