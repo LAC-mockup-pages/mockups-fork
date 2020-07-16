@@ -2,6 +2,7 @@
 
 // Isolate work objects and arrays from data source.
 const dataSource = ProfDevEventsInfo.slice(0);
+const rosterList = ProfDevRoster.slice(0);
 const facilitatorList = Facilitator.slice(0);
 const providerList = Providers.slice(0);
 const locationList = Locations.slice(0);
@@ -17,24 +18,24 @@ const rowLabels = [
     ProfDevActivityName: "Name",
     ProfDevDate: "Date",
     ProfDevDescription: "Session",
-    ProfDevProviderID: "Provider ID",
-    profdevProvider: "Provider",
-    ProfDevLocationID: "LocationID",
-    profdevLocation: "Location",
+    ProfDevProviderID: "Provider",
+    // profdevProvider: "Provider",
+    ProfDevLocationID: "Location",
+    // profdevLocation: "Location",
     ProfDevFY: "Fiscal Year",
-    ProfDevCategoryID: "Category ID",
-    profdevCategory: "Category",
-    ProfDevSubjectID: "Subject ID",
-    profdevSubject: "Subject",
+    ProfDevCategoryID: "Category",
+    // profdevCategory: "Category",
+    ProfDevSubjectID: "Subject",
+    // profdevSubject: "Subject",
+    ProfDevTimeFrom: "Start Time",
+    ProfDevTimeTo: "End Time",
     ProfDevHours: "Hours",
-    ProfDevFacilitator1: "Facilitator1 ID",
-    ProfDevFacilitator2: "Facilitator2 ID",
-    ProfDevFacilitator3: "Facilitator3 ID",
+    ProfDevFacilitator1: "Facilitator1",
+    ProfDevFacilitator2: "Facilitator2",
+    ProfDevFacilitator3: "Facilitator3",
     ProfDevFeeCharged: "Fee",
     RAENEvent: "RAEN Event",
     ProfDevComments: "Comments",
-    ProfDevTimeFrom: "Start Time",
-    ProfDevTimeTo: "End Time",
   },
 ];
 
@@ -62,15 +63,7 @@ const createNewRecord = (labelsList) => {
     "ProfDevTimeTo",
   ];
   const keyList = Object.keys(labelObj).filter(
-    (key) =>
-      ![
-        "ID",
-        "profdevProvider",
-        "profdevCategory",
-        "profdevSubject",
-        "profdevLocation",
-        "RAENEvent",
-      ].includes(key)
+    (key) => !["ID", "RAENEvent"].includes(key)
   );
   for (key of keyList) {
     let element = "";
@@ -122,11 +115,7 @@ const createTableHeader = (labelsObject) => {
       (label) =>
         ![
           "ID",
-          "ProfDevProviderID",
           "ProfDevFY",
-          "ProfDevCategoryID",
-          "ProfDevSubjectID",
-          "ProfDevLocationID",
           "ProfDevFacilitator1",
           "ProfDevFacilitator2",
           "ProfDevFacilitator3",
@@ -143,16 +132,55 @@ const createTableHeader = (labelsObject) => {
   return createHeaders(list);
 };
 
+const createTableBody = (dataList, labelObj) => {
+  let rows = "";
+  const hiddenList = [
+    "ID",
+    "ProfDevFY",
+    "ProfDevFacilitator1",
+    "ProfDevFacilitator2",
+    "ProfDevFacilitator3",
+    "ProfDevFeeCharged",
+    "RAENEvent",
+    "ProfDevComments",
+    "ProfDevTimeFrom",
+    "ProfDevTimeTo",
+  ];
+
+  const filteredLabelList = Object.keys(labelObj).filter(
+    (item) => !["AgencyID"].includes(item)
+  );
+  for (const recordObj of dataList) {
+    // zipCodeFormat() <== helperFunction.js
+    // formattedZip = recordObj.Zip ? zipCodeFormat(recordObj.Zip) : "";
+
+    // phoneFormat() <== helperFunction.js
+    // formattedPhone = phoneFormat(recordObj.Phone);
+
+    // const record = { ...recordObj, Zip: formattedZip, Phone: formattedPhone };
+    const record = { ...recordObj };
+    // createRow() <== helperFunction.js
+    rows += createRow({
+      record,
+      labelList: filteredLabelList,
+      labelObj,
+      hiddenList,
+    });
+  }
+  return `<tbody>${rows}</tbody>`;
+};
 const createViewBloc = () => {
   const tableHeader = createTableHeader(rowLabels[0]);
 
   // Sorting list of sites by descending ID
   // const list = dataSource.sort((site1, site2) => site2.ID - site1.ID);
   // const tableBody = createTableBody(list, rowLabels[0]);
-  // const viewBloc = tableHeader + tableBody;
-  // return viewBloc;
+  const tableBody = createTableBody(dataSource, rowLabels[0]);
 
-  return tableHeader;
+  const viewBloc = tableHeader + tableBody;
+  return viewBloc;
+
+  // return tableHeader;
 };
 
 const getRequired = () => {
@@ -161,6 +189,77 @@ const getRequired = () => {
     .filter((item) => $(item).prop("required"))
     .map((item) => $(item).attr("id"));
   return requiredList;
+};
+
+const createRosterBloc = () => {
+  const headerRoster = createHeaders([
+    "Personnal ID",
+    "Name",
+    "Attended",
+    "Fee Paid",
+  ]);
+  const bodyRoster = rosterList
+    .map((person) => {
+      return `<tr>
+  <td class="cell-data">${person.PersonnelID}</td>
+  <td class="cell-data">${person.Name}</td>
+  <td class="cell-data">${person.Attended}</td>
+  <td class="cell-data">${person.FeesPaid}</td>
+  </tr>`;
+    })
+    .join("");
+  return `<h3 class="blue-light-text" style="text-align:center">Event Roster</h3>
+  <table class="table blue-bg" id="roster-table">
+  ${headerRoster}
+  <tbody>
+  ${bodyRoster}
+  </tbody>
+  </table>`;
+};
+
+const createEventView = (tdList, labelObj) => {
+  const fullLength = tdList.length;
+  const halfLength = Math.ceil(fullLength / 2);
+  console.log("fullLength :>> ", fullLength);
+  console.log("halfLength :>> ", halfLength);
+  console.log("tdList :>> ", tdList);
+  let leftBloc = "";
+  let rightBloc = "";
+  let rosterBloc = createRosterBloc();
+
+  for (let i = 0, j = halfLength; i < halfLength, j < fullLength; i++, j++) {
+    const tdLeft = tdList[i];
+    const tdRight = tdList[j];
+    leftBloc += elementInput({
+      keyVal: $(tdLeft).attr("data-name"),
+      labelVal: $(tdLeft).attr("data-label"),
+      value: $(tdLeft).text(),
+      labelClassVal: "",
+      classVal: "",
+      option: "",
+      optionHidden: " form-group",
+    });
+
+    rightBloc += elementInput({
+      keyVal: $(tdRight).attr("data-name"),
+      labelVal: $(tdRight).attr("data-label"),
+      value: $(tdRight).text(),
+      labelClassVal: "",
+      classVal: "",
+      option: "",
+      optionHidden: " form-group",
+    });
+  }
+
+  const eventView = `<div class="container-fluid row event-view">
+    <div class="col-md-6 left-event-view">${leftBloc}</div>
+    <div class="col-md-6 right-event-view">${rightBloc}</div>
+    <button type="button" id="save-changes-btn" form="new-entry" class="btn btn-primary">Save Changes</button>
+    <button type="button" id="cancel-changes-btn" form="new-entry" class="btn btn-default">Cancel</button>
+
+    </div>
+  ${rosterBloc}`;
+  return eventView;
 };
 
 $(document).ready(() => {
@@ -210,17 +309,22 @@ $(document).ready(() => {
     location.reload();
   });
 
-  //* Select record to edit + display modal
-  // $(document).on("click", ".table tbody tr", function (evnt) {
-  //   evnt.preventDefault();
-  //   evnt.stopPropagation();
+  //* Select record to edit + display selected event & roster
+  $(document).on("click", ".table tbody tr", function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
 
-  //   const rowID = "#" + $(this).attr("id");
-  //   const selectedRow = $(`${rowID} td`).get();
-  //   const editForm = createModalForm(selectedRow);
-  //   $("#modalBloc").modal("toggle");
-  //   $("#edit-form").empty().append(editForm);
-  // });
+    const rowID = "#" + $(this).attr("id");
+    const selectedRow = $(`${rowID} td`).get();
+    const eventView = createEventView(selectedRow, rowLabels);
+    // Cleaning up
+    $(".record-entry").toggleClass("hidden");
+    $("#view-bloc").empty().append(eventView);
+
+    //   const editForm = createModalForm(selectedRow);
+    //   $("#modalBloc").modal("toggle");
+    //   $("#edit-form").empty().append(editForm);
+  });
 
   //* Saving mods after editing selected record
   // $(document).on("click", "#save-btn", function (evnt) {

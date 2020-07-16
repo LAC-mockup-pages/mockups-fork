@@ -20,6 +20,24 @@ body {
   border-radius: 5px;
 }
 
+/* Temporary Styling */
+.event-view {
+  border-top: 1.5em solid #2479b5;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin-right: 0;
+  margin-left: 0;
+  padding: 1% 0.5%;
+  background-color: #fff;
+}
+#roster-table {
+}
+#roster-table > tbody {
+  width: 95%;
+  margin: auto;
+  background-color: #fff;
+}
+
 .label-text {
   font-size: 1.3em;
   font-weight: 600;
