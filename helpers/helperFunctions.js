@@ -66,9 +66,7 @@ const elementSelectNewRecord = (argsObj) => {
   const descriptor = optionText ? optionText : "an option";
   const classVal = classOption ? ` ${classOption.trim()}` : "";
   const elementSelect = `
-     <select id="${
-       keyValue + "-view"
-     }" class="form-control${classVal}" name="${keyValue}" ${option}>
+     <select id="${keyValue}" class="form-control${classVal}" name="${keyValue}" ${option}>
       <option value=''>Select ${descriptor}</option>
       ${optionList}
      </select>`;
@@ -124,7 +122,6 @@ const phoneFormat = (str) => {
     ? `${str.slice(0, 3)}-${str.slice(3, 6)}-${str.slice(6)}`
     : str;
 };
-
 
 // dataObj: JSON object
 // labelObj: JS Object with key from dataObj, value = label
