@@ -251,14 +251,14 @@ const createEventView = (tdList, labelObj) => {
     });
   }
 
-  const eventView = `<div class="container-fluid row event-view">
-    <div class="col-md-6 left-event-view">${leftBloc}</div>
-    <div class="col-md-6 right-event-view">${rightBloc}</div>
-    <button type="button" id="save-changes-btn" form="new-entry" class="btn btn-primary">Save Changes</button>
-    <button type="button" id="cancel-changes-btn" form="new-entry" class="btn btn-default">Cancel</button>
-
+  const eventView = `${rosterBloc}
+  <div class="container-fluid row event-view">
+      <div class="col-md-6 left-event-view">${leftBloc}</div>
+      <div class="col-md-6 right-event-view">${rightBloc}</div>
+      <button type="button" id="save-changes-btn" form="new-entry" class="btn btn-primary">Save Changes</button>
+      <button type="button" id="cancel-changes-btn" form="new-entry" class="btn btn-default">Cancel</button>
     </div>
-  ${rosterBloc}`;
+  `;
   return eventView;
 };
 
