@@ -75,7 +75,7 @@ const createNewRecord = (labelsList) => {
       const shortList = providerList.map((provider) => {
         return { ID: provider.ID, name: provider.ProviderName };
       });
-      option = " required title='Please fill this field'";
+      option = " required data-toggle='tooltip' title='Please fill this field'";
       // elementSelectNewRecord() <== helperFunctions()
       element = elementSelectNewRecord({
         hashTable: shortList,
