@@ -32,7 +32,7 @@ const elementInput = (obj) => {
 const inputNoLabel = (argsObj) => {
   const { key, placehold, classOption, option, type } = argsObj;
   const selectType = type ? type : "text";
-  return `<input type=${selectType} class="form-control${classOption}" id=${key}
+  return `<input type=${selectType} class="form-control input-field${classOption}" id=${key}
             name="${key}" placeholder="${placehold}"${option}
             autocomplete="off" spellcheck="off"/>`;
 };
@@ -65,11 +65,10 @@ const elementSelectNewRecord = (argsObj) => {
     .join("");
   const descriptor = optionText ? optionText : "an option";
   const classVal = classOption ? ` ${classOption.trim()}` : "";
-  const elementSelect = `
-     <select id="${keyValue}" class="form-control${classVal}" name="${keyValue}" ${option}>
-      <option value=''>Select ${descriptor}</option>
-      ${optionList}
-     </select>`;
+  const elementSelect = `<select id=${keyValue}
+    class="form-control input-field${classVal}" name=${keyValue} ${option}>
+    <option value=''>Select ${descriptor}</option>${optionList}
+  </select>`;
 
   return elementSelect;
 };
