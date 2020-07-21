@@ -125,7 +125,7 @@ option {
   line-height: 40px;
 }
 
-tbody > tr:hover {
+#main-table tbody > tr:hover {
   background-color: #d3e4f0;
 }
 
