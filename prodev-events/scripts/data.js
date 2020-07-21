@@ -15,7 +15,7 @@ const ProfDevEventsRoster = [
 // ID value from dropdown is passed to GetProvDevInfo stored procedure
 
 const  ProfDevEventsInfo= [
-    {"ID":"4015","ProfDevActivityName":"Asists","ProfDevDescription":"morning","ProfDevDate":"12/11/2014","ProfDevProviderID":"528","ProfDevFY":"2014","ProfDevCategoryID":"53","ProfDevSubjectID":"1","ProfDevHours":"","ProfDevLocationID":"46","ProfDevFacilitator1":"1026","ProfDevFacilitator2":"2184","ProfDevFacilitator3":"2160","ProfDevFeeCharged":"","RAENEvent":"0","ProfDevComments":"","ProfDevTimeFrom":"","ProfDevTimeTo":""}
+    {"ID":"4015","ProfDevActivityName":"Asists","ProfDevDescription":"morning","ProfDevDate":"12/11/2014","ProfDevProviderID":"528","ProfDevFY":"2014","ProfDevCategoryID":"53","ProfDevSubjectID":"1","ProfDevHours":"","ProfDevLocationID":"46","ProfDevFacilitator1":"1026","ProfDevFacilitator2":"2184","ProfDevFacilitator3":"2160","ProfDevFeeCharged":"","RAENEvent":"0","ProfDevComments":"","ProfDevTimeFrom":"","ProfDevTimeTo":""}, {"ID":"4321","ProfDevActivityName":"ASISTS for Beginners","ProfDevDescription":"afternoon","ProfDevDate":"11/01/2016","ProfDevProviderID":"959","ProfDevFY":"2017","ProfDevCategoryID":"26","ProfDevSubjectID":"6","ProfDevHours":"7","ProfDevLocationID":"1591","ProfDevFacilitator1":"2305","ProfDevFacilitator2":"","ProfDevFacilitator3":"","ProfDevFeeCharged":"500","RAENEvent":"0","ProfDevComments":"Great training.","ProfDevTimeFrom":"9:00AM","ProfDevTimeTo":"5:00PM"}
     ]
 
 
