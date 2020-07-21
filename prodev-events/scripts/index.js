@@ -19,20 +19,23 @@ const rowLabels = [
     ProfDevDate: "Date",
     ProfDevDescription: "Session",
     ProfDevProviderID: "Provider",
-    // profdevProvider: "Provider",
+    profdevProvider: "Provider",
     ProfDevLocationID: "Location",
-    // profdevLocation: "Location",
+    profdevLocation: "Location",
     ProfDevFY: "Fiscal Year",
     ProfDevCategoryID: "Category",
-    // profdevCategory: "Category",
+    profdevCategory: "Category",
     ProfDevSubjectID: "Subject",
-    // profdevSubject: "Subject",
+    profdevSubject: "Subject",
     ProfDevTimeFrom: "Start Time",
     ProfDevTimeTo: "End Time",
     ProfDevHours: "Hours",
     ProfDevFacilitator1: "Facilitator1",
+    profdevFac1: "Facilitator1",
     ProfDevFacilitator2: "Facilitator2",
+    profdevFac2: "Facilitator2",
     ProfDevFacilitator3: "Facilitator3",
+    profdevFac3: "Facilitator3",
     ProfDevFeeCharged: "Fee",
     RAENEvent: "RAEN Event",
     ProfDevComments: "Comments",
@@ -55,6 +58,13 @@ const createNewRecord = (labelsList) => {
     "ProfDevLocationID",
   ];
   const hiddenList = [
+    "profdevProvider",
+    "profdevLocation",
+    "profdevCategory",
+    "profdevSubject",
+    "profdevFac1",
+    "profdevFac2",
+    "profdevFac3",
     "ProfDevHours",
     "ProfDevFacilitator3",
     "ProfDevFeeCharged",
@@ -114,9 +124,16 @@ const createTableHeader = (labelsObject) => {
         ![
           "ID",
           "ProfDevFY",
+          "ProfDevProviderID",
+          "ProfDevLocationID",
+          "ProfDevCategoryID",
+          "ProfDevSubjectID",
           "ProfDevFacilitator1",
           "ProfDevFacilitator2",
           "ProfDevFacilitator3",
+          "profdevFac1",
+          "profdevFac2",
+          "profdevFac3",
           "ProfDevFeeCharged",
           "RAENEvent",
           "ProfDevComments",
@@ -135,9 +152,16 @@ const createTableBody = (dataList, labelObj) => {
   const hiddenList = [
     "ID",
     "ProfDevFY",
+    "ProfDevProviderID",
+    "ProfDevLocationID",
+    "ProfDevCategoryID",
+    "ProfDevSubjectID",
     "ProfDevFacilitator1",
     "ProfDevFacilitator2",
     "ProfDevFacilitator3",
+    "profdevFac1",
+    "profdevFac2",
+    "profdevFac3",
     "ProfDevFeeCharged",
     "RAENEvent",
     "ProfDevComments",
@@ -149,14 +173,35 @@ const createTableBody = (dataList, labelObj) => {
     (item) => !["AgencyID"].includes(item)
   );
   for (const recordObj of dataList) {
-    // zipCodeFormat() <== helperFunction.js
-    // formattedZip = recordObj.Zip ? zipCodeFormat(recordObj.Zip) : "";
+    const {
+      ProfDevProviderID,
+      ProfDevLocationID,
+      ProfDevCategoryID,
+      ProfDevSubjectID,
+    } = recordObj;
+    const profdevProvider = providerList.find(
+      (item) => item.ID === ProfDevProviderID
+    ).ProviderName;
 
-    // phoneFormat() <== helperFunction.js
-    // formattedPhone = phoneFormat(recordObj.Phone);
+    const profdevLocation = locationList.find(
+      (item) => item.ID === ProfDevLocationID
+    ).FacilityName;
 
-    // const record = { ...recordObj, Zip: formattedZip, Phone: formattedPhone };
-    const record = { ...recordObj };
+    const profdevCategory = categoryList.find(
+      (item) => item.CATEGORYID === +ProfDevCategoryID
+    ).Category;
+
+    const profdevSubject = subjectList.find(
+      (item) => item.SubjectID === +ProfDevSubjectID
+    ).SubjectDesc;
+
+    const record = {
+      ...recordObj,
+      profdevProvider,
+      profdevLocation,
+      profdevCategory,
+      profdevSubject,
+    };
     // createRow() <== helperFunction.js
     rows += createRow({
       record,
