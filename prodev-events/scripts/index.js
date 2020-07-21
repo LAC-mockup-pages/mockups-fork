@@ -239,6 +239,8 @@ const createRosterBloc = () => {
   const headerRoster = createHeaders([
     "Personnal ID",
     "Name",
+    "Region",
+    "Agency",
     "Attended",
     "Fee Paid",
   ]);
