@@ -51,11 +51,11 @@ const createNewRecord = (labelsList) => {
     "ProfDevCategoryID",
     "ProfDevSubjectID",
     "ProfDevFacilitator1",
+    "ProfDevFacilitator2",
     "ProfDevLocationID",
   ];
   const hiddenList = [
     "ProfDevHours",
-    "ProfDevFacilitator2",
     "ProfDevFacilitator3",
     "ProfDevFeeCharged",
     "ProfDevComments",
