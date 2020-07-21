@@ -69,13 +69,14 @@ const createNewRecord = (labelsList) => {
     let element = "";
     let option = "";
     let type = "text";
-    let classOption = " input-field";
+    let classOption = "";
     const placehold = labelObj[key];
     if (key === "ProfDevProviderID") {
       const shortList = providerList.map((provider) => {
         return { ID: provider.ID, name: provider.ProviderName };
       });
-      option = " required data-toggle='tooltip' title='Please fill this field'";
+      option =
+        " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
       // elementSelectNewRecord() <== helperFunctions()
       element = elementSelectNewRecord({
         hashTable: shortList,
@@ -86,7 +87,8 @@ const createNewRecord = (labelsList) => {
       });
     } else {
       if (requiredList.includes(key)) {
-        option = " required title='Please fill this field'";
+        option =
+          " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
       }
       if (hiddenList.includes(key)) classOption += " hidden";
       if (key === "Email") type = "email";
@@ -102,10 +104,6 @@ const createNewRecord = (labelsList) => {
     }
     result.push(element);
   }
-  result.push(
-    `<button type="button" id="submit-btn" form="new-entry" class="btn btn-primary">Add</button>
-    <button type="button" id="cancel-btn" form="new-entry" class="btn btn-default">Cancel</button>`
-  );
   return result.join("");
 };
 
@@ -172,11 +170,12 @@ const createTableBody = (dataList, labelObj) => {
 const createViewBloc = () => {
   const tableHeader = createTableHeader(rowLabels[0]);
 
-  // Sorting list of sites by descending ID
-  // const list = dataSource.sort((site1, site2) => site2.ID - site1.ID);
-  // const tableBody = createTableBody(list, rowLabels[0]);
-  const tableBody = createTableBody(dataSource, rowLabels[0]);
-
+  // Sorting list of records alphabetically by activity name
+  const list = dataSource.sort(
+    (record1, record2) =>
+      record1.ProfDevActivityName - record2.ProfDevActivityName
+  );
+  const tableBody = createTableBody(list, rowLabels[0]);
   const viewBloc = tableHeader + tableBody;
   return viewBloc;
 
@@ -284,6 +283,12 @@ $(document).ready(() => {
 
   //* Data viewing
   $("#new-entry").append(createNewRecord(rowLabels));
+  $(".record-entry").append(`<div class="container-fluid buttons-bloc-new">
+    <button type="button" id="cancel-btn" form="new-entry"
+      class="btn btn-default pull-right">Cancel</button>
+    <button type="button" id="submit-btn" form="new-entry"
+      class="btn dark-blue-text blue-light-bg pull-right">Add</button>
+  </div>`);
   $("#main-table").append(createViewBloc());
 
   // Change text color from red (required) to black
