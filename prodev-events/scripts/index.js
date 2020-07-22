@@ -52,7 +52,6 @@ const createNewRecord = (labelsList) => {
     "ProfDevActivityName",
     "ProfDevDescription",
     "ProfDevDate",
-
     "ProfDevProviderID",
     "ProfDevCategoryID",
     "ProfDevSubjectID",
@@ -127,7 +126,7 @@ const createNewRecord = (labelsList) => {
       });
     } else if (key === "ProfDevCategoryID") {
       const shortList = categoryList.map((item) => {
-        return { ID: +item.CATEGORYID, name: item.Category };
+        return { ID: `${item.CATEGORYID}`, name: item.Category };
       });
       option =
         " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
@@ -141,7 +140,7 @@ const createNewRecord = (labelsList) => {
       });
     } else if (key === "ProfDevSubjectID") {
       const shortList = subjectList.map((item) => {
-        return { ID: +item.SubjectID, name: item.SubjectDesc };
+        return { ID: `${item.SubjectID}`, name: item.SubjectDesc };
       });
       option =
         " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
@@ -341,9 +340,6 @@ const createRosterBloc = () => {
 const createEventView = (tdList, labelObj) => {
   const fullLength = tdList.length;
   const halfLength = Math.ceil(fullLength / 2);
-  console.log("fullLength :>> ", fullLength);
-  console.log("halfLength :>> ", halfLength);
-  console.log("tdList :>> ", tdList);
   let leftBloc = "";
   let rightBloc = "";
   let rosterBloc = createRosterBloc();
