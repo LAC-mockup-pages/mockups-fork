@@ -80,7 +80,7 @@ const createNewRecord = (labelsList) => {
     let option = "";
     let type = "text";
     let classOption = "";
-    const placehold = labelObj[key];
+    let placehold = labelObj[key];
     if (key === "ProfDevProviderID") {
       const shortList = providerList.map((provider) => {
         return { ID: provider.ID, name: provider.ProviderName };
@@ -101,7 +101,7 @@ const createNewRecord = (labelsList) => {
           " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
       }
       if (hiddenList.includes(key)) classOption += " hidden";
-      if (key === "Email") type = "email";
+      if (key === "ProfDevDate") placehold += " (MM/DD/YYYY)";
 
       // inputNoLabel() <== helperFunctions()
       element = inputNoLabel({
