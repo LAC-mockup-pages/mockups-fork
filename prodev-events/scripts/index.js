@@ -215,7 +215,7 @@ const createTableBody = (dataList, labelObj) => {
 const createViewBloc = () => {
   const tableHeader = createTableHeader(rowLabels[0]);
 
-  // Sorting list of records alphabetically by activity name
+  // Sorting list of records alphabetically by descending date
   const list = dataSource.sort(
     (record1, record2) =>
       new Date(record2.ProfDevDate) - new Date(record1.ProfDevDate)
@@ -223,8 +223,6 @@ const createViewBloc = () => {
   const tableBody = createTableBody(list, rowLabels[0]);
   const viewBloc = tableHeader + tableBody;
   return viewBloc;
-
-  // return tableHeader;
 };
 
 const getRequired = () => {
