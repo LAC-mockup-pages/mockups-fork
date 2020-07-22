@@ -9,7 +9,10 @@ const locationList = Locations.slice(0);
 const fiscalYearList = FiscalYear.slice(0);
 const categoryList = Categories.slice(0);
 const subjectList = Subjects.slice(0);
-const sessionList = [{ morning: "morning" }, { afternoon: "afternoon" }];
+const sessionList = [
+  { ID: "morning", name: "morning" },
+  { ID: "afternoon", name: "afternoon" },
+];
 const stateList = States.slice(0);
 
 const rowLabels = [
@@ -49,7 +52,7 @@ const createNewRecord = (labelsList) => {
     "ProfDevActivityName",
     "ProfDevDescription",
     "ProfDevDate",
-    "ProfDevFY",
+
     "ProfDevProviderID",
     "ProfDevCategoryID",
     "ProfDevSubjectID",
@@ -61,6 +64,7 @@ const createNewRecord = (labelsList) => {
     "profdevProvider",
     "profdevLocation",
     "profdevCategory",
+    "ProfDevFY",
     "profdevSubject",
     "profdevFac1",
     "profdevFac2",
@@ -81,9 +85,21 @@ const createNewRecord = (labelsList) => {
     let type = "text";
     let classOption = "";
     let placehold = labelObj[key];
-    if (key === "ProfDevProviderID") {
-      const shortList = providerList.map((provider) => {
-        return { ID: provider.ID, name: provider.ProviderName };
+
+    if (key === "ProfDevDescription") {
+      option =
+        " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
+      // elementSelectNewRecord() <== helperFunctions()
+      element = elementSelectNewRecord({
+        hashTable: sessionList,
+        keyValue: key,
+        option,
+        optionText: "a session",
+        classOption,
+      });
+    } else if (key === "ProfDevProviderID") {
+      const shortList = providerList.map((item) => {
+        return { ID: item.ID, name: item.ProviderName };
       });
       option =
         " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
@@ -93,6 +109,67 @@ const createNewRecord = (labelsList) => {
         keyValue: key,
         option,
         optionText: "a provider",
+        classOption,
+      });
+    } else if (key === "ProfDevLocationID") {
+      const shortList = locationList.map((item) => {
+        return { ID: item.ID, name: item.FacilityName };
+      });
+      option =
+        " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
+      // elementSelectNewRecord() <== helperFunctions()
+      element = elementSelectNewRecord({
+        hashTable: shortList,
+        keyValue: key,
+        option,
+        optionText: "a location",
+        classOption,
+      });
+    } else if (key === "ProfDevCategoryID") {
+      const shortList = categoryList.map((item) => {
+        return { ID: +item.CATEGORYID, name: item.Category };
+      });
+      option =
+        " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
+      // elementSelectNewRecord() <== helperFunctions()
+      element = elementSelectNewRecord({
+        hashTable: shortList,
+        keyValue: key,
+        option,
+        optionText: "a category",
+        classOption,
+      });
+    } else if (key === "ProfDevSubjectID") {
+      const shortList = subjectList.map((item) => {
+        return { ID: +item.SubjectID, name: item.SubjectDesc };
+      });
+      option =
+        " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
+      // elementSelectNewRecord() <== helperFunctions()
+      element = elementSelectNewRecord({
+        hashTable: shortList,
+        keyValue: key,
+        option,
+        optionText: "a subject",
+        classOption,
+      });
+    } else if (["ProfDevFacilitator1", "ProfDevFacilitator2"].includes(key)) {
+      const shortList = facilitatorList
+        .sort((record1, record2) => record1.FacLastName - record2.FacLastName)
+        .map((item) => {
+          return {
+            ID: item.ID,
+            name: `${item.FacLastName} ${item.FacFirstName}`,
+          };
+        });
+      option =
+        " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
+      // elementSelectNewRecord() <== helperFunctions()
+      element = elementSelectNewRecord({
+        hashTable: shortList,
+        keyValue: key,
+        option,
+        optionText: "a facilitator",
         classOption,
       });
     } else {
@@ -296,12 +373,12 @@ const createEventView = (tdList, labelObj) => {
   }
 
   const eventView = `${rosterBloc}
-  <div class="container-fluid row event-view">
+  <form role="form" id="event-view-form" class="container-fluid row event-view">
       <div class="col-md-6 left-event-view">${leftBloc}</div>
       <div class="col-md-6 right-event-view">${rightBloc}</div>
-      <button type="button" id="save-changes-btn" form="new-entry" class="btn btn-primary">Save Changes</button>
-      <button type="button" id="cancel-changes-btn" form="new-entry" class="btn btn-default">Cancel</button>
-    </div>
+      <button type="button" id="save-changes-btn" form="event-view-form" class="btn btn-primary">Save Changes</button>
+      <button type="button" id="cancel-changes-btn" form="event-view-form" class="btn btn-default">Cancel</button>
+    </form>
   `;
   return eventView;
 };
