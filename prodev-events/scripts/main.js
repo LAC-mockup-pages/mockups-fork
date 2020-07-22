@@ -1,8 +1,8 @@
 // Actions and logic
+import { createEventView } from "./components/event-view.js";
 
 // Isolate work objects and arrays from data source.
 const dataSource = ProfDevEventsInfo.slice(0);
-const rosterList = ProfDevRoster.slice(0);
 const facilitatorList = Facilitator.slice(0);
 const providerList = Providers.slice(0);
 const locationList = Locations.slice(0);
@@ -78,7 +78,7 @@ const createNewRecord = (labelsList) => {
   const keyList = Object.keys(labelObj).filter(
     (key) => !["ID", "RAENEvent"].includes(key)
   );
-  for (key of keyList) {
+  for (const key of keyList) {
     let element = "";
     let option = "";
     let type = "text";
@@ -307,76 +307,6 @@ const getRequired = () => {
     .filter((item) => $(item).prop("required"))
     .map((item) => $(item).attr("id"));
   return requiredList;
-};
-
-const createRosterBloc = () => {
-  const headerRoster = createHeaders([
-    "Personnal ID",
-    "Name",
-    "Region",
-    "Agency",
-    "Attended",
-    "Fee Paid",
-  ]);
-  const bodyRoster = rosterList
-    .map((person) => {
-      return `<tr>
-  <td class="cell-data">${person.PersonnelID}</td>
-  <td class="cell-data">${person.Name}</td>
-  <td class="cell-data">${person.Attended}</td>
-  <td class="cell-data">${person.FeesPaid}</td>
-  </tr>`;
-    })
-    .join("");
-  return `<h3 class="blue-light-text" style="text-align:center">Event Roster</h3>
-  <table class="table blue-bg" id="roster-table">
-  ${headerRoster}
-  <tbody>
-  ${bodyRoster}
-  </tbody>
-  </table>`;
-};
-
-const createEventView = (tdList, labelObj) => {
-  const fullLength = tdList.length;
-  const halfLength = Math.ceil(fullLength / 2);
-  let leftBloc = "";
-  let rightBloc = "";
-  let rosterBloc = createRosterBloc();
-
-  for (let i = 0, j = halfLength; i < halfLength, j < fullLength; i++, j++) {
-    const tdLeft = tdList[i];
-    const tdRight = tdList[j];
-    leftBloc += elementInput({
-      keyVal: $(tdLeft).attr("data-name"),
-      labelVal: $(tdLeft).attr("data-label"),
-      value: $(tdLeft).text(),
-      labelClassVal: "",
-      classVal: "",
-      option: "",
-      optionHidden: " form-group",
-    });
-
-    rightBloc += elementInput({
-      keyVal: $(tdRight).attr("data-name"),
-      labelVal: $(tdRight).attr("data-label"),
-      value: $(tdRight).text(),
-      labelClassVal: "",
-      classVal: "",
-      option: "",
-      optionHidden: " form-group",
-    });
-  }
-
-  const eventView = `${rosterBloc}
-  <form role="form" id="event-view-form" class="container-fluid row event-view">
-      <div class="col-md-6 left-event-view">${leftBloc}</div>
-      <div class="col-md-6 right-event-view">${rightBloc}</div>
-      <button type="button" id="save-changes-btn" form="event-view-form" class="btn btn-primary">Save Changes</button>
-      <button type="button" id="cancel-changes-btn" form="event-view-form" class="btn btn-default">Cancel</button>
-    </form>
-  `;
-  return eventView;
 };
 
 $(document).ready(() => {
