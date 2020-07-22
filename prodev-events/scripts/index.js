@@ -218,7 +218,7 @@ const createViewBloc = () => {
   // Sorting list of records alphabetically by activity name
   const list = dataSource.sort(
     (record1, record2) =>
-      record1.ProfDevActivityName - record2.ProfDevActivityName
+      new Date(record2.ProfDevDate) - new Date(record1.ProfDevDate)
   );
   const tableBody = createTableBody(list, rowLabels[0]);
   const viewBloc = tableHeader + tableBody;
