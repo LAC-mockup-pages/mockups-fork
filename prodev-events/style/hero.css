@@ -140,7 +140,7 @@ tbody > tr:nth-child(even) {
 
 .modal-body,
 .modal-body input,
-select {
+.modal-body select {
   background-color: #f0f0f5;
 }
 

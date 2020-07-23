@@ -1,7 +1,7 @@
 // event-view after selecting an avent in list
 
 import { createRosterBloc } from "./roster-view.js";
-import { sessionList } from "./../main.js";
+import { sessionList, providerList } from "./../main.js";
 
 const createViewBloc = (fieldList, selectObj) => {
   let bloc = "";
@@ -11,18 +11,19 @@ const createViewBloc = (fieldList, selectObj) => {
       labelVal = $(field).attr("data-label"),
       value = $(field).text();
     if (selectList.includes(keyVal)) {
-      const { hashTable, optionText } = selectObj[keyVal];
-
-      bloc += elementSelectModal({
-        hashTable,
-        keyValue: keyVal,
-        selectedValue: value,
-        labelVal,
-        labelClassVal: "",
-        option: "",
-        optionText,
-      });
+      // const { hashTable, optionText } = selectObj[keyVal];
+      // bloc += elementSelectModal({
+      //   hashTable,
+      //   keyValue: keyVal,
+      //   selectedValue: value,
+      //   labelVal,
+      //   labelClassVal: "",
+      //   option: "",
+      //   optionText,
+      // });
     } else {
+      let optionHidden = " form-group";
+      if (keyVal === "ID") optionHidden += " hidden";
       bloc += elementInput({
         keyVal,
         labelVal,
@@ -30,14 +31,14 @@ const createViewBloc = (fieldList, selectObj) => {
         labelClassVal: "",
         classVal: "",
         option: "",
-        optionHidden: " form-group",
+        optionHidden,
       });
     }
   }
   return bloc;
 };
 
-export const createEventView = (tdList, labelObj) => {
+export const createEventView = (tdList) => {
   const filteredList = tdList.reduce((accumulator, item) => {
     const fieldName = $(item).attr("data-name");
     if (!fieldName.startsWith("profdev")) accumulator.push(item);
@@ -51,8 +52,7 @@ export const createEventView = (tdList, labelObj) => {
 
   const selectElementObj = {
     ProfDevDescription: { hashTable: sessionList, optionText: "a session" },
-
-    // "ProfDevProviderID",
+    ProfDevProviderID: { hashTable: providerList, optionText: "a provider" },
     // "ProfDevLocationID",
     // "ProfDevCategoryID",
     // "ProfDevSubjectID",

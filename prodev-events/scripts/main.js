@@ -3,15 +3,15 @@ import { createEventView } from "./components/event-view.js";
 
 // Isolate work objects and arrays from data source.
 const dataSource = ProfDevEventsInfo.slice(0);
-const facilitatorList = Facilitator.slice(0);
-const providerList = Providers.slice(0);
-const locationList = Locations.slice(0);
+export const facilitatorList = Facilitator.slice(0);
+export const providerList = Providers.slice(0);
+export const locationList = Locations.slice(0);
 const fiscalYearList = FiscalYear.slice(0);
-const categoryList = Categories.slice(0);
-const subjectList = Subjects.slice(0);
+export const categoryList = Categories.slice(0);
+export const subjectList = Subjects.slice(0);
 export const sessionList = [
-  { ID: "morning", name: "morning" },
-  { ID: "afternoon", name: "afternoon" },
+  { key: "morning", name: "Morning" },
+  { key: "afternoon", name: "Afternoon" },
 ];
 const stateList = States.slice(0);
 
@@ -366,7 +366,6 @@ $(document).ready(() => {
 
   //* Select record to edit + display selected event & roster
   $(document).on("click", ".table tbody tr", function (evnt) {
-    evnt.preventDefault();
     evnt.stopPropagation();
 
     const rowID = "#" + $(this).attr("id");
