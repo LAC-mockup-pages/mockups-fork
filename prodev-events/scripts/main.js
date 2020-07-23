@@ -9,7 +9,7 @@ const locationList = Locations.slice(0);
 const fiscalYearList = FiscalYear.slice(0);
 const categoryList = Categories.slice(0);
 const subjectList = Subjects.slice(0);
-const sessionList = [
+export const sessionList = [
   { ID: "morning", name: "morning" },
   { ID: "afternoon", name: "afternoon" },
 ];

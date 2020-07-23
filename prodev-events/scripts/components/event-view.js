@@ -1,37 +1,74 @@
 // event-view after selecting an avent in list
 
 import { createRosterBloc } from "./roster-view.js";
+import { sessionList } from "./../main.js";
+
+const createViewBloc = (fieldList, selectObj) => {
+  let bloc = "";
+  const selectList = Object.keys(selectObj);
+  for (const field of fieldList) {
+    let keyVal = $(field).attr("data-name"),
+      labelVal = $(field).attr("data-label"),
+      value = $(field).text();
+    if (selectList.includes(keyVal)) {
+      const { hashTable, optionText } = selectObj[keyVal];
+
+      bloc += elementSelectModal({
+        hashTable,
+        keyValue: keyVal,
+        selectedValue: value,
+        labelVal,
+        labelClassVal: "",
+        option: "",
+        optionText,
+      });
+    } else {
+      bloc += elementInput({
+        keyVal,
+        labelVal,
+        value,
+        labelClassVal: "",
+        classVal: "",
+        option: "",
+        optionHidden: " form-group",
+      });
+    }
+  }
+  return bloc;
+};
 
 export const createEventView = (tdList, labelObj) => {
-  const fullLength = tdList.length;
+  const filteredList = tdList.reduce((accumulator, item) => {
+    const fieldName = $(item).attr("data-name");
+    if (!fieldName.startsWith("profdev")) accumulator.push(item);
+    return accumulator;
+  }, []);
+  const fullLength = filteredList.length;
   const halfLength = Math.ceil(fullLength / 2);
-  let leftBloc = "";
-  let rightBloc = "";
   let rosterBloc = createRosterBloc();
 
-  for (let i = 0, j = halfLength; i < halfLength, j < fullLength; i++, j++) {
-    const tdLeft = tdList[i];
-    const tdRight = tdList[j];
-    leftBloc += elementInput({
-      keyVal: $(tdLeft).attr("data-name"),
-      labelVal: $(tdLeft).attr("data-label"),
-      value: $(tdLeft).text(),
-      labelClassVal: "",
-      classVal: "",
-      option: "",
-      optionHidden: " form-group",
-    });
+  console.log("filteredList :>> ", filteredList);
 
-    rightBloc += elementInput({
-      keyVal: $(tdRight).attr("data-name"),
-      labelVal: $(tdRight).attr("data-label"),
-      value: $(tdRight).text(),
-      labelClassVal: "",
-      classVal: "",
-      option: "",
-      optionHidden: " form-group",
-    });
-  }
+  const selectElementObj = {
+    ProfDevDescription: { hashTable: sessionList, optionText: "a session" },
+
+    // "ProfDevProviderID",
+    // "ProfDevLocationID",
+    // "ProfDevCategoryID",
+    // "ProfDevSubjectID",
+    // "ProfDevFacilitator1",
+    // "ProfDevFacilitator2",
+    // "ProfDevFacilitator3",
+  };
+
+  const leftBloc = createViewBloc(
+    filteredList.slice(0, halfLength),
+    selectElementObj
+  );
+  const rightBloc = createViewBloc(
+    filteredList.slice(halfLength),
+    selectElementObj
+  );
 
   const eventView = `${rosterBloc}
   <form role="form" id="event-view-form" class="container-fluid row event-view">
