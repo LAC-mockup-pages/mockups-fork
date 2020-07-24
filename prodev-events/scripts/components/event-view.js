@@ -1,7 +1,14 @@
 // event-view after selecting an avent in list
 
 import { createRosterBloc } from "./roster-view.js";
-import { sessionList, providerList } from "./../main.js";
+import {
+  sessionList,
+  providerList,
+  locationList,
+  categoryList,
+  subjectList,
+  facilitatorList,
+} from "./../main.js";
 
 const createViewBloc = (fieldList, selectObj) => {
   let bloc = "";
@@ -11,16 +18,16 @@ const createViewBloc = (fieldList, selectObj) => {
       labelVal = $(field).attr("data-label"),
       value = $(field).text();
     if (selectList.includes(keyVal)) {
-      // const { hashTable, optionText } = selectObj[keyVal];
-      // bloc += elementSelectModal({
-      //   hashTable,
-      //   keyValue: keyVal,
-      //   selectedValue: value,
-      //   labelVal,
-      //   labelClassVal: "",
-      //   option: "",
-      //   optionText,
-      // });
+      const { hashTable, optionText } = selectObj[keyVal];
+      bloc += elementSelectModal({
+        hashTable,
+        keyValue: keyVal,
+        selectedValue: value,
+        labelVal,
+        labelClassVal: "",
+        option: "",
+        optionText,
+      });
     } else {
       let optionHidden = " form-group";
       if (keyVal === "ID") optionHidden += " hidden";
@@ -48,17 +55,29 @@ export const createEventView = (tdList) => {
   const halfLength = Math.ceil(fullLength / 2);
   let rosterBloc = createRosterBloc();
 
-  console.log("filteredList :>> ", filteredList);
-
+  const facilitators = facilitatorList.map((item) => {
+    const { ID, FacFirstName, FacLastName } = item;
+    const name = `${FacLastName}, ${FacFirstName}`;
+    return { ID, name };
+  });
   const selectElementObj = {
     ProfDevDescription: { hashTable: sessionList, optionText: "a session" },
     ProfDevProviderID: { hashTable: providerList, optionText: "a provider" },
-    // "ProfDevLocationID",
-    // "ProfDevCategoryID",
-    // "ProfDevSubjectID",
-    // "ProfDevFacilitator1",
-    // "ProfDevFacilitator2",
-    // "ProfDevFacilitator3",
+    ProfDevLocationID: { hashTable: locationList, optionText: "a location" },
+    ProfDevCategoryID: { hashTable: categoryList, optionText: "a category" },
+    ProfDevSubjectID: { hashTable: subjectList, optionText: "a subject" },
+    ProfDevFacilitator1: {
+      hashTable: facilitators,
+      optionText: "a facilitator",
+    },
+    ProfDevFacilitator2: {
+      hashTable: facilitators,
+      optionText: "a facilitator",
+    },
+    ProfDevFacilitator3: {
+      hashTable: facilitators,
+      optionText: "a facilitator",
+    },
   };
 
   const leftBloc = createViewBloc(

@@ -170,9 +170,9 @@ th {
   border-bottom: 1px solid #2479b5;
 }
 
-.modal-select {
-  width: fit-content;
-}
+/* .modal-select {
+  width: ;
+} */
 
 .modal-header,
 .modal-footer {
