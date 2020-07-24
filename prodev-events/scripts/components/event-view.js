@@ -20,13 +20,10 @@ const createViewBloc = (fieldList, selectObj, requiredList) => {
       labelClassVal = "",
       option = "";
 
-    console.log("requiredList :>> ", requiredList);
-
     if (requiredList.includes(keyVal)) {
       labelClassVal = "class='red-text'";
       option = "required";
     }
-
     if (selectList.includes(keyVal)) {
       const { hashTable, optionText } = selectObj[keyVal];
       bloc += elementSelectModal({
