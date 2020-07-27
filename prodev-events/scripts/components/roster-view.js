@@ -35,10 +35,15 @@ export const rosterView = (eventID) => {
   const blockName = "Event Roster";
   const rosterData = rosterList
     .filter((record) => record.PDActivity_PKID === eventID)
-    .sort((record1, record2) => record1.Name - record2.Name);
+    .sort((record1, record2) => {
+      const name1 = record1.Name,
+        name2 = record2.Name;
+      console.log("name1 :>> ", name1);
+      console.log("name2 :>> ", name2);
+      return name1.localeCompare(name2);
+    });
 
-  console.log("rosterData :>> ", rosterData);
-
+  console.log("sorted roster data :>> ", rosterData);
   const header = topBanner(blockName, [
     ["Personnal ID", "col-sm-2"],
     ["Name", "col-sm-2"],

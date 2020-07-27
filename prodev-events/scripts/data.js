@@ -26,8 +26,8 @@ const  ProfDevEventsInfo= [
 const ProfDevRoster =[
 {"ID":"20828","AgencyID":"PRA","PDActivity_PKID":"4015","Personnel_PKID":"24224","PersonnelID":"cuesuzyPRA14","Name":"cue, suzy","Date":"12/11/2014","Attended":"True","FeesPaid":"False"},
 {"ID":"20827","AgencyID":"PRA","PDActivity_PKID":"4015","Personnel_PKID":"23853","PersonnelID":"DainMichillePRA19","Name":"Dains, Michille","Date":"12/11/2014","Attended":"True","FeesPaid":"False"},
-{"ID":"20831","AgencyID":"PRA","PDActivity_PKID":"4015","Personnel_PKID":"24228","PersonnelID":"JonesTomPRA14","Name":"Jones, Tom","Date":"12/11/2014","Attended":"True","FeesPaid":"True"},
-{"ID":"20829","AgencyID":"PRA","PDActivity_PKID":"4015","Personnel_PKID":"23433","PersonnelID":"Thomas # 13MarcellasPRA9","Name":"Thomas # 13, Marcellas","Date":"12/11/2014","Attended":"False","FeesPaid":"False"}
+{"ID":"20829","AgencyID":"PRA","PDActivity_PKID":"4015","Personnel_PKID":"23433","PersonnelID":"Thomas # 13MarcellasPRA9","Name":"Thomas # 13, Marcellas","Date":"12/11/2014","Attended":"False","FeesPaid":"False"},{"ID":"20831","AgencyID":"PRA","PDActivity_PKID":"4015","Personnel_PKID":"24228","PersonnelID":"JonesTomPRA14","Name":"Jones, Tom","Date":"12/11/2014","Attended":"True","FeesPaid":"True"},
+
 ]
 
 //!  Do not Use - 
