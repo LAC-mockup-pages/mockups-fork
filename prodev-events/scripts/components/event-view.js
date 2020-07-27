@@ -1,6 +1,6 @@
 // event-view after selecting an avent in list
 
-import { createRosterBloc, rosterView } from "./roster-view.js";
+import { rosterView } from "./roster-view.js";
 import {
   sessionList,
   providerList,
