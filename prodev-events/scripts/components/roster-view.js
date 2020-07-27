@@ -30,3 +30,24 @@ export const createRosterBloc = () => {
   </tbody>
   </table>`;
 };
+
+export const rosterView = (eventID) => {
+  const blockName = "Event Roster";
+  const rosterData = rosterList
+    .filter((record) => record.PDActivity_PKID === eventID)
+    .sort((record1, record2) => record1.Name - record2.Name);
+
+  console.log("rosterData :>> ", rosterData);
+
+  const header = topBanner(blockName, [
+    ["Personnal ID", "col-sm-2"],
+    ["Name", "col-sm-2"],
+    ["Region", "col-sm-2"],
+    ["Agency", "col-sm-2"],
+    ["Attended", "col-sm-2"],
+    ["Fee Paid", "col-sm-2"],
+  ]);
+  const body = "<h2>Body</h2>";
+  // const body=subTableBody(rosterData, blockName,["ID","AgencyID","PDActivity_PKID","Personnel_PKID","PersonnelID","Date"])
+  return header + body;
+};

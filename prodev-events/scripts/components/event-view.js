@@ -1,6 +1,6 @@
 // event-view after selecting an avent in list
 
-import { createRosterBloc } from "./roster-view.js";
+import { createRosterBloc, rosterView } from "./roster-view.js";
 import {
   sessionList,
   providerList,
@@ -35,7 +35,7 @@ const createViewBloc = (fieldList, selectObj, requiredList) => {
         labelVal,
         labelClassVal,
         option,
-       optionText,
+        optionText,
       });
     } else {
       let optionHidden = " form-group";
@@ -62,7 +62,9 @@ export const createEventView = (tdList, requiredList) => {
   }, []);
   const fullLength = filteredList.length;
   const halfLength = Math.ceil(fullLength / 2);
-  let rosterBloc = createRosterBloc();
+
+  //! Modify with variable name for event ID
+  let rosterBloc = rosterView("4015");
 
   const facilitators = facilitatorList.map((item) => {
     const { ID, FacFirstName, FacLastName } = item;
