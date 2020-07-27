@@ -35,7 +35,7 @@ const createViewBloc = (fieldList, selectObj, requiredList) => {
         labelVal,
         labelClassVal,
         option,
-        optionText,
+       optionText,
       });
     } else {
       let optionHidden = " form-group";
