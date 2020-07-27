@@ -33,12 +33,24 @@ export const createRosterBloc = () => {
 
 export const rosterView = (eventID) => {
   const blockName = "Event Roster";
+  const agencyList = Agency.slice(0);
+
   const rosterData = rosterList
     .filter((record) => record.PDActivity_PKID === eventID)
     .sort((record1, record2) => {
       const name1 = record1.Name,
         name2 = record2.Name;
       return name1.localeCompare(name2);
+    })
+    .map((record) => {
+      const agency = agencyList.filter(
+        (item) => item.AgencyID === record.AgencyID
+      )[0];
+      return {
+        ...record,
+        AgencyName: agency.AgencyName,
+        Region: agency.RAENID,
+      };
     });
 
   console.log("sorted roster data :>> ", rosterData);
