@@ -1,4 +1,6 @@
 // Roster component on top of event-view
+
+import { topBanner, subTableBody } from "./sub-table-elements.js";
 const rosterList = ProfDevRoster.slice(0);
 
 export const createRosterBloc = () => {
