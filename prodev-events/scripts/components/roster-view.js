@@ -62,7 +62,20 @@ export const rosterView = (eventID) => {
     ["Attended", "col-sm-2"],
     ["Fee Paid", "col-sm-2"],
   ]);
-  const body = "<h2>Body</h2>";
-  // const body=subTableBody(rosterData, blockName,["ID","AgencyID","PDActivity_PKID","Personnel_PKID","PersonnelID","Date"])
+  // const body = "<h2>Body</h2>";
+  const body = subTableBody(
+    rosterData,
+    blockName,
+    ["ID", "AgencyID", "PDActivity_PKID", "Personnel_PKID", "Date"],
+    {
+      PersonnelID: "Personnel ID",
+      Name: "Name",
+      Region: "Region",
+      AgencyName: "Agency",
+      Attended: "Attended",
+      FeesPaid: "Fees Paid",
+    },
+    "ProfDevRoster"
+  );
   return header + body;
 };
