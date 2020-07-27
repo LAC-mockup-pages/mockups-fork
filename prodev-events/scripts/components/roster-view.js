@@ -38,8 +38,6 @@ export const rosterView = (eventID) => {
     .sort((record1, record2) => {
       const name1 = record1.Name,
         name2 = record2.Name;
-      console.log("name1 :>> ", name1);
-      console.log("name2 :>> ", name2);
       return name1.localeCompare(name2);
     });
 

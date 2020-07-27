@@ -1,7 +1,7 @@
 
-// This object is the source for look up event dropdown on profdev_info page 
+// This object is the source for look up event dropdown on profdev_info page
 // After select, ID value is passed to GetRoster stored procedure
- 
+
 const ProfDevEventsRoster = [
   {"ProfDevActivityID":"PRA12112014_4015","ID":4015,"ActNameDesc":"Asists - 12/11/14"},
   {"ProfDevActivityID":"PRA08052017_8898","ID":8898,"ActNameDesc":"ASISTS Build 10.4  - 08/05/17"},
@@ -9,9 +9,9 @@ const ProfDevEventsRoster = [
   {"ProfDevActivityID":"PRA08162016_8932","ID":8932,"ActNameDesc":"ASISTS Training 2.0 - 08/16/16"},
   {"ProfDevActivityID":"PRA08162016_8933","ID":8933,"ActNameDesc":"ASISTS Training 2.0 - 08/16/16"}
   ]
-  
 
-// This object is the source for form on profdev_info page  
+
+// This object is the source for form on profdev_info page
 // ID value from dropdown is passed to GetProvDevInfo stored procedure
 
 const  ProfDevEventsInfo= [
@@ -19,9 +19,9 @@ const  ProfDevEventsInfo= [
     ]
 
 
-// This object is the source for table on profdev_roster page  
-// ID value from dropdown is passed to GetProvDevRoster stored procedure 
-// Key ID fields have been included 
+// This object is the source for table on profdev_roster page
+// ID value from dropdown is passed to GetProvDevRoster stored procedure
+// Key ID fields have been included
 
 const ProfDevRoster =[
 {"ID":"20828","AgencyID":"PRA","PDActivity_PKID":"4015","Personnel_PKID":"24224","PersonnelID":"cuesuzyPRA14","Name":"cue, suzy","Date":"12/11/2014","Attended":"True","FeesPaid":"False"},
@@ -30,16 +30,16 @@ const ProfDevRoster =[
 
 ]
 
-//!  Do not Use - 
+//!  Do not Use -
 // const  ProfDevRoster =[
 //   {"ID":"20828","AgencyID":"PRA","PersonnelID":"cuesuzyPRA14","Name":"cue, suzy","Date":"12/11/2014","Attended":"True","FeesPaid":"False"},{"ID":"20827","AgencyID":"PRA","PersonnelID":"DainMichillePRA19","Name":"Dains, Michille","Date":"12/11/2014","Attended":"True","FeesPaid":"False"},
 //   {"ID":"20831","AgencyID":"PRA","PersonnelID":"JonesTomPRA14","Name":"Jones, Tom","Date":"12/11/2014","Attended":"True","FeesPaid":"True"},{"ID":"20829","AgencyID":"PRA","PersonnelID":"Thomas # 13MarcellasPRA9","Name":"Thomas # 13, Marcellas","Date":"12/11/2014","Attended":"False","FeesPaid":"False"}
 //   ]
 
 
-// This object is the source for Region dropdown on add new attendee on profdev_roster page 
+// This object is the source for Region dropdown on add new attendee on profdev_roster page
 // After select, ID value is passed to GetAgency stored procedure to filter agency list
-  
+
   const Region = [
   {"RAENID":"CN"},
   {"RAENID":"CST"},
@@ -50,20 +50,23 @@ const ProfDevRoster =[
   {"RAENID":"NYSED"},
   {"RAENID":"WEST"}
   ]
-  
-  
-// This object is the source for Agency dropdown on add new attendee on profdev_roster page 
-// After select, ID value is passed to GetStaff stored procedure to filter personnel name list
-  
-const Agency = [
-  {"AgencyID":"PRA","AgencyName":"Practice Agency"}
-  ]
-  
 
-// This object is the source for Personnel Name dropdown on add new attendee on profdev_roster page 
-// After select, ID and PersonnelID values should be saved to database 
-// PersonnelID is saved for legacy queries 
-  
+
+// This object is the source for Agency dropdown on add new attendee on profdev_roster page
+// After select, ID value is passed to GetStaff stored procedure to filter personnel name list
+
+const Agency = [
+  {"AgencyID":"PRA","AgencyName":"Practice Agency","RAENID":"NY"},
+  {"AgencyID":"TEST1","AgencyName":"Test Agency 1","RAENID":"NY"},
+  {"AgencyID":"TEST2","AgencyName":"Test Agency 2", "RAENID":"WEST"},
+  {"AgencyID":"TEST3","AgencyName":"Test Agency 3","RAENID":"LI"}
+  ]
+
+
+// This object is the source for Personnel Name dropdown on add new attendee on profdev_roster page
+// After select, ID and PersonnelID values should be saved to database
+// PersonnelID is saved for legacy queries
+
 const Staff = [
 {"ID":"","PersonnelID":"","Name":""},
 {"ID":"28555","PersonnelID":"AlfieriShelleyPRA1","Name":"Alfieri, Shelley"},
@@ -76,7 +79,7 @@ const Staff = [
 ]
 
 
-  //! Do Not Use - 
+  //! Do Not Use -
 // const Staff = [
 //   {"PersonnelID":"","Name":""},
 //   {"PersonnelID":"AlfieriShelleyPRA1","Name":"Alfieri, Shelley"},
@@ -86,7 +89,7 @@ const Staff = [
 //   {"PersonnelID":"ScottAdamPRA9","Name":"Scott, Adam"},{"PersonnelID":"SilversRayleighPRA18","Name":"Silvers, Rayleigh"},
 //   {"PersonnelID":"ZoroRoronoaPRA9","Name":"Zoro, Roronoa"}
 //   ]
-  
+
 
 const Categories = [
   {"CATEGORYID":50,"Category":"ABE/HSE"},
@@ -97,8 +100,8 @@ const Categories = [
   {"CATEGORYID":55,"Category":"Distance Learning"},
   {"CATEGORYID":51,"Category":"ESOL"}
   ]
-  
-  
+
+
 const  Subjects = [
   {"SubjectID":1,"SubjectDesc":"ELA"},
   {"SubjectID":2,"SubjectDesc":"Social Studies"},
@@ -107,20 +110,20 @@ const  Subjects = [
   {"SubjectID":5,"SubjectDesc":"Career Pathways"},
   {"SubjectID":6,"SubjectDesc":"ESL"}
   ]
-  
+
 
 const Facilitator =  [
   {"ID":"1","FacFirstName":"test1","FacLastName":"new","Address":"","City":"","State":"NY","Zip":"","HomePhone":"2125555555","Email":"qqwwqq","CellPhone":"","AlternatePhone":""},{"ID":"1026","FacFirstName":"Vutha","FacLastName":"Nguy","Address":"","City":"","State":"NY","Zip":"","HomePhone":"1111111111","Email":"vnguy@dycd.com","CellPhone":"","AlternatePhone":""},{"ID":"2184","FacFirstName":"Lizelena","FacLastName":"Iglesias","Address":"89 Broad Street","City":"New York","State":"NY","Zip":"10009","HomePhone":"2125556987","Email":"","CellPhone":"3475555896","AlternatePhone":""},{"ID":"2305","FacFirstName":"Srikanth","FacLastName":"Srinivasan","Address":"85 Broad Street ","City":"New York ","State":"NY","Zip":"11246","HomePhone":"2125554692","Email":"pra@asists.com","CellPhone":"","AlternatePhone":""},{"ID":"2160","FacFirstName":"Raju","FacLastName":"Srinivasan","Address":"455 5th Avenue ","City":"New York City ","State":"NY","Zip":"10016","HomePhone":"2125555555","Email":"rajus@lacnyc.org","CellPhone":"","AlternatePhone":""}
   ]
-  
+
 const Locations =  [
   {"ID":"1","FacilityName":"loco1","Address":"","City":"","State":"NY","Zip":"","Phone":"(___) ___-____","Email":""},{"ID":"46","FacilityName":"Utica","Address":"309 Genessee Street","City":"Utica","State":"NY","Zip":"","Phone":"","Email":""},{"ID":"812","FacilityName":"DYCD","Address":"","City":"","State":"NY","Zip":"","Phone":"","Email":""},{"ID":"1534","FacilityName":"LAC-FiDi","Address":"89 Broad Street ","City":"New York City ","State":"NY","Zip":"10003","Phone":"2125553699","Email":""},{"ID":"1591","FacilityName":"Literacy Assistance Center","Address":"85 Broad Street ","City":"New York ","State":"NY","Zip":"10004","Phone":"2125553355","Email":""}
   ]
-  
+
 const Providers =  [
   {"ID":"528","ProviderName":"DYCD","Address":"","City":"","State":"NY","Zip":"","Phone":"0000000000","Email":"000"},{"ID":"959","ProviderName":"LAC-FIDI","Address":"89 Broad Street","City":"New York","State":"NY","Zip":"10009","Phone":"2125558035","Email":""},{"ID":"992","ProviderName":"Literacy Assistance Center ","Address":"85 Broad Street ","City":"New York ","State":"NY","Zip":"10004","Phone":"2125553355","Email":"pra@asists.com"},{"ID":"1","ProviderName":"provider1","Address":"","City":"","State":"NY","Zip":"","Phone":"2125555555","Email":"ggffghgfh"}
   ]
-  
+
   const FiscalYear = [
     {"FiscalYear":"2021"},
     {"FiscalYear":"2020"},
@@ -131,12 +134,12 @@ const Providers =  [
     {"FiscalYear":"2015"},
     {"FiscalYear":"2014"}
     ]
-  
+
   const sessionVariable = {
     AgencyID: "PRA",
     AuditUserID: '<%= Session["UserID"] %>',
     };
-  
+
   const States = [
     { "Abbrev": "AL", "State": "Alabama" },
     { "Abbrev": "AS", "State": "American Samoa" },
@@ -197,4 +200,4 @@ const Providers =  [
     { "Abbrev": "WV", "State": "West Virginia" },
     { "Abbrev": "WI", "State": "Wisconsin" },
     { "Abbrev": "WY", "State": "Wyoming" },
-      ]; 
+      ];
