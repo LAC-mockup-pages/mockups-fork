@@ -56,7 +56,6 @@ const createNewRecord = (labelsList) => {
     "ProfDevCategoryID",
     "ProfDevSubjectID",
     "ProfDevFacilitator1",
-    "ProfDevFacilitator2",
     "ProfDevLocationID",
   ];
   const hiddenList = [
@@ -69,6 +68,7 @@ const createNewRecord = (labelsList) => {
     "profdevFac2",
     "profdevFac3",
     "ProfDevHours",
+    "ProfDevFacilitator2",
     "ProfDevFacilitator3",
     "ProfDevFeeCharged",
     "ProfDevComments",
@@ -152,7 +152,7 @@ const createNewRecord = (labelsList) => {
         optionText: "a subject",
         classOption,
       });
-    } else if (["ProfDevFacilitator1", "ProfDevFacilitator2"].includes(key)) {
+    } else if (key === "ProfDevFacilitator1") {
       const shortList = facilitatorList
         .sort((record1, record2) => record1.FacLastName - record2.FacLastName)
         .map((item) => {

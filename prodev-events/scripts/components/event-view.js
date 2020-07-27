@@ -24,6 +24,8 @@ const createViewBloc = (fieldList, selectObj, requiredList) => {
       labelClassVal = "class='red-text'";
       option = "required";
     }
+
+    if (keyVal === "ProfDevFY") option += " disabled";
     if (selectList.includes(keyVal)) {
       const { hashTable, optionText } = selectObj[keyVal];
       bloc += elementSelectModal({
