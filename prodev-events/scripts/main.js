@@ -45,15 +45,20 @@ const rowLabels = [
   },
 ];
 
-const setFiscalYear = (start, end) => {
-  const startDate = new Date(start);
-
-  const endDate = new Date(end);
-  const nowDay = new Date();
-  let fiscalYear = endDate.getFullYear();
-  if (fiscalYear === startDate.getFullYear() && nowDay >= endDate)
-    fiscalYear += 1;
-  return fiscalYear.toString();
+const setFiscalYear = (datePD) => {
+  const dateEvent = new Date(datePD);
+  const currentYear = dateEvent.getFullYear();
+  const startFY = new Date(`07/01/${currentYear}`);
+  const endYear = new Date(`12/31/${currentYear}`);
+  if (dateEvent >= startFY) {
+    if (dateEvent <= endYear) {
+      return (currentYear + 1).toString();
+    } else {
+      return currentYear.toString();
+    }
+  } else {
+    return currentYear.toString();
+  }
 };
 
 const createNewRecord = (labelsList) => {
@@ -326,12 +331,14 @@ const saveMods = (fields, formName, tableName = "") => {
   $(`${formName} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
   const requiredList = getRequired();
-  console.log("requiredList :>> ", requiredList);
+  const dateEvent = fieldList.find((item) => item.name === "ProfDevDate").value;
+
   // Data validation
   // validateNewRecord() <== data-check.js
   const validatedList = validateRecord(fieldList, requiredList);
   // Background color change for invalid field values
   const checkFlag = validatedList.some((item) => !item.correct);
+
   if (checkFlag) {
     const list = validatedList.filter((obj) => obj.correct === false);
     for (let field of list) {
@@ -344,16 +351,7 @@ const saveMods = (fields, formName, tableName = "") => {
     for (const field of fieldList) {
       let val = field.value;
       let name = field.name;
-
-      if (name === "ProfDevFY") val = setFiscalYear();
-
-      // phoneFormat() <== helperFunction.js
-      // if (["HomePhone", "AlternatePhone", "CellPhone"])
-      //   val = val ? phoneFormat(val) : "";
-
-      // zipCodeFormat() <== helperFunction.js
-      // if (name === "Zip") val = val ? zipCodeFormat(val) : "";
-
+      if (name === "ProfDevFY") val = setFiscalYear(dateEvent);
       result[name] = val;
     }
 
