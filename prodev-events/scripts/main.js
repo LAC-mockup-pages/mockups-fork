@@ -13,7 +13,6 @@ export const sessionList = [
   { key: "morning", name: "Morning" },
   { key: "afternoon", name: "Afternoon" },
 ];
-const stateList = States.slice(0);
 
 const rowLabels = [
   {
@@ -325,12 +324,12 @@ const getRequired = () => {
   return requiredList;
 };
 
-const saveMods = (fields, formName, tableName = "") => {
+const saveMods = (fields, formName, tableName = "", requiredList = []) => {
   const { AgencyID, AuditUserID } = sessionVariable;
   const result = { AgencyID, AuditUserID };
   $(`${formName} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
-  const requiredList = getRequired();
+  console.log("requiredList :>> ", requiredList);
   const dateEvent = fieldList.find((item) => item.name === "ProfDevDate").value;
 
   // Data validation
@@ -367,9 +366,9 @@ const saveMods = (fields, formName, tableName = "") => {
 
     // if (formName === "#edit-form") $("#modalBloc").modal("toggle");
     if (formName === "#new-entry") {
-      const resetList = getRequired()
-        .map((field) => `#${field}`)
-        .join(",");
+      const resetList = requiredList.map((field) => `#${field}`).join(",");
+      console.log("requiredList :>> ", requiredList);
+      console.log("resetList :>> ", resetList);
       $(formName)[0].reset();
       $(resetList).toggleClass("dark-text").prop("required", true);
     }
@@ -408,10 +407,9 @@ $(document).ready(() => {
 
   // Change text color from red (required) to black
   // when a value is entered
-  const reqList = getRequired()
-    .map((field) => `#${field}`)
-    .join(",");
-  $(document).on("focusin", reqList, function (evnt) {
+  const listOfRequired = getRequired();
+  const reqString = listOfRequired.map((field) => `#${field}`).join(",");
+  $(document).on("focusin", reqString, function (evnt) {
     evnt.stopPropagation();
     $(this).toggleClass("dark-text").prop("required", false);
   });
@@ -426,7 +424,7 @@ $(document).ready(() => {
     const newSource = $(formId)
       .serializeArray()
       .filter((field) => field.name.startsWith("ProfDev"));
-    saveMods(newSource, formId, "ProfDevEventsInfo");
+    saveMods(newSource, formId, "ProfDevEventsInfo", listOfRequired);
   });
 
   //* Canceling
