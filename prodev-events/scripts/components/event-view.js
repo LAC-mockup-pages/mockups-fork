@@ -106,9 +106,13 @@ export const createEventView = (tdList, requiredList) => {
   <form role="form" id="event-view-form" class="container-fluid row event-view">
       <div class="col-md-6 left-event-view">${leftBloc}</div>
       <div class="col-md-6 right-event-view">${rightBloc}</div>
-      <button type="button" id="save-changes-btn" form="event-view-form" class="btn btn-primary">Save Changes</button>
-      <button type="button" id="cancel-changes-btn" form="event-view-form" class="btn btn-default">Cancel</button>
-    </form>
-  `;
+  </form>
+    <div class="container-fluid row buttons-bloc-new">
+      <div class="col-md-9"></div>
+      <div class="col-md-3">
+        <button type="button" id="event-view-submit-btn" form="event-view-form" class="btn dark-blue-text blue-light-bg">Save</button>
+        <button type="button" id="event-view-cancel-btn" form="event-view-form" class="btn btn-default">Cancel</button>
+      </div>
+    </div>`;
   return eventView;
 };
