@@ -45,6 +45,17 @@ const rowLabels = [
   },
 ];
 
+const setFiscalYear = (start, end) => {
+  const startDate = new Date(start);
+
+  const endDate = new Date(end);
+  const nowDay = new Date();
+  let fiscalYear = endDate.getFullYear();
+  if (fiscalYear === startDate.getFullYear() && nowDay >= endDate)
+    fiscalYear += 1;
+  return fiscalYear.toString();
+};
+
 const createNewRecord = (labelsList) => {
   let result = [];
   const labelObj = labelsList[0];
@@ -309,6 +320,61 @@ const getRequired = () => {
   return requiredList;
 };
 
+const saveMods = (fields, formName, tableName = "") => {
+  const { AgencyID, AuditUserID } = sessionVariable;
+  const result = { AgencyID, AuditUserID };
+  $(`${formName} input, select`).removeClass("yellow-bg");
+  const fieldList = fields.slice(0);
+
+  // Data validation
+  // validateNewRecord() <== data-check.js
+  const validatedList = validateRecord(fieldList);
+  // Background color change for invalid field values
+  const checkFlag = validatedList.some((item) => !item.correct);
+  if (checkFlag) {
+    const list = validatedList.filter((obj) => obj.correct === false);
+    for (let field of list) {
+      let fieldId =
+        formName === "#new-entry" ? `#${field.name}` : `#${field.name}-view`;
+      $(fieldId).addClass("yellow-bg");
+    }
+    return;
+  } else {
+    for (const field of fieldList) {
+      let val = field.value;
+      let name = field.name;
+
+      // phoneFormat() <== helperFunction.js
+      // if (["HomePhone", "AlternatePhone", "CellPhone"])
+      //   val = val ? phoneFormat(val) : "";
+
+      // zipCodeFormat() <== helperFunction.js
+      // if (name === "Zip") val = val ? zipCodeFormat(val) : "";
+
+      result[name] = val;
+    }
+
+    const target = tableName ? tableName : "No table name";
+    const resultList = [formName, target, JSON.stringify(result)];
+    console.table(result);
+    //! =================================================
+    //! JSON Object to send back to database
+    console.log("result :", resultList);
+    //! =================================================
+
+    //ToDO Reloading/resetting with new data
+
+    // if (formName === "#edit-form") $("#modalBloc").modal("toggle");
+    if (formName === "#new-entry") {
+      const resetList = getRequired()
+        .map((field) => `#${field}`)
+        .join(",");
+      $(formName)[0].reset();
+      $(resetList).toggleClass("dark-text").prop("required", true);
+    }
+  }
+};
+
 $(document).ready(() => {
   // * sub-navbar/index.js
   $("#sub-nav li").click(function () {
@@ -349,13 +415,13 @@ $(document).ready(() => {
   $("[data-toggle='tooltip']").tooltip();
 
   //* Adding a new partner
-  // $(document).on("click", "#submit-btn", function (evnt) {
-  //   evnt.preventDefault();
-  //   evnt.stopPropagation();
-  //   const formId = "#" + $(this).attr("form");
-  //   const newSource = $(formId).serializeArray();
-  //   saveMods(newSource, formId, "Facilitator");
-  // });
+  $(document).on("click", "#submit-btn", function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    const formId = "#" + $(this).attr("form");
+    const newSource = $(formId).serializeArray();
+    saveMods(newSource, formId, "ProfDevEventsInfo");
+  });
 
   //* Canceling
   $(document).on("click", "#cancel-btn", function (evnt) {
