@@ -394,11 +394,12 @@ $(document).ready(() => {
 
   //* Data viewing
   $("#new-entry").append(createNewRecord(rowLabels));
-  $(".record-entry").append(`<div class="container-fluid buttons-bloc-new">
-    <button type="button" id="cancel-btn" form="new-entry"
-      class="btn btn-default pull-right">Cancel</button>
-    <button type="button" id="submit-btn" form="new-entry"
-      class="btn dark-blue-text blue-light-bg pull-right">Add</button>
+  $(".record-entry").append(`<div class="container-fluid row buttons-bloc-new">
+  <div class="col-md-9"></div>
+        <div class="col-md-3"><button type="button" id="submit-btn" form="new-entry"
+      class="btn dark-blue-text blue-light-bg">Add</button>
+<button type="button" id="cancel-btn" form="new-entry"
+      class="btn btn-default">Cancel</button></div>
   </div>`);
   $("#main-table").append(createViewBloc());
 
