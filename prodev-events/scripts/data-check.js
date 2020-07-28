@@ -1,30 +1,37 @@
 // User input data validation
 
-const validateRecord = (dataList) => {
+const validateRecord = (dataList, requiredList) => {
   // Returns true if input is only alphanumerical + underscore, not empty string
   const alphaNumCheck = (str) => {
     return !/[^\s\w-.]/g.test(str);
   };
   const resultList = [];
-
+  console.log("requiredList :>> ", requiredList);
   for (let field of dataList) {
     let { name, value } = field;
     const obj = { name, value };
+    const dateFormat = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
+
     switch (name) {
-      case "FacFirstName":
-      case "FacLastName":
-      case "HomePhone":
-        obj.correct = value ? alphaNumCheck(value) : false;
-        break;
-      case "Email":
-        obj.correct = value ? true : false;
+      // case requiredList.includes(name):
+      //   obj.correct = value ? alphaNumCheck(value) : false;
+      //   break;
+
+      case "ProfDevDate":
+        // Match the date format through regular expression
+        obj.correct = value.match(dateFormat) ? true : false;
         break;
 
       default:
-        obj.correct = value ? alphaNumCheck(value) : true;
+        if (requiredList.includes(name)) {
+          obj.correct = value ? alphaNumCheck(value) : false;
+        } else {
+          obj.correct = value ? alphaNumCheck(value) : true;
+        }
         break;
     }
     resultList.push(obj);
   }
+  console.log("resultList :>> ", resultList);
   return resultList;
 };

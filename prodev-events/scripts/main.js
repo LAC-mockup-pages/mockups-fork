@@ -325,10 +325,11 @@ const saveMods = (fields, formName, tableName = "") => {
   const result = { AgencyID, AuditUserID };
   $(`${formName} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
-
+  const requiredList = getRequired();
+  console.log("requiredList :>> ", requiredList);
   // Data validation
   // validateNewRecord() <== data-check.js
-  const validatedList = validateRecord(fieldList);
+  const validatedList = validateRecord(fieldList, requiredList);
   // Background color change for invalid field values
   const checkFlag = validatedList.some((item) => !item.correct);
   if (checkFlag) {
@@ -343,6 +344,8 @@ const saveMods = (fields, formName, tableName = "") => {
     for (const field of fieldList) {
       let val = field.value;
       let name = field.name;
+
+      if (name === "ProfDevFY") val = setFiscalYear();
 
       // phoneFormat() <== helperFunction.js
       // if (["HomePhone", "AlternatePhone", "CellPhone"])
@@ -407,7 +410,10 @@ $(document).ready(() => {
 
   // Change text color from red (required) to black
   // when a value is entered
-  $(document).on("focusin", "#ProfDevProviderID-view", function (evnt) {
+  const reqList = getRequired()
+    .map((field) => `#${field}`)
+    .join(",");
+  $(document).on("focusin", reqList, function (evnt) {
     evnt.stopPropagation();
     $(this).toggleClass("dark-text").prop("required", false);
   });
@@ -419,7 +425,9 @@ $(document).ready(() => {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
-    const newSource = $(formId).serializeArray();
+    const newSource = $(formId)
+      .serializeArray()
+      .filter((field) => field.name.startsWith("ProfDev"));
     saveMods(newSource, formId, "ProfDevEventsInfo");
   });
 
