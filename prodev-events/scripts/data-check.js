@@ -6,7 +6,6 @@ const validateRecord = (dataList, requiredList) => {
     return !/[^\s\w-.]/g.test(str);
   };
   const resultList = [];
-  console.log("requiredList :>> ", requiredList);
   for (let field of dataList) {
     let { name, value } = field;
     const obj = { name, value };
@@ -32,6 +31,5 @@ const validateRecord = (dataList, requiredList) => {
     }
     resultList.push(obj);
   }
-  console.log("resultList :>> ", resultList);
   return resultList;
 };

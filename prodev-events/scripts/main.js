@@ -329,7 +329,6 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
   const result = { AgencyID, AuditUserID };
   $(`${formName} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
-  console.log("requiredList :>> ", requiredList);
   const dateEvent = fieldList.find((item) => item.name === "ProfDevDate").value;
 
   // Data validation
@@ -366,9 +365,7 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
 
     // if (formName === "#edit-form") $("#modalBloc").modal("toggle");
     if (formName === "#new-entry") {
-      const resetList = requiredList.map((field) => `#${field}`).join(",");
-      console.log("requiredList :>> ", requiredList);
-      console.log("resetList :>> ", resetList);
+      const resetList = requiredList.map((field) => `#${field}`).join(", ");
       $(formName)[0].reset();
       $(resetList).toggleClass("dark-text").prop("required", true);
     }
