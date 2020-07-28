@@ -216,7 +216,7 @@ th {
   height: 28px;
   margin-top: 2px;
   line-height: 16px;
-  width: fit-content;
+  width: 5em;
   font-size: 1.1em;
   font-weight: 700;
 }

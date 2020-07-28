@@ -416,7 +416,7 @@ $(document).ready(() => {
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
 
-  //* Adding a new record
+  //* Adding a new record or Editing an event
   $(document).on("click", "#submit-btn, #event-view-submit-btn", function (
     evnt
   ) {
@@ -458,6 +458,13 @@ $(document).ready(() => {
 
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
+  });
+
+  //* Adding a participant to the Roster
+  $("document").on("click", "#add-record-btn", function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    const formId = "#" + $(this).attr("form");
   });
 
   //* Saving mods after editing selected record

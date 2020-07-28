@@ -3,6 +3,8 @@
 import { topBanner, subTableBody } from "./sub-table-elements.js";
 const rosterList = ProfDevRoster.slice(0);
 
+export const createModalRosterNew = (tdList, labelObj, reqList) => {};
+
 export const rosterView = (eventID) => {
   const blockName = "Event Roster";
   const agencyList = Agency.slice(0);
