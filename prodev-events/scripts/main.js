@@ -349,7 +349,8 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
     for (const field of fieldList) {
       let val = field.value;
       let name = field.name;
-      if (name === "ProfDevFY") val = setFiscalYear(dateEvent);
+      if (formName === "#new-entry" && name === "ProfDevFY")
+        val = setFiscalYear(dateEvent);
       result[name] = val;
     }
 
@@ -359,6 +360,7 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
     //! =================================================
     //! JSON Object to send back to database
     console.log("result :", resultList);
+    console.log("result :", result);
     //! =================================================
 
     //ToDO Reloading/resetting with new data
@@ -414,8 +416,10 @@ $(document).ready(() => {
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
 
-  //* Adding a new partner
-  $(document).on("click", "#submit-btn", function (evnt) {
+  //* Adding a new record
+  $(document).on("click", "#submit-btn, #event-view-submit-btn", function (
+    evnt
+  ) {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
@@ -426,10 +430,14 @@ $(document).ready(() => {
   });
 
   //* Canceling
-  $(document).on("click", "#cancel-btn", function (evnt) {
+  $(document).on("click", "#cancel-btn, #event-view-cancel-btn", function (
+    evnt
+  ) {
     evnt.preventDefault();
     evnt.stopPropagation();
-    location.reload();
+    const formId = "#" + $(this).attr("form");
+    if (formId === "#new-entry") location.reload();
+    if (formId === "#event-view-form") $(formId)[0].reset();
   });
 
   //* Select record to edit + display selected event & roster
