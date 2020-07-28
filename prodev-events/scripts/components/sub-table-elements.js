@@ -36,10 +36,7 @@ export const subTableBody = (
   tableName = ""
 ) => {
   block = block.toLowerCase().replace(/\W/gi, "-");
-
   const orderedList = [...Object.keys(obj), ...hiddenList];
-  console.log("orderedList :>> ", orderedList);
-
   const rows = dataList
     .map((record, indx) => {
       let cells = "";
@@ -51,10 +48,8 @@ export const subTableBody = (
         if (["Attended", "FeesPaid"].includes(key)) {
           insideText = record[key] === "True" ? "Yes" : "No";
         }
-
         cells += `<td class="cell-data${optionHidden} col-sm-2" data-field=${key} ${label}>${insideText}</td>`;
       }
-
       return `<tr id="${block}-${indx}" ${tableData}>${cells}</tr>`;
     })
     .join("");
