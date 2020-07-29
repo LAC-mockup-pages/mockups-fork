@@ -6,7 +6,11 @@ export const agencyList = Agency.slice(0);
 export const regionList = Region.slice(0);
 export const staffList = Staff.slice(0);
 
-export const createModalRoster = (selectObj) => {
+export const createModalRoster = (
+  selectObj,
+  selectedRegion = "",
+  selectedAgency = ""
+) => {
   const labelList = {
     ID: "ID",
     AgencyID: "Agency",
@@ -19,19 +23,20 @@ export const createModalRoster = (selectObj) => {
     Attended: "Attended",
     FeesPaid: "Fees Paid",
   };
-  const selectElementObj = selectObj
-    ? selectObj
-    : {
-        RAENID: { hashTable: regionList, optionText: "a region" },
+  const selectElementObj={
+        RAENID: { hashTable: regionList, optionText: "a region", selectedValue:selectedRegion},
         AgencyID: {
           hashTable: [{ key: "AgencyID", val: "" }],
-          optionText: "an agency",
+          optionText: "an agency",selectedValue:selectedAgency
         },
         Personnel_PKID: {
           hashTable: [{ key: "Personnel_PKID", val: "" }],
           optionText: "a participant",
         },
       };
+  if(selectedRegion){
+  selectElementObj.AgencyID.hashTable=selectedRegion
+
   let bloc = "";
   // Adding a new participant with modal
   for (const key in selectElementObj) {
