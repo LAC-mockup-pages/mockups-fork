@@ -3,11 +3,12 @@
 import { topBanner, subTableBody } from "./sub-table-elements.js";
 const rosterList = ProfDevRoster.slice(0);
 
-export const createModalRosterNew = (tdList, labelObj, reqList) => {};
+export const createModalRoster = (tdList, labelObj, reqList) => {};
 
 export const rosterView = (eventID) => {
   const blockName = "Event Roster";
   const agencyList = Agency.slice(0);
+
   const rosterData = rosterList
     .filter((record) => record.PDActivity_PKID === eventID)
     .sort((record1, record2) => {
@@ -19,6 +20,7 @@ export const rosterView = (eventID) => {
       const agency = agencyList.filter(
         (item) => item.AgencyID === record.AgencyID
       )[0];
+
       return {
         ...record,
         AgencyName: agency.AgencyName,
