@@ -147,15 +147,15 @@ const ProfDevRoster = [
 // After select, ID value is passed to GetAgency stored procedure to filter agency list
 
 const Region = [
-  { RAENID: "CN" },
-  { RAENID: "CST" },
-  { RAENID: "FL" },
-  { RAENID: "HV" },
-  { RAENID: "LI" },
-  { RAENID: "NY" },
-  { RAENID: "NYSED" },
-  { RAENID: "TEST" },
-  { RAENID: "WEST" },
+  { RAENID: "CN", RegionName: "CN" },
+  { RAENID: "CST", RegionName: "CST" },
+  { RAENID: "FL", RegionName: "FL" },
+  { RAENID: "HV", RegionName: "HV" },
+  { RAENID: "LI", RegionName: "LI" },
+  { RAENID: "NY", RegionName: "NY" },
+  { RAENID: "NYSED", regionName: "NYSED" },
+  { RAENID: "TEST", regionName: "TEST" },
+  { RAENID: "WEST", regionName: "WEST" },
 ];
 
 // This object is the source for Agency dropdown on add new attendee on profdev_roster page

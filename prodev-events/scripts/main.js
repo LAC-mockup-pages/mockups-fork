@@ -1,5 +1,6 @@
 // Actions and logic
 import { createEventView } from "./components/event-view.js";
+import { createModalRoster } from "./components/roster-view.js";
 
 // Isolate work objects and arrays from data source.
 const dataSource = ProfDevEventsInfo.slice(0);
@@ -461,10 +462,15 @@ $(document).ready(() => {
   });
 
   //* Adding a participant to the Roster
-  $("document").on("click", "#add-record-btn", function (evnt) {
+  $(document).on("click", ".add-record-btn", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
-    const formId = "#" + $(this).attr("form");
+
+    const editForm = createModalRoster();
+    $("#modalBloc").modal("toggle");
+    $("#edit-form").empty().append(editForm);
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
   });
 
   //* Saving mods after editing selected record

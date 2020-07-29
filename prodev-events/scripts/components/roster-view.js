@@ -4,25 +4,49 @@ import { topBanner, subTableBody } from "./sub-table-elements.js";
 const rosterList = ProfDevRoster.slice(0);
 const agencyList = Agency.slice(0);
 const regionList = Region.slice(0);
+const staffList = Staff.slice(0);
 
-export const createModalRoster = (tdList) => {
-  const fieldList = [
-    {
-      ID: "ID",
-      AgencyID: "AgencyID",
-      PDActivity_PKID: "Event ID",
-      Personnel_PKID: "Personnel ID",
-      PersonnelID: "Personnel ID",
-      Name: "Full Name",
-      Date: "Date",
-      RAENID: "Region",
-      AgencyName: "Agency Name",
-      Attended: "Attended",
-      FeesPaid: "Fees Paid",
+export const createModalRoster = () => {
+  const labelList = {
+    ID: "ID",
+    AgencyID: "Agency",
+    PDActivity_PKID: "Event ID",
+    Personnel_PKID: "Personnel Name",
+    PersonnelID: "Personnel Name",
+    Name: "Full Name",
+    Date: "Date",
+    RAENID: "Region",
+    Attended: "Attended",
+    FeesPaid: "Fees Paid",
+  };
+  const selectElementObj = {
+    RAENID: { hashTable: regionList, optionText: "a region" },
+    AgencyID: {
+      hashTable: [{ key: "AgencyID", val: "" }],
+      optionText: "an agency",
     },
-  ];
-  const selectElementObj = {};
+    Personnel_PKID: {
+      hashTable: [{ key: "Personnel_PKID", val: "" }],
+      optionText: "a participant",
+    },
+  };
+  let bloc = "";
   // Adding a new participant with modal
+  for (const key in selectElementObj) {
+    let keyValue = key;
+    const { hashTable, optionText } = selectElementObj[key];
+    let labelVal = labelList[key];
+    bloc += elementSelectModal({
+      hashTable,
+      keyValue,
+      selectedValue: "",
+      labelVal,
+      labelClassVal: 'class="red-text"',
+      option: "required",
+      optionText,
+    });
+  }
+  return bloc;
 };
 
 export const rosterView = (eventID) => {
