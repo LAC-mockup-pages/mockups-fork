@@ -2,12 +2,31 @@
 
 import { topBanner, subTableBody } from "./sub-table-elements.js";
 const rosterList = ProfDevRoster.slice(0);
+const agencyList = Agency.slice(0);
+const regionList = Region.slice(0);
 
-export const createModalRoster = (tdList, labelObj, reqList) => {};
+export const createModalRoster = (tdList) => {
+  const fieldList = [
+    {
+      ID: "ID",
+      AgencyID: "AgencyID",
+      PDActivity_PKID: "Event ID",
+      Personnel_PKID: "Personnel ID",
+      PersonnelID: "Personnel ID",
+      Name: "Full Name",
+      Date: "Date",
+      RAENID: "Region",
+      AgencyName: "Agency Name",
+      Attended: "Attended",
+      FeesPaid: "Fees Paid",
+    },
+  ];
+  const selectElementObj = {};
+  // Adding a new participant with modal
+};
 
 export const rosterView = (eventID) => {
   const blockName = "Event Roster";
-  const agencyList = Agency.slice(0);
 
   const rosterData = rosterList
     .filter((record) => record.PDActivity_PKID === eventID)
@@ -34,7 +53,7 @@ export const rosterView = (eventID) => {
     ["Region", "col-sm-2"],
     ["Agency", "col-sm-2"],
     ["Attended", "col-sm-2"],
-    ["Fee Paid", "col-sm-2"],
+    ["Fees Paid", "col-sm-2"],
   ]);
 
   const body = subTableBody(
