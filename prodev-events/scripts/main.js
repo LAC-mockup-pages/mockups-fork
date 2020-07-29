@@ -1,6 +1,11 @@
 // Actions and logic
 import { createEventView } from "./components/event-view.js";
-import { createModalRoster } from "./components/roster-view.js";
+import {
+  createModalRoster,
+  agencyList,
+  regionList,
+  staffList,
+} from "./components/roster-view.js";
 
 // Isolate work objects and arrays from data source.
 const dataSource = ProfDevEventsInfo.slice(0);
@@ -472,6 +477,67 @@ $(document).ready(() => {
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
+
+  $(document).on("change", "#RAENID-view", function (evnt) {
+    evnt.stopPropagation();
+    const selectedRegion = $(this).val();
+    console.log("selectedRegion :>> ", selectedRegion);
+
+    const filteredAgencyList = agencyList
+      .filter((agency) => agency.RAENID === selectedRegion)
+      .map((item) => {
+        const { AgencyID, AgencyName } = item;
+        return { AgencyID, AgencyName };
+      });
+    const editForm = createModalRoster(
+      {
+        RAENID: {
+          hashTable: regionList,
+          optionText: "a region",
+          selectedValue: selectedRegion,
+        },
+        AgencyID: {
+          hashTable: filteredAgencyList,
+          optionText: "an agency",
+        },
+        Personnel_PKID: {
+          hashTable: [{ key: "Personnel_PKID", val: "" }],
+          optionText: "a participant",
+        },
+      },
+      selectedRegion
+    );
+    $("#edit-form").empty().append(editForm);
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
+  });
+
+  // $(document).on("change", "#AgencyID-view", function (evnt) {
+  //   evnt.stopPropagation();
+  //   const selectedAgency = $(this).val();
+  //   console.log("selectedAgency :>> ", selectedAgency);
+
+  //   const filteredList = staffList
+  //     .filter((person) => person.AgencyID === selectedAgency)
+  //     .map((item) => {
+  //       const { AgencyID, AgencyName } = item;
+  //       return { AgencyID, AgencyName };
+  //     });
+  //   const editForm = createModalRoster({
+  //     RAENID: { hashTable: regionList, optionText: "a region" },
+  //     AgencyID: {
+  //       hashTable: filteredList,
+  //       optionText: "an agency",
+  //     },
+  //     Personnel_PKID: {
+  //       hashTable: [{ key: "Personnel_PKID", val: "" }],
+  //       optionText: "a participant",
+  //     },
+  //   });
+  //   $("#edit-form").empty().append(editForm);
+  //   // Enables customized tooltips
+  //   $("[data-toggle='tooltip']").tooltip();
+  // });
 
   //* Saving mods after editing selected record
   // $(document).on("click", "#save-btn", function (evnt) {

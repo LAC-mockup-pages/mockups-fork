@@ -153,9 +153,9 @@ const Region = [
   { RAENID: "HV", RegionName: "HV" },
   { RAENID: "LI", RegionName: "LI" },
   { RAENID: "NY", RegionName: "NY" },
-  { RAENID: "NYSED", regionName: "NYSED" },
-  { RAENID: "TEST", regionName: "TEST" },
-  { RAENID: "WEST", regionName: "WEST" },
+  { RAENID: "NYSED", RegionName: "NYSED" },
+  { RAENID: "TEST", RegionName: "TEST" },
+  { RAENID: "WEST", RegionName: "WEST" },
 ];
 
 // This object is the source for Agency dropdown on add new attendee on profdev_roster page

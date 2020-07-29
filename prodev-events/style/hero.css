@@ -233,3 +233,12 @@ th {
 .larger-font {
   font-size: 1.5em;
 }
+
+#fees-box,
+#attended-box {
+  height: 20px;
+  width: 20px;
+  border-bottom: none;
+  margin: 0;
+  bottom: -10px;
+}

@@ -2,11 +2,11 @@
 
 import { topBanner, subTableBody } from "./sub-table-elements.js";
 const rosterList = ProfDevRoster.slice(0);
-const agencyList = Agency.slice(0);
-const regionList = Region.slice(0);
-const staffList = Staff.slice(0);
+export const agencyList = Agency.slice(0);
+export const regionList = Region.slice(0);
+export const staffList = Staff.slice(0);
 
-export const createModalRoster = () => {
+export const createModalRoster = (selectObj) => {
   const labelList = {
     ID: "ID",
     AgencyID: "Agency",
@@ -19,34 +19,48 @@ export const createModalRoster = () => {
     Attended: "Attended",
     FeesPaid: "Fees Paid",
   };
-  const selectElementObj = {
-    RAENID: { hashTable: regionList, optionText: "a region" },
-    AgencyID: {
-      hashTable: [{ key: "AgencyID", val: "" }],
-      optionText: "an agency",
-    },
-    Personnel_PKID: {
-      hashTable: [{ key: "Personnel_PKID", val: "" }],
-      optionText: "a participant",
-    },
-  };
+  const selectElementObj = selectObj
+    ? selectObj
+    : {
+        RAENID: { hashTable: regionList, optionText: "a region" },
+        AgencyID: {
+          hashTable: [{ key: "AgencyID", val: "" }],
+          optionText: "an agency",
+        },
+        Personnel_PKID: {
+          hashTable: [{ key: "Personnel_PKID", val: "" }],
+          optionText: "a participant",
+        },
+      };
   let bloc = "";
   // Adding a new participant with modal
   for (const key in selectElementObj) {
     let keyValue = key;
-    const { hashTable, optionText } = selectElementObj[key];
+    let { hashTable, optionText, selectedValue } = selectElementObj[key];
     let labelVal = labelList[key];
+    selectedValue = selectedValue ? selectedValue : "";
     bloc += elementSelectModal({
       hashTable,
       keyValue,
-      selectedValue: "",
+      selectedValue,
       labelVal,
       labelClassVal: 'class="red-text"',
       option: "required",
       optionText,
     });
   }
-  return bloc;
+  const attendedCheckbox = `<div class="input-field form-group">
+  <label for="Attended">${labelList.Attended}</label>
+  <input type="checkbox" id="attended-box" name="Attended" value="False"/>
+  </div>
+  `;
+  const feesCheckbox = `<div class="input-field form-group">
+  <label for="FeesPaid">${labelList.FeesPaid}</label>
+  <input type="checkbox" name="FeesPaid" id="fees-box" value="False"/>
+  </div>
+  `;
+
+  return bloc + attendedCheckbox + feesCheckbox;
 };
 
 export const rosterView = (eventID) => {
