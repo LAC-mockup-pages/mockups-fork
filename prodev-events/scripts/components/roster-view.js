@@ -72,12 +72,12 @@ export const createModalRoster = (selectedRegion, selectedAgency) => {
   }
   const attendedCheckbox = `<div class="input-field form-group">
   <label for="Attended">${labelList.Attended}</label>
-  <input type="checkbox" id="attended-box" name="Attended" value="False"/>
+  <input type="checkbox" id="attended-box" name="Attended"/>
   </div>
   `;
   const feesCheckbox = `<div class="input-field form-group">
   <label for="FeesPaid">${labelList.FeesPaid}</label>
-  <input type="checkbox" name="FeesPaid" id="fees-box" value="False"/>
+  <input type="checkbox" name="FeesPaid" id="fees-box"/>
   </div>
   `;
 

@@ -473,6 +473,7 @@ $(document).ready(() => {
     const editForm = createModalRoster();
     $("#modalBloc").modal("toggle");
     $("#edit-form").empty().append(editForm);
+
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
@@ -482,6 +483,7 @@ $(document).ready(() => {
     let editForm = "";
     let selectedRegion = "";
     let selectedAgency = "";
+
     if ($(this).attr("id") === "RAENID-view") {
       selectedRegion = $(this).val();
       console.log("selectedRegion :>> ", selectedRegion);
@@ -491,25 +493,37 @@ $(document).ready(() => {
     if ($(this).attr("id") === "AgencyID-view") {
       selectedAgency = $(this).val();
       selectedRegion = $("#RAENID-view").val();
-      console.log("selectedRegion :>> ", selectedRegion);
-      console.log("selectedAgency :>> ", selectedAgency);
       editForm = createModalRoster(selectedRegion, selectedAgency);
     }
 
     $("#edit-form").empty().append(editForm);
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
+    $("#attended-box").val(
+      $("#attended-box").prop("checked") ? "True" : "False"
+    );
+    $("#fees-box").val($("#fees-box").prop("checked") ? "True" : "False");
+  });
+
+  $(document).on("change", "#edit-form [type='checkbox']", function (evnt) {
+    evnt.stopPropagation();
+    const boxId = `#${$(this).attr("id")}`;
+    $(boxId).val($(boxId).prop("checked") ? "True" : "False");
   });
 
   //* Saving new record from roster modal
   $(document).on("click", "#save-btn", function (evnt) {
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
+    const attendedBoxValue = $("#attended-box").prop("checked");
     const newSource = $(formId).serializeArray();
-    console.log("newSource :>> ", newSource);
-
-    console.log("Attended value", $("#attended-box").val());
-    saveMods(newSource, formId, "ProfDevRoster");
+    if (!newSource.find((field) => field.name === "Attended")) {
+      newSource.push({ name: "Attended", value: "False" });
+    }
+    if (!newSource.find((field) => field.name === "FeesPaid")) {
+      newSource.push({ name: "FeesPaid", value: "False" });
+    }
+    saveMods(newSource, "#new-record", "ProfDevRoster");
   });
 
   //* Saving mods after editing selected record
