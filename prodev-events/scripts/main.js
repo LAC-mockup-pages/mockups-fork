@@ -505,6 +505,8 @@ $(document).ready(() => {
     $("#fees-box").val($("#fees-box").prop("checked") ? "True" : "False");
   });
 
+  //* Changing values with change event in checkboxes from new-record roster
+  //* modal
   $(document).on("change", "#edit-form [type='checkbox']", function (evnt) {
     evnt.stopPropagation();
     const boxId = `#${$(this).attr("id")}`;
@@ -515,7 +517,6 @@ $(document).ready(() => {
   $(document).on("click", "#save-btn", function (evnt) {
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
-    const attendedBoxValue = $("#attended-box").prop("checked");
     const newSource = $(formId).serializeArray();
     if (!newSource.find((field) => field.name === "Attended")) {
       newSource.push({ name: "Attended", value: "False" });
@@ -523,6 +524,7 @@ $(document).ready(() => {
     if (!newSource.find((field) => field.name === "FeesPaid")) {
       newSource.push({ name: "FeesPaid", value: "False" });
     }
+    console.log("Person text: ", $("#Personne_PKID-view").text());
     saveMods(newSource, "#new-record", "ProfDevRoster");
   });
 

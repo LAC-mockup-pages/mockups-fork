@@ -19,6 +19,8 @@ export const createModalRoster = (selectedRegion, selectedAgency) => {
     Attended: "Attended",
     FeesPaid: "Fees Paid",
   };
+  let hiddenName = "";
+  let hiddenPersID = "";
   const selectElementObj = {
     RAENID: { hashTable: regionList, optionText: "a region" },
     AgencyID: {
