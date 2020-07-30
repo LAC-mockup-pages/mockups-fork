@@ -12,10 +12,6 @@ const validateRecord = (dataList, requiredList) => {
     const dateFormat = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 
     switch (name) {
-      // case requiredList.includes(name):
-      //   obj.correct = value ? alphaNumCheck(value) : false;
-      //   break;
-
       case "ProfDevDate":
       case "Date":
         // Match the date format through regular expression
