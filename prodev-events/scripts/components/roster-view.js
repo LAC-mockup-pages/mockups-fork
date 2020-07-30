@@ -19,8 +19,7 @@ export const createModalRoster = (selectedRegion, selectedAgency) => {
     Attended: "Attended",
     FeesPaid: "Fees Paid",
   };
-  let hiddenName = "";
-  let hiddenPersID = "";
+
   const selectElementObj = {
     RAENID: { hashTable: regionList, optionText: "a region" },
     AgencyID: {
@@ -71,6 +70,13 @@ export const createModalRoster = (selectedRegion, selectedAgency) => {
       option: "required",
       optionText,
     });
+  }
+
+  if ($("#Personnel_PKID-view").val()) {
+    console.log(
+      "Person text: ",
+      $("#Personnel_PKID-view option:selected").text()
+    );
   }
   const attendedCheckbox = `<div class="input-field form-group">
   <label for="Attended">${labelList.Attended}</label>

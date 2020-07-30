@@ -1,11 +1,6 @@
 // Actions and logic
 import { createEventView } from "./components/event-view.js";
-import {
-  createModalRoster,
-  agencyList,
-  regionList,
-  staffList,
-} from "./components/roster-view.js";
+import { createModalRoster, staffList } from "./components/roster-view.js";
 
 // Isolate work objects and arrays from data source.
 const dataSource = ProfDevEventsInfo.slice(0);
@@ -335,13 +330,13 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
   const result = { AgencyID, AuditUserID };
   $(`${formName} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
-
+  console.log("fieldList :>> ", fieldList);
   // Data validation
   // validateNewRecord() <== data-check.js
   const validatedList = validateRecord(fieldList, requiredList);
   // Background color change for invalid field values
   const checkFlag = validatedList.some((item) => !item.correct);
-
+  console.log("validatedList :>> ", validatedList);
   if (checkFlag) {
     const list = validatedList.filter((obj) => obj.correct === false);
     for (let field of list) {
@@ -486,7 +481,6 @@ $(document).ready(() => {
 
     if ($(this).attr("id") === "RAENID-view") {
       selectedRegion = $(this).val();
-      console.log("selectedRegion :>> ", selectedRegion);
       editForm = createModalRoster(selectedRegion);
     }
 
@@ -515,6 +509,7 @@ $(document).ready(() => {
 
   //* Saving new record from roster modal
   $(document).on("click", "#save-btn", function (evnt) {
+    evnt.preventDefault();
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
     const newSource = $(formId).serializeArray();
@@ -524,8 +519,16 @@ $(document).ready(() => {
     if (!newSource.find((field) => field.name === "FeesPaid")) {
       newSource.push({ name: "FeesPaid", value: "False" });
     }
-    console.log("Person text: ", $("#Personne_PKID-view").text());
-    saveMods(newSource, "#new-record", "ProfDevRoster");
+    const staffId = $($("#Personnel_PKID-view")).val();
+    console.log("staffId :>> ", staffId);
+    const selectedStaff = staffList.find((record) => record.ID === staffId);
+    const { Name, PersonnelID } = selectedStaff;
+    newSource.push(
+      { name: `${Object.keys({ Name })[0]}`, value: Name },
+      { name: `${Object.keys({ PersonnelID })[0]}`, value: PersonnelID }
+    );
+    console.log("newSource :>> ", newSource);
+    saveMods(newSource, "#edit-form", "ProfDevRoster");
   });
 
   //* Saving mods after editing selected record
