@@ -6,11 +6,7 @@ export const agencyList = Agency.slice(0);
 export const regionList = Region.slice(0);
 export const staffList = Staff.slice(0);
 
-export const createModalRoster = (
-  selectObj,
-  selectedRegion = "",
-  selectedAgency = ""
-) => {
+export const createModalRoster = (selectedRegion, selectedAgency) => {
   const labelList = {
     ID: "ID",
     AgencyID: "Agency",
@@ -23,19 +19,39 @@ export const createModalRoster = (
     Attended: "Attended",
     FeesPaid: "Fees Paid",
   };
-  const selectElementObj={
-        RAENID: { hashTable: regionList, optionText: "a region", selectedValue:selectedRegion},
-        AgencyID: {
-          hashTable: [{ key: "AgencyID", val: "" }],
-          optionText: "an agency",selectedValue:selectedAgency
-        },
-        Personnel_PKID: {
-          hashTable: [{ key: "Personnel_PKID", val: "" }],
-          optionText: "a participant",
-        },
-      };
-  if(selectedRegion){
-  selectElementObj.AgencyID.hashTable=selectedRegion
+  const selectElementObj = {
+    RAENID: { hashTable: regionList, optionText: "a region" },
+    AgencyID: {
+      hashTable: [{ key: "AgencyID", val: "" }],
+      optionText: "an agency",
+    },
+    Personnel_PKID: {
+      hashTable: [{ key: "Personnel_PKID", val: "" }],
+      optionText: "a participant",
+    },
+  };
+  if (selectedRegion) {
+    const filteredAgencyList = agencyList
+      .filter((agency) => agency.RAENID === selectedRegion)
+      .map((item) => {
+        const { AgencyID, AgencyName } = item;
+        return { AgencyID, AgencyName };
+      });
+    selectElementObj.AgencyID.hashTable = filteredAgencyList;
+    selectElementObj.RAENID.selectedValue = selectedRegion;
+  }
+
+  if (selectedAgency) {
+    const filteredStaffList = staffList
+      .filter((staff) => staff.AgencyID === selectedAgency)
+      .map((item) => {
+        const { ID, Name } = item;
+        return { ID, Name };
+      });
+    selectElementObj.RAENID.selectedValue = selectedRegion;
+    selectElementObj.Personnel_PKID.hashTable = filteredStaffList;
+    selectElementObj.AgencyID.selectedValue = selectedAgency;
+  }
 
   let bloc = "";
   // Adding a new participant with modal

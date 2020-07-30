@@ -458,10 +458,6 @@ $(document).ready(() => {
     $(".record-entry").toggleClass("hidden");
     $("#view-bloc").empty().append(eventView);
 
-    //   const editForm = createModalForm(selectedRow);
-    //   $("#modalBloc").modal("toggle");
-    //   $("#edit-form").empty().append(editForm);
-
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
@@ -478,66 +474,29 @@ $(document).ready(() => {
     $("[data-toggle='tooltip']").tooltip();
   });
 
-  $(document).on("change", "#RAENID-view", function (evnt) {
+  $(document).on("change", "#RAENID-view, #AgencyID-view", function (evnt) {
     evnt.stopPropagation();
-    const selectedRegion = $(this).val();
-    console.log("selectedRegion :>> ", selectedRegion);
+    let editForm = "";
+    let selectedRegion = "";
+    let selectedAgency = "";
+    if ($(this).attr("id") === "RAENID-view") {
+      selectedRegion = $(this).val();
+      console.log("selectedRegion :>> ", selectedRegion);
+      editForm = createModalRoster(selectedRegion);
+    }
 
-    const filteredAgencyList = agencyList
-      .filter((agency) => agency.RAENID === selectedRegion)
-      .map((item) => {
-        const { AgencyID, AgencyName } = item;
-        return { AgencyID, AgencyName };
-      });
-    const editForm = createModalRoster(
-      {
-        RAENID: {
-          hashTable: regionList,
-          optionText: "a region",
-          selectedValue: selectedRegion,
-        },
-        AgencyID: {
-          hashTable: filteredAgencyList,
-          optionText: "an agency",
-        },
-        Personnel_PKID: {
-          hashTable: [{ key: "Personnel_PKID", val: "" }],
-          optionText: "a participant",
-        },
-      },
-      selectedRegion
-    );
+    if ($(this).attr("id") === "AgencyID-view") {
+      selectedAgency = $(this).val();
+      selectedRegion = $("#RAENID-view").val();
+      console.log("selectedRegion :>> ", selectedRegion);
+      console.log("selectedAgency :>> ", selectedAgency);
+      editForm = createModalRoster(selectedRegion, selectedAgency);
+    }
+
     $("#edit-form").empty().append(editForm);
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
-
-  // $(document).on("change", "#AgencyID-view", function (evnt) {
-  //   evnt.stopPropagation();
-  //   const selectedAgency = $(this).val();
-  //   console.log("selectedAgency :>> ", selectedAgency);
-
-  //   const filteredList = staffList
-  //     .filter((person) => person.AgencyID === selectedAgency)
-  //     .map((item) => {
-  //       const { AgencyID, AgencyName } = item;
-  //       return { AgencyID, AgencyName };
-  //     });
-  //   const editForm = createModalRoster({
-  //     RAENID: { hashTable: regionList, optionText: "a region" },
-  //     AgencyID: {
-  //       hashTable: filteredList,
-  //       optionText: "an agency",
-  //     },
-  //     Personnel_PKID: {
-  //       hashTable: [{ key: "Personnel_PKID", val: "" }],
-  //       optionText: "a participant",
-  //     },
-  //   });
-  //   $("#edit-form").empty().append(editForm);
-  //   // Enables customized tooltips
-  //   $("[data-toggle='tooltip']").tooltip();
-  // });
 
   //* Saving mods after editing selected record
   // $(document).on("click", "#save-btn", function (evnt) {
