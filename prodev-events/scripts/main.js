@@ -369,7 +369,7 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
 
     //ToDO Reloading/resetting with new data
 
-    // if (formName === "#edit-form") $("#modalBloc").modal("toggle");
+    if (formName === "#edit-form") $("#modalBloc").modal("toggle");
     if (formName === "#new-entry") {
       const resetList = requiredList.map((field) => `#${field}`).join(", ");
       $(formName)[0].reset();
@@ -520,10 +520,14 @@ $(document).ready(() => {
       newSource.push({ name: "FeesPaid", value: "False" });
     }
     const staffId = $($("#Personnel_PKID-view")).val();
-    console.log("staffId :>> ", staffId);
     const selectedStaff = staffList.find((record) => record.ID === staffId);
     const { Name, PersonnelID } = selectedStaff;
+    const eventID = $("#ID-view").val();
+    const eventDate = $("#ProfDevDate-view").val();
+
     newSource.push(
+      { name: "PDActivity_PKID", value: eventID },
+      { name: "Date", value: eventDate },
       { name: `${Object.keys({ Name })[0]}`, value: Name },
       { name: `${Object.keys({ PersonnelID })[0]}`, value: PersonnelID }
     );
