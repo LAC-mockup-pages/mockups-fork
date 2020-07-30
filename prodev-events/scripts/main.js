@@ -335,7 +335,6 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
   const result = { AgencyID, AuditUserID };
   $(`${formName} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
-  const dateEvent = fieldList.find((item) => item.name === "ProfDevDate").value;
 
   // Data validation
   // validateNewRecord() <== data-check.js
@@ -355,8 +354,12 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
     for (const field of fieldList) {
       let val = field.value;
       let name = field.name;
-      if (formName === "#new-entry" && name === "ProfDevFY")
+
+      if (formName === "#new-entry" && name === "ProfDevFY") {
+        const dateEvent = fieldList.find((item) => item.name === "ProfDevDate")
+          .value;
         val = setFiscalYear(dateEvent);
+      }
       result[name] = val;
     }
 
@@ -496,6 +499,17 @@ $(document).ready(() => {
     $("#edit-form").empty().append(editForm);
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
+  });
+
+  //* Saving new record from roster modal
+  $(document).on("click", "#save-btn", function (evnt) {
+    evnt.stopPropagation();
+    const formId = "#" + $(this).attr("form");
+    const newSource = $(formId).serializeArray();
+    console.log("newSource :>> ", newSource);
+
+    console.log("Attended value", $("#attended-box").val());
+    saveMods(newSource, formId, "ProfDevRoster");
   });
 
   //* Saving mods after editing selected record
