@@ -471,6 +471,7 @@ $(document).ready(() => {
 
     const editForm = createModalRoster();
     $("#modalBloc").modal("toggle");
+    $("#delete-btn").addClass("hidden");
     $("#edit-form").empty().append(editForm);
 
     // Enables customized tooltips
@@ -536,6 +537,8 @@ $(document).ready(() => {
       { name: `${Object.keys({ PersonnelID })[0]}`, value: PersonnelID }
     );
     console.log("newSource :>> ", newSource);
+    $("#delete-btn").toggleClass("hidden");
+
     saveMods(newSource, "#edit-form", "ProfDevRoster");
   });
 
@@ -554,19 +557,27 @@ $(document).ready(() => {
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
     $(".modal-title").text("Editing a Participant");
-    $("#delete-btn").toggleClass("hidden");
+    $("#save-btn, #edit-save-btn").toggleClass("hidden");
+    $("#delete-btn").removeClass("hidden");
     for (const boxID of editForm[1]) {
       const { keyVal, value } = boxID;
       $(`#${keyVal}-box`).prop("checked", value === "Yes");
     }
   });
 
+  $(document).on("click", "#close-btn", function (evnt) {
+    evnt.stopPropagation();
+    $("#delete-btn, #save-btn").removeClass("hidden");
+    $("#edit-save-btn").addClass("hidden");
+  });
+
   //* Saving mods after editing selected record
-  // $(document).on("click", "#save-btn", function (evnt) {
-  //   evnt.preventDefault();
-  //   evnt.stopPropagation();
-  //   const formId = "#" + $(this).attr("form");
-  //   const newSource = $(formId).serializeArray();
-  //   saveMods(newSource, formId, "Facilitator");
-  // });
+  $(document).on("click", "#edit-save-btn", function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    const formId = "#" + $(this).attr("form");
+    // $()
+    const newSource = $(formId).serializeArray();
+    saveMods(newSource, formId, "ProfDevRoster");
+  });
 });

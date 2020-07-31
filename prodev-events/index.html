@@ -298,8 +298,13 @@
             <form id="edit-form" role="form"></form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">
-              Close
+            <button
+              type="button"
+              class="btn btn-default"
+              id="close-btn"
+              data-dismiss="modal"
+            >
+              Close without saving
             </button>
             <button
               type="button"
@@ -311,7 +316,15 @@
             </button>
             <button
               type="button"
-              class="btn btn-danger hidden"
+              class="btn btn-primary hidden"
+              form="edit-form"
+              id="edit-save-btn"
+            >
+              Save changes
+            </button>
+            <button
+              type="button"
+              class="btn btn-danger"
               form="edit-form"
               id="delete-btn"
             >

@@ -47,7 +47,7 @@ export const createModalRosterEdit = (tdList) => {
     if (["Attended", "FeesPaid"].includes(keyVal)) {
       bloc += `<div class="input-field form-group">
     <label for=${keyVal}>${labelVal}</label>
-    <input type="checkbox" id="${keyVal}-box" name=${keyVal}/>
+    <input type="checkbox" id="${keyVal}-box" name=${keyVal} />
     </div>
     `;
       boxValues.push({ keyVal, value });
