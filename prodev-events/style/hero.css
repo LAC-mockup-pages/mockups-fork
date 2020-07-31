@@ -236,7 +236,9 @@ th {
 }
 
 #fees-box,
-#attended-box {
+#attended-box,
+#Attended-box,
+#FeesPaid-box {
   height: 20px;
   width: 20px;
   border-bottom: none;
