@@ -6,6 +6,68 @@ export const agencyList = Agency.slice(0);
 export const regionList = Region.slice(0);
 export const staffList = Staff.slice(0);
 
+export const createModalRosterEdit = (tdList) => {
+  let bloc = "";
+  const boxValues = [];
+
+  const labelList = {
+    ID: "ID",
+    AgencyID: "Agency",
+    AgencyName: "Agency Name",
+    PDActivity_PKID: "Event ID",
+    Personnel_PKID: "Personnel Name",
+    PersonnelID: "Personnel Name",
+    Name: "Full Name",
+    Date: "Date",
+    RAENID: "Region",
+    Attended: "Attended",
+    FeesPaid: "Fees Paid",
+  };
+
+  const hiddenList = [
+    "ID",
+    "AgencyID",
+    "PersonnelID",
+    "PDActivity_PKID",
+    "Date",
+    "Personnel_PKID",
+  ];
+
+  const fieldList = Object.keys(labelList);
+  const filteredList = tdList.filter((elmnt) =>
+    fieldList.includes($(elmnt).attr("data-field"))
+  );
+  for (const td of filteredList) {
+    let keyVal = $(td).attr("data-field");
+    let labelVal = $(td).attr("data-label");
+    let value = $(td).text();
+    let optionHidden = "form-group";
+    let classVal = "";
+    let option = "disabled";
+    if (["Attended", "FeesPaid"].includes(keyVal)) {
+      bloc += `<div class="input-field form-group">
+    <label for=${keyVal}>${labelVal}</label>
+    <input type="checkbox" id="${keyVal}-box" name=${keyVal}/>
+    </div>
+    `;
+      boxValues.push({ keyVal, value });
+    } else {
+      if (hiddenList.includes(keyVal)) optionHidden += " hidden";
+      // elementInput() <== helperFunctions.js
+      bloc += elementInput({
+        keyVal,
+        labelVal,
+        value,
+        labelClassVal: "",
+        classVal,
+        option,
+        optionHidden,
+      });
+    }
+  }
+  return [bloc, boxValues];
+};
+
 export const createModalRoster = (selectedRegion, selectedAgency) => {
   const labelList = {
     ID: "ID",
@@ -19,7 +81,6 @@ export const createModalRoster = (selectedRegion, selectedAgency) => {
     Attended: "Attended",
     FeesPaid: "Fees Paid",
   };
-
   const selectElementObj = {
     RAENID: { hashTable: regionList, optionText: "a region" },
     AgencyID: {
@@ -61,6 +122,8 @@ export const createModalRoster = (selectedRegion, selectedAgency) => {
     let { hashTable, optionText, selectedValue } = selectElementObj[key];
     let labelVal = labelList[key];
     selectedValue = selectedValue ? selectedValue : "";
+
+    // elementSelectModal() <== helperFunctions.js
     bloc += elementSelectModal({
       hashTable,
       keyValue,
@@ -110,10 +173,11 @@ export const rosterView = (eventID) => {
       return {
         ...record,
         AgencyName: agency.AgencyName,
-        Region: agency.RAENID,
+        RAENID: agency.RAENID,
       };
     });
 
+  // topBanner() <== sub-table-elements.js
   const header = topBanner(blockName, [
     ["Personnal ID", "col-sm-2"],
     ["Name", "col-sm-2"],
@@ -123,6 +187,7 @@ export const rosterView = (eventID) => {
     ["Fees Paid", "col-sm-2"],
   ]);
 
+  // subTableBody() <== sub-table-elements.js
   const body = subTableBody(
     rosterData,
     blockName,
@@ -130,7 +195,7 @@ export const rosterView = (eventID) => {
     {
       PersonnelID: "Personnel ID",
       Name: "Name",
-      Region: "Region",
+      RAENID: "Region",
       AgencyName: "Agency",
       Attended: "Attended",
       FeesPaid: "Fees Paid",

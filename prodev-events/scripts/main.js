@@ -1,6 +1,10 @@
 // Actions and logic
 import { createEventView } from "./components/event-view.js";
-import { createModalRoster, staffList } from "./components/roster-view.js";
+import {
+  createModalRoster,
+  staffList,
+  createModalRosterEdit,
+} from "./components/roster-view.js";
 
 // Isolate work objects and arrays from data source.
 const dataSource = ProfDevEventsInfo.slice(0);
@@ -444,8 +448,8 @@ $(document).ready(() => {
     if (formId === "#event-view-form") $(formId)[0].reset();
   });
 
-  //* Select record to edit + display selected event & roster
-  $(document).on("click", ".table tbody tr", function (evnt) {
+  //* Select event record to edit + display selected event & roster
+  $(document).on("click", "#main-table tbody tr", function (evnt) {
     evnt.stopPropagation();
 
     const rowID = "#" + $(this).attr("id");
@@ -533,6 +537,28 @@ $(document).ready(() => {
     );
     console.log("newSource :>> ", newSource);
     saveMods(newSource, "#edit-form", "ProfDevRoster");
+  });
+
+  //* Selecting Participant record to edit + display in modal
+  $(document).on("click", ".event-roster-table .table tbody tr", function (
+    evnt
+  ) {
+    evnt.stopPropagation();
+
+    const rowID = "#" + $(this).attr("id");
+    const selectedRow = $(`${rowID} td`).get();
+    const editForm = createModalRosterEdit(selectedRow);
+    $("#modalBloc").modal("toggle");
+    $("#edit-form").empty().append(editForm[0]);
+
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
+    $(".modal-title").text("Editing a Participant");
+    $("#delete-btn").toggleClass("hidden");
+    for (const boxID of editForm[1]) {
+      const { keyVal, value } = boxID;
+      $(`#${keyVal}-box`).prop("checked", value === "Yes");
+    }
   });
 
   //* Saving mods after editing selected record
