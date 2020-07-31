@@ -247,6 +247,10 @@ th {
 }
 
 .delete-msg {
-  width: fit-content;
-  border-bottom: 2px solid rgb(197, 65, 65);
+  width: 480px;
+  font-size: 1.4em;
+  padding: 1%;
+  color: rgb(197, 65, 65);
+  border: 2px solid rgb(197, 65, 65);
+  border-radius: 4px;
 }

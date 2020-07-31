@@ -576,8 +576,37 @@ $(document).ready(() => {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
-    // $()
+    $(`${formId} input`).prop("disabled", false);
     const newSource = $(formId).serializeArray();
+    if (!newSource.find((field) => field.name === "Attended")) {
+      newSource.push({ name: "Attended", value: "False" });
+    }
+    if (!newSource.find((field) => field.name === "FeesPaid")) {
+      newSource.push({ name: "FeesPaid", value: "False" });
+    }
+    $("#save-btn, #edit-save-btn").toggleClass("hidden");
+
     saveMods(newSource, formId, "ProfDevRoster");
+  });
+
+  //* Modal form Delete source button
+  $(document).on("click", "#delete-btn", (evnt) => {
+    evnt.stopPropagation();
+    const deleteConfirm = $(".modal-footer>h3");
+    const formId = `#${$(this).attr("form")}`;
+
+    if (deleteConfirm.length === 0) {
+      $(".modal-footer").prepend(
+        "<h3 class='delete-msg'>Confirm deletion by clicking the DELETE button again</h3>"
+      );
+    } else {
+      deleteConfirm.remove();
+      const recordIdToDelete = $("#ID-view").val();
+      const recordList = [{ name: "ID", value: recordIdToDelete }];
+      saveMods(recordList, `${formId}-DELETE`, "ProfDevRoster");
+      $("#save-btn, #edit-save-btn").toggleClass("hidden");
+
+      $("#modalBloc").modal("toggle");
+    }
   });
 });

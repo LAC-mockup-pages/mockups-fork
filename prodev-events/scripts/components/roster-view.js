@@ -45,9 +45,10 @@ export const createModalRosterEdit = (tdList) => {
     let classVal = "";
     let option = "disabled";
     if (["Attended", "FeesPaid"].includes(keyVal)) {
+      const valueBool = value === "Yes" ? "True" : "False";
       bloc += `<div class="input-field form-group">
     <label for=${keyVal}>${labelVal}</label>
-    <input type="checkbox" id="${keyVal}-box" name=${keyVal} />
+    <input type="checkbox" id="${keyVal}-box" value=${valueBool} name=${keyVal} />
     </div>
     `;
       boxValues.push({ keyVal, value });
