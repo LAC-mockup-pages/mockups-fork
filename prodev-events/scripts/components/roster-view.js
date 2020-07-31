@@ -54,6 +54,7 @@ export const createModalRosterEdit = (tdList) => {
       boxValues.push({ keyVal, value });
     } else {
       if (hiddenList.includes(keyVal)) optionHidden += " hidden";
+      if (keyVal === "ID") option += " data-identifier='event-id'";
       // elementInput() <== helperFunctions.js
       bloc += elementInput({
         keyVal,

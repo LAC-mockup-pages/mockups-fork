@@ -569,6 +569,7 @@ $(document).ready(() => {
     evnt.stopPropagation();
     $("#delete-btn, #save-btn").removeClass("hidden");
     $("#edit-save-btn").addClass("hidden");
+    $(".modal-footer > h3").remove();
   });
 
   //* Saving mods after editing selected record
@@ -585,6 +586,7 @@ $(document).ready(() => {
       newSource.push({ name: "FeesPaid", value: "False" });
     }
     $("#save-btn, #edit-save-btn").toggleClass("hidden");
+    $(".modal-footer > h3").remove();
 
     saveMods(newSource, formId, "ProfDevRoster");
   });
@@ -601,7 +603,9 @@ $(document).ready(() => {
       );
     } else {
       deleteConfirm.remove();
-      const recordIdToDelete = $("#ID-view").val();
+      const recordIdToDelete = $(
+        "#edit-form  [data-identifier='event-id'"
+      ).val();
       const recordList = [{ name: "ID", value: recordIdToDelete }];
       saveMods(recordList, `${formId}-DELETE`, "ProfDevRoster");
       $("#save-btn, #edit-save-btn").toggleClass("hidden");
