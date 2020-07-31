@@ -50,7 +50,8 @@ export const subTableBody = (
         }
         cells += `<td class="cell-data${optionHidden} col-sm-2" data-field=${key} ${label}>${insideText}</td>`;
       }
-      return `<tr id="${block}-${indx}" ${tableData}>${cells}</tr>`;
+      return `<tr id="${block}-${indx}" ${tableData} data-toggle='tooltip' data-placement='bottom'
+      title="Click to edit">${cells}</tr>`;
     })
     .join("");
   return `<div class="${block}-table">

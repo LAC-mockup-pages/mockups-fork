@@ -129,7 +129,8 @@ option {
   line-height: 40px;
 }
 
-#main-table tbody > tr:hover {
+#main-table tbody > tr:hover,
+.event-roster-table tbody > tr:hover {
   background-color: #d3e4f0;
 }
 
@@ -241,4 +242,9 @@ th {
   border-bottom: none;
   margin: 0;
   bottom: -10px;
+}
+
+.delete-msg {
+  width: fit-content;
+  border-bottom: 2px solid rgb(197, 65, 65);
 }
