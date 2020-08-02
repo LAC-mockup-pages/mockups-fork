@@ -459,6 +459,8 @@ $(document).ready(() => {
     // Cleaning up
     $(".record-entry").toggleClass("hidden");
     $("#view-bloc").empty().append(eventView);
+    $("html, body").animate({ scrollTop: 220 }, 200);
+    // $(".hero").scrollTop(200);
 
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
