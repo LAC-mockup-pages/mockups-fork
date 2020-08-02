@@ -433,7 +433,7 @@ $(document).ready(() => {
     const formId = "#" + $(this).attr("form");
     const newSource = $(formId)
       .serializeArray()
-      .filter((field) => field.name.startsWith("ProfDev"));
+      .filter((field) => !field.name.startsWith("profdev"));
     saveMods(newSource, formId, "ProfDevEventsInfo", listOfRequired);
   });
 

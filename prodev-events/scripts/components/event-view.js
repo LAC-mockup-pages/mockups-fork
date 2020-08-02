@@ -89,6 +89,12 @@ export const createEventView = (tdList, requiredList) => {
       hashTable: facilitators,
       optionText: "a facilitator",
     },
+    RAENEvent: {
+      hashTable: [
+        { num: "0", text: "No" },
+        { num: "1", text: "Yes" },
+      ],
+    },
   };
 
   const leftBloc = createViewBloc(
