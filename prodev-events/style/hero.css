@@ -29,8 +29,6 @@ body {
   padding: 1% 0.5%;
   background-color: #fff;
 }
-/* #roster-table {
-} */
 
 #roster-table > tbody {
   width: 95%;
@@ -89,7 +87,8 @@ option {
 #submit-btn,
 #cancel-btn,
 #event-view-submit-btn,
-#event-view-cancel-btn {
+#event-view-cancel-btn,
+.add-record-btn {
   margin: 0 12% 0 5%;
   width: 5em;
   font-size: 1.2em;
@@ -175,10 +174,6 @@ th {
   border-bottom: 1px solid #2479b5;
 }
 
-/* .modal-select {
-  width: ;
-} */
-
 .modal-header,
 .modal-footer {
   background-color: #d3e4f0;
@@ -193,8 +188,6 @@ th {
   font-weight: 700;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-
-  /* border-top: 2px solid #fff; */
 }
 
 .event-roster-table {
@@ -207,19 +200,8 @@ th {
   line-height: 34px;
   padding-right: 1%;
   padding: bottom 0.5%;
-
   font-size: 1.2em;
   color: #fff;
-  /* border-bottom: 1px solid #d3e4f0; */
-}
-
-.add-record-btn {
-  height: 28px;
-  margin-top: 2px;
-  line-height: 16px;
-  width: 5em;
-  font-size: 1.1em;
-  font-weight: 700;
 }
 
 .sub-header-labels {
