@@ -87,10 +87,16 @@ option {
 #submit-btn,
 #cancel-btn,
 #event-view-submit-btn,
-#event-view-cancel-btn,
 .add-record-btn {
   margin: 0 12% 0 5%;
   width: 5em;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+#event-view-cancel-btn {
+  margin: 0 12% 0 5%;
+  width: fit-content;
   font-size: 1.2em;
   font-weight: 500;
 }
@@ -134,7 +140,8 @@ option {
 }
 
 /* Alternating background on tables for higher comfort */
-tbody > tr:nth-child(odd) {
+tbody > tr:nth-child(odd),
+.event-roster-table {
   background-color: #f0f0f5;
 }
 

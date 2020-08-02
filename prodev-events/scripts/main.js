@@ -444,8 +444,9 @@ $(document).ready(() => {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
-    if (formId === "#new-entry") location.reload();
-    if (formId === "#event-view-form") $(formId)[0].reset();
+    location.reload();
+    // if (formId === "#new-entry") location.reload();
+    // if (formId === "#event-view-form") $(formId)[0].reset();
   });
 
   //* Select event record to edit + display selected event & roster
@@ -573,6 +574,8 @@ $(document).ready(() => {
     $("#edit-save-btn").addClass("hidden");
     $(".modal-footer > h3").remove();
   });
+
+  //* Event view cancel button
 
   //* Saving mods after editing selected record
   $(document).on("click", "#edit-save-btn", function (evnt) {

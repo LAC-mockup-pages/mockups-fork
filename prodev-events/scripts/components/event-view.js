@@ -62,9 +62,10 @@ export const createEventView = (tdList, requiredList) => {
   }, []);
   const fullLength = filteredList.length;
   const halfLength = Math.ceil(fullLength / 2);
-
+  console.log("filteredList :>> ", filteredList);
+  const eventId = $(filteredList[0]).text();
   //! Modify with variable name for event ID
-  let rosterBloc = rosterView("4015");
+  let rosterBloc = rosterView(eventId);
 
   const facilitators = facilitatorList.map((item) => {
     const { ID, FacFirstName, FacLastName } = item;
@@ -114,10 +115,10 @@ export const createEventView = (tdList, requiredList) => {
       <div class="col-md-6 right-event-view">${rightBloc}</div>
   </form>
     <div class="container-fluid row buttons-bloc-new">
-      <div class="col-md-9"></div>
-      <div class="col-md-3">
+      <div class="col-md-7"></div>
+      <div class="col-md-5">
         <button type="button" id="event-view-submit-btn" form="event-view-form" class="btn dark-blue-text blue-light-bg">Save</button>
-        <button type="button" id="event-view-cancel-btn" form="event-view-form" class="btn btn-default">Cancel</button>
+        <button type="button" id="event-view-cancel-btn" form="event-view-form" class="btn btn-default">Cancel without saving</button>
       </div>
     </div>`;
   return eventView;
