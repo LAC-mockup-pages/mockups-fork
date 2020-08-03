@@ -223,12 +223,12 @@ $(document).ready(() => {
   $("#new-personnel").append(createNewRecordForm());
 
   //* Adding a new team member
-  $("#add-new-member").click(function (e) {
-    e.stopPropagation();
+  $(document).on("click", "#add-new-member", function (evnt) {
+    evnt.stopPropagation();
     $("#new-personnel").toggleClass("hidden");
   });
 
-  $("#submit-btn").click(function (evnt) {
+  $(document).on("click", "#submit-btn", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
@@ -239,7 +239,7 @@ $(document).ready(() => {
 
   // Creates default PersPersonnelID after position is selected
   // Can be changed manually
-  $("#PersPositionID").on("focusout", function (evnt) {
+  $(document).on("focusout", "#PersPositionID", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     const positionValue = $(this).val();
@@ -253,7 +253,7 @@ $(document).ready(() => {
   });
 
   //* Search Agency personnel
-  $("#search-input").keyup(function (evnt) {
+  $(document).on("keyup", "#search-input", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     const value = $(this).val();
@@ -261,26 +261,26 @@ $(document).ready(() => {
     viewPersonnelList(listPers);
   });
 
-  $("#search-input").keypress(function (e) {
-    e.stopPropagation();
-    e.preventDefault();
+  $(document).on("keypress", "#search-input", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
     let value = $(this).val();
     let listPers = {};
-    if (e.which === 13) {
+    if (evnt.which === 13) {
       listPers = searchPersonnel(value);
     } else {
-      $(this).val((value += String.fromCharCode(e.which)));
+      $(this).val((value += String.fromCharCode(evnt.which)));
     }
   });
 
-  $("#search-btn").click((e) => {
-    e.stopPropagation();
-    e.preventDefault();
+  $(document).on("click", "#search-btn", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
     const listPers = searchPersonnel(value);
   });
 
   //* New personnel cancel button
-  $("#cancel-btn").click(function (evnt) {
+  $(document).on("click", "#cancel-btn", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
@@ -289,9 +289,9 @@ $(document).ready(() => {
   });
 
   //* Select personnel in short list
-  $("#view-bloc").on("click", ".row-data", function (e) {
-    e.stopPropagation();
-    e.preventDefault();
+  $(document).on("click", ".row-data", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
     const rowID = Number($(this).attr("id"));
 
     // Cleaning up
@@ -341,46 +341,48 @@ $(document).ready(() => {
     // Binding event trigger to editable blocs for editing.
     // Editable blocks are: history, non instructional hours, progress
     // contacts.
-    $(
-      ".history-body > tr,.non-instructional-hours-body > tr,.progress-contact-body > tr"
-    ).bind("click", function (evnt) {
-      evnt.stopPropagation();
-      const selectedRecordId = $(this).attr("id");
-      const blockName = selectedRecordId.split("-").slice(0, -1).join("-");
+    $(document).on(
+      "click",
+      ".history-body > tr,.non-instructional-hours-body > tr,.progress-contact-body > tr",
+      function (evnt) {
+        evnt.stopPropagation();
+        const selectedRecordId = $(this).attr("id");
+        const blockName = selectedRecordId.split("-").slice(0, -1).join("-");
 
-      let editForm = "";
-      switch (blockName) {
-        case "history":
-          editForm = createFormAddHistory(blockName, selectedRecordId);
-          break;
-        case "non-instructional-hours":
-          editForm = createFormAddNonIntructionalHours(
-            blockName,
-            selectedRecordId
-          );
-          break;
-        case "progress-contact":
-          editForm = createFormAddContact(blockName, selectedRecordId);
-          break;
+        let editForm = "";
+        switch (blockName) {
+          case "history":
+            editForm = createFormAddHistory(blockName, selectedRecordId);
+            break;
+          case "non-instructional-hours":
+            editForm = createFormAddNonIntructionalHours(
+              blockName,
+              selectedRecordId
+            );
+            break;
+          case "progress-contact":
+            editForm = createFormAddContact(blockName, selectedRecordId);
+            break;
 
-        default:
-          editForm = defaultModal("no-table-defined-yet");
-          break;
+          default:
+            editForm = defaultModal("no-table-defined-yet");
+            break;
+        }
+
+        $("#modalBloc").modal("toggle");
+        $("#modal-form")
+          .empty()
+          .append(editForm[1])
+          .attr("data-table", editForm[0])
+          .attr("data-block", blockName);
+
+        // Binding event trigger for real time updating total hours
+        if (blockName === "non-instructional-hours") handleChangeNonInstHours();
       }
-
-      $("#modalBloc").modal("toggle");
-      $("#modal-form")
-        .empty()
-        .append(editForm[1])
-        .attr("data-table", editForm[0])
-        .attr("data-block", blockName);
-
-      // Binding event trigger for real time updating total hours
-      if (blockName === "non-instructional-hours") handleChangeNonInstHours();
-    });
+    );
 
     // Add a new record from modal
-    $(".add-record-btn").bind("click", function (evnt) {
+    $(document).on("click", ".add-record-btn", function (evnt) {
       evnt.stopPropagation();
       const formName = $(this).attr("form");
 
@@ -422,7 +424,8 @@ $(document).ready(() => {
     });
 
     // Save button in block top banner
-    $(".save-record-btn").bind("click", function (evnt) {
+    $(document).on("click", ".save-record-btn", function (evnt) {
+      evnt.stopPropagation();
       const formName = `#${$(this).attr("form")}`;
       const tableName = $(formName).attr("data-table");
       const submittedData = $(formName).serializeArray();
@@ -433,7 +436,7 @@ $(document).ready(() => {
   //* Cancel or Save
 
   // Main Cancel button
-  $("#btn-cancel").click((evnt) => {
+  $(document).on("click", "#btn-cancel", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
 
@@ -441,7 +444,7 @@ $(document).ready(() => {
   });
 
   // Save button in #modal-form
-  $("#save-btn").on("click", function (evnt) {
+  $(document).on("click", "#save-btn", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     const tableName = $("#modal-form").attr("data-table");
