@@ -62,7 +62,6 @@ export const createEventView = (tdList, requiredList) => {
   }, []);
   const fullLength = filteredList.length;
   const halfLength = Math.ceil(fullLength / 2);
-  console.log("filteredList :>> ", filteredList);
   const eventId = $(filteredList[0]).text();
   //! Modify with variable name for event ID
   let rosterBloc = rosterView(eventId);
