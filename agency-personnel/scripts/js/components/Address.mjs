@@ -1,6 +1,5 @@
 import { personnelData, topBanner } from "../main.mjs";
 import { ddlStates } from "../data-server.mjs";
-import { elementSelectWithLabel } from "../main.mjs";
 
 export const homeAddress = () => {
   const blockName = "Home Address";
@@ -46,7 +45,9 @@ export const createModalFormAddress = (formName) => {
         labelClassVal: "",
         option: "",
       };
-      result += elementSelectWithLabel(paramsObj);
+
+      // elementSelectModal() <== helperFunctions.js
+      result += elementSelectModal(paramsObj);
     } else if (["PersWorkSendMail", "PersWorkCanCall"].includes(field)) {
       const checkedStatus =
         fieldObj[field].value === "True" ? "checked='checked'" : "";
@@ -72,7 +73,7 @@ export const createModalFormAddress = (formName) => {
 };
 
 export const handleChangeCheckBox = () => {
-  $(".mail-call-checkboxes input").bind("change", function (evnt) {
+  $(document).on("change", ".mail-call-checkboxes input", function (evnt) {
     evnt.stopPropagation();
     if ($(this).attr("checked")) {
       $(this).removeAttr("checked").removeAttr("value");

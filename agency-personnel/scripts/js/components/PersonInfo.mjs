@@ -8,16 +8,13 @@ import {
   ddlExperienceYears,
   ddlPaidVolunteer,
 } from "../data-server.mjs";
-import { elementSelectWithLabel, topBanner } from "../main.mjs";
+import { topBanner } from "../main.mjs";
 
 const personView = (selectedID) => {
   const personData = getPersonnel.filter(
     (person) => person.ID === selectedID.toString()
   )[0];
-
   const title = "Personnel Information";
-  // const blockName = title.toLowerCase().replace(/\W/gi, "-");
-
   const labels = {
     ID: "Id",
     PersonnelID: "Personnel ID",
@@ -113,7 +110,9 @@ const personView = (selectedID) => {
         labelClassVal,
         option,
       };
-      return elementSelectWithLabel(argumentsSelect);
+
+      // elementSelectModal() <== helperFunctions.js
+      return elementSelectModal(argumentsSelect);
     } else {
       return elementInput(argumentsObj);
     }

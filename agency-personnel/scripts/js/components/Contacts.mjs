@@ -1,4 +1,4 @@
-import { topBanner, tableBody, elementSelectWithLabel } from "../main.mjs";
+import { topBanner, tableBody } from "../main.mjs";
 import {
   getPersProgressContacts,
   getPersContactsCodes,
@@ -60,7 +60,9 @@ export const createFormAddContact = (formName, rowId = null) => {
         labelClassVal: "",
         option,
       };
-      result += elementSelectWithLabel(paramsSelect);
+
+      // elementSelectModal() <== helperFunctions.js
+      result += elementSelectModal(paramsSelect);
     } else {
       let classVal = "";
       if (keyVal === "ID") optionHidden = "hidden";

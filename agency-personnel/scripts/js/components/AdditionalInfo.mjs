@@ -1,4 +1,4 @@
-import { personnelData, topBanner, elementSelectWithLabel } from "../main.mjs";
+import { personnelData, topBanner } from "../main.mjs";
 import {
   ddlGender,
   GetEthnicity,
@@ -51,10 +51,12 @@ const leftBlock = () => {
     option: "",
   };
 
-  const gender = elementSelectWithLabel(genderArgObj);
-  const ethnicity = elementSelectWithLabel(ethnicityArgObj);
+  // elementSelectModal() <== helperFunctions.js
+  // elementInput() <== helperFunctions.js
+  const gender = elementSelectModal(genderArgObj);
+  const ethnicity = elementSelectModal(ethnicityArgObj);
   const birthDate = elementInput(birthDateArgObj);
-  const education = elementSelectWithLabel(educationArgObj);
+  const education = elementSelectModal(educationArgObj);
   return `<div class="col-md-6">
             ${gender}
             ${ethnicity}
@@ -97,9 +99,11 @@ const rightBlock = () => {
     option: "",
   };
 
-  const employment = elementSelectWithLabel(employmentArgObj);
-  const occupation = elementSelectWithLabel(occupationArgObj);
-  const referral = elementSelectWithLabel(referralArgObj);
+  // elementSelectModal() <== helperFunctions.js
+  // elementInput() <== helperFunctions.js
+  const employment = elementSelectModal(employmentArgObj);
+  const occupation = elementSelectModal(occupationArgObj);
+  const referral = elementSelectModal(referralArgObj);
 
   return `<div class="col-md-6">
             ${employment}

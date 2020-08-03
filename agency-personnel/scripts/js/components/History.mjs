@@ -1,5 +1,5 @@
 import { GetPersStatusHistory, GetPersStatusCodes } from "../data-server.mjs";
-import { topBanner, tableBody, elementSelectWithLabel } from "../main.mjs";
+import { topBanner, tableBody } from "../main.mjs";
 
 const createFormAddHistory = (formName, rowId = null) => {
   const selectedRowId = rowId ? `#${rowId} td` : `#${formName}-0 td`;
@@ -26,7 +26,8 @@ const createFormAddHistory = (formName, rowId = null) => {
         labelClassVal: "",
         option: "",
       };
-      result += elementSelectWithLabel(paramsSelect);
+      // elementSelectModal() <== helperFunctions.js
+      result += elementSelectModal(paramsSelect);
     } else {
       if (keyVal === "PersonnelStatDesc") optionHidden = "hidden";
       if (keyVal === "PersStatusDate") option = "placeholder='MM/DD/YYYY'";

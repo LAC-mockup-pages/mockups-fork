@@ -1,5 +1,5 @@
 import { getNonInstHours, getReportingPeriods } from "../data-server.mjs";
-import { topBanner, tableBody, elementSelectWithLabel } from "../main.mjs";
+import { topBanner, tableBody } from "../main.mjs";
 
 const handleChangeNonInstHours = () => {
   const listInputs = $("#modal-form input").get().slice(2, 8);
@@ -54,7 +54,9 @@ const createFormAddNonIntructionalHours = (formName, rowId = null) => {
         labelClassVal: "",
         option,
       };
-      result += elementSelectWithLabel(paramsSelect);
+
+      // elementSelectModal() <== helperFunctions.js
+      result += elementSelectModal(paramsSelect);
     } else {
       if (keyVal === "ID") optionHidden = "hidden";
       if (keyVal === "PersonnelID") value = $(cell).text();

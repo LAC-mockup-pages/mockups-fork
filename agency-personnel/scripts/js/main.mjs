@@ -45,41 +45,6 @@ const yearsOfExperience = (strDate) => {
   return numberYears;
 };
 
-// argsObj =
-export const elementSelectWithLabel = (argsObj) => {
-  let firstOption = "<option disabled>Select an option</option>";
-  const {
-    hashTable,
-    keyValue,
-    selectedValue,
-    labelVal,
-    labelClassVal,
-    option,
-  } = argsObj;
-  const [primary, secondary] = Object.keys(hashTable[0]);
-  let optionList = hashTable
-    .map((item) => {
-      const selected =
-        item[primary].toString() === selectedValue ? "selected" : "";
-      return `<option value="${item[primary]}" ${selected}>
-          ${item[secondary]}</option>`;
-    })
-    .join("");
-
-  if (!selectedValue) {
-    firstOption = "<option selected disabled>Select an option</option>";
-  }
-
-  const elementSelect = `<div class= "input-field form-group">
-  <label for="${keyValue}" ${labelClassVal}>${labelVal}</label>
-  <select id="${
-    keyValue + "-view"
-  }" class="modal-select" name="${keyValue}" ${option}>${firstOption}${optionList}</select>
-</div>`;
-
-  return elementSelect;
-};
-
 // Creates header with optional button, optional column headers
 // (from list parameter)
 export const topBanner = (title, list = null) => {
@@ -235,11 +200,6 @@ const searchPersonnel = (str) => {
     personnelObj[id] = { PersLast, PersFirst, PersonnelID };
   }
   return personnelObj;
-};
-
-// Default modal-form
-const defaultModal = (nameForm) => {
-  return [nameForm, `<div><h3>Default modal for ${nameForm}</h3></div>`];
 };
 
 //*======================================

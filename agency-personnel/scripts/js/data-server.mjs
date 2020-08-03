@@ -288,7 +288,6 @@ const GetPosition = [
 ];
 
 const GetSubject = [
-  { ClassTypeID: "*", TypeDesc: "*   Select a Subject" },
   { ClassTypeID: "BE", TypeDesc: "BE   BE (NRS and/or EPE)" },
   { ClassTypeID: "CM", TypeDesc: "CM   Case Management" },
   { ClassTypeID: "ES", TypeDesc: "ES   ESOL (NRS and/or EPE)" },
