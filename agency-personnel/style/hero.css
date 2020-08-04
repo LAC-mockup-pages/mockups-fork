@@ -93,9 +93,10 @@ body {
 }
 
 option {
-  color: #333;
+  color: #283838;
+  font-size: 1em;
+  font-weight: 500;
 }
-
 tbody {
   background-color: #fff;
   color: #333333;
@@ -120,7 +121,7 @@ th {
 }
 
 .table > tbody > tr > .cell-data {
-  line-height: 30px;
+  line-height: 40px;
 }
 
 .small-cell {
@@ -181,8 +182,8 @@ th {
 #new-select {
   margin-top: 0.5%;
   font-size: 1.3em;
-  line-height: 35px;
-  font-weight: 700;
+  line-height: 40px;
+  font-weight: 500;
   padding: 5px;
   border: none;
   border-bottom: 1px solid #2479b5;
