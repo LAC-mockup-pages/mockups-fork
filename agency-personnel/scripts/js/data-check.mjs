@@ -3,7 +3,7 @@
 const validateUserInput = (dataList) => {
   // Returns true if input is only alphanumerical + underscore and not empty string
   const alphaNumCheck = (str) => {
-    return /\w+$/i.test(str);
+    return !/[^\s\w-.]/g.test(str);
   };
 
   let resultTest = true;
