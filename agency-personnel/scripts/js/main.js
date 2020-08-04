@@ -139,7 +139,7 @@ export const tableBody = (
 const saveMods = (fields, formId, tableName = "") => {
   const { AgencyID, AuditUserID } = sessionVariable;
   const result = { AgencyID, AuditUserID };
-  $(`${formName} input, select`).removeClass("yellow-bg");
+  $(`${formId} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
   // Data validation
   // validateNewRecord() <== data-check.js
@@ -150,9 +150,7 @@ const saveMods = (fields, formId, tableName = "") => {
     const list = validatedList.filter((obj) => obj.correct === false);
     for (let field of list) {
       let fieldId =
-        formName === "#new-personnel"
-          ? `#${field.name}`
-          : `#${field.name}-view`;
+        formId === "#new-personnel" ? `#${field.name}` : `#${field.name}-view`;
       $(fieldId).addClass("yellow-bg");
     }
     return;
@@ -164,10 +162,10 @@ const saveMods = (fields, formId, tableName = "") => {
       if (field.name === "PersStartDate") field.value = dateFormat(field.value);
 
       if (field.name === "lengthstay") {
-        const startDate = fieldList.find(
+        const startDate = fieldList.filter(
           (item) => item.name === "PersStartDate"
-        )[0].value;
-        field.value = yearsOfExperience(startDate);
+        )[0];
+        field.value = yearsOfExperience(startDate.value);
       }
       result[field.name] = field.value;
     }
@@ -187,6 +185,7 @@ const saveMods = (fields, formId, tableName = "") => {
       $(`${formId} input, select`)
         .toggleClass("dark-text")
         .prop("required", true);
+      $(formId).toggleClass("hidden");
     } else {
       location.reload();
     }
@@ -272,9 +271,8 @@ $(document).ready(() => {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
-    saveMods(formId);
-    $(formId)[0].reset();
-    $(formId).toggleClass("hidden");
+    const fieldList = $(formId).serializeArray();
+    saveMods(fieldList, formId, "getPersonnel");
   });
 
   // Creates default PersPersonnelID after position is selected

@@ -6,7 +6,7 @@ const validateRecord = (dataList) => {
     return !/[^\s\w-.]/g.test(str);
   };
   const resultList = [];
-
+  const dateFormat = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
   for (let field of dataList) {
     let { name, value } = field;
     const obj = { name, value };
@@ -14,8 +14,6 @@ const validateRecord = (dataList) => {
       case "PersPersonnelID":
       case "PersFirst":
       case "PersLast":
-      case "PersStartDate":
-      case "lengthstay":
       case "PersPositionID":
       case "PersSubject":
       case "PersPayStatus":
@@ -23,6 +21,8 @@ const validateRecord = (dataList) => {
       case "PersExpYears":
         obj.correct = value ? alphaNumCheck(value) : false;
         break;
+      case "PersStartDate":
+        obj.correct = value.match(dateFormat) ? true : false;
       case "Email":
         obj.correct = value ? true : false;
         break;

@@ -15,7 +15,7 @@ const createNewRecordForm = () => {
           ${item[secondary]}</option>`;
       })
       .join("");
-    const selectElement = `<select id=${keyValue} class="modal-select form-control red-text" name=${keyValue} required><option selected disabled>Select ${labelValue}</option>${optionList}</select>`;
+    const selectElement = `<select id=${keyValue} class="modal-select form-control red-text" name=${keyValue} required><option selected value=''>Select ${labelValue}</option>${optionList}</select>`;
 
     return selectElement;
   };
