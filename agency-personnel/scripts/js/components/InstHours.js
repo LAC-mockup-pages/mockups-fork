@@ -1,5 +1,5 @@
-import { getPersInstHours } from "../data-server.mjs";
-import { topBanner, tableBody } from "../main.mjs";
+import { getPersInstHours } from "../data-server.js";
+import { topBanner, tableBody } from "../main.js";
 
 const accumulatedHours = (dataList) => {
   let totalInstrHours = 0;

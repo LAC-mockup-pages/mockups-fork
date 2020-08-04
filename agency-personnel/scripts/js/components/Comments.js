@@ -1,4 +1,4 @@
-import { personnelData, topBanner } from "../main.mjs";
+import { personnelData, topBanner } from "../main.js";
 
 const commentsView = () => {
   const blockName = "Comments";

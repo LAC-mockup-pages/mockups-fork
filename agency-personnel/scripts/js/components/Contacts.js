@@ -1,8 +1,8 @@
-import { topBanner, tableBody } from "../main.mjs";
+import { topBanner, tableBody } from "../main.js";
 import {
   getPersProgressContacts,
   getPersContactsCodes,
-} from "../data-server.mjs";
+} from "../data-server.js";
 
 export const contactsView = () => {
   const blockName = "Progress Contact";

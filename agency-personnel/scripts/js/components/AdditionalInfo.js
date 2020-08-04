@@ -1,4 +1,4 @@
-import { personnelData, topBanner } from "../main.mjs";
+import { personnelData, topBanner } from "../main.js";
 import {
   ddlGender,
   GetEthnicity,
@@ -6,7 +6,7 @@ import {
   ddlEmploymentStatus,
   GetOccupation,
   GetReferralSource,
-} from "../data-server.mjs";
+} from "../data-server.js";
 
 const leftBlock = () => {
   const {

@@ -1,5 +1,5 @@
-import { getNonInstHours, getReportingPeriods } from "../data-server.mjs";
-import { topBanner, tableBody } from "../main.mjs";
+import { getNonInstHours, getReportingPeriods } from "../data-server.js";
+import { topBanner, tableBody } from "../main.js";
 
 const handleChangeNonInstHours = () => {
   const listInputs = $("#modal-form input").get().slice(2, 8);

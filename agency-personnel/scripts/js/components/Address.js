@@ -1,5 +1,5 @@
-import { personnelData, topBanner } from "../main.mjs";
-import { ddlStates } from "../data-server.mjs";
+import { personnelData, topBanner } from "../main.js";
+import { ddlStates } from "../data-server.js";
 
 export const homeAddress = () => {
   const blockName = "Home Address";

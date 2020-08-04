@@ -1,5 +1,5 @@
-import { GetPersStatusHistory, GetPersStatusCodes } from "../data-server.mjs";
-import { topBanner, tableBody } from "../main.mjs";
+import { GetPersStatusHistory, GetPersStatusCodes } from "../data-server.js";
+import { topBanner, tableBody } from "../main.js";
 
 const createFormAddHistory = (formName, rowId = null) => {
   const selectedRowId = rowId ? `#${rowId} td` : `#${formName}-0 td`;

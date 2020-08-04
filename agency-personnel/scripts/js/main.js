@@ -1,32 +1,32 @@
 //* Logic for page
 
-import createNewRecordForm from "./components/AddNewRecord.mjs";
-import validateRecord from "./data-check.mjs";
+import createNewRecordForm from "./components/AddNewRecord.js";
+import validateRecord from "./data-check.js";
 import {
   getPersonnel,
   getPersonnelList,
   sessionVariable,
-} from "./data-server.mjs";
-import personView from "./components/PersonInfo.mjs";
-import { historyView, createFormAddHistory } from "./components/History.mjs";
-import proDevView from "./components/ProDev.mjs";
-import instructionalHoursView from "./components/InstHours.mjs";
+} from "./data-server.js";
+import personView from "./components/PersonInfo.js";
+import { historyView, createFormAddHistory } from "./components/History.js";
+import proDevView from "./components/ProDev.js";
+import instructionalHoursView from "./components/InstHours.js";
 import {
   nonInstrHoursView,
   createFormAddNonIntructionalHours,
   handleChangeNonInstHours,
   addTotalHours,
-} from "./components/NonInstrHours.mjs";
+} from "./components/NonInstrHours.js";
 import {
   homeAddress,
   workAddress,
   createModalFormAddress,
   checkCanMailOrCall,
   handleChangeCheckBox,
-} from "./components/Address.mjs";
-import addInfoView from "./components/AdditionalInfo.mjs";
-import commentsView from "./components/Comments.mjs";
-import { contactsView, createFormAddContact } from "./components/Contacts.mjs";
+} from "./components/Address.js";
+import addInfoView from "./components/AdditionalInfo.js";
+import commentsView from "./components/Comments.js";
+import { contactsView, createFormAddContact } from "./components/Contacts.js";
 
 const labelObj = {
   PersLast: "Last Name",
