@@ -1,7 +1,7 @@
 //* Logic for page
 
 import createNewRecordForm from "./components/AddNewRecord.mjs";
-import validateUserInput from "./data-check.mjs";
+import validateRecord from "./data-check.mjs";
 import {
   getPersonnel,
   getPersonnelList,
@@ -51,7 +51,6 @@ const getRequired = () => {
     .filter((item) => $(item).prop("required"))
     .map((item) => `#${$(item).attr("id")}`)
     .join(", ");
-  console.log("requiredList :>> ", requiredList);
   return requiredList;
 };
 
@@ -137,36 +136,61 @@ export const tableBody = (
 };
 
 // Used for new personnel
-const saveMods = (dataObj, formId, tableName = "") => {
+const saveMods = (fields, formId, tableName = "") => {
   const { AgencyID, AuditUserID } = sessionVariable;
   const result = { AgencyID, AuditUserID };
-  // validateUserInput() <== data-check.js
-  if (!validateUserInput(dataObj)) $(formId)[0].reset();
-  for (let field of dataObj) {
-    if (field.name === "AgencyID") field.value = sessionVariable.AgencyID;
-
-    // dateFormat() <== helperFunction.js
-    if (field.name === "PersStartDate") field.value = dateFormat(field.value);
-
-    if (field.name === "lengthstay") {
-      const startDate = dataObj.filter(
-        (item) => item.name === "PersStartDate"
-      )[0].value;
-      field.value = yearsOfExperience(startDate);
+  $(`${formName} input, select`).removeClass("yellow-bg");
+  const fieldList = fields.slice(0);
+  // Data validation
+  // validateNewRecord() <== data-check.js
+  const validatedList = validateRecord(fieldList);
+  // Background color change for invalid field values
+  const checkFlag = validatedList.some((item) => !item.correct);
+  if (checkFlag) {
+    const list = validatedList.filter((obj) => obj.correct === false);
+    for (let field of list) {
+      let fieldId =
+        formName === "#new-personnel"
+          ? `#${field.name}`
+          : `#${field.name}-view`;
+      $(fieldId).addClass("yellow-bg");
     }
-    result[field.name] = field.value;
+    return;
+  } else {
+    for (let field of fieldList) {
+      if (field.name === "AgencyID") field.value = sessionVariable.AgencyID;
+
+      // dateFormat() <== helperFunction.js
+      if (field.name === "PersStartDate") field.value = dateFormat(field.value);
+
+      if (field.name === "lengthstay") {
+        const startDate = fieldList.find(
+          (item) => item.name === "PersStartDate"
+        )[0].value;
+        field.value = yearsOfExperience(startDate);
+      }
+      result[field.name] = field.value;
+    }
+
+    const target = tableName ? tableName : formId;
+
+    const resultList = [target, JSON.stringify(result)];
+    console.table(result);
+    //! =================================================
+    //! JSON Object to send back to database
+    console.log("result :", resultList);
+    //! =================================================
+
+    //ToDO Reloading/resetting with new data
+    if (formId === "#new-personnel") {
+      $(formId)[0].reset();
+      $(`${formId} input, select`)
+        .toggleClass("dark-text")
+        .prop("required", true);
+    } else {
+      location.reload();
+    }
   }
-
-  const target = tableName ? tableName : formId;
-
-  const resultList = [target, JSON.stringify(result)];
-  console.table(result);
-  //! =================================================
-  //! JSON Object to send back to database
-  console.log("result :", resultList);
-  //! =================================================
-
-  //ToDO Reloading/resetting with new data
 };
 
 const viewPersonnelList = (listObj) => {

@@ -1,42 +1,39 @@
 //* User input data validation
 
-const validateUserInput = (dataList) => {
-  // Returns true if input is only alphanumerical + underscore and not empty string
+const validateRecord = (dataList) => {
+  // Returns true if input is only alphanumerical + underscore, not empty string
   const alphaNumCheck = (str) => {
     return !/[^\s\w-.]/g.test(str);
   };
-
-  let resultTest = true;
+  const resultList = [];
 
   for (let field of dataList) {
-    switch (field.name) {
-      case "ReferralSiteName":
-        resultTest = alphaNumCheck(field.value);
+    let { name, value } = field;
+    const obj = { name, value };
+    switch (name) {
+      case "PersPersonnelID":
+      case "PersFirst":
+      case "PersLast":
+      case "PersStartDate":
+      case "lengthstay":
+      case "PersPositionID":
+      case "PersSubject":
+      case "PersPayStatus":
+      case "PersTimeStatus":
+      case "PersExpYears":
+        obj.correct = value ? alphaNumCheck(value) : false;
         break;
-      case "ReferralSiteManager":
-        resultTest = alphaNumCheck(field.value);
+      case "Email":
+        obj.correct = value ? true : false;
         break;
-      case "Address":
-        resultTest = alphaNumCheck(field.value);
-        break;
-      case "City":
-        resultTest = alphaNumCheck(field.value);
-        break;
-      case "State":
-        resultTest = field.value.length < 3;
-      case "Zip":
-        resultTest = field.value.length < 11;
-        break;
-      case "Telephone":
-        resultTest = field.value.length < 13;
-        break;
+
       default:
-        resultTest = true;
+        obj.correct = value ? alphaNumCheck(value) : true;
         break;
     }
+    resultList.push(obj);
   }
-
-  return resultTest;
+  return resultList;
 };
 
-export default validateUserInput;
+export default validateRecord;
