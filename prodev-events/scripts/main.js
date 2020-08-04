@@ -3,7 +3,7 @@ import { createEventView } from "./components/event-view.js";
 import {
   createModalRoster,
   staffList,
-  createModalRosterEdit,
+  createModalRosterEdit
 } from "./components/roster-view.js";
 
 // Isolate work objects and arrays from data source.
@@ -15,7 +15,7 @@ export const categoryList = Categories.slice(0);
 export const subjectList = Subjects.slice(0);
 export const sessionList = [
   { key: "morning", name: "Morning" },
-  { key: "afternoon", name: "Afternoon" },
+  { key: "afternoon", name: "Afternoon" }
 ];
 
 const rowLabels = [
@@ -44,8 +44,8 @@ const rowLabels = [
     profdevFac3: "Facilitator3",
     ProfDevFeeCharged: "Fee",
     RAENEvent: "RAEN Event",
-    ProfDevComments: "Comments",
-  },
+    ProfDevComments: "Comments"
+  }
 ];
 
 const setFiscalYear = (datePD) => {
@@ -75,7 +75,7 @@ const createNewRecord = (labelsList) => {
     "ProfDevCategoryID",
     "ProfDevSubjectID",
     "ProfDevFacilitator1",
-    "ProfDevLocationID",
+    "ProfDevLocationID"
   ];
   const hiddenList = [
     "profdevProvider",
@@ -92,7 +92,7 @@ const createNewRecord = (labelsList) => {
     "ProfDevFeeCharged",
     "ProfDevComments",
     "ProfDevTimeFrom",
-    "ProfDevTimeTo",
+    "ProfDevTimeTo"
   ];
   const keyList = Object.keys(labelObj).filter(
     (key) => !["ID", "RAENEvent"].includes(key)
@@ -113,7 +113,7 @@ const createNewRecord = (labelsList) => {
         keyValue: key,
         option,
         optionText: "a session",
-        classOption,
+        classOption
       });
     } else if (key === "ProfDevProviderID") {
       const shortList = providerList.map((item) => {
@@ -127,7 +127,7 @@ const createNewRecord = (labelsList) => {
         keyValue: key,
         option,
         optionText: "a provider",
-        classOption,
+        classOption
       });
     } else if (key === "ProfDevLocationID") {
       const shortList = locationList.map((item) => {
@@ -141,7 +141,7 @@ const createNewRecord = (labelsList) => {
         keyValue: key,
         option,
         optionText: "a location",
-        classOption,
+        classOption
       });
     } else if (key === "ProfDevCategoryID") {
       const shortList = categoryList.map((item) => {
@@ -155,7 +155,7 @@ const createNewRecord = (labelsList) => {
         keyValue: key,
         option,
         optionText: "a category",
-        classOption,
+        classOption
       });
     } else if (key === "ProfDevSubjectID") {
       const shortList = subjectList.map((item) => {
@@ -169,15 +169,17 @@ const createNewRecord = (labelsList) => {
         keyValue: key,
         option,
         optionText: "a subject",
-        classOption,
+        classOption
       });
     } else if (key === "ProfDevFacilitator1") {
       const shortList = facilitatorList
-        .sort((record1, record2) => record1.FacLastName - record2.FacLastName)
+        .sort((record1, record2) =>
+          record1.FacLastName.localeCompare(record2.FacLastName)
+        )
         .map((item) => {
           return {
             ID: item.ID,
-            name: `${item.FacLastName} ${item.FacFirstName}`,
+            name: `${item.FacLastName} ${item.FacFirstName}`
           };
         });
       option =
@@ -188,7 +190,7 @@ const createNewRecord = (labelsList) => {
         keyValue: key,
         option,
         optionText: "a facilitator",
-        classOption,
+        classOption
       });
     } else {
       if (requiredList.includes(key)) {
@@ -204,7 +206,7 @@ const createNewRecord = (labelsList) => {
         placehold,
         classOption,
         option,
-        type,
+        type
       });
     }
     result.push(element);
@@ -233,7 +235,7 @@ const createTableHeader = (labelsObject) => {
           "RAENEvent",
           "ProfDevComments",
           "ProfDevTimeFrom",
-          "ProfDevTimeTo",
+          "ProfDevTimeTo"
         ].includes(label[0])
     )
     .map((label) => label[1]);
@@ -261,7 +263,7 @@ const createTableBody = (dataList, labelObj) => {
     "RAENEvent",
     "ProfDevComments",
     "ProfDevTimeFrom",
-    "ProfDevTimeTo",
+    "ProfDevTimeTo"
   ];
 
   const filteredLabelList = Object.keys(labelObj).filter(
@@ -272,7 +274,7 @@ const createTableBody = (dataList, labelObj) => {
       ProfDevProviderID,
       ProfDevLocationID,
       ProfDevCategoryID,
-      ProfDevSubjectID,
+      ProfDevSubjectID
     } = recordObj;
     const profdevProvider = providerList.find(
       (item) => item.ID === ProfDevProviderID
@@ -295,14 +297,14 @@ const createTableBody = (dataList, labelObj) => {
       profdevProvider,
       profdevLocation,
       profdevCategory,
-      profdevSubject,
+      profdevSubject
     };
     // createRow() <== helperFunction.js
     rows += createRow({
       record,
       labelList: filteredLabelList,
       labelObj,
-      hiddenList,
+      hiddenList
     });
   }
   return `<tbody>${rows}</tbody>`;
