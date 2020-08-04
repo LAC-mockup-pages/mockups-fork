@@ -1,7 +1,8 @@
 .personView {
   background-color: #fff;
-  padding-bottom: 0.5%;
-  border-bottom: 5px solid #1d6294;
+  margin: 1% 0% 1% 0%;
+  border-bottom: 20px solid #1d6294;
+  border-radius: 4px;
 }
 .sub-header {
   line-height: 30px;
@@ -22,13 +23,13 @@
 .instructional-hours-table,
 .progress-contact-table,
 .non-instructional-hours-table {
-  height: 160px;
+  height: 180px;
   overflow-y: scroll;
 }
 
 .bloc-history-proDev,
 .person-main {
-  margin: 2% 0%;
+  margin: 0% 0% 2% 0%;
 }
 
 .bloc-perso {

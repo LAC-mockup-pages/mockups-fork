@@ -44,7 +44,7 @@ const createNewRecordForm = () => {
     let option = " required";
     let classOption = "";
     if (["AgencyID", "lengthstay"].includes(key)) classOption = " hidden";
-    let inputElement = `<input type="text" class="form-control${classOption}" id=${key} name="${key}" placeholder="${labelList[key]}"${option} autocomplete="new-password" spellcheck="off">`;
+    let inputElement = `<input type="text" class="form-control${classOption}" id=${key} name="${key}" placeholder="${labelList[key]}"${option} aria-autocomplete="none" spellcheck="off">`;
 
     formNewPers.push(inputElement);
   }

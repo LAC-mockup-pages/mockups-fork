@@ -313,7 +313,7 @@ $(document).ready(() => {
     const contactsBloc = contactsView();
 
     $(".hero").append(`
-    <div class="container row personView" id=${rowID}>
+    <div class="container-fluid row personView" id=${rowID}>
       <div class="row">
         ${personInfoBloc}
         <div class="bloc-history-proDev col-md-7" id='${rowID}-history'>
@@ -321,18 +321,18 @@ $(document).ready(() => {
           <div class="bloc-proDev">${proDevBloc}</div>
         </div>
       </div>
-      <div class="bloc-hours container row">
+      <div class="bloc-hours container-fluid row">
           <div class="bloc-instr-hours col-md-5">${instructionalHoursBloc}</div>
           <div class="bloc-nonInstrHours col-md-7">${nonInstrHoursBloc}</div>
       </div>
-      <div class="container row bloc-address">
+      <div class="container-fluid row bloc-address">
           <div class="bloc-home col-md-6">${homeAddressBloc}</div>
           <div class="bloc-work col-md-6">${workAddressBloc}</div>
       </div>
       <div class="container-fluid bloc-additionalInfo">
         ${addInfoBloc}
       </div>
-      <div class="container row bloc-comments-contacts">
+      <div class="container-fluid row bloc-comments-contacts">
         ${commentsBloc}
         ${contactsBloc}
       </div>
