@@ -81,6 +81,7 @@ body {
 }
 
 :required::placeholder,
+.form-control:required,
 .delete-msg {
   color: rgb(197, 65, 65);
   text-align: left;
@@ -89,6 +90,10 @@ body {
 
 #submit-btn {
   margin-left: 2%;
+}
+
+option {
+  color: #333;
 }
 
 tbody {

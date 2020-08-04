@@ -45,6 +45,16 @@ const yearsOfExperience = (strDate) => {
   return numberYears;
 };
 
+const getRequired = () => {
+  const list = $("#new-personnel input, select").get();
+  const requiredList = list
+    .filter((item) => $(item).prop("required"))
+    .map((item) => `#${$(item).attr("id")}`)
+    .join(", ");
+  console.log("requiredList :>> ", requiredList);
+  return requiredList;
+};
+
 // Creates header with optional button, optional column headers
 // (from list parameter)
 export const topBanner = (title, list = null) => {
@@ -221,6 +231,12 @@ $(document).ready(() => {
 
   //* New personnel form set-up (hidden)
   $("#new-personnel").append(createNewRecordForm());
+  // Change text color from red (required) to black
+  // when a value is entered
+  $(document).on("focusin", getRequired(), function (evnt) {
+    evnt.stopPropagation();
+    $(this).toggleClass("dark-text").prop("required", false);
+  });
 
   //* Adding a new team member
   $(document).on("click", "#add-new-member", function (evnt) {
