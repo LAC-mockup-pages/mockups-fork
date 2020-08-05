@@ -13,10 +13,7 @@ export const providerList = Providers.slice(0);
 export const locationList = Locations.slice(0);
 export const categoryList = Categories.slice(0);
 export const subjectList = Subjects.slice(0);
-export const sessionList = [
-  { key: "morning", name: "Morning" },
-  { key: "afternoon", name: "Afternoon" }
-];
+const agencyList = Agency.slice(0);
 
 const rowLabels = [
   {
@@ -481,8 +478,10 @@ $(document).ready(() => {
   $(document).on("click", ".add-record-btn", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
+    const { AgencyID } = sessionVariable;
+    const agencyObj = agencyList.find((item) => item.AgencyID === AgencyID);
 
-    const editForm = createModalRoster();
+    const editForm = createModalRoster(agencyObj.RAENID, AgencyID);
     $("#modalBloc").modal("toggle");
     $("#delete-btn").addClass("hidden");
     $("#edit-form").empty().append(editForm);
