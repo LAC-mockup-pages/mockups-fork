@@ -25,6 +25,12 @@ const createViewBloc = (fieldList, selectObj, requiredList) => {
     }
 
     if (keyVal === "ProfDevFY") option += " disabled";
+    if (keyVal === "ProfDecSubjectID") {
+      const categoryObj = fieldList.find(
+        (item) => item.name === "ProfDevCategoryID"
+      );
+      option += [52, 53, 58].includes(categoryObj.value) ? "" : " disabled";
+    }
     if (selectList.includes(keyVal)) {
       const { hashTable, optionText } = selectObj[keyVal];
       bloc += elementSelectModal({

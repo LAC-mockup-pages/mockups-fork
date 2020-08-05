@@ -134,7 +134,7 @@ const createNewRecord = (labelsList) => {
       });
     } else if (key === "ProfDevCategoryID") {
       const shortList = categoryList.map((item) => {
-        return { ID: `${item.CATEGORYID}`, name: item.Category };
+        return { ID: item.CATEGORYID, name: item.Category };
       });
       option =
         " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
@@ -148,10 +148,10 @@ const createNewRecord = (labelsList) => {
       });
     } else if (key === "ProfDevSubjectID") {
       const shortList = subjectList.map((item) => {
-        return { ID: `${item.SubjectID}`, name: item.SubjectDesc };
+        return { ID: item.SubjectID, name: item.SubjectDesc };
       });
       option =
-        " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
+        " disabled data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
       // elementSelectNewRecord() <== helperFunctions()
       element = elementSelectNewRecord({
         hashTable: shortList,
@@ -325,6 +325,9 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
   $(`${formName} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
 
+  if (!fieldList.find((item) => item.name === "ProfDevSubjectID"))
+    fieldList.push({ name: "ProfDevSubjectID", value: "" });
+
   // Data validation
   // validateNewRecord() <== data-check.js
   const validatedList = validateRecord(fieldList, requiredList);
@@ -349,6 +352,7 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
           .value;
         val = setFiscalYear(dateEvent);
       }
+
       result[name] = val;
     }
 
@@ -414,6 +418,23 @@ $(document).ready(() => {
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
 
+  //* Disabled toggle for Subject field based on value of Category
+  $(document).on("change", "#ProfDevCategoryID", function (evnt) {
+    evnt.stopPropagation();
+    const catVal = $(this).val();
+    if (["52", "53", "58"].includes(catVal))
+      $("#ProfDevSubjectID").prop("disabled", false);
+  });
+
+  $(document).on("change", "#ProfDevCategoryID-view", function (evnt) {
+    evnt.stopPropagation();
+    const catVal = $(this).val();
+    if (!["52", "53", "58"].includes(catVal)) {
+      $("#ProfDevSubjectID-view").prop("disabled", true).val("");
+    }
+    console.log("Category value: ", catVal, typeof catVal);
+  });
+
   //* Adding a new record or Editing an event
   $(document).on("click", "#submit-btn, #event-view-submit-btn", function (
     evnt
@@ -451,7 +472,6 @@ $(document).ready(() => {
     $(".record-entry").toggleClass("hidden");
     $("#view-bloc").empty().append(eventView);
     $("html, body").animate({ scrollTop: 220 }, 200);
-    // $(".hero").scrollTop(200);
 
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
@@ -497,7 +517,7 @@ $(document).ready(() => {
     $("#fees-box").val($("#fees-box").prop("checked") ? "True" : "False");
   });
 
-  //* Changing values with change event in checkboxes from new-record roster
+  //* Changing values in checkboxes from new-record roster
   //* modal
   $(document).on("change", "#edit-form [type='checkbox']", function (evnt) {
     evnt.stopPropagation();
@@ -564,8 +584,6 @@ $(document).ready(() => {
     $("#edit-save-btn").addClass("hidden");
     $(".modal-footer > h3").remove();
   });
-
-  //* Event view cancel button
 
   //* Saving mods after editing selected record
   $(document).on("click", "#edit-save-btn", function (evnt) {
