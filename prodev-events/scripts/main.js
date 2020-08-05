@@ -104,18 +104,7 @@ const createNewRecord = (labelsList) => {
     let classOption = "";
     let placehold = labelObj[key];
 
-    if (key === "ProfDevDescription") {
-      option =
-        " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
-      // elementSelectNewRecord() <== helperFunctions()
-      element = elementSelectNewRecord({
-        hashTable: sessionList,
-        keyValue: key,
-        option,
-        optionText: "a session",
-        classOption
-      });
-    } else if (key === "ProfDevProviderID") {
+    if (key === "ProfDevProviderID") {
       const shortList = providerList.map((item) => {
         return { ID: item.ID, name: item.ProviderName };
       });

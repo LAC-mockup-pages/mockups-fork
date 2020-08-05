@@ -2,12 +2,11 @@
 
 import { rosterView } from "./roster-view.js";
 import {
-  sessionList,
   providerList,
   locationList,
   categoryList,
   subjectList,
-  facilitatorList,
+  facilitatorList
 } from "./../main.js";
 
 const createViewBloc = (fieldList, selectObj, requiredList) => {
@@ -35,7 +34,7 @@ const createViewBloc = (fieldList, selectObj, requiredList) => {
         labelVal,
         labelClassVal,
         option,
-        optionText,
+        optionText
       });
     } else {
       let optionHidden = " form-group";
@@ -47,7 +46,7 @@ const createViewBloc = (fieldList, selectObj, requiredList) => {
         labelClassVal,
         classVal: "",
         option,
-        optionHidden,
+        optionHidden
       });
     }
   }
@@ -72,29 +71,28 @@ export const createEventView = (tdList, requiredList) => {
     return { ID, name };
   });
   const selectElementObj = {
-    ProfDevDescription: { hashTable: sessionList, optionText: "a session" },
     ProfDevProviderID: { hashTable: providerList, optionText: "a provider" },
     ProfDevLocationID: { hashTable: locationList, optionText: "a location" },
     ProfDevCategoryID: { hashTable: categoryList, optionText: "a category" },
     ProfDevSubjectID: { hashTable: subjectList, optionText: "a subject" },
     ProfDevFacilitator1: {
       hashTable: facilitators,
-      optionText: "a facilitator",
+      optionText: "a facilitator"
     },
     ProfDevFacilitator2: {
       hashTable: facilitators,
-      optionText: "a facilitator",
+      optionText: "a facilitator"
     },
     ProfDevFacilitator3: {
       hashTable: facilitators,
-      optionText: "a facilitator",
+      optionText: "a facilitator"
     },
     RAENEvent: {
       hashTable: [
         { num: "0", text: "No" },
-        { num: "1", text: "Yes" },
-      ],
-    },
+        { num: "1", text: "Yes" }
+      ]
+    }
   };
 
   const leftBloc = createViewBloc(
