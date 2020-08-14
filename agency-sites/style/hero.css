@@ -5,37 +5,6 @@
   border-radius: 5px;
 }
 
-#new-entry > .form-control {
-  font-size: 1.1em;
-  padding: 0.5%;
-  font-weight: 600;
-  margin-right: 0.3%;
-  margin-top: 0.3%;
-  height: 2.5em;
-}
-
-option {
-  color: #333;
-}
-
-#new-entry {
-  margin-left: 1%;
-}
-
-.col-width-small,
-#Zip,
-#Telephone {
-  max-width: 11%;
-}
-
-.col-width-large {
-  max-width: 25%;
-}
-
-.col-width-medium {
-  max-width: 15%;
-}
-
 #submit-btn,
 #cancel-btn {
   margin: 0 0.5% 0 2%;

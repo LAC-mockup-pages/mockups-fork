@@ -5,25 +5,8 @@
   border-radius: 5px;
 }
 
-#new-entry > .form-control {
-  font-size: 1.1em;
-  padding: 0.5%;
-  font-weight: 700;
-  margin-right: 0.3%;
-  margin-top: 0.3%;
-  height: 2.5em;
-}
-
-#Description {
-  width: 50%;
-}
-
-option {
-  color: #333;
-}
-
-#new-entry {
-  margin-left: 1%;
+#new-entry #Description {
+  width: 60%;
 }
 
 :required::placeholder,
