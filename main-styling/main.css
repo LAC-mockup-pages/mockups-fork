@@ -50,6 +50,29 @@ Core CSS rules for all pages
   background-color: #f7e095;
 }
 
+/* Pages */
+body {
+  background-color: #f0e2d5;
+}
+
+.hero {
+  margin: 1% 6%;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.view-bloc,
+#view-bloc {
+  padding: 0 0 1% 0;
+  border-radius: 5px;
+}
+
+.label-text {
+  font-size: 1.3em;
+  font-weight: 600;
+  padding: 0 0 0.5% 0.5%;
+}
+
 /* Navbar */
 #main-logo:hover {
   cursor: pointer;
