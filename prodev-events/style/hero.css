@@ -38,9 +38,15 @@ body {
 #primary-select select,
 #secondary-select select {
   margin-top: 0.3%;
-  font-size: 1.2em;
-  font-weight: 400;
-  width: 50%;
+  font-size: 1.1em;
+  font-weight: 600;
+  width: 18em;
+  border-radius: 4px;
+}
+
+.filter-select {
+  text-align: right;
+  padding-right: 1%;
 }
 
 #roster-table > tbody {
