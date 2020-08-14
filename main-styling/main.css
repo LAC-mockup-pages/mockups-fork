@@ -46,6 +46,10 @@ Core CSS rules for all pages
   background-color: #1d6294;
 }
 
+.chocolate {
+  color: #dd5814;
+}
+
 .yellow-bg {
   background-color: #f7e095;
 }
@@ -89,6 +93,15 @@ body {
 
 option {
   color: #333;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+:required::placeholder,
+.form-control:required,
+.delete-msg {
+  color: #dd5814;
+  text-align: left;
 }
 
 /* Navbar */

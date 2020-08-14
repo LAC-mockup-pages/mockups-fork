@@ -19,14 +19,6 @@
   border-radius: 5px;
 }
 
-:required::placeholder,
-.form-control:required,
-.delete-msg {
-  color: rgb(197, 65, 65);
-  text-align: left;
-  font-weight: 700;
-}
-
 tbody {
   background-color: #fff;
   color: #283838;

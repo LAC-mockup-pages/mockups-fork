@@ -9,17 +9,6 @@
   width: 60%;
 }
 
-:required::placeholder,
-.form-control:required {
-  color: rgb(197, 65, 65);
-  text-align: left;
-  font-weight: 700;
-}
-
-#OutcomeSortOrder-view > option {
-  color: #283838;
-}
-
 #submit-btn,
 #cancel-btn {
   margin: 0 0.5% 0 2%;

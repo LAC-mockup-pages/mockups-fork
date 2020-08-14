@@ -19,24 +19,11 @@
   border-radius: 5px;
 }
 
-:required::placeholder,
-.form-control:required {
-  color: rgb(197, 65, 65);
-  font-weight: 700;
-  text-align: left;
-}
-
 tbody {
   background-color: #fff;
   color: #283838;
   font-size: 1.2em;
   font-weight: 600;
-}
-
-option {
-  color: #283838;
-  font-size: 1em;
-  font-weight: 500;
 }
 
 .table > tbody > tr > td {
