@@ -34,34 +34,27 @@
       defer
     ></script>
 
-    <!-- Moment.js library CDN-->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
-      type="text/javascript"
-    ></script>
-
-    <!-- Links and scripts for local app -->
     <link rel="stylesheet" href="style/index.css" type="text/css" />
-    <script src="scripts/data.js" type="text/javascript" defer></script>
     <script
       src="../helpers/helperFunctions.js"
       type="text/javascript"
       defer
     ></script>
-    <script src="./scripts/data-check.js" type="text/javascript" defer></script>
     <script
       src="../navbar/scripts/index.js"
       type="text/javascript"
       defer
     ></script>
+    <script src="scripts/data.js" type="text/javascript" defer></script>
+    <script src="scripts/data-check.js" type="text/javascript" defer></script>
 
     <script src="scripts/index.js" type="text/javascript" defer></script>
 
-    <!-- !====================================== -->
-    <!-- ! File: /agency/agencysourcesinfo.aspx  -->
-    <!-- !====================================== -->
+    <!-- !============================= -->
+    <!-- ! File: /staff/prodev_location.aspx -->
+    <!-- !============================= -->
 
-    <title>Mock-up Agency Funding Sources</title>
+    <title>Mock-up ProDev Locations</title>
   </head>
   <body>
     <header>
@@ -258,12 +251,10 @@
       <div class="container-fluid blue-bg blue-light-text sub-navbar">
         <div role="tabpanel" class="col-md-11">
           <ul id="sub-nav" class="nav nav-tabs nav-justified uc-true">
-            <li>Agency</li>
-            <li class="blue-light-bg blue-text">Funding Sources</li>
-            <li>Sites</li>
-            <li>Literacy Zone Partners</li>
-            <li>Literacy Zone Outcome</li>
-            <li>IET / IELCE Cost Tracking</li>
+            <li>Events</li>
+            <li>Facilitators</li>
+            <li>Providers</li>
+            <li class="blue-light-bg blue-text">Locations</li>
           </ul>
         </div>
       </div>
@@ -271,17 +262,27 @@
     <!-- Hero -->
     <div class="container-fluid hero">
       <!-- New source entry-->
-      <div class="container-fluid source-entry blue-bg">
+      <div class="container-fluid record-entry blue-bg">
         <div class="label-text blue-light-text">
-          New Funding Source (Elements in red are required):
+          New Location (Elements in red are required):
         </div>
-        <form class="form-inline blue-bg" role="form" id="new-entry"></form>
+        <form
+          class="form-inline blue-bg"
+          role="form"
+          id="new-entry"
+          aria-autocomplete="none"
+        ></form>
       </div>
       <!-- Data viewing -->
-      <div class="container-fluid blue-bg view-bloc">
+      <div class="data-view blue-bg" id="view-bloc">
         <table class="table blue-bg" id="main-table"></table>
       </div>
     </div>
+    <a id="btn-top"
+      ><span class="glyphicon glyphicon-eject" aria-hidden="false"></span>
+      Top</a
+    >
+
     <!-- Modal for Editing Top Bloc data -->
     <div class="modal fade" id="modalBloc">
       <div class="modal-dialog modal-lg">
@@ -291,18 +292,13 @@
               <span aria-hidden="true">&times;</span
               ><span class="sr-only">Close</span>
             </button>
-            <h4 class="modal-title">Editing or Deleting a Funding Source</h4>
+            <h4 class="modal-title">Editing a Location</h4>
           </div>
           <div class="modal-body">
-            <form role="form" id="edit-form"></form>
+            <form id="edit-form" role="form"></form>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              id="close-btn"
-              class="btn btn-default"
-              data-dismiss="modal"
-            >
+            <button type="button" class="btn btn-default" data-dismiss="modal">
               Close without saving
             </button>
             <button
@@ -313,19 +309,9 @@
             >
               Save changes
             </button>
-            <button
-              type="button"
-              class="btn btn-danger"
-              form="edit-form"
-              id="delete-btn"
-            >
-              Delete Source
-            </button>
           </div>
         </div>
-        <!-- /.modal-content -->
       </div>
-      <!-- /.modal-dialog -->
     </div>
   </body>
 </html>
