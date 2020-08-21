@@ -496,7 +496,8 @@ $(document).ready(() => {
     const requiredList = getRequired();
     const eventView = createEventView(selectedRow, requiredList);
     // Cleaning up
-    $(".record-entry").toggleClass("hidden");
+    $(".record-entry, #filter-bloc ").toggleClass("hidden");
+
     $("#view-bloc").empty().append(eventView);
     $("html, body").animate({ scrollTop: 220 }, 200);
 
