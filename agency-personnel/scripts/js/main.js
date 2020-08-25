@@ -5,7 +5,7 @@ import validateRecord from "./data-check.js";
 import {
   getPersonnel,
   getPersonnelList,
-  sessionVariable,
+  sessionVariable
 } from "./data-server.js";
 import personView from "./components/PersonInfo.js";
 import { historyView, createFormAddHistory } from "./components/History.js";
@@ -15,14 +15,14 @@ import {
   nonInstrHoursView,
   createFormAddNonIntructionalHours,
   handleChangeNonInstHours,
-  addTotalHours,
+  addTotalHours
 } from "./components/NonInstrHours.js";
 import {
   homeAddress,
   workAddress,
   createModalFormAddress,
   checkCanMailOrCall,
-  handleChangeCheckBox,
+  handleChangeCheckBox
 } from "./components/Address.js";
 import addInfoView from "./components/AdditionalInfo.js";
 import commentsView from "./components/Comments.js";
@@ -31,7 +31,7 @@ import { contactsView, createFormAddContact } from "./components/Contacts.js";
 const labelObj = {
   PersLast: "Last Name",
   PersFirst: "First Name",
-  PersonnelID: "Personnel ID",
+  PersonnelID: "Personnel ID"
 };
 
 // Variable personnelData is detached from the original request
@@ -46,7 +46,7 @@ const yearsOfExperience = (strDate) => {
 };
 
 const getRequired = () => {
-  const list = $("#new-personnel input, select").get();
+  const list = $("#new-entry input, select").get();
   const requiredList = list
     .filter((item) => $(item).prop("required"))
     .map((item) => `#${$(item).attr("id")}`)
@@ -71,7 +71,7 @@ export const topBanner = (title, list = null) => {
       "Home Address",
       "Work Address",
       "Additional Information",
-      "Comments",
+      "Comments"
     ].includes(title)
   ) {
     headerButton = `<button type='button' class="btn btn-default add-record-btn col-sm-2" ${formName}>Add</button>`;
@@ -150,7 +150,7 @@ const saveMods = (fields, formId, tableName = "") => {
     const list = validatedList.filter((obj) => obj.correct === false);
     for (let field of list) {
       let fieldId =
-        formId === "#new-personnel" ? `#${field.name}` : `#${field.name}-view`;
+        formId === "#new-entry" ? `#${field.name}` : `#${field.name}-view`;
       $(fieldId).addClass("yellow-bg");
     }
     return;
@@ -180,7 +180,7 @@ const saveMods = (fields, formId, tableName = "") => {
     //! =================================================
 
     //ToDO Reloading/resetting with new data
-    if (formId === "#new-personnel") {
+    if (formId === "#new-entry") {
       $(formId)[0].reset();
       $(`${formId} input, select`)
         .toggleClass("dark-text")
@@ -253,7 +253,7 @@ $(document).ready(() => {
   });
 
   //* New personnel form set-up (hidden)
-  $("#new-personnel").append(createNewRecordForm());
+  $("#new-entry").append(createNewRecordForm());
   // Change text color from red (required) to black
   // when a value is entered
   $(document).on("focusin", getRequired(), function (evnt) {
@@ -264,7 +264,7 @@ $(document).ready(() => {
   //* Adding a new team member
   $(document).on("click", "#add-new-member", function (evnt) {
     evnt.stopPropagation();
-    $("#new-personnel").toggleClass("hidden");
+    $("#new-entry").toggleClass("hidden");
   });
 
   $(document).on("click", "#submit-btn", function (evnt) {
