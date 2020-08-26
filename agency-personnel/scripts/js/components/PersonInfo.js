@@ -40,9 +40,9 @@ const personView = (selectedID) => {
     let classVal = "";
     const value = personData[key];
     let option = "";
+    let optionHidden = "form-group";
     if (key === "ID") {
-      labelClassVal = "class='hidden'";
-      classVal = "class='hidden'";
+      optionHidden += " hidden";
     }
     if (
       [
@@ -69,7 +69,8 @@ const personView = (selectedID) => {
       labelVal,
       classVal,
       value,
-      option
+      option,
+      optionHidden
     };
 
     if (
