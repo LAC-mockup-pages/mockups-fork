@@ -5,7 +5,7 @@ import {
   ddlEducationLevel,
   ddlEmploymentStatus,
   GetOccupation,
-  GetReferralSource,
+  GetReferralSource
 } from "../data-server.js";
 
 const leftBlock = () => {
@@ -13,7 +13,7 @@ const leftBlock = () => {
     PersGender,
     PersEthnicity,
     PersBirthDate,
-    PersEducation,
+    PersEducation
   } = personnelData[0];
 
   const genderArgObj = {
@@ -22,7 +22,7 @@ const leftBlock = () => {
     selectedValue: PersGender,
     labelVal: "Gender",
     labelClassVal: "",
-    option: "",
+    option: ""
   };
   const ethnicityArgObj = {
     hashTable: GetEthnicity,
@@ -30,7 +30,7 @@ const leftBlock = () => {
     selectedValue: PersEthnicity,
     labelVal: "Ethnicity",
     labelClassVal: "",
-    option: "",
+    option: ""
   };
 
   const birthDateArgObj = {
@@ -40,6 +40,7 @@ const leftBlock = () => {
     labelClassVal: "",
     classVal: "",
     option: "",
+    optionHidden: "form-group"
   };
 
   const educationArgObj = {
@@ -48,7 +49,7 @@ const leftBlock = () => {
     selectedValue: PersEducation,
     labelVal: "Education Level",
     labelClassVal: "",
-    option: "",
+    option: ""
   };
 
   // elementSelectModal() <== helperFunctions.js
@@ -69,7 +70,7 @@ const rightBlock = () => {
   const {
     PersEmploymentStatus,
     PersOccupation,
-    PersReferral,
+    PersReferral
   } = personnelData[0];
 
   const employmentArgObj = {
@@ -78,7 +79,7 @@ const rightBlock = () => {
     selectedValue: PersEmploymentStatus,
     labelVal: "Employment Status",
     labelClassVal: "",
-    option: "",
+    option: ""
   };
 
   const occupationArgObj = {
@@ -87,7 +88,7 @@ const rightBlock = () => {
     selectedValue: PersOccupation,
     labelVal: "Occupation",
     labelClassVal: "",
-    option: "",
+    option: ""
   };
 
   const referralArgObj = {
@@ -96,7 +97,7 @@ const rightBlock = () => {
     selectedValue: PersReferral,
     labelVal: "Referral",
     labelClassVal: "",
-    option: "",
+    option: ""
   };
 
   // elementSelectModal() <== helperFunctions.js

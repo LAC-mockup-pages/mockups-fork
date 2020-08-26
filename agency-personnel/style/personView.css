@@ -126,7 +126,8 @@
   text-align: center;
 }
 
-.mail-call-checkboxes > label #comments textarea {
+.mail-call-checkboxes > label,
+#comments textarea {
   font-size: 1em;
   font-weight: 400;
 }
@@ -160,7 +161,7 @@
 }
 #comments textarea {
   width: 575px;
-  height: 160px;
+  height: 200px;
   font-size: 1.4em;
   font-weight: 400;
   padding-left: 2%;
