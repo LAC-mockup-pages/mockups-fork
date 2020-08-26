@@ -3,7 +3,7 @@ import {
   GetSubject,
   ddlPaidVolunteer,
   ddlTimeStatus,
-  ddlExperienceYears,
+  ddlExperienceYears
 } from "../data-server.js";
 
 const createNewRecordForm = () => {
@@ -26,7 +26,7 @@ const createNewRecordForm = () => {
     PersFirst: "First name",
     PersLast: "Last name",
     PersStartDate: "Start date",
-    lengthstay: "Length of stay (yrs)",
+    lengthstay: "Length of stay (yrs)"
   };
 
   const selectList = {
@@ -34,7 +34,7 @@ const createNewRecordForm = () => {
     PersSubject: ["Subject", GetSubject],
     PersPayStatus: ["Paid/Volunteer", ddlPaidVolunteer],
     PersTimeStatus: ["Time status", ddlTimeStatus],
-    PersExpYears: ["Experience", ddlExperienceYears],
+    PersExpYears: ["Experience", ddlExperienceYears]
   };
   const formNewPers = [];
   const keyList = Object.keys(labelList);
@@ -55,9 +55,9 @@ const createNewRecordForm = () => {
     );
   }
 
-  formNewPers.push(
-    '<button type="button" id="submit-btn" form="new-personnel" class="btn btn-primary">Add</button><button type="button" id="cancel-btn" form="new-personnel" class="btn btn-default">Cancel</button>'
-  );
+  // formNewPers.push(
+  //   '<button type="button" id="submit-btn" form="new-personnel" class="btn btn-primary">Add</button><button type="button" id="cancel-btn" form="new-personnel" class="btn btn-default">Cancel</button>'
+  // );
 
   return formNewPers.join("");
 };

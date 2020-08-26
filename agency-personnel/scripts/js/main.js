@@ -238,6 +238,7 @@ const searchPersonnel = (str) => {
 //*======================================
 //* jQuery logic
 //*======================================
+
 $(document).ready(() => {
   //* Back to Top button
   const btnToTop = $("#btn-top");
@@ -254,6 +255,13 @@ $(document).ready(() => {
 
   //* New personnel form set-up (hidden)
   $("#new-entry").append(createNewRecordForm());
+  $(".personnel-entry")
+    .append(`<div class="container-fluid buttons-bloc-new hidden">
+  <button type="button" id="cancel-btn" form="new-entry"
+    class="btn btn-default pull-right">Cancel</button>
+  <button type="button" id="submit-btn" form="new-entry"
+    class="btn dark-blue-text blue-light-bg pull-right">Add</button>
+</div>`);
   // Change text color from red (required) to black
   // when a value is entered
   $(document).on("focusin", getRequired(), function (evnt) {
@@ -264,7 +272,7 @@ $(document).ready(() => {
   //* Adding a new team member
   $(document).on("click", "#add-new-member", function (evnt) {
     evnt.stopPropagation();
-    $("#new-entry").toggleClass("hidden");
+    $("#new-entry, .buttons-bloc-new").toggleClass("hidden");
   });
 
   $(document).on("click", "#submit-btn", function (evnt) {
@@ -321,9 +329,10 @@ $(document).ready(() => {
   $(document).on("click", "#cancel-btn", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
-    const formId = "#" + $(this).attr("form");
-    $(formId)[0].reset();
-    $(formId).toggleClass("hidden");
+    location.reload();
+    // const formId = "#" + $(this).attr("form");
+    // $(formId)[0].reset();
+    // $(formId).toggleClass("hidden");
   });
 
   //* Select personnel in short list
