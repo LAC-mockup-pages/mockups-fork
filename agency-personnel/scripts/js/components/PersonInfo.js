@@ -6,7 +6,7 @@ import {
   GetSubject,
   ddlTimeStatus,
   ddlExperienceYears,
-  ddlPaidVolunteer,
+  ddlPaidVolunteer
 } from "../data-server.js";
 import { topBanner } from "../main.js";
 
@@ -30,7 +30,7 @@ const personView = (selectedID) => {
     PersHomePhone: "Home Phone",
     PersMobilePhone: "Mobile Phone",
     PersEmail: "Email",
-    PersAltEmail: "Alt Email",
+    PersAltEmail: "Alt Email"
   };
 
   const fieldList = Object.keys(labels);
@@ -54,7 +54,7 @@ const personView = (selectedID) => {
         "PersStartDate",
         "PersPayStatus",
         "PersTimeStatus",
-        "PersExpYears",
+        "PersExpYears"
       ].includes(key)
     ) {
       option = "required";
@@ -69,7 +69,7 @@ const personView = (selectedID) => {
       labelVal,
       classVal,
       value,
-      option,
+      option
     };
 
     if (
@@ -78,7 +78,7 @@ const personView = (selectedID) => {
         "PersSubject",
         "PersPayStatus",
         "PersTimeStatus",
-        "PersExpYears",
+        "PersExpYears"
       ].includes(key)
     ) {
       let hashTable = [];
@@ -108,10 +108,10 @@ const personView = (selectedID) => {
         selectedValue: personData[key],
         labelVal,
         labelClassVal,
-        option,
+        option
       };
 
-      // elementSelectModal() <== helperFunctions.js
+      // elementSelectModal() elementInput() <== helperFunctions.js
       return elementSelectModal(argumentsSelect);
     } else {
       return elementInput(argumentsObj);

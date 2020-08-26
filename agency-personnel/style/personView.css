@@ -36,6 +36,14 @@
   margin-top: 1.7%;
 }
 
+.bloc-perso label {
+  width: 30%;
+}
+.bloc-perso input,
+.bloc-perso select {
+  width: 68%;
+}
+
 .bloc-proDev {
   margin-top: 15%;
 }
@@ -118,8 +126,8 @@
   text-align: center;
 }
 
-.mail-call-checkboxes > label {
-  font-size: 1.1em;
+.mail-call-checkboxes > label #comments textarea {
+  font-size: 1em;
   font-weight: 400;
 }
 
@@ -150,9 +158,11 @@
   margin-right: 0;
   text-align: center;
 }
-textarea {
-  width: 555px;
+#comments textarea {
+  width: 575px;
   height: 160px;
+  font-size: 1.4em;
+  font-weight: 400;
   padding-left: 2%;
   background-color: #f5f5f5;
 }
