@@ -19,7 +19,11 @@
   margin: 0;
 }
 .history-table,
-.proDev-table,
+.proDev-table {
+  height: 230px;
+  overflow-y: scroll;
+}
+
 .instructional-hours-table,
 .progress-contact-table,
 .non-instructional-hours-table {
