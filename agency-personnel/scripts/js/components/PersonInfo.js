@@ -12,7 +12,7 @@ import { topBanner } from "../main.js";
 
 const personView = (selectedID) => {
   const personData = getPersonnel.filter(
-    (person) => person.ID === selectedID.toString()
+    (person) => person.ID === selectedID
   )[0];
   const title = "Personnel Information";
   const labels = {

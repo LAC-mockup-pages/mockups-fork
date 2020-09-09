@@ -322,7 +322,7 @@ $(document).ready(() => {
   $(document).on("click", "#search-btn", function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    const listPers = searchPersonnel(value);
+    // const listPers = searchPersonnel(value);
   });
 
   //* New personnel cancel button
@@ -339,7 +339,7 @@ $(document).ready(() => {
   $(document).on("click", ".row-data", function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    const rowID = Number($(this).attr("id"));
+    const rowID = $(this).attr("id");
 
     // Cleaning up
     $("#view-bloc").remove();
