@@ -268,6 +268,8 @@ $(document).ready(() => {
     evnt.stopPropagation();
     $(this).toggleClass("dark-text").prop("required", false);
   });
+  // Enables customized tooltips
+  $("[data-toggle='tooltip']").tooltip();
 
   //* Adding a new team member
   $(document).on("click", "#add-new-member", function (evnt) {
