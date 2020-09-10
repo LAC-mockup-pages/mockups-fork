@@ -208,6 +208,8 @@ const viewPersonnelList = (listObj) => {
         <tbody class="table-body">${rows}</tbody>
     </table>)`
   );
+  // Enables customized tooltips
+  $("[data-toggle='tooltip']").tooltip();
 };
 
 const searchPersonnel = (str) => {
@@ -318,8 +320,6 @@ $(document).ready(() => {
       $(this).val((value += String.fromCharCode(evnt.which)));
     }
   });
-  // Enables customized tooltips
-  $("[data-toggle='tooltip']").tooltip();
 
   $(document).on("click", "#search-btn", function (evnt) {
     evnt.stopPropagation();
