@@ -217,7 +217,7 @@ $(document).ready(() => {
   });
 
   // Save button in modal form
-  $("#save-button").on("click", function (evnt) {
+  $(document).on("click", "#save-button", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     const formID = $(this).attr("form");
@@ -225,7 +225,7 @@ $(document).ready(() => {
   });
 
   // Close button in modal form
-  $("#close-button").on("click", function (evnt) {
+  $(document).on("click", "#close-button", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
     $("#modal-bloc").modal("toggle");

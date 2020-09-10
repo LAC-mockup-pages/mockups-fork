@@ -198,9 +198,7 @@ const createTableRow = (idValue, recordObj) => {
     dataElement += `<td class="cell-data" title="Click to edit"
                       data-name=${property}>${recordObj[property]}</td>`;
   }
-  return `<tr class="row-data" id=${idValue} title="Click to edit">
-            ${dataElement}
-          </tr>`;
+  return `<tr class="row-data" id=${idValue} title="Click to edit" data-toggle='tooltip' data-placement='left'>${dataElement}</tr>`;
 };
 
 // argsObj = {record, labelList, labelObj, hiddenList}
@@ -215,7 +213,7 @@ const createRow = (argsObj) => {
   }
   return `<tr id=${
     record.ID
-  } data-toggle='tooltip' data-placement='left' title="Click to edit">${tdList.join(
+  } title="Click to edit" data-toggle='tooltip' data-placement='left'>${tdList.join(
     ""
   )}</tr>`;
 };
