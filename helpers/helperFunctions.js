@@ -15,15 +15,17 @@ const createInputField = (
     </div>`;
 };
 
-// obj = { keyVal, labelVal, value, labelClassVal,
-//         classVal, option, optionHidden}
-const elementInput = (obj) => {
-  return `<div class="input-field ${obj.optionHidden}">
-      <label for='${obj.keyVal}' ${obj.labelClassVal}>${obj.labelVal}</label>
-      <input type="text" id='${obj.keyVal + "-view"}' ${obj.classVal} name=${
-    obj.keyVal
-  }
-      value='${obj.value}' ${obj.option} autocomplete="off"/>
+// argsObj = { keyVal, labelVal, value, labelClassVal, classVal, option, optionHidden, type}
+const elementInput = (argsObj) => {
+  const selectType = argsObj.type ? argsObj.type : "text";
+  return `<div class="input-field ${argsObj.optionHidden}">
+      <label for='${argsObj.keyVal}' ${argsObj.labelClassVal}>${
+    argsObj.labelVal
+  }</label>
+      <input type=${selectType} id='${argsObj.keyVal + "-view"}' ${
+    argsObj.classVal
+  } name=${argsObj.keyVal}
+      value='${argsObj.value}' ${argsObj.option} autocomplete="off"/>
     </div>`;
 };
 
