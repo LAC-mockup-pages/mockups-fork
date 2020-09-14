@@ -38,9 +38,11 @@ const personView = (selectedID) => {
     let labelClassVal = "";
     const labelVal = labels[key];
     let classVal = "";
-    const value = personData[key];
+    let value = personData[key];
     let option = "";
     let optionHidden = "form-group";
+    let type = "";
+
     if (key === "ID") {
       optionHidden += " hidden";
     }
@@ -63,6 +65,11 @@ const personView = (selectedID) => {
 
     if (key === "lengthstay") option = "disabled";
 
+    if (["PersHomePhone", "PersMobilePhone"].includes(key)) {
+      value = phoneFormat(value);
+    }
+    if (["PersEmail", "PersEmail"].includes(key)) type = "email";
+
     const argumentsObj = {
       keyVal: key,
       labelClassVal,
@@ -70,7 +77,8 @@ const personView = (selectedID) => {
       classVal,
       value,
       option,
-      optionHidden
+      optionHidden,
+      type
     };
 
     if (

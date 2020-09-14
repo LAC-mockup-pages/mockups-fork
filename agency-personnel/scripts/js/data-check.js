@@ -23,7 +23,8 @@ const validateRecord = (dataList) => {
         break;
       case "PersStartDate":
         obj.correct = value.match(dateFormat) ? true : false;
-      case "Email":
+      case "PersEmail":
+      case "PersAltEmail":
         obj.correct = value ? true : false;
         break;
 

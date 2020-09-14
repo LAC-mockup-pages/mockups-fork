@@ -141,9 +141,11 @@ const saveMods = (fields, formId, tableName = "") => {
   const result = { AgencyID, AuditUserID };
   $(`${formId} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
+  console.log("fieldList :>> ", fieldList);
   // Data validation
   // validateNewRecord() <== data-check.js
   const validatedList = validateRecord(fieldList);
+
   // Background color change for invalid field values
   const checkFlag = validatedList.some((item) => !item.correct);
   if (checkFlag) {
