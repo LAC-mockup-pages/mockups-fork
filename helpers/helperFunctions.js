@@ -117,7 +117,7 @@ const elementSelectModal = (argsObj) => {
 const phoneFormat = (str) => {
   if (!str) return "";
   if (/\D/.test(str)) {
-    str.replace(/\D/gi, "");
+    str = str.replace(/\D/gi, "");
   }
   return str.length === 10
     ? `${str.slice(0, 3)}-${str.slice(3, 6)}-${str.slice(6)}`
