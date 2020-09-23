@@ -32,7 +32,7 @@ const createNewRecord = (labelsList) => {
   const keyList = Object.keys(labelObj).filter(
     (key) => !["ID", "AgencyID", "fullAddress"].includes(key)
   );
-  for (key of keyList) {
+  for (const key of keyList) {
     let element = "";
     let option = "";
     let type = "text";
