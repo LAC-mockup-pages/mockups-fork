@@ -150,8 +150,7 @@ const saveMods = (form) => {
 //* =================================================
 
 $(document).ready(() => {
-  // * sub-navbar/index.js
-  // $("#agency-tab a").toggleClass("blue-light-bg blue-text");
+  // * Selecting another page
   $("#sub-nav li").on("click", function (evnt) {
     evnt.stopPropagation();
     $("#sub-nav li").removeClass("blue-light-bg blue-text");
