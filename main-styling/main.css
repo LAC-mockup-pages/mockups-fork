@@ -335,8 +335,14 @@ select {
   border-radius: 5px;
 }
 
-.sub-navbar li:hover {
+.sub-navbar ul {
+  margin-bottom: 0px;
+}
+
+.sub-navbar a:hover {
   cursor: pointer;
+  color: #d3e4f0;
+  text-decoration: none;
 }
 
 /* Main buttons
