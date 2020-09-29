@@ -162,6 +162,26 @@ $(document).ready(() => {
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
 
+  // Manage highlighting background of the block where the cursor
+  // is located
+  $(document)
+    .on("mouseenter", "#top-bloc, #bottom-bloc", function (evnt) {
+      evnt.stopPropagation();
+      const blocToChange =
+        $(this).attr("id") === "top-bloc"
+          ? "#top-bloc tbody"
+          : "#bottom-bloc tbody";
+      $(blocToChange).css("background-color", " #d3e4f0");
+    })
+    .on("mouseleave", "#top-bloc, #bottom-bloc", function (evnt) {
+      evnt.stopPropagation();
+      const blocToChange =
+        $(this).attr("id") === "top-bloc"
+          ? "#top-bloc tbody"
+          : "#bottom-bloc tbody";
+      $(blocToChange).removeAttr("style");
+    });
+
   //* Data bloc editing
   $(document).on("click", ".hero > div", function (evnt) {
     evnt.stopPropagation();
