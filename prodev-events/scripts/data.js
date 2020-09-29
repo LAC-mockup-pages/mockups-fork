@@ -759,22 +759,22 @@ const Staff = [
 //   ]
 
 const Categories = [
-  { CATEGORYID: 50, Category: "ABE/HSE" },
-  { CATEGORYID: 1, Category: "Assessment" },
-  { CATEGORYID: 53, Category: "Common Core Content Related" },
-  { CATEGORYID: 52, Category: "Common Core Instructional Practice" },
-  { CATEGORYID: 26, Category: "Data/ASISTS" },
-  { CATEGORYID: 55, Category: "Distance Learning" },
-  { CATEGORYID: 51, Category: "ESOL" }
+  { CATEGORYID: "50", Category: "ABE/HSE" },
+  { CATEGORYID: "1", Category: "Assessment" },
+  { CATEGORYID: "53", Category: "Common Core Content Related" },
+  { CATEGORYID: "52", Category: "Common Core Instructional Practice" },
+  { CATEGORYID: "26", Category: "Data/ASISTS" },
+  { CATEGORYID: "55", Category: "Distance Learning" },
+  { CATEGORYID: "51", Category: "ESOL" }
 ];
 
 const Subjects = [
-  { SubjectID: 1, SubjectDesc: "ELA" },
-  { SubjectID: 2, SubjectDesc: "Social Studies" },
-  { SubjectID: 3, SubjectDesc: "Science" },
-  { SubjectID: 4, SubjectDesc: "Math" },
-  { SubjectID: 5, SubjectDesc: "Career Pathways" },
-  { SubjectID: 6, SubjectDesc: "ESL" }
+  { SubjectID: "1", SubjectDesc: "ELA" },
+  { SubjectID: "2", SubjectDesc: "Social Studies" },
+  { SubjectID: "3", SubjectDesc: "Science" },
+  { SubjectID: "4", SubjectDesc: "Math" },
+  { SubjectID: "5", SubjectDesc: "Career Pathways" },
+  { SubjectID: "6", SubjectDesc: "ESL" }
 ];
 
 const Facilitator = [
