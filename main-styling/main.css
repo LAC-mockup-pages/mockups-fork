@@ -177,9 +177,12 @@ select {
   font-size: 1.4em;
   font-weight: 400;
   border: none;
-  text-indent: 4px;
   width: 60%;
   border-bottom: 1px solid #2479b5;
+}
+
+.input-field > input {
+  text-indent: 5px;
 }
 
 /* Navbar
