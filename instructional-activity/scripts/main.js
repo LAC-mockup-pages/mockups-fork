@@ -393,7 +393,7 @@ $(document).ready(() => {
     $(".schedule-bloc").toggleClass("hidden");
 
     //! NB: the action changes the schedule to a weekly schedule
-    //! Allows hours to be input for each day.
+    //! Allows hours to be input for each day after Save button is pressed.
     //TODO See with GJ how this will work with existing procedures
   });
 
