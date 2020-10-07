@@ -387,6 +387,16 @@ $(document).ready(() => {
     }
   );
 
+  //* Switching on weekly schedule
+  $(document).on("click", ".week-btn", function (evnt) {
+    evnt.stopPropagation();
+    $(".schedule-bloc").toggleClass("hidden");
+
+    //! NB: the action changes the schedule to a weekly schedule
+    //! Allows hours to be input for each day.
+    //TODO See with GJ how this will work with existing procedures
+  });
+
   //* Select event record to edit + display selected event & roster
   // $(document).on("click", ".row-data", function (evnt) {
   //   evnt.stopPropagation();

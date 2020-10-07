@@ -9,6 +9,7 @@ import { topBanner } from "../main.js";
 export const createSchedule = (dataObj) => {
   let bloc = topBanner("Schedule");
   const weekDaysBanner = `
+  <div class="hidden schedule-bloc">
   <form class="weekday-banner" id="week-schedule">
  <table class="schedule-table container-fluid table table-bordered"
  <thead>
@@ -46,9 +47,10 @@ export const createSchedule = (dataObj) => {
  </tbody>
 </table>
  </form>
- <form class="blue-bg">
+ <div class="blue-bg">
  <button type="button" class="btn btn-default" id="save-schedule-btn" form="week-schedule">Save</button>
- </form>`;
+ </div>
+ </div>`;
   bloc += weekDaysBanner;
   return bloc;
 };
