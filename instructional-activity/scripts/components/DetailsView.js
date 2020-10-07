@@ -5,6 +5,7 @@
 
 import { createCourseMain } from "./CourseMain.js";
 import { createFundingBloc } from "./FundingSources.js";
+import { createRecommended } from "./Recommended.js";
 import { createSchedule } from "./Schedule.js";
 
 export const detailsView = (dataObj) => {
@@ -17,6 +18,7 @@ export const detailsView = (dataObj) => {
   const mainInfo = createCourseMain(dataObj[0]);
   const funding = createFundingBloc(FSID);
   const schedule = createSchedule(dataObj[0]);
+  const recommended = createRecommended();
 
   // Displaying blocks
   $(".hero").append(`
@@ -28,12 +30,12 @@ export const detailsView = (dataObj) => {
       <div class="funding-schedule col-md-6">
       ${funding}
       ${schedule}
-    </div>
+      </div>
     </div>
     <div class="blue-light-bg blue-text recommended-title">Recommended Items
     </div>
     <div class="container-fluid row recommended-bloc">
-
+      ${recommended}
     </div>
 
   </div>`);
