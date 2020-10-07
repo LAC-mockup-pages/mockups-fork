@@ -2,6 +2,10 @@
 // dataObj is output of a GET request (GetCourse) or created
 // by the DB response after new record creation
 
+const createSpecialProgram = (programID, subIETId) => {
+  return specialProgramBloc;
+};
+
 export const createRecommended = (
   siteId = "",
   projectedStudentsNumber = ""
@@ -22,9 +26,9 @@ export const createRecommended = (
     optionText: "a site"
   });
 
-  const projStudentsNumber = elementInput({
+  const projectedEnrollment = elementInput({
     keyVal: "ProjTotStudents",
-    labelVal: "Projected Student Number",
+    labelVal: "Projected Enrollment",
     value: projectedStudentsNumber,
     labelClassVal: "",
     classVal: "",
@@ -37,7 +41,7 @@ export const createRecommended = (
   <div class="container-fluid col-md-6">
     <form role="form" id="#site-tot-students">
       ${siteSelect}
-      ${projStudentsNumber}
+      ${projectedEnrollment}
     </form>
   </div>`;
 
