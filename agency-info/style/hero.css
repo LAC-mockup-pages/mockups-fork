@@ -8,10 +8,20 @@
 
 .quarter-bloc {
   padding: 0 2%;
-  background-color: #f0f0f5;
+  /* background-color: #f0f0f5; */
 }
 
-.table-row {
+#top-bloc,
+#bottom-bloc {
+  padding-left: 0;
+  padding-right: 0;
+}
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/* .table-row {
   line-height: 45px;
   color: #333;
   background-color: #f0f0f5;
@@ -19,7 +29,7 @@
 
 tbody > tr:nth-child(even) {
   background-color: #f0f0f5;
-}
+} */
 
 .separation {
   border-bottom: 2px solid #d3e4f0;

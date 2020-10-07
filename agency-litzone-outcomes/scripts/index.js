@@ -22,7 +22,7 @@ const createNewRecord = (labelsList) => {
     (key) => !["ID", "AgencyID"].includes(key)
   );
 
-  for (key of keyList) {
+  for (const key of keyList) {
     let element = "";
     let option = "";
     let type = "text";
@@ -116,8 +116,7 @@ const createViewBloc = () => {
 const createForm = (fieldObj) => {
   const { recordId, catId, descText } = fieldObj;
   const formContent = `
-  <input type="text" class="hidden" name="ID" value=${recordId} />
-   `;
+  <input type="text" class="hidden" name="ID" value=${recordId} />`;
   const selectCategory = elementSelectModal({
     hashTable: categories,
     keyValue: "OutcomeSortOrder",
@@ -218,7 +217,7 @@ $(document).ready(() => {
   $("#new-entry").append(createNewRecord(rowLabels));
   $("#main-table").append(createTableHeader(rowLabels[0]));
   $("#view-bloc").append(createViewBloc());
-  $(".site-entry").append(`<div class="container-fluid buttons-bloc-new">
+  $(".outcome-entry").append(`<div class="container-fluid buttons-bloc-new">
   <button type="button" id="cancel-btn" form="new-entry"
     class="btn btn-default pull-right">Cancel</button>
   <button type="button" id="submit-btn" form="new-entry"

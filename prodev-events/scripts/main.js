@@ -277,11 +277,10 @@ const createTableBody = (dataList, labelObj) => {
     ).FacilityName;
 
     const profdevCategory = categoryList.find(
-      (item) => item.CATEGORYID === +ProfDevCategoryID
+      (item) => item.CATEGORYID === ProfDevCategoryID
     ).Category;
-
     const profdevSubject = ProfDevSubjectID
-      ? subjectList.find((item) => item.SubjectID === +ProfDevSubjectID)
+      ? subjectList.find((item) => item.SubjectID === ProfDevSubjectID)
           .SubjectDesc
       : "";
 

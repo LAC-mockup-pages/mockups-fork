@@ -22,7 +22,7 @@ const createNewRecord = (labelsList) => {
   const labelObj = labelsList[0];
   const requiredList = ["ProviderName", "Phone", "Email"];
   const keyList = Object.keys(labelObj).filter((key) => !["ID"].includes(key));
-  for (key of keyList) {
+  for (const key of keyList) {
     let element = "";
     let option = "";
     let type = "text";
@@ -74,10 +74,10 @@ const createTableBody = (dataList, labelObj) => {
 
   for (const recordObj of dataList) {
     // zipCodeFormat() <== helperFunction.js
-    formattedZip = recordObj.Zip ? zipCodeFormat(recordObj.Zip) : "";
+    const formattedZip = recordObj.Zip ? zipCodeFormat(recordObj.Zip) : "";
 
     // phoneFormat() <== helperFunction.js
-    formattedPhone = phoneFormat(recordObj.Phone);
+    const formattedPhone = phoneFormat(recordObj.Phone);
 
     const record = { ...recordObj, Zip: formattedZip, Phone: formattedPhone };
 

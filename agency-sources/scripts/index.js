@@ -167,6 +167,19 @@ $(document).ready(() => {
     $(this).toggleClass("blue-light-bg blue-text");
   });
 
+  //* Back to Top button
+  const btnToTop = $("#btn-top");
+  $("window").scroll(() => {
+    btnToTop.style.display =
+      $("window").scrollTop() > 600 || $("body".scrollTop() > 600)
+        ? "inline-block"
+        : "none";
+  });
+  btnToTop.click((e) => {
+    e.preventDefault();
+    $("html, body").animate({ scrollTop: 0 }, "600");
+  });
+
   // * Agency funding sources viewing
   $("#new-entry").append(createNewRecord(rowLabels));
   $("#main-table").append(createViewBloc(rowLabels));
