@@ -2,17 +2,20 @@
 // dataObj is output of a GET request (GetCourse) or created
 // by the DB response after new record creation
 
-import { topBanner, rowLabels } from "../main.js";
+import { topBanner } from "../main.js";
 
 export const createRecommended = (dataObj) => {
   let bloc = "";
+
+  const { SiteID, SiteName } = dataObj;
+
   const siteList = GetSite.slice(0);
 
   const siteSelect = elementSelectModal({
     hashTable,
     keyValue,
     selectedValue,
-    labelVal,
+    labelVal: "Site",
     labelClassVal,
     option,
     optionText
