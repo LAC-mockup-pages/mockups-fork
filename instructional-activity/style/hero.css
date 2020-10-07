@@ -1,0 +1,95 @@
+/* Specific CSS rules */
+/* ================================== */
+
+.record-entry {
+  margin: 1% 0 1% 0;
+  padding: 0 0 2% 0;
+  width: 100%;
+  border-radius: 5px;
+}
+
+#filter-bloc {
+  padding: 1.5% 0 0.5% 0;
+  margin-bottom: 0.5%;
+  border-radius: 5px;
+}
+
+#primary-select select,
+#secondary-select select,
+#fiscal-year-select select {
+  margin-top: 0.3%;
+  font-size: 1.1em;
+  font-weight: 600;
+  width: 13em;
+  border-radius: 4px;
+}
+
+#secondary-select {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.filter-select {
+  text-align: right;
+  padding-right: 1%;
+}
+
+#filter-cancel-btn,
+#filter-apply-btn {
+  margin: 0 0.5% 0 2%;
+  width: 7em;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.course-details {
+  background-color: #f5f5f5;
+}
+/*
+#main-table tbody > tr:hover,
+.event-roster-table tbody > tr:hover {
+  background-color: #d3e4f0;
+} */
+
+/* MainInfo bloc */
+/* =========================================== */
+
+/* Funding bloc */
+/* =========================================== */
+
+/* Schedule bloc */
+/* =========================================== */
+.schedule-body > tr:hover {
+  background-color: #f5f5f5;
+}
+
+.blank-bloc,
+.weekday {
+  background-color: #d3e4f0;
+  color: #1d6294;
+  /* text-align: center; */
+  font-size: 0.8em;
+}
+
+.schedule-cell {
+  font-size: 0.7em;
+  font-weight: 600;
+  padding: 0px;
+}
+
+.schedule-input {
+  font-size: 0.8em;
+  line-height: 20px;
+  max-width: 4em;
+  border: 0;
+  background-color: #f5f5f5;
+}
+
+/* Recommended title */
+/* =========================================== */
+.recommended-title {
+  text-align: center;
+  padding: 0.3%;
+  font-size: 1.3em;
+  font-weight: 600;
+}
