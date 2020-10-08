@@ -397,6 +397,9 @@ $(document).ready(() => {
     //TODO See with GJ how this will work with existing procedures
   });
 
+  //* Special program handling when IET is selected
+  // $(document).on('change',"#")
+
   //* Select event record to edit + display selected event & roster
   // $(document).on("click", ".row-data", function (evnt) {
   //   evnt.stopPropagation();

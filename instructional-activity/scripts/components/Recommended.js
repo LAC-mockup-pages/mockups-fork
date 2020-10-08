@@ -2,7 +2,40 @@
 // dataObj is output of a GET request (GetCourse) or created
 // by the DB response after new record creation
 
-const createSpecialProgram = (programID, subIETId) => {
+const createSpecialProgram = (programID = "", subIETId = "") => {
+  const hashTable = GetSpecialProgramSource.slice(0);
+  const IETActivityList = GetIOActivity.slice(0).map((activity) => {
+    const { ID, InstructionDescription } = activity;
+    return { ID, InstructionDescription };
+  });
+
+  const IETSelect = elementSelectModal({
+    hashTable: IETActivityList,
+    keyValue: "IET_Class_PKID",
+    selectedValue: "",
+    labelVal: "Description",
+    labelClassVal: "",
+    option: " disabled",
+    optionText: "an instruction"
+  });
+
+  const specialProgramSelect = elementSelectModal({
+    hashTable,
+    keyValue: "SpecialProgramID",
+    selectedValue: programID,
+    labelVal: "Special Program",
+    labelClassVal: "",
+    option: "",
+    optionText: "a special program"
+  });
+
+  const specialProgramBloc = `<div class="container-fluid col-md-6">
+  <form role="form" id="#special-program">
+    ${specialProgramSelect}
+    ${IETSelect}
+  </form>
+</div>`;
+
   return specialProgramBloc;
 };
 
@@ -37,13 +70,16 @@ export const createRecommended = (
     type: "text"
   });
 
+  const specialProgramBloc = createSpecialProgram();
+
   const bloc = `
   <div class="container-fluid col-md-6">
     <form role="form" id="#site-tot-students">
       ${siteSelect}
       ${projectedEnrollment}
     </form>
-  </div>`;
+  </div>
+  ${specialProgramBloc}`;
 
   return bloc;
 };
