@@ -111,7 +111,7 @@ const renderViewBloc = (dataObj) => {
 };
 
 const saveMods = (form) => {
-  const { AuditUserID, AgencyID } = sessionVariable[0];
+  const { AuditUserID, AgencyID } = SESSION_VARIABLE[0];
   const result = { AgencyID, AuditUserID };
   const submittedData = $(form).serializeArray();
   $(`${form} input, select`).removeClass("yellow-bg");
@@ -211,7 +211,7 @@ $(document).ready(() => {
       if (keyVal === "State") {
         // elementSelectModal() <== helpers.js
         modalBloc += elementSelectModal({
-          hashTable: ddlStates,
+          hashTable: DDL_STATES,
           keyValue: keyVal,
           selectedValue: value,
           labelVal,
