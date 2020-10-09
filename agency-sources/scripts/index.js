@@ -113,7 +113,7 @@ const createViewBloc = () => {
 };
 
 const saveMods = (fields, formName, tableName = "") => {
-  const { AgencyID, AuditUserID } = sessionVariable;
+  const { AgencyID, AuditUserID } = SESSION_VARIABLE[0];
   const result = { AgencyID, AuditUserID };
 
   $(`${formName} input, select`).removeClass("yellow-bg");
