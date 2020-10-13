@@ -2,7 +2,7 @@
 
 // Isolate work objects and arrays from data source.
 const dataSource = Locations.slice(0);
-const stateList = States.slice(0);
+const stateList = DDL_STATES.slice(0);
 
 const rowLabels = [
   {
@@ -167,7 +167,7 @@ const createModalForm = (tdList) => {
 };
 
 const saveMods = (fields, formName, tableName = "") => {
-  const { AgencyID, AuditUserID } = sessionVariable;
+  const { AgencyID, AuditUserID } = SESSION_VARIABLE[0];
   const result = { AgencyID, AuditUserID };
   $(`${formName} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
