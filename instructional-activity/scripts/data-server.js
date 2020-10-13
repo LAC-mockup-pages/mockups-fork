@@ -1,11 +1,5 @@
 //* Main file for data objects
 
-const sessionVariable = {
-  AgencyID: "PRA",
-  AuditUserID: '<%= Session["UserID"] %>',
-  FiscalYear: ["2021"]
-};
-
 const responseObj = [
   {
     ID: "999999",

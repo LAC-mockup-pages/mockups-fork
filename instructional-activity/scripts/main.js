@@ -161,7 +161,7 @@ const getRequired = () => {
 };
 
 const saveMods = (fields, formName, tableName = "", requiredList = []) => {
-  const { AgencyID, AuditUserID } = sessionVariable;
+  const { AgencyID, AuditUserID } = SESSION_VARIABLE[0];
   let result = { AgencyID, AuditUserID };
   $(`${formName} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
