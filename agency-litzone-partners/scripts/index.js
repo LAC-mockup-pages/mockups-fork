@@ -3,7 +3,7 @@
 // Isolate work objects and arrays from data source.
 const dataPartners = partnersData.slice(0);
 const countyList = countyData.slice(0);
-const stateList = ddlStates.slice(0);
+const stateList = DDL_STATES.slice(0);
 
 const rowLabels = [
   {
@@ -218,7 +218,7 @@ const createForm = (list) => {
 
 // Used for new partner and edited partner data set
 const saveMods = (fields, formName, tableName = "") => {
-  const { AuditUserID, AgencyID } = sessionVariable;
+  const { AuditUserID, AgencyID } = SESSION_VARIABLE;
   const result = { AuditUserID, AgencyID };
   $(`${formName} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
