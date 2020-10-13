@@ -45,7 +45,8 @@ const createNewRecord = (labelsList) => {
         keyValue: key,
         option,
         optionText: "a state",
-        classOption
+        classOption,
+        defaultOption: "NY"
       });
     } else if (key === "County") {
       // elementSelectNewRecord() <== helperFunctions()
