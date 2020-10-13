@@ -1,7 +1,7 @@
 // Actions and logic
 
 const partnersList = ielcePartnersData.slice(0);
-const stateList = ddlStates.slice(0);
+const stateList = DDL_STATES.slice(0);
 const countyList = countyData.slice(0);
 const fundingList = fundingData.slice(0);
 
@@ -259,7 +259,7 @@ const createModalForm = (formId) => {
 };
 
 const saveMods = (fields, formName, tableName = "") => {
-  const { AgencyID, AuditUserID } = sessionVariable;
+  const { AgencyID, AuditUserID } = SESSION_VARIABLE[0];
   const result = { AgencyID, AuditUserID };
   $(`${formName} input, select`).removeClass("yellow-bg");
   console.log("fields :>> ", fields);

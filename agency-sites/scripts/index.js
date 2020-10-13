@@ -2,7 +2,7 @@
 
 const dataSites = sitesDataServer.slice(0);
 const countyList = countyData.slice(0);
-const stateList = ddlStates.slice(0);
+const stateList = DDL_STATES.slice(0);
 
 const rowLabels = [
   {
@@ -249,7 +249,7 @@ const createForm = (list) => {
 
 // Used for new site and edited site data set
 const saveMods = (fields, formName, tableName = "") => {
-  const { AgencyID, AuditUserID } = sessionVariable;
+  const { AgencyID, AuditUserID } = SESSION_VARIABLE[0];
   const result = { AgencyID, AuditUserID };
   $(`${formName} input, select`).removeClass("yellow-bg");
 
