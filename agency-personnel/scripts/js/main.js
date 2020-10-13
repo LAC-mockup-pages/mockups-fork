@@ -2,11 +2,7 @@
 
 import createNewRecordForm from "./components/AddNewRecord.js";
 import validateRecord from "./data-check.js";
-import {
-  getPersonnel,
-  getPersonnelList,
-  sessionVariable
-} from "./data-server.js";
+import { getPersonnel, getPersonnelList } from "./data-server.js";
 import personView from "./components/PersonInfo.js";
 import { historyView, createFormAddHistory } from "./components/History.js";
 import proDevView from "./components/ProDev.js";
@@ -137,7 +133,7 @@ export const tableBody = (
 
 // Used for new personnel
 const saveMods = (fields, formId, tableName = "") => {
-  const { AgencyID, AuditUserID } = sessionVariable;
+  const { AgencyID, AuditUserID } = SESSION_VARIABLE[0];
   const result = { AgencyID, AuditUserID };
   $(`${formId} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
@@ -158,7 +154,7 @@ const saveMods = (fields, formId, tableName = "") => {
     return;
   } else {
     for (let field of fieldList) {
-      if (field.name === "AgencyID") field.value = sessionVariable.AgencyID;
+      if (field.name === "AgencyID") field.value = SESSION_VARIABLE[0].AgencyID;
 
       // dateFormat() <== helperFunction.js
       if (field.name === "PersStartDate") field.value = dateFormat(field.value);
@@ -297,7 +293,7 @@ $(document).ready(() => {
     const first = $("#PersFirst").val();
     const last = $("#PersLast").val();
     if ($("#PersFirst").val() || $("PersLast").val()) {
-      personnelId = `${last}${first}${sessionVariable.AgencyID}${positionValue}`;
+      personnelId = `${last}${first}${SESSION_VARIABLE[0].AgencyID}${positionValue}`;
     }
     $("#PersPersonnelID").attr("value", personnelId);
   });
