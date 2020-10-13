@@ -1,5 +1,4 @@
 import { personnelData, topBanner } from "../main.js";
-import { ddlStates } from "../data-server.js";
 
 export const homeAddress = () => {
   const blockName = "Home Address";
@@ -9,7 +8,7 @@ export const homeAddress = () => {
     PersHomeAddress,
     PersHomeState,
     PersHomeCity,
-    PersHomeZip,
+    PersHomeZip
   } = personnelData[0];
 
   const fieldObj = {
@@ -17,7 +16,7 @@ export const homeAddress = () => {
     PersHomeAddress: { value: PersHomeAddress, label: "Address" },
     PersHomeZip: { value: PersHomeZip, label: "ZIP code" },
     PersHomeCity: { value: PersHomeCity, label: "City" },
-    PersHomeState: { value: PersHomeState, label: "State" },
+    PersHomeState: { value: PersHomeState, label: "State" }
   };
 
   const fullAddress = `${PersHomeAddress} <br> ${PersHomeCity.toUpperCase()} ${PersHomeState} ${PersHomeZip}`;
@@ -38,12 +37,12 @@ export const createModalFormAddress = (formName) => {
     let paramsObj;
     if (["PersHomeState", "PersWorkState"].includes(field)) {
       paramsObj = {
-        hashTable: ddlStates,
+        hashTable: DDL_STATES,
         keyValue: field,
         selectedValue: fieldObj[field].value,
         labelVal: fieldObj[field].label,
         labelClassVal: "",
-        option: "",
+        option: ""
       };
 
       // elementSelectModal() <== helperFunctions.js
@@ -64,7 +63,7 @@ export const createModalFormAddress = (formName) => {
         labelClassVal: "",
         classVal: "",
         option: "",
-        optionHidden: "",
+        optionHidden: ""
       };
       result += elementInput(paramsObj);
     }
@@ -110,7 +109,7 @@ export const workAddress = () => {
     PersWorkCity,
     PersWorkZip,
     PersWorkSendMail,
-    PersWorkCanCall,
+    PersWorkCanCall
   } = personnelData[0];
 
   const canMailCheck = PersWorkSendMail === "False" ? "" : "checked";
@@ -123,7 +122,7 @@ export const workAddress = () => {
     PersWorkState: { value: PersWorkState, label: "State" },
     PersWorkZip: { value: PersWorkZip, label: "ZIP code" },
     PersWorkSendMail: { value: PersWorkSendMail, label: "Can receive mail? " },
-    PersWorkCanCall: { value: PersWorkCanCall, label: "Can receive calls? " },
+    PersWorkCanCall: { value: PersWorkCanCall, label: "Can receive calls? " }
   };
   const fullAddress = `${PersWorkAddress}<br> ${PersWorkCity.toUpperCase()} ${PersWorkState} ${PersWorkZip}`;
   const body = `<div class="work-address dark-text" data-fields='${JSON.stringify(

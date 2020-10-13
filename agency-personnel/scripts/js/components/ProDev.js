@@ -1,9 +1,9 @@
-import { GetProfDevRoster, sessionVariable } from "../data-server.js";
+import { GetProfDevRoster } from "../data-server.js";
 import { topBanner, tableBody } from "../main.js";
 
 const totalProDevHrs = (dataList) => {
   let result = 0;
-  const { FiscalYear } = sessionVariable;
+  const { FiscalYear } = SESSION_VARIABLE[0];
 
   for (const item of dataList) {
     const year = new Date(item.Date).getFullYear().toString();
@@ -31,12 +31,12 @@ const proDevView = () => {
     ["Workshop", "col-sm-4"],
     ["Category", "col-sm-5"],
     ["Date", "col-sm-2"],
-    ["Hrs", "col-sm-1"],
+    ["Hrs", "col-sm-1"]
   ]);
   const body = tableBody(profDevData, blockName, [
     "ID",
     "Provider",
-    "Attended",
+    "Attended"
   ]);
   const profDevHours = totalProDevHrs(profDevData);
 
