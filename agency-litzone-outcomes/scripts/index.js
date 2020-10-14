@@ -111,11 +111,13 @@ const createCard = (dataList, labelObj) => {
 };
 
 const createViewBloc = () => {
-  // Sorting data by increasing OutcomeSortOrder value
-  const sortedList = dataOutcomes.sort(
-    (item1, item2) => item1.OutcomeSortOrder - item2.OutcomeSortOrder
-  );
-  const viewBloc = createCard(sortedList, rowLabels[0]);
+  const mainHeader = `
+  <div class="container-fluid main-header blue-bg row">
+  <div class="category-header col-md-5">Category</div>
+  <div class="description-header col-md-7">Outcomes</div>
+  </div>`;
+
+  const viewBloc = mainHeader + createCard(dataOutcomes, rowLabels[0]);
   return viewBloc;
 };
 
@@ -221,7 +223,7 @@ $(document).ready(() => {
 
   //* Data viewing
   $("#new-entry").append(createNewRecord(rowLabels));
-  $("#main-table").append(createTableHeader(rowLabels[0]));
+  // $("#main-table").append(createTableHeader(rowLabels[0]));
   $("#view-bloc").append(createViewBloc());
   $(".outcome-entry").append(`<div class="container-fluid buttons-bloc-new">
   <button type="button" id="cancel-btn" form="new-entry"
