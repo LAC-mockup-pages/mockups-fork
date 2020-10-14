@@ -27,19 +27,19 @@ export const createFilterBloc = () => {
     hashTable: primaryList,
     keyValue: "primary-filter",
     selectedValue: "",
-    labelVal: "Filter by: ",
+    labelVal: "First ",
     labelClassVal: "class='blue-light-text filter-select'",
     option: "",
-    optionText: ""
+    optionText: "filter option"
   });
 
   let sortingBloc = `<form  class="form sort-select container-fluid row" role="form" id="filter-form">
     <div class="col-md-4" id="primary-select">${primarySelect}</div>
     <div class="col-md-6" id="secondary-select">
       <div class="input-field form-group">
-        <label for="secondary" class="blue-light-text filter-select">Then select value: </label>
+        <label for="secondary" class="blue-light-text filter-select">Then </label>
         <select class="modal-select" name="secondary" disabled>
-        <option>Select an option</option></select>
+        <option>Select filter value</option></select>
       </div>
     </div>
     <div class="col-md-2">
@@ -79,10 +79,10 @@ export const createSecondarySelect = (fieldName) => {
     hashTable,
     keyValue: "secondary-filter",
     selectedValue: "",
-    labelVal: "Then select value: ",
+    labelVal: "Then ",
     labelClassVal: "class='blue-light-text filter-select'",
     option: `data-field=${fieldName}`,
-    optionText: ""
+    optionText: "filter value"
   });
 
   return `<div class="col-md-6" id="secondary-select">${secondarySelect}</div>`;
