@@ -1,7 +1,13 @@
 // Actions and logic
 
 const dataOutcomes = outcomesData.slice(0);
-const categories = categoryData.slice(0);
+const categories = categoryData.slice(0).sort((cat1, cat2) => {
+  return cat1.Category < cat2.Category
+    ? -1
+    : cat1.Category > cat2.Category
+    ? 1
+    : 0;
+});
 
 const rowLabels = [
   {
