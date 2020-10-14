@@ -241,9 +241,8 @@ $(document).ready(() => {
     $(this).toggleClass("dark-text").prop("required", false);
   });
 
-  //* Adding a new outcome
-  $(document).on("focusout", "#OutcomeSortOrder-view", function (evnt) {
-    evnt.preventDefault();
+  //* Adding a new outcome ==> selecting a category to display
+  $(document).on("focusout", "#OutcomeSortOrder", function (evnt) {
     evnt.stopPropagation();
     $(this).toggleClass("dark-text").prop("required", false);
     const selectedOption = $(this).val();
