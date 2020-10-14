@@ -1,11 +1,10 @@
 // Actions and logic
-let selectedStaff = [];
 
 $(document).ready(() => {
-  $("#parentMenu1 li").mouseenter(function() {
+  $("#parentMenu1 li").mouseenter(function () {
     $(this).removeClass("open");
   });
-  $("#nav-icon").click(function() {
+  $("#nav-icon").click(function () {
     $(this).toggleClass("open");
   });
 
