@@ -336,13 +336,15 @@ select {
   line-height: 3em;
   margin: 4px;
   border-radius: 5px;
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
 .sub-navbar ul {
   margin-bottom: 0px;
 }
 
-.sub-navbar a:hover {
+#sub-nav > li:hover {
   cursor: pointer;
   color: #d3e4f0;
   text-decoration: none;
