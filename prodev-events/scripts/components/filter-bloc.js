@@ -85,7 +85,7 @@ export const createSecondarySelect = (fieldName) => {
     optionText: ""
   });
 
-  return `<div class="col-md-5" id="secondary-select">${secondarySelect}</div>`;
+  return `<div class="col-md-6" id="secondary-select">${secondarySelect}</div>`;
 };
 
 export const createShortList = (selectedVal, selectedField) => {
