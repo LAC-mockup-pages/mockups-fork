@@ -106,10 +106,13 @@ const createViewBloc = () => {
   const tableHeader = createTableHeader(rowLabels[0]);
 
   // Sorting list of facilitators by descending ID
-  const list = dataSource.sort(
-    (facilitator1, facilitator2) =>
-      facilitator1.FacLastName - facilitator2.FacLastName
-  );
+  const list = dataSource.sort((fac1, fac2) => {
+    return fac1.FacLastName < fac2.FacLastName
+      ? -1
+      : fac1.FacLastName > fac2.FacLastName
+      ? 1
+      : 0;
+  });
   const tableBody = createTableBody(list, rowLabels[0]);
   const viewBloc = tableHeader + tableBody;
   return viewBloc;

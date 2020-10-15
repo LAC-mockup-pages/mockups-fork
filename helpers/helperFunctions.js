@@ -57,11 +57,20 @@ const inputNoLabel = (argsObj) => {
 //   $(this).toggleClass("dark-text").prop("required", false);
 // });
 const elementSelectNewRecord = (argsObj) => {
-  const { hashTable, keyValue, option, optionText, classOption } = argsObj;
+  const {
+    hashTable,
+    keyValue,
+    option,
+    optionText,
+    classOption,
+    defaultOption
+  } = argsObj;
   const [primary, secondary] = Object.keys(hashTable[0]);
+
   let optionList = hashTable
     .map((item) => {
-      return `<option value="${item[primary]}">
+      const defaultValue = item[primary] === defaultOption ? "selected" : "";
+      return `<option value="${item[primary]}" ${defaultValue}>
           ${item[secondary]}</option>`;
     })
     .join("");

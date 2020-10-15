@@ -59,7 +59,8 @@ const createNewRecord = (labelsList) => {
         keyValue: key,
         option,
         optionText: "a state",
-        classOption
+        classOption,
+        defaultOption: "NY"
       });
     } else if (key === "County") {
       // elementSelectNewRecord() <== helperFunctions()
@@ -257,7 +258,7 @@ const saveMods = (fields, formName, tableName = "") => {
   // Data validation
   // validateRecord() <== data-check.js
   const validatedList = validateRecord(fieldList);
-
+  console.log("validatedList :>> ", validatedList);
   // Background color change for invalid field values
   const checkFlag = validatedList.some((item) => !item.correct);
   if (checkFlag) {
@@ -272,9 +273,6 @@ const saveMods = (fields, formName, tableName = "") => {
     for (const field of fieldList) {
       // phoneFormat <== helperFunctions()
       if (field.name === "Telephone") field.value = phoneFormat(field.value);
-      if (field.name === "SiteEmail")
-        field.value = field.value !== "undefined" ? field.value : "";
-
       result[field.name] = field.value;
     }
 
@@ -366,7 +364,6 @@ $(document).ready(() => {
 
   //* Saving mods after editing selected outcome
   $(document).on("click", "#save-btn", function (evnt) {
-    evnt.preventDefault();
     evnt.stopPropagation();
     const formId = `#${$(this).attr("form")}`;
     const modifiedRecord = $(formId).serializeArray();
