@@ -384,100 +384,99 @@ $(document).ready(() => {
         ${contactsBloc}
       </div>
     </div>`);
-
-    // Binding event trigger to editable blocs for editing.
-    // Editable blocks are: history, non instructional hours, progress
-    // contacts.
-    $(document).on(
-      "click",
-      ".history-body > tr,.non-instructional-hours-body > tr,.progress-contact-body > tr",
-      function (evnt) {
-        evnt.stopPropagation();
-        const selectedRecordId = $(this).attr("id");
-        const blockName = selectedRecordId.split("-").slice(0, -1).join("-");
-
-        let editForm = "";
-        switch (blockName) {
-          case "history":
-            editForm = createFormAddHistory(blockName, selectedRecordId);
-            break;
-          case "non-instructional-hours":
-            editForm = createFormAddNonIntructionalHours(
-              blockName,
-              selectedRecordId
-            );
-            break;
-          case "progress-contact":
-            editForm = createFormAddContact(blockName, selectedRecordId);
-            break;
-
-          default:
-            editForm = defaultModal("no-table-defined-yet");
-            break;
-        }
-
-        $("#modalBloc").modal("toggle");
-        $("#modal-form")
-          .empty()
-          .append(editForm[1])
-          .attr("data-table", editForm[0])
-          .attr("data-block", blockName);
-
-        // Binding event trigger for real time updating total hours
-        if (blockName === "non-instructional-hours") handleChangeNonInstHours();
-      }
-    );
-
-    // Add a new record from modal
-    $(document).on("click", ".add-record-btn", function (evnt) {
+  });
+  // Binding event trigger to editable blocs for editing.
+  // Editable blocks are: history, non instructional hours, progress
+  // contacts.
+  $(document).on(
+    "click",
+    ".history-body > tr,.non-instructional-hours-body > tr,.progress-contact-body > tr",
+    function (evnt) {
       evnt.stopPropagation();
-      const formName = $(this).attr("form");
+      const selectedRecordId = $(this).attr("id");
+      const blockName = selectedRecordId.split("-").slice(0, -1).join("-");
 
-      // Modify form depending on the block name
-      let addForm = "";
-      switch (formName) {
+      let editForm = "";
+      switch (blockName) {
         case "history":
-          addForm = createFormAddHistory(formName);
+          editForm = createFormAddHistory(blockName, selectedRecordId);
           break;
         case "non-instructional-hours":
-          addForm = createFormAddNonIntructionalHours(formName);
+          editForm = createFormAddNonIntructionalHours(
+            blockName,
+            selectedRecordId
+          );
           break;
-        case "home-address":
-        case "work-address":
-          addForm = createModalFormAddress(formName);
-          break;
-
         case "progress-contact":
-          addForm = createFormAddContact(formName);
+          editForm = createFormAddContact(blockName, selectedRecordId);
           break;
 
         default:
-          addForm = defaultModal("no-table-defined-yet");
+          editForm = defaultModal("no-table-defined-yet");
           break;
       }
 
       $("#modalBloc").modal("toggle");
       $("#modal-form")
         .empty()
-        .append(addForm[1])
-        .attr("data-table", addForm[0])
-        .attr("data-block", formName);
+        .append(editForm[1])
+        .attr("data-table", editForm[0])
+        .attr("data-block", blockName);
 
-      // Binding event triggers to blocks as needed
-      if (formName === "non-instructional-hours") handleChangeNonInstHours();
-      if (formName === "work-address") {
-        handleChangeCheckBox();
-      }
-    });
+      // Binding event trigger for real time updating total hours
+      if (blockName === "non-instructional-hours") handleChangeNonInstHours();
+    }
+  );
 
-    // Save button in block top banner
-    $(document).on("click", ".save-record-btn", function (evnt) {
-      evnt.stopPropagation();
-      const formName = `#${$(this).attr("form")}`;
-      const tableName = $(formName).attr("data-table");
-      const submittedData = $(formName).serializeArray();
-      saveMods(submittedData, formName, tableName);
-    });
+  // Add a new record from modal
+  $(document).on("click", ".add-record-btn", function (evnt) {
+    evnt.stopPropagation();
+    const formName = $(this).attr("form");
+
+    // Modify form depending on the block name
+    let addForm = "";
+    switch (formName) {
+      case "history":
+        addForm = createFormAddHistory(formName);
+        break;
+      case "non-instructional-hours":
+        addForm = createFormAddNonIntructionalHours(formName);
+        break;
+      case "home-address":
+      case "work-address":
+        addForm = createModalFormAddress(formName);
+        break;
+
+      case "progress-contact":
+        addForm = createFormAddContact(formName);
+        break;
+
+      default:
+        addForm = defaultModal("no-table-defined-yet");
+        break;
+    }
+
+    $("#modalBloc").modal("toggle");
+    $("#modal-form")
+      .empty()
+      .append(addForm[1])
+      .attr("data-table", addForm[0])
+      .attr("data-block", formName);
+
+    // Binding event triggers to blocks as needed
+    if (formName === "non-instructional-hours") handleChangeNonInstHours();
+    if (formName === "work-address") {
+      handleChangeCheckBox();
+    }
+  });
+
+  // Save button in block top banner
+  $(document).on("click", ".save-record-btn", function (evnt) {
+    evnt.stopPropagation();
+    const formName = `#${$(this).attr("form")}`;
+    const tableName = $(formName).attr("data-table");
+    const submittedData = $(formName).serializeArray();
+    saveMods(submittedData, formName, tableName);
   });
 
   //* Cancel or Save
