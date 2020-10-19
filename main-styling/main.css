@@ -128,7 +128,7 @@ option {
 tbody {
   background-color: #f5f5f5;
   color: #333;
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: 400;
 }
 
@@ -137,7 +137,7 @@ tbody {
 } */
 
 .table > tbody > tr > td {
-  line-height: 40px;
+  line-height: 2em;
 }
 
 thead,
@@ -148,12 +148,16 @@ th {
 }
 
 .input-field {
-  line-height: 2.5em;
+  line-height: 2.2em;
 }
 
 .input-field > label {
   width: 25%;
-  font-size: 1.2em;
+  font-size: 1.1em;
+}
+
+.form-group {
+  margin-bottom: 0.8em;
 }
 
 .modal-body,
@@ -174,10 +178,11 @@ th {
 
 .input-field > input,
 .modal-select {
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: 400;
   border: none;
   width: 60%;
+  /* line-height: 2em; */
   background-color: #f5f5f5;
   border-bottom: 1px solid #2479b5;
 }
