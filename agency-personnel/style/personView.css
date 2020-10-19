@@ -73,12 +73,6 @@
   border: 1px solid #d3e4f0;
 }
 
-.history-body,
-.proDev-cell {
-  font-size: 1.3em;
-  line-height: 25px;
-}
-
 .bloc-proDev-workshop,
 .bloc-proDev-category,
 .bloc-proDev-hrs,
