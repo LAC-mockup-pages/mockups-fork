@@ -37,16 +37,6 @@
     <link rel="stylesheet" href="style/index.css" type="text/css" />
 
     <script
-      src="../navbar/scripts/index.js"
-      type="text/javascript"
-      defer
-    ></script>
-
-    <script src="scripts/data.js" type="text/javascript" defer></script>
-
-    <script src="./scripts/data-check.js" type="text/javascript" defer></script>
-
-    <script
       src="../helpers/helperFunctions.js"
       type="text/javascript"
       defer
@@ -54,13 +44,23 @@
 
     <script src="../helpers/constants.js" type="text/javascript" defer></script>
 
-    <script src="scripts/index.js" type="text/javascript" defer></script>
-    <link />
-    <!-- !===================================== -->
-    <!-- ! File: /agency/IELCEPartnersinfo.aspx -->
-    <!-- !===================================== -->
+    <script
+      src="../navbar/scripts/index.js"
+      type="text/javascript"
+      defer
+    ></script>
 
-    <title>Mock-up Agency IET/IELCE Partners</title>
+    <script src="scripts/data.js" type="text/javascript" defer></script>
+
+    <script src="scripts/data-check.js" type="text/javascript" defer></script>
+
+    <script src="scripts/index.js" type="text/javascript" defer></script>
+
+    <!-- !============================= -->
+    <!-- ! File: /agency/LitZoneSiteinfo.aspx -->
+    <!-- !============================= -->
+
+    <title>Mock-up Agency Referral Partners</title>
   </head>
   <body>
     <header>
@@ -280,9 +280,9 @@
               >Sites</a
             >
           </li>
-          <li>
+          <li class="blue-light-bg">
             <a
-              class="blue-light-text blue-bg"
+              class="blue-light-bg blue-text"
               href="../agency-referral-partners/index.html"
               type="text/html"
               >Referral Partners</a
@@ -296,9 +296,9 @@
               >Non-NRS Outcomes</a
             >
           </li>
-          <li class="blue-light-bg">
+          <li>
             <a
-              class="blue-light-bg blue-text"
+              class="blue-light-text blue-bg"
               href="../agency-IELCE-partners/index.html"
               type="text/html"
               >IET / IELCE Cost Tracking</a
@@ -309,15 +309,20 @@
     </header>
     <!-- Hero -->
     <div class="container-fluid hero">
-      <!-- New partner entry-->
+      <!-- New source entry-->
       <div class="container-fluid partner-entry blue-bg">
         <div class="label-text blue-light-text">
           New Partner (Elements in red are required):
         </div>
-        <form class="form-inline blue-bg" role="form" id="new-entry"></form>
+        <form
+          class="form-inline blue-bg"
+          role="form"
+          id="new-entry"
+          aria-autocomplete="none"
+        ></form>
       </div>
       <!-- Data viewing -->
-      <div class="container-fluid blue-bg view-bloc">
+      <div class="data-view blue-bg" id="view-bloc">
         <table class="table blue-bg" id="main-table"></table>
       </div>
     </div>
@@ -338,7 +343,7 @@
             <h4 class="modal-title">Editing a Partner</h4>
           </div>
           <div class="modal-body">
-            <form role="form" id="edit-form"></form>
+            <form id="edit-form" role="form"></form>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">
@@ -347,8 +352,8 @@
             <button
               type="button"
               class="btn btn-primary"
-              id="save-btn"
               form="edit-form"
+              id="save-btn"
             >
               Save changes
             </button>

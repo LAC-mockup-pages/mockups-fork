@@ -1,38 +1,29 @@
-//* Data check for new or edited record
+// User input data validation
 
-const validateRecord = (list) => {
-  // Returns true if input is only alphanumerical + underscore, dash,
-  // dot, whitespace, not empty string
+const validateRecord = (dataList) => {
+  // Returns true if input is only alphanumerical + underscore, not empty string
   const alphaNumCheck = (str) => {
     return !/[^\s\w-.]/g.test(str);
   };
   const resultList = [];
 
-  for (const field of list) {
+  for (let field of dataList) {
     let { name, value } = field;
     const obj = { name, value };
     switch (name) {
-      case "AmountProj":
-      case "AmountAct":
-        obj.correct = value
-          ? Boolean(Number(value.replace(/[$,]/gi, "").trim()))
-          : true;
-        break;
-      case "IELCEPartnerID":
-      case "PartnerName":
-      case "PartnerFSID":
+      case "ReferralSiteID":
+      case "ReferralSiteName":
         obj.correct = value ? alphaNumCheck(value) : false;
         break;
-
-      case "Zip":
-        obj.correct = value ? Boolean(Number(zipCodeFormat(value))) : true;
+      case "ReferralSiteEmail":
+        obj.correct = true;
         break;
+
       default:
         obj.correct = value ? alphaNumCheck(value) : true;
         break;
     }
     resultList.push(obj);
   }
-
   return resultList;
 };
