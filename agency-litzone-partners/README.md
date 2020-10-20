@@ -1,3 +1,3 @@
 # lac-agency-LiteracyZone-Partners
 
-Agency Literacy Zone Partners - Option 1
+Agency Referral Partners - Option 1
