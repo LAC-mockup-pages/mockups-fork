@@ -27,18 +27,6 @@ const agencyDataFund = [
     FundEnd: "6/30/2020 12:00:00 AM"
   },
   {
-    ID: "10482",
-    AgencyID: "PRA",
-    FSID: "E",
-    FY: "2020",
-    FundAbbrev: "EPE",
-    Amount: "",
-    Purpose: "RS  Test",
-    FundNumber: "",
-    FundStart: "7/1/2019 12:00:00 AM",
-    FundEnd: "6/30/2020 12:00:00 AM"
-  },
-  {
     ID: "10499",
     AgencyID: "PRA",
     FSID: "Y",
@@ -46,6 +34,18 @@ const agencyDataFund = [
     FundAbbrev: "WIA/WIOA",
     Amount: "500000.00",
     Purpose: "",
+    FundNumber: "",
+    FundStart: "7/1/2019 12:00:00 AM",
+    FundEnd: "6/30/2020 12:00:00 AM"
+  },
+  {
+    ID: "10482",
+    AgencyID: "PRA",
+    FSID: "E",
+    FY: "2020",
+    FundAbbrev: "EPE",
+    Amount: "",
+    Purpose: "RS  Test",
     FundNumber: "",
     FundStart: "7/1/2019 12:00:00 AM",
     FundEnd: "6/30/2020 12:00:00 AM"
