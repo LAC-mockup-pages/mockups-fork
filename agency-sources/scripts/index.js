@@ -1,6 +1,17 @@
-// Actions and logic
+//*=================================================
+//* Actions and logic
+//*=================================================
 
-const agencyData = agencyDataFund.slice(0);
+// Sources for the agency are sorted alpha A -> Z
+const agencyData = agencyDataFund
+  .slice(0)
+  .sort((source1, source2) =>
+    source1.FundAbbrev < source2.FundAbbrev
+      ? -1
+      : source1.FundAbbrev > source2.FundAbbrev
+      ? 1
+      : 0
+  );
 const sourcesData = fundingData.slice(0);
 
 const rowLabels = [
