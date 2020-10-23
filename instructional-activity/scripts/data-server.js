@@ -96,6 +96,12 @@ const GetInstructor = [
     InstructorName: "Porter, Samantha",
     PersonnelID: "PorterSamanthaPRA9",
     Agency: "PRA"
+  },
+  {
+    ID: "2257",
+    InstructorName: "Alfiery, Shelley",
+    PersonnelID: "AlfieriShelleyPRA1",
+    Agency: "PRA"
   }
 ];
 

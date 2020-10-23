@@ -7,6 +7,7 @@ import { createCourseMain } from "./CourseMain.js";
 import { createFundingBloc } from "./FundingSources.js";
 import { createRecommended } from "./Recommended.js";
 import { createSchedule } from "./Schedule.js";
+import { createInstructorBloc } from "./Instructors.js";
 
 export const detailsView = (dataObj) => {
   $(".record-entry, #filter-bloc, #view-bloc").toggleClass("hidden");
@@ -19,6 +20,7 @@ export const detailsView = (dataObj) => {
   const funding = createFundingBloc(FSID);
   const schedule = createSchedule(dataObj[0]);
   const recommended = createRecommended();
+  const additionalInfo = createInstructorBloc();
 
   // Displaying blocks
   $(".hero").append(`
@@ -37,6 +39,11 @@ export const detailsView = (dataObj) => {
     <div class="container-fluid row recommended-bloc">
       ${recommended}
     </div>
+
+    <div class="container-fluid row additional-bloc">
+      ${additionalInfo}
+    </div>
+
 
   </div>`);
 };
