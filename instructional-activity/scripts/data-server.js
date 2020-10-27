@@ -793,7 +793,7 @@ const GetClassInstructor = [
   {
     ID: "242571",
     PersonnelID: "AlfieriShelleyPRA1",
-    AssignDate: "07/01/2020",
+    AssignDate: "05/10/2021",
     Name: "Alfieri, Shelley"
   }
 ];
@@ -1625,4 +1625,11 @@ const ddlLevel = [
   { key: "4", value: "4" },
   { key: "5", value: "5" },
   { key: "6", value: "6" }
+];
+
+const ddlAMPM = [
+  { key: "AM", value: "Week Day" },
+  { key: "PM", value: "Week Eve" },
+  { key: "WKD", value: "Weekend Day" },
+  { key: "WKE", value: "Weekend Eve" }
 ];
