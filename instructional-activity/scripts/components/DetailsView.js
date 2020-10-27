@@ -11,15 +11,15 @@ import { createAdditionalBloc } from "./Instructors.js";
 
 export const detailsView = (dataObj) => {
   $(".record-entry, #filter-bloc, #view-bloc").toggleClass("hidden");
-  // $(".hero").append(`<h3>Details View comes here</h3>
-  // <h3>${dataObj[0].CourseID}</h3>`);
-  const { ID, FSID } = dataObj[0];
+  const { ID, FSID,Sessions, } = dataObj[0];
+  console.log("dataObj :>> ", dataObj);
 
   // Creating blocks
   const mainInfo = createCourseMain(dataObj[0]);
   const funding = createFundingBloc(FSID);
   const schedule = createSchedule(dataObj[0]);
   const recommended = createRecommended();
+  const additionalInfoList
   const additionalInfo = createAdditionalBloc();
 
   // Displaying blocks
@@ -41,7 +41,8 @@ export const detailsView = (dataObj) => {
     </div>
 
     <div class="container-fluid row additional-bloc">
-      ${additionalInfo}
+    <div class="col-md-6"> ${additionalInfo}</div>
+
     </div>
 
 
