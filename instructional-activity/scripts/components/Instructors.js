@@ -1,4 +1,5 @@
 // Bloc for main instructor and additional intructors
+// For display and editing of the list
 
 import { topBanner } from "../main.js";
 const instructorList = GetInstructor.slice(0).sort((name1, name2) =>
@@ -9,13 +10,8 @@ const instructorList = GetInstructor.slice(0).sort((name1, name2) =>
     : 0
 );
 
-const instructorsBloc = () => {
+export const createInstructorsBloc = () => {
   let bloc = topBanner("Instructors");
-
-  // const classInstructorList = GetClassInstructor.slice(0).sort((name1, name2) =>
-  //   name1.Name < name2.Name ? -1 : name1.Name > name2.Name ? 1 : 0
-  // );
-
   const classInstructorList = GetClassInstructor.slice(0).sort(
     (name1, name2) => new Date(name1.AssignDate) - new Date(name2.AssignDate)
   );
@@ -54,8 +50,4 @@ const additionalInfo = (list) => {
   let bloc = topBanner("Additional Info");
 
   return bloc;
-};
-
-export const createAdditionalBloc = (recordList) => {
-  return `${instructorsBloc()}`;
 };

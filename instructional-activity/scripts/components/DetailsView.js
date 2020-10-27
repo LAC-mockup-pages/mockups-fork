@@ -7,11 +7,23 @@ import { createCourseMain } from "./CourseMain.js";
 import { createFundingBloc } from "./FundingSources.js";
 import { createRecommended } from "./Recommended.js";
 import { createSchedule } from "./Schedule.js";
-import { createAdditionalBloc } from "./Instructors.js";
+import { createInstructorsBloc } from "./Instructors.js";
 
 export const detailsView = (dataObj) => {
   $(".record-entry, #filter-bloc, #view-bloc").toggleClass("hidden");
-  const { ID, FSID,Sessions, } = dataObj[0];
+  const {
+    ID,
+    FSID,
+    Sessions,
+    AMPM,
+    SessionLength,
+    Seats,
+    HoursWeek,
+    RoomNumber,
+    LowestLevel,
+    CAI,
+    ProgramID
+  } = dataObj[0];
   console.log("dataObj :>> ", dataObj);
 
   // Creating blocks
@@ -19,8 +31,17 @@ export const detailsView = (dataObj) => {
   const funding = createFundingBloc(FSID);
   const schedule = createSchedule(dataObj[0]);
   const recommended = createRecommended();
-  const additionalInfoList
-  const additionalInfo = createAdditionalBloc();
+  const instructors = createInstructorsBloc({
+    Sessions,
+    AMPM,
+    SessionLength,
+    Seats,
+    HoursWeek,
+    RoomNumber,
+    LowestLevel,
+    CAI,
+    ProgramID
+  });
 
   // Displaying blocks
   $(".hero").append(`
@@ -41,7 +62,7 @@ export const detailsView = (dataObj) => {
     </div>
 
     <div class="container-fluid row additional-bloc">
-    <div class="col-md-6"> ${additionalInfo}</div>
+    <div class="col-md-6"> ${instructors}</div>
 
     </div>
 
