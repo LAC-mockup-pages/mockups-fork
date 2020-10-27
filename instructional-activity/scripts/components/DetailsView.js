@@ -31,7 +31,8 @@ export const detailsView = (dataObj) => {
   const funding = createFundingBloc(FSID);
   const schedule = createSchedule(dataObj[0]);
   const recommended = createRecommended();
-  const instructors = createInstructorsBloc({
+  const instructors = createInstructorsBloc();
+  const additionalFields = createAdditionalFields({
     Sessions,
     AMPM,
     SessionLength,
@@ -64,6 +65,7 @@ export const detailsView = (dataObj) => {
     <div class="container-fluid row additional-bloc">
     <div class="col-md-6"> ${instructors}</div>
 
+    <div class="col-md-6"> ${additionalFields}</div>
     </div>
 
 
