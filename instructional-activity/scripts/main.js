@@ -64,9 +64,7 @@ export const topBanner = (title, list = null) => {
   const formName = `form="${blockName}"`;
   let headerButton = "";
 
-  if (["Schedule"].includes(title)) {
-    headerButton = `<button type='button' class="btn btn-default week-btn col-sm-2" ${formName}>Weekly</button>`;
-  } else if (["Main Info"].includes(title)) {
+  if (["Main Info"].includes(title)) {
     headerButton = `<button type='button' class="btn btn-default edit-record-btn col-sm-2" ${formName}>Edit</button>`;
   } else if (["Funding"].includes(title)) {
     headerButton = `<button type='button' class="btn btn-default add-record-btn col-sm-2" ${formName}>Save</button>`;

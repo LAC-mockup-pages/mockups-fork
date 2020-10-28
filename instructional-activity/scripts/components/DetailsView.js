@@ -77,10 +77,12 @@ export const detailsView = (dataObj) => {
       ${recommended}
     </div>
 
+    <div class="separation"></div>
+
     <div class="container-fluid row additional-bloc">
+    <div class="col-md-6">${additionalFields}</div>
     <div class="col-md-6">${instructors}${projSces}</div>
 
-    <div class="col-md-6">${additionalFields}</div>
     </div>
 
 
@@ -89,7 +91,8 @@ export const detailsView = (dataObj) => {
   <div class="container-fluid row buttons-bloc-new">
   <div class="col-md-8"></div>
   <div class="col-md-4">
-    <button type="button" id="event-view-cancel-btn" form="event-view-form" class="btn btn-default">Cancel without saving</button>        <button type="button" id="event-view-submit-btn" form="event-view-form" class="btn dark-blue-text blue-light-bg">Save</button>
+    <button type="button" id="event-view-cancel-btn" class="btn btn-default">Cancel without saving</button>
+    <button type="button" id="event-view-submit-btn" class="btn dark-blue-text blue-light-bg">Save</button>
   </div>
 </div>`);
 };
