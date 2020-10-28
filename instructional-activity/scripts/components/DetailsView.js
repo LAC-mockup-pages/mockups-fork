@@ -30,9 +30,10 @@ export const detailsView = (dataObj) => {
     ProjTotADA,
     ProjTotEIH
   } = dataObj[0];
-  console.log("dataObj :>> ", dataObj);
 
+  // =========================================================
   // Creating blocks
+  // =========================================================
   const mainInfo = createCourseMain(dataObj[0]);
   const funding = createFundingBloc(FSID);
   const schedule = createSchedule(dataObj[0]);
@@ -56,7 +57,9 @@ export const detailsView = (dataObj) => {
     ProjTotEIH
   });
 
+  // =========================================================
   // Displaying blocks
+  // =========================================================
   $(".hero").append(`
   <div class="container-fluid course-details" id=${ID}>
     <div class="row first-bloc">
