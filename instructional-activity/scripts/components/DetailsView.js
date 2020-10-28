@@ -9,6 +9,7 @@ import { createRecommended } from "./Recommended.js";
 import { createSchedule } from "./Schedule.js";
 import { createInstructorsBloc } from "./Instructors.js";
 import { createAdditionalFields } from "./AdditionalInfo.js";
+import { createProjectedSces } from "./ProjectedSces.js";
 
 export const detailsView = (dataObj) => {
   $(".record-entry, #filter-bloc, #view-bloc").toggleClass("hidden");
@@ -23,7 +24,11 @@ export const detailsView = (dataObj) => {
     RoomNumber,
     LowestLevel,
     CAI,
-    ProgramID
+    ProgramID,
+    ProjTotContHrs,
+    ProjTotInstHrs,
+    ProjTotADA,
+    ProjTotEIH
   } = dataObj[0];
   console.log("dataObj :>> ", dataObj);
 
@@ -43,6 +48,12 @@ export const detailsView = (dataObj) => {
     LowestLevel,
     CAI,
     ProgramID
+  });
+  const projSces = createProjectedSces({
+    ProjTotContHrs,
+    ProjTotInstHrs,
+    ProjTotADA,
+    ProjTotEIH
   });
 
   // Displaying blocks
@@ -64,9 +75,9 @@ export const detailsView = (dataObj) => {
     </div>
 
     <div class="container-fluid row additional-bloc">
-    <div class="col-md-6"> ${instructors}</div>
+    <div class="col-md-6">${instructors}${projSces}</div>
 
-    <div class="col-md-6"> ${additionalFields}</div>
+    <div class="col-md-6">${additionalFields}</div>
     </div>
 
 
