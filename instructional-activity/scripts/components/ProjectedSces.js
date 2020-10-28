@@ -8,7 +8,7 @@ export const createProjectedSces = (fieldList) => {
   // ========================================================
   // Fields
   // =========================================================
-  let option = "disabled";
+  let option = "";
   let optionHidden = "";
   let labelClassVal = "";
   let classVal = "";

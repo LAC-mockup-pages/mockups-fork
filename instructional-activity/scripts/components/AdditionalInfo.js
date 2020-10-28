@@ -42,7 +42,7 @@ export const createAdditionalFields = (fieldsObj) => {
   // =========================================================
   // Fields
   // =========================================================
-  let option = "disabled";
+  let option = "";
   let optionHidden = "";
   let labelClassVal = "";
   let classVal = "";
