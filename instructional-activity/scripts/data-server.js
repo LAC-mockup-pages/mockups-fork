@@ -47,10 +47,10 @@ const responseObj = [
     SunEndTime: "",
     Cycle: "",
     ProjTotStudents: "",
-    ProjTotContHrs: "",
-    ProjTotInstHrs: "",
-    ProjTotADA: "",
-    ProjTotEIH: "",
+    ProjTotContHrs: "100",
+    ProjTotInstHrs: "70",
+    ProjTotADA: "15",
+    ProjTotEIH: "15",
     FSID: ""
   }
 ];
