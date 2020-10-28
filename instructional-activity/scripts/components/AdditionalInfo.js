@@ -3,9 +3,15 @@
 import { topBanner } from "../main.js";
 
 const processProgramCode = (programCodelist) => {
+  const codeList = [];
   for (const record of programCodelist) {
     const keyList = Object.keys(record);
+    const tempObj = {};
+    tempObj.key = record[keyList[0]];
+    tempObj.value = record[keyList[1]];
+    codeList.push(tempObj);
   }
+  return codeList;
 };
 
 export const createAdditionalFields = (fieldsObj) => {
@@ -31,6 +37,7 @@ export const createAdditionalFields = (fieldsObj) => {
     { key: "True", value: "Yes" },
     { key: "False", value: "No" }
   ];
+  const codeList = processProgramCode(GetProgramCode.slice(0));
 
   // =========================================================
   // Fields
@@ -50,7 +57,7 @@ export const createAdditionalFields = (fieldsObj) => {
     option,
     optionHidden
   });
-  const MeetTime = elementSelectModal({
+  const meetTime = elementSelectModal({
     hashTable: meetTimeData,
     keyValue: "AMPM",
     selectedValue: AMPM,
@@ -114,14 +121,15 @@ export const createAdditionalFields = (fieldsObj) => {
     optionText
   });
   const programCode = elementSelectModal({
-    hashTable: optionCAIValues,
-    keyValue: "CAI",
-    selectedValue: CAI,
-    labelVal: "CAI",
+    hashTable: codeList,
+    keyValue: "ProgramID",
+    selectedValue: ProgramID,
+    labelVal: "CTEDS Program Code (CIP)",
     labelClassVal,
     option,
     optionText
   });
 
+  bloc += `${sessionsField}${meetTime}${sessionLength}${seatNum}${hoursWeek}${roomID}${lowestLevel}${caiField}${programCode}`;
   return bloc;
 };

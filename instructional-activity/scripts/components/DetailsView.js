@@ -8,6 +8,7 @@ import { createFundingBloc } from "./FundingSources.js";
 import { createRecommended } from "./Recommended.js";
 import { createSchedule } from "./Schedule.js";
 import { createInstructorsBloc } from "./Instructors.js";
+import { createAdditionalFields } from "./AdditionalInfo.js";
 
 export const detailsView = (dataObj) => {
   $(".record-entry, #filter-bloc, #view-bloc").toggleClass("hidden");
