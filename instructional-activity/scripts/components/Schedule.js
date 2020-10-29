@@ -39,7 +39,7 @@ export const createSchedule = (dataObj) => {
   const weekDaysHeader = `
   <div class="schedule-bloc">
   <form class="weekday-banner" id="schedule">
- <table class="schedule-table container-fluid table table-bordered"
+ <table class="schedule-table container-fluid table table-bordered">
  <thead>
   <th class="blank-bloc"></th>
   <th class="weekday">Mon.</th>
