@@ -59,6 +59,7 @@
   font-size: 1.1em;
   font-weight: 700;
   border-top: 2px solid #fff;
+  margin-bottom: 2%;
 }
 
 .sub-header-title {
@@ -67,7 +68,6 @@
   padding-right: 1%;
   font-size: 1.1em;
   color: #fff;
-  border-bottom: 1px solid #d3e4f0;
 }
 
 .main-info {
@@ -75,9 +75,39 @@
   background-color: #f5f5f5;
 }
 
+.add-record-btn,
+.save-record-btn,
+.edit-record-btn {
+  height: 28px;
+  margin-top: 2px;
+  line-height: 16px;
+  width: fit-content;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
 /* Funding bloc */
 /* =========================================== */
+.funding-bloc {
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-bottom: 3%;
+}
+.funding-checkboxes {
+  padding-left: 5%;
+  line-height: 1.8em;
+  font-size: 1.1em;
+}
 
+.checkbox label {
+  padding-left: 35px;
+}
+.checkbox input[type="checkbox"] {
+  width: 1em;
+  height: 1em;
+  margin-left: -2.5em;
+  margin-bottom: -0.9em;
+}
 /* Schedule bloc */
 /* =========================================== */
 .schedule-body > tr:hover {
