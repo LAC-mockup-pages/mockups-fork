@@ -23,7 +23,7 @@ const classDays = (dataObj) => {
       const classStart = `${day.slice(0, 3)}StartTime`;
       const classEnd = `${day.slice(0, 3)}EndTime`;
 
-      classDayObj[day] = dataObj[day];
+      // classDayObj[day] = dataObj[day];
       classDayObj[classStart] = dataObj[classStart];
       classDayObj[classEnd] = dataObj[classEnd];
       return classDayObj;
@@ -34,7 +34,8 @@ const classDays = (dataObj) => {
 export const createSchedule = (dataObj) => {
   console.log("datObj Schedule :>> ", classDays(dataObj));
   const weekDaysList = classDays(dataObj);
-
+  let bodyTopRow = "";
+  let bodyBottomRow = "";
   let bloc = topBanner("Schedule");
   const weekDaysHeader = `
   <div class="schedule-bloc">
@@ -50,33 +51,36 @@ export const createSchedule = (dataObj) => {
   <th class="weekday">Sat.</th>
   <th class="weekday">Sun.</th>
  </thead>
- </table></form></div>`;
+ `;
 
-  //  <tbody class="schedule-body">
-  //  <tr>
-  //  <td class="schedule-cell">Start Time</td>
-  //  <td><input class="schedule-input" value="09:30 AM"/></td>
-  //  <td><input class="schedule-input" value="09:30 AM"/></td>
-  //  <td><input class="schedule-input" value="09:30 AM"/></td>
-  //  <td><input class="schedule-input" value="09:30 AM"/></td>
-  //  <td><input class="schedule-input" value="09:30 AM"/></td>
-  //  <td><input class="schedule-input" value="09:30 AM"/></td>
-  //  <td><input class="schedule-input" value="09:30 AM"/></td>
-  // </tr>
-  // <tr>
-  // <td class="schedule-cell">End Time</td>
-  // <td><input class="schedule-input" value="11:30 AM"/></td>
-  // <td><input class="schedule-input" value="11:30 AM"/></td>
-  // <td><input class="schedule-input" value="11:30 AM"/></td>
-  // <td><input class="schedule-input" value="11:30 AM"/></td>
-  // <td><input class="schedule-input" value="11:30 AM"/></td>
-  // <td><input class="schedule-input" value="11:30 AM"/></td>
-  // <td><input class="schedule-input" value="11:30 AM"/></td>
-  // </tr>
-  //  </tbody>
-  // </table>
-  //  </form>
-  //  </div>`;
-  bloc += weekDaysHeader;
+  for (const record of weekDaysList) {
+    const keyList = Object.keys(record);
+    bodyTopRow += `
+      <td>
+        <input class="schedule-input" name=${keyList[0]}
+          value="${record[keyList[0]]}">
+      </td>`;
+
+    bodyBottomRow += `
+      <td>
+        <input class="schedule-input" name=${keyList[1]}
+          value="${record[keyList[1]]}">
+      </td>`;
+  }
+
+  const scheduleBody = `
+  <tbody class="schedule-body">
+    <tr>
+      <td class="schedule-cell">Start Time</td>
+      ${bodyTopRow}
+    </tr>
+    <tr>
+      <td class="schedule-cell">End Time</td>
+      ${bodyBottomRow}
+    </tr>
+  </tbody></table></form></div>
+`;
+
+  bloc += weekDaysHeader + scheduleBody;
   return bloc;
 };
