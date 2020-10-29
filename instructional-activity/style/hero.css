@@ -53,6 +53,27 @@
 
 /* MainInfo bloc */
 /* =========================================== */
+.sub-header {
+  line-height: 30px;
+  padding-left: 5px;
+  font-size: 1.1em;
+  font-weight: 700;
+  border-top: 2px solid #fff;
+}
+
+.sub-header-title {
+  text-align: right;
+  line-height: 34px;
+  padding-right: 1%;
+  font-size: 1.1em;
+  color: #fff;
+  border-bottom: 1px solid #d3e4f0;
+}
+
+.main-info {
+  margin: 0% 0% 2% 0%;
+  background-color: #f5f5f5;
+}
 
 /* Funding bloc */
 /* =========================================== */

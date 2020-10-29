@@ -32,14 +32,13 @@ const classDays = (dataObj) => {
 };
 
 export const createSchedule = (dataObj) => {
-  console.log("datObj Schedule :>> ", classDays(dataObj));
   const weekDaysList = classDays(dataObj);
   let bodyTopRow = "";
   let bodyBottomRow = "";
   let bloc = topBanner("Schedule");
   const weekDaysHeader = `
   <div class="schedule-bloc">
-  <form class="weekday-banner" id="week-schedule">
+  <form class="weekday-banner" id="schedule">
  <table class="schedule-table container-fluid table table-bordered"
  <thead>
   <th class="blank-bloc"></th>

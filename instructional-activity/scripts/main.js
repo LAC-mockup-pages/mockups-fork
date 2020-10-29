@@ -68,7 +68,10 @@ export const topBanner = (title, list = null) => {
     headerButton = `<button type='button' class="btn btn-default edit-record-btn col-sm-2" ${formName}>Edit</button>`;
   } else if (["Funding"].includes(title)) {
     headerButton = `<button type='button' class="btn btn-default add-record-btn col-sm-2" ${formName}>Save</button>`;
+  } else if (["Schedule"].includes(title)) {
+    headerButton = `<button type='button' class="btn btn-default save-record-btn col-sm-2" ${formName}>Save</button>`;
   }
+
   if (list) {
     headerLine +=
       "<div class='container-fluid row sub-header-labels blue-light-bg blue-text'>";
@@ -385,14 +388,12 @@ $(document).ready(() => {
     }
   );
 
-  //* Switching on weekly schedule
-  $(document).on("click", ".week-btn", function (evnt) {
+  //* Saving on weekly schedule
+  $(document).on("click", ".save-record-btn", function (evnt) {
     evnt.stopPropagation();
-    $(".schedule-bloc").toggleClass("hidden");
-
-    //! NB: the action changes the schedule to a weekly schedule
-    //! Allows hours to be input for each day after Save button is pressed.
-    //TODO See with GJ how this will work with existing procedures
+    const formId = "#" + $(this).attr("form");
+    const dataSource = $(formId).serializeArray();
+    console.log("dataSource :>> ", dataSource);
   });
 
   //* Special program handling when IET is selected
