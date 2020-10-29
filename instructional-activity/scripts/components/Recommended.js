@@ -66,7 +66,7 @@ export const createRecommended = (
     labelClassVal: "",
     classVal: "",
     option: "",
-    optionHidden: " input-field",
+    optionHidden: "form-group",
     type: "text"
   });
 
