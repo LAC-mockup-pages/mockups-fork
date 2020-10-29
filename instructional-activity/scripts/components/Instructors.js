@@ -34,8 +34,10 @@ export const createInstructorsBloc = () => {
   const tableInstructors = `
      <table class="instructors-table table table-bordered">
       <thead>
-        <th>Date Assigned</th>
-        <th>Instructors</th>
+      <tr>
+        <th class="weekday first-cell">Date Assigned</th>
+        <th class="weekday">Instructors</th>
+        </tr>
       </thead>
       <tbody>${instructorView}</tbody>
     </table>

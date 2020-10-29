@@ -162,7 +162,8 @@
   background-color: #f5f5f5;
 }
 
-.schedule-table tr {
+.schedule-table tr,
+.instructors-table tr {
   line-height: 1em;
   font-size: 1em;
   padding: 0px;
@@ -187,6 +188,9 @@
 
 /* Instructors */
 /* =========================================== */
+.first-cell {
+  width: 25%;
+}
 
 /* Additional Info */
 /* =========================================== */
