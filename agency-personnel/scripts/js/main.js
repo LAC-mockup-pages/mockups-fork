@@ -141,11 +141,13 @@ const saveMods = (fields, formId, tableName = "") => {
   // Data validation
   // validateNewRecord() <== data-check.js
   const validatedList = validateRecord(fieldList);
+  console.log("validatedList :>> ", validatedList);
 
   // Background color change for invalid field values
   const checkFlag = validatedList.some((item) => !item.correct);
   if (checkFlag) {
     const list = validatedList.filter((obj) => obj.correct === false);
+    console.log("List of incorrect values >>: ", list);
     for (let field of list) {
       let fieldId =
         formId === "#new-entry" ? `#${field.name}` : `#${field.name}-view`;
@@ -171,10 +173,10 @@ const saveMods = (fields, formId, tableName = "") => {
     const target = tableName ? tableName : formId;
 
     const resultList = [target, JSON.stringify(result)];
-    console.table(result);
+    // console.table(result);
     //! =================================================
     //! JSON Object to send back to database
-    console.log("result :", resultList);
+    // console.log("result :", resultList);
     //! =================================================
 
     //ToDO Reloading/resetting with new data
