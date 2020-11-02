@@ -56,6 +56,18 @@ Core CSS rules for all pages
   background-color: #f7e095;
 }
 
+/* TSS Colors
+============================
+*/
+
+.student-activity {
+  background-color: #f0e2d5;
+}
+
+.student-achievements {
+  background-color: #efd3ed;
+}
+
 /* Pages body
 ============================
 */

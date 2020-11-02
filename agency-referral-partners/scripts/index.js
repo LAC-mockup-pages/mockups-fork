@@ -219,7 +219,7 @@ const createForm = (list) => {
 
 // Used for new partner and edited partner data set
 const saveMods = (fields, formName, tableName = "") => {
-  const { AuditUserID, AgencyID } = SESSION_VARIABLE;
+  const { AuditUserID, AgencyID } = SESSION_VARIABLE[0];
   const result = { AuditUserID, AgencyID };
   $(`${formName} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);

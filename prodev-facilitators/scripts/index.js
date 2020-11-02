@@ -25,7 +25,7 @@ const createNewRecord = (labelsList) => {
   const labelObj = labelsList[0];
   const requiredList = ["FacFirstName", "FacLastName", "HomePhone", "Email"];
   const keyList = Object.keys(labelObj).filter((key) => !["ID"].includes(key));
-  for (key of keyList) {
+  for (const key of keyList) {
     let element = "";
     let option = "";
     let type = "text";
