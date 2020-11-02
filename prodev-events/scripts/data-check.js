@@ -9,13 +9,12 @@ const validateRecord = (dataList, requiredList) => {
   for (let field of dataList) {
     let { name, value } = field;
     const obj = { name, value };
-    const dateFormat = /^(0?[1-9]|1[012])[\/](0?[1-9]|[12][0-9]|3[01])[\/]\d{4}$/;
 
     switch (name) {
       case "ProfDevDate":
       case "Date":
         // Match the date format through regular expression
-        obj.correct = value.match(dateFormat) ? true : false;
+        obj.correct = dateValid(value);
         break;
 
       default:

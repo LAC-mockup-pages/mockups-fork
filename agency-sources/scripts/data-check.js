@@ -18,11 +18,8 @@ const validateRecord = (list) => {
           : true;
         break;
       case "FundStart":
-        obj.correct = moment(obj.value, "MM/DD/YYYY", true).isValid();
-        break;
-
       case "FundEnd":
-        obj.correct = moment(obj.value, "MM/DD/YYYY", true).isValid();
+        obj.correct = dateValid(value);
         break;
 
       default:
