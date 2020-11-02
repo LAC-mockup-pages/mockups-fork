@@ -30,7 +30,7 @@ const validateRecord = (dataList) => {
 
       case "PersEmail":
       case "PersAltEmail":
-        obj.correct = Boolean(value.match(emailValidator));
+        obj.correct = value ? Boolean(value.match(emailValidator)) : true;
         break;
 
       default:
