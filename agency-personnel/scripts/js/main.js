@@ -138,13 +138,13 @@ const saveMods = (fields, formId, tableName = "") => {
   $(`${formId} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
 
-  console.log("fieldList :>> ", fieldList);
+  // console.log("fieldList :>> ", fieldList);
 
   // Data validation
   // validateNewRecord() <== data-check.js
   const validatedList = validateRecord(fieldList);
 
-  console.log("validatedList :>> ", validatedList);
+  // console.log("validatedList :>> ", validatedList);
 
   // Background color change for invalid field values
   const checkFlag = validatedList.some((item) => !item.correct);
@@ -483,6 +483,9 @@ $(document).ready(() => {
     const formName = `#${$(this).attr("form")}`;
     const tableName = $(formName).attr("data-table");
     const submittedData = $(formName).serializeArray();
+    const ID = $(".personView").attr("id");
+    submittedData.unshift({ name: "ID", value: ID });
+
     saveMods(submittedData, formName, tableName);
   });
 
@@ -505,6 +508,9 @@ $(document).ready(() => {
     if (blockName === "work-address") checkCanMailOrCall();
 
     let submittedData = $("#modal-form").serializeArray();
+    const ID = $(".personView").attr("id");
+    submittedData.unshift({ name: "ID", value: ID });
+
     if (tableName === "NonInstHours")
       submittedData.push(addTotalHours(submittedData));
 

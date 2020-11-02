@@ -68,7 +68,7 @@ const personView = (selectedID) => {
     if (["PersHomePhone", "PersMobilePhone"].includes(key)) {
       value = phoneFormat(value);
     }
-    if (["PersEmail", "PersEmail"].includes(key)) type = "email";
+    if (["PersEmail", "PersAltEmail"].includes(key)) type = "email";
 
     const argumentsObj = {
       keyVal: key,
