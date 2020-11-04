@@ -16,17 +16,17 @@ const processProgramCode = (programCodelist) => {
 
 export const createAdditionalFields = (fieldsObj) => {
   let bloc = topBanner("Additional Info");
-  const {
-    Sessions,
-    AMPM,
-    SessionLength,
-    Seats,
-    HoursWeek,
-    RoomNumber,
-    LowestLevel,
-    CAI,
-    ProgramID
-  } = fieldsObj;
+  const labelsObj = [
+    { keyVal: "Sessions", labelVal: "Sessions" },
+    { keyVal: "AMPM", labelVal: "Meet Time" },
+    { keyVal: "SessionLength", labelVal: "Hours per Session" },
+    { keyVal: "Seats", labelVal: "Seat Number" },
+    { keyVal: "HoursWeek", labelVal: "Hours per Week" },
+    { keyVal: "RoomNumber", labelVal: "Room ID" },
+    { keyVal: "LowestLevel", labelVal: "Lowest Level" },
+    { keyVal: "CAI", labelVal: "CAI" },
+    { keyVal: "ProgramID", labelVal: "CTEDS Program Code (CIP)" }
+  ];
 
   // =========================================================
   // Secondary data objects for <select> elements in the bloc
@@ -42,94 +42,107 @@ export const createAdditionalFields = (fieldsObj) => {
   // =========================================================
   // Fields
   // =========================================================
-  let option = "";
-  let optionHidden = "";
+  let option = "disabled";
+  let optionHidden = "form-group";
   let labelClassVal = "";
   let classVal = "";
-  let optionText = "";
 
-  const sessionsField = elementInput({
-    keyVal: "Sessions",
-    labelVal: "Sessions",
-    value: Sessions,
-    labelClassVal,
-    classVal,
-    option,
-    optionHidden
-  });
-  const meetTime = elementSelectModal({
-    hashTable: meetTimeData,
-    keyValue: "AMPM",
-    selectedValue: AMPM,
-    labelVal: "Meet Time",
-    labelClassVal,
-    option,
-    optionText
-  });
-  const sessionLength = elementInput({
-    keyVal: "SessionLength",
-    labelVal: "Hrs per Session",
-    value: SessionLength,
-    labelClassVal,
-    classVal,
-    option,
-    optionHidden
-  });
-  const seatNum = elementInput({
-    keyVal: "Seats",
-    labelVal: "Seat Number",
-    value: Seats,
-    labelClassVal,
-    classVal,
-    option,
-    optionHidden
-  });
-  const hoursWeek = elementInput({
-    keyVal: "HoursWeek",
-    labelVal: "Hrs per Week",
-    value: HoursWeek,
-    labelClassVal,
-    classVal,
-    option,
-    optionHidden
-  });
-  const roomID = elementInput({
-    keyVal: "RoomNumber",
-    labelVal: "Room ID",
-    value: RoomNumber,
-    labelClassVal,
-    classVal,
-    option,
-    optionHidden
-  });
-  const lowestLevel = elementSelectModal({
-    hashTable: levels,
-    keyValue: "LowestLevel",
-    selectedValue: LowestLevel,
-    labelVal: "Lowest Level",
-    labelClassVal,
-    option,
-    optionText
-  });
-  const caiField = elementSelectModal({
-    hashTable: optionCAIValues,
-    keyValue: "CAI",
-    selectedValue: CAI,
-    labelVal: "CAI",
-    labelClassVal,
-    option,
-    optionText
-  });
-  const programCode = elementSelectModal({
-    hashTable: codeList,
-    keyValue: "ProgramID",
-    selectedValue: ProgramID,
-    labelVal: "CTEDS Program Code (CIP)",
-    labelClassVal,
-    option,
-    optionText
-  });
+  for (const label of labelsObj) {
+    const { keyVal, labelVal } = label;
+    let value = fieldsObj[keyVal];
 
-  bloc += `${sessionsField}${meetTime}${sessionLength}${seatNum}${hoursWeek}${roomID}${lowestLevel}${caiField}${programCode}`;
+    bloc += elementInput({
+      keyVal,
+      labelVal,
+      value,
+      labelClassVal,
+      classVal,
+      option,
+      optionHidden
+    });
+  }
+  // const sessionsField = elementInput({
+  //   keyVal: "Sessions",
+  //   labelVal: "Sessions",
+  //   value: Sessions,
+  //   labelClassVal,
+  //   classVal,
+  //   option,
+  //   optionHidden
+  // });
+  // const meetTime = elementSelectModal({
+  //   hashTable: meetTimeData,
+  //   keyValue: "AMPM",
+  //   selectedValue: AMPM,
+  //   labelVal: "Meet Time",
+  //   labelClassVal,
+  //   option,
+  //   optionText
+  // });
+  // const sessionLength = elementInput({
+  //   keyVal: "SessionLength",
+  //   labelVal: "Hrs per Session",
+  //   value: SessionLength,
+  //   labelClassVal,
+  //   classVal,
+  //   option,
+  //   optionHidden
+  // });
+  // const seatNum = elementInput({
+  //   keyVal: "Seats",
+  //   labelVal: "Seat Number",
+  //   value: Seats,
+  //   labelClassVal,
+  //   classVal,
+  //   option,
+  //   optionHidden
+  // });
+  // const hoursWeek = elementInput({
+  //   keyVal: "HoursWeek",
+  //   labelVal: "Hrs per Week",
+  //   value: HoursWeek,
+  //   labelClassVal,
+  //   classVal,
+  //   option,
+  //   optionHidden
+  // });
+  // const roomID = elementInput({
+  //   keyVal: "RoomNumber",
+  //   labelVal: "Room ID",
+  //   value: RoomNumber,
+  //   labelClassVal,
+  //   classVal,
+  //   option,
+  //   optionHidden
+  // });
+  // const lowestLevel = elementSelectModal({
+  //   hashTable: levels,
+  //   keyValue: "LowestLevel",
+  //   selectedValue: LowestLevel,
+  //   labelVal: "Lowest Level",
+  //   labelClassVal,
+  //   option,
+  //   optionText
+  // });
+  // const caiField = elementSelectModal({
+  //   hashTable: optionCAIValues,
+  //   keyValue: "CAI",
+  //   selectedValue: CAI,
+  //   labelVal: "CAI",
+  //   labelClassVal,
+  //   option,
+  //   optionText
+  // });
+  // const programCode = elementSelectModal({
+  //   hashTable: codeList,
+  //   keyValue: "ProgramID",
+  //   selectedValue: ProgramID,
+  //   labelVal: "CTEDS Program Code (CIP)",
+  //   labelClassVal,
+  //   option,
+  //   optionText
+  // });
+
+  // bloc += `${sessionsField}${meetTime}${sessionLength}${seatNum}${hoursWeek}${roomID}${lowestLevel}${caiField}${programCode}`;
   return bloc;
 };

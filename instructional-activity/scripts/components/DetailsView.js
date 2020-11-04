@@ -82,7 +82,10 @@ export const detailsView = (dataObj) => {
     <div class="container-fluid row additional-bloc">
     <div class="col-md-6 additional-info-bloc" data-toggle='tooltip' data-placement='left' title='Click to Edit'>${additionalFields}</div>
     <div class="col-md-6">${instructors}
-    <div class="projected-bloc" data-toggle='tooltip' data-placement='right' title='Click to Edit'>${projSces}</div></div>
+    <div class="projected-bloc" data-toggle='tooltip' data-placement='right' title='Click to Edit'>
+    ${projSces}
+    </div>
+    </div>
 
     </div>
 
