@@ -263,7 +263,10 @@ $(document).ready(() => {
   // $("#new-entry").append(createNewRecordForm());
   // $("#filter-bloc").append(createFilterBloc());
 
-  //! Temporary rendering of Details page
+  //! ==========================================================
+  //! Temporary rendering of Details page, bypassing first page
+  //! ==========================================================
+
   detailsView(responseObj);
 
   // console.log("response object: >> ", Object.keys(responseObj[0]));
