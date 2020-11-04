@@ -60,16 +60,17 @@ export const setDefaultDate = () => {
 export const topBanner = (title, list = null) => {
   let headerLine = "";
   const blockName = title.toLowerCase().replace(/\W/gi, "-");
-
+  const buttonList = [
+    { title: "Funding", btnText: "Save", btnClass: "save-record-btn" },
+    { title: "Schedule", btnText: "Save", btnClass: "save-record-btn" }
+  ];
   const formName = `form="${blockName}"`;
   let headerButton = "";
 
-  if (["Main Info"].includes(title)) {
-    headerButton = `<button type='button' class="btn btn-default edit-record-btn col-sm-2" ${formName}>Edit</button>`;
-  } else if (["Funding"].includes(title)) {
-    headerButton = `<button type='button' class="btn btn-default add-record-btn col-sm-2" ${formName}>Save</button>`;
-  } else if (["Schedule"].includes(title)) {
-    headerButton = `<button type='button' class="btn btn-default save-record-btn col-sm-2" ${formName}>Save</button>`;
+  const filteredButtonList = buttonList.filter((item) => item.title === title);
+  if (filteredButtonList.length > 0) {
+    const { btnText, btnClass } = filteredButtonList[0];
+    headerButton = `<button type='button' class="btn btn-default ${btnClass} col-sm-2" ${formName}>${btnText}</button>`;
   }
 
   if (list) {
