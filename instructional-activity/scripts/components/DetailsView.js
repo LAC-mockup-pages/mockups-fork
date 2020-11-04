@@ -63,7 +63,7 @@ export const detailsView = (dataObj) => {
   $(".hero").append(`
   <div class="container-fluid course-details" id=${ID}>
     <div class="row first-bloc">
-      <div class="main-info col-md-6">
+      <div class="main-info col-md-6" data-toggle='tooltip' data-placement='left' title='Click to Edit'>
         ${mainInfo}
       </div>
       <div class="funding-schedule col-md-6">
@@ -80,8 +80,9 @@ export const detailsView = (dataObj) => {
     <div class="separation"></div>
 
     <div class="container-fluid row additional-bloc">
-    <div class="col-md-6">${additionalFields}</div>
-    <div class="col-md-6">${instructors}${projSces}</div>
+    <div class="col-md-6 additional-info-bloc" data-toggle='tooltip' data-placement='left' title='Click to Edit'>${additionalFields}</div>
+    <div class="col-md-6">${instructors}
+    <div class="projected-bloc" data-toggle='tooltip' data-placement='right' title='Click to Edit'>${projSces}</div></div>
 
     </div>
 

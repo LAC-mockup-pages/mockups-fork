@@ -78,6 +78,10 @@
   background-color: #f5f5f5;
 }
 
+.main-info:hover {
+  background-color: #d3e4f0;
+}
+
 .add-record-btn,
 .save-record-btn,
 .edit-record-btn,
@@ -95,8 +99,9 @@
   margin-left: 3%;
 }
 
-.input-field input {
-  background-color: #f5f5f5;
+.input-field input,
+.input-field select {
+  background-color: inherit;
 }
 
 .buttons-bloc-new {
@@ -194,6 +199,12 @@
 
 /* Additional Info */
 /* =========================================== */
+.additional-info-bloc:hover {
+  background-color: #d3e4f0;
+}
 
 /* Projected Sces */
 /* =========================================== */
+.projected-bloc:hover {
+  background-color: #d3e4f0;
+}

@@ -62,7 +62,8 @@ export const topBanner = (title, list = null) => {
   const blockName = title.toLowerCase().replace(/\W/gi, "-");
   const buttonList = [
     { title: "Funding", btnText: "Save", btnClass: "save-record-btn" },
-    { title: "Schedule", btnText: "Save", btnClass: "save-record-btn" }
+    { title: "Schedule", btnText: "Save", btnClass: "save-record-btn" },
+    { title: "Instructors", btnText: "Add", btnClass: "add-record-btn" }
   ];
   const formName = `form="${blockName}"`;
   let headerButton = "";
@@ -268,6 +269,9 @@ $(document).ready(() => {
   //! ==========================================================
 
   detailsView(responseObj);
+
+  // Enables customized tooltips
+  $("[data-toggle='tooltip']").tooltip();
 
   // console.log("response object: >> ", Object.keys(responseObj[0]));
 
