@@ -67,7 +67,8 @@ export const topBanner = (title, list = null) => {
   const buttonList = [
     { title: "Funding", btnText: "Save", btnClass: "save-record-btn" },
     { title: "Schedule", btnText: "Save", btnClass: "save-record-btn" },
-    { title: "Instructors", btnText: "Add", btnClass: "add-record-btn" }
+    { title: "Instructors", btnText: "Add", btnClass: "add-record-btn" },
+    { title: "Special Program", btnText: "Add", btnClass: "add-record-btn" }
   ];
   const formName = `form="${blockName}"`;
   let headerButton = "";

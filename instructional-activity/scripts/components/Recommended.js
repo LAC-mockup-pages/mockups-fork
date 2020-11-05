@@ -5,16 +5,24 @@
 import { topBanner } from "../main.js";
 
 const createSpecialProgram = (programID = "", subIETId = "") => {
-  const hashTable = GetSpecialProgramSource.slice(0);
-  const IETActivityList = GetIOActivity.slice(0).map((activity) => {
-    const { ID, InstructionDescription } = activity;
-    return { ID, InstructionDescription };
-  });
-
+  // const hashTable = GetSpecialProgramSource.slice(0);
+  // const IETActivityList = GetIOActivity.slice(0).map((activity) => {
+  //   const { ID, InstructionDescription } = activity;
+  //   return { ID, InstructionDescription };
+  // });
+const specialProgramList=GetSpecialProgram.slice(0)
   const header = topBanner("Special Program", [
     ["Program", "col-sm-5"],
     ["Description", "col-sm-7"]
   ]);
+    const specialProgramBloc = `<div class="container-fluid col-md-6">${header}</div>`;
+
+  if (specialProgramList.length<1) return specialProgramBloc
+  let body=''
+  for(const record of specialProgramList){
+    const hiddenList
+
+  }
 
   //   const IETSelect = elementSelectModal({
   //     hashTable: IETActivityList,
@@ -40,7 +48,6 @@ const createSpecialProgram = (programID = "", subIETId = "") => {
   //   ${IETSelect}
   // </form>
 
-  const specialProgramBloc = `<div class="container-fluid col-md-6">${header}</div>`;
 
   return specialProgramBloc;
 };
