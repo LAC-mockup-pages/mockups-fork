@@ -56,10 +56,14 @@ export const setDefaultDate = () => {
 };
 
 // Creates header with optional button, optional column headers
-// (from list parameter)
+// (from list parameter). 1st param is bloc title.
+// list = [["column name 1", "col-sm-2"],...] the width is in Grid
+// Bootstrap format.
 export const topBanner = (title, list = null) => {
   let headerLine = "";
   const blockName = title.toLowerCase().replace(/\W/gi, "-");
+
+  // Sets the blocs displaying a button.
   const buttonList = [
     { title: "Funding", btnText: "Save", btnClass: "save-record-btn" },
     { title: "Schedule", btnText: "Save", btnClass: "save-record-btn" },

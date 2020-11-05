@@ -2,7 +2,7 @@
 
 import { topBanner } from "../main.js";
 
-// Format the data object in hashtable, each item an object like
+// Format the data object in a hashtable, each item an object like
 // {key: "", value:""}
 const processProgramCode = (programCodelist) => {
   const codeList = [];

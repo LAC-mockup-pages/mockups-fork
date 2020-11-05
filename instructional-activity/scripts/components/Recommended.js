@@ -2,6 +2,8 @@
 // dataObj is output of a GET request (GetCourse) or created
 // by the DB response after new record creation
 
+import { topBanner } from "../main.js";
+
 const createSpecialProgram = (programID = "", subIETId = "") => {
   const hashTable = GetSpecialProgramSource.slice(0);
   const IETActivityList = GetIOActivity.slice(0).map((activity) => {
@@ -9,32 +11,36 @@ const createSpecialProgram = (programID = "", subIETId = "") => {
     return { ID, InstructionDescription };
   });
 
-  const IETSelect = elementSelectModal({
-    hashTable: IETActivityList,
-    keyValue: "IET_Class_PKID",
-    selectedValue: "",
-    labelVal: "Description",
-    labelClassVal: "",
-    option: " disabled",
-    optionText: "an instruction"
-  });
+  const header = topBanner("Special Program", [
+    ["Program", "col-sm-5"],
+    ["Description", "col-sm-7"]
+  ]);
 
-  const specialProgramSelect = elementSelectModal({
-    hashTable,
-    keyValue: "SpecialProgramID",
-    selectedValue: programID,
-    labelVal: "Special Program",
-    labelClassVal: "",
-    option: "",
-    optionText: "a special program"
-  });
+  //   const IETSelect = elementSelectModal({
+  //     hashTable: IETActivityList,
+  //     keyValue: "IET_Class_PKID",
+  //     selectedValue: "",
+  //     labelVal: "Description",
+  //     labelClassVal: "",
+  //     option: " disabled",
+  //     optionText: "an instruction"
+  //   });
 
-  const specialProgramBloc = `<div class="container-fluid col-md-6">
-  <form role="form" id="#special-program">
-    ${specialProgramSelect}
-    ${IETSelect}
-  </form>
-</div>`;
+  //   const specialProgramSelect = elementSelectModal({
+  //     hashTable,
+  //     keyValue: "SpecialProgramID",
+  //     selectedValue: programID,
+  //     labelVal: "Special Program",
+  //     labelClassVal: "",
+  //     option: "",
+  //     optionText: "a special program"
+  //   });
+  // <form role="form" id="special-program">
+  //   ${specialProgramSelect}
+  //   ${IETSelect}
+  // </form>
+
+  const specialProgramBloc = `<div class="container-fluid col-md-6">${header}</div>`;
 
   return specialProgramBloc;
 };
@@ -74,7 +80,7 @@ export const createRecommended = (
 
   const bloc = `
   <div class="container-fluid col-md-6">
-    <form role="form" id="#site-tot-students">
+    <form role="form" id="site-tot-students">
       ${siteSelect}
       ${projectedEnrollment}
     </form>
