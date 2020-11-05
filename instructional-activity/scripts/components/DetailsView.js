@@ -22,7 +22,7 @@ export const detailsView = (dataObj) => {
     Seats,
     HoursWeek,
     RoomNumber,
-    LowestLevel,
+    LowerLevel,
     CAI,
     ProgramID,
     ProjTotContHrs,
@@ -46,7 +46,7 @@ export const detailsView = (dataObj) => {
     Seats,
     HoursWeek,
     RoomNumber,
-    LowestLevel,
+    LowerLevel,
     CAI,
     ProgramID
   });

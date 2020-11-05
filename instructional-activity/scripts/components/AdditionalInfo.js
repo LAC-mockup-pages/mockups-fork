@@ -2,6 +2,8 @@
 
 import { topBanner } from "../main.js";
 
+// Format the data object in hashtable, each item an object like
+// {key: "", value:""}
 const processProgramCode = (programCodelist) => {
   const codeList = [];
   for (const record of programCodelist) {
@@ -23,7 +25,7 @@ export const createAdditionalFields = (fieldsObj) => {
     { keyVal: "Seats", labelVal: "Seat Number" },
     { keyVal: "HoursWeek", labelVal: "Hours per Week" },
     { keyVal: "RoomNumber", labelVal: "Room ID" },
-    { keyVal: "LowestLevel", labelVal: "Lowest Level" },
+    { keyVal: "LowerLevel", labelVal: "Lowest Level" },
     { keyVal: "CAI", labelVal: "CAI" },
     { keyVal: "ProgramID", labelVal: "CTEDS Program Code (CIP)" }
   ];
@@ -50,6 +52,30 @@ export const createAdditionalFields = (fieldsObj) => {
   for (const label of labelsObj) {
     const { keyVal, labelVal } = label;
     let value = fieldsObj[keyVal];
+
+    switch (keyVal) {
+      case "AMPM":
+        value = value
+          ? meetTimeData.find((record) => record.key === value).value
+          : "";
+        break;
+
+      case "CAI":
+        value = value
+          ? optionCAIValues.find((record) => record.key === value).value
+          : "";
+        break;
+
+      case "ProgramID":
+        value = value
+          ? codeList.find((record) => record.key === value).value
+          : "";
+        break;
+
+      default:
+        value = fieldsObj[keyVal];
+        break;
+    }
 
     bloc += elementInput({
       keyVal,
