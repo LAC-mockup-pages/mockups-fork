@@ -191,6 +191,13 @@
   margin: 3% 0;
 }
 
+.sub-header > .sub-header-labels {
+  /* padding-right: 0px; */
+  padding-left: 0px;
+  margin-right: 0px;
+  margin-left: 0px;
+}
+
 /* Instructors */
 /* =========================================== */
 .first-cell {

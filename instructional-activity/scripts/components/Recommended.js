@@ -10,19 +10,25 @@ const createSpecialProgram = (programID = "", subIETId = "") => {
   //   const { ID, InstructionDescription } = activity;
   //   return { ID, InstructionDescription };
   // });
-const specialProgramList=GetSpecialProgram.slice(0)
+  const specialProgramList = GetSpecialProgram.slice(0);
   const header = topBanner("Special Program", [
     ["Program", "col-sm-5"],
     ["Description", "col-sm-7"]
   ]);
-    const specialProgramBloc = `<div class="container-fluid col-md-6">${header}</div>`;
 
-  if (specialProgramList.length<1) return specialProgramBloc
-  let body=''
-  for(const record of specialProgramList){
-    const hiddenList
-
+  if (specialProgramList.length < 1) return specialProgramBloc;
+  let rows = "";
+  for (const record of specialProgramList) {
+    const { ID, ProgramDesc, InstructionDesc } = record;
+    rows += createTableRow(ID, { ProgramDesc, InstructionDesc });
   }
+  const specialProgramBloc = `<div class="container col-md-6">${header}
+  <table class="table table-bordered" id="special-prog-table">
+  <tbody>
+  ${rows}
+  </tbody>
+  </table>
+  </div>`;
 
   //   const IETSelect = elementSelectModal({
   //     hashTable: IETActivityList,
@@ -47,7 +53,6 @@ const specialProgramList=GetSpecialProgram.slice(0)
   //   ${specialProgramSelect}
   //   ${IETSelect}
   // </form>
-
 
   return specialProgramBloc;
 };
