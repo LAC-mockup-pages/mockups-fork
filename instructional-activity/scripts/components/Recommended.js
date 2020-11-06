@@ -22,37 +22,13 @@ const createSpecialProgram = (programID = "", subIETId = "") => {
     const { ID, ProgramDesc, InstructionDesc } = record;
     rows += createTableRow(ID, { ProgramDesc, InstructionDesc });
   }
-  const specialProgramBloc = `<div class="container col-md-6">${header}
-  <table class="table table-bordered" id="special-prog-table">
-  <tbody>
-  ${rows}
-  </tbody>
-  </table>
-  </div>`;
-
-  //   const IETSelect = elementSelectModal({
-  //     hashTable: IETActivityList,
-  //     keyValue: "IET_Class_PKID",
-  //     selectedValue: "",
-  //     labelVal: "Description",
-  //     labelClassVal: "",
-  //     option: " disabled",
-  //     optionText: "an instruction"
-  //   });
-
-  //   const specialProgramSelect = elementSelectModal({
-  //     hashTable,
-  //     keyValue: "SpecialProgramID",
-  //     selectedValue: programID,
-  //     labelVal: "Special Program",
-  //     labelClassVal: "",
-  //     option: "",
-  //     optionText: "a special program"
-  //   });
-  // <form role="form" id="special-program">
-  //   ${specialProgramSelect}
-  //   ${IETSelect}
-  // </form>
+  const specialProgramBloc = `
+    <div class="container col-md-6 special-prog-bloc">${header}
+      <table class="table table-bordered" id="special-prog-table">
+        <tbody>${rows}</tbody>
+      </table>
+    </div>
+  `;
 
   return specialProgramBloc;
 };

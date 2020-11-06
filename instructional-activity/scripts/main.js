@@ -84,13 +84,13 @@ export const topBanner = (title, list = null) => {
       "<div class='container-fluid row sub-header-labels blue-light-bg blue-text'>";
     for (const item of list) {
       const cellName = item[0].toLowerCase().replace(/\W/gi, "-");
-      headerLine += ` <div class='bloc-${blockName}-${cellName} ${item[1]}'>${item[0]}</div>`;
+      headerLine += `<div class='bloc-${blockName}-${cellName} ${item[1]}'>${item[0]}</div>`;
     }
     headerLine += "</div>";
   }
   return `
   <div class='sub-header blue-bg blue-light-text'>
-    <div class="container-fluid row">
+    <div class="container-fluid row sub-header-bloc">
       ${headerButton}
       <div class='sub-header-title'>${title}</div>
     </div>
