@@ -740,6 +740,14 @@ const GetSpecialProgram = [
     Class_PKID: "232270",
     IET_Class_PKID: "",
     InstructionDesc: ""
+  },
+  {
+    ID: "28448",
+    SpecialProgramID: "AH",
+    ProgramDesc: "AH | preGRASP",
+    Class_PKID: "232270",
+    IET_Class_PKID: "",
+    InstructionDesc: ""
   }
 ];
 
