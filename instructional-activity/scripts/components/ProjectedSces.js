@@ -3,7 +3,8 @@
 import { topBanner } from "../main.js";
 
 export const createProjectedSces = (fieldList) => {
-  let bloc = topBanner("Projected Services");
+  let bloc = "";
+  const header = topBanner("Projected Services");
   const { ProjTotContHrs, ProjTotInstHrs, ProjTotADA, ProjTotEIH } = fieldList;
   // ========================================================
   // Fields
@@ -51,5 +52,9 @@ export const createProjectedSces = (fieldList) => {
   });
 
   bloc += `${projContHrs}${projInstrHrs}${projADA}${projEIH}`;
-  return bloc;
+  return `
+  ${header}
+  <div class="field-bloc">
+    ${bloc}
+  </div>`;
 };
