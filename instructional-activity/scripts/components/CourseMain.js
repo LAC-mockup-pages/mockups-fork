@@ -3,10 +3,10 @@
 import { topBanner, rowLabels, instructorList } from "../main.js";
 const typeList = GetInstructionType.slice(0);
 const formatList = ddlFormat.slice(0);
-const levelList = ddlLevel.slice(0);
 
 export const createCourseMain = (dataObj) => {
-  let bloc = topBanner("Main Info");
+  let bloc = "";
+  const header = topBanner("Main Info");
   const {
     CourseID,
     ClassID,
@@ -76,5 +76,9 @@ export const createCourseMain = (dataObj) => {
     bloc += field;
   }
 
-  return bloc;
+  return `
+  ${header}
+  <div class="field-bloc">
+  ${bloc}
+  </div>`;
 };

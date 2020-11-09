@@ -45,11 +45,6 @@
 .course-details {
   background-color: #f5f5f5;
 }
-/*
-#main-table tbody > tr:hover,
-.event-roster-table tbody > tr:hover {
-  background-color: #d3e4f0;
-} */
 
 /* MainInfo bloc */
 /* =========================================== */
@@ -78,7 +73,7 @@
   background-color: #f5f5f5;
 }
 
-.main-info:hover {
+.field-bloc:hover {
   background-color: #d3e4f0;
 }
 
