@@ -5,11 +5,6 @@
 import { topBanner } from "../main.js";
 
 const createSpecialProgram = (programID = "", subIETId = "") => {
-  // const hashTable = GetSpecialProgramSource.slice(0);
-  // const IETActivityList = GetIOActivity.slice(0).map((activity) => {
-  //   const { ID, InstructionDescription } = activity;
-  //   return { ID, InstructionDescription };
-  // });
   const specialProgramList = GetSpecialProgram.slice(0);
   const header = topBanner("Special Program", [
     ["Program", "col-sm-5"],
@@ -34,23 +29,20 @@ const createSpecialProgram = (programID = "", subIETId = "") => {
 };
 
 export const createRecommended = (
-  siteId = "",
+  siteInfo = [],
   projectedStudentsNumber = ""
 ) => {
   const siteList = GetSite.slice(0);
-  const hashTable = siteList.map((site) => {
-    const { SiteID, SiteName } = site;
-    return { SiteID, SiteName };
-  });
 
-  const siteSelect = elementSelectModal({
-    hashTable,
-    keyValue: "SiteID",
-    selectedValue: siteId,
+  const siteSelect = elementInput({
+    keyVal: "SiteID",
     labelVal: "Site",
+    value: siteInfo[0],
     labelClassVal: "",
-    option: "",
-    optionText: "a site"
+    classVal: "",
+    option: `disabled data-site-id=${siteInfo[1]}`,
+    optionHidden: "form-group",
+    type: "text"
   });
 
   const projectedEnrollment = elementInput({
@@ -59,7 +51,7 @@ export const createRecommended = (
     value: projectedStudentsNumber,
     labelClassVal: "",
     classVal: "",
-    option: "",
+    option: "disabled",
     optionHidden: "form-group",
     type: "text"
   });

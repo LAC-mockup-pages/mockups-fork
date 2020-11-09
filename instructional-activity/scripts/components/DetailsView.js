@@ -28,7 +28,10 @@ export const detailsView = (dataObj) => {
     ProjTotContHrs,
     ProjTotInstHrs,
     ProjTotADA,
-    ProjTotEIH
+    ProjTotEIH,
+    SiteName,
+    SiteID,
+    ProjTotStudents
   } = dataObj[0];
 
   // =========================================================
@@ -37,7 +40,7 @@ export const detailsView = (dataObj) => {
   const mainInfo = createCourseMain(dataObj[0]);
   const funding = createFundingBloc(FSID);
   const schedule = createSchedule(dataObj[0]);
-  const recommended = createRecommended();
+  const recommended = createRecommended([SiteName, SiteID], ProjTotStudents);
   const instructors = createInstructorsBloc();
   const additionalFields = createAdditionalFields({
     Sessions,

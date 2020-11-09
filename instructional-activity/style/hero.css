@@ -56,10 +56,6 @@
   border-top: 2px solid #fff;
 }
 
-.main-info > .sub-header {
-  margin-bottom: 2%;
-}
-
 .sub-header-title {
   text-align: right;
   line-height: 34px;
@@ -71,6 +67,10 @@
 .main-info {
   margin: 0% 0% 2% 0%;
   background-color: #f5f5f5;
+}
+
+.field-bloc {
+  padding-top: 3%;
 }
 
 .field-bloc:hover {
