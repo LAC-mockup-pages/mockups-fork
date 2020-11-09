@@ -9,7 +9,11 @@ export const createFundingBloc = (fundingStr) => {
   let leftBloc = "";
   let rightBloc = "";
   const agencyFundingList = fundingStr.split(",");
-  const allFundingList = GetFundingSource.slice(0);
+
+  // Ordered by alpha
+  const allFundingList = GetFundingSource.slice(0).sort((item1, item2) =>
+    item1.FSID < item2.FSID ? -1 : item1.FSID > item2.FSID ? 1 : 0
+  );
 
   for (const source of allFundingList) {
     const optionChecked = Boolean(agencyFundingList.includes(source.FSID))
