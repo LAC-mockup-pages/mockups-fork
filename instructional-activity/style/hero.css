@@ -223,7 +223,7 @@
   margin-right: 0px;
 }
 
-#special-prog-table > tbody {
+#special-prog-table {
   max-height: 100px;
   overflow-y: scroll;
 }
