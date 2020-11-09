@@ -181,6 +181,11 @@
 
 /* Recommended */
 /* =========================================== */
+
+.recommended-fields {
+  padding-left: 0px;
+}
+
 .recommended-title {
   text-align: center;
   padding: 0.3%;
@@ -230,12 +235,6 @@
 
 /* Additional Info */
 /* =========================================== */
-/* .additional-info-bloc:hover {
-  background-color: #d3e4f0;
-} */
 
 /* Projected Sces */
 /* =========================================== */
-/* .projected-bloc:hover {
-  background-color: #d3e4f0;
-} */

@@ -32,8 +32,6 @@ export const createRecommended = (
   siteInfo = [],
   projectedStudentsNumber = ""
 ) => {
-  const siteList = GetSite.slice(0);
-
   const siteSelect = elementInput({
     keyVal: "SiteID",
     labelVal: "Site",
@@ -59,8 +57,8 @@ export const createRecommended = (
   const specialProgramBloc = createSpecialProgram();
 
   const bloc = `
-  <div class="container-fluid col-md-6">
-    <form role="form" id="site-tot-students">
+  <div class="container-fluid recommended-fields col-md-6">
+    <form role="form" class="field-bloc" id="site-tot-students" data-toggle="tooltip" data-placement="left" data-original-title="Click to Edit">
       ${siteSelect}
       ${projectedEnrollment}
     </form>
