@@ -17,7 +17,8 @@ const processProgramCode = (programCodelist) => {
 };
 
 export const createAdditionalFields = (fieldsObj) => {
-  let bloc = topBanner("Additional Info");
+  const header = topBanner("Additional Info");
+  let bloc = "";
   const labelsObj = [
     { keyVal: "Sessions", labelVal: "Sessions" },
     { keyVal: "AMPM", labelVal: "Meet Time" },
@@ -88,5 +89,9 @@ export const createAdditionalFields = (fieldsObj) => {
     });
   }
 
-  return bloc;
+  return `
+  ${header}
+  <div class="field-bloc">
+    ${bloc}
+  </div>`;
 };
