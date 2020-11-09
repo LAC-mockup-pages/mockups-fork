@@ -5,8 +5,9 @@ import { topBanner } from "../main.js";
 export const createFundingBloc = (fundingStr) => {
   const title = "Funding";
 
-  //TODO Top banner with Save button
-  let bloc = topBanner(title);
+  const banner = topBanner(title);
+  let leftBloc = "";
+  let rightBloc = "";
   const agencyFundingList = fundingStr.split(",");
   const allFundingList = GetFundingSource.slice(0);
 
@@ -14,18 +15,27 @@ export const createFundingBloc = (fundingStr) => {
     const optionChecked = Boolean(agencyFundingList.includes(source.FSID))
       ? "checked"
       : "";
-
     const labelText = source.FundAbbrev;
     const key = source.FSID;
-
-    bloc += `
+    const field = `
     <div class='funding-checkboxes form-group checkbox'>
       <label for='${key}-checkbox' class="single-checkbox">
         <input type='checkbox' name='${key}-checkbox' ${optionChecked}/>
           ${labelText}
       </label>
     </div>`;
+
+    allFundingList.indexOf(source) % 2 === 0
+      ? (leftBloc += field)
+      : (rightBloc += field);
   }
 
-  return `<form class="container-fluid funding-bloc" role="form">${bloc}</form>`;
+  return `
+  <form class="container-fluid funding-bloc" role="form">
+    ${banner}
+    <div class="container-fluid row sub-blocs">
+      <div class="left-bloc col-sm-6">${leftBloc}</div>
+      <div class="right-bloc col-sm-6">${rightBloc}</div>
+    </div>
+  </form>`;
 };

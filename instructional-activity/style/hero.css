@@ -119,20 +119,30 @@
   margin-bottom: 3%;
 }
 .funding-checkboxes {
-  padding-left: 5%;
+  padding-left: 3%;
   line-height: 1.8em;
   font-size: 1.2em;
 }
 
+.sub-blocs {
+  max-height: 11em;
+  overflow-y: scroll;
+}
 .checkbox label {
-  padding-left: 35px;
+  padding-left: 1.5em;
 }
 .checkbox input[type="checkbox"] {
   width: 1em;
   height: 1em;
-  margin-left: -2.5em;
-  margin-bottom: -0.9em;
+  margin-left: -2em;
+  margin-bottom: -1em;
 }
+
+.left-bloc,
+.right-bloc {
+  padding-left: 1%;
+}
+
 /* Schedule bloc */
 /* =========================================== */
 .schedule-body > tr:hover {
