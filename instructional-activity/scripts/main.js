@@ -99,6 +99,37 @@ export const topBanner = (title, list = null) => {
   `;
 };
 
+// Returns a table body with hidden cells, label object and table name
+export const tableBody = (
+  dataList,
+  block,
+  hiddenList,
+  labelObj = {},
+  tableName = ""
+) => {
+  block = block.toLowerCase().replace(/\W/gi, "-");
+
+  const rows = dataList
+    .map((record, indx) => {
+      let cells = "";
+      const tableData = tableName ? `data-table=${tableName}` : "";
+      for (const key in record) {
+        const optionHidden = hiddenList.includes(key) ? " hidden" : "";
+        const label = labelObj[key] ? `data-label='${labelObj[key]}'` : "";
+
+        cells += `<td class="cell-data${optionHidden}" data-field=${key} ${label}>${record[key]}</td>`;
+      }
+
+      return `<tr id="${block}-${indx}" ${tableData}>${cells}</tr>`;
+    })
+    .join("");
+  return `<div class="${block}-table">
+            <table class="table">
+              <tbody class='${block}-body'>${rows}</tbody>
+            </table>
+          </div>`;
+};
+
 const createTableHeader = (labelsObject) => {
   const {
     CourseID,
