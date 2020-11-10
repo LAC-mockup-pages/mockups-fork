@@ -78,7 +78,7 @@ export const createCourseMain = (dataObj) => {
 
   return `
   ${header}
-  <div class="field-bloc">
+  <form class="field-bloc" id="main-info-form">
     ${bloc}
-  </div>`;
+  </form>`;
 };

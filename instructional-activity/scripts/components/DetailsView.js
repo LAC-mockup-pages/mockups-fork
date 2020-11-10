@@ -89,11 +89,7 @@ export const detailsView = (dataObj) => {
     ${projSces}
     </div>
     </div>
-
     </div>
-
-
   </div>
-
 </div>`);
 };

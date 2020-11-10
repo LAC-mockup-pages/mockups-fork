@@ -447,6 +447,16 @@ $(document).ready(() => {
   //* Special program handling when IET is selected
   // $(document).on('change',"#")
 
+  //* Editing Main Info bloc
+  $(document).on("click", ".field-bloc", function (evnt) {
+    evnt.stopPropagation();
+    const formId = "#" + $(this).attr("id");
+    console.log("formId :>> ", formId);
+    // $(".field-bloc input").
+    const dataSource = $(formId).serializeArray();
+    console.log("dataSource :>> ", dataSource);
+  });
+
   //* Select event record to edit + display selected event & roster
   // $(document).on("click", ".row-data", function (evnt) {
   //   evnt.stopPropagation();
