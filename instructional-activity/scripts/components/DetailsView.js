@@ -97,9 +97,3 @@ export const detailsView = (dataObj) => {
 
 </div>`);
 };
-// <div class="container-fluid blue-bg row buttons-bloc-new">
-// <div class="col-md-8"></div>
-// <div class="col-md-4">
-//   <button type="button" id="event-view-cancel-btn" class="btn btn-default">Cancel without saving</button>
-//   <button type="button" id="event-view-submit-btn" class="btn dark-blue-text blue-light-bg">Save</button>
-// </div>
