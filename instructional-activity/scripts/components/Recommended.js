@@ -28,21 +28,6 @@ const createSpecialProgramView = (programID = "", subIETId = "") => {
     "GetSpecialProgram"
   );
   return header + body;
-  // if (specialProgramList.length < 1) return specialProgramBloc;
-  // let rows = "";
-  // for (const record of specialProgramList) {
-  //   const { ID, ProgramDesc, InstructionDesc } = record;
-  //   rows += createTableRow(ID, { ProgramDesc, InstructionDesc });
-  // }
-  // const specialProgramBloc = `
-  //   <div class="container col-md-6 special-prog-bloc">${header}
-  //     <table class="table table-bordered" id="special-prog-table">
-  //       <tbody>${rows}</tbody>
-  //     </table>
-  //   </div>
-  // `;
-
-  // return specialProgramBloc;
 };
 
 export const createRecommended = (
