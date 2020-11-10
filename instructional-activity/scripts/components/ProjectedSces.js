@@ -10,7 +10,7 @@ export const createProjectedSces = (fieldList) => {
   // Fields
   // =========================================================
   let option = "";
-  let optionHidden = "";
+  let optionHidden = "form-group";
   let labelClassVal = "";
   let classVal = "";
 
