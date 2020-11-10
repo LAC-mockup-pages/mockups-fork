@@ -235,12 +235,38 @@
 
 /* Instructors */
 /* =========================================== */
-.first-cell {
+.AssignDate {
   width: 25%;
+}
+
+.instructors-table {
+  height: 11em;
+  overflow-y: scroll;
+}
+
+.bloc-instructors-date-assigned {
+  padding-left: 0.6em;
+}
+
+.bloc-instructors-instructors {
+  padding-left: 0px;
 }
 
 /* Additional Info */
 /* =========================================== */
+
+.additional-bloc {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.instructors-table {
+  margin-bottom: 3em;
+}
+
+.AssignDate {
+  width: 24%;
+}
 
 /* Projected Sces */
 /* =========================================== */

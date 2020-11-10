@@ -117,7 +117,7 @@ export const tableBody = (
         const optionHidden = hiddenList.includes(key) ? " hidden" : "";
         const label = labelObj[key] ? `data-label='${labelObj[key]}'` : "";
 
-        cells += `<td class="cell-data${optionHidden}" data-field=${key} ${label}>${record[key]}</td>`;
+        cells += `<td class="cell-data${optionHidden} ${key}" data-field=${key} ${label}>${record[key]}</td>`;
       }
 
       return `<tr id="${block}-${indx}" ${tableData} data-toggle="tooltip" data-placement="right" data-original-title="Click to Edit">${cells}</tr>`;
