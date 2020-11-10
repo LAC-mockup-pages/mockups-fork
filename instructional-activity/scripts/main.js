@@ -120,11 +120,11 @@ export const tableBody = (
         cells += `<td class="cell-data${optionHidden}" data-field=${key} ${label}>${record[key]}</td>`;
       }
 
-      return `<tr id="${block}-${indx}" ${tableData}>${cells}</tr>`;
+      return `<tr id="${block}-${indx}" ${tableData} data-toggle="tooltip" data-placement="right" data-original-title="Click to Edit">${cells}</tr>`;
     })
     .join("");
   return `<div class="${block}-table">
-            <table class="table">
+            <table class="table table-bordered">
               <tbody class='${block}-body'>${rows}</tbody>
             </table>
           </div>`;

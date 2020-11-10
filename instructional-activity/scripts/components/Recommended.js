@@ -2,30 +2,47 @@
 // dataObj is output of a GET request (GetCourse) or created
 // by the DB response after new record creation
 
-import { topBanner } from "../main.js";
+import { topBanner, tableBody } from "../main.js";
 
-const createSpecialProgram = (programID = "", subIETId = "") => {
+const createSpecialProgramView = (programID = "", subIETId = "") => {
   const specialProgramList = GetSpecialProgram.slice(0);
-  const header = topBanner("Special Program", [
+  const title = "Special Program";
+  const hiddenFields = [
+    "ID",
+    "SpecialProgramID",
+    "Class_PKID",
+    "IET_Class_PKID"
+  ];
+  const labelObj = { ProgramDesc: "Program", InstructionDesc: "Description" };
+
+  const header = topBanner(title, [
     ["Program", "col-sm-5"],
     ["Description", "col-sm-7"]
   ]);
 
-  if (specialProgramList.length < 1) return specialProgramBloc;
-  let rows = "";
-  for (const record of specialProgramList) {
-    const { ID, ProgramDesc, InstructionDesc } = record;
-    rows += createTableRow(ID, { ProgramDesc, InstructionDesc });
-  }
-  const specialProgramBloc = `
-    <div class="container col-md-6 special-prog-bloc">${header}
-      <table class="table table-bordered" id="special-prog-table">
-        <tbody>${rows}</tbody>
-      </table>
-    </div>
-  `;
+  const body = tableBody(
+    specialProgramList,
+    title,
+    hiddenFields,
+    labelObj,
+    "GetSpecialProgram"
+  );
+  return header + body;
+  // if (specialProgramList.length < 1) return specialProgramBloc;
+  // let rows = "";
+  // for (const record of specialProgramList) {
+  //   const { ID, ProgramDesc, InstructionDesc } = record;
+  //   rows += createTableRow(ID, { ProgramDesc, InstructionDesc });
+  // }
+  // const specialProgramBloc = `
+  //   <div class="container col-md-6 special-prog-bloc">${header}
+  //     <table class="table table-bordered" id="special-prog-table">
+  //       <tbody>${rows}</tbody>
+  //     </table>
+  //   </div>
+  // `;
 
-  return specialProgramBloc;
+  // return specialProgramBloc;
 };
 
 export const createRecommended = (
@@ -54,7 +71,7 @@ export const createRecommended = (
     type: "text"
   });
 
-  const specialProgramBloc = createSpecialProgram();
+  const specialProgramBloc = createSpecialProgramView();
 
   const bloc = `
   <div class="container-fluid recommended-fields col-md-6">
@@ -63,7 +80,10 @@ export const createRecommended = (
       ${projectedEnrollment}
     </form>
   </div>
-  ${specialProgramBloc}`;
+
+  <div class="container-fluid recommended-fields col-md-6" id="special-program">
+   ${specialProgramBloc}
+ </div>`;
 
   return bloc;
 };

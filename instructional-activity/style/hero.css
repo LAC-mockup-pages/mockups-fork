@@ -223,10 +223,16 @@
   margin-right: 0px;
 }
 
-#special-prog-table {
-  max-height: 100px;
+#special-program {
+  padding-right: 0px;
+  padding-left: 1.2%;
+}
+
+.special-program-table {
+  height: 13em;
   overflow-y: scroll;
 }
+
 /* Instructors */
 /* =========================================== */
 .first-cell {
