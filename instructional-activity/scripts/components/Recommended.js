@@ -5,7 +5,13 @@
 import { topBanner, tableBody } from "../main.js";
 
 const createSpecialProgramView = (programID = "", subIETId = "") => {
-  const specialProgramList = GetSpecialProgram.slice(0);
+  const specialProgramList = GetSpecialProgram.slice(0).sort((item1, item2) =>
+    item1.ProgramDesc < item2.ProgramDesc
+      ? -1
+      : item1.ProgramDesc > item2.ProgramDesc
+      ? 1
+      : 0
+  );
   const title = "Special Program";
   const hiddenFields = [
     "ID",
