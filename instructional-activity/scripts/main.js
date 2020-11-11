@@ -11,6 +11,7 @@ import {
   createSecondarySelect
 } from "./components/FilterBloc.js";
 import { detailsView } from "./components/DetailsView.js";
+import { createModalForm } from "./components/CourseMain.js";
 
 // Main elements
 export const rowLabels = [
@@ -452,9 +453,16 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("id");
     console.log("formId :>> ", formId);
-    // $(".field-bloc input").
-    const dataSource = $(formId).serializeArray();
-    console.log("dataSource :>> ", dataSource);
+    $(`${formId} input:disabled`).prop("disabled", false);
+
+    const fieldSource = $(`${formId} .input-field`).clone();
+
+    console.log("fieldSource :>> ", fieldSource);
+
+    $(`${formId} input:disabled`).prop("disabled", true);
+    const editFormContent = createModalForm(fieldSource);
+    $("#modalBloc").modal("toggle");
+    $("#edit-form").empty().append(editFormContent);
   });
 
   //* Select event record to edit + display selected event & roster

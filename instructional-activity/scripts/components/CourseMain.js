@@ -82,3 +82,28 @@ export const createCourseMain = (dataObj) => {
     ${bloc}
   </form>`;
 };
+
+export const createModalForm = (fieldList) => {
+  // for (const $field of fieldList) {
+  //   const $labelElement = $field.children[0];
+  //   let $inputElement = $field.children[1];
+  //   // $(field.children[1]).removeAttr("id");
+  //   $inputElement.removeAttr("id");
+  //   if ($labelElement.value() in ["Course Name", "Instruction Code"]) {
+  //     $("#edit-form").append(field)
+  //   }
+  // }
+  const list = [];
+  $(fieldList).each(function (indx) {
+    const $elements = $(this).children().removeAttr("id");
+    console.log("$elements :>> ", $elements);
+    const labelText = $elements[0].innerText;
+    let $inputElement = $elements[1];
+
+    if (["Course Name", "Instruction Code","Start", "End","Fiscal Year"].includes(labelText)) {
+      list.push($(this));
+    }
+  });
+
+  return list;
+};
