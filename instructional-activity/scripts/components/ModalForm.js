@@ -15,7 +15,11 @@ export const createModalForm = (fieldList) => {
     "SessionLength",
     "Seats",
     "HoursWeek",
-    "RoomNumber"
+    "RoomNumber",
+    "ProjTotContHrs",
+    "ProjTotInstHrs",
+    "ProjTotADA",
+    "ProjTotEIH"
   ];
   const codeList = processProgramCode(GetProgramCode.slice(0));
   const fieldsWithSelect = {

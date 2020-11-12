@@ -52,7 +52,10 @@ export const createAdditionalFields = (fieldsObj) => {
   for (const label of labelsObj) {
     const { keyVal, labelVal } = label;
     let value = fieldsObj[keyVal];
-    let option = ` disabled data-key=${keyVal}`;
+
+    let option = value
+      ? ` disabled data-key=${value}`
+      : ` disabled data-key=""`;
 
     switch (keyVal) {
       case "AMPM":

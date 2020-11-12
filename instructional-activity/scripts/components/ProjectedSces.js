@@ -54,7 +54,7 @@ export const createProjectedSces = (fieldList) => {
   bloc += `${projContHrs}${projInstrHrs}${projADA}${projEIH}`;
   return `
   ${header}
-  <div class="field-bloc">
+  <form class="field-bloc" id="projected-sces-form">
     ${bloc}
-  </div>`;
+  </form>`;
 };
