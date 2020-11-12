@@ -4,7 +4,7 @@ import { topBanner } from "../main.js";
 
 // Format the data object in a hashtable, each item an object like
 // {key: "", value:""}
-const processProgramCode = (programCodelist) => {
+export const processProgramCode = (programCodelist) => {
   const codeList = [];
   for (const record of programCodelist) {
     const keyList = Object.keys(record);
@@ -45,7 +45,6 @@ export const createAdditionalFields = (fieldsObj) => {
   // =========================================================
   // Fields
   // =========================================================
-  let option = "disabled";
   let optionHidden = "form-group";
   let labelClassVal = "";
   let classVal = "";
@@ -53,6 +52,7 @@ export const createAdditionalFields = (fieldsObj) => {
   for (const label of labelsObj) {
     const { keyVal, labelVal } = label;
     let value = fieldsObj[keyVal];
+    let option = ` disabled data-key=${keyVal}`;
 
     switch (keyVal) {
       case "AMPM":
@@ -91,7 +91,7 @@ export const createAdditionalFields = (fieldsObj) => {
 
   return `
   ${header}
-  <div class="field-bloc">
+  <form class="field-bloc" id="additional-info-form">
     ${bloc}
-  </div>`;
+  </form>`;
 };
