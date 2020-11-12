@@ -99,9 +99,22 @@ export const createModalForm = (fieldList) => {
     console.log("$elements :>> ", $elements);
     const labelText = $elements[0].innerText;
     let $inputElement = $elements[1];
+    const fieldsWithSelect={}
 
     if (["Course Name", "Instruction Code","Start", "End","Fiscal Year"].includes(labelText)) {
       list.push($(this));
+    }else if (["Level"].includes(labelText)){
+      const selectedValue=$inputElement.value
+      const elementSelect=elementSelectModal({
+        hashTable:ddlLevel,
+    keyValue:'UpperLevel',
+    selectedValue,
+    labelVal:labelText,
+    labelClassVal:'',
+    option:'',
+    optionText:'a level'
+      })
+      list.push(elementSelect)
     }
   });
 
