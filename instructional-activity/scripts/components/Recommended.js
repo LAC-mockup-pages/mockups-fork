@@ -46,7 +46,7 @@ export const createRecommended = (
     value: siteInfo[0],
     labelClassVal: "",
     classVal: "",
-    option: `disabled data-site-id=${siteInfo[1]}`,
+    option: `disabled data-key=${siteInfo[1]}`,
     optionHidden: "form-group",
     type: "text"
   });
@@ -57,7 +57,7 @@ export const createRecommended = (
     value: projectedStudentsNumber,
     labelClassVal: "",
     classVal: "",
-    option: "disabled",
+    option: "disabled data-key=''",
     optionHidden: "form-group",
     type: "text"
   });

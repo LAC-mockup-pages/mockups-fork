@@ -19,9 +19,14 @@ export const createModalForm = (fieldList) => {
     "ProjTotContHrs",
     "ProjTotInstHrs",
     "ProjTotADA",
-    "ProjTotEIH"
+    "ProjTotEIH",
+    "ProjTotStudents"
   ];
   const codeList = processProgramCode(GetProgramCode.slice(0));
+  const siteList = GetSite.map((item) => {
+    const { SiteName, SiteID } = item;
+    return { SiteID, SiteName };
+  });
   const fieldsWithSelect = {
     ClassType: [GetInstructionType, "a type"],
     InstructorID: [GetInstructor, "an instructor"],
@@ -36,7 +41,8 @@ export const createModalForm = (fieldList) => {
       ],
       ""
     ],
-    ProgramID: [codeList, "a program"]
+    ProgramID: [codeList, "a program"],
+    SiteID: [siteList, "a site"]
   };
 
   $(fieldList).each(function (indx) {
