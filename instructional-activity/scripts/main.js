@@ -11,7 +11,7 @@ import {
   createSecondarySelect
 } from "./components/FilterBloc.js";
 import { detailsView } from "./components/DetailsView.js";
-import { createModalForm } from "./components/CourseMain.js";
+import { createModalForm } from "./components/ModalForm.js";
 
 // Main elements
 export const rowLabels = [
