@@ -453,13 +453,10 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("id");
     console.log("formId :>> ", formId);
-    $(`${formId} input:disabled`).prop("disabled", false);
-
     const fieldSource = $(`${formId} .input-field`).clone();
 
     console.log("fieldSource :>> ", fieldSource);
 
-    $(`${formId} input:disabled`).prop("disabled", true);
     const editFormContent = createModalForm(fieldSource);
     $("#modalBloc").modal("toggle");
     $("#edit-form").empty().append(editFormContent);

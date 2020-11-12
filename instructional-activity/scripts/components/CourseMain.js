@@ -84,37 +84,45 @@ export const createCourseMain = (dataObj) => {
 };
 
 export const createModalForm = (fieldList) => {
-  // for (const $field of fieldList) {
-  //   const $labelElement = $field.children[0];
-  //   let $inputElement = $field.children[1];
-  //   // $(field.children[1]).removeAttr("id");
-  //   $inputElement.removeAttr("id");
-  //   if ($labelElement.value() in ["Course Name", "Instruction Code"]) {
-  //     $("#edit-form").append(field)
-  //   }
-  // }
   const list = [];
-  $(fieldList).each(function (indx) {
-    const $elements = $(this).children().removeAttr("id");
-    console.log("$elements :>> ", $elements);
-    const labelText = $elements[0].innerText;
-    let $inputElement = $elements[1];
-    const fieldsWithSelect={}
+  const fieldsWithInput = ["CourseID", "ClassID", "StartDate", "EndDate", "FY"];
+  const fieldsWithSelect = {
+    ClassType: [GetInstructionType, "a type"],
+    InstructorID: [GetInstructor, "an instructor"],
+    UpperLevel: [ddlLevel, "a level"],
+    Format: [ddlFormat, "a format"]
+  };
 
-    if (["Course Name", "Instruction Code","Start", "End","Fiscal Year"].includes(labelText)) {
+  $(fieldList).each(function (indx) {
+    const $elements = $(this)
+      .children()
+      .removeAttr("id")
+      .removeAttr("disabled");
+    const labelText = $elements[0].innerText;
+    const $inputElement = $elements[1];
+    const keyValue = $inputElement.name;
+    if (fieldsWithInput.includes(keyValue)) {
       list.push($(this));
-    }else if (["Level"].includes(labelText)){
-      const selectedValue=$inputElement.value
-      const elementSelect=elementSelectModal({
-        hashTable:ddlLevel,
-    keyValue:'UpperLevel',
-    selectedValue,
-    labelVal:labelText,
-    labelClassVal:'',
-    option:'',
-    optionText:'a level'
-      })
-      list.push(elementSelect)
+    } else {
+      let [hashTable, optionText] = fieldsWithSelect[keyValue];
+
+      if (keyValue === "InstructorID") {
+        hashTable = hashTable.map((item) => {
+          const { InstructorName, PersonnelID } = item;
+          return { PersonnelID, InstructorName };
+        });
+      }
+      const selectedValue = $inputElement.dataset.key;
+      const elementSelect = elementSelectModal({
+        hashTable,
+        keyValue,
+        selectedValue,
+        labelVal: labelText,
+        labelClassVal: "",
+        option: "",
+        optionText
+      });
+      list.push(elementSelect);
     }
   });
 
