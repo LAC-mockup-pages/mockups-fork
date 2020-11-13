@@ -212,10 +212,12 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
 
   // Data validation
   // validateRecord() <== data-check.js
-  const validatedList = validateRecord(fieldList, requiredList);
+  // const validatedList = validateRecord(fieldList, requiredList);
 
   // Background color change for invalid field values
-  const checkFlag = validatedList.some((item) => !item.correct);
+  // const checkFlag = validatedList.some((item) => !item.correct);
+  const checkFlag = false;
+
   if (checkFlag) {
     const list = validatedList.filter((obj) => obj.correct === false);
     for (let field of list) {
@@ -448,14 +450,14 @@ $(document).ready(() => {
   //* Special program handling when IET is selected
   // $(document).on('change',"#")
 
-  //* Editing Main Info bloc
+  //* Editing bloc
   $(document).on("click", ".field-bloc", function (evnt) {
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("id");
-    console.log("formId :>> ", formId);
+    // console.log("formId :>> ", formId);
     const fieldSource = $(`${formId} .input-field`).clone();
 
-    console.log("fieldSource :>> ", fieldSource);
+    // console.log("fieldSource :>> ", fieldSource);
 
     const editFormContent = createModalForm(fieldSource);
     $("#modalBloc").modal("toggle");
@@ -479,4 +481,13 @@ $(document).ready(() => {
   //   // Enables customized tooltips
   //   $("[data-toggle='tooltip']").tooltip();
   // });
+
+  //* Saving after Editing in Modal
+  $(document).on("click", "#save-btn", function (evnt) {
+    evnt.stopPropagation();
+    const formId = "#" + $(this).attr("form");
+    const newSource = $(formId).serializeArray();
+    console.log("newSource :>> ", newSource);
+    saveMods(newSource, formId, "GetCourse");
+  });
 });
