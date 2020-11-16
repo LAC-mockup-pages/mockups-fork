@@ -462,7 +462,8 @@ $(document).ready(() => {
 
     const editFormContent = createModalForm(fieldSource);
     $("#modalBloc").modal("toggle");
-    $("#edit-form").empty().append(editFormContent).attr("data-bloc", formName);
+    $("#edit-form").empty().append(editFormContent);
+    $("#edit-form").attr("data-bloc", formName);
   });
 
   //* Select event record to edit + display selected event & roster
@@ -487,6 +488,8 @@ $(document).ready(() => {
   $(document).on("click", "#save-btn", function (evnt) {
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
+    const blocName = $(formId).data("bloc");
+    console.log("blocName :>> ", blocName);
     const newSource = $(formId).serializeArray();
     console.log("newSource :>> ", newSource);
     saveMods(newSource, formId, "GetCourse");
