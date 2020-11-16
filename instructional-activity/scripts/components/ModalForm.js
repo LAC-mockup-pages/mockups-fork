@@ -80,3 +80,30 @@ export const createModalForm = (fieldList) => {
 
   return list;
 };
+
+// Calculating and adding fields ClassID
+// and InstructionDescription
+export const addClassIdAndDescription = (fieldList, instructorsList) => {
+  let fieldObj = {};
+  const list = [];
+
+  for (const field of fieldList) {
+    const val = field.value;
+    const name = field.name;
+
+    fieldObj[name] = val;
+  }
+  const { AgencyID } = SESSION_VARIABLE[0];
+  const { ClassType, CourseID, Format, InstructorID, UpperLevel } = fieldObj;
+  const instructor = instructorsList.find(
+    (person) => person.PersonnelID === InstructorID
+  );
+  const ClassID = `${AgencyID}${ClassType}${UpperLevel}${Format}${CourseID}`;
+  const InstructionDescription = `${ClassType}${UpperLevel}${Format}${CourseID}  ${instructor.InstructorName}`;
+
+  fieldObj = { ...fieldObj, ClassID, InstructionDescription };
+  for (const item in fieldObj) {
+    list.push({ key: item, value: fieldObj[item] });
+  }
+  return list;
+};

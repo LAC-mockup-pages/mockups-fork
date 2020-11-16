@@ -11,7 +11,10 @@ import {
   createSecondarySelect
 } from "./components/FilterBloc.js";
 import { detailsView } from "./components/DetailsView.js";
-import { createModalForm } from "./components/ModalForm.js";
+import {
+  createModalForm,
+  addClassIdAndDescription
+} from "./components/ModalForm.js";
 
 // Main elements
 export const rowLabels = [
@@ -233,23 +236,6 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
 
       result[name] = val;
     }
-
-    // Calculating and adding fields ClassID
-    // and InstructionDescription
-    const {
-      AgencyID,
-      ClassType,
-      CourseID,
-      Format,
-      InstructorID,
-      UpperLevel
-    } = result;
-    const instructor = instructorList.find(
-      (person) => person.PersonnelID === InstructorID
-    );
-    const ClassID = `${AgencyID}${ClassType}${UpperLevel}${Format}${CourseID}`;
-    const InstructionDescription = `${ClassType}${UpperLevel}${Format}${CourseID}  ${instructor.InstructorName}`;
-    result = { ...result, ClassID, InstructionDescription };
 
     const target = tableName ? tableName : "No table name";
     const resultList = [formName, target, JSON.stringify(result)];
@@ -492,6 +478,12 @@ $(document).ready(() => {
     console.log("blocName :>> ", blocName);
     const newSource = $(formId).serializeArray();
     console.log("newSource :>> ", newSource);
-    saveMods(newSource, formId, "GetCourse");
+    const fieldList =
+      blocName === "main-info"
+        ? addClassIdAndDescription(newSource, instructorList)
+        : newSource;
+
+    console.log("fieldList :>> ", fieldList);
+    saveMods(fieldList, formId, "GetCourse");
   });
 });
