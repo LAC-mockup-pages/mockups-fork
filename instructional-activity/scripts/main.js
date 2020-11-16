@@ -478,10 +478,13 @@ $(document).ready(() => {
     console.log("blocName :>> ", blocName);
     const newSource = $(formId).serializeArray();
     console.log("newSource :>> ", newSource);
-    const fieldList =
+    let fieldList =
       blocName === "main-info"
         ? addClassIdAndDescription(newSource, instructorList)
         : newSource;
+
+    const courseId = $(".course-details").attr("id");
+    fieldList = [{ name: "ID", value: courseId }, ...fieldList];
 
     console.log("fieldList :>> ", fieldList);
     saveMods(fieldList, formId, "GetCourse");
