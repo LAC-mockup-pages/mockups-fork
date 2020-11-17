@@ -484,7 +484,7 @@ $(document).ready(() => {
         : newSource;
 
     const courseId = $(".course-details").attr("id");
-    fieldList = [{ name: "ID", value: courseId }, ...fieldList];
+    fieldList = [{ key: "ID", value: courseId }, ...fieldList];
 
     console.log("fieldList :>> ", fieldList);
     saveMods(fieldList, formId, "GetCourse");
