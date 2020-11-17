@@ -233,7 +233,6 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
     for (const field of fieldList) {
       let val = field.value;
       let name = field.name;
-
       result[name] = val;
     }
 
@@ -259,8 +258,8 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
       //! Details page and add other required and optional
       //! data.
       //! =================================================
-      const response = [{ ID: "99999", ...result }];
-      return response;
+      // const response = [{ ID: "99999", ...result }];
+      // return response;
     }
   }
 };
@@ -439,9 +438,9 @@ $(document).ready(() => {
   $(document).on("click", ".field-bloc", function (evnt) {
     evnt.stopPropagation();
     const formId = $(this).attr("id");
-    console.log("formId :>> ", formId);
+    // console.log("formId :>> ", formId);
     const formName = formId.replace("-form", "");
-    console.log("formName :>> ", formName);
+    // console.log("formName :>> ", formName);
     const fieldSource = $(`#${formId} .input-field`).clone();
 
     // console.log("fieldSource :>> ", fieldSource);
@@ -474,19 +473,21 @@ $(document).ready(() => {
   $(document).on("click", "#save-btn", function (evnt) {
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
+
     const blocName = $(formId).data("bloc");
-    console.log("blocName :>> ", blocName);
+    // console.log("formId :>> ", formId);
+    // console.log("blocName :>> ", blocName);
     const newSource = $(formId).serializeArray();
-    console.log("newSource :>> ", newSource);
+    // console.log("newSource :>> ", newSource);
     let fieldList =
       blocName === "main-info"
         ? addClassIdAndDescription(newSource, instructorList)
         : newSource;
 
     const courseId = $(".course-details").attr("id");
-    fieldList = [{ key: "ID", value: courseId }, ...fieldList];
+    fieldList = [{ name: "ID", value: courseId }, ...fieldList];
 
-    console.log("fieldList :>> ", fieldList);
+    // console.log("fieldList :>> ", fieldList);
     saveMods(fieldList, formId, "GetCourse");
   });
 });

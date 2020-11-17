@@ -103,7 +103,7 @@ export const addClassIdAndDescription = (fieldList, instructorsList) => {
 
   fieldObj = { ...fieldObj, ClassID, InstructionDescription };
   for (const item in fieldObj) {
-    list.push({ key: item, value: fieldObj[item] });
+    list.push({ name: item, value: fieldObj[item] });
   }
   return list;
 };
