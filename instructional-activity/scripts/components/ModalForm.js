@@ -20,7 +20,8 @@ export const createModalForm = (fieldList) => {
     "ProjTotInstHrs",
     "ProjTotADA",
     "ProjTotEIH",
-    "ProjTotStudents"
+    "ProjTotStudents",
+    "DateAssign"
   ];
   const codeList = processProgramCode(GetProgramCode.slice(0));
   const siteList = GetSite.map((item) => {

@@ -498,9 +498,16 @@ $(document).ready(() => {
   $(document).on("click", ".add-record-btn", function (evnt) {
     evnt.stopPropagation();
     const formId = $(this).attr("form");
+    let formContent,
+      formName = "";
     if (formId === "instructors") {
       const bodyClass = $(`.${formId}-body > tr`).clone();
-      addInstructor(bodyClass);
+      formContent = addInstructor(bodyClass);
+      formName = "instructors";
     }
+
+    $("#modalBloc").modal("toggle");
+    $("#edit-form").empty().append(formContent);
+    $("#edit-form").attr("data-bloc", formName);
   });
 });

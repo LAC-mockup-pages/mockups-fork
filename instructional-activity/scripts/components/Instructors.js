@@ -31,9 +31,12 @@ export const createInstructorsBloc = () => {
 };
 
 const potentialInstructors = (currentPersIDList) => {
-  return GetInstructor.slice(0).filter(
-    (instructor) => !currentPersIDList.includes(instructor.PersonnelID)
-  );
+  return GetInstructor.slice(0)
+    .filter((instructor) => !currentPersIDList.includes(instructor.PersonnelID))
+    .map((item) => {
+      const { PersonnelID, InstructorName } = item;
+      return { PersonnelID, InstructorName };
+    });
 };
 
 export const addInstructor = (trList) => {
@@ -41,8 +44,25 @@ export const addInstructor = (trList) => {
     (instructor) => instructor.PersonnelID
   );
   const filteredInstructors = potentialInstructors(currentInstructors);
+  const dateAssigned = elementInput({
+    keyVal: "DateAssign",
+    labelVal: "Date Assigned",
+    value: "",
+    labelClassVal: "",
+    classVal: "",
+    option: "placeholder='MM/DD/YYYY'",
+    optionHidden: "form-group"
+  });
 
-  console.log("currentInstructors :>> ", currentInstructors);
-  console.log("bodyClass :>> ", trList);
-  console.log("filteredInstructors :>> ", filteredInstructors);
+  const selectInstructor = elementSelectModal({
+    hashTable: filteredInstructors,
+    keyValue: "PersonnelID",
+    selectedValue: "",
+    labelVal: "Instructor",
+    labelClassVal: "",
+    option: "",
+    optionText: "an instructor"
+  });
+
+  return `${dateAssigned}${selectInstructor}`;
 };
