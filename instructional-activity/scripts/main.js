@@ -494,20 +494,20 @@ $(document).ready(() => {
     saveMods(fieldList, formId, "GetCourse");
   });
 
-  //* Adding an instructor
+  //* Adding an instructor/special program
   $(document).on("click", ".add-record-btn", function (evnt) {
     evnt.stopPropagation();
     const formId = $(this).attr("form");
-    let formContent,
-      formName = "";
+    let formContent = "";
     if (formId === "instructors") {
-      const bodyClass = $(`.${formId}-body > tr`).clone();
-      formContent = addInstructor(bodyClass);
-      formName = "instructors";
+      formContent = addInstructor();
+    }
+    if (formId === "special-program") {
+      formContent = addInstructor();
     }
 
     $("#modalBloc").modal("toggle");
     $("#edit-form").empty().append(formContent);
-    $("#edit-form").attr("data-bloc", formName);
+    $("#edit-form").attr("data-bloc", formId);
   });
 });

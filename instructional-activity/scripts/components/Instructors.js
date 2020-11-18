@@ -39,7 +39,7 @@ const potentialInstructors = (currentPersIDList) => {
     });
 };
 
-export const addInstructor = (trList) => {
+export const addInstructor = () => {
   const currentInstructors = instructorList.map(
     (instructor) => instructor.PersonnelID
   );
