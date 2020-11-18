@@ -15,6 +15,7 @@ import {
   createModalForm,
   addClassIdAndDescription
 } from "./components/ModalForm.js";
+import { addInstructor } from "./components/Instructors.js";
 
 // Main elements
 export const rowLabels = [
@@ -117,7 +118,9 @@ export const tableBody = (
     .map((record, indx) => {
       let cells = "";
       const tableData = tableName ? `data-table=${tableName}` : "";
+      const trID = record.ID ? record.ID : `${block}-${index}`;
       for (const key in record) {
+        if (key === "ID") continue;
         const optionHidden = hiddenList.includes(key) ? " hidden" : "";
         const label = labelObj[key] ? `data-label='${labelObj[key]}'` : "";
 
@@ -125,7 +128,7 @@ export const tableBody = (
                   data-field=${key} ${label}>${record[key]}</td>`;
       }
 
-      return `<tr id="${block}-${indx}" ${tableData} data-toggle="tooltip"
+      return `<tr id=${trID} ${tableData} data-toggle="tooltip"
                 data-placement="right" data-original-title="Click to Edit">
                 ${cells}
               </tr>`;
@@ -489,5 +492,15 @@ $(document).ready(() => {
 
     // console.log("fieldList :>> ", fieldList);
     saveMods(fieldList, formId, "GetCourse");
+  });
+
+  //* Adding an instructor
+  $(document).on("click", ".add-record-btn", function (evnt) {
+    evnt.stopPropagation();
+    const formId = $(this).attr("form");
+    if (formId === "instructors") {
+      const bodyClass = $(`.${formId}-body > tr`).clone();
+      addInstructor(bodyClass);
+    }
   });
 });
