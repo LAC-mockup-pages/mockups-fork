@@ -66,7 +66,9 @@ export const createRecommended = (
 
   const bloc = `
   <div class="container-fluid recommended-fields col-md-6">
-    <form role="form" class="field-bloc" id="site-tot-students" data-toggle="tooltip" data-placement="left" data-original-title="Click to Edit">
+    <form role="form" class="field-bloc" id="site-tot-students"
+      data-toggle="tooltip" data-placement="left"
+      data-original-title="Click to Edit">
       ${siteSelect}
       ${projectedEnrollment}
     </form>
