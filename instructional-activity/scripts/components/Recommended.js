@@ -104,7 +104,7 @@ export const addSpecialProgram = (rowId = "", tableName = "") => {
     option: "",
     optionText: "a special program"
   });
-  const disabled = programCode ? "disabled" : "";
+  const disabled = rowId && programCode === "IET" ? "" : "disabled";
 
   const description = elementSelectModal({
     hashTable: instructionList,

@@ -481,8 +481,6 @@ $(document).ready(() => {
       console.log("rowId :>> ", rowId);
       const table = $(`#${rowId}`).attr("data-table");
       console.log("table :>> ", table);
-      // const selectedRow = $(this).children();
-      // console.log("selectedRow :>> ", selectedRow);
 
       const formContent =
         table === "GetSpecialProgram" ? addSpecialProgram(rowId, table) : "";
