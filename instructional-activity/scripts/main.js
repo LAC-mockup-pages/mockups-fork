@@ -16,7 +16,8 @@ import {
   addClassIdAndDescription
 } from "./components/ModalForm.js";
 import { addInstructor } from "./components/Instructors.js";
-
+import { addSpecialProgram } from "./components/Recommended.js";
+import { saveSchedule } from "./components/Schedule.js";
 // Main elements
 export const rowLabels = [
   {
@@ -503,11 +504,22 @@ $(document).ready(() => {
       formContent = addInstructor();
     }
     if (formId === "special-program") {
-      formContent = addInstructor();
+      formContent = addSpecialProgram();
     }
 
     $("#modalBloc").modal("toggle");
     $("#edit-form").empty().append(formContent);
     $("#edit-form").attr("data-bloc", formId);
+  });
+
+  //* Saving schedule/funding sources
+  $(document).on("click", ".save-record-btn", function (evnt) {
+    evnt.stopPropagation();
+    const formId = $(this).attr("form");
+    let savedData = [];
+    if (formId === "schedule") {
+      savedData = saveSchedule();
+    }
+    console.log("savedData :>> ", savedData);
   });
 });

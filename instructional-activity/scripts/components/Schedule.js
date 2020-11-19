@@ -83,3 +83,25 @@ export const createSchedule = (dataObj) => {
   bloc += weekDaysHeader + scheduleBody;
   return bloc;
 };
+
+export const saveSchedule = () => {
+  const week = $("#schedule").serializeArray();
+  const weekDays = [
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+    "Sunday"
+  ];
+  console.log("week :>> ", week);
+
+  if (!week.find((item) => item.value)) {
+    for (const day of weekDays) {
+      week.push({ name: day, value: "False" });
+    }
+    return week;
+  } else {
+  }
+};

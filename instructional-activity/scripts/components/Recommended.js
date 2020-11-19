@@ -3,15 +3,17 @@
 // by the DB response after new record creation
 
 import { topBanner, tableBody } from "../main.js";
+const specialProgramList = GetSpecialProgram.slice(0).sort((item1, item2) =>
+  item1.ProgramDesc < item2.ProgramDesc
+    ? -1
+    : item1.ProgramDesc > item2.ProgramDesc
+    ? 1
+    : 0
+);
+const specialPrgmSource = GetSpecialProgramSource.slice(0);
+const instructionList = GetInstructionSource.slice(0);
 
 const createSpecialProgramView = (programID = "", subIETId = "") => {
-  const specialProgramList = GetSpecialProgram.slice(0).sort((item1, item2) =>
-    item1.ProgramDesc < item2.ProgramDesc
-      ? -1
-      : item1.ProgramDesc > item2.ProgramDesc
-      ? 1
-      : 0
-  );
   const title = "Special Program";
   const hiddenFields = [
     "ID",
@@ -79,4 +81,26 @@ export const createRecommended = (
  </div>`;
 
   return bloc;
+};
+
+export const addSpecialProgram = () => {
+  const program = elementSelectModal({
+    hashTable: specialPrgmSource,
+    keyValue: "SpecialProgramID",
+    selectedValue: "",
+    labelVal: "Program",
+    labelClassVal: "",
+    option: "",
+    optionText: "a special program"
+  });
+  const description = elementSelectModal({
+    hashTable: instructionList,
+    keyValue: "IET_Class_PKID",
+    selectedValue: "",
+    labelVal: "Instruction Description",
+    labelClassVal: "",
+    option: "disabled",
+    optionText: "an instruction description"
+  });
+  return `${program}${description}`;
 };
