@@ -10,7 +10,7 @@ import {
   createShortList,
   createSecondarySelect
 } from "./components/FilterBloc.js";
-import { detailsView } from "./components/DetailsView.js";
+import { createDetailsView } from "./components/DetailsView.js";
 import {
   createModalForm,
   addClassIdAndDescription
@@ -294,14 +294,14 @@ $(document).ready(() => {
   });
 
   //* Data viewing
-  // $("#new-entry").append(createNewRecordForm());
-  // $("#filter-bloc").append(createFilterBloc());
+  $("#new-entry").append(createNewRecordForm());
+  $("#filter-bloc").append(createFilterBloc());
 
   //! ==========================================================
   //! Temporary rendering of Details page, bypassing first page
   //! ==========================================================
 
-  detailsView(responseObj);
+  // detailsView(responseObj);
 
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
@@ -439,23 +439,26 @@ $(document).ready(() => {
     $("#edit-form").attr("data-bloc", formName);
   });
 
-  //* Select event record to edit + display selected event & roster
-  // $(document).on("click", ".row-data", function (evnt) {
-  //   evnt.stopPropagation();
+  //* Select record to display
+  $(document).on("click", "#main-table tr", function (evnt) {
+    evnt.stopPropagation();
 
-  //   const rowID = "#" + $(this).attr("id");
-  //   const selectedRow = $(`${rowID} td`).get();
-  //   const requiredList = getRequired();
-  //   const eventView = createEventView(selectedRow, requiredList);
-  //   // Cleaning up
-  //   $(".record-entry, #filter-bloc ").toggleClass("hidden");
+    const rowId = $(this).attr("id");
+    // const selectedRow = $(`${rowID} td`).get();
+    // const requiredList = getRequired();
 
-  //   $("#view-bloc").empty().append(eventView);
-  //   $("html, body").animate({ scrollTop: 220 }, 200);
+    const selectedCourse = courseList.find((course) => course.ID === rowId);
+    console.log("selectedCourse :>> ", selectedCourse);
+    const eventView = createDetailsView(selectedCourse);
+    // Cleaning up
+    $(".record-entry, #filter-bloc, #view-bloc").toggleClass("hidden");
 
-  //   // Enables customized tooltips
-  //   $("[data-toggle='tooltip']").tooltip();
-  // });
+    $("#view-bloc").empty().append(eventView);
+    $("html, body").animate({ scrollTop: 220 }, 200);
+
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
+  });
 
   //* Saving after Editing in Modal
   $(document).on("click", "#save-btn", function (evnt) {

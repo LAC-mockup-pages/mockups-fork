@@ -11,8 +11,7 @@ import { createInstructorsBloc } from "./Instructors.js";
 import { createAdditionalFields } from "./AdditionalInfo.js";
 import { createProjectedSces } from "./ProjectedSces.js";
 
-export const detailsView = (dataObj) => {
-  $(".record-entry, #filter-bloc, #view-bloc").toggleClass("hidden");
+export const createDetailsView = (dataObj) => {
   const {
     ID,
     FSID,
@@ -32,14 +31,14 @@ export const detailsView = (dataObj) => {
     SiteName,
     SiteID,
     ProjTotStudents
-  } = dataObj[0];
+  } = dataObj;
 
   // =========================================================
   // Creating blocks
   // =========================================================
-  const mainInfo = createCourseMain(dataObj[0]);
+  const mainInfo = createCourseMain(dataObj);
   const funding = createFundingBloc(FSID);
-  const schedule = createSchedule(dataObj[0]);
+  const schedule = createSchedule(dataObj);
   const recommended = createRecommended([SiteName, SiteID], ProjTotStudents);
   const instructors = createInstructorsBloc();
   const additionalFields = createAdditionalFields({
