@@ -459,12 +459,8 @@ $(document).ready(() => {
   $(document).on("click", "#save-btn", function (evnt) {
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
-
     const blocName = $(formId).data("bloc");
-    // console.log("formId :>> ", formId);
-    // console.log("blocName :>> ", blocName);
     const newSource = $(formId).serializeArray();
-    // console.log("newSource :>> ", newSource);
     let fieldList =
       blocName === "main-info"
         ? addClassIdAndDescription(newSource, instructorList)
@@ -473,7 +469,6 @@ $(document).ready(() => {
     const courseId = $(".course-details").attr("id");
     fieldList = [{ name: "ID", value: courseId }, ...fieldList];
 
-    // console.log("fieldList :>> ", fieldList);
     saveMods(fieldList, formId, "GetCourse");
   });
 
