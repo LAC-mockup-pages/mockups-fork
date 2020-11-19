@@ -18,6 +18,7 @@ import {
 import { addInstructor } from "./components/Instructors.js";
 import { addSpecialProgram } from "./components/Recommended.js";
 import { saveSchedule } from "./components/Schedule.js";
+import { saveFundingSources } from "./components/FundingSources.js";
 // Main elements
 export const rowLabels = [
   {
@@ -502,7 +503,11 @@ $(document).ready(() => {
     let savedData = [];
     if (formId === "schedule") {
       savedData = saveSchedule();
-      saveMods(savedData, formId, "GetCourse");
+    } else {
+      savedData = saveFundingSources();
     }
+    console.log("savedData :>> ", savedData);
+
+    saveMods(savedData, formId, "GetCourse");
   });
 });

@@ -23,8 +23,8 @@ export const createFundingBloc = (fundingStr) => {
     const key = source.FSID;
     const field = `
     <div class='funding-checkboxes form-group checkbox'>
-      <label for='${key}-checkbox' class="single-checkbox">
-        <input type='checkbox' name='${key}-checkbox' ${optionChecked}/>
+      <label for='${key}' class="single-checkbox">
+        <input type='checkbox' name='${key}' ${optionChecked}/>
           ${labelText}
       </label>
     </div>`;
@@ -42,4 +42,22 @@ export const createFundingBloc = (fundingStr) => {
       <div class="right-bloc col-sm-6">${rightBloc}</div>
     </div>
   </form>`;
+};
+
+export const saveFundingSources = () => {
+  const $inputList = $(".funding-bloc input").clone();
+  console.log("inputList :>> ", $inputList);
+  let fundingString = "";
+
+  $inputList.each(function (index) {
+    const sourceCode = $(this).prop("checked")
+      ? $(this).attr("name") + ","
+      : "";
+    fundingString += sourceCode;
+  });
+  const classId = $(".course-details").attr("id");
+  return [
+    { name: "ID", value: classId },
+    { name: "FSID", value: fundingString }
+  ];
 };
