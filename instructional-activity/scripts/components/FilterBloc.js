@@ -70,7 +70,7 @@ export const createFilterBloc = () => {
         <div class="col-md-3"><button type="button" id="filter-apply-btn" form="filter-form"
       class="btn dark-blue-text blue-light-bg">Apply Filters</button>
 <button type="button" id="filter-cancel-btn" form="filter-form"
-      class="btn btn-default">Clear Fliter</button></div>
+      class="btn btn-default">Clear Filters</button></div>
   </div>`;
 
   return filteringBloc;

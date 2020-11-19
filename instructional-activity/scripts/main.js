@@ -201,6 +201,7 @@ export const createViewBloc = (dataList) => {
   const list = dataList.sort((record1, record2) => record2.ID - record1.ID);
   const tableBody = createTableBody(list, rowLabels[0]);
   const viewBloc = tableHeader + tableBody;
+
   return viewBloc;
 };
 
@@ -209,6 +210,7 @@ const getRequired = () => {
   const requiredList = list
     .filter((item) => $(item).prop("required"))
     .map((item) => $(item).attr("id"));
+
   return requiredList;
 };
 
@@ -224,6 +226,10 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
 
   // Background color change for invalid field values
   // const checkFlag = validatedList.some((item) => !item.correct);
+  //! =================================================
+  //! Temporary bypassing data validation
+  //! =================================================
+
   const checkFlag = false;
 
   if (checkFlag) {
@@ -274,11 +280,11 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
 //*=================================================
 
 $(document).ready(() => {
-  // * sub-navbar/index.js
-  $("#sub-nav li").click(function () {
-    $("#sub-nav li").removeClass("blue-light-bg blue-text");
-    $(this).toggleClass("blue-light-bg blue-text");
-  });
+  //* Selecting subnavbar tabs
+  // $(document).on("click", "#sub-nav li", function (evnt) {
+  //   $("#sub-nav li").removeClass("blue-light-bg blue-text");
+  //   $(this).toggleClass("blue-light-bg blue-text");
+  // });
 
   //* Back to Top button
   const btnToTop = $("#btn-top");
@@ -296,12 +302,6 @@ $(document).ready(() => {
   //* Data viewing
   $("#new-entry").append(createNewRecordForm());
   $("#filter-bloc").append(createFilterBloc());
-
-  //! ==========================================================
-  //! Temporary rendering of Details page, bypassing first page
-  //! ==========================================================
-
-  // detailsView(responseObj);
 
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
@@ -352,7 +352,6 @@ $(document).ready(() => {
   //* Applying filters
   $(document).on("click", "#filter-apply-btn", function (evnt) {
     evnt.stopPropagation();
-    evnt.preventDefault();
     const formId = "#" + $(this).attr("form");
     const filterList = $(formId).serializeArray();
     const [selectedYear, selectedCategory, selectedValue] = filterList;
@@ -369,7 +368,6 @@ $(document).ready(() => {
     } else {
       shortList = createShortList(selectedYear.value);
     }
-
     $("#main-table").empty().append(createViewBloc(shortList));
 
     // Enables customized tooltips
@@ -439,6 +437,12 @@ $(document).ready(() => {
     $("#edit-form").attr("data-bloc", formName);
   });
 
+  //* Clicking back to IA Course Offering view
+  $(document).on("click", "#offering", function (evnt) {
+    evnt.stopPropagation();
+    location.reload();
+  });
+
   //* Select record to display
   $(document).on("click", "#main-table tr", function (evnt) {
     evnt.stopPropagation();
@@ -450,6 +454,8 @@ $(document).ready(() => {
     $(".record-entry, #filter-bloc, #view-bloc").toggleClass("hidden");
     $("#view-bloc").empty().append(eventView);
     $("html, body").animate({ scrollTop: 220 }, 200);
+    $("#offering").removeClass();
+    $("#details").addClass("blue-light-bg blue-text");
 
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
