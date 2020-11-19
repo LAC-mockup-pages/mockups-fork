@@ -83,35 +83,37 @@ export const createRecommended = (
   return bloc;
 };
 
-export const addSpecialProgram = () => {
+export const addSpecialProgram = (rowId = "", tableName = "") => {
+  let programCode,
+    descriptionCode = "";
+  if (rowId) {
+    const selectedProgram = specialProgramList.find(
+      (record) => record.ID === rowId
+    );
+    const { SpecialProgramID, IET_Class_PKID } = selectedProgram;
+    programCode = SpecialProgramID;
+    descriptionCode = IET_Class_PKID;
+  }
+
   const program = elementSelectModal({
     hashTable: specialPrgmSource,
     keyValue: "SpecialProgramID",
-    selectedValue: "",
+    selectedValue: programCode,
     labelVal: "Program",
     labelClassVal: "",
     option: "",
     optionText: "a special program"
   });
+  const disabled = programCode ? "disabled" : "";
+
   const description = elementSelectModal({
     hashTable: instructionList,
     keyValue: "IET_Class_PKID",
-    selectedValue: "",
+    selectedValue: descriptionCode,
     labelVal: "Instruction Description",
     labelClassVal: "",
-    option: "disabled",
+    option: disabled,
     optionText: "an instruction description"
   });
   return `${program}${description}`;
-};
-
-export const editSpecialProgram = (rowId, tableName) => {
-  const selectedProgram = tableName.find((record) => record.ID === rowId);
-  const {
-    SpecialProgramID,
-    ProgramDesc,
-    Class_PKID,
-    IET_Class_PKID,
-    InstructionDesc
-  } = selectedProgram;
 };

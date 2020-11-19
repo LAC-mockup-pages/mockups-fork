@@ -483,6 +483,13 @@ $(document).ready(() => {
       console.log("table :>> ", table);
       // const selectedRow = $(this).children();
       // console.log("selectedRow :>> ", selectedRow);
+
+      const formContent =
+        table === "GetSpecialProgram" ? addSpecialProgram(rowId, table) : "";
+
+      $("#modalBloc").modal("toggle");
+      $("#edit-form").empty().append(formContent);
+      $("#edit-form").attr("data-bloc", table);
     }
   );
 
