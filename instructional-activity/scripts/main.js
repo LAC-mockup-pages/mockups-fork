@@ -442,17 +442,12 @@ $(document).ready(() => {
   //* Select record to display
   $(document).on("click", "#main-table tr", function (evnt) {
     evnt.stopPropagation();
-
     const rowId = $(this).attr("id");
-    // const selectedRow = $(`${rowID} td`).get();
-    // const requiredList = getRequired();
-
     const selectedCourse = courseList.find((course) => course.ID === rowId);
-    console.log("selectedCourse :>> ", selectedCourse);
     const eventView = createDetailsView(selectedCourse);
+
     // Cleaning up
     $(".record-entry, #filter-bloc, #view-bloc").toggleClass("hidden");
-
     $("#view-bloc").empty().append(eventView);
     $("html, body").animate({ scrollTop: 220 }, 200);
 
