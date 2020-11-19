@@ -86,6 +86,8 @@ export const createSchedule = (dataObj) => {
 
 export const saveSchedule = () => {
   const week = $("#schedule").serializeArray();
+  const classId = $(".course-details").attr("id");
+  week.push({ name: "ID", value: classId });
   const weekDays = [
     "Monday",
     "Tuesday",
@@ -101,7 +103,28 @@ export const saveSchedule = () => {
     for (const day of weekDays) {
       week.push({ name: day, value: "False" });
     }
+    week.unshift({ name: "ID", value: classId });
+
     return week;
   } else {
+    const list = [];
+    for (const day of weekDays) {
+      const dayAbbrev = day.substring(0, 3);
+      const [start, end] = week.filter(
+        (time) =>
+          time.name.startsWith(dayAbbrev) &&
+          (time.name.endsWith("StartTime") || time.name.endsWith("EndTime")) &&
+          time.value
+      );
+      const value = start && end ? "True" : "False";
+      list.push(
+        { name: day, value },
+        start || { name: `${dayAbbrev}StartTime`, value: "" },
+        end || { name: `${dayAbbrev}EndTime`, value: "" }
+      );
+    }
+    list.unshift({ name: "ID", value: classId });
+
+    return list;
   }
 };

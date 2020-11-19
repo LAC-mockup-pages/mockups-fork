@@ -384,23 +384,6 @@ $(document).ready(() => {
     $(this).toggleClass("dark-text").prop("required", false);
   });
 
-  // //* Disabled toggle for Subject field based on value of Category
-  // $(document).on("change", "#ProfDevCategoryID", function (evnt) {
-  //   evnt.stopPropagation();
-  //   const catVal = $(this).val();
-  //   if (["52", "53", "58"].includes(catVal))
-  //     $("#ProfDevSubjectID").prop("disabled", false);
-  // });
-
-  // $(document).on("change", "#ProfDevCategoryID-view", function (evnt) {
-  //   evnt.stopPropagation();
-  //   const catVal = $(this).val();
-  //   if (!["52", "53", "58"].includes(catVal)) {
-  //     $("#ProfDevSubjectID-view").prop("disabled", true).val("");
-  //   }
-  //   console.log("Category value: ", catVal, typeof catVal);
-  // });
-
   //* Adding a new record
   $(document).on("click", "#submit-btn", function (evnt) {
     evnt.stopPropagation();
@@ -519,7 +502,7 @@ $(document).ready(() => {
     let savedData = [];
     if (formId === "schedule") {
       savedData = saveSchedule();
+      saveMods(savedData, formId, "GetCourse");
     }
-    console.log("savedData :>> ", savedData);
   });
 });
