@@ -409,15 +409,8 @@ $(document).ready(() => {
     }
   );
 
-  //* Saving on weekly schedule
-  $(document).on("click", ".save-record-btn", function (evnt) {
-    evnt.stopPropagation();
-    const formId = "#" + $(this).attr("form");
-    const dataSource = $(formId).serializeArray();
-    console.log("dataSource :>> ", dataSource);
-  });
-
   //* Special program handling when IET is selected
+  //TODO Add trigger, event handler
   // $(document).on('change',"#")
 
   //* Editing bloc
@@ -477,6 +470,21 @@ $(document).ready(() => {
 
     saveMods(fieldList, formId, "GetCourse");
   });
+
+  //* Editing instructor/special program
+  $(document).on(
+    "click",
+    ".instructors-body > tr, .special-program-body > tr",
+    function (evnt) {
+      evnt.stopPropagation();
+      const rowId = $(this).attr("id");
+      console.log("rowId :>> ", rowId);
+      const table = $(`#${rowId}`).attr("data-table");
+      console.log("table :>> ", table);
+      // const selectedRow = $(this).children();
+      // console.log("selectedRow :>> ", selectedRow);
+    }
+  );
 
   //* Adding an instructor/special program
   $(document).on("click", ".add-record-btn", function (evnt) {

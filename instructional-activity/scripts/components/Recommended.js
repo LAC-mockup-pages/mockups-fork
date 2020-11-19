@@ -104,3 +104,14 @@ export const addSpecialProgram = () => {
   });
   return `${program}${description}`;
 };
+
+export const editSpecialProgram = (rowId, tableName) => {
+  const selectedProgram = tableName.find((record) => record.ID === rowId);
+  const {
+    SpecialProgramID,
+    ProgramDesc,
+    Class_PKID,
+    IET_Class_PKID,
+    InstructionDesc
+  } = selectedProgram;
+};
