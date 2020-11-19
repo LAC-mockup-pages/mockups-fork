@@ -454,6 +454,19 @@ $(document).ready(() => {
     $("[data-toggle='tooltip']").tooltip();
   });
 
+  //* Handling change for special program selected
+  $(document).on("change", "#SpecialProgramID-view", function (evnt) {
+    evnt.stopPropagation();
+    const programCode = $(this).value();
+
+    console.log("programCode :>> ", programCode);
+    if (programCode === "IET") {
+      $("#IET_Class_PKID-view").prop("disabled", false);
+    } else {
+      $("#IET_Class_PKID-view").val("");
+    }
+  });
+
   //* Saving after Editing in Modal
   $(document).on("click", "#save-btn", function (evnt) {
     evnt.stopPropagation();
