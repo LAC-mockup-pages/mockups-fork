@@ -387,8 +387,8 @@ $(document).ready(() => {
         ${addInfoBloc}
       </div>
       <div class="container-fluid row bloc-comments-contacts">
-        <div>${commentsBloc}</div>
-        <div>${contactsBloc}</div>
+        ${commentsBloc}
+        ${contactsBloc}
       </div>
     </div>`);
   });
