@@ -3,26 +3,18 @@
 import createNewRecordForm from "./components/AddNewRecord.js";
 import validateRecord from "./data-check.js";
 import { getPersonnel, getPersonnelList } from "./data-server.js";
-import personView from "./components/PersonInfo.js";
-import { historyView, createFormAddHistory } from "./components/History.js";
-import proDevView from "./components/ProDev.js";
-import instructionalHoursView from "./components/InstHours.js";
 import {
-  nonInstrHoursView,
   createFormAddNonIntructionalHours,
   handleChangeNonInstHours,
   addTotalHours
 } from "./components/NonInstrHours.js";
 import {
-  homeAddress,
-  workAddress,
   createModalFormAddress,
   checkCanMailOrCall,
   handleChangeCheckBox
 } from "./components/Address.js";
-import addInfoView from "./components/AdditionalInfo.js";
-import commentsView from "./components/Comments.js";
-import { contactsView, createFormAddContact } from "./components/Contacts.js";
+import { createFormAddContact } from "./components/Contacts.js";
+import { displayPersonnelDetails } from "./components/PersonnelView.js";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -347,50 +339,14 @@ $(document).ready(() => {
     evnt.stopPropagation();
     evnt.preventDefault();
     const rowID = $(this).attr("id");
-
+    const personnelView = displayPersonnelDetails(rowID);
     // Cleaning up
     $("#view-bloc").remove();
     $("#search-input").val("");
     $(".personnel-entry").toggleClass("hidden");
     $(".personnel-search").toggleClass("hidden");
 
-    // Adding blocs
-    const personInfoBloc = personView(rowID);
-    const historyBloc = historyView();
-    const proDevBloc = proDevView();
-    const instructionalHoursBloc = instructionalHoursView();
-    const nonInstrHoursBloc = nonInstrHoursView();
-    const homeAddressBloc = homeAddress();
-    const workAddressBloc = workAddress();
-    const addInfoBloc = addInfoView();
-    const commentsBloc = commentsView();
-    const contactsBloc = contactsView();
-
-    $(".hero").append(`
-    <div class="container-fluid row personView" id=${rowID}>
-      <div class="row">
-        ${personInfoBloc}
-        <div class="bloc-history-proDev col-md-7" id='${rowID}-history'>
-          <div class="bloc-history">${historyBloc}</div>
-          <div class="bloc-proDev">${proDevBloc}</div>
-        </div>
-      </div>
-      <div class="bloc-hours container-fluid row">
-          <div class="bloc-instr-hours col-md-5">${instructionalHoursBloc}</div>
-          <div class="bloc-nonInstrHours col-md-7">${nonInstrHoursBloc}</div>
-      </div>
-      <div class="container-fluid row bloc-address">
-          <div class="bloc-home col-md-6">${homeAddressBloc}</div>
-          <div class="bloc-work col-md-6">${workAddressBloc}</div>
-      </div>
-      <div class="container-fluid bloc-additionalInfo">
-        ${addInfoBloc}
-      </div>
-      <div class="container-fluid row bloc-comments-contacts">
-        ${commentsBloc}
-        ${contactsBloc}
-      </div>
-    </div>`);
+    $(".hero").append(personnelView);
   });
   // Binding event trigger to editable blocs for editing.
   // Editable blocks are: history, non instructional hours, progress
