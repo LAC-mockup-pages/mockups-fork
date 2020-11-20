@@ -13,6 +13,7 @@ import {
   checkCanMailOrCall,
   handleChangeCheckBox
 } from "./components/Address.js";
+import { createFormAddHistory } from "./components/History.js";
 import { createFormAddContact } from "./components/Contacts.js";
 import { displayPersonnelDetails } from "./components/PersonnelView.js";
 
