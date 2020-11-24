@@ -205,7 +205,7 @@ export const createViewBloc = (dataList) => {
   return viewBloc;
 };
 
-const getRequired = () => {
+export const getRequired = () => {
   const list = $("#new-entry input, select").get();
   const requiredList = list
     .filter((item) => $(item).prop("required"))

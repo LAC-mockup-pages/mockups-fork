@@ -2,9 +2,12 @@
 // Main Info, Recommended,Additional Info, Projected Services.
 
 import { processProgramCode } from "./AdditionalInfo.js";
+import { getRequired } from "../main.js";
 
 export const createModalForm = (fieldList) => {
   const list = [];
+  const requiredList = getRequired();
+  console.log("requiredList :>> ", requiredList);
   const fieldsWithInput = [
     "CourseID",
     "ClassID",

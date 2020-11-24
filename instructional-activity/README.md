@@ -16,8 +16,6 @@ ASISTS 2020 file:
 
 ```
 
-NB: Date is last modification date.
-
 ---
 
 ### Training Notes
