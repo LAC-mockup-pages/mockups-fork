@@ -8,7 +8,7 @@ const commentsView = () => {
   >
   <textarea class="input-field dark-text" name="PersComments">${PersComments}</textarea></form>`;
   const commentsArea = header + body;
-  return `<div class="col-md-6">${commentsArea}</div>`;
+  return commentsArea;
 };
 
 export default commentsView;

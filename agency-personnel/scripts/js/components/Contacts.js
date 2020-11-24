@@ -1,7 +1,7 @@
 import { topBanner, tableBody } from "../main.js";
 import {
   getPersProgressContacts,
-  getPersContactsCodes,
+  getPersContactsCodes
 } from "../data-server.js";
 
 export const contactsView = () => {
@@ -9,7 +9,7 @@ export const contactsView = () => {
   const header = topBanner(blockName, [
     ["Date", "col-sm-2"],
     ["Type", "col-sm-2"],
-    ["Notes", "col-sm-8"],
+    ["Notes", "col-sm-8"]
   ]);
   // Sorting by date descending
   const recordList = getPersProgressContacts.sort(
@@ -25,14 +25,12 @@ export const contactsView = () => {
     {
       ContactDate: "Date",
       ContactType: "Type",
-      ContactNotes: "Notes",
+      ContactNotes: "Notes"
     },
     "PersProgressContacts"
   );
 
-  return `<div class="col-md-6">
-            ${header + body}
-          </div>`;
+  return `${header}${body}`;
 };
 
 export const createFormAddContact = (formName, rowId = null) => {
@@ -58,7 +56,7 @@ export const createFormAddContact = (formName, rowId = null) => {
         selectedValue,
         labelVal,
         labelClassVal: "",
-        option,
+        option
       };
 
       // elementSelectModal() <== helperFunctions.js
@@ -78,7 +76,7 @@ export const createFormAddContact = (formName, rowId = null) => {
         labelClassVal: "",
         classVal,
         option,
-        optionHidden,
+        optionHidden
       };
       result += elementInput(paramsObj);
     }

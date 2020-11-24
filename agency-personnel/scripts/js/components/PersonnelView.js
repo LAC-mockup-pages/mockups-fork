@@ -47,8 +47,8 @@ export const displayPersonnelDetails = (id) => {
       ${addInfoBloc}
     </div>
     <div class="container-fluid row bloc-comments-contacts">
-      ${commentsBloc}
-      ${contactsBloc}
+      <div class="bloc-comments col-md-6">${commentsBloc}</div>
+      <div class="bloc-contacts col-md-6">${contactsBloc}</div
     </div>
   </div>`;
 
