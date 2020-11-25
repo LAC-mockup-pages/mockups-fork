@@ -12,11 +12,13 @@ import { homeAddress, workAddress } from "./Address.js";
 import addInfoView from "./AdditionalInfo.js";
 import commentsView from "./Comments.js";
 import { contactsView } from "./Contacts.js";
+import { personnelData } from "../main.js";
 
 export const displayPersonnelDetails = (id) => {
+  const identifier = personnelData[0].PersonnelID;
   // Adding blocs
   const personInfoBloc = personView(id);
-  const historyBloc = historyView();
+  const historyBloc = historyView(identifier);
   const proDevBloc = proDevView();
   const instructionalHoursBloc = instructionalHoursView();
   const nonInstrHoursBloc = nonInstrHoursView();

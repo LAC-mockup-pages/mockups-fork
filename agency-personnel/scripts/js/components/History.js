@@ -47,11 +47,22 @@ const createFormAddHistory = (formName, rowId = null) => {
   return [tableName, result];
 };
 
-const historyView = () => {
+const historyView = (persId) => {
   const blockName = "History";
+  const dataObj =
+    GetPersStatusHistory.length < 1
+      ? [
+          {
+            PersonnelID: persId,
+            PersStatusDate: "",
+            PersonnelStatID: "",
+            PersonnelStatDesc: ""
+          }
+        ]
+      : GetPersStatusHistory;
 
   // Sorting data by date, most recent first
-  const historyData = GetPersStatusHistory.sort(
+  const historyData = dataObj.sort(
     (a, b) => new Date(b.PersStatusDate) - new Date(a.PersStatusDate)
   );
 
