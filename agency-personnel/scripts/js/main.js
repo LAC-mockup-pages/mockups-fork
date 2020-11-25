@@ -25,6 +25,7 @@ const labelObj = {
 
 // Variable personnelData is detached from the original request
 export const personnelData = getPersonnel.slice(0);
+const personnelList = getPersonnelList.slice(0);
 
 const yearsOfExperience = (strDate) => {
   const yearInMilliseconds = 1000 * 60 * 60 * 24 * 365;
@@ -217,7 +218,7 @@ const searchPersonnel = (str) => {
   //Checks for non alphanumeric characters
   if (!/\w+$/i.test(str)) return personnelObj;
 
-  for (const person of getPersonnelList) {
+  for (const person of personnelList) {
     if (person.First.toLowerCase().startsWith(str.toLowerCase()))
       idSet.add(person.Second);
     const firstName = person.First.split(", ")[1].toLowerCase();
@@ -225,7 +226,7 @@ const searchPersonnel = (str) => {
   }
 
   for (const id of Array.from(idSet)) {
-    const person = getPersonnelList.find((pers) => pers.Second === id);
+    const person = personnelList.find((pers) => pers.Second === id);
     const personArray = person.First.split(", ");
     const PersLast = personArray[0];
     // const tempArray = personArray[1].split(" - ");

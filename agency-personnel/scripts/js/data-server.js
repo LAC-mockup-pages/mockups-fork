@@ -401,27 +401,3 @@ const ddlEmploymentStatus = [
   { objKey: "H", objValue: "IEP Empl - Received Term. Notice" },
   { objKey: "I", objValue: "Empl - Military Sep. Pending" }
 ];
-
-export {
-  GetEthnicity,
-  getNonInstHours,
-  GetOccupation,
-  getPersContactsCodes,
-  getPersInstHours,
-  getPersonnel,
-  getPersonnelList,
-  getPersProgressContacts,
-  GetPersStatusCodes,
-  GetPersStatusHistory,
-  GetPosition,
-  GetProfDevRoster,
-  GetReferralSource,
-  getReportingPeriods,
-  GetSubject,
-  ddlPaidVolunteer,
-  ddlTimeStatus,
-  ddlExperienceYears,
-  ddlGender,
-  ddlEducationLevel,
-  ddlEmploymentStatus
-};
