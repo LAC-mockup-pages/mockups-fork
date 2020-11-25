@@ -8,8 +8,8 @@ const getPersonnelList = [
   { First: "Salty, William - SaltyWilliamPRA10", Second: "8765" }
 ];
 
-const getNonInstHours = [];
-const zzgetNonInstHours = [
+// const getNonInstHours = [];
+const getNonInstHours = [
   {
     ID: "32902",
     PersonnelID: "PorterSamanthaPRA9",
@@ -159,6 +159,7 @@ const getPersonnel = [
 // PersHomeCity: "",
 // PersHomeZip: "",
 
+// const getPersProgressContacts = [];
 const getPersProgressContacts = [
   {
     ID: "8859",

@@ -1,16 +1,28 @@
 import { topBanner, tableBody } from "../main.js";
 
-export const contactsView = () => {
+export const contactsView = (PersonnelID) => {
   const blockName = "Progress Contact";
   const header = topBanner(blockName, [
     ["Date", "col-sm-2"],
     ["Type", "col-sm-2"],
     ["Notes", "col-sm-8"]
   ]);
+  const recordList =
+    getPersProgressContacts.length < 1
+      ? [
+          {
+            PersonnelID,
+            ContactDate: "",
+            ContactType: "",
+            ContactDesc: "",
+            ContactNotes: ""
+          }
+        ]
+      : getPersProgressContacts.sort(
+          (a, b) => new Date(b.ContactDate) - new Date(a.ContactDate)
+        );
+
   // Sorting by date descending
-  const recordList = getPersProgressContacts.sort(
-    (a, b) => new Date(b.ContactDate) - new Date(a.ContactDate)
-  );
   recordList.forEach(
     (record) => (record.ContactDesc = record.ContactDesc.trim())
   );
