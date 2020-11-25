@@ -8,7 +8,8 @@ const getPersonnelList = [
   { First: "Salty, William - SaltyWilliamPRA10", Second: "8765" }
 ];
 
-const getNonInstHours = [
+const getNonInstHours = [];
+const zzgetNonInstHours = [
   {
     ID: "32902",
     PersonnelID: "PorterSamanthaPRA9",

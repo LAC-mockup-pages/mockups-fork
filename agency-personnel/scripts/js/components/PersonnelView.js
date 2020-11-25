@@ -21,12 +21,12 @@ export const displayPersonnelDetails = (id) => {
   const historyBloc = historyView(identifier);
   const proDevBloc = proDevView();
   const instructionalHoursBloc = instructionalHoursView();
-  const nonInstrHoursBloc = nonInstrHoursView();
+  const nonInstrHoursBloc = nonInstrHoursView(identifier);
   const homeAddressBloc = homeAddress();
   const workAddressBloc = workAddress();
   const addInfoBloc = addInfoView();
   const commentsBloc = commentsView();
-  const contactsBloc = contactsView();
+  const contactsBloc = contactsView(identifier);
 
   const view = `
   <div class="container-fluid row personView" id=${id}>

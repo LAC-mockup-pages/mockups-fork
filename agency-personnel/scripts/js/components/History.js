@@ -47,13 +47,13 @@ const createFormAddHistory = (formName, rowId = null) => {
   return [tableName, result];
 };
 
-const historyView = (persId) => {
+const historyView = (PersonnelID) => {
   const blockName = "History";
   const dataObj =
     GetPersStatusHistory.length < 1
       ? [
           {
-            PersonnelID: persId,
+            PersonnelID,
             PersStatusDate: "",
             PersonnelStatID: "",
             PersonnelStatDesc: ""
