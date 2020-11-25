@@ -2,7 +2,6 @@
 
 import createNewRecordForm from "./components/AddNewRecord.js";
 import validateRecord from "./data-check.js";
-import { getPersonnel, getPersonnelList } from "./data-server.js";
 import {
   createFormAddNonIntructionalHours,
   handleChangeNonInstHours,

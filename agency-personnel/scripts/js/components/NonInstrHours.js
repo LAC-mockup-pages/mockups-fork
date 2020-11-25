@@ -1,4 +1,3 @@
-import { getNonInstHours, getReportingPeriods } from "../data-server.js";
 import { topBanner, tableBody } from "../main.js";
 
 const handleChangeNonInstHours = () => {
@@ -52,7 +51,7 @@ const createFormAddNonIntructionalHours = (formName, rowId = null) => {
         selectedValue,
         labelVal,
         labelClassVal: "",
-        option,
+        option
       };
 
       // elementSelectModal() <== helperFunctions.js
@@ -68,7 +67,7 @@ const createFormAddNonIntructionalHours = (formName, rowId = null) => {
         labelClassVal: "",
         classVal: "style='width:10%;text-align:center'",
         option,
-        optionHidden,
+        optionHidden
       };
       result += elementInput(paramsObj);
     }
@@ -96,7 +95,7 @@ const addMonth = (recordList) => {
     "Sept",
     "Oct",
     "Nov",
-    "Dec",
+    "Dec"
   ];
 
   for (const record of list) {
@@ -117,7 +116,7 @@ const nonInstrHoursView = () => {
     ["Training", "col-sm-2"],
     ["Meeting", "col-sm-1"],
     ["Extra", "col-sm-2"],
-    ["Total", "col-sm-1"],
+    ["Total", "col-sm-1"]
   ]);
 
   const body = tableBody(
@@ -131,7 +130,7 @@ const nonInstrHoursView = () => {
       TrainingHours: "Training Hrs",
       MeetingHours: "Meeting Hrs",
       ExtraHours: "Extra Hrs",
-      TotalHours: "Total Hrs",
+      TotalHours: "Total Hrs"
     },
     "NonInstHours"
   );
@@ -143,5 +142,5 @@ export {
   nonInstrHoursView,
   createFormAddNonIntructionalHours,
   handleChangeNonInstHours,
-  addTotalHours,
+  addTotalHours
 };

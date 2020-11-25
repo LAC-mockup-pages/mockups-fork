@@ -1,13 +1,5 @@
 //* Viewing personnel info: Person
 
-import {
-  getPersonnel,
-  GetPosition,
-  GetSubject,
-  ddlTimeStatus,
-  ddlExperienceYears,
-  ddlPaidVolunteer
-} from "../data-server.js";
 import { topBanner } from "../main.js";
 
 const personView = (selectedID) => {

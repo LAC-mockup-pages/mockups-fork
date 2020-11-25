@@ -1,12 +1,4 @@
 import { personnelData, topBanner } from "../main.js";
-import {
-  ddlGender,
-  GetEthnicity,
-  ddlEducationLevel,
-  ddlEmploymentStatus,
-  GetOccupation,
-  GetReferralSource
-} from "../data-server.js";
 
 const leftBlock = () => {
   const {

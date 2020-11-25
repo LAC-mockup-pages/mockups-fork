@@ -1,11 +1,3 @@
-import {
-  GetPosition,
-  GetSubject,
-  ddlPaidVolunteer,
-  ddlTimeStatus,
-  ddlExperienceYears
-} from "../data-server.js";
-
 const createNewRecordForm = () => {
   const createSimpleSelect = (hashTable, keyValue, labelValue) => {
     const [primary, secondary] = Object.keys(hashTable[0]);

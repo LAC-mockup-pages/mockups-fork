@@ -1,8 +1,4 @@
 import { topBanner, tableBody } from "../main.js";
-import {
-  getPersProgressContacts,
-  getPersContactsCodes
-} from "../data-server.js";
 
 export const contactsView = () => {
   const blockName = "Progress Contact";

@@ -1,4 +1,3 @@
-import { getPersInstHours } from "../data-server.js";
 import { topBanner, tableBody } from "../main.js";
 
 const accumulatedHours = (dataList) => {
@@ -15,7 +14,7 @@ const accumulatedHours = (dataList) => {
       TestHours,
       TestContHours,
       LabHours,
-      ExtraHoursLT12,
+      ExtraHoursLT12
     } = record;
     totalInstrHours =
       InstHours + TestHours + TestContHours + LabHours + ExtraHoursLT12;
@@ -42,7 +41,7 @@ const instructionalHoursView = () => {
   const blockName = "Instructional Hours";
   const header = topBanner(blockName, [
     ["Class", "col-sm-9"],
-    ["Hours", "col-m-3"],
+    ["Hours", "col-m-3"]
   ]);
   const addedHours = accumulatedHours(getPersInstHours);
   const body = tableBody(addedHours, blockName, ["ID"]);

@@ -1,4 +1,3 @@
-import { GetPersStatusHistory, GetPersStatusCodes } from "../data-server.js";
 import { topBanner, tableBody } from "../main.js";
 
 const createFormAddHistory = (formName, rowId = null) => {
@@ -24,7 +23,7 @@ const createFormAddHistory = (formName, rowId = null) => {
         selectedValue,
         labelVal,
         labelClassVal: "",
-        option: "",
+        option: ""
       };
       // elementSelectModal() <== helperFunctions.js
       result += elementSelectModal(paramsSelect);
@@ -39,7 +38,7 @@ const createFormAddHistory = (formName, rowId = null) => {
         labelClassVal: "",
         classVal: "",
         option,
-        optionHidden,
+        optionHidden
       };
 
       result += elementInput(paramsObj);
@@ -58,7 +57,7 @@ const historyView = () => {
 
   const header = topBanner(blockName, [
     ["Date", "col-sm-2"],
-    ["Status", "col-sm-10"],
+    ["Status", "col-sm-10"]
   ]);
 
   const body = tableBody(

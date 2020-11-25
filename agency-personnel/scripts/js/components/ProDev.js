@@ -1,4 +1,3 @@
-import { GetProfDevRoster } from "../data-server.js";
 import { topBanner, tableBody } from "../main.js";
 
 const totalProDevHrs = (dataList) => {
