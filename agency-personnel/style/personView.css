@@ -33,7 +33,10 @@
   height: 180px;
   overflow-y: scroll;
 }
-
+.bloc-additionalInfo .row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
 .bloc-history-proDev,
 .person-main {
   margin: 0% 0% 2% 0%;
@@ -43,7 +46,7 @@
   margin-top: 1.7%;
 }
 
-.bloc-perso:hover {
+.color-select:hover {
   background-color: #d3e4f0;
 }
 
@@ -53,7 +56,6 @@
 .bloc-perso input,
 .bloc-perso select {
   width: 68%;
-  background-color: inherit;
 }
 
 .bloc-proDev {
@@ -71,6 +73,11 @@
   padding: 4% 0 4% 0;
   margin-top: 1%;
   border-top: 4px solid #d3e4f0;
+}
+
+.color-select input,
+.color-select select {
+  background-color: inherit;
 }
 
 .non-instructional-hours-table {

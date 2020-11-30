@@ -1,3 +1,5 @@
+//* Viewing additional info for the selected personnel
+
 import { personnelData, topBanner } from "../main.js";
 
 const leftBlock = () => {
@@ -107,9 +109,10 @@ const rightBlock = () => {
 
 const addInfoView = () => {
   const blockName = "Additional Information";
+  const blocId = blockName.toLowerCase().replace(/\W/gi, "-");
   const { ID } = personnelData[0];
   const header = topBanner(blockName);
-  const body = `<form class="row" role="form" id="additional-information" data-table="Personnel">
+  const body = `<form class="row color-select" role="form" id=${blocId} data-table="Personnel" data-toggle="tooltip" data-placement="left" data-original-title="Click to Edit">
                   <input class="hidden" name="ID" value=${ID}>
                   ${leftBlock()}
                   ${rightBlock()}
