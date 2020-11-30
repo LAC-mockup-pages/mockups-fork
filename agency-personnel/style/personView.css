@@ -76,8 +76,20 @@
 }
 
 .color-select input,
-.color-select select {
+.color-select select,
+.color-select textarea {
   background-color: inherit;
+}
+#comments {
+  height: 14em;
+  overflow-y: scroll;
+  padding-left: 2%;
+}
+.comment-line {
+  color: #333;
+  font-size: 1.2em;
+  font-weight: 400;
+  line-height: 2.2em;
 }
 
 .non-instructional-hours-table {
