@@ -64,8 +64,6 @@ export const topBanner = (title, list = null) => {
     ].includes(title)
   ) {
     headerButton = `<button type='button' class="btn btn-default add-record-btn col-sm-2" ${formName}>Add</button>`;
-  } else if (["Comments", "Additional Information"].includes(title)) {
-    headerButton = `<button type='button' class="btn btn-default save-record-btn col-sm-2" ${formName}>Save</button>`;
   } else if (["Home Address", "Work Address"].includes(title)) {
     headerButton = `<button type='button' class="btn btn-default add-record-btn col-sm-2" ${formName}>Add / Edit</button>`;
   }
