@@ -120,11 +120,14 @@ const personView = (selectedID) => {
   });
 
   const header = topBanner(title);
-  return `<div class="person-main col-md-5">
-      ${header}
-    <form class="bloc-perso" id='${title
-      .toLowerCase()
-      .replace(/\W/gi, "-")}' data-table="Personnel">${fields.join("")}
+  const blocId = title.toLowerCase().replace(/\W/gi, "-");
+  const rows = fields.join("");
+
+  return `
+  <div class="person-main col-md-5">
+    ${header}
+    <form class="bloc-perso" id=${blocId} data-table="Personnel" data-toggle="tooltip" data-placement="left" data-original-title="Click to Edit">
+    ${rows}
     </form>
   </div>`;
 };
