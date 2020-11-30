@@ -31,7 +31,7 @@ const personView = (selectedID) => {
     const labelVal = labels[key];
     let classVal = "";
     let value = personData[key];
-    let option = "";
+    let option = "disabled";
     let optionHidden = "form-group";
     let type = "";
 
@@ -51,7 +51,7 @@ const personView = (selectedID) => {
         "PersExpYears"
       ].includes(key)
     ) {
-      option = "required";
+      option += " required";
       labelClassVal = "class='red-text'";
     }
 
@@ -126,8 +126,10 @@ const personView = (selectedID) => {
   return `
   <div class="person-main col-md-5">
     ${header}
-    <form class="bloc-perso color-select" id=${blocId} data-table="Personnel" data-toggle="tooltip" data-placement="left" data-original-title="Click to Edit">
-    ${rows}
+    <form class="bloc-perso color-select" id=${blocId} data-table="Personnel"
+    data-toggle="tooltip" data-placement="left"
+    data-original-title="Click to Edit">
+      ${rows}
     </form>
   </div>`;
 };
