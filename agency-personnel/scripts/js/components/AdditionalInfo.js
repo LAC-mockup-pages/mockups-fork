@@ -10,30 +10,33 @@ const leftBlock = () => {
     PersEducation
   } = personnelData[0];
 
+  const option = "disabled";
+  const labelClassVal = "";
+
   const genderArgObj = {
     hashTable: ddlGender,
     keyValue: "PersGender",
     selectedValue: PersGender,
     labelVal: "Gender",
-    labelClassVal: "",
-    option: ""
+    labelClassVal,
+    option
   };
   const ethnicityArgObj = {
     hashTable: GetEthnicity,
     keyValue: "PersEthnicity",
     selectedValue: PersEthnicity,
     labelVal: "Ethnicity",
-    labelClassVal: "",
-    option: ""
+    labelClassVal,
+    option
   };
 
   const birthDateArgObj = {
     keyVal: "PersBirthDate",
     labelVal: "Birth Date",
     value: PersBirthDate,
-    labelClassVal: "",
+    labelClassVal,
     classVal: "",
-    option: "",
+    option,
     optionHidden: "form-group"
   };
 
@@ -42,8 +45,8 @@ const leftBlock = () => {
     keyValue: "PersEducation",
     selectedValue: PersEducation,
     labelVal: "Education Level",
-    labelClassVal: "",
-    option: ""
+    labelClassVal,
+    option
   };
 
   // elementSelectModal() <== helperFunctions.js
@@ -67,13 +70,16 @@ const rightBlock = () => {
     PersReferral
   } = personnelData[0];
 
+  const option = "disabled";
+  const labelClassVal = "";
+
   const employmentArgObj = {
     hashTable: ddlEmploymentStatus,
     keyValue: "PersEmploymentStatus",
     selectedValue: PersEmploymentStatus,
     labelVal: "Employment Status",
-    labelClassVal: "",
-    option: ""
+    labelClassVal,
+    option
   };
 
   const occupationArgObj = {
@@ -81,8 +87,8 @@ const rightBlock = () => {
     keyValue: "PersOccupation",
     selectedValue: PersOccupation,
     labelVal: "Occupation",
-    labelClassVal: "",
-    option: ""
+    labelClassVal,
+    option
   };
 
   const referralArgObj = {
@@ -90,8 +96,8 @@ const rightBlock = () => {
     keyValue: "PersReferral",
     selectedValue: PersReferral,
     labelVal: "Referral",
-    labelClassVal: "",
-    option: ""
+    labelClassVal,
+    option
   };
 
   // elementSelectModal() <== helperFunctions.js
@@ -112,11 +118,14 @@ const addInfoView = () => {
   const blocId = blockName.toLowerCase().replace(/\W/gi, "-");
   const { ID } = personnelData[0];
   const header = topBanner(blockName);
-  const body = `<form class="row color-select" role="form" id=${blocId} data-table="Personnel" data-toggle="tooltip" data-placement="left" data-original-title="Click to Edit">
-                  <input class="hidden" name="ID" value=${ID}>
-                  ${leftBlock()}
-                  ${rightBlock()}
-                </form>`;
+  const body = `
+  <form class="row color-select" role="form" id=${blocId}
+    data-table="Personnel" data-toggle="tooltip" data-placement="left"
+    data-original-title="Click to Edit">
+      <input class="hidden" name="ID" value=${ID}>
+      ${leftBlock()}
+      ${rightBlock()}
+  </form>`;
   return header + body;
 };
 
