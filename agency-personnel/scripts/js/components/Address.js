@@ -4,8 +4,6 @@ export const homeAddress = () => {
   const blockName = "Home Address";
   const header = topBanner(blockName);
   const {
-    ID,
-    PersonnelID,
     PersHomeAddress,
     PersHomeState,
     PersHomeCity,
@@ -18,11 +16,6 @@ export const homeAddress = () => {
     { keyVal: "PersHomeState", value: PersHomeState, labelVal: "State" },
     { keyVal: "PersHomeZip", value: PersHomeZip, labelVal: "ZIP code" }
   ];
-
-  // const fullAddress = `${PersHomeAddress} <br> ${PersHomeCity.toUpperCase()} ${PersHomeState} ${PersHomeZip}`;
-  // const body = `<div class="home-address dark-text" data-fields='${JSON.stringify(
-  //   fieldObj
-  // )}'> ${fullAddress}</div>`;
 
   let classVal = "";
   let labelClassVal = "";
@@ -57,7 +50,7 @@ export const homeAddress = () => {
     <form role="form" class="home-address color-select" data-table="Personnel" data-toggle="tooltip" data-placement="left"
     data-original-title="Click to Edit">
       ${rows}
-    </form`;
+    </form>`;
   return header + body;
 };
 
@@ -137,7 +130,6 @@ export const workAddress = () => {
   const blockName = "Work Address";
   const header = topBanner(blockName);
   const {
-    PersonnelID,
     PersWorkAddress,
     PersWorkState,
     PersWorkCity,
@@ -149,29 +141,58 @@ export const workAddress = () => {
   const canMailCheck = PersWorkSendMail === "False" ? "" : "checked";
   const canCallCheck = PersWorkCanCall === "False" ? "" : "checked";
 
-  const fieldObj = {
-    PersonnelID: { value: PersonnelID, label: "" },
-    PersWorkAddress: { value: PersWorkAddress, label: "Address" },
-    PersWorkCity: { value: PersWorkCity, label: "City" },
-    PersWorkState: { value: PersWorkState, label: "State" },
-    PersWorkZip: { value: PersWorkZip, label: "ZIP code" },
-    PersWorkSendMail: { value: PersWorkSendMail, label: "Can receive mail? " },
-    PersWorkCanCall: { value: PersWorkCanCall, label: "Can receive calls? " }
-  };
-  const fullAddress = `${PersWorkAddress}<br> ${PersWorkCity.toUpperCase()} ${PersWorkState} ${PersWorkZip}`;
-  const body = `<div class="work-address dark-text" data-fields='${JSON.stringify(
-    fieldObj
-  )}'> ${fullAddress}
+  const fieldObj = [
+    { keyVal: "PersWorkAddress", value: PersWorkAddress, labelVal: "Address" },
+    { keyVal: "PersWorkCity", value: PersWorkCity, labelVal: "City" },
+    { keyVal: "PersWorkState", value: PersWorkState, labelVal: "State" },
+    { keyVal: "PersWorkZip", value: PersWorkZip, labelVal: "ZIP code" }
+  ];
+
+  let classVal = "";
+  let labelClassVal = "";
+  let option = "disabled";
+  let optionHidden = "form-group";
+  let rows = "";
+  for (const field of fieldObj) {
+    const { keyVal, value, labelVal } = field;
+    if (keyVal === "PersWorkState") {
+      rows += elementSelectModal({
+        hashTable: DDL_STATES,
+        keyValue: keyVal,
+        selectedValue: value,
+        labelVal,
+        labelClassVal,
+        option,
+        optionText: "a state"
+      });
+    } else {
+      rows += elementInput({
+        keyVal,
+        labelVal,
+        value,
+        labelClassVal,
+        classVal,
+        option,
+        optionHidden
+      });
+    }
+  }
+  const body = `
+  <div class="work-address color-select">
+    <form role="form" class="work-address" data-table="Personnel" data-toggle="tooltip" data-placement="right"
+    data-original-title="Click to Edit">
+      ${rows}
+    </form>
     <div class='container-fluid row work-address-checkbox'>
-        <div class='mail-call-checkboxes col-sm-6'>
-          <label for='canMail-checkbox'>Can receive mail? </label>
-          <input type='checkbox' id='PersWorkSendMail-checkbox' ${canMailCheck} disabled/>
-        </div>
-        <div class='mail-call-checkboxes col-sm-6'>
-          <label for='canCall-checkbox'>Can receive calls? </label>
-          <input type='checkbox' id='PersWorkCanCall-checkbox' ${canCallCheck} disabled/>
-        </div>
+      <div class='mail-call-checkboxes col-sm-6'>
+        <label for='canMail-checkbox'>Can receive mail? </label>
+        <input type='checkbox' name='canMail-checkbox' id='PersWorkSendMail-checkbox' ${canMailCheck} disabled/>
       </div>
+      <div class='mail-call-checkboxes col-sm-6'>
+        <label for='canCall-checkbox'>Can receive calls? </label>
+        <input type='checkbox' name='canCall-checkbox' id='PersWorkCanCall-checkbox' ${canCallCheck} disabled/>
+      </div>
+    </div>
   </div>`;
   return header + body;
 };
