@@ -55,7 +55,7 @@ const leftBlock = () => {
   const ethnicity = elementSelectModal(ethnicityArgObj);
   const birthDate = elementInput(birthDateArgObj);
   const education = elementSelectModal(educationArgObj);
-  return `<div class="col-md-6">
+  return `<div class="col-md-6 additional-left-bloc">
             ${gender}
             ${ethnicity}
             ${birthDate}
@@ -106,7 +106,7 @@ const rightBlock = () => {
   const occupation = elementSelectModal(occupationArgObj);
   const referral = elementSelectModal(referralArgObj);
 
-  return `<div class="col-md-6">
+  return `<div class="col-md-6 additional-right-bloc">
             ${employment}
             ${occupation}
             ${referral}

@@ -158,6 +158,10 @@
   height: 15px;
 }
 
+.additional-right-bloc {
+  padding-left: 3%;
+}
+
 .notes-and-comments {
   background-color: #f5f5f5;
   margin: 1% 0 1% 0;
