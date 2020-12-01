@@ -4,6 +4,7 @@ export const homeAddress = () => {
   const blockName = "Home Address";
   const header = topBanner(blockName);
   const {
+    ID,
     PersonnelID,
     PersHomeAddress,
     PersHomeState,
@@ -11,19 +12,52 @@ export const homeAddress = () => {
     PersHomeZip
   } = personnelData[0];
 
-  const fieldObj = {
-    PersonnelID: { value: PersonnelID, label: "" },
-    PersHomeAddress: { value: PersHomeAddress, label: "Address" },
-    PersHomeZip: { value: PersHomeZip, label: "ZIP code" },
-    PersHomeCity: { value: PersHomeCity, label: "City" },
-    PersHomeState: { value: PersHomeState, label: "State" }
-  };
+  const fieldObj = [
+    { keyVal: "PersHomeAddress", value: PersHomeAddress, labelVal: "Address" },
+    { keyVal: "PersHomeCity", value: PersHomeCity, labelVal: "City" },
+    { keyVal: "PersHomeState", value: PersHomeState, labelVal: "State" },
+    { keyVal: "PersHomeZip", value: PersHomeZip, labelVal: "ZIP code" }
+  ];
 
-  const fullAddress = `${PersHomeAddress} <br> ${PersHomeCity.toUpperCase()} ${PersHomeState} ${PersHomeZip}`;
-  const body = `<div class="home-address dark-text" data-fields='${JSON.stringify(
-    fieldObj
-  )}'> ${fullAddress}</div>`;
+  // const fullAddress = `${PersHomeAddress} <br> ${PersHomeCity.toUpperCase()} ${PersHomeState} ${PersHomeZip}`;
+  // const body = `<div class="home-address dark-text" data-fields='${JSON.stringify(
+  //   fieldObj
+  // )}'> ${fullAddress}</div>`;
 
+  let classVal = "";
+  let labelClassVal = "";
+  let option = "disabled";
+  let optionHidden = "form-group";
+  let rows = "";
+  for (const field of fieldObj) {
+    const { keyVal, value, labelVal } = field;
+    if (keyVal === "PersHomeState") {
+      rows += elementSelectModal({
+        hashTable: DDL_STATES,
+        keyValue: keyVal,
+        selectedValue: value,
+        labelVal,
+        labelClassVal,
+        option,
+        optionText: "a state"
+      });
+    } else {
+      rows += elementInput({
+        keyVal,
+        labelVal,
+        value,
+        labelClassVal,
+        classVal,
+        option,
+        optionHidden
+      });
+    }
+  }
+  const body = `
+    <form role="form" class="home-address color-select" data-table="Personnel" data-toggle="tooltip" data-placement="left"
+    data-original-title="Click to Edit">
+      ${rows}
+    </form`;
   return header + body;
 };
 
