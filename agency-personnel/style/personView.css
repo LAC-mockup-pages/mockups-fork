@@ -144,11 +144,7 @@
 
 .home-address,
 .work-address {
-  line-height: 2em;
-  margin-left: 5%;
-  font-size: 1.2em;
-  font-weight: 400;
-  text-align: center;
+  padding-left: 2%;
 }
 
 .mail-call-checkboxes > label,
