@@ -47,7 +47,7 @@ export const homeAddress = () => {
     }
   }
   const body = `
-    <form role="form" class="home-address color-select" data-table="Personnel" data-toggle="tooltip" data-placement="left"
+    <form role="form" class="home-address color-select" id="home-address" data-table="Personnel" data-toggle="tooltip" data-placement="left"
     data-original-title="Click to Edit">
       ${rows}
     </form>`;
@@ -178,11 +178,10 @@ export const workAddress = () => {
     }
   }
   const body = `
-  <div class="work-address color-select">
-    <form role="form" class="work-address" data-table="Personnel" data-toggle="tooltip" data-placement="right"
+  <div class="work-address">
+    <form role="form" class="work-address color-select" data-table="Personnel" id="work-address" data-toggle="tooltip" data-placement="right"
     data-original-title="Click to Edit">
       ${rows}
-    </form>
     <div class='container-fluid row work-address-checkbox'>
       <div class='mail-call-checkboxes col-sm-6'>
         <label for='canMail-checkbox'>Can receive mail? </label>
@@ -192,7 +191,8 @@ export const workAddress = () => {
         <label for='canCall-checkbox'>Can receive calls? </label>
         <input type='checkbox' name='canCall-checkbox' id='PersWorkCanCall-checkbox' ${canCallCheck} disabled/>
       </div>
-    </div>
+    </div></form>
+
   </div>`;
   return header + body;
 };
