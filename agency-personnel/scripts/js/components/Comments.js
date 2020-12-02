@@ -7,7 +7,7 @@ const commentsView = () => {
   const commentList = PersComments.split("\n")
     .map((str) => `<p class="comment-line">${str}</p>`)
     .join("");
-  console.log("commentList :>> ", commentList);
+  // console.log("commentList :>> ", commentList);
   const body = `
   <div class="color-select" id="comments" data-table="getPersonnel" data-toggle="tooltip" data-placement="left"
   data-original-title="Click to Edit">

@@ -15,6 +15,7 @@ import {
 import { createFormAddHistory } from "./components/History.js";
 import { createFormAddContact } from "./components/Contacts.js";
 import { displayPersonnelDetails } from "./components/PersonnelView.js";
+import { createModalForm } from "./components/ModalFormContent.js";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -430,6 +431,28 @@ $(document).ready(() => {
   //* Editing a block.
   //* Applies to: Personnel Information,Home Address, Work Address,
   //* Additional Info and Comments.
+
+  $(document).on("click", ".color-select", function (evnt) {
+    evnt.stopPropagation();
+    const formId = $(this).attr("id");
+    const tableName = $(`#${formId}`).data("table");
+    let editFormContent = "";
+
+    console.log("formId :>> ", formId);
+    console.log("tableName :>> ", tableName);
+
+    if (formId === "comments") {
+    } else {
+      const content = $(`#${formId}`).clone().children();
+      editFormContent = createModalForm(content);
+    }
+    $("#modalBloc").modal("toggle");
+    $("#modal-form")
+      .empty()
+      .append(editFormContent)
+      .attr("data-table", tableName)
+      .attr("data-block", formId);
+  });
 
   //* Save button in block top banner
   $(document).on("click", ".save-record-btn", function (evnt) {

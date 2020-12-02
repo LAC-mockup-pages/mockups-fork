@@ -2,7 +2,7 @@
 
 import { topBanner } from "../main.js";
 
-const personView = (selectedID) => {
+export const personView = (selectedID) => {
   const personData = getPersonnel.filter(
     (person) => person.ID === selectedID
   )[0];
@@ -134,4 +134,5 @@ const personView = (selectedID) => {
   </div>`;
 };
 
-export default personView;
+// Content for Editing in Modal Form
+export const createPersInfoModalForm = (content) => {};
