@@ -342,9 +342,9 @@ $(document).ready(() => {
     $("[data-toggle='tooltip']").tooltip();
   });
 
-  //* Binding event trigger to editable blocs for editing.
-  //* Editable blocks are: history, non instructional hours, progress
-  //* contacts.
+  //* Binding event trigger to editable rows.
+  //* Editable blocks are: history, non instructional hours,
+  //* progress contacts.
   $(document).on(
     "click",
     ".history-body > tr,.non-instructional-hours-body > tr,.progress-contact-body > tr",
@@ -427,7 +427,7 @@ $(document).ready(() => {
     }
   });
 
-  // Save button in block top banner
+  //* Save button in block top banner
   $(document).on("click", ".save-record-btn", function (evnt) {
     evnt.stopPropagation();
     const formName = `#${$(this).attr("form")}`;
