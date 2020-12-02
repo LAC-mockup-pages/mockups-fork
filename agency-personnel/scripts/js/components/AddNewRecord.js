@@ -17,7 +17,7 @@ const createNewRecordForm = () => {
     PersPersonnelID: "Personnel ID",
     PersFirst: "First name",
     PersLast: "Last name",
-    PersStartDate: "Start date",
+    PersStartDate: "Start date MM/DD/YYYY",
     lengthstay: "Length of stay (yrs)"
   };
 
