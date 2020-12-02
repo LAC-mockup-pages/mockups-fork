@@ -15,7 +15,6 @@ import {
 import { createFormAddHistory } from "./components/History.js";
 import { createFormAddContact } from "./components/Contacts.js";
 import { displayPersonnelDetails } from "./components/PersonnelView.js";
-import { createEditForm } from "./components/ModalFormContent.js";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -444,7 +443,12 @@ $(document).ready(() => {
     if (formId === "comments") {
     } else {
       const content = $(`#${formId}`).clone().children();
-      editFormContent = createEditForm(content);
+      editFormContent = $(content).each(function (indx) {
+        $(this)
+          .children("input, select")
+          .prop("disabled", false)
+          .removeAttr("disabled");
+      });
     }
 
     console.log("editFormContent :>> ", editFormContent);
