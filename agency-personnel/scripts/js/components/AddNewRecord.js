@@ -35,7 +35,8 @@ const createNewRecordForm = () => {
   for (const key of keyList) {
     let option = " required";
     let classOption = "";
-    if (["AgencyID", "lengthstay"].includes(key)) classOption = " hidden";
+    if (["AgencyID", "PersPersonnelID", "lengthstay"].includes(key))
+      classOption = " hidden";
     let inputElement = `<input type="text" class="form-control${classOption}" id=${key} name="${key}" placeholder="${labelList[key]}"${option} aria-autocomplete="none" spellcheck="off">`;
 
     formNewPers.push(inputElement);
@@ -46,10 +47,6 @@ const createNewRecordForm = () => {
       createSimpleSelect(selectList[key][1], key, selectList[key][0])
     );
   }
-
-  // formNewPers.push(
-  //   '<button type="button" id="submit-btn" form="new-personnel" class="btn btn-primary">Add</button><button type="button" id="cancel-btn" form="new-personnel" class="btn btn-default">Cancel</button>'
-  // );
 
   return formNewPers.join("");
 };
