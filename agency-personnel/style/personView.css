@@ -153,9 +153,22 @@
   font-weight: 400;
 }
 
-.mail-call-checkboxes > input {
-  width: 15px;
-  height: 15px;
+.mail-call-checkboxes > label {
+  margin-bottom: 1em;
+  padding-bottom: 3%;
+  line-height: 2.5em;
+}
+
+.mail-call-checkboxes > input[type="checkbox"] {
+  width: 1.5em;
+  height: 1.5em;
+  margin-left: 2em;
+
+  margin-bottom: -1em;
+}
+
+.mail-call-checkboxes input[type="checkbox"]:checked {
+  background: #1d6294;
 }
 
 .additional-right-bloc {
