@@ -35,12 +35,11 @@ export const personView = (selectedID) => {
     let optionHidden = "form-group";
     let type = "";
 
-    if (key === "ID") {
+    if (["ID", "PersonnelID"].includes(key)) {
       optionHidden += " hidden";
     }
     if (
       [
-        "PersonnelID",
         "PersFirst",
         "PersLast",
         "PersPositionID",
@@ -133,6 +132,3 @@ export const personView = (selectedID) => {
     </form>
   </div>`;
 };
-
-// Content for Editing in Modal Form
-export const createPersInfoModalForm = (content) => {};
