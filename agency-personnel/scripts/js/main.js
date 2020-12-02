@@ -454,6 +454,7 @@ $(document).ready(() => {
     console.log("editFormContent :>> ", editFormContent);
 
     $("#modalBloc").modal("toggle");
+    $(".modal-title").text("Editing");
     $("#modal-form")
       .empty()
       .append(editFormContent)
@@ -462,16 +463,16 @@ $(document).ready(() => {
   });
 
   //* Save button in block top banner
-  $(document).on("click", ".save-record-btn", function (evnt) {
-    evnt.stopPropagation();
-    const formName = `#${$(this).attr("form")}`;
-    const tableName = $(formName).attr("data-table");
-    const submittedData = $(formName).serializeArray();
-    const ID = $(".personView").attr("id");
-    submittedData.unshift({ name: "ID", value: ID });
+  // $(document).on("click", ".save-record-btn", function (evnt) {
+  //   evnt.stopPropagation();
+  //   const formName = `#${$(this).attr("form")}`;
+  //   const tableName = $(formName).attr("data-table");
+  //   const submittedData = $(formName).serializeArray();
+  //   const ID = $(".personView").attr("id");
+  //   submittedData.unshift({ name: "ID", value: ID });
 
-    saveMods(submittedData, formName, tableName);
-  });
+  //   saveMods(submittedData, formName, tableName);
+  // });
 
   //* Main Cancel button
   $(document).on("click", "#btn-cancel", function (evnt) {
