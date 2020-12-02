@@ -427,6 +427,10 @@ $(document).ready(() => {
     }
   });
 
+  //* Editing a block.
+  //* Applies to: Personnel Information,Home Address, Work Address,
+  //* Additional Info and Comments.
+
   //* Save button in block top banner
   $(document).on("click", ".save-record-btn", function (evnt) {
     evnt.stopPropagation();
