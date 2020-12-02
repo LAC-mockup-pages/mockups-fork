@@ -1,6 +1,11 @@
 // Content for Editing in Modal Form
-export const createModalForm = (content) => {
-  console.log("content :>> ", content);
 
+export const createEditForm = (content) => {
+  $(content).each(function (indx) {
+    $(this)
+      .children("input, select")
+      .prop("disabled", false)
+      .removeAttr("disabled");
+  });
   return content;
 };

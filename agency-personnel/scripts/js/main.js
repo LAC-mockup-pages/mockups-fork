@@ -15,7 +15,7 @@ import {
 import { createFormAddHistory } from "./components/History.js";
 import { createFormAddContact } from "./components/Contacts.js";
 import { displayPersonnelDetails } from "./components/PersonnelView.js";
-import { createModalForm } from "./components/ModalFormContent.js";
+import { createEditForm } from "./components/ModalFormContent.js";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -429,7 +429,7 @@ $(document).ready(() => {
   });
 
   //* Editing a block.
-  //* Applies to: Personnel Information,Home Address, Work Address,
+  //* Applies to: Personnel Information, Home Address, Work Address,
   //* Additional Info and Comments.
 
   $(document).on("click", ".color-select", function (evnt) {
@@ -444,8 +444,11 @@ $(document).ready(() => {
     if (formId === "comments") {
     } else {
       const content = $(`#${formId}`).clone().children();
-      editFormContent = createModalForm(content);
+      editFormContent = createEditForm(content);
     }
+
+    console.log("editFormContent :>> ", editFormContent);
+
     $("#modalBloc").modal("toggle");
     $("#modal-form")
       .empty()
