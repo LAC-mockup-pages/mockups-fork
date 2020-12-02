@@ -342,9 +342,9 @@ $(document).ready(() => {
     $("[data-toggle='tooltip']").tooltip();
   });
 
-  // Binding event trigger to editable blocs for editing.
-  // Editable blocks are: history, non instructional hours, progress
-  // contacts.
+  //* Binding event trigger to editable blocs for editing.
+  //* Editable blocks are: history, non instructional hours, progress
+  //* contacts.
   $(document).on(
     "click",
     ".history-body > tr,.non-instructional-hours-body > tr,.progress-contact-body > tr",
@@ -385,7 +385,7 @@ $(document).ready(() => {
     }
   );
 
-  // Add a new record from modal
+  //* Add a new record from modal
   $(document).on("click", ".add-record-btn", function (evnt) {
     evnt.stopPropagation();
     const formName = $(this).attr("form");
@@ -439,9 +439,7 @@ $(document).ready(() => {
     saveMods(submittedData, formName, tableName);
   });
 
-  //* Cancel or Save
-
-  // Main Cancel button
+  //* Main Cancel button
   $(document).on("click", "#btn-cancel", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
@@ -449,7 +447,7 @@ $(document).ready(() => {
     location.reload();
   });
 
-  // Save button in #modal-form
+  //* Save button in #modal-form
   $(document).on("click", "#save-btn", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
