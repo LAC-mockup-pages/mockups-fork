@@ -31,7 +31,9 @@ export const displayPersonnelDetails = (id) => {
   const view = `
   <div class="container-fluid row personView" id=${id}>
     <div class="row">
-      ${personInfoBloc}
+      <div class="person-main col-md-5">
+        ${personInfoBloc}
+      </div>
       <div class="bloc-history-proDev col-md-7" id='${id}-history'>
         <div class="bloc-history">${historyBloc}</div>
         <div class="bloc-proDev">${proDevBloc}</div>

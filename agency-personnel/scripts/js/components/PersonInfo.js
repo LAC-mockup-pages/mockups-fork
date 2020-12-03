@@ -123,12 +123,9 @@ export const personView = (selectedID) => {
   const rows = fields.join("");
 
   return `
-  <div class="person-main col-md-5">
     ${header}
-    <form class="bloc-perso color-select" id=${blocId} data-table="getPersonnel"
-    data-toggle="tooltip" data-placement="left"
-    data-original-title="Click to Edit">
+    <form class="bloc-perso color-select" id=${blocId}data-table="getPersonnel"data-toggle="tooltip" data-placement="left"data-original-title="Click to Edit">
       ${rows}
     </form>
-  </div>`;
+  `;
 };
