@@ -125,7 +125,7 @@ export const personView = (selectedID) => {
   return `
   <div class="person-main col-md-5">
     ${header}
-    <form class="bloc-perso color-select" id=${blocId} data-table="Personnel"
+    <form class="bloc-perso color-select" id=${blocId} data-table="getPersonnel"
     data-toggle="tooltip" data-placement="left"
     data-original-title="Click to Edit">
       ${rows}

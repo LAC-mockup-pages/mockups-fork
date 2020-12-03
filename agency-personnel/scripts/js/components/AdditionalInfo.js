@@ -120,7 +120,7 @@ const addInfoView = () => {
   const header = topBanner(blockName);
   const body = `
   <form class="row color-select" role="form" id=${blocId}
-    data-table="Personnel" data-toggle="tooltip" data-placement="left"
+    data-table="getPersonnel" data-toggle="tooltip" data-placement="left"
     data-original-title="Click to Edit">
       <input class="hidden" name="ID" value=${ID}>
       ${leftBlock()}
