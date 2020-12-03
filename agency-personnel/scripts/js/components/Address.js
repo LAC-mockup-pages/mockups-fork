@@ -117,13 +117,18 @@ export const handleChangeCheckBox = () => {
 };
 
 export const checkCanMailOrCall = () => {
-  if (!$("#PersWorkSendMail-view").checked) {
-    $("#PersWorkSendMail-view").prop("checked", true);
-  }
+  const selector = "#modal-form input[type='checkbox']";
+  const result = [];
+  $(selector).each(function (indx) {
+    if (!$(this).prop("checked")) {
+      console.log("checkbox value : >> ", $(this).prop("checked"));
+      const name = $(this).attr("name");
+      const value = "off";
 
-  if (!$("#PersWorkCanCall-view").checked) {
-    $("#PersWorkCanCall-view").prop("checked", true);
-  }
+      result.push({ name, value });
+    }
+  });
+  return result;
 };
 
 export const workAddress = () => {
@@ -179,7 +184,7 @@ export const workAddress = () => {
   }
   const body = `
   <div class="work-address">
-    <form role="form" class="work-address color-select" data-table="Personnel" id="work-address" data-toggle="tooltip" data-placement="right"
+    <form role="form" class="work-address color-select" data-table="getPersonnel" id="work-address" data-toggle="tooltip" data-placement="right"
     data-original-title="Click to Edit">
       ${rows}
     <div class='container-fluid row work-address-checkbox'>
@@ -191,7 +196,8 @@ export const workAddress = () => {
         <label for='canCall-checkbox'>Can receive calls? </label>
         <input type='checkbox' name='canCall-checkbox' id='PersWorkCanCall-checkbox' ${canCallCheck} disabled/>
       </div>
-    </div></form>
+    </div>
+    </form>
 
   </div>`;
   return header + body;

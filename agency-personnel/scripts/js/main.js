@@ -460,6 +460,12 @@ $(document).ready(() => {
       .append(editFormContent)
       .attr("data-table", tableName)
       .attr("data-block", formId);
+
+    if (formId === "work-address") {
+      $("#modal-form input[type='checkbox']")
+        .prop("disabled", false)
+        .removeAttr("disabled");
+    }
   });
 
   //* Save button in block top banner
@@ -488,15 +494,19 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const tableName = $("#modal-form").attr("data-table");
     const blockName = $("#modal-form").attr("data-block");
-    if (blockName === "work-address") checkCanMailOrCall();
-
     let submittedData = $("#modal-form").serializeArray();
+
+    if (blockName === "work-address") {
+      const checkboxesValues = checkCanMailOrCall();
+      submittedData = [...submittedData, ...checkboxesValues];
+    }
     const ID = $(".personView").attr("id");
     submittedData.unshift({ name: "ID", value: ID });
 
+    console.log("submittedData :>> ", submittedData);
+
     if (tableName === "NonInstHours")
       submittedData.push(addTotalHours(submittedData));
-
     const filteredData = submittedData.filter(
       (obj) => obj.value || obj.value === ""
     );
