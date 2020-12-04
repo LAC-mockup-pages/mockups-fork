@@ -10,7 +10,7 @@ import instructionalHoursView from "./InstHours.js";
 import { nonInstrHoursView } from "./NonInstrHours.js";
 import { homeAddress, workAddress } from "./Address.js";
 import addInfoView from "./AdditionalInfo.js";
-import commentsView from "./Comments.js";
+import { commentsView } from "./Comments.js";
 import { contactsView } from "./Contacts.js";
 import { personnelData } from "../main.js";
 

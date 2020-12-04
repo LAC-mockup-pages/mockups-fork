@@ -205,3 +205,13 @@
   padding-left: 2%;
   background-color: #f5f5f5;
 }
+
+.comments-modal-area {
+  width: 575px;
+  height: 200px;
+  font-size: 1.4em;
+  font-weight: 400;
+  padding-left: 2%;
+  background-color: #f5f5f5;
+  overflow-y: scroll;
+}

@@ -1,6 +1,6 @@
 import { personnelData, topBanner } from "../main.js";
 
-const commentsView = () => {
+export const commentsView = () => {
   const blockName = "Comments";
   const header = topBanner(blockName);
   const { PersComments } = personnelData[0];
@@ -13,8 +13,20 @@ const commentsView = () => {
   data-original-title="Click to Edit">
   ${commentList}
   </div>`;
-  const commentsArea = header + body;
-  return commentsArea;
+  return header + body;
 };
 
-export default commentsView;
+// commentList is an array of all <p></p> in Comments block
+// returns a string with carriage returns (\n) in a <textarea>
+export const commentsContent = (commentList) => {
+  let comments = [];
+  if (commentList.length) {
+    $(commentList).each(function (indx) {
+      const innerText = $(this).text();
+      comments.push(`${innerText}\n`);
+    });
+  }
+  const commentString = comments.join("\n").trim();
+  return `
+  <textarea class="comments-modal-area" data-table="getPersonnel" name="PersComments">${commentString}</textarea>`;
+};

@@ -15,6 +15,7 @@ import {
 import { createFormAddHistory } from "./components/History.js";
 import { createFormAddContact } from "./components/Contacts.js";
 import { displayPersonnelDetails } from "./components/PersonnelView.js";
+import { commentsContent } from "./components/Comments.js";
 
 const labelObj = {
   PersLast: "Last Name",
@@ -436,10 +437,6 @@ $(document).ready(() => {
     const formId = $(this).attr("id");
     const tableName = $(`#${formId}`).data("table");
     let editFormContent = "";
-
-    console.log("formId :>> ", formId);
-    console.log("tableName :>> ", tableName);
-
     if (formId === "additional-information") {
       let content = [];
       $(`#${formId}`)
@@ -455,6 +452,9 @@ $(document).ready(() => {
           .prop("disabled", false)
           .removeAttr("disabled");
       });
+    } else if (formId === "comments") {
+      const comments = $(`#${formId}`).clone().children();
+      editFormContent = commentsContent(comments);
     } else {
       const content = $(`#${formId}`).clone().children();
       editFormContent = $(content).each(function (indx) {
@@ -464,9 +464,6 @@ $(document).ready(() => {
           .removeAttr("disabled");
       });
     }
-
-    console.log("editFormContent :>> ", editFormContent);
-
     $("#modalBloc").modal("toggle");
     $(".modal-title").text("Editing");
     $("#modal-form")
