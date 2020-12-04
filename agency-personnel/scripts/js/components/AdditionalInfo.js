@@ -116,13 +116,11 @@ const rightBlock = () => {
 const addInfoView = () => {
   const blockName = "Additional Information";
   const blocId = blockName.toLowerCase().replace(/\W/gi, "-");
-  const { ID } = personnelData[0];
   const header = topBanner(blockName);
   const body = `
   <form class="row color-select" role="form" id=${blocId}
     data-table="getPersonnel" data-toggle="tooltip" data-placement="left"
     data-original-title="Click to Edit">
-      <input class="hidden" name="ID" value=${ID}>
       ${leftBlock()}
       ${rightBlock()}
   </form>`;

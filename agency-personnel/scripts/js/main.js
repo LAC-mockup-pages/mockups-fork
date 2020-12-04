@@ -440,7 +440,21 @@ $(document).ready(() => {
     console.log("formId :>> ", formId);
     console.log("tableName :>> ", tableName);
 
-    if (formId === "comments") {
+    if (formId === "additional-information") {
+      let content = [];
+      $(`#${formId}`)
+        .clone()
+        .children()
+        .each(function (indx) {
+          const subItems = $(this).children().toArray();
+          content = [...content, ...subItems];
+        });
+      editFormContent = $(content).each(function (indx) {
+        $(this)
+          .children("input, select")
+          .prop("disabled", false)
+          .removeAttr("disabled");
+      });
     } else {
       const content = $(`#${formId}`).clone().children();
       editFormContent = $(content).each(function (indx) {
