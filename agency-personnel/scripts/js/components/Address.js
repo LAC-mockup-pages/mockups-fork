@@ -120,13 +120,9 @@ export const checkCanMailOrCall = () => {
   const selector = "#modal-form input[type='checkbox']";
   const result = [];
   $(selector).each(function (indx) {
-    if (!$(this).prop("checked")) {
-      console.log("checkbox value : >> ", $(this).prop("checked"));
-      const name = $(this).attr("name");
-      const value = "off";
-
-      result.push({ name, value });
-    }
+    const name = $(this).attr("name");
+    const value = $(this).prop("checked") ? "True" : "False";
+    result.push({ name, value });
   });
   return result;
 };
@@ -189,12 +185,12 @@ export const workAddress = () => {
       ${rows}
     <div class='container-fluid row work-address-checkbox'>
       <div class='mail-call-checkboxes col-sm-6'>
-        <label for='canMail-checkbox'>Can receive mail? </label>
-        <input type='checkbox' name='canMail-checkbox' id='PersWorkSendMail-checkbox' ${canMailCheck} disabled/>
+        <label for='PersWorkSendMail'>Can receive mail? </label>
+        <input type='checkbox' name='PersWorkSendMail' id='PersWorkSendMail-checkbox' ${canMailCheck} disabled/>
       </div>
       <div class='mail-call-checkboxes col-sm-6'>
-        <label for='canCall-checkbox'>Can receive calls? </label>
-        <input type='checkbox' name='canCall-checkbox' id='PersWorkCanCall-checkbox' ${canCallCheck} disabled/>
+        <label for='PersWorkCanCall'>Can receive calls? </label>
+        <input type='checkbox' name='PersWorkCanCall' id='PersWorkCanCall-checkbox' ${canCallCheck} disabled/>
       </div>
     </div>
     </form>

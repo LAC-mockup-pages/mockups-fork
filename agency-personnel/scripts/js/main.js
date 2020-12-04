@@ -498,12 +498,15 @@ $(document).ready(() => {
 
     if (blockName === "work-address") {
       const checkboxesValues = checkCanMailOrCall();
+      submittedData = submittedData.filter(
+        (field) => !["PersWorkSendMail", "PersWorkCanCall"].includes(field.name)
+      );
       submittedData = [...submittedData, ...checkboxesValues];
     }
     const ID = $(".personView").attr("id");
     submittedData.unshift({ name: "ID", value: ID });
 
-    console.log("submittedData :>> ", submittedData);
+    // console.log("submittedData :>> ", submittedData);
 
     if (tableName === "NonInstHours")
       submittedData.push(addTotalHours(submittedData));
