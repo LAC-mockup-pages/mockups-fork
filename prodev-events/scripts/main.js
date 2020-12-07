@@ -460,17 +460,19 @@ $(document).ready(() => {
   });
 
   //* Adding a new record or Editing an event
-  $(document).on("click", "#submit-btn, #event-view-submit-btn", function (
-    evnt
-  ) {
-    evnt.preventDefault();
-    evnt.stopPropagation();
-    const formId = "#" + $(this).attr("form");
-    const newSource = $(formId)
-      .serializeArray()
-      .filter((field) => !field.name.startsWith("profdev"));
-    saveMods(newSource, formId, "ProfDevEventsInfo", listOfRequired);
-  });
+  $(document).on(
+    "click",
+    "#submit-btn, #event-view-submit-btn",
+    function (evnt) {
+      evnt.preventDefault();
+      evnt.stopPropagation();
+      const formId = "#" + $(this).attr("form");
+      const newSource = $(formId)
+        .serializeArray()
+        .filter((field) => !field.name.startsWith("profdev"));
+      saveMods(newSource, formId, "ProfDevEventsInfo", listOfRequired);
+    }
+  );
 
   //* Canceling
   $(document).on(
@@ -508,7 +510,7 @@ $(document).ready(() => {
   $(document).on("click", ".add-record-btn", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
-    const { AgencyID } = sessionVariable;
+    const { AgencyID } = SESSION_VARIABLE[0];
     const agencyObj = agencyList.find((item) => item.AgencyID === AgencyID);
 
     const editForm = createModalRoster(agencyObj.RAENID, AgencyID);
@@ -585,27 +587,29 @@ $(document).ready(() => {
   });
 
   //* Selecting Participant record to edit + display in modal
-  $(document).on("click", ".event-roster-table .table tbody tr", function (
-    evnt
-  ) {
-    evnt.stopPropagation();
+  $(document).on(
+    "click",
+    ".event-roster-table .table tbody tr",
+    function (evnt) {
+      evnt.stopPropagation();
 
-    const rowID = "#" + $(this).attr("id");
-    const selectedRow = $(`${rowID} td`).get();
-    const editForm = createModalRosterEdit(selectedRow);
-    $("#modalBloc").modal("toggle");
-    $("#edit-form").empty().append(editForm[0]);
+      const rowID = "#" + $(this).attr("id");
+      const selectedRow = $(`${rowID} td`).get();
+      const editForm = createModalRosterEdit(selectedRow);
+      $("#modalBloc").modal("toggle");
+      $("#edit-form").empty().append(editForm[0]);
 
-    // Enables customized tooltips
-    $("[data-toggle='tooltip']").tooltip();
-    $(".modal-title").text("Editing a Participant");
-    $("#save-btn, #edit-save-btn").toggleClass("hidden");
-    $("#delete-btn").removeClass("hidden");
-    for (const boxID of editForm[1]) {
-      const { keyVal, value } = boxID;
-      $(`#${keyVal}-box`).prop("checked", value === "Yes");
+      // Enables customized tooltips
+      $("[data-toggle='tooltip']").tooltip();
+      $(".modal-title").text("Editing a Participant");
+      $("#save-btn, #edit-save-btn").toggleClass("hidden");
+      $("#delete-btn").removeClass("hidden");
+      for (const boxID of editForm[1]) {
+        const { keyVal, value } = boxID;
+        $(`#${keyVal}-box`).prop("checked", value === "Yes");
+      }
     }
-  });
+  );
 
   $(document).on("click", "#close-btn", function (evnt) {
     evnt.stopPropagation();
