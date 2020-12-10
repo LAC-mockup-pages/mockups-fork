@@ -45,7 +45,6 @@ const rowLabels = [
     profdevFac2: "Facilitator2",
     ProfDevFacilitator3: "Facilitator3",
     profdevFac3: "Facilitator3",
-    ProfDevFeeCharged: "Fee",
     RAENEvent: "RAEN Event",
     ProfDevComments: "Comments"
   }
@@ -512,6 +511,14 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const { AgencyID } = SESSION_VARIABLE[0];
     const agencyObj = agencyList.find((item) => item.AgencyID === AgencyID);
+
+    if (!agencyObj) {
+      agencyObj = {
+        RAENID: "TEST",
+        AgencyID: "PRA",
+        AgencyName: "Practice Agency"
+      };
+    }
 
     const editForm = createModalRoster(agencyObj.RAENID, AgencyID);
     $("#modalBloc").modal("toggle");
