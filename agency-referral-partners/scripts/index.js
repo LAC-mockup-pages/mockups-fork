@@ -9,7 +9,6 @@ const rowLabels = [
   {
     ID: "ID",
     AgencyID: "agencyId",
-    ReferralSiteID: "Partner ID",
     ReferralSiteName: "Partner Name",
     ReferralSiteManager: "Manager",
     fullAddress: "Address",
@@ -27,7 +26,7 @@ const rowLabels = [
 const createNewRecord = (labelsList) => {
   let result = [];
   const labelObj = labelsList[0];
-  const requiredList = ["ReferralSiteName", "ReferralSiteID"];
+  const requiredList = ["ReferralSiteName"];
   const hiddenList = ["CountyDesc"];
   const keyList = Object.keys(labelObj).filter(
     (key) => !["ID", "AgencyID", "fullAddress"].includes(key)
@@ -312,12 +311,14 @@ $(document).ready(() => {
 
   // Change text color from red (required) to black
   // when a value is entered
-  $(document).on("focusin", "#ReferralSiteID, #ReferralSiteName", function (
-    evnt
-  ) {
-    evnt.stopPropagation();
-    $(this).toggleClass("dark-text").prop("required", false);
-  });
+  $(document).on(
+    "focusin",
+    "#ReferralSiteID, #ReferralSiteName",
+    function (evnt) {
+      evnt.stopPropagation();
+      $(this).toggleClass("dark-text").prop("required", false);
+    }
+  );
 
   //* Adding a new partner
   $(document).on("click", "#submit-btn", function (evnt) {
