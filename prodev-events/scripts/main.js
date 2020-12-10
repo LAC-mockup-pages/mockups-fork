@@ -510,7 +510,7 @@ $(document).ready(() => {
     evnt.preventDefault();
     evnt.stopPropagation();
     const { AgencyID } = SESSION_VARIABLE[0];
-    const agencyObj = agencyList.find((item) => item.AgencyID === AgencyID);
+    let agencyObj = agencyList.find((item) => item.AgencyID === AgencyID);
 
     if (!agencyObj) {
       agencyObj = {
@@ -520,7 +520,7 @@ $(document).ready(() => {
       };
     }
 
-    const editForm = createModalRoster(agencyObj.RAENID, AgencyID);
+    const editForm = createModalRoster(agencyObj.RAENID, agencyObj.AgencyID);
     $("#modalBloc").modal("toggle");
     $("#delete-btn").addClass("hidden");
     $("#edit-form").empty().append(editForm);
