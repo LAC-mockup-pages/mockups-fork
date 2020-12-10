@@ -45,7 +45,7 @@ const rowLabels = [
     profdevFac2: "Facilitator2",
     ProfDevFacilitator3: "Facilitator3",
     profdevFac3: "Facilitator3",
-    ProfDevFeeCharged: "Fee",
+    // ProfDevFeeCharged: "Fee",
     RAENEvent: "RAEN Event",
     ProfDevComments: "Comments"
   }
@@ -510,10 +510,18 @@ $(document).ready(() => {
   $(document).on("click", ".add-record-btn", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
-    const { AgencyID } = sessionVariable;
-    const agencyObj = agencyList.find((item) => item.AgencyID === AgencyID);
+    const { AgencyID } = SESSION_VARIABLE[0];
+    let agencyObj = agencyList.find((item) => item.AgencyID === AgencyID);
 
-    const editForm = createModalRoster(agencyObj.RAENID, AgencyID);
+    if (!agencyObj) {
+      agencyObj = {
+        RAENID: "TEST",
+        AgencyID: "PRA",
+        AgencyName: "Practice Agency"
+      };
+    }
+
+    const editForm = createModalRoster(agencyObj.RAENID, agencyObj.AgencyID);
     $("#modalBloc").modal("toggle");
     $("#delete-btn").addClass("hidden");
     $("#edit-form").empty().append(editForm);
