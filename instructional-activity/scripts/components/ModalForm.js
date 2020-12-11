@@ -47,14 +47,14 @@ export const createModalForm = (fieldList) => {
   };
 
   $(fieldList).each(function (indx) {
-    const $elements = $(this)
-      .children()
-      // .attr("id", modalId)
-      .removeAttr("disabled");
+    const $elements = $(this).children().removeAttr("disabled");
     const labelText = $elements[0].innerText;
     const $inputElement = $elements[1];
     $inputElement.id = `${$inputElement.id}`.replace("view", "modal");
     const keyValue = $inputElement.name;
+    if (["ClassID", "FY"].includes(keyValue)) {
+      $inputElement.disabled = true;
+    }
     if (fieldsWithInput.includes(keyValue)) {
       list.push($(this));
     } else {
