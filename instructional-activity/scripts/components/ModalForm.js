@@ -72,6 +72,8 @@ export const createModalForm = (fieldList) => {
       const labelClassVal = requiredList.includes(keyValue)
         ? "class='red-text'"
         : "";
+
+      // elementSelectModal() <== helperFunctions.js
       const elementSelect = elementSelectModal({
         hashTable,
         keyValue,
@@ -100,6 +102,7 @@ export const addClassIdAndDescription = (fieldList, instructorsList) => {
 
     fieldObj[name] = val;
   }
+
   const { AgencyID } = SESSION_VARIABLE[0];
   const { ClassType, CourseID, Format, InstructorID, UpperLevel } = fieldObj;
   const instructor = instructorsList.find(
