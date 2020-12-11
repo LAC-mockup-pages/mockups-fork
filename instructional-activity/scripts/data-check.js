@@ -14,6 +14,7 @@ const validateRecord = (dataList, requiredList) => {
     switch (name) {
       case "StartDate":
       case "EndDate":
+        // dateValid() <== helpers/helperFunctions.js
         obj.correct = dateValid(value);
         break;
 
