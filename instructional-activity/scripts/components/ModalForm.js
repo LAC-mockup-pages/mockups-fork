@@ -1,6 +1,7 @@
 // Creates Modall form for the Click-to-Edit blocks:
 // Main Info, Recommended,Additional Info, Projected Services.
 
+import { getRequired } from "../main.js";
 import { processProgramCode } from "./AdditionalInfo.js";
 
 export const createModalForm = (fieldList) => {
@@ -67,12 +68,16 @@ export const createModalForm = (fieldList) => {
         });
       }
       const selectedValue = $inputElement.dataset.key;
+      const requiredList = getRequired();
+      const labelClassVal = requiredList.includes(keyValue)
+        ? "class='red-text'"
+        : "";
       const elementSelect = elementSelectModal({
         hashTable,
         keyValue,
         selectedValue,
         labelVal: labelText,
-        labelClassVal: "class='red-text'",
+        labelClassVal,
         option: "",
         optionText
       });
