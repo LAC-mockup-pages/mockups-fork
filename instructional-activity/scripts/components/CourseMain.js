@@ -8,8 +8,6 @@ export const createCourseMain = (dataObj) => {
   let bloc = "";
   const header = topBanner("Main Info");
   const requiredList = getRequired();
-  console.log("requiredList :>> ", requiredList);
-
   const {
     CourseID,
     ClassID,
