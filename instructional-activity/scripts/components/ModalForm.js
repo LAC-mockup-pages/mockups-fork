@@ -49,10 +49,11 @@ export const createModalForm = (fieldList) => {
   $(fieldList).each(function (indx) {
     const $elements = $(this)
       .children()
-      .removeAttr("id")
+      // .attr("id", modalId)
       .removeAttr("disabled");
     const labelText = $elements[0].innerText;
     const $inputElement = $elements[1];
+    $inputElement.id = `${$inputElement.id}`.replace("view", "modal");
     const keyValue = $inputElement.name;
     if (fieldsWithInput.includes(keyValue)) {
       list.push($(this));
@@ -71,7 +72,7 @@ export const createModalForm = (fieldList) => {
         keyValue,
         selectedValue,
         labelVal: labelText,
-        labelClassVal: "",
+        labelClassVal: "class='red-text'",
         option: "",
         optionText
       });
