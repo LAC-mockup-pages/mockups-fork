@@ -3,13 +3,12 @@
 import { topBanner } from "../main.js";
 
 export const createProjectedSces = (fieldList) => {
-  let bloc = "";
   const header = topBanner("Projected Services");
   const { ProjTotContHrs, ProjTotInstHrs, ProjTotADA, ProjTotEIH } = fieldList;
   // ========================================================
   // Fields
   // =========================================================
-  let option = "";
+  let option = "disabled";
   let optionHidden = "form-group";
   let labelClassVal = "";
   let classVal = "";
@@ -51,7 +50,7 @@ export const createProjectedSces = (fieldList) => {
     optionHidden
   });
 
-  bloc += `${projContHrs}${projInstrHrs}${projADA}${projEIH}`;
+  const bloc = `${projContHrs}${projInstrHrs}${projADA}${projEIH}`;
   return `
   ${header}
   <form class="field-bloc" id="projected-sces-form">
