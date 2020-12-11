@@ -1,12 +1,15 @@
 // Main data elements for the Course
 
-import { topBanner, rowLabels, instructorList } from "../main.js";
+import { topBanner, rowLabels, instructorList, getRequired } from "../main.js";
 const typeList = GetInstructionType.slice(0);
 const formatList = ddlFormat.slice(0);
 
 export const createCourseMain = (dataObj) => {
   let bloc = "";
   const header = topBanner("Main Info");
+  const requiredList = getRequired();
+  console.log("requiredList :>> ", requiredList);
+
   const {
     CourseID,
     ClassID,
@@ -50,7 +53,7 @@ export const createCourseMain = (dataObj) => {
 
   for (const key of fieldList) {
     const keyVal = key;
-    let labelClassVal = "";
+    let labelClassVal = requiredList.includes(key) ? "class='red-text'" : "";
     const labelVal = labelObj[key];
     let classVal = "";
 
@@ -58,7 +61,9 @@ export const createCourseMain = (dataObj) => {
       ? valueFromJoinedTable(key, dataObj[key])
       : dataObj[key];
 
-    let option = ` disabled data-key=${dataObj[key]}`;
+    let option = requiredList.includes(key)
+      ? ` required disabled data-key=${dataObj[key]}`
+      : ` disabled data-key=${dataObj[key]}`;
     let optionHidden = "form-group";
     let type = "";
 
