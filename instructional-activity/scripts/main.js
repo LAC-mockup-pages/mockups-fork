@@ -19,6 +19,7 @@ import { addInstructor } from "./components/Instructors.js";
 import { addSpecialProgram } from "./components/Recommended.js";
 import { saveSchedule } from "./components/Schedule.js";
 import { saveFundingSources } from "./components/FundingSources.js";
+import { createEnrollmentView } from "./components/EnrollmentView.js";
 // Main elements
 export const rowLabels = [
   {
@@ -440,14 +441,19 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const rowId = $(this).attr("id");
     const selectedCourse = courseList.find((course) => course.ID === rowId);
-    const eventView = createDetailsView(selectedCourse);
+    const { ClassID } = selectedCourse;
+
+    const enrollmentView = createEnrollmentView(rowId, ClassID);
+    console.log("enrollment view ?");
+    const courseView = createDetailsView(selectedCourse);
 
     // Cleaning up
-    $(".record-entry, #filter-bloc, #view-bloc").toggleClass("hidden");
-    $("#view-bloc").empty().append(eventView);
+    $(".record-entry, #filter-bloc").toggleClass("hidden");
+    $("#view-bloc").empty().append(enrollmentView);
+    // $("#view-bloc").empty().append(courseView);
     $("html, body").animate({ scrollTop: 220 }, 200);
     $("#offering").removeClass();
-    $("#details").addClass("blue-light-bg blue-text");
+    $("#enrollment").addClass("blue-light-bg blue-text");
 
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();

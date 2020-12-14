@@ -62,7 +62,7 @@ export const createDetailsView = (dataObj) => {
   // =========================================================
   // Displaying blocks
   // =========================================================
-  $(".hero").append(`
+  return `
   <div class="container-fluid course-details" id=${ID}>
     <div class="row first-bloc">
       <div class="main-info col-md-6" id="main-info" data-toggle='tooltip' data-placement='left' title='Click to Edit'>
@@ -90,5 +90,5 @@ export const createDetailsView = (dataObj) => {
     </div>
     </div>
   </div>
-</div>`);
+</div>`;
 };
