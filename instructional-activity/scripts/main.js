@@ -246,7 +246,6 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
       let name = field.name;
       result[name] = val;
     }
-
     const target = tableName ? tableName : "No table name";
     const resultList = [formName, target, JSON.stringify(result)];
     console.table(result);

@@ -90,7 +90,7 @@ export const createModalForm = (fieldList) => {
   return list;
 };
 
-// Calculating and adding fields ClassID
+// Defining and adding fields ClassID
 // and InstructionDescription
 export const addClassIdAndDescription = (fieldList, instructorsList) => {
   let fieldObj = {};
