@@ -4,7 +4,7 @@
 const createStudentBloc = (dataList) => {
   const labelsStudentObj = {
     ID: "ID",
-    Student_PKID: "StudentPKID",
+    Student_PKID: "Student_PKID",
     StudentID: "StudentID",
     StudentName: "Name",
     EnrollDate: "Start Date",
@@ -13,16 +13,21 @@ const createStudentBloc = (dataList) => {
     TransferTo: "Transfer To",
     ActiveStatus: "Status"
   };
+  let row = "";
+  const hiddenList = ["ID", "Student_PKID", "StudentID"];
+  const labelsList = Object.keys(labelsStudentObj).map(
+    (item) => labelsStudentObj[item]
+  );
 
-  const labelsList = Object.keys(labelsStudentObj)
-    .map((item) => labelsStudentObj[item])
-    .filter((label) => !["ID", "StudentPKID", "StudentID"].includes(label));
-
-  console.log("labelsList :>> ", labelsList);
+  const headerLabelList = labelsList.filter(
+    (label) => !hiddenList.includes(label)
+  );
+  // console.log("labelsList :>> ", labelsList);
 
   // createHeaders() <== helperFunctions.js
-  const studentTableHeader = createHeaders(labelsList);
-  const studentTableBody = "<h3>Table body</h3>";
+  const studentTableHeader = createHeaders(headerLabelList);
+
+  // createRow() <== helperFunctions.js
 
   return `
   <table class="table" id="student-table">${studentTableHeader}${studentTableBody}</table>`;
