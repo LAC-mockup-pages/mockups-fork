@@ -5,28 +5,27 @@ const createStudentBloc = (dataList) => {
   const labelsStudentObj = {
     ID: "ID",
     Student_PKID: "StudentPKID",
-    StudentID: "Student ID",
+    StudentID: "StudentID",
     StudentName: "Name",
     EnrollDate: "Start Date",
-    ActiveStatus: "Status",
     InactiveDate: "End Date",
     InactiveReason: "Reason",
-    TransferTo: "Transfer To"
+    TransferTo: "Transfer To",
+    ActiveStatus: "Status"
   };
 
-  const list = Object.keys(labelsStudentObj).map(
-    (item) => labelsStudentObj[item]
-  );
+  const labelsList = Object.keys(labelsStudentObj)
+    .map((item) => labelsStudentObj[item])
+    .filter((label) => !["ID", "StudentPKID", "StudentID"].includes(label));
 
-  console.log("list :>> ", list);
+  console.log("labelsList :>> ", labelsList);
 
   // createHeaders() <== helperFunctions.js
-  const studentTableHeader = createHeaders(list);
+  const studentTableHeader = createHeaders(labelsList);
   const studentTableBody = "<h3>Table body</h3>";
 
   return `
-  <div>${studentTableHeader}</div>
-  <div>${studentTableBody}</div>`;
+  <table class="table" id="student-table">${studentTableHeader}${studentTableBody}</table>`;
 };
 
 export const createEnrollmentView = (courseID, courseName) => {
@@ -40,7 +39,7 @@ export const createEnrollmentView = (courseID, courseName) => {
   const studentTable = createStudentBloc(GetEnrollInfo);
 
   return `
-  < class="container-fluid" id="enrollment-bloc" data-course-id=${courseID}>
+  <div class="container-fluid" id="enrollment-bloc" data-course-id=${courseID}>
     ${mainBanner}
     ${studentTable}
   </div>`;
