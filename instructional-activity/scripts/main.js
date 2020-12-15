@@ -444,7 +444,6 @@ $(document).ready(() => {
     const { ClassID } = selectedCourse;
 
     const enrollmentView = createEnrollmentView(rowId, ClassID);
-    console.log("enrollment view ?");
     const courseView = createDetailsView(selectedCourse);
 
     // Cleaning up
