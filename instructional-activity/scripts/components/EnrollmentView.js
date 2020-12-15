@@ -14,23 +14,42 @@ const createStudentBloc = (dataList) => {
     ActiveStatus: "Status"
   };
   let row = "";
+  const recordList = GetEnrollInfo.slice(0)
+    .map((record) => {
+      const ActiveStatus = record.ActiveStatus === "1" ? "Active" : "Inactive";
+      return { ...record, ActiveStatus };
+    })
+    .sort((rec1, rec2) =>
+      rec1.StudentName < rec2.StudentName
+        ? -1
+        : rec1.StudentName > rec2.StudentName
+        ? 1
+        : 0
+    );
   const hiddenList = ["ID", "Student_PKID", "StudentID"];
   const labelsList = Object.keys(labelsStudentObj).map(
     (item) => labelsStudentObj[item]
   );
 
+  const labelList = Object.keys(labelsStudentObj);
+
   const headerLabelList = labelsList.filter(
     (label) => !hiddenList.includes(label)
   );
-  // console.log("labelsList :>> ", labelsList);
 
   // createHeaders() <== helperFunctions.js
   const studentTableHeader = createHeaders(headerLabelList);
-
-  // createRow() <== helperFunctions.js
+  for (const record of recordList) {
+    const labelObj = labelsStudentObj;
+    // createRow() <== helperFunctions.js
+    row += createRow({ record, labelList, labelObj, hiddenList });
+  }
 
   return `
-  <table class="table" id="student-table">${studentTableHeader}${studentTableBody}</table>`;
+  <table class="table" id="student-table">
+    ${studentTableHeader}
+    <tbody>${row}</tbody>
+  </table>`;
 };
 
 export const createEnrollmentView = (courseID, courseName) => {

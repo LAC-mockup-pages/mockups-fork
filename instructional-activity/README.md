@@ -21,3 +21,5 @@ ASISTS 2020 file:
 ### Training Notes
 
 ### Dev Notes
+
+- In EnrollmentView, the Student table is populated by GetEnrollInfo stored procedure. Should it include the CourseID as parameter?
