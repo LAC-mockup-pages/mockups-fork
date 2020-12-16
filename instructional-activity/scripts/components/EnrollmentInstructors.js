@@ -7,7 +7,8 @@
 // populates the table. First view is present period, depending on
 // the today date.
 // The 1st intructor is the main instructor.
-// Other instructors are listed in alphabetical order.
+// Other instructors are listed in alphabetical order. Select by
+// "Click to Edit".
 // Adding or modifying hours for 1 instructor is done in modal.
 
 export const createInstructorBloc = (dataList, mainInstructor) => {
