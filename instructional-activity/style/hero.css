@@ -55,6 +55,16 @@
 /* Enrollment View */
 /* =========================================== */
 
+#enrollment-bloc,
+#main-banner {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+#main-banner {
+  margin: 1.5% 0%;
+}
+
 /* MainInfo bloc */
 /* =========================================== */
 .sub-header {
