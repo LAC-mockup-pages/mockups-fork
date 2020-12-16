@@ -711,6 +711,62 @@ const GetInstrHours = [
     TestContHours: "0",
     labHours: "0",
     ExtraHoursLT12: "0"
+  },
+  {
+    ID: "1698613",
+    Class_PKID: "232270",
+    ClassID: "PRABE4CASTS_21",
+    PeriodID: "PRA20200801",
+    Personnel_PKID: "28555",
+    personnelID: "AlfieriShelleyPRA1",
+    InstructorName: "Alfieri, Shelley",
+    InstHours: "12",
+    TestHours: "2",
+    TestContHours: "0",
+    labHours: "0",
+    ExtraHoursLT12: "4"
+  },
+  {
+    ID: "1698614",
+    Class_PKID: "232270",
+    ClassID: "PRABE4CASTS_21",
+    PeriodID: "PRA20200801",
+    Personnel_PKID: "2256",
+    personnelID: "PorterSamanthaPRA9",
+    InstructorName: "Porter, Samantha",
+    InstHours: "4",
+    TestHours: "2",
+    TestContHours: "1",
+    labHours: "2",
+    ExtraHoursLT12: "0"
+  },
+  {
+    ID: "1698615",
+    Class_PKID: "232270",
+    ClassID: "PRABE4CASTS_21",
+    PeriodID: "PRA20200901",
+    Personnel_PKID: "2256",
+    personnelID: "PorterSamanthaPRA9",
+    InstructorName: "Porter, Samantha",
+    InstHours: "10",
+    TestHours: "0",
+    TestContHours: "0",
+    labHours: "3",
+    ExtraHoursLT12: "2"
+  },
+  {
+    ID: "1698616",
+    Class_PKID: "232270",
+    ClassID: "PRABE4CASTS_21",
+    PeriodID: "PRA20200901",
+    Personnel_PKID: "28555",
+    personnelID: "AlfieriShelleyPRA1",
+    InstructorName: "Alfieri, Shelley",
+    InstHours: "0",
+    TestHours: "0",
+    TestContHours: "0",
+    labHours: "0",
+    ExtraHoursLT12: "0"
   }
 ];
 
