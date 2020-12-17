@@ -11,27 +11,37 @@
 // "Click to Edit".
 // Adding or modifying hours for 1 instructor is done in modal.
 
-const createPeriodSelector = (courseId, start, end) => {
-  const months = {
-    1: "January",
-    2: "February",
-    3: "March",
-    4: "April",
-    5: "May",
-    6: "June",
-    7: "July",
-    8: "August",
-    9: "September",
-    10: "October",
-    11: "November",
-    12: "December"
-  };
-  const today = new Date();
-  const presentMonth = today.getMonth();
-  const presentYear = today.getFullYear();
-  console.log("present month, year: ", presentMonth + " / " + presentYear);
+const periodList = GetReportingPeriods.slice(0);
 
-  return `Instructor parameters: ==> ${courseId} - start: ${start} - end: ${end}`;
+const createPeriodSelector = (courseId, start, end) => {
+  const today = new Date();
+  // const todayMonth = today.getMonth();
+  // const todayYear = today.getFullYear();
+  // console.log("present month, year: ", todayMonth + " / " + todayYear);
+  const filteredPeriodList = periodList.filter(
+    (record) => new Date(record.PeriodStart) < today
+  );
+  const hashTable = filteredPeriodList.map((record) => {
+    const { PeriodID, periodDisplay } = record;
+    return { key: PeriodID, value: periodDisplay };
+  });
+  // console.log("hashTable :>> ", hashTable);
+
+  const lastPeriod = hashTable.slice(-1)[0];
+  const selectedValue = lastPeriod.key;
+  // console.log("selectedValue :>> ", selectedValue);
+
+  const selectPeriod = elementSelectModal({
+    hashTable,
+    keyValue: "PeriodID",
+    selectedValue,
+    labelVal: "Period: ",
+    labelClassVal: "class='blue-light-text'",
+    option: "",
+    optionText: "a reporting period"
+  });
+
+  return selectPeriod;
 };
 
 export const createInstructorBloc = (
@@ -127,13 +137,13 @@ export const createInstructorBloc = (
   const header = createHeaders(headerText);
   const periodSelector = createPeriodSelector(courseId, startDate, endDate);
 
-  console.log("periodSelector :>> ", periodSelector);
+  // console.log("periodSelector :>> ", periodSelector);
   const tableBody = `${firstRow}${nextRows}`;
 
   return `
   <div class="container-fluid row" id="period-selector">
-    <div class="instructor-title label-text blue-light-text col-md-10">Instructors</div>
-    <div class="period-select col-md-2">Selector
+    <div class="instructor-title label-text blue-light-text col-md-9">Instructors</div>
+    <div class="period-select col-md-3">${periodSelector}
     </div>
   </div>
   <table class="table" id="instructors-table">
