@@ -436,14 +436,19 @@ $(document).ready(() => {
     location.reload();
   });
 
-  //* Select record to display
+  //* Select record to display in Enrollment View
   $(document).on("click", "#main-table tr", function (evnt) {
     evnt.stopPropagation();
     const rowId = $(this).attr("id");
     const selectedCourse = courseList.find((course) => course.ID === rowId);
-    const { ClassID } = selectedCourse;
+    const { ClassID, StartDate, EndDate } = selectedCourse;
 
-    const enrollmentView = createEnrollmentView(rowId, ClassID);
+    const enrollmentView = createEnrollmentView(
+      rowId,
+      ClassID,
+      StartDate,
+      EndDate
+    );
     const courseView = createDetailsView(selectedCourse);
 
     // Cleaning up

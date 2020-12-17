@@ -3,7 +3,7 @@
 
 import { createInstructorBloc } from "./EnrollmentInstructors.js";
 import { createStudentBloc } from "./EnrollmentStudents.js";
-export const createEnrollmentView = (courseID, courseName) => {
+export const createEnrollmentView = (courseID, courseName, start, end) => {
   const mainBanner = `
   <div class="blue-bg container-fluid row" id="main-banner">
     <div class="label-text blue-light-text col-md-10">${courseName}</div>
@@ -15,11 +15,14 @@ export const createEnrollmentView = (courseID, courseName) => {
   const primaryInstructor = "2256";
   const instructorTable = createInstructorBloc(
     GetInstrHours,
-    primaryInstructor
+    primaryInstructor,
+    courseID,
+    start,
+    end
   );
 
   return `
-  <div class="container-fluid" id="enrollment-bloc" data-course-id=${courseID}>
+  <div class="container-fluid" id="enrollment-bloc" data-course=${courseID}>
     ${mainBanner}
     ${studentTable}
     ${instructorTable}
