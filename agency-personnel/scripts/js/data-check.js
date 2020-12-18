@@ -14,6 +14,9 @@ const validateRecord = (dataList) => {
     const obj = { name, value };
     switch (name) {
       case "PersPersonnelID":
+        obj.correct = true;
+        break;
+
       case "PersFirst":
       case "PersLast":
       case "PersPositionID":

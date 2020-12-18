@@ -174,7 +174,7 @@ const saveMods = (fields, formId, tableName = "") => {
       $(`${formId} input, select`)
         .toggleClass("dark-text")
         .prop("required", true);
-      $(formId).toggleClass("hidden");
+      $(`${formId}, .buttons-bloc-new`).toggleClass("hidden");
     } else {
       // location.reload();
     }
@@ -274,8 +274,8 @@ $(document).ready(() => {
     saveMods(fieldList, formId, "getPersonnel");
   });
 
-  // Creates default PersPersonnelID after position is selected
-  // Can be changed manually
+  //* Creates default PersPersonnelID after position is selected
+  //* Can be changed manually
   $(document).on("focusout", "#PersPositionID", function (evnt) {
     evnt.preventDefault();
     evnt.stopPropagation();
