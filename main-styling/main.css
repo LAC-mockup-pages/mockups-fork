@@ -369,6 +369,21 @@ select {
   margin-bottom: 0px;
 }
 
+#sub-nav a {
+  background-color: inherit;
+  color: inherit;
+}
+
+.selected {
+  color: #1d6294;
+  background-color: #d3e4f0;
+}
+
+.not-selected {
+  color: #d3e4f0;
+  background-color: #2479b5;
+}
+
 #sub-nav > li:hover {
   cursor: pointer;
   color: #d3e4f0;
