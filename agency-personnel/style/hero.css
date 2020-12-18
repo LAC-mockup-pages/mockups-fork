@@ -10,6 +10,25 @@
   text-align: center;
 }
 
+.hero {
+  margin: 0.2% 7.5%;
+}
+
+#sub-nav a {
+  background-color: inherit;
+  color: inherit;
+}
+
+.selected {
+  color: #1d6294;
+  background-color: #d3e4f0;
+}
+
+.not-selected {
+  color: #d3e4f0;
+  background-color: #2479b5;
+}
+
 .data-view {
   border-radius: 5px;
   padding-bottom: 1%;

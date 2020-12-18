@@ -6,7 +6,7 @@ export const personView = (selectedID) => {
   const personData = getPersonnel.filter(
     (person) => person.ID === selectedID
   )[0];
-  const title = "Personnel Information";
+  const title = "Main Information";
   const labels = {
     ID: "Id",
     PersonnelID: "Personnel ID",

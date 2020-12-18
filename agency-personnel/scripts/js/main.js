@@ -337,6 +337,7 @@ $(document).ready(() => {
     $("#search-input").val("");
     $(".personnel-entry").toggleClass("hidden");
     $(".personnel-search").toggleClass("hidden");
+    $("#sub-nav > li").toggleClass("selected not-selected");
 
     $(".hero").append(personnelView);
     // Enables customized tooltips
