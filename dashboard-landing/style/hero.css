@@ -1,1 +1,23 @@
 /*  Local CSS rules for the page */
+
+.dashboard-bg {
+  background-color: #bfbfbf;
+}
+#anchor-bloc {
+  width: 100%;
+}
+#top-bloc,
+#bottom-bloc {
+  height: 25%;
+  width: 100%;
+}
+
+.single-tile > a {
+  width: 15%;
+  height: 15%;
+  border: 2px solid #797979;
+  border-radius: 3px;
+  color: #333;
+  font-size: 2em;
+  margin: 3%;
+}
