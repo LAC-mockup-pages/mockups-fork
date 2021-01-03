@@ -93,7 +93,7 @@ const createTile = (dataObj) => {
 
   const tile = `
     <div class="col-md-2"><button class="single-tile" ${gradient} role="button">
-      <a href=${target} id=${id}  type="text/html">
+      <a href=${target} id=${id} type="text/html">
         ${header}
         ${details}
       </a>
