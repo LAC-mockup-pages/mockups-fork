@@ -9,7 +9,7 @@ const tileSet = [
     header: "MSG",
     background: "rgba(74,117,196,0), rgba(74,117,196,1)",
     details: ["64%"],
-    format: "",
+    formatDetails: "",
     target: "../dashboard-msg/index.html"
   },
   {
@@ -17,7 +17,7 @@ const tileSet = [
     header: "Post Test",
     background: "rgba(247,197,162,0), rgba(247,197,162,1)",
     details: ["75%"],
-    format: "",
+    formatDetails: "",
     target: "../dashboard-msg/index.html"
   },
   {
@@ -25,7 +25,7 @@ const tileSet = [
     header: "Employment 2nd Quarter",
     background: "rgba(187,215,167,0), rgba(187,215,167,1)",
     details: ["52%"],
-    format: "",
+    formatDetails: "",
     target: ""
   },
   {
@@ -33,7 +33,7 @@ const tileSet = [
     header: "Employment 4th Quarter",
     background: "rgba(169,169,169,0), rgba(169,169,169,1)",
     details: ["23%"],
-    format: "",
+    formatDetails: "",
     target: ""
   },
   {
@@ -41,7 +41,7 @@ const tileSet = [
     header: "EPE",
     background: "rgba(175,189,231,0), rgba(175,189,231,1)",
     details: ["Enrolled: 450", "Hours: 22,000"],
-    format: "",
+    formatDetails: "tile-details-small",
     target: ""
   },
   {
@@ -49,7 +49,7 @@ const tileSet = [
     header: "Enrolled",
     background: "rgba(74,117,196,0), rgba(74,117,196,1)",
     details: ["502"],
-    format: "",
+    formatDetails: "",
     target: ""
   },
   {
@@ -57,7 +57,7 @@ const tileSet = [
     header: "HSE",
     background: "rgba(255,227,143,0), rgba(255,227,143,1)",
     details: ["Referred: 37", "Passed: 28"],
-    format: "",
+    formatDetails: "tile-details-small",
     target: ""
   },
   {
@@ -65,7 +65,7 @@ const tileSet = [
     header: "TABE Tests",
     background: "rgba(187,215,167,0), rgba(187,215,167,1)",
     details: ["Pre: 507", "Post: 205"],
-    format: "",
+    formatDetails: "tile-details-small",
     target: ""
   },
   {
@@ -73,7 +73,7 @@ const tileSet = [
     header: "Best + Tests",
     background: "rgba(169,169,169,0), rgba(169,169,169,1)",
     details: ["Pre: 300", "Post: 180"],
-    format: "",
+    formatDetails: "tile-details-small",
     target: ""
   },
   {
@@ -81,21 +81,29 @@ const tileSet = [
     header: "Hours",
     background: "rgba(247,197,162,0), rgba(247,197,162,1)",
     details: ["15,000"],
-    format: "",
+    formatDetails: "",
     target: ""
   }
 ];
 
+const createDetailLines = (detailList) => {
+  return detailList.map((item) => `<div>${item}</div>`).join("");
+};
+
 const createTile = (dataObj) => {
-  const { id, header, background, details, format, target } = dataObj;
+  const { id, header, background, details, formatDetails, target } = dataObj;
 
   const gradient = `style="background-image: linear-gradient(45deg, ${background})"`;
+
+  const format = formatDetails ? formatDetails : "tile-details";
+  const detailContent =
+    details.length > 1 ? createDetailLines(details) : details[0];
 
   const tile = `
     <div class="col-md-2"><button class="single-tile" ${gradient} role="button">
       <a href=${target} id=${id} type="text/html">
-        ${header}
-        ${details}
+        <div class="tile-header">${header}</div>
+        <div class=${format}>${detailContent}</div>
       </a>
     </button></div>`;
 
