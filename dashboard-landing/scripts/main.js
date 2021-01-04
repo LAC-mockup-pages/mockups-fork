@@ -92,9 +92,7 @@ const createDetailLines = (detailList) => {
 
 const createTile = (dataObj) => {
   const { id, header, background, details, formatDetails, target } = dataObj;
-
   const gradient = `style="background-image: linear-gradient(180deg, ${background})"`;
-
   const format = formatDetails ? formatDetails : "tile-details";
   const detailContent =
     details.length > 1 ? createDetailLines(details) : details[0];
