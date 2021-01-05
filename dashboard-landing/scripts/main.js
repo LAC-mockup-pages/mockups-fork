@@ -22,7 +22,7 @@ export const tileSet = [
   },
   {
     id: "tile2",
-    header: "Employment 2nd Quarter",
+    header: "Employment Q2",
     background: "rgba(187,215,167,0), rgba(187,215,167,1)",
     details: ["52%"],
     formatDetails: "",
@@ -30,7 +30,7 @@ export const tileSet = [
   },
   {
     id: "tile3",
-    header: "Employment 4th Quarter",
+    header: "Employment Q4",
     background: "rgba(169,169,169,0), rgba(169,169,169,1)",
     details: ["23%"],
     formatDetails: "",

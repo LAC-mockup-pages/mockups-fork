@@ -17,10 +17,10 @@
 /* =================================== */
 
 #button-bloc .btn {
-  height: 8em;
-  width: 8em;
+  height: 6em;
+  width: 6em;
   margin-bottom: 20%;
-  margin-left: 25%;
+  /* margin-left: 25%; */
 }
 
 .compare-button {
@@ -29,6 +29,10 @@
 
 .inform-button {
   margin-top: 10%;
+}
+
+.glyphicon {
+  font-size: large;
 }
 
 /* Side Navigation Bar */
@@ -49,8 +53,7 @@
 
 #tile0 {
   width: 100%;
-  height: 11.5em;
-  /* border-radius: 15px; */
+  height: 11em;
 }
 
 .single-tile > a {
@@ -82,9 +85,20 @@
 #tile0 .tile-header {
   font-size: 1.4em;
   font-weight: 700;
+  margin-top: 4%;
 }
 
 #tile0 .tile-details {
   font-size: 3em;
   font-weight: 800;
+}
+
+/* Center Part */
+/* =================================== */
+
+.stat-graph {
+  height: 400px;
+  width: 90%;
+  background-color: #dadada;
+  margin-top: 3%;
 }
