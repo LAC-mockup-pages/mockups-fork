@@ -1,4 +1,9 @@
+/* =================================== */
 /* Styling for local elements */
+/* =================================== */
+
+/* Hero */
+/* =================================== */
 
 .hero {
   margin: 1% 2%;
@@ -6,4 +11,22 @@
 
 .dashboard-bg {
   background-color: #8fa9dc;
+}
+
+/* Button Block */
+/* =================================== */
+
+#button-bloc .btn {
+  height: 8em;
+  width: 8em;
+  margin-bottom: 20%;
+  margin-left: 25%;
+}
+
+.compare-button {
+  margin-top: 80%;
+}
+
+.inform-button {
+  margin-top: 10%;
 }
