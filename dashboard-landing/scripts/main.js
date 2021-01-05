@@ -90,7 +90,7 @@ export const createDetailLines = (detailList) => {
   return detailList.map((item) => `<div>${item}</div>`).join("");
 };
 
-export const createTile = (dataObj, colMd) => {
+export const createTile = (dataObj, classButton) => {
   const { id, header, background, details, formatDetails, target } = dataObj;
   const gradient = `style="background-image: linear-gradient(180deg, ${background})"`;
   const format = formatDetails ? formatDetails : "tile-details";
@@ -98,7 +98,7 @@ export const createTile = (dataObj, colMd) => {
     details.length > 1 ? createDetailLines(details) : details[0];
 
   const tile = `
-    <div class=${colMd}><button class="single-tile" ${gradient} role="button">
+    <div class="${classButton}"><button class="single-tile" ${gradient} type="button">
       <a href=${target} id=${id} type="text/html">
         <div class="tile-header">${header}</div>
         <div class=${format}>${detailContent}</div>
