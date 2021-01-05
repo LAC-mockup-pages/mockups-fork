@@ -72,8 +72,9 @@
   height: 40%;
 }
 
-.tile-details {
-  font-size: 1em;
+.tile-details,
+.tile-details-small {
+  font-size: 1.1em;
   font-weight: 800;
   height: 60%;
 }
