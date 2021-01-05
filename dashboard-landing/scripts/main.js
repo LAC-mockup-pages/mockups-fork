@@ -3,7 +3,7 @@
 //* JS and jQuery
 //*=================================================
 
-const tileSet = [
+export const tileSet = [
   {
     id: "tile0",
     header: "MSG",
@@ -86,11 +86,11 @@ const tileSet = [
   }
 ];
 
-const createDetailLines = (detailList) => {
+export const createDetailLines = (detailList) => {
   return detailList.map((item) => `<div>${item}</div>`).join("");
 };
 
-const createTile = (dataObj) => {
+export const createTile = (dataObj) => {
   const { id, header, background, details, formatDetails, target } = dataObj;
   const gradient = `style="background-image: linear-gradient(180deg, ${background})"`;
   const format = formatDetails ? formatDetails : "tile-details";
