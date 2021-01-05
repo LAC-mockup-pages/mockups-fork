@@ -1,1 +1,9 @@
 /* Styling for local elements */
+
+.hero {
+  margin: 1% 2%;
+}
+
+.dashboard-bg {
+  background-color: #8fa9dc;
+}
