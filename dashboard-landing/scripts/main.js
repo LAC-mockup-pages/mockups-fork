@@ -90,7 +90,7 @@ export const createDetailLines = (detailList) => {
   return detailList.map((item) => `<div>${item}</div>`).join("");
 };
 
-export const createTile = (dataObj) => {
+export const createTile = (dataObj, colMd) => {
   const { id, header, background, details, formatDetails, target } = dataObj;
   const gradient = `style="background-image: linear-gradient(180deg, ${background})"`;
   const format = formatDetails ? formatDetails : "tile-details";
@@ -98,7 +98,7 @@ export const createTile = (dataObj) => {
     details.length > 1 ? createDetailLines(details) : details[0];
 
   const tile = `
-    <div class="col-md-2"><button class="single-tile" ${gradient} role="button">
+    <div class=${colMd}><button class="single-tile" ${gradient} role="button">
       <a href=${target} id=${id} type="text/html">
         <div class="tile-header">${header}</div>
         <div class=${format}>${detailContent}</div>
@@ -111,7 +111,7 @@ export const createTile = (dataObj) => {
 const createBlock = (tileBloc) => {
   let block = "";
   for (const record of tileBloc) {
-    block += createTile(record);
+    block += createTile(record, "col-md-2");
   }
   return `
   <div class="container-fluid row">
