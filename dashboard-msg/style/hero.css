@@ -30,3 +30,60 @@
 .inform-button {
   margin-top: 10%;
 }
+
+/* Side Navigation Bar */
+/* =================================== */
+
+#side-nav {
+  margin: 3% 0%;
+  max-height: 45em;
+  overflow-y: scroll;
+}
+
+.single-tile {
+  width: 100%;
+  height: 6em;
+  border-radius: 5px;
+  margin-bottom: 5%;
+}
+
+#tile0 {
+  width: 100%;
+  height: 11.5em;
+  /* border-radius: 15px; */
+}
+
+.single-tile > a {
+  color: #333;
+  font-size: 1.1em;
+  text-decoration: none;
+}
+
+.tile-header,
+.tile-details {
+  width: 100%;
+  height: 50%;
+}
+
+.tile-header {
+  text-align: left;
+  font-weight: 600;
+  padding: 3% 0% 0% 3%;
+  height: 40%;
+}
+
+.tile-details {
+  font-size: 1em;
+  font-weight: 800;
+  height: 60%;
+}
+
+#tile0 .tile-header {
+  font-size: 1.4em;
+  font-weight: 700;
+}
+
+#tile0 .tile-details {
+  font-size: 3em;
+  font-weight: 800;
+}

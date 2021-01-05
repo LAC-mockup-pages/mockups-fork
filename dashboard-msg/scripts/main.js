@@ -3,13 +3,17 @@
 //* JS and jQuery
 //*=================================================
 
-import {
-  tileSet,
-  createDetailLines,
-  createTile
-} from "../../dashboard-landing/scripts/main.js";
+import { tileSet, createTile } from "../../dashboard-landing/scripts/main.js";
 
-const createLeftNavBar = () => {};
+const createLeftNavBar = () => {
+  let block = "";
+
+  for (const record of tileSet) {
+    block += createTile(record, "container-fluid button-block-sidenav");
+  }
+
+  return block;
+};
 
 //*=================================================
 //* jQuery section

@@ -98,8 +98,8 @@ export const createTile = (dataObj, classButton) => {
     details.length > 1 ? createDetailLines(details) : details[0];
 
   const tile = `
-    <div class="${classButton}"><button class="single-tile" ${gradient} type="button">
-      <a href=${target} id=${id} type="text/html">
+    <div class="${classButton}"><button class="single-tile" ${gradient} type="button" id=${id}>
+      <a href=${target}  type="text/html">
         <div class="tile-header">${header}</div>
         <div class=${format}>${detailContent}</div>
       </a>
