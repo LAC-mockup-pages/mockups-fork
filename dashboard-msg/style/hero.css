@@ -111,16 +111,42 @@
   margin-top: 1.5%;
 }
 
+thead,
+th {
+  background-color: #8fa9dc;
+  text-align: left;
+}
+
 .table1,
 .table2 {
   height: 9em;
+  color: #333;
 }
 
 .table2 {
-  margin-bottom: 1.5%;
+  margin-bottom: 2%;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  padding: 0px;
+  padding-left: 2px;
+  vertical-align: top;
+  width: 45%;
+  font-size: 0.9em;
+  line-height: 1.8em;
 }
 
 #center-part .container-fluid {
   padding-right: 0px;
   padding-left: 0px;
+}
+
+.table2 > .table > tbody {
+  height: 5em;
+  overflow-y: scroll;
 }
