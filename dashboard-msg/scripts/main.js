@@ -25,6 +25,10 @@ const createLeftNavBar = () => {
   return block;
 };
 
+//TODO Add logic to reorder the tiles depending on the selected
+//TODO dashboard. Also add an object "Back to Portal" as a 1st tile.
+const shuffleTileSet = (list, tileId) => {};
+
 const percentFormat = (str) => {
   return `${str.replace("0.", "")}%`;
 };
