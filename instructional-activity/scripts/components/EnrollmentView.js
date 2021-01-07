@@ -1,7 +1,6 @@
 // Displays student enrollment for a course
 // and instructors hours
 
-import { createInstructorBloc } from "./EnrollmentInstructors.js";
 import { createStudentBloc } from "./EnrollmentStudents.js";
 export const createEnrollmentView = (courseID, courseName, start, end) => {
   const mainBanner = `
@@ -12,19 +11,25 @@ export const createEnrollmentView = (courseID, courseName, start, end) => {
   </div>`;
 
   const studentTable = createStudentBloc(GetEnrollInfo.slice(0));
-  const primaryInstructor = "2256";
-  const instructorTable = createInstructorBloc(
-    GetInstrHours,
-    primaryInstructor,
-    courseID,
-    start,
-    end
-  );
+  // const primaryInstructor = "2256";
+  // const instructorTable = createInstructorBloc(
+  //   GetInstrHours,
+  //   primaryInstructor,
+  //   courseID,
+  //   start,
+  //   end
+  // );
+
+  // return `
+  // <div class="container-fluid" id="enrollment-bloc" data-course=${courseID}>
+  //   ${mainBanner}
+  //   ${studentTable}
+  //   ${instructorTable}
+  // </div>`;
 
   return `
   <div class="container-fluid" id="enrollment-bloc" data-course=${courseID}>
     ${mainBanner}
     ${studentTable}
-    ${instructorTable}
   </div>`;
 };
