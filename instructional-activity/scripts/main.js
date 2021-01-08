@@ -436,7 +436,7 @@ $(document).ready(() => {
     location.reload();
   });
 
-  //* Select record to display in Enrollment View
+  //* Displaying selected record in Enrollment View.
   $(document).on("click", "#main-table tr", function (evnt) {
     evnt.stopPropagation();
     const rowId = $(this).attr("id");
