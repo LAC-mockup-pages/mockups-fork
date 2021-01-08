@@ -457,7 +457,7 @@ $(document).ready(() => {
     // $("#view-bloc").empty().append(courseView);
     $("html, body").animate({ scrollTop: 220 }, 200);
     $("#offering").removeClass();
-    $("#enrollment").addClass("blue-light-bg blue-text");
+    $("#enrollment").addClass("selected-tab");
 
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();

@@ -52,6 +52,11 @@
   border-bottom-right-radius: 5px;
 }
 
+.selected-tab {
+  background-color: #d3e4f0;
+  color: #2479b5;
+}
+
 /* Enrollment View */
 /* =========================================== */
 
