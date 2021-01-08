@@ -458,10 +458,20 @@ $(document).ready(() => {
     $("html, body").animate({ scrollTop: 220 }, 200);
     $("#offering").removeClass();
     $("#enrollment").addClass("selected-tab");
+    $("#sub-nav .unselected-tab").removeClass("unselected-tab");
+    $("#sub-nav .btn-link").prop("disabled", false).removeClass("disabled");
 
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
+
+  //* Navigation from Enrollment view once a course has been
+  //* selected in the Course Offering view shortlist.
+  $(document).on(
+    "click",
+    "#enrollment-tab, #hours-tab, #details-tab",
+    function (evnt) {}
+  );
 
   //* Handling change for special program selected
   $(document).on("change", "#SpecialProgramID-view", function (evnt) {
