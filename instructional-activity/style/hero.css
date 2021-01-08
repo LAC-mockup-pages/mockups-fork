@@ -55,6 +55,23 @@
 .selected-tab {
   background-color: #d3e4f0;
   color: #2479b5;
+  font-weight: 700;
+}
+
+.unselected-tab,
+.btn-link {
+  background-color: inherit;
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+#sub-nav .btn-link {
+  border: none;
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+  /* font-weight: 500; */
 }
 
 /* Enrollment View */
