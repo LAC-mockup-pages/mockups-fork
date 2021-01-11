@@ -63,7 +63,7 @@ export const createDetailsView = (dataObj) => {
   // Displaying blocks
   // =========================================================
   return `
-  <div class="container-fluid course-details" id=${ID}>
+  <div class="container-fluid course-details" id="details-bloc" data-course=${ID}>
     <div class="row first-bloc">
       <div class="main-info col-md-6" id="main-info" data-toggle='tooltip' data-placement='left' title='Click to Edit'>
         ${mainInfo}
