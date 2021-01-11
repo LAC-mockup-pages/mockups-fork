@@ -20,6 +20,7 @@ import { addSpecialProgram } from "./components/Recommended.js";
 import { saveSchedule } from "./components/Schedule.js";
 import { saveFundingSources } from "./components/FundingSources.js";
 import { createEnrollmentView } from "./components/EnrollmentView.js";
+import { createHoursView } from "./components/HoursView.js";
 // Main elements
 export const rowLabels = [
   {
@@ -470,7 +471,29 @@ $(document).ready(() => {
   $(document).on(
     "click",
     "#enrollment-tab, #hours-tab, #details-tab",
-    function (evnt) {}
+    function () {
+      const selectedId = $(this).attr("id");
+      const selectedCourse = $(this).data("course");
+      console.log("selectedCourse :>> ", selectedCourse);
+      const course = GetCourse.find((record) => record.ID === selectedId);
+
+      let viewToDisplay = "";
+      switch (selectedId) {
+        case "enrollment-bloc":
+          viewToDisplay = createEnrollmentView(courseId, course.ClassID);
+          break;
+        case "hours-bloc":
+          viewToDisplay = createHoursView(selectedCourse);
+          break;
+        case "details-bloc":
+          viewToDisplay = createDetailsView(course);
+          break;
+        default:
+          break;
+      }
+
+      $("#view-bloc").empty().append(viewToDisplay);
+    }
   );
 
   //* Handling change for special program selected
