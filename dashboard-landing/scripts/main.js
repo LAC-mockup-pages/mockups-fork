@@ -7,7 +7,7 @@ export const tileSet = [
   {
     id: "tile0",
     header: "MSG",
-    background: "rgba(74,117,196,0), rgba(74,117,196,1)",
+    background: "rgba(36,121,181,0), rgba(36,121,181,1)",
     details: ["64%"],
     formatDetails: "",
     target: "../dashboard-msg/index.html"
@@ -15,7 +15,7 @@ export const tileSet = [
   {
     id: "tile1",
     header: "Post Test",
-    background: "rgba(247,197,162,0), rgba(247,197,162,1)",
+    background: "rgba(240,226,213,0), rgba(240,226,213,1)",
     details: ["75%"],
     formatDetails: "",
     target: "../dashboard-msg/index.html"
@@ -23,7 +23,7 @@ export const tileSet = [
   {
     id: "tile2",
     header: "Employment Q2",
-    background: "rgba(187,215,167,0), rgba(187,215,167,1)",
+    background: "rgba(172,143,194,0), rgba(172,143,194,1)",
     details: ["52%"],
     formatDetails: "",
     target: ""
@@ -31,7 +31,7 @@ export const tileSet = [
   {
     id: "tile3",
     header: "Employment Q4",
-    background: "rgba(169,169,169,0), rgba(169,169,169,1)",
+    background: "rgba(166,166,166,0), rgba(166,166,166,1)",
     details: ["23%"],
     formatDetails: "",
     target: ""
@@ -39,7 +39,7 @@ export const tileSet = [
   {
     id: "tile4",
     header: "EPE",
-    background: "rgba(175,189,231,0), rgba(175,189,231,1)",
+    background: "rgba(155,187,202,0), rgba(155,187,202,1)",
     details: ["Enrolled: 450", "Hours: 22,000"],
     formatDetails: "tile-details-small",
     target: ""
@@ -47,7 +47,7 @@ export const tileSet = [
   {
     id: "tile5",
     header: "Enrolled",
-    background: "rgba(74,117,196,0), rgba(74,117,196,1)",
+    background: "rgba(36,121,181,0), rgba(36,121,181,1)",
     details: ["502"],
     formatDetails: "",
     target: ""
@@ -55,7 +55,7 @@ export const tileSet = [
   {
     id: "tile6",
     header: "HSE",
-    background: "rgba(255,227,143,0), rgba(255,227,143,1)",
+    background: "rgba(247,224,149,0), rgba(247,224,149,1)",
     details: ["Referred: 37", "Passed: 28"],
     formatDetails: "tile-details-small",
     target: ""
@@ -63,7 +63,7 @@ export const tileSet = [
   {
     id: "tile7",
     header: "TABE Tests",
-    background: "rgba(187,215,167,0), rgba(187,215,167,1)",
+    background: "rgba(172,143,194,0), rgba(172,143,194,1)",
     details: ["Pre: 507", "Post: 205"],
     formatDetails: "tile-details-small",
     target: ""
@@ -71,7 +71,7 @@ export const tileSet = [
   {
     id: "tile8",
     header: "Best + Tests",
-    background: "rgba(169,169,169,0), rgba(169,169,169,1)",
+    background: "rgba(166,166,166,0), rgba(166,166,166,1)",
     details: ["Pre: 300", "Post: 180"],
     formatDetails: "tile-details-small",
     target: ""
@@ -79,7 +79,7 @@ export const tileSet = [
   {
     id: "tile9",
     header: "Hours",
-    background: "rgba(247,197,162,0), rgba(247,197,162,1)",
+    background: "rgba(240,226,213,0), rgba(240,226,213,1)",
     details: ["15,000"],
     formatDetails: "",
     target: ""
