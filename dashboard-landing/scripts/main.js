@@ -126,8 +126,13 @@ const createBlock = (tileBloc) => {
 //*=================================================
 
 $(document).ready(() => {
-  const topBloc = createBlock(tileSet.slice(0, 5));
-  const bottomBloc = createBlock(tileSet.slice(5));
+  // const topBloc = createBlock(tileSet.slice(0, 5));
+  // const bottomBloc = createBlock(tileSet.slice(5));
+
+  const topBloc = createBlock(tileSet.slice(0, 2));
+  const middleBloc = createBlock(tileSet.slice(2, 4));
+  const bottomBloc = createBlock(tileSet.slice(4));
   $("#top-bloc").append(topBloc);
+  $("#middle-bloc").append(middleBloc);
   $("#bottom-bloc").append(bottomBloc);
 });
