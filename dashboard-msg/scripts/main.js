@@ -35,7 +35,6 @@ const percentFormat = (str) => {
 
 const createTableHeader = (list) => {
   const headers = list.map((str) => `<th>${str}</th>`).join("");
-  console.log("headers :>> ", headers);
   return `<thead><tr>${headers}</tr></thead>`;
 };
 

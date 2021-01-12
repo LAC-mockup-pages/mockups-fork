@@ -6,12 +6,12 @@
 /* =================================== */
 
 .hero {
-  margin: 1% 2%;
+  margin: 1% 6%;
   height: fit-content;
 }
 
 .dashboard-bg {
-  background-color: #8fa9dc;
+  background-color: #2479b5;
 }
 
 /* Button Block */
@@ -113,7 +113,7 @@
 
 thead,
 th {
-  background-color: #8fa9dc;
+  background-color: #2479b5;
   text-align: left;
 }
 
