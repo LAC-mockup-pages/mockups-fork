@@ -142,7 +142,10 @@ export const tileSet = [
     id: "tile6",
     header: "HSE",
     background: "rgba(240,226,213,0), rgba(240,226,213,1)",
-    details: ["Referred: 37", "Passed: 28"],
+    details: [
+      ["Referred:", "37"],
+      ["Passed:", "28"]
+    ],
     formatDetails: "tile-details-small",
     target: ""
   },
@@ -150,7 +153,10 @@ export const tileSet = [
     id: "tile7",
     header: "TABE Tests",
     background: "rgba(240,226,213,0), rgba(240,226,213,1)",
-    details: ["Pre: 507", "Post: 205"],
+    details: [
+      ["Pre:", "507"],
+      ["Post:", "205"]
+    ],
     formatDetails: "tile-details-small",
     target: ""
   },
@@ -158,7 +164,10 @@ export const tileSet = [
     id: "tile8",
     header: "Best + Tests",
     background: "rgba(240,226,213,0), rgba(240,226,213,1)",
-    details: ["Pre: 300", "Post: 180"],
+    details: [
+      ["Pre:", "300"],
+      ["Post:", "180"]
+    ],
     formatDetails: "tile-details-small",
     target: ""
   },
@@ -189,7 +198,10 @@ export const createDetailLines = (detailList) => {
 
 export const createTile = (dataObj, classButton, classTile) => {
   const { id, header, background, details, formatDetails, target } = dataObj;
-  const gradient = `style="background-image: linear-gradient(180deg, ${background})"`;
+  const gradient =
+    classTile === "large-tile"
+      ? `style="background-image: linear-gradient(180deg, ${background})"`
+      : "";
   const format = formatDetails ? formatDetails : "tile-details";
   const detailContent =
     details.length > 1 ? createDetailLines(details) : details[0];

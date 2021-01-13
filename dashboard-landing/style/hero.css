@@ -59,6 +59,7 @@
   width: 11em;
   height: 9em;
   border-radius: 15px;
+  background-color: rgb(240, 226, 213);
 }
 
 .small-tile > a {
