@@ -12,9 +12,10 @@
   border-bottom-right-radius: 5px;
   width: 100%;
   padding-top: 3%;
-  padding-bottom: 3%;
+  /* padding-bottom: 1%; */
 }
 #top-bloc,
+#middle-bloc,
 #bottom-bloc {
   height: 15em;
   width: 100%;
@@ -22,34 +23,58 @@
 }
 
 .landing-title {
-  font-size: 1.5em;
+  font-size: 1.2em;
   font-weight: 600;
-  padding: 2% 0% 2% 1%;
-  margin-top: 2%;
+  padding: 0.5% 0% 0.5% 1%;
+  margin-top: 1%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
 }
 
-.single-tile {
-  width: 13em;
-  height: 13em;
+/* .single-tile {
+  width: 11em;
+  height: 11em;
   border-radius: 15px;
 }
 
 .single-tile > a {
   color: #333;
-  font-size: 1.65em;
+  font-size: 1.4em;
+  text-decoration: none;
+} */
+
+.large-tile {
+  width: 100%;
+  height: 12em;
+  border-radius: 15px;
+}
+
+.large-tile > a {
+  color: #333;
+  font-size: 1.6em;
+  text-decoration: none;
+}
+
+.small-tile {
+  width: 11em;
+  height: 9em;
+  border-radius: 15px;
+}
+
+.small-tile > a {
+  color: #333;
+  font-size: 1.4em;
   text-decoration: none;
 }
 
 .tile-header,
 .tile-details {
   width: 100%;
-  height: 50%;
+  /* height: 50%; */
 }
 
 .tile-header {
-  text-align: left;
+  /* text-align: left; */
   font-weight: 600;
   padding: 3% 0% 0% 3%;
   height: 40%;
@@ -62,7 +87,7 @@
 }
 
 .tile-details-small {
-  font-size: 1.1em;
-  font-weight: 800;
+  /* font-size: 1.1em; */
+  font-weight: 700;
   height: 60%;
 }
