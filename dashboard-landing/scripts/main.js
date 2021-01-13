@@ -122,8 +122,11 @@ export const tileSet = [
   {
     id: "tile4",
     header: "EPE",
-    background: "rgba(240,226,213,0), rgba(240,226,213,1)",
-    details: ["Enrolled: 450", "Hours: 22,000"],
+    background: "rgb(240,226,213)",
+    details: [
+      ["Enrolled:", "450"],
+      ["Hours:", "22,000"]
+    ],
     formatDetails: "tile-details-small",
     target: ""
   },
@@ -170,7 +173,18 @@ export const tileSet = [
 ];
 
 export const createDetailLines = (detailList) => {
-  return detailList.map((item) => `<div>${item}</div>`).join("");
+  // return detailList.map((item) => `<div>${item}</div>`).join("");
+  let rows = "";
+  for (const list of detailList) {
+    rows += `<tr><td>${list[0]}</td><td>${list[1]}</td></tr>`;
+  }
+
+  return `
+  <table class="table table-condensed detail-table">
+  <tbody>
+  ${rows}
+  </tbody>
+  </table>`;
 };
 
 export const createTile = (dataObj, classButton, classTile) => {

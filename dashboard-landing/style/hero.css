@@ -95,3 +95,15 @@
 .anchor-bloc button:hover {
   box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.5), 0 17px 50px 0 rgba(0, 0, 0, 0.3);
 }
+
+.table > tbody > tr > td {
+  line-height: 1.1em;
+  background-color: rgb(240, 226, 213);
+  font-size: 0.7em;
+  text-align: left;
+  border-top: none;
+}
+
+.table > tbody > tr > td:last-of-type {
+  font-weight: 700;
+}
