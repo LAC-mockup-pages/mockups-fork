@@ -108,16 +108,44 @@ export const createTile = (dataObj, classButton) => {
   return tile;
 };
 
-const createBlock = (tileBloc) => {
+//* Creates bloc of same-size tiles with 5 tiles per bloc.
+//* Suitable for 2 rows of tiles.
+// const createBlock = (tileBloc) => {
+//   let block = "";
+//   for (const record of tileBloc) {
+//     block += createTile(record, "col-md-2");
+//   }
+//   return `
+//   <div class="container-fluid row">
+//     <div class="col-md-1"></div>
+//     ${block}
+//     <div class="col-md-1"></div>
+//   </div>`;
+// };
+
+//* Creates bloc of large tiles, 2 tiles per bloc.
+const createLargeTileBloc = (tileList) => {
   let block = "";
-  for (const record of tileBloc) {
-    block += createTile(record, "col-md-2");
+  for (const tile of tileList) {
+    block += createTile(tile, "col-md-4");
   }
   return `
   <div class="container-fluid row">
-    <div class="col-md-1"></div>
+    <div class="col-md-2"></div>
     ${block}
-    <div class="col-md-1"></div>
+    <div class="col-md-2"></div>
+  </div>`;
+};
+
+//* Creates bottom bloc of small tiles with 6 tiles.
+const createSmallTileBloc = (tileList) => {
+  let block = "";
+  for (const tile of tileList) {
+    block += createTile(tile, "col-md-2");
+  }
+  return `
+  <div class="container-fluid row">
+    ${block}
   </div>`;
 };
 
