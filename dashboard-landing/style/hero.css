@@ -103,8 +103,17 @@
   font-size: 0.7em;
   text-align: left;
   border-top: none;
+  padding: 0em 0em 0em 0.5em;
 }
 
 .table > tbody > tr > td:last-of-type {
   font-weight: 700;
+}
+
+.table > tbody > tr > td:first-of-type {
+  width: 40%;
+}
+
+.detail-table {
+  padding-left: 1%;
 }
