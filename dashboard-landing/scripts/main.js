@@ -26,7 +26,7 @@
 //     background: "rgba(172,143,194,0), rgba(172,143,194,1)",
 //     details: ["52%"],
 //     formatDetails: "",
-//     target: ""
+//     target: "../assets/coming-soon.html"
 //   },
 //   {
 //     id: "tile3",
@@ -34,7 +34,7 @@
 //     background: "rgba(166,166,166,0), rgba(166,166,166,1)",
 //     details: ["23%"],
 //     formatDetails: "",
-//     target: ""
+//     target: "../assets/coming-soon.html"
 //   },
 //   {
 //     id: "tile4",
@@ -42,7 +42,7 @@
 //     background: "rgba(155,187,202,0), rgba(155,187,202,1)",
 //     details: ["Enrolled: 450", "Hours: 22,000"],
 //     formatDetails: "tile-details-small",
-//     target: ""
+//     target: "../assets/coming-soon.html"
 //   },
 //   {
 //     id: "tile5",
@@ -50,7 +50,7 @@
 //     background: "rgba(36,121,181,0), rgba(36,121,181,1)",
 //     details: ["502"],
 //     formatDetails: "",
-//     target: ""
+//     target: "../assets/coming-soon.html"
 //   },
 //   {
 //     id: "tile6",
@@ -58,7 +58,7 @@
 //     background: "rgba(247,224,149,0), rgba(247,224,149,1)",
 //     details: ["Referred: 37", "Passed: 28"],
 //     formatDetails: "tile-details-small",
-//     target: ""
+//     target: "../assets/coming-soon.html"
 //   },
 //   {
 //     id: "tile7",
@@ -66,7 +66,7 @@
 //     background: "rgba(172,143,194,0), rgba(172,143,194,1)",
 //     details: ["Pre: 507", "Post: 205"],
 //     formatDetails: "tile-details-small",
-//     target: ""
+//     target: "../assets/coming-soon.html"
 //   },
 //   {
 //     id: "tile8",
@@ -74,7 +74,7 @@
 //     background: "rgba(166,166,166,0), rgba(166,166,166,1)",
 //     details: ["Pre: 300", "Post: 180"],
 //     formatDetails: "tile-details-small",
-//     target: ""
+//     target: "../assets/coming-soon.html"
 //   },
 //   {
 //     id: "tile9",
@@ -82,7 +82,7 @@
 //     background: "rgba(240,226,213,0), rgba(240,226,213,1)",
 //     details: ["15,000"],
 //     formatDetails: "",
-//     target: ""
+//     target: "../assets/coming-soon.html"
 //   }
 // ];
 
@@ -101,7 +101,7 @@ export const tileSet = [
     background: "rgba(221,88,20,0), rgba(221,88,20,1)",
     details: ["75%"],
     formatDetails: "",
-    target: "../dashboard-msg/index.html"
+    target: "../assets/coming-soon.html"
   },
   {
     id: "tile2",
@@ -109,7 +109,7 @@ export const tileSet = [
     background: "rgba(172,143,194,0), rgba(172,143,194,1)",
     details: ["52%"],
     formatDetails: "",
-    target: ""
+    target: "../assets/coming-soon.html"
   },
   {
     id: "tile3",
@@ -117,7 +117,7 @@ export const tileSet = [
     background: "rgba(166,166,166,0), rgba(166,166,166,1)",
     details: ["23%"],
     formatDetails: "",
-    target: ""
+    target: "../assets/coming-soon.html"
   },
   {
     id: "tile4",
@@ -128,7 +128,7 @@ export const tileSet = [
       ["Hours:", "22,000"]
     ],
     formatDetails: "tile-details-small",
-    target: ""
+    target: "../assets/coming-soon.html"
   },
   {
     id: "tile5",
@@ -136,7 +136,7 @@ export const tileSet = [
     background: "rgba(240,226,213,0), rgba(240,226,213,1)",
     details: ["502"],
     formatDetails: "tile-details-small",
-    target: ""
+    target: "../assets/coming-soon.html"
   },
   {
     id: "tile6",
@@ -147,7 +147,7 @@ export const tileSet = [
       ["Passed:", "28"]
     ],
     formatDetails: "tile-details-small",
-    target: ""
+    target: "../assets/coming-soon.html"
   },
   {
     id: "tile7",
@@ -158,7 +158,7 @@ export const tileSet = [
       ["Post:", "205"]
     ],
     formatDetails: "tile-details-small",
-    target: ""
+    target: "../assets/coming-soon.html"
   },
   {
     id: "tile8",
@@ -169,7 +169,7 @@ export const tileSet = [
       ["Post:", "180"]
     ],
     formatDetails: "tile-details-small",
-    target: ""
+    target: "../assets/coming-soon.html"
   },
   {
     id: "tile9",
@@ -177,7 +177,7 @@ export const tileSet = [
     background: "rgba(240,226,213,0), rgba(240,226,213,1)",
     details: ["15,000"],
     formatDetails: "tile-details-small",
-    target: ""
+    target: "../assets/coming-soon.html"
   }
 ];
 
