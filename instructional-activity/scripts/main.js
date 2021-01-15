@@ -450,12 +450,11 @@ $(document).ready(() => {
       StartDate,
       EndDate
     );
-    const courseView = createDetailsView(selectedCourse);
 
     // Cleaning up
     $(".record-entry, #filter-bloc").toggleClass("hidden");
-    $("#view-bloc").empty().append(enrollmentView);
-    // $("#view-bloc").empty().append(courseView);
+    $("#view-bloc").empty().append(enrollmentView).attr("data-course", rowId);
+
     $("html, body").animate({ scrollTop: 220 }, 200);
     $("#offering").removeClass();
     $("#enrollment").addClass("selected-tab");
@@ -473,7 +472,7 @@ $(document).ready(() => {
     "#enrollment-tab, #hours-tab, #details-tab",
     function () {
       const selectedId = $(this).attr("id");
-      const selectedCourse = $(this).data("course");
+      const selectedCourse = $("#view-bloc").data("course");
       console.log("selectedCourse :>> ", selectedCourse);
       const course = GetCourse.find((record) => record.ID === selectedId);
 

@@ -21,14 +21,14 @@ export const createEnrollmentView = (courseID, courseName, start, end) => {
   // );
 
   // return `
-  // <div class="container-fluid" id="enrollment-bloc" data-course=${courseID}>
+  // <div class="container-fluid" id="enrollment-bloc">
   //   ${mainBanner}
   //   ${studentTable}
   //   ${instructorTable}
   // </div>`;
 
   return `
-  <div class="container-fluid" id="enrollment-bloc" data-course=${courseID}>
+  <div class="container-fluid" id="enrollment-bloc">
     ${mainBanner}
     ${studentTable}
   </div>`;
