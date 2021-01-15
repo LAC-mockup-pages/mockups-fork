@@ -471,20 +471,22 @@ $(document).ready(() => {
     "click",
     "#enrollment-tab, #hours-tab, #details-tab",
     function () {
-      const selectedId = $(this).attr("id");
-      const selectedCourse = $("#view-bloc").data("course");
+      const selectedTab = $(this).attr("id");
+      console.log("selectedTab :>> ", selectedTab);
+      const selectedCourse = $("#view-bloc").data("course").toString();
       console.log("selectedCourse :>> ", selectedCourse);
-      const course = GetCourse.find((record) => record.ID === selectedId);
+      const course = GetCourse.find((record) => record.ID === selectedCourse);
 
       let viewToDisplay = "";
-      switch (selectedId) {
-        case "enrollment-bloc":
-          viewToDisplay = createEnrollmentView(courseId, course.ClassID);
+      switch (selectedTab) {
+        case "enrollment-tab":
+          viewToDisplay = createEnrollmentView(selectedCourse, course.ClassID);
           break;
-        case "hours-bloc":
+        case "hours-tab":
           viewToDisplay = createHoursView(selectedCourse);
           break;
-        case "details-bloc":
+        case "details-tab":
+          console.log("course :>> ", course);
           viewToDisplay = createDetailsView(course);
           break;
         default:
@@ -492,6 +494,10 @@ $(document).ready(() => {
       }
 
       $("#view-bloc").empty().append(viewToDisplay);
+      $("#sub-nav > li").removeClass("selected-tab");
+      $(`#sub-nav #${selectedTab.replace("-tab", "")}`).addClass(
+        "selected-tab"
+      );
     }
   );
 
