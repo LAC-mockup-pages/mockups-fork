@@ -98,7 +98,7 @@ export const tileSet = [
   {
     id: "tile1",
     header: "Post Test",
-    background: "rgba(221,88,20,0), rgba(221,88,20,1)",
+    background: "rgba(247,224,149,0), rgba(247,224,149,1)",
     details: ["75%"],
     formatDetails: "",
     target: "../assets/coming-soon.html"
@@ -122,7 +122,7 @@ export const tileSet = [
   {
     id: "tile4",
     header: "EPE",
-    background: "rgb(240,226,213)",
+    background: "rgb(211,228,240)",
     details: [
       ["Enrolled:", "450"],
       ["Hours:", "22,000"]
@@ -133,7 +133,7 @@ export const tileSet = [
   {
     id: "tile5",
     header: "Enrolled",
-    background: "rgba(240,226,213,0), rgba(240,226,213,1)",
+    background: "rgba(211,228,240,0), rgba(211,228,240,1)",
     details: ["502"],
     formatDetails: "tile-details-small",
     target: "../assets/coming-soon.html"
