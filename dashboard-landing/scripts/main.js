@@ -123,12 +123,14 @@ export const createTile = (dataObj, classButton, classTile) => {
     details.length > 1 ? createDetailLines(details) : details[0];
 
   const tile = `
-    <div class="${classButton}"><button class=${classTile} ${gradient} type="button" id=${id}>
-      <a href=${target}  type="text/html">
-        <div class="tile-header">${header}</div>
-        <div class=${format}>${detailContent}</div>
-      </a>
-    </button></div>`;
+    <div class="${classButton}">
+      <button class=${classTile} ${gradient} type="button" id=${id}>
+        <a href=${target}  type="text/html">
+          <div class="tile-header">${header}</div>
+          <div class=${format}>${detailContent}</div>
+        </a>
+      </button>
+    </div>`;
 
   return tile;
 };
