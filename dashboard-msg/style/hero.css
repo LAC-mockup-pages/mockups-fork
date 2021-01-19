@@ -10,12 +10,20 @@
   height: fit-content;
 }
 
+.container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
 .dashboard-bg {
   background-color: #2479b5;
 }
 
 /* Button Block */
 /* =================================== */
+
+#button-bloc {
+}
 
 #button-bloc .btn {
   height: 6em;
@@ -28,7 +36,8 @@
   margin-top: 80%;
 }
 
-.inform-button {
+.inform-button,
+.back-button {
   margin-top: 10%;
 }
 
