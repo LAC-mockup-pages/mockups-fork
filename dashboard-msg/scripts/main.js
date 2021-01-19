@@ -20,7 +20,24 @@ const dataSet2 = [
 const createLeftNavBar = () => {
   let block = "";
   for (const record of tileSet) {
-    block += createTile(record, "container-fluid button-block-sidenav");
+    let buttonClass = "";
+    let tileClass = "";
+
+    switch (record.id) {
+      case "tile0":
+        tileClass = "large-tile";
+        break;
+      case "tile1":
+      case "tile2":
+      case "tile3":
+        tileClass = "medium-tile";
+        break;
+      default:
+        tileClass = "small-tile";
+        break;
+    }
+
+    block += createTile(record, buttonClass, tileClass);
   }
   return block;
 };
