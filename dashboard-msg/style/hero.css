@@ -23,12 +23,15 @@
 /* =================================== */
 
 #button-bloc {
+  position: absolute;
+  bottom: 5%;
+  right: 4%;
 }
 
 #button-bloc .btn {
   height: 6em;
   width: 6em;
-  margin-bottom: 20%;
+  margin-bottom: 15%;
   /* margin-left: 25%; */
 }
 

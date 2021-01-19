@@ -3,7 +3,7 @@
 //* JS and jQuery
 //*=================================================
 
-export const tileSet = [
+const tileSet = [
   {
     id: "tile0",
     header: "MSG",
@@ -98,7 +98,7 @@ export const tileSet = [
   }
 ];
 
-export const createDetailLines = (detailList) => {
+const createDetailLines = (detailList) => {
   let rows = "";
   for (const list of detailList) {
     rows += `<tr><td>${list[0]}</td><td>${list[1]}</td></tr>`;
@@ -111,8 +111,7 @@ export const createDetailLines = (detailList) => {
   </tbody>
   </table>`;
 };
-
-export const createTile = (dataObj, classButton, classTile) => {
+const createTile = (dataObj, classButton, classTile) => {
   const { id, header, background, details, formatDetails, target } = dataObj;
   const gradient =
     classTile === "large-tile" || classTile === "medium-tile"
