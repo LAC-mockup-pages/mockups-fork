@@ -115,7 +115,7 @@ export const createDetailLines = (detailList) => {
 export const createTile = (dataObj, classButton, classTile) => {
   const { id, header, background, details, formatDetails, target } = dataObj;
   const gradient =
-    classTile === "large-tile"
+    classTile === "large-tile" || classTile === "medium-tile"
       ? `style="background-image: linear-gradient(180deg, ${background})"`
       : "";
   const format = formatDetails ? formatDetails : "tile-details";
