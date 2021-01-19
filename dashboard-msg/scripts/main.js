@@ -41,7 +41,17 @@ const createTableHeader = (list) => {
 // list = dataSet#
 const createTableBody = (list) => {
   let body = "";
-  for (const obj of list) {
+  let orderedList = [];
+  if (list === dataSet1) {
+    orderedList = list.sort((item1, item2) =>
+      item1.Site < item2.Site ? -1 : item1.Site > item2.Site ? 1 : 0
+    );
+  } else {
+    orderedList = list.sort((item1, item2) =>
+      item1.Teacher < item2.Teacher ? -1 : item1.Teacher > item2.Teacher ? 1 : 0
+    );
+  }
+  for (const obj of orderedList) {
     let row = "";
     for (const key of Object.keys(obj)) {
       const value = key === "MSG" ? percentFormat(obj[key]) : obj[key];
