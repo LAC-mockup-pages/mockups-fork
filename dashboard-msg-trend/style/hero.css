@@ -180,16 +180,16 @@ th {
 
 .table1,
 .table2 {
-  height: 9em;
+  height: fit-content;
   color: #333;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
-.table1 thead th,
+/* .table1 thead th,
 .table2 thead th {
   position: sticky;
   top: 0;
-}
+} */
 
 .table2 {
   margin-bottom: 2%;
