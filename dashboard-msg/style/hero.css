@@ -23,18 +23,19 @@
 /* =================================== */
 
 .col-md-1 {
-  width: 14%;
+  width: 11.5%;
 }
 
 #button-bloc {
   width: 8em;
   margin: auto;
   margin-top: 19em;
+  margin-left: 1em;
 }
 
 #button-bloc .btn {
-  height: 8em;
-  width: 8em;
+  height: 7em;
+  width: 7em;
   margin-bottom: 1.7em;
 }
 
