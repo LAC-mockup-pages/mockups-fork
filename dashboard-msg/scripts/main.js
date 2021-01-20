@@ -100,6 +100,11 @@ const tileSet = [
 
 const dataSet1 = [
   { Site: "Enterprise site", Enrollment: "560", MSG: "0.64" },
+  { Site: "Far site", Enrollment: "560", MSG: "0.64" },
+  { Site: "Mulberry site", Enrollment: "560", MSG: "0.64" },
+  { Site: "Alpha site", Enrollment: "560", MSG: "0.64" },
+  { Site: "Old English site", Enrollment: "560", MSG: "0.64" },
+  { Site: "Decrepit site", Enrollment: "560", MSG: "0.64" },
   { Site: "Voyager site", Enrollment: "299", MSG: "0.57" }
 ];
 
@@ -107,6 +112,9 @@ const dataSet2 = [
   { Teacher: "James T. Kirk", Enrollment: "18", MSG: "0.22" },
   { Teacher: "Katherine Janway", Enrollment: "22", MSG: "0.72" },
   { Teacher: "Phillippa Gorgious", Enrollment: "31", MSG: "0.66" },
+  { Teacher: "New Kid", Enrollment: "31", MSG: "0.66" },
+  { Teacher: "Peter Cetera", Enrollment: "31", MSG: "0.66" },
+  { Teacher: "Alan Greenspan", Enrollment: "31", MSG: "0.66" },
   { Teacher: "Ben Sisko", Enrollment: "22", MSG: "0.35" }
 ];
 
