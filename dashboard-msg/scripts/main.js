@@ -149,7 +149,7 @@ const createTile = (dataObj, classButton, classTile) => {
 const createLeftNavBar = () => {
   let block = "";
   for (const record of tileSet) {
-    let buttonClass = "";
+    let buttonClass = "side-navbar-button";
     let tileClass = "";
 
     switch (record.id) {
