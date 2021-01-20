@@ -183,6 +183,13 @@ th {
 .table2 {
   height: 9em;
   color: #333;
+  overflow-y: scroll;
+}
+
+.table1 thead th,
+.table2 thead th {
+  position: sticky;
+  top: 0;
 }
 
 .table2 {
@@ -203,12 +210,13 @@ th {
   line-height: 1.8em;
 }
 
+#center-part,
 #center-part .container-fluid {
   padding-right: 0px;
   padding-left: 0px;
 }
 
-.table2 > .table > tbody {
+/* .table2 > .table > tbody {
   height: 5em;
   overflow-y: scroll;
-}
+} */
