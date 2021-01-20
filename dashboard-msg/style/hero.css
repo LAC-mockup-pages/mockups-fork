@@ -6,7 +6,7 @@
 /* =================================== */
 
 .hero {
-  margin: 1% 6%;
+  margin: 1% 8%;
   height: fit-content;
 }
 
@@ -22,26 +22,24 @@
 /* Button Block */
 /* =================================== */
 
+.col-md-1 {
+  width: 14%;
+}
+
 #button-bloc {
-  position: absolute;
-  bottom: 5%;
-  right: 4%;
+  width: 8em;
+  margin: auto;
+  margin-top: 19em;
 }
 
 #button-bloc .btn {
-  height: 6em;
-  width: 6em;
-  margin-bottom: 15%;
-  /* margin-left: 25%; */
+  height: 8em;
+  width: 8em;
+  margin-bottom: 1.7em;
 }
 
-.compare-button {
-  margin-top: 80%;
-}
-
-.inform-button,
-.back-button {
-  margin-top: 10%;
+.back-button > a {
+  color: #333;
 }
 
 .glyphicon {
@@ -210,13 +208,12 @@ th {
   line-height: 1.8em;
 }
 
-#center-part,
-#center-part .container-fluid {
+#center-part {
   padding-right: 0px;
   padding-left: 0px;
 }
 
-/* .table2 > .table > tbody {
-  height: 5em;
-  overflow-y: scroll;
+/* #center-part .container-fluid {
+  padding-right: 0px;
+  padding-left: 2%;
 } */
