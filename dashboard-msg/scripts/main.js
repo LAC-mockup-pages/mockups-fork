@@ -172,8 +172,17 @@ const createLeftNavBar = () => {
 };
 
 //TODO Add logic to reorder the tiles depending on the selected
-//TODO dashboard. Also add an object "Back to Portal" as a 1st tile.
-const shuffleTileSet = (list, tileId) => {};
+//TODO dashboard. Tiles 0 to 3 are always on top.
+//TODO If the top tile is not a large tile in the landing page
+//TODO tiles 0 to 3 come right after.
+const shuffleTileSet = (list, tileId) => {
+  const majorTiles = ["tile0", "tile1", "tile2", "tile3"];
+  let shuffledList = [];
+
+  if (majorTiles.includes(tileId)) {
+  }
+  return shuffledList;
+};
 
 const percentFormat = (str) => {
   return `${str.replace("0.", "")}%`;
