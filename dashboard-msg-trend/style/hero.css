@@ -41,6 +41,7 @@
 
 .back-button > a {
   color: #333;
+  text-decoration: none;
 }
 
 .glyphicon {
@@ -182,14 +183,7 @@ th {
 .table2 {
   height: fit-content;
   color: #333;
-  /* overflow-y: scroll; */
 }
-
-/* .table1 thead th,
-.table2 thead th {
-  position: sticky;
-  top: 0;
-} */
 
 .table2 {
   margin-bottom: 2%;
@@ -213,8 +207,3 @@ th {
   padding-right: 0px;
   padding-left: 0px;
 }
-
-/* #center-part .container-fluid {
-  padding-right: 0px;
-  padding-left: 2%;
-} */

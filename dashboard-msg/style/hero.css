@@ -39,8 +39,10 @@
   margin-bottom: 1.7em;
 }
 
-.back-button > a {
+.back-button > a,
+.compare-button > a {
   color: #333;
+  text-decoration: none;
 }
 
 .glyphicon {
