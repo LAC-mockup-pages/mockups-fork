@@ -2,6 +2,7 @@
 // and instructors hours
 
 import { createStudentBloc } from "./EnrollmentStudents.js";
+
 export const createEnrollmentView = (courseID, courseName, start, end) => {
   const mainBanner = `
   <div class="blue-bg container-fluid row" id="main-banner">

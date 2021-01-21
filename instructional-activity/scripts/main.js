@@ -10,17 +10,17 @@ import {
   createShortList,
   createSecondarySelect
 } from "./components/FilterBloc.js";
-import { createDetailsView } from "./components/DetailsView.js";
+import { createDetailsView } from "./components/details/DetailsView.js";
 import {
   createModalForm,
   addClassIdAndDescription
 } from "./components/ModalForm.js";
-import { addInstructor } from "./components/Instructors.js";
-import { addSpecialProgram } from "./components/Recommended.js";
-import { saveSchedule } from "./components/Schedule.js";
-import { saveFundingSources } from "./components/FundingSources.js";
-import { createEnrollmentView } from "./components/EnrollmentView.js";
-import { createHoursView } from "./components/HoursView.js";
+import { addInstructor } from "./components/details/Instructors.js";
+import { addSpecialProgram } from "./components/details/Recommended.js";
+import { saveSchedule } from "./components/details/Schedule.js";
+import { saveFundingSources } from "./components/details/FundingSources.js";
+import { createEnrollmentView } from "./components/enrollment/EnrollmentView.js";
+import { createHoursView } from "./components/hours/HoursView.js";
 // Main elements
 export const rowLabels = [
   {
