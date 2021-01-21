@@ -37,6 +37,7 @@
   height: 7em;
   width: 7em;
   margin-bottom: 1.7em;
+  border-radius: 10px;
 }
 
 .back-button > a,
