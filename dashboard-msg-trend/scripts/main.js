@@ -99,9 +99,9 @@ const tileSet = [
 ];
 
 const dataSet1 = [
-  { Comparison: "Program Name", MSG: "0.64" },
-  { Comparison: "Region Name", MSG: "0.57" },
-  { Comparison: "State", MSG: "0.55" }
+  { Level: "Program Name", MSG: "0.64" },
+  { Level: "Region Name", MSG: "0.57" },
+  { Level: "State", MSG: "0.55" }
 ];
 
 const createDetailLines = (detailList) => {
