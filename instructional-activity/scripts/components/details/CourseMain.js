@@ -1,6 +1,11 @@
 // Main data elements for the Course
 
-import { topBanner, rowLabels, instructorList, getRequired } from "../main.js";
+import {
+  topBanner,
+  rowLabels,
+  instructorList,
+  getRequired
+} from "../../main.js";
 const typeList = GetInstructionType.slice(0);
 const formatList = ddlFormat.slice(0);
 

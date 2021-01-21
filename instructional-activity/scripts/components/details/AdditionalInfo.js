@@ -1,6 +1,6 @@
 // Additional fields for the selected course
 
-import { topBanner } from "../main.js";
+import { topBanner } from "../../main.js";
 
 // Format the data object in a hashtable, each item an object like
 // {key: "", value:""}
