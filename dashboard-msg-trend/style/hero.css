@@ -38,17 +38,32 @@
   width: 7em;
   margin-bottom: 1.7em;
   border-radius: 10px;
+  background-image: linear-gradient(
+    180deg,
+    rgba(166, 166, 166, 0),
+    rgba(166, 166, 166, 1)
+  );
 }
 
-.back-button > a {
+.back-button > a,
+.compare-button > a,
+.inform-button > p:last-of-type {
   color: #333;
   text-decoration: none;
+  font-weight: 800;
+}
+
+.question-mark {
+  font-size: 2.5em;
+  font-weight: 800;
+  margin: 0px 0px 0px 0px;
+  color: #2700ff;
 }
 
 .glyphicon {
   font-size: large;
+  color: #2700ff;
 }
-
 /* Side Navigation Bar */
 /* =================================== */
 
