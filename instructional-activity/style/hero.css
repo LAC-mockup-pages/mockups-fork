@@ -36,6 +36,16 @@
   padding-right: 1%;
 }
 
+.table-scroll {
+  overflow-y: scroll;
+  max-height: 18em;
+}
+
+.table-scroll thead th {
+  position: sticky;
+  top: 0;
+}
+
 #filter-cancel-btn,
 #filter-apply-btn,
 #add-student-btn {

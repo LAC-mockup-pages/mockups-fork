@@ -370,6 +370,7 @@ $(document).ready(() => {
       shortList = createShortList(selectedYear.value);
     }
     $("#main-table").empty().append(createViewBloc(shortList));
+    // $("#view-bloc").toggleClass("table-scroll");
 
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
