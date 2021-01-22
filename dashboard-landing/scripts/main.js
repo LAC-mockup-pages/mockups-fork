@@ -154,10 +154,7 @@ const createSmallTileBloc = (tileList) => {
   for (const tile of tileList) {
     block += createTile(tile, "col-md-2", "small-tile");
   }
-  return `
-  <div class="container-fluid row">
-    ${block}
-  </div>`;
+  return block;
 };
 
 //*=================================================

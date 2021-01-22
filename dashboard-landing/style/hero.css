@@ -25,6 +25,11 @@
   font-weight: 500;
 }
 
+#bottom-bloc {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .landing-title {
   font-size: 1.2em;
   font-weight: 600;
@@ -47,10 +52,11 @@
 }
 
 .small-tile {
-  width: 11em;
+  width: 90%;
   height: 9em;
   border-radius: 15px;
   background-color: #d3e4f0;
+  margin-left: 5%;
 }
 
 .small-tile > a {
