@@ -3,7 +3,7 @@
 // dataObj is output of a GET request (GetCourse) or created
 // by the DB response after new record creation
 
-import { createCourseMain } from "./CourseMain";
+import { createCourseMain } from "./CourseMain.js";
 import { createFundingBloc } from "./FundingSources.js";
 import { createRecommended } from "./Recommended.js";
 import { createSchedule } from "./Schedule.js";

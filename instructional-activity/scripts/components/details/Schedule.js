@@ -4,7 +4,7 @@
 // hours are input for registered students. Hours will also
 // be displayed on a monthly basis.
 
-import { topBanner } from "../main.js";
+import { topBanner } from "../../main.js";
 
 const classDays = (dataObj) => {
   const weekDays = [
