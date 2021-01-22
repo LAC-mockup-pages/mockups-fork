@@ -38,7 +38,7 @@
 
 .table-scroll {
   overflow-y: auto;
-  max-height: 30em;
+  max-height: 34em;
 }
 
 .table-scroll thead th {
