@@ -308,8 +308,6 @@ $(document).ready(() => {
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
 
-  // console.log("response object: >> ", Object.keys(responseObj[0]));
-
   // Add default date to date fields in #new-entry after focus out
   // Field Begin value: "07/01/<CurrentFiscalYear>"
   // Field End value: "06/30/<CurrentFiscalYear>"
@@ -440,7 +438,7 @@ $(document).ready(() => {
   });
 
   //* Displaying selected record in Enrollment View.
-  $(document).on("click", "#main-table tr", function (evnt) {
+  $(document).on("click", ".main-table tr", function (evnt) {
     evnt.stopPropagation();
     const rowId = $(this).attr("id");
     const selectedCourse = courseList.find((course) => course.ID === rowId);
