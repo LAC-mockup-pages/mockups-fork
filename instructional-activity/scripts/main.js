@@ -202,9 +202,10 @@ export const createViewBloc = (dataList) => {
   // Sorting list of records  by descending ID
   const list = dataList.sort((record1, record2) => record2.ID - record1.ID);
   const tableBody = createTableBody(list, rowLabels[0]);
-  const viewBloc = tableHeader + tableBody;
+  // const viewBloc = tableHeader + tableBody;
 
-  return viewBloc;
+  return `
+  <table class="table">${tableHeader}${tableBody}</table>`;
 };
 
 export const getRequired = () => {
@@ -369,8 +370,8 @@ $(document).ready(() => {
     } else {
       shortList = createShortList(selectedYear.value);
     }
-    $("#main-table").empty().append(createViewBloc(shortList));
-    // $("#view-bloc").toggleClass("table-scroll");
+    const tableContent = createViewBloc(shortList);
+    $(".main-table").empty().append(tableContent).toggleClass("table-scroll");
 
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();

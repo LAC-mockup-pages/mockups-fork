@@ -37,13 +37,19 @@
 }
 
 .table-scroll {
-  overflow-y: scroll;
-  max-height: 18em;
+  overflow-y: auto;
+  max-height: 30em;
 }
 
 .table-scroll thead th {
   position: sticky;
   top: 0;
+  background-color: #2479b5;
+}
+
+.main-table {
+  border-radius: 5px;
+  border-bottom: 1em solid #2479b5;
 }
 
 #filter-cancel-btn,
