@@ -2,7 +2,7 @@
 // dataObj is output of a GET request (GetCourse) or created
 // by the DB response after new record creation
 
-import { topBanner, tableBody } from "../main.js";
+import { topBanner, tableBody } from "../../main.js";
 const specialProgramList = GetSpecialProgram.slice(0).sort((item1, item2) =>
   item1.ProgramDesc < item2.ProgramDesc
     ? -1

@@ -2,7 +2,7 @@
 // Main Info, Recommended,Additional Info, Projected Services.
 
 import { getRequired } from "../main.js";
-import { processProgramCode } from "./AdditionalInfo.js";
+import { processProgramCode } from "../components/details/AdditionalInfo.js";
 
 export const createModalForm = (fieldList) => {
   const list = [];

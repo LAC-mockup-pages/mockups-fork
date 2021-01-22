@@ -1,7 +1,7 @@
 // Bloc for main instructor and additional intructors
 // For display and editing of the list
 
-import { topBanner, tableBody } from "../main.js";
+import { topBanner, tableBody } from "../../main.js";
 const instructorList = GetClassInstructor.slice(0).sort((name1, name2) =>
   name1.InstructorName < name2.InstructorName
     ? -1

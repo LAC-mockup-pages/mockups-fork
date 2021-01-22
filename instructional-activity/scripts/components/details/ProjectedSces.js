@@ -1,6 +1,6 @@
 // Projected Services values come from the GetCourse procedure // or responseObj after a new course is created
 
-import { topBanner } from "../main.js";
+import { topBanner } from "../../main.js";
 
 export const createProjectedSces = (fieldList) => {
   const header = topBanner("Projected Services");

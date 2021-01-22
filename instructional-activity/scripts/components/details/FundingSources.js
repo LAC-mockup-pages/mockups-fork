@@ -1,6 +1,6 @@
 // List of funding sources available
 // Choice via checkboxes
-import { topBanner } from "../main.js";
+import { topBanner } from "../../main.js";
 
 export const createFundingBloc = (fundingStr) => {
   const title = "Funding";
