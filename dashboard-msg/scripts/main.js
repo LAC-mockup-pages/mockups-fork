@@ -99,23 +99,107 @@ const tileSet = [
 ];
 
 const dataSet1 = [
-  { Site: "Enterprise site", Enrollment: "560", MSG: "0.64", ReportLink: "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1" },
-  { Site: "Far site", Enrollment: "560", MSG: "0.64", ReportLink: "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1" },
-  { Site: "Mulberry site", Enrollment: "560", MSG: "0.64", ReportLink: "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1" },
-  { Site: "Alpha site", Enrollment: "560", MSG: "0.64", ReportLink: "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1" },
-  { Site: "Old English site", Enrollment: "560", MSG: "0.64", ReportLink: "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1" },
-  { Site: "Decrepit site", Enrollment: "560", MSG: "0.64", ReportLink: "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1" },
-  { Site: "Voyager site", Enrollment: "299", MSG: "0.57", ReportLink: "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1" }
+  {
+    Site: "Enterprise site",
+    Enrollment: "560",
+    MSG: "0.64",
+    ReportLink:
+      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+  },
+  {
+    Site: "Far site",
+    Enrollment: "560",
+    MSG: "0.64",
+    ReportLink:
+      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+  },
+  {
+    Site: "Mulberry site",
+    Enrollment: "560",
+    MSG: "0.64",
+    ReportLink:
+      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+  },
+  {
+    Site: "Alpha site",
+    Enrollment: "560",
+    MSG: "0.64",
+    ReportLink:
+      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+  },
+  {
+    Site: "Old English site",
+    Enrollment: "560",
+    MSG: "0.64",
+    ReportLink:
+      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+  },
+  {
+    Site: "Decrepit site",
+    Enrollment: "560",
+    MSG: "0.64",
+    ReportLink:
+      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+  },
+  {
+    Site: "Voyager site",
+    Enrollment: "299",
+    MSG: "0.57",
+    ReportLink:
+      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+  }
 ];
 
 const dataSet2 = [
-  { Teacher: "James T. Kirk", Enrollment: "18", MSG: "0.22", ReportLink: "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1" },
-  { Teacher: "Katherine Janway", Enrollment: "22", MSG: "0.72", ReportLink: "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1" },
-  { Teacher: "Phillippa Gorgious", Enrollment: "31", MSG: "0.66", ReportLink: "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1" },
-  { Teacher: "New Kid", Enrollment: "31", MSG: "0.66", ReportLink: "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1" },
-  { Teacher: "Peter Cetera", Enrollment: "31", MSG: "0.66", ReportLink: "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1" },
-  { Teacher: "Alan Greenspan", Enrollment: "31", MSG: "0.66", ReportLink: "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1" },
-  { Teacher: "Ben Sisko", Enrollment: "22", MSG: "0.35", ReportLink: "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1" }
+  {
+    Teacher: "James T. Kirk",
+    Enrollment: "18",
+    MSG: "0.22",
+    ReportLink:
+      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
+  },
+  {
+    Teacher: "Katherine Janway",
+    Enrollment: "22",
+    MSG: "0.72",
+    ReportLink:
+      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
+  },
+  {
+    Teacher: "Phillippa Gorgious",
+    Enrollment: "31",
+    MSG: "0.66",
+    ReportLink:
+      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
+  },
+  {
+    Teacher: "New Kid",
+    Enrollment: "31",
+    MSG: "0.66",
+    ReportLink:
+      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
+  },
+  {
+    Teacher: "Peter Cetera",
+    Enrollment: "31",
+    MSG: "0.66",
+    ReportLink:
+      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
+  },
+  {
+    Teacher: "Alan Greenspan",
+    Enrollment: "31",
+    MSG: "0.66",
+    ReportLink:
+      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
+  },
+  {
+    Teacher: "Ben Sisko",
+    Enrollment: "22",
+    MSG: "0.35",
+    ReportLink:
+      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
+  }
 ];
 
 const createDetailLines = (detailList) => {
@@ -214,19 +298,24 @@ const createTableBody = (list) => {
       item1.Teacher < item2.Teacher ? -1 : item1.Teacher > item2.Teacher ? 1 : 0
     );
   }
+
   for (const obj of orderedList) {
     let row = "";
+    const link = ` href=${obj.ReportLink}`;
     for (const key of Object.keys(obj)) {
+      if (key === "ReportLink") continue;
       const value = key === "MSG" ? percentFormat(obj[key]) : obj[key];
       row += `<td class="cell-data">${value}</td>`;
     }
-    body += `<tr>${row}</tr>`;
+    body += `<tr${link}>${row}</tr$>`;
   }
   return `<tbody>${body}</tbody>`;
 };
 
 const createTable = (dataList) => {
-  const tableHeader = createTableHeader(Object.keys(dataList[0]));
+  const tableHeader = createTableHeader(
+    Object.keys(dataList[0]).filter((str) => str !== "ReportLink")
+  );
   const tableBody = createTableBody(dataList);
   return `<table class="table">${tableHeader}${tableBody}</table>`;
 };
@@ -236,6 +325,7 @@ const createTable = (dataList) => {
 //*=================================================
 
 $(document).ready(() => {
+  //* Building and displaying center part
   const leftNavBar = createLeftNavBar();
   const table1 = createTable(dataSet1);
   const table2 = createTable(dataSet2);
@@ -243,4 +333,11 @@ $(document).ready(() => {
   $("#side-nav").append(leftNavBar);
   $(".table1").append(table1);
   $(".table2").append(table2);
+
+  //* Displaying report in a new browser tab when a table row is clicked
+  $(document).on("click", ".table tbody tr", function () {
+    const selectedReport = $(this).attr("href");
+    console.log("selectedReport :>> ", selectedReport);
+    window.open(selectedReport);
+  });
 });
