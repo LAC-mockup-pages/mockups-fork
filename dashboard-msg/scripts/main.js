@@ -205,14 +205,18 @@ const dataSet2 = [
 const createDetailLines = (detailList) => {
   let rows = "";
   for (const list of detailList) {
-    rows += `<tr><td>${list[0]}</td><td>${list[1]}</td></tr>`;
+    rows += `
+    <tr>
+      <td>${list[0]}</td>
+      <td>${list[1]}</td>
+    </tr>`;
   }
 
   return `
   <table class="table table-condensed detail-table">
-  <tbody>
-  ${rows}
-  </tbody>
+    <tbody>
+      ${rows}
+    </tbody>
   </table>`;
 };
 const createTile = (dataObj, classButton, classTile) => {
