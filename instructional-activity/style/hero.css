@@ -47,7 +47,8 @@
   background-color: #2479b5;
 }
 
-.main-table {
+.main-table,
+.student-table {
   border-radius: 5px;
   border-bottom: 1em solid #2479b5;
 }
@@ -100,6 +101,8 @@
 
 #main-banner {
   margin: 1.5% 0%;
+  padding: 1% 0%;
+  border-radius: 5px;
 }
 
 #period-selector {

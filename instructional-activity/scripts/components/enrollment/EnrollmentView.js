@@ -31,6 +31,8 @@ export const createEnrollmentView = (courseID, courseName, start, end) => {
   return `
   <div class="container-fluid" id="enrollment-bloc">
     ${mainBanner}
-    ${studentTable}
+    <div class="student-table table-scroll">
+      ${studentTable}
+    </div>
   </div>`;
 };

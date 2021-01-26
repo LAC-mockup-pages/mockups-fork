@@ -42,7 +42,7 @@ export const createStudentBloc = (dataList) => {
   }
 
   return `
-  <table class="table" id="student-table">
+  <table class="table">
     ${studentTableHeader}
     <tbody>${tableRows}</tbody>
   </table>`;
