@@ -583,3 +583,6 @@ $(document).ready(() => {
     saveMods(savedData, formId, "GetCourse");
   });
 });
+
+//* Adding a new student in Enrollment view
+$(document).on("click", "add-student-btn", function () {});

@@ -12,21 +12,6 @@ export const createEnrollmentView = (courseID, courseName, start, end) => {
   </div>`;
 
   const studentTable = createStudentBloc(GetEnrollInfo.slice(0));
-  // const primaryInstructor = "2256";
-  // const instructorTable = createInstructorBloc(
-  //   GetInstrHours,
-  //   primaryInstructor,
-  //   courseID,
-  //   start,
-  //   end
-  // );
-
-  // return `
-  // <div class="container-fluid" id="enrollment-bloc">
-  //   ${mainBanner}
-  //   ${studentTable}
-  //   ${instructorTable}
-  // </div>`;
 
   return `
   <div class="container-fluid" id="enrollment-bloc">
