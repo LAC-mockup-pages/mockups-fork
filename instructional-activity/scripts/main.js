@@ -21,6 +21,7 @@ import { saveSchedule } from "./components/details/Schedule.js";
 import { saveFundingSources } from "./components/details/FundingSources.js";
 import { createEnrollmentView } from "./components/enrollment/EnrollmentView.js";
 import { createHoursView } from "./components/hours/HoursView.js";
+import { addStudentModalForm } from "./components/enrollment/AddStudent.js";
 // Main elements
 export const rowLabels = [
   {
@@ -582,7 +583,24 @@ $(document).ready(() => {
 
     saveMods(savedData, formId, "GetCourse");
   });
-});
 
-//* Adding a new student in Enrollment view
-$(document).on("click", "add-student-btn", function () {});
+  //* Adding a new student in Enrollment view
+  $(document).on("click", "#add-student-btn", function () {
+    // Wire to addStudentModalForm(coursePKId, classID, courseStartDate)
+
+    const coursePKId = $(".label-text").val();
+    const classID = $(this).data("course") || "Class ID";
+    const courseStartDate = $(this).data("start") || "07/02/2020";
+    const modalContent = addStudentModalForm(
+      coursePKId,
+      classID,
+      courseStartDate
+    );
+
+    $("#modalBloc").modal("toggle");
+    $("#edit-form").empty().append(modalContent);
+    $(".modal-title").replaceWith(
+      "<h4 class='modal-title'>Adding a new student</h4>"
+    );
+  });
+});

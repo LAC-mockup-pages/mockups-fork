@@ -8,7 +8,7 @@ export const createEnrollmentView = (courseID, courseName, start, end) => {
   <div class="blue-bg container-fluid row" id="main-banner">
     <div class="label-text blue-light-text col-md-10">${courseName}</div>
     <div class="col-md-2">
-    <button type="button" id="add-student-btn" class="btn dark-blue-text blue-light-bg" data-course=${courseID}>Add Student</button></div>
+    <button type="button" id="add-student-btn" class="btn dark-blue-text blue-light-bg" data-course=${courseID} data-start=${start}>Add Student</button></div>
   </div>`;
 
   const studentTable = createStudentBloc(GetEnrollInfo.slice(0));
