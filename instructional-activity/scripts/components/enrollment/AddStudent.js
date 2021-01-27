@@ -4,7 +4,6 @@ export const addStudentModalForm = (coursePKId, classID, classStart) => {
   const hashTable = GetStudentLookup.slice(0).map((record) => {
     return { ID: record.ID, StudentName: record.StudentName };
   });
-
   const selectStudentName = elementSelectModal({
     hashTable,
     keyValue: "Student_PKID",
@@ -14,18 +13,13 @@ export const addStudentModalForm = (coursePKId, classID, classStart) => {
     option: "",
     optionText: "a student"
   });
-
   const hiddenFields = `
   <input class="hidden" name="Class_PKID" value=${coursePKId}>
   <input class="hidden" name="ClassID" value=${classID}>
   `;
-
   const startDate = classStart
     ? classStart
     : dateFormat(new Date().toLocaleDateString());
-
-  // console.log("startDate :>> ", startDate);
-
   const inputEnrollDate = elementInput({
     keyVal: "EnrollDate",
     labelVal: "Start",
@@ -36,7 +30,6 @@ export const addStudentModalForm = (coursePKId, classID, classStart) => {
     optionHidden: "form-group",
     type: "text"
   });
-
   return `
   ${hiddenFields}
   ${selectStudentName}
@@ -46,12 +39,9 @@ export const addStudentModalForm = (coursePKId, classID, classStart) => {
 
 export const completeNewStudent = (fieldList) => {
   const fiscalYear = SESSION_VARIABLE[0].FiscalYear;
-
   const studentId = fieldList.find((record) => record.name === "Student_PKID")
     .value;
-
   const student = GetStudentLookup.find((record) => record.ID === studentId);
-
   const additionalFields = [
     { name: "StudentID", value: student.StudentID },
     { name: "StudentName", value: student.StudentName },
@@ -63,6 +53,5 @@ export const completeNewStudent = (fieldList) => {
     { name: "InactiveReasonDescription", value: "" },
     { name: "FY", value: fiscalYear }
   ];
-
   return [...fieldList, ...additionalFields];
 };

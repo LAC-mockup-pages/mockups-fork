@@ -546,7 +546,6 @@ $(document).ready(() => {
       saveMods(completedList, blocName, "GetEnrollInfo");
       $(".modal-title").replaceWith("<h4 class='modal-title'>Editing</h4>");
       $("#modalBloc").modal("toggle");
-
       return;
     } else {
       let fieldList =
