@@ -1,7 +1,7 @@
 // Actions and logic
 
 //Data files
-export const courseList = GetCourse.slice(0);
+export let courseList = GetCourse.slice(0);
 export const instructorList = GetInstructor.slice(0);
 // Imports
 import { createNewRecordForm } from "./components/AddNewRecord.js";
@@ -348,6 +348,21 @@ $(document).ready(() => {
     if (newSecondarySelect) {
       $("#secondary-select").replaceWith(newSecondarySelect);
     }
+  });
+
+  //* Handling change for fiscal year selected
+  $(document).on("change", "#fiscal-year-filter-view", function (evnt) {
+    evnt.stopPropagation();
+
+    $("#primary-filter-view").prop("selectedIndex", 0);
+    $("#modal-select").prop("selectedIndex", 0);
+    //defCalls_getData( RefreshInstructionType($("#fiscal-year-filter-view").val()),
+    //    RefreshInstructor_FY($("#fiscal-year-filter-view").val()),
+    //    RefreshFormat_FY($("#fiscal-year-filter-view").val()),
+    //    RefreshCourse_FY($("#fiscal-year-filter-view").val())
+    // ).done(result => {
+    //courseList = GetCourse.slice(0);
+    //});  //returns GetCourse
   });
 
   //* Applying filters
