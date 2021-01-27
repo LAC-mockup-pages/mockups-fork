@@ -25,6 +25,7 @@ import {
   addStudentModalForm,
   completeNewStudent
 } from "./components/enrollment/AddStudent.js";
+import { editStudent } from "./components/enrollment/EnrollmentStudents.js";
 
 // Main elements
 export const rowLabels = [
@@ -631,5 +632,17 @@ $(document).ready(() => {
     $(".modal-title").replaceWith(
       "<h4 class='modal-title'>Adding a new student</h4>"
     );
+  });
+
+  //* Selecting an enrolled student to edit
+  $(document).on("click", ".student-table tbody tr", function () {
+    const rowId = $(this).attr("id");
+    const modalContent = editStudent(rowId);
+
+    $("#modalBloc").modal("toggle");
+    $("#edit-form")
+      .empty()
+      .append(modalContent)
+      .attr("data-bloc", "edit-student");
   });
 });

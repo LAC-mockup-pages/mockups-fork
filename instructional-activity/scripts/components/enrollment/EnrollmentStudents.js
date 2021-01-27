@@ -40,10 +40,16 @@ export const createStudentBloc = (dataList) => {
     // createRow() <== helperFunctions.js
     tableRows += createRow({ record, labelList, labelObj, hiddenList });
   }
-
   return `
   <table class="table">
     ${studentTableHeader}
     <tbody>${tableRows}</tbody>
   </table>`;
+};
+
+export const editStudent = (rowId) => {
+  let formContent = `<h3>Working with student ${rowId}</h3>`;
+  const selectedStudent = GetEnrollInfo.find((record) => record.ID === rowId);
+
+  return formContent + `<h2>${selectedStudent.StudentName}</h2>`;
 };
