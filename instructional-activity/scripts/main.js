@@ -618,16 +618,11 @@ $(document).ready(() => {
     const classID = $("#main-banner .label-text").text();
     const coursePKId = $("#view-bloc").data("course");
     const courseStartDate = $(this).data("start");
-
-    // console.log(
-    //   `Args modal Form: ==> ${coursePKId} - ${classID} - ${courseStartDate}`
-    // );
     const modalContent = addStudentModalForm(
       coursePKId,
       classID,
       courseStartDate
     );
-
     $("#modalBloc").modal("toggle");
     $("#edit-form")
       .empty()
