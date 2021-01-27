@@ -586,11 +586,13 @@ $(document).ready(() => {
 
   //* Adding a new student in Enrollment view
   $(document).on("click", "#add-student-btn", function () {
-    // Wire to addStudentModalForm(coursePKId, classID, courseStartDate)
+    const classID = $("#main-banner .label-text").text();
+    const coursePKId = $("#view-bloc").data("course");
+    const courseStartDate = $(this).data("start");
 
-    const coursePKId = $(".label-text").val();
-    const classID = $(this).data("course") || "Class ID";
-    const courseStartDate = $(this).data("start") || "07/02/2020";
+    // console.log(
+    //   `Args modal Form: ==> ${coursePKId} - ${classID} - ${courseStartDate}`
+    // );
     const modalContent = addStudentModalForm(
       coursePKId,
       classID,

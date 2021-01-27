@@ -10,27 +10,27 @@ export const addStudentModalForm = (coursePKId, classID, classStart) => {
     keyValue: "Student_PKID",
     selectedValue: "",
     labelVal: "Student Name",
-    labelClassVal: "",
+    labelClassVal: "class='red-text'",
     option: "",
     optionText: "a student"
   });
 
   const hiddenFields = `
-  <input class="hidden" name="Class_PKID" value=${coursePKId}/>
-  <input class="hidden" name="ClassID" value=${classID}/>
+  <input class="hidden" name="Class_PKID" value=${coursePKId}>
+  <input class="hidden" name="ClassID" value=${classID}>
   `;
 
   const startDate = classStart
     ? classStart
     : dateFormat(new Date().toLocaleDateString());
 
-  console.log("startDate :>> ", startDate);
+  // console.log("startDate :>> ", startDate);
 
   const inputEnrollDate = elementInput({
     keyVal: "EnrollDate",
     labelVal: "Start",
-    value: classStart,
-    labelClassVal: "",
+    value: startDate,
+    labelClassVal: "class='red-text'",
     classVal: "",
     option: 'placeholder="MM/DD/YYYY"',
     optionHidden: "form-group",
