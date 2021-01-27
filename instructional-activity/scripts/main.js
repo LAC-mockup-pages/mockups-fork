@@ -21,7 +21,11 @@ import { saveSchedule } from "./components/details/Schedule.js";
 import { saveFundingSources } from "./components/details/FundingSources.js";
 import { createEnrollmentView } from "./components/enrollment/EnrollmentView.js";
 import { createHoursView } from "./components/hours/HoursView.js";
-import { addStudentModalForm } from "./components/enrollment/AddStudent.js";
+import {
+  addStudentModalForm,
+  completeNewStudent
+} from "./components/enrollment/AddStudent.js";
+
 // Main elements
 export const rowLabels = [
   {
@@ -536,15 +540,23 @@ $(document).ready(() => {
     const formId = "#" + $(this).attr("form");
     const blocName = $(formId).data("bloc");
     const newSource = $(formId).serializeArray();
-    let fieldList =
-      blocName === "main-info"
-        ? addClassIdAndDescription(newSource, instructorList)
-        : newSource;
 
-    const courseId = $(".course-details").attr("id");
-    fieldList = [{ name: "ID", value: courseId }, ...fieldList];
+    if (blocName === "add-student") {
+      const completedList = completeNewStudent(newSource);
+      saveMods(completedList, blocName, "GetEnrollInfo");
+      $(".modal-title").replaceWith("<h4 class='modal-title'>Editing</h4>");
+      $("#modalBloc").modal("toggle");
 
-    saveMods(fieldList, formId, "GetCourse");
+      return;
+    } else {
+      let fieldList =
+        blocName === "main-info"
+          ? addClassIdAndDescription(newSource, instructorList)
+          : newSource;
+      const courseId = $(".course-details").attr("id");
+      fieldList = [{ name: "ID", value: courseId }, ...fieldList];
+      saveMods(fieldList, formId, "GetCourse");
+    }
   });
 
   //* Editing instructor/special program
@@ -581,6 +593,7 @@ $(document).ready(() => {
 
     $("#modalBloc").modal("toggle");
     $("#edit-form").empty().append(formContent);
+
     $("#edit-form").attr("data-bloc", formId);
   });
 
@@ -615,7 +628,10 @@ $(document).ready(() => {
     );
 
     $("#modalBloc").modal("toggle");
-    $("#edit-form").empty().append(modalContent);
+    $("#edit-form")
+      .empty()
+      .append(modalContent)
+      .attr("data-bloc", "add-student");
     $(".modal-title").replaceWith(
       "<h4 class='modal-title'>Adding a new student</h4>"
     );

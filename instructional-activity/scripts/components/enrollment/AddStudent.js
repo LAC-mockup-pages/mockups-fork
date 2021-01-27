@@ -43,3 +43,26 @@ export const addStudentModalForm = (coursePKId, classID, classStart) => {
   ${inputEnrollDate}
   `;
 };
+
+export const completeNewStudent = (fieldList) => {
+  const fiscalYear = SESSION_VARIABLE[0].FiscalYear;
+
+  const studentId = fieldList.find((record) => record.name === "Student_PKID")
+    .value;
+
+  const student = GetStudentLookup.find((record) => record.ID === studentId);
+
+  const additionalFields = [
+    { name: "StudentID", value: student.StudentID },
+    { name: "StudentName", value: student.StudentName },
+    { name: "ActiveStatus", value: "1" },
+    { name: "InactiveDate", value: "" },
+    { name: "InactiveReason", value: "" },
+    { name: "TransferTo", value: "" },
+    { name: "TransferToDescription", value: "" },
+    { name: "InactiveReasonDescription", value: "" },
+    { name: "FY", value: fiscalYear }
+  ];
+
+  return [...fieldList, ...additionalFields];
+};
