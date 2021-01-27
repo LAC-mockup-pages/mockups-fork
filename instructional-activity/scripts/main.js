@@ -359,7 +359,7 @@ $(document).ready(() => {
     evnt.stopPropagation();
 
     $("#primary-filter-view").prop("selectedIndex", 0);
-    $("#modal-select").prop("selectedIndex", 0);
+    $("#secondary-filter-view").prop("selectedIndex", 0);
     //defCalls_getData( RefreshInstructionType($("#fiscal-year-filter-view").val()),
     //    RefreshInstructor_FY($("#fiscal-year-filter-view").val()),
     //    RefreshFormat_FY($("#fiscal-year-filter-view").val()),
@@ -372,6 +372,8 @@ $(document).ready(() => {
   //* Applying filters
   $(document).on("click", "#filter-apply-btn", function (evnt) {
     evnt.stopPropagation();
+    courseList = GetCourse.slice(0);
+
     const formId = "#" + $(this).attr("form");
     const filterList = $(formId).serializeArray();
     const [selectedYear, selectedCategory, selectedValue] = filterList;

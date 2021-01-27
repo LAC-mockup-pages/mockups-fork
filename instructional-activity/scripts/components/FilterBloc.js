@@ -60,7 +60,7 @@ export const createFilterBloc = () => {
     <div class="col-md-4" id="secondary-select">
       <div class="input-field form-group">
         <label for="secondary" class="blue-light-text filter-select">Select value: </label>
-        <select class="modal-select" name="secondary" disabled>
+        <select class="modal-select" name="secondary" id="secondary-filter-view" disabled>
         <option>Select an option</option></select>
       </div>
     </div>
