@@ -201,6 +201,17 @@ th {
   color: #333;
 }
 
+.table1 thead th,
+.table2 thead th {
+  position: sticky;
+  top: 0;
+  color: #d3e4f0;
+}
+
+.table > tbody > tr {
+  border-bottom: solid 1px #dddddd;
+}
+
 .table2 {
   margin-bottom: 2%;
 }
