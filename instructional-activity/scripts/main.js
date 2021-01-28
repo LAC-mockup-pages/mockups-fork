@@ -630,7 +630,7 @@ $(document).ready(() => {
       .append(modalContent)
       .attr("data-bloc", "add-student");
     $(".modal-title").replaceWith(
-      "<h4 class='modal-title'>Adding a new student</h4>"
+      "<h4 class='modal-title'>Enrolling a student</h4>"
     );
   });
 
