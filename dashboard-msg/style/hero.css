@@ -207,6 +207,15 @@ th {
 .table2 thead th {
   position: sticky;
   top: 0;
+  color: #d3e4f0;
+}
+
+.table > tbody > tr {
+  border-bottom: solid 1px #dddddd;
+}
+
+.table > tbody > tr:hover {
+  background-color: #d3e4f0;
 }
 
 .table2 {
