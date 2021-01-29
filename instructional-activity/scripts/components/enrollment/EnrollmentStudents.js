@@ -48,8 +48,28 @@ export const createStudentBloc = (dataList) => {
 };
 
 export const editStudent = (rowId) => {
-  let formContent = `<h3>Working with student ${rowId}</h3>`;
+  let formContent = "";
   const selectedStudent = GetEnrollInfo.find((record) => record.ID === rowId);
 
-  return formContent + `<h2>${selectedStudent.StudentName}</h2>`;
+  const {
+    ID,
+    Class_PKID,
+    Student_PKID,
+    StudentID,
+    ClassID,
+    StudentName,
+    EnrollDate,
+    ActiveStatus,
+    InactiveDate,
+    InactiveReason,
+    TransferTo
+  } = selectedStudent;
+
+  const hiddenFields = `
+  <input class="hidden" name="ID" value=${ID}>
+  <input class="hidden" name="Class_PKID" value=${Class_PKID}>
+  <input class="hidden" name="ClassID" value=${ClassID}>
+  `;
+
+  return formContent;
 };
