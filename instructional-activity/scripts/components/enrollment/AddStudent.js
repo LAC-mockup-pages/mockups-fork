@@ -2,7 +2,10 @@
 
 export const addStudentModalForm = (coursePKId, classID, classStart) => {
   const hashTable = GetStudentLookup.slice(0).map((record) => {
-    return { ID: record.ID, StudentName: record.StudentName };
+    return {
+      ID: record.ID,
+      StudentName: `${record.StudentName} - ${record.StudentID}`
+    };
   });
   const selectStudentName = elementSelectModal({
     hashTable,
