@@ -105,15 +105,23 @@ export const editStudent = (rowId) => {
     option: "",
     optionHidden: "form-group",
     type: "text"
+  })}${elementInput({
+    keyVal: "InactiveDate",
+    labelVal: "End",
+    value: selectedStudent.InactiveDate,
+    labelClassVal: "",
+    classVal: "",
+    option: "",
+    optionHidden: "form-group",
+    type: "text"
   })}`;
 
   formContent = `${hiddenFields}${studentDetails}`;
 
-  // Fields displayed and disabled except if some
-  // values are truesy.
-  if (InactiveDate) {
-  } else {
-  }
+  const activeStudent = InactiveDate ? "" : "disabled";
+
+  // Fields displayed and disabled except if a value
+  // exists in InactiveDate.
 
   return formContent;
 };
