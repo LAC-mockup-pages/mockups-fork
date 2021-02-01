@@ -65,11 +65,55 @@ export const editStudent = (rowId) => {
     TransferTo
   } = selectedStudent;
 
+  // Fields needed for the object sent back to DB
+  // and not displayed
   const hiddenFields = `
   <input class="hidden" name="ID" value=${ID}>
   <input class="hidden" name="Class_PKID" value=${Class_PKID}>
   <input class="hidden" name="ClassID" value=${ClassID}>
+  <input class="hidden" name="Student_PKID" value=${Student_PKID}>
   `;
+
+  // Fields displayed and active in any case.
+  const studentDetails = `
+  ${elementInput({
+    keyVal: "StudentName",
+    labelVal: "Student Name",
+    value: selectedStudent.StudentName,
+    labelClassVal: "",
+    classVal: "",
+    option: "disabled",
+    optionHidden: "form-group",
+    type: "text"
+  })}
+  ${elementInput({
+    keyVal: "StudentID",
+    labelVal: "Student ID",
+    value: selectedStudent.StudentID,
+    labelClassVal: "",
+    classVal: "",
+    option: "disabled",
+    optionHidden: "form-group",
+    type: "text"
+  })}
+  ${elementInput({
+    keyVal: "EnrollDate",
+    labelVal: "Start",
+    value: selectedStudent.EnrollDate,
+    labelClassVal: "",
+    classVal: "",
+    option: "",
+    optionHidden: "form-group",
+    type: "text"
+  })}`;
+
+  formContent = `${hiddenFields}${studentDetails}`;
+
+  // Fields displayed and disabled except if some
+  // values are truesy.
+  if (InactiveDate) {
+  } else {
+  }
 
   return formContent;
 };

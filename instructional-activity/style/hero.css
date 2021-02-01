@@ -90,6 +90,14 @@
   width: 100%;
 }
 
+/* Modal */
+/* =========================================== */
+
+.input-field input:disabled,
+.input-field select:disabled {
+  background-color: #eaeaea;
+}
+
 /* Enrollment View */
 /* =========================================== */
 
