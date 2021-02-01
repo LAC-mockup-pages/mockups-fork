@@ -79,7 +79,7 @@ export const editStudent = (rowId) => {
   ${elementInput({
     keyVal: "StudentName",
     labelVal: "Student Name",
-    value: selectedStudent.StudentName,
+    value: StudentName,
     labelClassVal: "",
     classVal: "",
     option: "disabled",
@@ -89,7 +89,7 @@ export const editStudent = (rowId) => {
   ${elementInput({
     keyVal: "StudentID",
     labelVal: "Student ID",
-    value: selectedStudent.StudentID,
+    value: StudentID,
     labelClassVal: "",
     classVal: "",
     option: "disabled",
@@ -99,7 +99,7 @@ export const editStudent = (rowId) => {
   ${elementInput({
     keyVal: "EnrollDate",
     labelVal: "Start",
-    value: selectedStudent.EnrollDate,
+    value: EnrollDate,
     labelClassVal: "",
     classVal: "",
     option: "",
@@ -108,20 +108,59 @@ export const editStudent = (rowId) => {
   })}${elementInput({
     keyVal: "InactiveDate",
     labelVal: "End",
-    value: selectedStudent.InactiveDate,
+    value: InactiveDate,
     labelClassVal: "",
     classVal: "",
-    option: "",
+    option: "placeholder='MM/DD/YYYY'",
     optionHidden: "form-group",
     type: "text"
   })}`;
-
-  formContent = `${hiddenFields}${studentDetails}`;
 
   const activeStudent = InactiveDate ? "" : "disabled";
 
   // Fields displayed and disabled except if a value
   // exists in InactiveDate.
+  const reasonHashtable = [
+    { key: "C", value: "Completion" },
+    { key: "I", value: "Inactive" },
+    { key: "T", value: "Transfer" },
+    { key: "W", value: "Withdrawal" }
+  ];
+
+  // Limiting the hashtable for TransferTo select
+  // and removing the tranferred-from course
+  const transferHashtable = GetTransferTo.slice(0)
+    .map((record) => {
+      const { Class_PKID, InstructionDescription } = record;
+      return { Class_PKID, InstructionDescription };
+    })
+    .filter((record) => record.Class_PKID !== Class_PKID);
+
+  const activeHashtable = [
+    { key: "1", value: "Yes" },
+    { key: "0", value: "No" }
+  ];
+  const inactiveFields = `
+  ${elementSelectModal({
+    hashTable: reasonHashtable,
+    keyValue: "InactiveReason",
+    selectedValue: InactiveReason,
+    labelVal: "Reason",
+    labelClassVal: "",
+    option: activeStudent,
+    optionText: "a reason"
+  })}
+  ${elementSelectModal({
+    hashTable: transferHashtable,
+    keyValue: "TransferTo",
+    selectedValue: TransferTo,
+    labelVal: "Transfer To",
+    labelClassVal: "",
+    option: activeStudent,
+    optionText: "a new course"
+  })}`;
+
+  formContent = `${hiddenFields}${studentDetails}${inactiveFields}`;
 
   return formContent;
 };
