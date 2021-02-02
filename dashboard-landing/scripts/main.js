@@ -42,7 +42,7 @@ const tileSet = [
     background: "rgb(211,228,240)",
     details: [
       ["Enrolled:", "450"],
-      ["Hours:", "22,000"]
+      ["Hours:", "22890.8"]
     ],
     formatDetails: "tile-details-small",
     target: "../assets/coming-soon.html"
@@ -101,7 +101,9 @@ const tileSet = [
 const createDetailLines = (detailList) => {
   let rows = "";
   for (const list of detailList) {
-    rows += `<tr><td>${list[0]}</td><td>${list[1]}</td></tr>`;
+    const [key, value] = list;
+    const detailValue = key === "Hours:" ? Math.round(Number(value)) : value;
+    rows += `<tr><td>${key}</td><td>${detailValue}</td></tr>`;
   }
 
   return `
