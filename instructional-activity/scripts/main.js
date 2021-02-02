@@ -645,4 +645,16 @@ $(document).ready(() => {
       .append(modalContent)
       .attr("data-bloc", "edit-student");
   });
+
+  $(document).on("focusout", "#edit-form #InactiveDate-view", function (evnt) {
+    evnt.stopPropagation();
+    const endDate = $(this).val();
+    if (endDate) {
+      console.log("it works", `==> ${endDate}`);
+      $("#InactiveReason-view, #TransferTo-view").prop("disabled", false);
+    } else {
+      console.log("Nothing here!");
+      return;
+    }
+  });
 });
