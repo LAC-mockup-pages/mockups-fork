@@ -109,7 +109,7 @@ const dataSet1 = [
   {
     Site: "Far site",
     Enrollment: "560",
-    MSG: "0.64",
+    MSG: "0.07",
     ReportLink:
       "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
   },
@@ -278,8 +278,10 @@ const shuffleTileSet = (list, tileId) => {
   return shuffledList;
 };
 
+// Input is a decimal number as a string, fraction of 1.
+// Output a percentage number as a string. "0.70"==>"70%"
 const percentFormat = (str) => {
-  return `${str.replace("0.", "")}%`;
+  return `${Math.round(Number(str) * 100)}%`;
 };
 
 const createTableHeader = (list) => {

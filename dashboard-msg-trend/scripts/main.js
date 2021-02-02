@@ -181,7 +181,7 @@ const shuffleTileSet = (list, tileId) => {
 };
 
 const percentFormat = (str) => {
-  return `${str.replace("0.", "")}%`;
+  return `${Math.round(Number(str) * 100)}%`;
 };
 
 const createTableHeader = (list) => {
