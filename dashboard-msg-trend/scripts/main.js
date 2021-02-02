@@ -107,7 +107,9 @@ const dataSet1 = [
 const createDetailLines = (detailList) => {
   let rows = "";
   for (const list of detailList) {
-    rows += `<tr><td>${list[0]}</td><td>${list[1]}</td></tr>`;
+    const [key, value] = list;
+    const detailValue = key === "Hours:" ? Math.round(Number(value)) : value;
+    rows += `<tr><td>${key}</td><td>${detailValue}</td></tr>`;
   }
 
   return `
