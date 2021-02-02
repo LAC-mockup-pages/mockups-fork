@@ -646,6 +646,8 @@ $(document).ready(() => {
       .attr("data-bloc", "edit-student");
   });
 
+  //* Event handler for end date input in modal form
+  //* when editing a student.
   $(document).on("focusout", "#edit-form #InactiveDate-view", function (evnt) {
     evnt.stopPropagation();
     const endDate = $(this).val();
