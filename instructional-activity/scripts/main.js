@@ -653,10 +653,10 @@ $(document).ready(() => {
     const endDate = $(this).val();
     if (endDate) {
       // console.log("it works", `==> ${endDate}`);
-      $("#InactiveReason-view, #TransferTo-view").prop("disabled", false);
-    } else {
-      // console.log("Nothing here!");
-      return;
+      $("#InactiveReason-view, #ActiveStatus-view").prop("disabled", false);
+      $("#ActiveStatus-view option:selected").prop("selected", false);
+      $("#ActiveStatus-view option:last-child").prop("selected", true);
+      $("#InactiveReason-view").focus();
     }
   });
 });
