@@ -158,6 +158,15 @@ export const editStudent = (rowId) => {
     labelClassVal: "",
     option: activeStudent,
     optionText: "a new course"
+  })}
+  ${elementSelectModal({
+    hashTable: activeHashtable,
+    keyValue: "ActiveStatus",
+    selectedValue: ActiveStatus,
+    labelVal: "Active",
+    labelClassVal: "",
+    option: activeStudent,
+    optionText: ""
   })}`;
 
   formContent = `${hiddenFields}${studentDetails}${inactiveFields}`;
