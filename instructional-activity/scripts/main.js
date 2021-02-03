@@ -670,4 +670,10 @@ $(document).ready(() => {
   });
 
   //* Handling inactive status switched to active
+  $(document).on("change", "ActiveStatus-view", function (evnt) {
+    evnt.stopPropagation();
+    const activeValue = $(this).val();
+    if (activeValue === "Yes") {
+    }
+  });
 });
