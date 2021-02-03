@@ -659,4 +659,15 @@ $(document).ready(() => {
       $("#InactiveReason-view").focus();
     }
   });
+
+  //* Handling end date AND inactive reason set to Transfer
+  $(document).on("change", "#InactiveReason-view", function (evnt) {
+    evnt.stopPropagation();
+    const reason = $(this).val();
+    if (reason === "T") {
+      $("#TransferTo-view").prop("disabled", false).focus();
+    }
+  });
+
+  //* Handling inactive status switched to active
 });
