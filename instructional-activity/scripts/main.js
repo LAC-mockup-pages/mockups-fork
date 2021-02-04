@@ -652,7 +652,6 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const endDate = $(this).val();
     if (endDate) {
-      // console.log("it works", `==> ${endDate}`);
       $("#InactiveReason-view, #ActiveStatus-view").prop("disabled", false);
       $("#ActiveStatus-view option:selected").prop("selected", false);
       $("#ActiveStatus-view option:last-child").prop("selected", true);
@@ -675,7 +674,6 @@ $(document).ready(() => {
   $(document).on("change", "#ActiveStatus-view", function (evnt) {
     evnt.stopPropagation();
     const activeValue = $(this).val();
-    console.log("activeValue :>> ", activeValue);
     if (activeValue === "1") {
       $("#InactiveDate-view").val("");
       $("#InactiveReason-view option")
