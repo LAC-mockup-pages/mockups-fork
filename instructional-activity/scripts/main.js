@@ -670,10 +670,24 @@ $(document).ready(() => {
   });
 
   //* Handling inactive status switched to active
-  $(document).on("change", "ActiveStatus-view", function (evnt) {
+  //* Inactive date, reason and transfer have all "" value and turn
+  //* disabled, active status is disabled
+  $(document).on("change", "#ActiveStatus-view", function (evnt) {
     evnt.stopPropagation();
     const activeValue = $(this).val();
-    if (activeValue === "Yes") {
+    console.log("activeValue :>> ", activeValue);
+    if (activeValue === "1") {
+      $("#InactiveDate-view").val("");
+      $("#InactiveReason-view option")
+        .prop("selected", false)
+        .removeAttr("selected");
+      $("#TransferTo-view option")
+        .prop("selected", false)
+        .removeAttr("selected");
+      $("#InactiveReason-view, #TransferTo-view, #ActiveStatus-view").prop(
+        "disabled",
+        true
+      );
     }
   });
 });

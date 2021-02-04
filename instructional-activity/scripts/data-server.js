@@ -191,12 +191,12 @@ const GetEnrollInfo = [
     ClassID: "PRABE4CASTS_21",
     StudentName: "AA1_Jacques, Gregory",
     EnrollDate: "07/01/2020",
-    ActiveStatus: "1",
-    InactiveDate: "",
-    InactiveReason: "",
+    ActiveStatus: "0",
+    InactiveDate: "01/01/2021",
+    InactiveReason: "C",
     TransferTo: "",
     TransferToDescription: "",
-    InactiveReasonDesc: "",
+    InactiveReasonDesc: "Completion",
     FY: "2021"
   },
   {

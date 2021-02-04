@@ -1,5 +1,12 @@
 // Top part of Enrollment View displaying students enrolled
 
+const reasonHashtable = [
+  { key: "C", value: "Completion" },
+  { key: "I", value: "Inactive" },
+  { key: "T", value: "Transfer" },
+  { key: "W", value: "Withdrawal" }
+];
+
 export const createStudentBloc = (dataList) => {
   const labelsStudentObj = {
     ID: "ID",
@@ -8,8 +15,10 @@ export const createStudentBloc = (dataList) => {
     StudentName: "Name",
     EnrollDate: "Start Date",
     InactiveDate: "End Date",
-    InactiveReason: "Reason",
-    TransferTo: "Transfer To",
+    InactiveReasonDesc: "Reason",
+    TransferToDescription: "Transfer To",
+    InactiveReason: "InactiveReason",
+    TransferTo: "TransferTo",
     ActiveStatus: "Status"
   };
   let tableRows = "";
@@ -25,7 +34,13 @@ export const createStudentBloc = (dataList) => {
         ? 1
         : 0
     );
-  const hiddenList = ["ID", "Student_PKID", "StudentID"];
+  const hiddenList = [
+    "ID",
+    "Student_PKID",
+    "StudentID",
+    "InactiveReason",
+    "TransferTo"
+  ];
   const labelsList = Object.keys(labelsStudentObj).map(
     (item) => labelsStudentObj[item]
   );
@@ -120,11 +135,9 @@ export const editStudent = (rowId) => {
 
   // Fields displayed and disabled except if a value
   // exists in InactiveDate.
-  const reasonHashtable = [
-    { key: "C", value: "Completion" },
-    { key: "I", value: "Inactive" },
-    { key: "T", value: "Transfer" },
-    { key: "W", value: "Withdrawal" }
+  const activeHashtable = [
+    { key: "1", value: "Yes" },
+    { key: "0", value: "No" }
   ];
 
   // Limiting the hashtable for TransferTo select
@@ -136,10 +149,6 @@ export const editStudent = (rowId) => {
     })
     .filter((record) => record.Class_PKID !== Class_PKID);
 
-  const activeHashtable = [
-    { key: "1", value: "Yes" },
-    { key: "0", value: "No" }
-  ];
   const inactiveFields = `
   ${elementSelectModal({
     hashTable: reasonHashtable,
