@@ -1,4 +1,4 @@
-// Actions and logic
+//* Actions and logic
 
 //Data files
 export let courseList = GetCourse.slice(0);

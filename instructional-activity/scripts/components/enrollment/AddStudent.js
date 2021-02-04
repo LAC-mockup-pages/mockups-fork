@@ -7,6 +7,17 @@ export const addStudentModalForm = (coursePKId, classID, classStart) => {
       StudentName: `${record.StudentName} - ${record.StudentID}`
     };
   });
+
+  const studentNameTest = elementInput({
+    keyVal: "StudentName",
+    labelVal: "Student Name",
+    value: "",
+    labelClassVal: "class='red-text'",
+    classVal: "",
+    option: "",
+    optionHidden: "form-group",
+    type: "text"
+  });
   const selectStudentName = elementSelectModal({
     hashTable,
     keyValue: "Student_PKID",
