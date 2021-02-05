@@ -146,13 +146,13 @@
   height: 60%;
 }
 
-#tile0 .tile-header {
+#tile1 .tile-header {
   font-size: 1.4em;
   font-weight: 700;
   margin-top: 4%;
 }
 
-#tile0 .tile-details {
+#tile1 .tile-details {
   font-size: 3em;
   font-weight: 800;
 }
