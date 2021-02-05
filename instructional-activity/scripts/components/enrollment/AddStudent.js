@@ -1,5 +1,13 @@
 // Adding  a new student to course roster
 
+export const createStudentDataList = (list) => {
+  let optionList = "";
+  for (const student of list) {
+    optionList += `<option value=${student.ID}>${student.StudentName}</option>`;
+  }
+  return optionList;
+};
+
 export const addStudentModalForm = (coursePKId, classID, classStart) => {
   const hashTable = GetStudentLookup.slice(0).map((record) => {
     return {
@@ -8,25 +16,24 @@ export const addStudentModalForm = (coursePKId, classID, classStart) => {
     };
   });
 
-  const studentNameTest = elementInput({
-    keyVal: "StudentName",
-    labelVal: "Student Name",
-    value: "",
-    labelClassVal: "class='red-text'",
-    classVal: "",
-    option: "",
-    optionHidden: "form-group",
-    type: "text"
-  });
-  const selectStudentName = elementSelectModal({
-    hashTable,
-    keyValue: "Student_PKID",
-    selectedValue: "",
-    labelVal: "Student Name",
-    labelClassVal: "class='red-text'",
-    option: "",
-    optionText: "a student"
-  });
+  const studentNameTest = `
+  <div class="input-field form-group">
+    <label for="Student_PKID" class="red-text">Student Name
+    </label>
+    <input type="text" id="Student_PKID-view" name="Student_PKID" list="student-list"/>
+    <datalist id="student-list">
+    </datalist>
+  </div>`;
+
+  // const selectStudentName = elementSelectModal({
+  //   hashTable,
+  //   keyValue: "Student_PKID",
+  //   selectedValue: "",
+  //   labelVal: "Student Name",
+  //   labelClassVal: "class='red-text'",
+  //   option: "",
+  //   optionText: "a student"
+  // });
   const hiddenFields = `
   <input class="hidden" name="Class_PKID" value=${coursePKId}>
   <input class="hidden" name="ClassID" value=${classID}>
@@ -46,7 +53,7 @@ export const addStudentModalForm = (coursePKId, classID, classStart) => {
   });
   return `
   ${hiddenFields}
-  ${selectStudentName}
+  ${studentNameTest}
   ${inputEnrollDate}
   `;
 };

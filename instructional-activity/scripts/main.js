@@ -23,7 +23,8 @@ import { createEnrollmentView } from "./components/enrollment/EnrollmentView.js"
 import { createHoursView } from "./components/hours/HoursView.js";
 import {
   addStudentModalForm,
-  completeNewStudent
+  completeNewStudent,
+  createStudentDataList
 } from "./components/enrollment/AddStudent.js";
 import { editStudent } from "./components/enrollment/EnrollmentStudents.js";
 
@@ -686,6 +687,26 @@ $(document).ready(() => {
         "disabled",
         true
       );
+    }
+  });
+
+  //* Handling student name search when adding a new student to a course
+
+  $(document).on("change", "#Student_PKID-view", function (evnt) {
+    evnt.stopPropagation();
+    const firstLetters = $(this).val();
+    if (firstLetters.length > 2) {
+      const roster = GetStudentLookup.slice(0).filter((record) =>
+        record.StudentName.toLowerCase().startsWith(firstLetters)
+      );
+
+      console.log("roster :>> ", roster);
+
+      const optionList = createStudentDataList(roster);
+
+      $("#student-list").append(optionList);
+      const content = $("#edit-form").serializeArray();
+      console.log("content :>> ", content);
     }
   });
 });
