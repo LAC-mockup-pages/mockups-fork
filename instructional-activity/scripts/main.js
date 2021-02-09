@@ -692,7 +692,8 @@ $(document).ready(() => {
   });
 
   //* Handling student name search when adding a new student to a course
-
+  //* The <input> is replaced with a <select> tag. Option list is based
+  //* on the 3 first letters in input.
   $(document).on("change", "#Student_PKID-view", function (evnt) {
     evnt.stopPropagation();
     const firstLetters = $(this).val();
