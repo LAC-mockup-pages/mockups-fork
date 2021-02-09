@@ -5,6 +5,14 @@
 
 const tileSet = [
   {
+    id: "tile1",
+    header: "Post Test",
+    background: "rgba(247,224,149,0), rgba(247,224,149,1)",
+    details: ["75%"],
+    formatDetails: "",
+    target: "../dashboard-post/index.html"
+  },
+  {
     id: "tile0",
     header: "MSG",
     background: "rgba(36,121,181,0), rgba(36,121,181,1)",
@@ -12,14 +20,7 @@ const tileSet = [
     formatDetails: "",
     target: "../dashboard-msg/index.html"
   },
-  {
-    id: "tile1",
-    header: "Post Test",
-    background: "rgba(247,224,149,0), rgba(247,224,149,1)",
-    details: ["75%"],
-    formatDetails: "",
-    target: "../assets/coming-soon.html"
-  },
+
   {
     id: "tile2",
     header: "Employment Q2",
@@ -99,9 +100,9 @@ const tileSet = [
 ];
 
 const dataSet1 = [
-  { Level: "Program Name", MSG: "0.64" },
-  { Level: "Region Name", MSG: "0.57" },
-  { Level: "State", MSG: "0.55" }
+  { Level: "Program Name", PostTest: "0.64" },
+  { Level: "Region Name", PostTest: "0.57" },
+  { Level: "State", PostTest: "0.55" }
 ];
 
 const createDetailLines = (detailList) => {
@@ -114,9 +115,9 @@ const createDetailLines = (detailList) => {
 
   return `
   <table class="table table-condensed detail-table">
-  <tbody>
-  ${rows}
-  </tbody>
+    <tbody>
+      ${rows}
+    </tbody>
   </table>`;
 };
 const createTile = (dataObj, classButton, classTile) => {
@@ -149,10 +150,10 @@ const createLeftNavBar = () => {
     let tileClass = "";
 
     switch (record.id) {
-      case "tile0":
+      case "tile1":
         tileClass = "large-tile";
         break;
-      case "tile1":
+      case "tile0":
       case "tile2":
       case "tile3":
         tileClass = "medium-tile";
@@ -180,6 +181,8 @@ const shuffleTileSet = (list, tileId) => {
   return shuffledList;
 };
 
+// Input is a decimal number as a string, fraction of 1.
+// Output a percentage number as a string. "0.70"==>"70%"
 const percentFormat = (str) => {
   return `${Math.round(Number(str) * 100)}%`;
 };
@@ -202,19 +205,24 @@ const createTableBody = (list) => {
       item1.Teacher < item2.Teacher ? -1 : item1.Teacher > item2.Teacher ? 1 : 0
     );
   }
+
   for (const obj of orderedList) {
     let row = "";
+    const link = ` href=${obj.ReportLink}`;
     for (const key of Object.keys(obj)) {
-      const value = key === "MSG" ? percentFormat(obj[key]) : obj[key];
+      if (key === "ReportLink") continue;
+      const value = key === "PostTest" ? percentFormat(obj[key]) : obj[key];
       row += `<td class="cell-data">${value}</td>`;
     }
-    body += `<tr>${row}</tr>`;
+    body += `<tr${link}>${row}</tr$>`;
   }
   return `<tbody>${body}</tbody>`;
 };
 
 const createTable = (dataList) => {
-  const tableHeader = createTableHeader(Object.keys(dataList[0]));
+  const tableHeader = createTableHeader(
+    Object.keys(dataList[0]).filter((str) => str !== "ReportLink")
+  ).replace("PostTest", "Post Test");
   const tableBody = createTableBody(dataList);
   return `<table class="table">${tableHeader}${tableBody}</table>`;
 };
