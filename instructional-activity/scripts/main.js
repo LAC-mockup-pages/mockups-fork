@@ -633,6 +633,7 @@ $(document).ready(() => {
     $(".modal-title").replaceWith(
       "<h4 class='modal-title'>Enrolling a student</h4>"
     );
+    $("#edit-form #Student_PKID-view").focus();
   });
 
   //* Selecting an enrolled student to edit
@@ -699,14 +700,8 @@ $(document).ready(() => {
       const roster = GetStudentLookup.slice(0).filter((record) =>
         record.StudentName.toLowerCase().startsWith(firstLetters)
       );
-
-      console.log("roster :>> ", roster);
-
-      const optionList = createStudentDataList(roster);
-
-      $("#student-list").append(optionList);
-      const content = $("#edit-form").serializeArray();
-      console.log("content :>> ", content);
+      const studentSelect = createStudentDataList(roster);
+      $("#Student_PKID-view").replaceWith(studentSelect).focus();
     }
   });
 });
