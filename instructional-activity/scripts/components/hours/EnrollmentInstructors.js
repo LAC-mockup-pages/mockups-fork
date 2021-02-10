@@ -13,7 +13,7 @@
 
 const periodList = GetReportingPeriods.slice(0);
 
-const createPeriodSelector = (courseId, start, end) => {
+export const createPeriodSelector = (courseId, start, end) => {
   const today = new Date();
   // const todayMonth = today.getMonth();
   // const todayYear = today.getFullYear();
