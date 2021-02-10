@@ -463,9 +463,13 @@ $(document).ready(() => {
     "#enrollment-tab, #hours-tab, #details-tab",
     function () {
       const selectedTab = $(this).attr("id");
+
       console.log("selectedTab :>> ", selectedTab);
+
       const selectedCourse = $("#view-bloc").data("course").toString();
+
       console.log("selectedCourse :>> ", selectedCourse);
+
       const course = GetCourse.find((record) => record.ID === selectedCourse);
 
       let viewToDisplay = "";
@@ -540,6 +544,7 @@ $(document).ready(() => {
       const table = $(`#${rowId}`).attr("data-table");
       console.log("table :>> ", table);
 
+      //TODO Hook-up for editing selected instructor
       const formContent =
         table === "GetSpecialProgram" ? addSpecialProgram(rowId, table) : "";
 
