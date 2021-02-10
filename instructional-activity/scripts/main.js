@@ -442,13 +442,8 @@ $(document).ready(() => {
   $(document).on("click", ".field-bloc", function (evnt) {
     evnt.stopPropagation();
     const formId = $(this).attr("id");
-    // console.log("formId :>> ", formId);
     const formName = formId.replace("-form", "");
-    // console.log("formName :>> ", formName);
     const fieldSource = $(`#${formId} .input-field`).clone();
-
-    // console.log("fieldSource :>> ", fieldSource);
-
     const editFormContent = createModalForm(fieldSource);
     $("#modalBloc").modal("toggle");
     $("#edit-form").empty().append(editFormContent);
