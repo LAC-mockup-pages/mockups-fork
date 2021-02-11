@@ -3,11 +3,17 @@
 
 import { createInstructorBloc } from "./EnrollmentInstructors.js";
 
-export const createHoursView = (courseID, classId, mainInstructor) => {
+export const createHoursView = (courseID, classID, mainInstructor) => {
+  // Filtering for caution sake
   const hoursList = GetInstrHours.slice(0).filter(
     (record) => record.Class_PKID === courseID
   );
   const today = new Date();
+
+  // In production, PRA should be changed to Session Variable AgencyID
+
+  // const period = `${SESSION_VARIABLE[0].AgencyID}${today.getFullYear()}${today.getMonth() + 1}01`;
+
   const period = `PRA${today.getFullYear()}${today.getMonth() + 1}01`;
 
   const instructorBloc = createInstructorBloc(

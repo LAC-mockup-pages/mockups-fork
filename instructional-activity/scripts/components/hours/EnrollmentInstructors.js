@@ -49,7 +49,7 @@ export const createInstructorBloc = (
   courseId,
   classID,
   mainInstructor,
-  periodId
+  actualPeriod
 ) => {
   const labelsInstructor = {
     ID: "ID",
