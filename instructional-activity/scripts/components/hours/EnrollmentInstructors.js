@@ -46,10 +46,10 @@ export const createPeriodSelector = (courseId, start, end) => {
 
 export const createInstructorBloc = (
   dataList,
-  mainInstructor,
   courseId,
-  startDate,
-  endDate
+  classID,
+  mainInstructor,
+  periodId
 ) => {
   const labelsInstructor = {
     ID: "ID",

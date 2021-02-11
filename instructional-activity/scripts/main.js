@@ -478,7 +478,11 @@ $(document).ready(() => {
           viewToDisplay = createEnrollmentView(selectedCourse, course.ClassID);
           break;
         case "hours-tab":
-          viewToDisplay = createHoursView(selectedCourse);
+          viewToDisplay = createHoursView(
+            selectedCourse,
+            course.ClassID,
+            course.InstructorID
+          );
           break;
         case "details-tab":
           console.log("course :>> ", course);
