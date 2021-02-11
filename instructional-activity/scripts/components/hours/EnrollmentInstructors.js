@@ -77,6 +77,7 @@ export const createInstructorBloc = (
     const {
       ID,
       PeriodID,
+      personnelID,
       InstructorName,
       InstHours,
       TestHours,
@@ -84,10 +85,11 @@ export const createInstructorBloc = (
       labHours,
       ExtraHoursLT12
     } = record;
-    if (PeriodID === "PRA20200801")
+    if (PeriodID === actualPeriod)
       return {
         ID,
         PeriodID,
+        personnelID,
         InstructorName,
         InstHours,
         TestHours,
@@ -98,12 +100,11 @@ export const createInstructorBloc = (
   });
 
   let firstRow = createRow({
-    record: hoursList.find(
-      (record) => record.InstructorName === "Porter, Samantha"
-    ),
+    record: hoursList.find((record) => record.personnelID === mainInstructor),
     labelList: [
       "ID",
       "PeriodID",
+      "personnelID",
       "InstructorName",
       "InstHours",
       "TestHours",
@@ -112,7 +113,7 @@ export const createInstructorBloc = (
       "ExtraHoursLT12"
     ],
     labelObj: labelsInstructor,
-    hiddenList: ["ID", "PeriodID"]
+    hiddenList: ["ID", "PeriodID", "personnelID"]
   });
   let nextRows = createRow({
     record: hoursList.find(

@@ -9,11 +9,15 @@ export const createHoursView = (courseID, classID, mainInstructor) => {
     (record) => record.Class_PKID === courseID
   );
   const today = new Date();
+  const month =
+    today.getMonth() + 1 > 9
+      ? today.getMonth() + 1
+      : `0${today.getMonth() + 1}`;
 
   //! In production, PRA should be changed to Session Variable AgencyID like so:
   // const period = `${SESSION_VARIABLE[0].AgencyID}${today.getFullYear()}${today.getMonth() + 1}01`;
 
-  const period = `PRA${today.getFullYear()}${today.getMonth() + 1}01`;
+  const period = `PRA${today.getFullYear()}${month}01`;
 
   const instructorBloc = createInstructorBloc(
     hoursList,
