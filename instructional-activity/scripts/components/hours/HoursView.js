@@ -10,8 +10,7 @@ export const createHoursView = (courseID, classID, mainInstructor) => {
   );
   const today = new Date();
 
-  // In production, PRA should be changed to Session Variable AgencyID
-
+  // In production, PRA should be changed to Session Variable AgencyID like so:
   // const period = `${SESSION_VARIABLE[0].AgencyID}${today.getFullYear()}${today.getMonth() + 1}01`;
 
   const period = `PRA${today.getFullYear()}${today.getMonth() + 1}01`;
