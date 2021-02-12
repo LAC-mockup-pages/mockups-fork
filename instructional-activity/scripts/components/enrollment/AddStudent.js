@@ -6,7 +6,7 @@ export const createStudentDataList = (list) => {
     optionList += `<option value=${student.ID}>${student.StudentName} - ${student.StudentID}</option>`;
   }
   return `
-  <select id="Student_PKID" name="Student_PKID">
+  <select multiple id="Student_PKID" name="Student_PKID" autofocus>
     <option>Select a student</option>
     ${optionList}
   </select>`;

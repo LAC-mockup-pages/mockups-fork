@@ -638,7 +638,6 @@ $(document).ready(() => {
     $(".modal-title").replaceWith(
       "<h4 class='modal-title'>Enrolling a student</h4>"
     );
-    $("#edit-form #Student_PKID-view").focus();
   });
 
   //* Selecting an enrolled student to edit
@@ -710,7 +709,8 @@ $(document).ready(() => {
         record.StudentName.toLowerCase().startsWith(firstLetters)
       );
       const studentSelect = createStudentDataList(roster);
-      $("#Student_PKID-view").replaceWith(studentSelect).focus();
+      $("#Student_PKID-view").replaceWith(studentSelect);
+      $("#Student_PKID option").show();
     }
   });
 });
