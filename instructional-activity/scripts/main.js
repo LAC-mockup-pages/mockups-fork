@@ -3,6 +3,7 @@
 //Data files
 export let courseList = GetCourse.slice(0);
 export const instructorList = GetInstructor.slice(0);
+
 // Imports
 import { createNewRecordForm } from "./components/AddNewRecord.js";
 import {
@@ -650,6 +651,9 @@ $(document).ready(() => {
       .empty()
       .append(modalContent)
       .attr("data-bloc", "edit-student");
+    $(".modal-title").replaceWith(
+      "<h4 class='modal-title'>Editing a student</h4>"
+    );
   });
 
   //* Event handler for end date input in modal form
