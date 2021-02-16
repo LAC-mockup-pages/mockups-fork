@@ -638,6 +638,8 @@ $(document).ready(() => {
     $(".modal-title").replaceWith(
       "<h4 class='modal-title'>Enrolling a student</h4>"
     );
+    console.log("Element: ==> ", $("#someID input").attr("id"));
+    $("#someID input").focusin();
   });
 
   //* Selecting an enrolled student to edit

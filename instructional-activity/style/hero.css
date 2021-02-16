@@ -132,6 +132,10 @@
   max-height: 40em;
 }
 
+.student-label {
+  margin-top: 2%;
+}
+
 /* MainInfo bloc */
 /* =========================================== */
 .sub-header {

@@ -6,7 +6,7 @@ export const createStudentDataList = (list) => {
     optionList += `<option value=${student.ID}>${student.StudentName} - ${student.StudentID}</option>`;
   }
   return `
-  <select multiple id="Student_PKID" name="Student_PKID" autofocus>
+  <select multiple id="Student_PKID-view" name="Student_PKID">
     <option>Select a student</option>
     ${optionList}
   </select>`;
@@ -14,8 +14,8 @@ export const createStudentDataList = (list) => {
 
 export const addStudentModalForm = (coursePKId, classID, classStart) => {
   const studentNameTest = `
-  <div class="input-field form-group">
-    <label for="Student_PKID" class="red-text">Student Name
+  <div class="input-field form-group" id="someID">
+    <label for="Student_PKID" class="red-text student-label">Student Name
     </label>
     <input type="text" id="Student_PKID-view" name="Student_PKID" placeholder="Type the first 3 letters of the student's name"/>
   </div>`;
