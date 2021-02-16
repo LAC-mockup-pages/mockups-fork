@@ -66,3 +66,16 @@ export const addInstructor = () => {
 
   return `${dateAssigned}${selectInstructor}`;
 };
+
+export const editInstructor = (rowId, table) => {
+  const instructor = GetClassInstructor.find((record) => record.ID === rowId);
+  const dateAssigned = elementInput({
+    keyVal: "DateAssign",
+    labelVal: "Date Assigned",
+    value: instructor.DateAssign,
+    labelClassVal: "",
+    classVal: "",
+    option: "",
+    optionHidden: "form-group"
+  });
+};
