@@ -45,7 +45,7 @@ export const addInstructor = () => {
   );
   const filteredInstructors = potentialInstructors(currentInstructors);
   const dateAssigned = elementInput({
-    keyVal: "DateAssign",
+    keyVal: "AssignDate",
     labelVal: "Date Assigned",
     value: "",
     labelClassVal: "",
@@ -67,15 +67,32 @@ export const addInstructor = () => {
   return `${dateAssigned}${selectInstructor}`;
 };
 
-export const editInstructor = (rowId, tableName, tdList) => {
+export const editInstructor = (rowId, tableName) => {
   const instructor = GetClassInstructor.find((record) => record.ID === rowId);
+
+  const hiddenField = `
+  <input class="hidden" name="ID" value=${instructor.ID}/>
+  <input class="hidden" name="PersonnelID" value=${instructor.PersonnelID}/>`;
+
   const dateAssigned = elementInput({
-    keyVal: "DateAssign",
+    keyVal: "AssignDate",
     labelVal: "Date Assigned",
-    value: instructor.DateAssign,
+    value: instructor.AssignDate,
     labelClassVal: "",
     classVal: "",
     option: "",
     optionHidden: "form-group"
   });
+
+  const instructorName = elementInput({
+    keyVal: "Name",
+    labelVal: "Instructor",
+    value: instructor.Name,
+    labelClassVal: "",
+    classVal: "",
+    option: "disabled",
+    optionHidden: "form-group"
+  });
+
+  return `${hiddenField}${instructorName}${dateAssigned}`;
 };

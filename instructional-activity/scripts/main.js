@@ -551,13 +551,12 @@ $(document).ready(() => {
       console.log("rowId :>> ", rowId);
       const table = $(`#${rowId}`).attr("data-table");
       console.log("table :>> ", table);
-      const selectedRow = $(`#${rowId} td`).get();
+      // const selectedRow = $(`#${rowId} td`).get();
 
-      //TODO Hook-up for editing selected instructor
       const formContent =
         table === "GetSpecialProgram"
           ? addSpecialProgram(rowId, table)
-          : editInstructor(rowId, table, selectedRow);
+          : editInstructor(rowId, table);
 
       $("#modalBloc").modal("toggle");
       $("#edit-form").empty().append(formContent);
