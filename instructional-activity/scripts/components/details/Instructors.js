@@ -67,7 +67,7 @@ export const addInstructor = () => {
   return `${dateAssigned}${selectInstructor}`;
 };
 
-export const editInstructor = (rowId, tableName) => {
+export const editInstructor = (rowId) => {
   const instructor = GetClassInstructor.find((record) => record.ID === rowId);
 
   const hiddenField = `

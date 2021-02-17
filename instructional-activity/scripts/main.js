@@ -561,6 +561,7 @@ $(document).ready(() => {
       $("#modalBloc").modal("toggle");
       $("#edit-form").empty().append(formContent);
       $("#edit-form").attr("data-bloc", table);
+      $("#delete-btn").toggleClass("hidden");
     }
   );
 
