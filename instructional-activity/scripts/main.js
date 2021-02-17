@@ -537,7 +537,7 @@ $(document).ready(() => {
           : newSource;
       const courseId = $(".course-details").attr("id");
       fieldList = [{ name: "ID", value: courseId }, ...fieldList];
-      saveMods(fieldList, formId, "GetCourse");
+      saveMods(fieldList, formId, blocName);
     }
   });
 
@@ -561,7 +561,10 @@ $(document).ready(() => {
       $("#modalBloc").modal("toggle");
       $("#edit-form").empty().append(formContent);
       $("#edit-form").attr("data-bloc", table);
-      $("#delete-btn").toggleClass("hidden");
+
+      if (table === "GetClassInstructor") {
+        $("#delete-btn").toggleClass("hidden");
+      }
     }
   );
 

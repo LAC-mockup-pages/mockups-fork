@@ -71,8 +71,8 @@ export const editInstructor = (rowId) => {
   const instructor = GetClassInstructor.find((record) => record.ID === rowId);
 
   const hiddenField = `
-  <input class="hidden" name="ID" value=${instructor.ID}/>
-  <input class="hidden" name="PersonnelID" value=${instructor.PersonnelID}/>`;
+  <input class="hidden" name="ID" value=${instructor.ID}>
+  <input class="hidden" name="PersonnelID" value=${instructor.PersonnelID}>`;
 
   const dateAssigned = elementInput({
     keyVal: "AssignDate",
