@@ -67,7 +67,7 @@ export const addInstructor = () => {
   return `${dateAssigned}${selectInstructor}`;
 };
 
-export const editInstructor = (rowId, table) => {
+export const editInstructor = (rowId, tableName, tdList) => {
   const instructor = GetClassInstructor.find((record) => record.ID === rowId);
   const dateAssigned = elementInput({
     keyVal: "DateAssign",

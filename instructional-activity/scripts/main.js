@@ -16,7 +16,10 @@ import {
   createModalForm,
   addClassIdAndDescription
 } from "./components/ModalForm.js";
-import { addInstructor } from "./components/details/Instructors.js";
+import {
+  addInstructor,
+  editInstructor
+} from "./components/details/Instructors.js";
 import { addSpecialProgram } from "./components/details/Recommended.js";
 import { saveSchedule } from "./components/details/Schedule.js";
 import { saveFundingSources } from "./components/details/FundingSources.js";
@@ -548,10 +551,13 @@ $(document).ready(() => {
       console.log("rowId :>> ", rowId);
       const table = $(`#${rowId}`).attr("data-table");
       console.log("table :>> ", table);
+      const selectedRow = $(`#${rowId} td`).get();
 
       //TODO Hook-up for editing selected instructor
       const formContent =
-        table === "GetSpecialProgram" ? addSpecialProgram(rowId, table) : "";
+        table === "GetSpecialProgram"
+          ? addSpecialProgram(rowId, table)
+          : editInstructor(rowId, table, selectedRow);
 
       $("#modalBloc").modal("toggle");
       $("#edit-form").empty().append(formContent);
