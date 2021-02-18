@@ -468,11 +468,11 @@ $(document).ready(() => {
     function () {
       const selectedTab = $(this).attr("id");
 
-      console.log("selectedTab :>> ", selectedTab);
+      // console.log("selectedTab :>> ", selectedTab);
 
       const selectedCourse = $("#view-bloc").data("course").toString();
 
-      console.log("selectedCourse :>> ", selectedCourse);
+      // console.log("selectedCourse :>> ", selectedCourse);
 
       const course = GetCourse.find((record) => record.ID === selectedCourse);
 
@@ -489,7 +489,7 @@ $(document).ready(() => {
           );
           break;
         case "details-tab":
-          console.log("course :>> ", course);
+          // console.log("course :>> ", course);
           viewToDisplay = createDetailsView(course);
           break;
         default:
