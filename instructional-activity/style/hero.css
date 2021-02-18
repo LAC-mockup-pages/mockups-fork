@@ -90,11 +90,16 @@
   width: 100%;
 }
 
+.input-field input:disabled,
+.input-field select:disabled {
+  background-color: inherit;
+}
+
 /* Modal */
 /* =========================================== */
 
-.input-field input:disabled,
-.input-field select:disabled {
+#edit-form .input-field input:disabled,
+#edit-form .input-field select:disabled {
   background-color: #eaeaea;
 }
 
