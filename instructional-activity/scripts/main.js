@@ -85,8 +85,8 @@ export const topBanner = (title, list = null) => {
 
   // Sets the blocs displaying a button.
   const buttonList = [
-    { title: "Funding", btnText: "Save", btnClass: "save-record-btn" },
-    { title: "Schedule", btnText: "Save", btnClass: "save-record-btn" },
+    // { title: "Funding", btnText: "Save", btnClass: "save-record-btn" },
+    // { title: "Schedule", btnText: "Save", btnClass: "save-record-btn" },
     { title: "Instructors", btnText: "Add", btnClass: "add-record-btn" },
     { title: "Special Program", btnText: "Add", btnClass: "add-record-btn" }
   ];
