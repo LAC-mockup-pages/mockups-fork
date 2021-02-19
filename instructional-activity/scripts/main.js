@@ -443,12 +443,21 @@ $(document).ready(() => {
   // $(document).on('change',"#")
 
   //* Editing bloc
-  $(document).on("click", ".field-bloc", function (evnt) {
+  $(document).on("click", ".field-bloc, .funding-bloc", function (evnt) {
     evnt.stopPropagation();
     const formId = $(this).attr("id");
     const formName = formId.replace("-form", "");
-    const fieldSource = $(`#${formId} .input-field`).clone();
-    const editFormContent = createModalForm(fieldSource);
+    let editFormContent = "";
+    if (formName === "funding-sources") {
+      editFormContent = $(`#${formId} .funding-checkboxes`).clone();
+      $(editFormContent).each(function () {
+        const kidInput = $(this).find(":disabled");
+        $(kidInput).prop("disabled", false).removeAttr("disabled");
+      });
+    } else {
+      const fieldSource = $(`#${formId} .input-field`).clone();
+      editFormContent = createModalForm(fieldSource);
+    }
     $("#modalBloc").modal("toggle");
     $("#edit-form").empty().append(editFormContent);
     $("#edit-form").attr("data-bloc", formName);

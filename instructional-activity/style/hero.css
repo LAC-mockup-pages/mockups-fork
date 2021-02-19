@@ -168,7 +168,8 @@
   padding-top: 3%;
 }
 
-.field-bloc:hover {
+.field-bloc:hover,
+.sub-blocs:hover {
   background-color: #d3e4f0;
 }
 

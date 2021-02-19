@@ -24,7 +24,7 @@ export const createFundingBloc = (fundingStr) => {
     const field = `
     <div class='funding-checkboxes form-group checkbox'>
       <label for='${key}' class="single-checkbox">
-        <input type='checkbox' name='${key}' ${optionChecked}/>
+        <input type='checkbox' name='${key}' ${optionChecked} disabled>
           ${labelText}
       </label>
     </div>`;
@@ -35,7 +35,7 @@ export const createFundingBloc = (fundingStr) => {
   }
 
   return `
-  <form class="container-fluid funding-bloc" role="form">
+  <form class="container-fluid funding-bloc" role="form" id="funding-sources-form">
     ${banner}
     <div class="container-fluid row sub-blocs">
       <div class="left-bloc col-sm-6">${leftBloc}</div>
