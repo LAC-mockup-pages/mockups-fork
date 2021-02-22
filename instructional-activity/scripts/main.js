@@ -5,7 +5,10 @@ export let courseList = GetCourse.slice(0);
 export const instructorList = GetInstructor.slice(0);
 
 // Imports
-import { createNewRecordForm } from "./components/AddNewRecord.js";
+import {
+  addFieldsNewCourse,
+  createNewRecordForm
+} from "./components/AddNewRecord.js";
 import {
   createFilterBloc,
   createShortList,
@@ -229,7 +232,7 @@ export const getRequired = () => {
 };
 
 const saveMods = (fields, formName, tableName = "", requiredList = []) => {
-  const { AgencyID, AuditUserID } = SESSION_VARIABLE[0];
+  const { AgencyID, AuditUserID, FiscalYear } = SESSION_VARIABLE[0];
   let result = { AgencyID, AuditUserID };
   $(`${formName} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
@@ -260,12 +263,17 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
       let name = field.name;
       result[name] = val;
     }
+
+    if (formName === "#new-entry") {
+      result = addFieldsNewCourse(result, FiscalYear);
+    }
+
     const target = tableName ? tableName : "No table name";
     const resultList = [formName, target, JSON.stringify(result)];
     console.table(result);
     //! =================================================
     //! JSON Object to send back to database
-    console.log("result :", resultList);
+    console.log("resultList :", resultList);
     console.log("result :", result);
     //! =================================================
 
@@ -417,6 +425,9 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
     const newSource = $(formId).serializeArray();
+
+    console.log("newSource :>> ", newSource);
+
     const response = saveMods(newSource, formId, "GetCourse", listOfRequired);
 
     // Hide all children of .hero and display Details page
