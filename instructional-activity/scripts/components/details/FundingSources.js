@@ -37,7 +37,7 @@ export const createFundingBloc = (fundingStr) => {
   return `
   <form class="container-fluid funding-bloc" role="form" id="funding-sources-form">
     ${banner}
-    <div class="container-fluid row sub-blocs">
+    <div class="container-fluid row sub-blocs" data-toggle='tooltip' data-placement='right' title='Click to Edit'>
       <div class="left-bloc col-sm-6">${leftBloc}</div>
       <div class="right-bloc col-sm-6">${rightBloc}</div>
     </div>
