@@ -13,8 +13,8 @@ export const createStudentDataList = (list) => {
 };
 
 export const addStudentModalForm = (coursePKId, classID, classStart) => {
-  const studentNameTest = `
-  <div class="input-field form-group" id="someID">
+  const studentName = `
+  <div class="input-field form-group" id="Student_PKID_AC"></div>
     <label for="Student_PKID" class="red-text student-label">Student Name
     </label>
     <input type="text" id="Student_PKID-view" name="Student_PKID" placeholder="Type the first 3 letters of the student's name"/>
@@ -38,7 +38,7 @@ export const addStudentModalForm = (coursePKId, classID, classStart) => {
   });
   return `
   ${hiddenFields}
-  ${studentNameTest}
+  ${studentName}
   ${inputEnrollDate}
   `;
 };
