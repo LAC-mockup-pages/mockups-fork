@@ -532,8 +532,9 @@ $(document).ready(() => {
   $(document).on("click", "#save-btn", function (evnt) {
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
-    const blocName = $(formId).data("bloc");
+    const blocName = $(formId).attr("data-bloc");
     const newSource = $(formId).serializeArray();
+    const courseId = $(".course-details").attr("data-course");
 
     if (blocName === "add-student") {
       const completedList = completeNewStudent(newSource);
@@ -541,12 +542,23 @@ $(document).ready(() => {
       $(".modal-title").replaceWith("<h4 class='modal-title'>Editing</h4>");
       $("#modalBloc").modal("toggle");
       return;
+    } else if (blocName === "funding-sources") {
+      const selectedFunding = newSource.map((source) => source.name).join(",");
+      saveMods(
+        [
+          { name: "ID", value: courseId },
+          { name: "FSID", value: selectedFunding }
+        ],
+        formId,
+        blocName
+      );
+      return;
     } else {
       let fieldList =
         blocName === "main-info"
           ? addClassIdAndDescription(newSource, instructorList)
           : newSource;
-      const courseId = $(".course-details").attr("data-course");
+
       fieldList = [{ name: "ID", value: courseId }, ...fieldList];
       saveMods(fieldList, formId, blocName);
     }
