@@ -546,7 +546,7 @@ $(document).ready(() => {
         blocName === "main-info"
           ? addClassIdAndDescription(newSource, instructorList)
           : newSource;
-      const courseId = $(".course-details").attr("id");
+      const courseId = $(".course-details").attr("data-course");
       fieldList = [{ name: "ID", value: courseId }, ...fieldList];
       saveMods(fieldList, formId, blocName);
     }
