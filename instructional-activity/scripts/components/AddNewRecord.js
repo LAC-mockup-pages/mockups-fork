@@ -1,13 +1,5 @@
 //* New record entry bloc
 
-// Returns entered values + added fields FiscalYear, ClassID,
-// InstructionDescription.
-// fieldsObj = values entered in new-entry form, JS Object.
-// year = fiscal year from SESSION_VARIABLE in constants.js
-export const addFieldsNewCourse = (fieldsObj, year) => {
-  return completedSource; // Object with additional fields
-};
-
 export const createNewRecordForm = () => {
   let formNewRecord = [];
   const instructionTypeList = GetInstructionType.slice(0);

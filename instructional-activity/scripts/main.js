@@ -2,13 +2,10 @@
 
 //Data files
 export let courseList = GetCourse.slice(0);
-export const instructorList = GetInstructor.slice(0);
+export let instructorList = GetInstructor.slice(0);
 
 // Imports
-import {
-  addFieldsNewCourse,
-  createNewRecordForm
-} from "./components/AddNewRecord.js";
+import { createNewRecordForm } from "./components/AddNewRecord.js";
 import {
   createFilterBloc,
   createShortList,
@@ -263,11 +260,6 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
       let name = field.name;
       result[name] = val;
     }
-
-    if (formName === "#new-entry") {
-      result = addFieldsNewCourse(result, FiscalYear);
-    }
-
     const target = tableName ? tableName : "No table name";
     const resultList = [formName, target, JSON.stringify(result)];
     console.table(result);
@@ -424,15 +416,17 @@ $(document).ready(() => {
   $(document).on("click", "#submit-btn", function (evnt) {
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
-    const newSource = $(formId).serializeArray();
-
+    const year = SESSION_VARIABLE[0].FiscalYear;
+    let newSource = $(formId).serializeArray();
+    newSource = addClassIdAndDescription(newSource, instructorList);
+    newSource = [{ name: "FiscalYear", value: year }, ...newSource];
     console.log("newSource :>> ", newSource);
 
     const response = saveMods(newSource, formId, "GetCourse", listOfRequired);
 
     // Hide all children of .hero and display Details page
     // to finish entering all necessary and optional data
-    detailsView(response);
+    createDetailsView(response);
   });
 
   //* Canceling
