@@ -238,8 +238,16 @@
 
 /* Schedule bloc */
 /* =========================================== */
-.schedule-body > tr:hover {
+/* .schedule-body > tr:hover {
   background-color: #f5f5f5;
+} */
+
+.schedule-body:hover {
+  background-color: #d3e4f0;
+}
+
+.schedule-body input:disabled {
+  background-color: inherit;
 }
 
 #schedule > table > tbody > tr > td {
@@ -263,7 +271,6 @@
 .schedule-input {
   font-size: 1em;
   padding-left: 0.3em;
-
   line-height: 20px;
   max-width: 4.5em;
   border: 0;
