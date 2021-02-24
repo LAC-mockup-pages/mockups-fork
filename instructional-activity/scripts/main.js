@@ -416,8 +416,12 @@ $(document).ready(() => {
   $(document).on("click", "#submit-btn", function (evnt) {
     evnt.stopPropagation();
     const formId = "#" + $(this).attr("form");
-    const year = SESSION_VARIABLE[0].FiscalYear;
+    // const year = SESSION_VARIABLE[0].FiscalYear;
+
     let newSource = $(formId).serializeArray();
+    const start = newSource.find((record) => record.name === "StartDate");
+    const year = setFiscalYear(start.value);
+    console.log("year :>> ", year);
     newSource = addClassIdAndDescription(newSource, instructorList);
     newSource = [{ name: "FiscalYear", value: year }, ...newSource];
     console.log("newSource :>> ", newSource);
@@ -426,7 +430,7 @@ $(document).ready(() => {
 
     // Hide all children of .hero and display Details page
     // to finish entering all necessary and optional data
-    createDetailsView(response);
+    createDetailsView(responseObj);
   });
 
   //* Canceling
