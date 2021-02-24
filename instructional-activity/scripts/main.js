@@ -576,6 +576,34 @@ $(document).ready(() => {
         blocName
       );
       return;
+    } else if (blocName === "schedule") {
+      // Adding course ID, week days and related boolean to newSource
+      const weekDaysObj = [
+        { key: "Mon", value: "Monday" },
+        { key: "Tue", value: "Tuesday" },
+        { key: "Wed", value: "Wednesday" },
+        { key: "Thu", value: "Thursday" },
+        { key: "Fri", value: "Friday" },
+        { key: "Sat", value: "Saturday" },
+        { key: "Sun", value: "Sunday" }
+      ];
+      const subset = newSource.filter((record) =>
+        record.name.endsWith("StartTime")
+      );
+      const validDays = subset.map((record) => {
+        let { name, value } = record;
+        const fullDay = weekDaysObj.find(
+          (record) => record.key === name.slice(0, 3)
+        );
+        const booleanValue = value ? "True" : "False";
+        return { name: fullDay.value, value: booleanValue };
+      });
+      const fieldList = [
+        { name: "ID", value: courseId },
+        ...validDays,
+        ...newSource
+      ];
+      saveMods(fieldList, formId, blocName);
     } else {
       let fieldList =
         blocName === "main-info"
