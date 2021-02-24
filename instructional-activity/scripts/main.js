@@ -447,6 +447,12 @@ $(document).ready(() => {
   //TODO Add trigger, event handler
   // $(document).on('change',"#")
 
+  //* Closing modal without saving
+  $(document).on("click", "#close-btn", function (evnt) {
+    evnt.stopPropagation();
+    $("#edit-form").empty();
+  });
+
   //* Editing bloc
   $(document).on(
     "click",
@@ -464,7 +470,7 @@ $(document).ready(() => {
           $(kidInput).prop("disabled", false).removeAttr("disabled");
         });
       } else if (formName === "schedule") {
-        editFormContent = $("#schedule").clone();
+        editFormContent = $(".schedule-table").clone();
 
         $(editFormContent).each(function () {
           const kidInput = $(this).find(":disabled");

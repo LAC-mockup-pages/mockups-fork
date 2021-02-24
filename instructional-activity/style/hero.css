@@ -246,6 +246,11 @@
   background-color: #d3e4f0;
 }
 
+#edit-form > table > tbody > tr:hover,
+#edit-form > table > tbody:hover {
+  background-color: #f5f5f5;
+}
+
 .schedule-body input:disabled {
   background-color: inherit;
 }
