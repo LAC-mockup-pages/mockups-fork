@@ -508,7 +508,7 @@ $(document).ready(() => {
 
       const selectedCourse = $("#view-bloc").data("course").toString();
 
-      // console.log("selectedCourse :>> ", selectedCourse);
+      console.log("selectedCourse :>> ", selectedCourse);
 
       const course = GetCourse.find((record) => record.ID === selectedCourse);
 

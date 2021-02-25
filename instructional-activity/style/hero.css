@@ -118,12 +118,6 @@
   border-radius: 5px;
 }
 
-#period-selector {
-  margin-top: 2%;
-  border-top: 0.2em solid #d3e4f0;
-  padding-top: 1%;
-}
-
 .label-text {
   font-size: 1.3em;
 }
@@ -139,6 +133,17 @@
 
 .student-label {
   margin-top: 2%;
+}
+
+/* Hours bloc */
+/* =========================================== */
+
+#period-selector {
+  padding-top: 1%;
+}
+
+#instructor-hours-bloc {
+  border-radius: 5px;
 }
 
 /* MainInfo bloc */

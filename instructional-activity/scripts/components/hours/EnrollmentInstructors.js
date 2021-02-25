@@ -13,6 +13,8 @@
 
 const periodList = GetReportingPeriods.slice(0);
 
+const createTotalRow = (dataList) => {};
+
 export const createPeriodSelector = (courseId, start, end) => {
   const today = new Date();
   // const todayMonth = today.getMonth();
@@ -47,7 +49,6 @@ export const createPeriodSelector = (courseId, start, end) => {
 export const createInstructorBloc = (
   dataList,
   courseId,
-  classID,
   mainInstructor,
   actualPeriod
 ) => {
@@ -72,75 +73,40 @@ export const createInstructorBloc = (
     "Lab Hrs",
     "Extra Hrs (LT12)"
   ];
-
   const hoursList = dataList.filter((record) => {
-    const {
-      ID,
-      PeriodID,
-      personnelID,
-      InstructorName,
-      InstHours,
-      TestHours,
-      TestContHours,
-      labHours,
-      ExtraHoursLT12
-    } = record;
-    if (PeriodID === actualPeriod)
-      return {
-        ID,
-        PeriodID,
-        personnelID,
-        InstructorName,
-        InstHours,
-        TestHours,
-        TestContHours,
-        labHours,
-        ExtraHoursLT12
-      };
+    const { PeriodID } = record;
+    if (PeriodID === actualPeriod) return record;
   });
 
-  let firstRow = createRow({
+  console.log("hoursList :>> ", hoursList);
+
+  // helpers/helperFunctions.js ==> createRow()
+  const firstRow = createRow({
     record: hoursList.find((record) => record.personnelID === mainInstructor),
-    labelList: [
-      "ID",
-      "PeriodID",
-      "personnelID",
-      "InstructorName",
-      "InstHours",
-      "TestHours",
-      "TestContHours",
-      "labHours",
-      "ExtraHoursLT12"
-    ],
+    labelList: Object.keys(labelsInstructor),
     labelObj: labelsInstructor,
-    hiddenList: ["ID", "PeriodID", "personnelID"]
+    hiddenList: ["ID", "PeriodID", "personnelID", "Personnel_PKID"]
   });
-  let nextRows = createRow({
-    record: hoursList.find(
-      (record) => record.InstructorName !== "Porter, Samantha"
-    ),
-    labelList: [
-      "PeriodID",
-      "InstructorName",
-      "InstHours",
-      "TestHours",
-      "TestContHours",
-      "labHours",
-      "ExtraHoursLT12"
-    ],
+
+  // helpers/helperFunctions.js ==> createRow()
+  const nextRows = createRow({
+    record: hoursList.find((record) => record.personnelID !== mainInstructor),
+    labelList: Object.keys(labelsInstructor),
     labelObj: labelsInstructor,
-    hiddenList: ["ID", "PeriodID"]
+    hiddenList: ["ID", "PeriodID", "personnelID", "Personnel_PKID"]
   });
 
   // const hiddenList = [];
 
   // createHeaders() <== helperFunctions.js
   const header = createHeaders(headerText);
-  const periodSelector = createPeriodSelector(courseId, startDate, endDate);
+
+  // const periodSelector = createPeriodSelector(courseId, startDate, endDate);
+  const periodSelector = "== Period Selector ==";
 
   // console.log("periodSelector :>> ", periodSelector);
   const tableBody = `${firstRow}${nextRows}`;
-
+  const totals = createTotalRow(hoursList);
   return `
   <div class="container-fluid row" id="period-selector">
     <div class="instructor-title label-text blue-light-text col-md-9">Instructors</div>
