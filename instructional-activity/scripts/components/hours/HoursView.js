@@ -1,11 +1,13 @@
 // Hours view for the students and instructor(s) in a selected course
 // Accessible only from the Enrollment and Details views.
 
+import { createStudentsBloc } from "./StudentHours.js";
+
 // import { createInstructorBloc } from "./EnrollmentInstructors.js";
 
 export const createHoursView = (courseID, classID, mainInstructor) => {
   const instructorHours = GetInstrHours.slice(0);
-  const studentHours;
+  const studentHours = createStudentsBloc();
 
   const today = new Date();
   const month =
@@ -29,6 +31,6 @@ export const createHoursView = (courseID, classID, mainInstructor) => {
 
   return `
   <div class="container-fluid blue-bg" id="instructor-hours-bloc" data-course=${courseID}>
-
+    ${studentHours}
   </div>`;
 };
