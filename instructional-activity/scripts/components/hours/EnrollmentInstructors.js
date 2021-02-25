@@ -98,7 +98,7 @@ export const createInstructorBloc = (
 
   const headerText = [
     "Name",
-    "Instr. Hrs   ",
+    "Instr. Hrs",
     "Test Hrs     ",
     "Test Cont. Hrs",
     "Lab Hrs       ",

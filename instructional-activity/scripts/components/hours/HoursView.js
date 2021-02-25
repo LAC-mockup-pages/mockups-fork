@@ -1,10 +1,11 @@
-// Hours view for the instructor(s) in a selected course
+// Hours view for the students and instructor(s) in a selected course
 // Accessible only from the Enrollment and Details views.
 
-import { createInstructorBloc } from "./EnrollmentInstructors.js";
+// import { createInstructorBloc } from "./EnrollmentInstructors.js";
 
 export const createHoursView = (courseID, classID, mainInstructor) => {
-  const hoursList = GetInstrHours.slice(0);
+  const instructorHours = GetInstrHours.slice(0);
+  const studentHours;
 
   const today = new Date();
   const month =
@@ -19,18 +20,15 @@ export const createHoursView = (courseID, classID, mainInstructor) => {
   // const period = `PRA${today.getFullYear()}${month}01`;
   const period = "PRA20200901";
 
-  console.log("hoursList :>> ", hoursList);
-  console.log("courseID :>> ", courseID);
-
-  const instructorBloc = createInstructorBloc(
-    hoursList,
-    courseID,
-    mainInstructor,
-    period
-  );
+  // const instructorBloc = createInstructorBloc(
+  //   instructorHours,
+  //   courseID,
+  //   mainInstructor,
+  //   period
+  // );
 
   return `
   <div class="container-fluid blue-bg" id="instructor-hours-bloc" data-course=${courseID}>
-  ${instructorBloc}
+
   </div>`;
 };
