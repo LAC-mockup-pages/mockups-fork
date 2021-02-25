@@ -68,7 +68,7 @@ export const createSchedule = (dataObj) => {
   }
 
   const scheduleBody = `
-  <tbody class="schedule-body">
+  <tbody class="schedule-body" data-toggle='tooltip' data-placement='right' title='Click to Edit'>
     <tr>
       <td class="schedule-cell">Start Time</td>
       ${bodyTopRow}
