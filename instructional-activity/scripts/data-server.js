@@ -1322,10 +1322,10 @@ const GetInstrHours = [
     Personnel_PKID: "28555",
     personnelID: "AlfieriShelleyPRA1",
     InstructorName: "Alfieri, Shelley",
-    InstHours: "0",
-    TestHours: "0",
+    InstHours: "12",
+    TestHours: "23",
     TestContHours: "0",
-    labHours: "0",
+    labHours: "5",
     ExtraHoursLT12: "0"
   }
 ];

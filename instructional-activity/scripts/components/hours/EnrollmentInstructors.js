@@ -13,7 +13,38 @@
 
 const periodList = GetReportingPeriods.slice(0);
 
-const createTotalRow = (dataList) => {};
+const createTotalRow = (dataList) => {
+  let totalInstr = 0,
+    totalTestCont = 0,
+    totalTest = 0,
+    totalLab = 0,
+    totalExtra = 0;
+
+  for (const record of dataList) {
+    const {
+      InstHours,
+      TestContHours,
+      TestHours,
+      labHours,
+      ExtraHoursLT12
+    } = record;
+    totalInstr += Number(InstHours);
+    totalTest += Number(TestHours);
+    totalTestCont += Number(TestContHours);
+    totalLab += Number(labHours);
+    totalExtra += Number(ExtraHoursLT12);
+  }
+
+  return `
+  <tr id="total-row">
+    <td class="first-cell">Hour Totals</td>
+    <td class="cell-data">${totalInstr}</td>
+    <td class="cell-data">${totalTest}</td>
+    <td class="cell-data">${totalTestCont}</td>
+    <td class="cell-data">${totalLab}</td>
+    <td class="cell-data">${totalExtra}</td>
+  </tr>`;
+};
 
 export const createPeriodSelector = (courseId, start, end) => {
   const today = new Date();
@@ -67,10 +98,10 @@ export const createInstructorBloc = (
 
   const headerText = [
     "Name",
-    "Instr. Hrs",
-    "Test Hrs",
-    "Test Contact Hrs",
-    "Lab Hrs",
+    "Instr. Hrs   ",
+    "Test Hrs     ",
+    "Test Cont. Hrs",
+    "Lab Hrs       ",
     "Extra Hrs (LT12)"
   ];
   const hoursList = dataList.filter((record) => {
@@ -103,10 +134,10 @@ export const createInstructorBloc = (
 
   // const periodSelector = createPeriodSelector(courseId, startDate, endDate);
   const periodSelector = "== Period Selector ==";
+  const totalRow = createTotalRow(hoursList);
 
   // console.log("periodSelector :>> ", periodSelector);
-  const tableBody = `${firstRow}${nextRows}`;
-  const totals = createTotalRow(hoursList);
+  const tableBody = `${firstRow}${nextRows}${totalRow}`;
   return `
   <div class="container-fluid row" id="period-selector">
     <div class="instructor-title label-text blue-light-text col-md-9">Instructors</div>
