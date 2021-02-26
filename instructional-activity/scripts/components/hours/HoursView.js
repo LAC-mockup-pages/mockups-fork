@@ -7,7 +7,7 @@ import { createStudentsBloc } from "./StudentHours.js";
 
 export const createHoursView = (courseID, classID, mainInstructor) => {
   const instructorHours = GetInstrHours.slice(0);
-  const studentHours = createStudentsBloc();
+  const studentHours = createStudentsBloc(classID);
 
   const today = new Date();
   const month =
