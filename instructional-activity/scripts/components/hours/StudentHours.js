@@ -51,8 +51,8 @@ export const createStudentsBloc = (classId) => {
 
   return `
   <div class="container-fluid row blue-light-text" id="student-hours">
-    <div class="student-title label-text col-md-4">${classId}</div>
-    <div class="label-text col-md-2">Student Hours</div>
+    <div class="student-title label-text col-md-4">${classId} | Student Hours</div>
+    <div class="label-text col-md-2"></div>
   </div>
   <form class="student-hours" role="form" id="student-hours-form">
     <table class="table table-condensed" id="student-hours-table">
