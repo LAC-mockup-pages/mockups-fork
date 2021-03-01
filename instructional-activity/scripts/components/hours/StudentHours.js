@@ -56,23 +56,6 @@ export const createStudentsBloc = (classId) => {
   // createHeaders() <== helperFunctions.js
   const header = createHeaders(["Student", "DOB", ...months, "Total"]);
 
-  // return `
-  // <div class="container-fluid row blue-light-text" id="student-hours">
-  //   <div class="student-title label-text col-md-4">${classId} | Student Hours</div>
-  //   <div class="label-text col-md-2"></div>
-  // </div>
-  // <form class="student-hours" role="form" id="student-hours-form">
-  // <div class="student-table-scroll">
-  //   <table class="table table-condensed" id="student-hours-table">
-  //     ${header}
-  //     <tbody class="student-hours-body">
-  //       ${body}
-  //     </tbody>
-  //   </table></div>
-  // </form>
-
-  // `;
-
   return `
   <div class="container-fluid row blue-light-text" id="student-hours">
     <div class="student-title label-text col-md-4">${classId} | Student Hours</div>
