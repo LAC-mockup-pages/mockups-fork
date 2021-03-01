@@ -23,6 +23,7 @@ export const createStudentsBloc = (classId) => {
   for (const record of yearlyHours) {
     const { ID, Class_PKID, Student_PKID, StudentName, BirthDate } = record;
     let monthValues = "";
+    let studentTotal = 0;
 
     const monthlyHours = Object.keys(record).filter((field) =>
       field.includes("Hours")
@@ -30,6 +31,7 @@ export const createStudentsBloc = (classId) => {
 
     for (const key of monthlyHours) {
       const value = record[key];
+      studentTotal += value ? Number(value) : 0;
       monthValues += `
       <td class="cell-data month-value">
         <input class="cell-input" name=${key} value=${value}>
@@ -42,12 +44,13 @@ export const createStudentsBloc = (classId) => {
       <td class="cell-data student-name">${StudentName}</td>
       <td class="cell-data dob">${BirthDate}</td>
       ${monthValues}
+      <td class="cell-data student-total">${studentTotal}</td>
     </tr>
     `;
   }
 
   // createHeaders() <== helperFunctions.js
-  const header = createHeaders(["Student", "DOB", ...months]);
+  const header = createHeaders(["Student", "DOB", ...months, "Total"]);
 
   return `
   <div class="container-fluid row blue-light-text" id="student-hours">
