@@ -59,7 +59,11 @@ export const createStudentsBloc = (classId) => {
   return `
   <div class="container-fluid row blue-light-text" id="student-hours">
     <div class="student-title label-text col-md-4">${classId} | Student Hours</div>
-    <div class="label-text col-md-2"></div>
+    <div class="label-text col-md-5"></div>
+    <div class="col-md-2">
+    <button type="button" id="student-hours-btn" class="btn dark-blue-text blue-light-bg">Save</button>
+    </div>
+
   </div>
   <div class="scrolling">
     <table class="table table-condensed scrolling-hours" id="hours-table">
