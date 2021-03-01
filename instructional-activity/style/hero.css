@@ -140,6 +140,9 @@
 
 #instructor-hours-bloc {
   border-radius: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
 }
 
 #student-hours {
@@ -149,8 +152,34 @@
   border-bottom: solid 2px #d3e4f0;
 }
 
+.scrolling {
+  height: 400px;
+  position: relative;
+  overflow-y: auto;
+}
+
+#view-bloc .scrolling th {
+  position: sticky;
+  top: 0;
+  /* z-index: 100; */
+  background-color: #2479b5;
+}
+
+.student-name {
+  font-weight: 500;
+}
+
+.dob {
+  width: 8em;
+}
+
+.student-total {
+  width: 5em;
+  font-weight: 500;
+}
+
 .month-value {
-  width: 3.2em;
+  width: 4em;
 }
 
 .month-value input {
