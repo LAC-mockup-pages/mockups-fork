@@ -546,7 +546,7 @@ $(document).ready(() => {
   //* Handling change for special program selected
   $(document).on("change", "#SpecialProgramID-view", function (evnt) {
     evnt.stopPropagation();
-    const programCode = $(this).value();
+    const programCode = $(this).val();
 
     console.log("programCode :>> ", programCode);
     if (programCode === "IET") {
