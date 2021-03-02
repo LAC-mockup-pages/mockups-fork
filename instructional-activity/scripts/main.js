@@ -537,6 +537,7 @@ $(document).ready(() => {
       $(`#sub-nav #${selectedTab.replace("-tab", "")}`).addClass(
         "selected-tab"
       );
+
       // Enables customized tooltips
       $("[data-toggle='tooltip']").tooltip();
     }
