@@ -140,11 +140,16 @@
 /* Hours bloc */
 /* =========================================== */
 
-#instructor-hours-bloc {
+#hours-bloc {
   border-radius: 5px;
   padding-right: 5px;
   padding-left: 5px;
   padding-bottom: 5px;
+}
+
+#instructor-hours {
+  padding-top: 1.5%;
+  border-top: solid 2px #d3e4f0;
 }
 
 #student-hours {
@@ -158,12 +163,12 @@
   height: 400px;
   position: relative;
   overflow-y: auto;
+  margin-bottom: 0.5%;
 }
 
 #view-bloc .scrolling th {
   position: sticky;
   top: 0;
-  /* z-index: 100; */
   background-color: #2479b5;
 }
 
@@ -172,7 +177,7 @@
 }
 
 .dob {
-  width: 8em;
+  width: 9em;
 }
 
 .student-total {
@@ -181,7 +186,7 @@
 }
 
 .month-value {
-  width: 3.5em;
+  width: 3.9em;
 }
 
 #student-hours-btn,
