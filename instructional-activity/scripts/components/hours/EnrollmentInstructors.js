@@ -14,7 +14,7 @@ const createMainInstructorHrs = (mainInstr) => {
         ? 1
         : 0
     );
-
+  let monthlyInstrHours = "";
   const instructorName = GetInstructorSource.slice(0).find(
     (instr) => instr.key === mainInstr
   );
@@ -22,16 +22,22 @@ const createMainInstructorHrs = (mainInstr) => {
 
   console.log("filteredHours :>> ", filteredHours);
   // console.table(filteredHours[0]);
-
+  for (const record of filteredHours) {
+    const { ID, PeriodID, InstHours } = record;
+    monthlyInstrHours += `
+<td class="cell-data month-value" data-id=${ID} data-period=${PeriodID}>${InstHours}</td>
+`;
+  }
   return `
   <tr id=${Personnel_PKID} data-class=${Class_PKID} data-personnel=${personnelID}>
     <td class="cell-data main-instructor">${instructorName}</td>
+    ${monthlyInstrHours}
   </tr>
    `;
 };
 
 export const createInstructorHours = (mainInstructor) => {
-  const mainInstructorHours = createMainInstructorHrs(mainInstructor);
+  const body = createMainInstructorHrs(mainInstructor);
 
   return `
   <div class="container-fluid row blue-light-text" id="instructor-hours">
@@ -40,6 +46,14 @@ export const createInstructorHours = (mainInstructor) => {
     <div class="container-fluid row col-md-2">
       <button type="button" id="instructor-hours-btn" class="btn dark-blue-text blue-light-bg col-sm-6">Save</button>
     </div>
+  </div>
+  <div class="scrolling">
+    <table class="table table-condensed scrolling-hours" id="instr-hours-table">
+
+      <tbody class="instr-hours-body">
+        ${body}
+      </tbody>
+    </table>
   </div>
   `;
 };
