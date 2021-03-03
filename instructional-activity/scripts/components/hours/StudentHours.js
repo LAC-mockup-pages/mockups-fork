@@ -54,7 +54,7 @@ export const createStudentsBloc = (classId) => {
   }
 
   // createHeaders() <== helperFunctions.js
-  const header = createHeaders(["Student", "DOB", ...months, "Total"]);
+  const header = createHeaders(["Name", "Birth Date", ...months, "Total"]);
 
   return `
   <div class="container-fluid row blue-light-text" id="student-hours">
