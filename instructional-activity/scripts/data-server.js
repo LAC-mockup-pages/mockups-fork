@@ -1479,6 +1479,20 @@ const GetInstrHours = [
     TestContHours: "0",
     labHours: "5",
     ExtraHoursLT12: "0"
+  },
+  {
+    ID: "1698617",
+    Class_PKID: "232270",
+    ClassID: "PRABE4CASTS_21",
+    PeriodID: "PRA20210101",
+    Personnel_PKID: "2256",
+    personnelID: "PorterSamanthaPRA9",
+    InstructorName: "Porter, Samantha",
+    InstHours: "20",
+    TestHours: "0",
+    TestContHours: "0",
+    labHours: "3",
+    ExtraHoursLT12: "2"
   }
 ];
 
