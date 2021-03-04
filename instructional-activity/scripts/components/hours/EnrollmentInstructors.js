@@ -1,5 +1,24 @@
 // Display bloc for instructors showing monthly instructional hours
 
+// Create Object with 12 months of instructional hours for
+// an instructor and a total column.
+const createMonthlyHours = (list) => {
+  const monthPeriod = [
+    "0701",
+    "0801",
+    "0901",
+    "1001",
+    "1101",
+    "1201",
+    "0101",
+    "0201",
+    "0301",
+    "0401",
+    "0501",
+    "0601"
+  ];
+};
+
 const createMainInstructorHrs = (mainInstr) => {
   //TODO Address the case of a new course, GetInstrHours method
   //TODO returns an empty hash table (pending GJ answer - 03/03/21)
@@ -15,23 +34,50 @@ const createMainInstructorHrs = (mainInstr) => {
         : 0
     );
   let monthlyInstrHours = "";
-  const instructorName = GetInstructorSource.slice(0).find(
-    (instr) => instr.key === mainInstr
-  );
-  const { Class_PKID, Personnel_PKID, personnelID } = filteredHours[0];
+  // const instructorName = GetInstructorSource.slice(0).find(
+  //   (instr) => instr.key === mainInstr
+  // );
+  const {
+    Class_PKID,
+    Personnel_PKID,
+    personnelID,
+    InstructorName
+  } = filteredHours[0];
 
   console.log("filteredHours :>> ", filteredHours);
   // console.table(filteredHours[0]);
-  for (const record of filteredHours) {
-    const { ID, PeriodID, InstHours } = record;
+
+  // createMonthlyHours(filteredHours);
+  const hoursTest = [
+    { PeriodID: "0701", InstHours: "10" },
+    { PeriodID: "0801", InstHours: "12" },
+    { PeriodID: "0901", InstHours: "23" },
+    { PeriodID: "1001", InstHours: "" },
+    { PeriodID: "1101", InstHours: "34" },
+    { PeriodID: "1201", InstHours: "" },
+    { PeriodID: "0101", InstHours: "" },
+    { PeriodID: "0201", InstHours: "" },
+    { PeriodID: "0301", InstHours: "" },
+    { PeriodID: "0401", InstHours: "" },
+    { PeriodID: "0501", InstHours: "" },
+    { PeriodID: "0601", InstHours: "" }
+  ];
+
+  // for (const record of filteredHours) {
+  for (const record of hoursTest) {
+    const { PeriodID, InstHours } = record;
+
     monthlyInstrHours += `
-<td class="cell-data month-value" data-id=${ID} data-period=${PeriodID}>${InstHours}</td>
+<td class="cell-data month-value">
+  <input class="cell-data cell-input hours-value" name=${PeriodID} value=${InstHours}>
+</td>
 `;
   }
   return `
   <tr id=${Personnel_PKID} data-class=${Class_PKID} data-personnel=${personnelID}>
-    <td class="cell-data main-instructor">${instructorName}</td>
+    <td class="cell-data main-instructor">${InstructorName}</td>
     ${monthlyInstrHours}
+    <td class="cell-data hours-total">79</td>
   </tr>
    `;
 };
@@ -41,13 +87,13 @@ export const createInstructorHours = (mainInstructor) => {
 
   return `
   <div class="container-fluid row blue-light-text" id="instructor-hours">
-    <div class="student-title label-text col-md-4">Instructional Hours</div>
-    <div class="label-text col-md-6"></div>
-    <div class="container-fluid row col-md-2">
+    <div class="instr-title label-text col-md-4">Instructional Hours</div>
+    <div class="label-text col-md-5"></div>
+    <div class="container-fluid row col-md-3">
       <button type="button" id="instructor-hours-btn" class="btn dark-blue-text blue-light-bg col-sm-6">Save</button>
     </div>
   </div>
-  <div class="scrolling">
+  <div class="instr-scrolling">
     <table class="table table-condensed scrolling-hours" id="instr-hours-table">
 
       <tbody class="instr-hours-body">
