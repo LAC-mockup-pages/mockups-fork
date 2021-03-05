@@ -17,7 +17,7 @@ export const createStudentsBloc = (classId) => {
     "Nov.",
     "Dec.",
     "Jan.",
-    "Fev.",
+    "Feb.",
     "Mar.",
     "Apr.",
     "May",
