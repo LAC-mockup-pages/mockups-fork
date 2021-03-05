@@ -189,6 +189,10 @@
   text-align: right;
 }
 
+.border-blue {
+  border-bottom: 1px solid #2479b5;
+}
+
 .month-value {
   width: 3.9em;
 }

@@ -801,4 +801,20 @@ $(document).ready(() => {
       $("#Student_PKID option").show();
     }
   });
+
+  //* Changing row border color in Hours Student table when a month
+  //* receives focus.
+  $(document).on("focusin", ".student-hours-body input", function (evnt) {
+    evnt.stopPropagation();
+    const parentId = $(this).parent().parent().attr("id");
+    const children = $(`#${parentId} > td`);
+    $(children).toggleClass("border-blue");
+  });
+
+  $(document).on("blur", ".student-hours-body input", function (evnt) {
+    evnt.stopPropagation();
+    const parentId = $(this).parent().parent().attr("id");
+    const children = $(`#${parentId} > td`);
+    $(children).toggleClass("border-blue");
+  });
 });
