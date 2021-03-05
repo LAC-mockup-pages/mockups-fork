@@ -817,4 +817,13 @@ $(document).ready(() => {
     const children = $(`#${parentId} > td`);
     $(children).toggleClass("border-blue");
   });
+
+  //* Down arrow to go to next cell under in Hours Student table
+  $(document).on("keyup", ".student-hours-body input", function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    if (evnt.which === 40) {
+      $(this).toggleClass("red-text");
+    }
+  });
 });
