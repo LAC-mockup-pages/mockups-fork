@@ -1,6 +1,17 @@
 // Hours view for the students in a selected course
 // Accessible only from the Enrollment and Details views.
 
+// Update total value when a month value is entered/updated
+export const updateTotal = (rowId) => {
+  const totalList = $(`#${rowId} .cell-input`).serializeArray();
+  const totalCell = $(`#${rowId} .student-total`);
+  const totalHours = totalList.reduce(
+    (tot, record) => tot + (Number(record.value) || 0),
+    0
+  );
+  $(totalCell).text(totalHours);
+};
+
 export const createStudentsBloc = (classId) => {
   let body = "";
 

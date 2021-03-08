@@ -31,6 +31,7 @@ import {
   createStudentDataList
 } from "./components/enrollment/AddStudent.js";
 import { editStudent } from "./components/enrollment/EnrollmentStudents.js";
+import { updateTotal } from "./components/hours/StudentHours.js";
 
 // Main elements
 export const rowLabels = [
@@ -816,6 +817,7 @@ $(document).ready(() => {
     const parentId = $(this).parent().parent().attr("id");
     const children = $(`#${parentId} > td`);
     $(children).toggleClass("border-blue");
+    updateTotal(parentId);
   });
 
   //* Down arrow to go to next cell under in Hours Student table
