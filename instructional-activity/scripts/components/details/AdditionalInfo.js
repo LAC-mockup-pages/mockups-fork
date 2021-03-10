@@ -23,7 +23,7 @@ export const createAdditionalFields = (fieldsObj) => {
     { keyVal: "Sessions", labelVal: "Sessions" },
     { keyVal: "AMPM", labelVal: "Meet Time" },
     { keyVal: "SessionLength", labelVal: "Hours per Session" },
-    { keyVal: "Seats", labelVal: "Seat Number" },
+    { keyVal: "Seats", labelVal: "Seats" },
     { keyVal: "HoursWeek", labelVal: "Hours per Week" },
     { keyVal: "RoomNumber", labelVal: "Room ID" },
     { keyVal: "LowerLevel", labelVal: "Lowest Level" },
