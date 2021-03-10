@@ -3,11 +3,7 @@
 
 import { topBanner, tableBody } from "../../main.js";
 const instructorList = GetClassInstructor.slice(0).sort((name1, name2) =>
-  name1.InstructorName < name2.InstructorName
-    ? -1
-    : name1.InstructorName > name2.InstructorName
-    ? 1
-    : 0
+  name1.Name < name2.Name ? -1 : name1.Name > name2.Name ? 1 : 0
 );
 
 export const createInstructorsBloc = () => {
