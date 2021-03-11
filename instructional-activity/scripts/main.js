@@ -32,6 +32,7 @@ import {
 } from "./components/enrollment/AddStudent.js";
 import { editStudent } from "./components/enrollment/EnrollmentStudents.js";
 import { updateTotal } from "./components/hours/StudentHours.js";
+import { createDailyHours } from "./components/hours/DailyHours.js";
 
 // Main elements
 export const rowLabels = [
@@ -828,5 +829,14 @@ $(document).ready(() => {
     if (evnt.which === 40) {
       $(this).toggleClass("red-text");
     }
+  });
+
+  //* Trigger for displaying the Daily Contact hours bloc
+  //* when clicking button in HoursView.
+  $(document).on("click", "#daily-btn", function (evnt) {
+    evnt.stopPropagation();
+    const dailyHrsView = createDailyHours("PRABE4CASTS_21");
+
+    $("#hours-bloc").empty().append(dailyHrsView);
   });
 });

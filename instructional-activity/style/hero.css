@@ -59,6 +59,7 @@
 #add-student-btn,
 #student-hours-btn,
 #daily-btn,
+#daily-hours-btn,
 #instructor-hours-btn {
   margin: 0 0.5% 0 2%;
   width: 7em;
@@ -155,7 +156,8 @@
   border-top: solid 2px #d3e4f0;
 }
 
-#student-hours {
+#student-hours,
+#daily-hours {
   padding-left: 0px;
   padding-right: 0px;
   padding: 0.5% 1% 0% 1%;
@@ -203,6 +205,7 @@
 }
 
 #student-hours-btn,
+#daily-hours-btn,
 #daily-btn {
   margin-bottom: 0.4em;
 }
