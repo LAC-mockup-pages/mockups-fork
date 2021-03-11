@@ -172,6 +172,13 @@
   margin-bottom: 0.5%;
 }
 
+.instr-scrolling {
+  max-height: 100px;
+  position: relative;
+  overflow-y: scroll;
+  margin-bottom: 0.5%;
+}
+
 #view-bloc .scrolling th {
   position: sticky;
   top: 0;
@@ -236,6 +243,12 @@
 
 #hours-table th {
   text-align: right;
+}
+
+#hours-bloc .scrolling td,
+#hours-bloc .scrolling th,
+#hours-bloc .instr-scrolling td {
+  padding-right: 1%;
 }
 .student-hours-body > tr:hover,
 .week-schedule-body > tr:hover,
