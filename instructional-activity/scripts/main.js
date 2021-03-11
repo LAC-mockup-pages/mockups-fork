@@ -339,9 +339,10 @@ $(document).ready(() => {
   });
 
   //* Displaying #new-entry
-  $(document).on("click", "#add-new-record", function (evnt) {
+  $(document).on("click", ".record-entry", function (evnt) {
     evnt.stopPropagation();
     $("#new-entry").toggleClass("hidden");
+    $("#CourseID").focus();
   });
 
   // Enables customized tooltips
