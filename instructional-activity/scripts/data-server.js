@@ -1577,12 +1577,14 @@ const GetClassInstructor = [
   {
     ID: "238367",
     PersonnelID: "PorterSamanthaPRA9",
+    Personnel_PKID: "2256",
     AssignDate: "07/01/2020",
     Name: "Porter, Samantha"
   },
   {
     ID: "242571",
     PersonnelID: "AlfieriShelleyPRA1",
+    Personnel_PKID: "28555",
     AssignDate: "05/10/2021",
     Name: "Alfieri, Shelley"
   }
