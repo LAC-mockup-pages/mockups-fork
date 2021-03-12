@@ -82,8 +82,35 @@ const createMainInstructorHrs = (mainInstr) => {
    `;
 };
 
-export const createInstructorHours = (mainInstructor) => {
-  const body = createMainInstructorHrs(mainInstructor);
+const createMonthlyValues = (periodList) => {};
+
+export const createInstructorHours = () => {
+  let body = "";
+  for (const instructorObj in GetClassInstructor.slice(0)) {
+    const { Personnel_PKID, PersonnelID, Name } = instructorObj;
+    const instrHoursList = GetInstrHours.slice(0)
+      .filter((period) => period.Personnel_PKID === Personnel_PKID)
+      .sort((record1, record2) =>
+        record1.PeriodID < record2.PeriodID
+          ? -1
+          : record1.PeriodID > record2.PeriodID
+          ? 1
+          : 0
+      );
+
+    console.log("instrHoursList :>> ", instrHoursList);
+
+    const monthlyValues = createMonthlyValues(instrHoursList);
+
+    body += `
+      <tr id=${Personnel_PKID} data-personnel=${personnelID}>
+        <td class="cell-data instructor-hours">${Name}</td>
+        ${monthlyValues}
+      </tr>
+      `;
+  }
+
+  // const body = createMainInstructorHrs(mainInstructor);
 
   return `
   <div class="container-fluid row blue-light-text" id="instructor-hours">
