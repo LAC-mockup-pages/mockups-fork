@@ -1,5 +1,11 @@
 // Display bloc for instructors showing monthly instructional hours
 
+//TODO Address the case of a new course, GetInstrHours method
+// returns an empty hash table (pending GJ answer - 03/03/21)
+
+//TODO Address the case of StartDate other than 07/01 and length of
+// course less than 12 months
+
 // Create Object with 12 months of instructional hours for
 // an instructor and a total column.
 const createMonthlyHours = (list) => {
@@ -7,9 +13,6 @@ const createMonthlyHours = (list) => {
 };
 
 const createMainInstructorHrs = (mainInstr) => {
-  //TODO Address the case of a new course, GetInstrHours method
-  //TODO returns an empty hash table (pending GJ answer - 03/03/21)
-
   // Filtered hours for main instructor sorted by ascending month
   const filteredHours = GetInstrHours.slice(0)
     .filter((instructor) => instructor.personnelID === mainInstr)
