@@ -3,20 +3,7 @@
 // Create Object with 12 months of instructional hours for
 // an instructor and a total column.
 const createMonthlyHours = (list) => {
-  const monthPeriod = [
-    "0701",
-    "0801",
-    "0901",
-    "1001",
-    "1101",
-    "1201",
-    "0101",
-    "0201",
-    "0301",
-    "0401",
-    "0501",
-    "0601"
-  ];
+  const { StartDate, EndDate } = GetCourse.slice(0);
 };
 
 const createMainInstructorHrs = (mainInstr) => {
@@ -82,8 +69,6 @@ const createMainInstructorHrs = (mainInstr) => {
    `;
 };
 
-const createMonthlyValues = (periodList) => {};
-
 export const createInstructorHours = () => {
   let body = "";
   for (const instructorObj in GetClassInstructor.slice(0)) {
@@ -100,7 +85,7 @@ export const createInstructorHours = () => {
 
     console.log("instrHoursList :>> ", instrHoursList);
 
-    const monthlyValues = createMonthlyValues(instrHoursList);
+    const monthlyValues = createMonthlyHours(instrHoursList);
 
     body += `
       <tr id=${Personnel_PKID} data-personnel=${personnelID}>
