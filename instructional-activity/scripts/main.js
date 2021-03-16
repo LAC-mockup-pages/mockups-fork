@@ -830,7 +830,12 @@ $(document).ready(() => {
     evnt.preventDefault();
     evnt.stopPropagation();
     if (evnt.which === 40) {
-      $(this).toggleClass("red-text");
+      const inputName = $(this).attr("name");
+      const rowId = $(this).parent().parent().attr("id");
+      const nextRowIndex = $(`#${rowId}`).index() + 1;
+      const nextRowId = $(".student-hours-body tr").eq(nextRowIndex).attr("id");
+
+      $(`#${nextRowId} input[name=${inputName}]`).focus();
     }
   });
 
