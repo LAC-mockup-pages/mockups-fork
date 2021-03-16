@@ -24,7 +24,7 @@ import { addSpecialProgram } from "./components/details/Recommended.js";
 import { saveSchedule } from "./components/details/Schedule.js";
 import { saveFundingSources } from "./components/details/FundingSources.js";
 import { createEnrollmentView } from "./components/enrollment/EnrollmentView.js";
-import { createHoursView } from "./components/hours/HoursView.js";
+import { cellFocus, createHoursView } from "./components/hours/HoursView.js";
 import {
   addStudentModalForm,
   completeNewStudent,
@@ -538,6 +538,9 @@ $(document).ready(() => {
       $(`#sub-nav #${selectedTab.replace("-tab", "")}`).addClass(
         "selected-tab"
       );
+
+      // Moves focus to 1st row, column today's month - 1
+      if (selectedTab === "hours-tab") cellFocus();
 
       // Enables customized tooltips
       $("[data-toggle='tooltip']").tooltip();

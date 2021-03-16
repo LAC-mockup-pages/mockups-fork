@@ -37,10 +37,10 @@ const createMonthlyHours = (list) => {
       </td>`;
     }
   }
-
   row += `
   <td class="cell-data instructor-total">${totalInstrHours}</td>
   `;
+
   return row;
 };
 
@@ -57,11 +57,7 @@ export const createInstructorHours = () => {
           ? 1
           : 0
       );
-
-    console.log("instrHoursList :>> ", instrHoursList);
-
     const monthlyValues = createMonthlyHours(instrHoursList);
-
     body += `
       <tr id=${Personnel_PKID} data-personnel=${PersonnelID}>
         <td class="cell-data instructor-name">${Name}</td>
