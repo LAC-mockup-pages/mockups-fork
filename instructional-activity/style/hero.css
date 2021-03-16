@@ -185,16 +185,20 @@
   background-color: #2479b5;
 }
 
-.student-name {
+.student-name,.instructor-name {
   font-weight: 500;
 }
 
-.dob {
+.dob, .assign-date {
   width: 7em;
 }
 
+.assign-date{
+  color:#f5f5f5;
+}
+
 .student-total,
-.hours-total {
+.instructor-total {
   width: 5em;
   font-weight: 500;
   text-align: right;
@@ -208,10 +212,6 @@
   width: 3.9em;
 }
 
-.hours-value {
-  width: 3.63em;
-}
-
 #student-hours-btn,
 #daily-hours-btn,
 #daily-btn {
@@ -223,10 +223,6 @@
   border-bottom: solid 2px #d3e4f0;
 }
 
-.main-instructor {
-  width: 19.3em;
-  font-weight: 500;
-}
 
 .month-value input {
   width: 100%;

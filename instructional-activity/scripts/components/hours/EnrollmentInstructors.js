@@ -20,28 +20,34 @@ const createMonthlyHours = (list) => {
     return [...secondSemester, ...firstSemester];
   };
   const periods = buildPeriods();
+  let totalInstrHours = 0;
 
   for (const period of periods) {
     let month = list.find((record) => record.PeriodID.slice(-4) === period);
     if (month) {
+      totalInstrHours += Number(month.InstHours);
       row += `
-      <td class="cell-data" id=${period} data-id=${month.ID}>
-      ${month.InstHours}
+      <td class="cell-data month-value">
+        <input class="cell-input" id=${month.ID} name=${period} value=${month.InstHours}>
       </td>`;
     } else {
       row += `
-      <td class="cell-data" id=${period} data-id="">
-        0
+      <td class="cell-data month-value">
+        <input class="cell-input"  name=${period} value="">
       </td>`;
     }
   }
+
+  row += `
+  <td class="cell-data instructor-total">${totalInstrHours}</td>
+  `;
   return row;
 };
 
 export const createInstructorHours = () => {
   let body = "";
-  for (const instructorObj in GetClassInstructor.slice(0)) {
-    const { Personnel_PKID, PersonnelID, Name } = instructorObj;
+  for (const instructorObj of GetClassInstructor.slice(0)) {
+    const { Personnel_PKID, PersonnelID, AssignDate, Name } = instructorObj;
     const instrHoursList = GetInstrHours.slice(0)
       .filter((period) => period.Personnel_PKID === Personnel_PKID)
       .sort((record1, record2) =>
@@ -58,7 +64,8 @@ export const createInstructorHours = () => {
 
     body += `
       <tr id=${Personnel_PKID} data-personnel=${PersonnelID}>
-        <td class="cell-data instructor-hours">${Name}</td>
+        <td class="cell-data instructor-name">${Name}</td>
+        <td class="cell-data assign-date">${AssignDate}</td>
         ${monthlyValues}
       </tr>
       `;
