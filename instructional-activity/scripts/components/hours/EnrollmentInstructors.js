@@ -7,7 +7,8 @@
 // an instructor and a total column.
 const createMonthlyHours = (list) => {
   let row = "";
-  // Creates array of monthly periods, format is "MM01"
+  // Creates yearly array of monthly periods, format is "MM01".
+  // Starts in July, beginning of Fiscal Year.
   const buildPeriods = () => {
     const firstSemester = [];
     const secondSemester = [];
@@ -19,6 +20,7 @@ const createMonthlyHours = (list) => {
     }
     return [...secondSemester, ...firstSemester];
   };
+
   const periods = buildPeriods();
   let totalInstrHours = 0;
 

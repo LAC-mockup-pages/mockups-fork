@@ -6,20 +6,21 @@ import { createStudentsBloc } from "./StudentHours.js";
 
 export const cellFocus = () => {
   const today = new Date();
-  const months = [
-    "Jan",
-    "Feb",
-    "Mar",
-    "Apr",
-    "May",
-    "Jun",
-    "Jul",
-    "Aug",
-    "Sep",
-    "Oct",
-    "Nov",
-    "Dec"
-  ];
+
+  // Creates yearly array of months, starting at January.
+  // Return an array of string elements, each month abbreviated to
+  // the 3 first characters.
+  const buildMonthList = () => {
+    const list = [];
+    for (let i = 0; i < 12; i++) {
+      const day = new Date("2021", i.toString(), "1");
+      const shortMonth = day.toString().substr(4, 3);
+      list.push(shortMonth);
+    }
+    return list;
+  };
+
+  const months = buildMonthList();
   const previousMonth = today.getMonth() === 0 ? 12 : today.getMonth() - 1;
   const inputName = `${months[previousMonth]}Hours`;
   const firstRowId = $(".student-hours-body tr").first().attr("id");
