@@ -817,13 +817,18 @@ $(document).ready(() => {
     $(children).toggleClass("border-blue");
   });
 
-  $(document).on("blur", ".student-hours-body input", function (evnt) {
-    evnt.stopPropagation();
-    const parentId = $(this).parent().parent().attr("id");
-    const children = $(`#${parentId} > td`);
-    $(children).toggleClass("border-blue");
-    updateTotal(parentId);
-  });
+  //* Updating cell total in row when a value is modified
+  $(document).on(
+    "blur",
+    ".student-hours-body input, .instr-hours-body input",
+    function (evnt) {
+      evnt.stopPropagation();
+      const parentId = $(this).parent().parent().attr("id");
+      const children = $(`#${parentId} > td`);
+      $(children).toggleClass("border-blue");
+      updateTotal(parentId);
+    }
+  );
 
   //* Down arrow to go to next cell under in Hours Student table
   $(document).on("keyup", ".student-hours-body input", function (evnt) {

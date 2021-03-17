@@ -1,17 +1,14 @@
 // Actions and logic
 
-const buildPeriod = () => {
-  const firstSemester = [];
-  const secondSemester = [];
-
-  for (let i = 7, j = 1; i < 13, j < 7; i++, j++) {
-    const month2 = i < 10 ? `0${i}01` : `${i}01`;
-    const month1 = `0${j}01`;
-    firstSemester.push(month1);
-    secondSemester.push(month2);
+const checkUnique = (str) => {
+  const list = new Set();
+  for (const character of str.split("")) {
+    // If character is already present in list, it will
+    // be ignored
+    list.add(character);
   }
-
-  return [...secondSemester, ...firstSemester];
+  return str.length === list.size;
 };
 
-console.log("buildPeriod :>> ", buildPeriod());
+console.log(checkUnique("abcde")); // ==> true
+console.log(checkUnique("abecade")); // ==> false
