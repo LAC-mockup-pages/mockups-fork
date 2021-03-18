@@ -822,6 +822,7 @@ $(document).ready(() => {
   );
 
   //* Updating cell total in row when a value is modified
+  //* in Hours tables
   $(document).on(
     "blur",
     ".student-hours-body input, .instr-hours-body input",
@@ -833,15 +834,16 @@ $(document).ready(() => {
       const totalCell = $(`#${parentId}`).attr("data-student")
         ? "student-total"
         : "instructor-total";
-      // Updates total cell of the row with new value
+      // Updates total cell of the row with new sum
       updateTotal(parentId, totalCell);
     }
   );
 
-  //* Down arrow to go to next cell under in Hours Student table
+  //* Down arrow to go to next cell under in Hours Student &
+  //* Instructors tables
   $(document).on(
     "keyup",
-    ".student-hours-body input, instr-hours-body input",
+    ".student-hours-body input, .instr-hours-body input",
     function (evnt) {
       evnt.preventDefault();
       evnt.stopPropagation();
@@ -849,10 +851,10 @@ $(document).ready(() => {
         const inputName = $(this).attr("name");
         const rowId = $(this).parent().parent().attr("id");
         const nextRowIndex = $(`#${rowId}`).index() + 1;
-        const nextRowId = $(".student-hours-body tr")
-          .eq(nextRowIndex)
-          .attr("id");
-
+        const bodyClass = $(`#${rowId}`).attr("data-student")
+          ? ".student-hours-body"
+          : ".instr-hours-body";
+        const nextRowId = $(`${bodyClass} tr`).eq(nextRowIndex).attr("id");
         $(`#${nextRowId} input[name=${inputName}]`).focus();
       }
     }
