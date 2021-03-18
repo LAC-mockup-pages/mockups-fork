@@ -833,25 +833,30 @@ $(document).ready(() => {
       const totalCell = $(`#${parentId}`).attr("data-student")
         ? "student-total"
         : "instructor-total";
-
-      console.log("totalCell :>> ", totalCell);
+      // Updates total cell of the row with new value
       updateTotal(parentId, totalCell);
     }
   );
 
   //* Down arrow to go to next cell under in Hours Student table
-  $(document).on("keyup", ".student-hours-body input", function (evnt) {
-    evnt.preventDefault();
-    evnt.stopPropagation();
-    if (evnt.which === 40) {
-      const inputName = $(this).attr("name");
-      const rowId = $(this).parent().parent().attr("id");
-      const nextRowIndex = $(`#${rowId}`).index() + 1;
-      const nextRowId = $(".student-hours-body tr").eq(nextRowIndex).attr("id");
+  $(document).on(
+    "keyup",
+    ".student-hours-body input, instr-hours-body input",
+    function (evnt) {
+      evnt.preventDefault();
+      evnt.stopPropagation();
+      if (evnt.which === 40) {
+        const inputName = $(this).attr("name");
+        const rowId = $(this).parent().parent().attr("id");
+        const nextRowIndex = $(`#${rowId}`).index() + 1;
+        const nextRowId = $(".student-hours-body tr")
+          .eq(nextRowIndex)
+          .attr("id");
 
-      $(`#${nextRowId} input[name=${inputName}]`).focus();
+        $(`#${nextRowId} input[name=${inputName}]`).focus();
+      }
     }
-  });
+  );
 
   //* Trigger for displaying the Daily Contact hours bloc
   //* when clicking button in HoursView.
