@@ -810,12 +810,16 @@ $(document).ready(() => {
 
   //* Changing row border color in Hours Student table when a month
   //* receives focus.
-  $(document).on("focusin", ".student-hours-body input", function (evnt) {
-    evnt.stopPropagation();
-    const parentId = $(this).parent().parent().attr("id");
-    const children = $(`#${parentId} > td`);
-    $(children).toggleClass("border-blue");
-  });
+  $(document).on(
+    "focusin",
+    ".student-hours-body input, .instr-hours-body input",
+    function (evnt) {
+      evnt.stopPropagation();
+      const parentId = $(this).parent().parent().attr("id");
+      const children = $(`#${parentId} > td`);
+      $(children).toggleClass("border-blue");
+    }
+  );
 
   //* Updating cell total in row when a value is modified
   $(document).on(
@@ -826,7 +830,12 @@ $(document).ready(() => {
       const parentId = $(this).parent().parent().attr("id");
       const children = $(`#${parentId} > td`);
       $(children).toggleClass("border-blue");
-      updateTotal(parentId);
+      const totalCell = $(`#${parentId}`).attr("data-student")
+        ? "student-total"
+        : "instructor-total";
+
+      console.log("totalCell :>> ", totalCell);
+      updateTotal(parentId, totalCell);
     }
   );
 

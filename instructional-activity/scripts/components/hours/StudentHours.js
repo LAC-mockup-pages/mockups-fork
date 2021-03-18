@@ -2,9 +2,9 @@
 // Accessible only from the Enrollment and Details views.
 
 // Update total value when a month value is entered/updated
-export const updateTotal = (rowId) => {
+export const updateTotal = (rowId, totalReference) => {
   const totalList = $(`#${rowId} .cell-input`).serializeArray();
-  const totalCell = $(`#${rowId} .student-total`);
+  const totalCell = $(`#${rowId} .${totalReference}`);
   const totalHours = totalList.reduce(
     (tot, record) => tot + (Number(record.value) || 0),
     0
