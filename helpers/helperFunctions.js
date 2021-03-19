@@ -196,6 +196,16 @@ const zipCodeFormat = (str) => {
   return str.replace(/_/g, "").replace(/-/, " ").trim();
 };
 
+// Return an Object from list of objects built with .serializeArray()
+const createObject = (list) => {
+  const resultObj = {};
+  for (const record of list) {
+    const { name, value } = record;
+    resultObj[name] = value;
+  }
+  return resultObj;
+};
+
 // Returns a string of headers for a <table> element
 const createHeaders = (labels) => {
   const headers = labels.map((label) => `<th>${label}</th>`).join("");
