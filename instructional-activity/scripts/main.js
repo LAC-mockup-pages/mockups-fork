@@ -868,4 +868,10 @@ $(document).ready(() => {
 
     $("#hours-bloc").empty().append(dailyHrsView);
   });
+
+  //* Saving updated values in Student Hours table
+  $(document).on("click", "student-hours-btn", function (evnt) {
+    evnt.stopPropagation();
+    const rows = $(".student-hours-body tr").clone();
+  });
 });

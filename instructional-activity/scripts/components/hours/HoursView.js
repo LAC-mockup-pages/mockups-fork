@@ -4,6 +4,15 @@
 import { createInstructorHours } from "./EnrollmentInstructors.js";
 import { createStudentsBloc } from "./StudentHours.js";
 
+export const createSaveObjStudents = (rows) => {
+  const saveList = [];
+
+  $(rows).each(function (index) {
+    const ID = $(this).attr("id");
+    const monthlyHours = $(this).serializeArray();
+  });
+};
+
 export const cellFocus = () => {
   const today = new Date();
 

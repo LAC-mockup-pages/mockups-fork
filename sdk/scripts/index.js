@@ -1,14 +1,20 @@
 // Actions and logic
 
-const checkUnique = (str) => {
-  const list = new Set();
-  for (const character of str.split("")) {
-    // If character is already present in list, it will
-    // be ignored
-    list.add(character);
+const createObject = (list) => {
+  const resultObj = {};
+  for (const record of list) {
+    const { name, value } = record;
+    resultObj[name] = value;
   }
-  return str.length === list.size;
+  return resultObj;
 };
 
-console.log(checkUnique("abcde")); // ==> true
-console.log(checkUnique("abecade")); // ==> false
+console.log(
+  makeObject([
+    { name: "New1", value: "Paul" },
+    { name: "New2", value: "Peter" },
+    { name: "New3", value: "John" },
+    { name: "New4", value: "Bill" },
+    { name: "New5", value: "Alfred" }
+  ])
+);
