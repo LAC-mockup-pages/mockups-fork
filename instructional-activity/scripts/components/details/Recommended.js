@@ -3,6 +3,7 @@
 // by the DB response after new record creation
 
 import { topBanner, tableBody } from "../../main.js";
+
 const specialProgramList = GetSpecialProgram.slice(0).sort((item1, item2) =>
   item1.ProgramDesc < item2.ProgramDesc
     ? -1
@@ -21,11 +22,14 @@ const createSpecialProgramView = (programID = "", subIETId = "") => {
     "Class_PKID",
     "IET_Class_PKID"
   ];
-  const labelObj = { ProgramDesc: "Program", InstructionDesc: "Description" };
+  const labelObj = {
+    ProgramDesc: "Program",
+    InstructionDesc: "IET connected class"
+  };
 
   const header = topBanner(title, [
     ["Program", "col-sm-5"],
-    ["Description", "col-sm-7"]
+    ["IET connected class", "col-sm-7"]
   ]);
 
   const body = tableBody(
@@ -110,10 +114,10 @@ export const addSpecialProgram = (rowId = "", tableName = "") => {
     hashTable: instructionList,
     keyValue: "IET_Class_PKID",
     selectedValue: descriptionCode,
-    labelVal: "Instruction Description",
+    labelVal: "IET connected class",
     labelClassVal: "",
     option: disabled,
-    optionText: "an instruction description"
+    optionText: "a connected class"
   });
   return `${program}${description}`;
 };
