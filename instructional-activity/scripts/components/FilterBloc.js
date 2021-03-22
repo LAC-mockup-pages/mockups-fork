@@ -14,7 +14,6 @@ const selectList = [
   { key: "ClassType", value: "Type" },
   { key: "InstructorID", value: "Instructor" },
   { key: "Format", value: "Format" },
-  { key: "FSID", value: "Funding" },
   { key: "UpperLevel", value: "Level" }
 ];
 
