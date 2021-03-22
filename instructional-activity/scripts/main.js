@@ -878,6 +878,9 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const rows = $(".student-hours-body tr").clone();
     const saveList = createSaveObjStudents(rows);
-    saveMods(saveList, "student-hours-body", "GetContactHours_Annual");
+
+    //TODO Check if list can be saved or if SP in back end
+    // accepts only 1 record at a time - Pending GJ answer 03/22
+    // saveMods(saveList, "student-hours-body", "GetContactHours_Annual");
   });
 });
