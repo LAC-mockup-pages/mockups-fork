@@ -4,7 +4,7 @@
 import { createInstructorHours } from "./EnrollmentInstructors.js";
 import { createStudentsBloc } from "./StudentHours.js";
 
-export const createSaveObjStudents = (rows) => {
+export const createSaveObj = (rows) => {
   const saveList = [];
 
   $(rows).each(function (index) {

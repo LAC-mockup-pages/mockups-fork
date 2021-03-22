@@ -27,7 +27,7 @@ import { createEnrollmentView } from "./components/enrollment/EnrollmentView.js"
 import {
   cellFocus,
   createHoursView,
-  createSaveObjStudents
+  createSaveObj
 } from "./components/hours/HoursView.js";
 import {
   addStudentModalForm,
@@ -877,7 +877,7 @@ $(document).ready(() => {
   $(document).on("click", "#student-hours-btn", function (evnt) {
     evnt.stopPropagation();
     const rows = $(".student-hours-body tr").clone();
-    const saveList = createSaveObjStudents(rows);
+    const saveList = createSaveObj(rows);
 
     //TODO Check if list can be saved or if SP in back end
     // accepts only 1 record at a time - Pending GJ answer 03/22

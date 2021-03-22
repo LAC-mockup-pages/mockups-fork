@@ -84,7 +84,6 @@ export const createSecondarySelect = (year, fieldName) => {
     ClassType: typeList,
     InstructorID: instructorList,
     Format: formatList,
-    FSID: fundingList,
     UpperLevel: levelList
   };
   const hashTable = tableList[fieldName];
