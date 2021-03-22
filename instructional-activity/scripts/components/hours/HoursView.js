@@ -9,8 +9,13 @@ export const createSaveObjStudents = (rows) => {
 
   $(rows).each(function (index) {
     const ID = $(this).attr("id");
-    const monthlyHours = $(this).serializeArray();
+    const listValues = $("input", this).serializeArray();
+
+    // createObject() <== /helpers/helperFunctions.js
+    const monthlyHours = createObject(listValues);
+    saveList.push({ ID, ...monthlyHours });
   });
+  return saveList;
 };
 
 export const cellFocus = () => {
