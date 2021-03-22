@@ -24,7 +24,11 @@ import { addSpecialProgram } from "./components/details/Recommended.js";
 import { saveSchedule } from "./components/details/Schedule.js";
 import { saveFundingSources } from "./components/details/FundingSources.js";
 import { createEnrollmentView } from "./components/enrollment/EnrollmentView.js";
-import { cellFocus, createHoursView } from "./components/hours/HoursView.js";
+import {
+  cellFocus,
+  createHoursView,
+  createSaveObjStudents
+} from "./components/hours/HoursView.js";
 import {
   addStudentModalForm,
   completeNewStudent,
@@ -870,8 +874,10 @@ $(document).ready(() => {
   });
 
   //* Saving updated values in Student Hours table
-  $(document).on("click", "student-hours-btn", function (evnt) {
+  $(document).on("click", "#student-hours-btn", function (evnt) {
     evnt.stopPropagation();
     const rows = $(".student-hours-body tr").clone();
+    const saveList = createSaveObjStudents(rows);
+    saveMods(saveList, "student-hours-body", "GetContactHours_Annual");
   });
 });
