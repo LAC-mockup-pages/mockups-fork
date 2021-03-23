@@ -673,12 +673,12 @@ $(document).ready(() => {
     $("#edit-form").attr("data-bloc", formId);
   });
 
-  //* Displaying selected record in Enrollment View.
+  //* Displaying selected course in Enrollment View.
   $(document).on("click", ".main-table tr", function (evnt) {
     evnt.stopPropagation();
     const rowId = $(this).attr("id");
     const selectedCourse = courseList.find((course) => course.ID === rowId);
-    const { ClassID, StartDate, EndDate } = selectedCourse;
+    const { ClassID, StartDate, EndDate, FY } = selectedCourse;
 
     const enrollmentView = createEnrollmentView(
       rowId,
@@ -689,7 +689,11 @@ $(document).ready(() => {
 
     // Cleaning up
     $(".record-entry, #filter-bloc").toggleClass("hidden");
-    $("#view-bloc").empty().append(enrollmentView).attr("data-course", rowId);
+    $("#view-bloc")
+      .empty()
+      .append(enrollmentView)
+      .attr("data-course", rowId)
+      .attr("data-year", FY);
 
     $("html, body").animate({ scrollTop: 220 }, 200);
     $("#offering").removeClass();
