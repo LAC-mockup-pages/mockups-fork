@@ -8,20 +8,18 @@
 const createMonthlyHours = (list) => {
   let row = "";
 
-  // Creates yearly array of monthly periods, format is "MMMHours".
+  // Creates yearly array of monthly periods, format is "MM01".
   // Starts in July, beginning of Fiscal Year.
   const buildPeriods = () => {
-    const createMonthList = (num) => {
-      return new Array(6).fill("Hours", 0, 6).map((item, indx) => {
-        const month = new Date("2021", indx + num, "01")
-          .toDateString()
-          .substr(4, 3);
-        return month + item;
-      });
-    };
-    const first = createMonthList(0);
-    const second = createMonthList(6);
-    return [...second, ...first];
+    const firstSemester = [];
+    const secondSemester = [];
+    for (let i = 7, j = 1; i < 13, j < 7; i++, j++) {
+      const month2 = i < 10 ? `0${i}01` : `${i}01`;
+      const month1 = `0${j}01`;
+      firstSemester.push(month1);
+      secondSemester.push(month2);
+    }
+    return [...secondSemester, ...firstSemester];
   };
 
   const periods = buildPeriods();
