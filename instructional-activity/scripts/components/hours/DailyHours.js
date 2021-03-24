@@ -2,24 +2,41 @@
 //* after clicking the DCH button in HoursView
 
 import { setFiscalYear } from "../../main.js";
+import { buildPeriods } from "./EnrollmentInstructors.js";
 
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
 
+// Returns hashTable for period selector.
+// num varies from 12 (full Fiscal Year) to present FY number
+// of months from start of FY. FY is type number.
+const buildPeriodHashTable = (num, fiscalYear) => {
+  const periods = buildPeriods();
+  const agency = SESSION_VARIABLE[0].AgencyID.includes("%= Session")
+    ? "PRA"
+    : SESSION_VARIABLE[0].AgencyID;
+  // const agency = "PRA";
+  const hashTable = [];
+
+  for (let i = 0; i < num; i++) {
+    const calendarYear = i < 6 ? fiscalYear - 1 : fiscalYear;
+    const PeriodID = `${agency}${calendarYear}${periods[i]}`;
+
+    const month = DT.fromISO(`${calendarYear}${periods[i]}`).toFormat("LLLL y");
+    hashTable.push({ PeriodID, month });
+  }
+  return hashTable;
+};
+
 export const createDailyHours = (classId) => {
-  // const today = DT.now().toISODate();
-  // const someDay = setFiscalYear("2019-02-01");
-  // const period = DT.fromISO("20190201").toISODate();
-  // const agency = "RSCD";
-  // const day = DT.now().toFormat(`'${agency}'yLL'01'`);
-  // console.table({ today, someDay, period, day });
-  const selectPeriod = "";
+  let selectPeriod = "";
   const classFY = $("#view-bloc").attr("data-year");
   const course = $("#view-bloc").attr("id");
   const presentFY = Number(SESSION_VARIABLE[0].FiscalYear)
     ? SESSION_VARIABLE[0].FiscalYear
     : setFiscalYear(DT.now().toISODate());
   console.log("presentFY :>> ", presentFY);
+
   if (classFY === presentFY) {
     console.log("Same FY");
     const firstDayFY = `${Number(presentFY) - 1}0701`;
@@ -31,29 +48,20 @@ export const createDailyHours = (classId) => {
     const diffMonths = Math.ceil(
       today.diff(startFY, "months").toObject().months
     );
-    console.log("diffMonths :>> ", diffMonths);
+    const hashTable = buildPeriodHashTable(diffMonths, Number(presentFY));
 
-    const hashTable = [];
+    selectPeriod = elementSelectModal({
+      hashTable,
+      keyValue: "PeriodID",
+      selectedValue: "",
+      labelVal: "Period: ",
+      labelClassVal: "",
+      option: "",
+      optionText: "a month"
+    });
   } else {
     console.log("Different FY");
   }
-
-  const periodSelect = `
-  <div class="input-field form-group">
-  <label for="primary-filter" class="blue-light-text filter-select">Month: </label>
-  <select id="primary-filter-view" class="modal-select" name="primary-filter"><option value="" selected>Select a month</option>
-  <option value="ClassType">July 2020</option>
-  <option value="InstructorID">August 2020</option>
-  <option value="Format">September 2020</option>
-  <option value="FSID">October 2020</option>
-  <option value="UpperLevel">November 2020</option>
-  <option value="UpperLevel">December 2020</option>
-  <option value="UpperLevel">January 2021</option>
-  <option value="UpperLevel">February 2021</option>
-  <option value="UpperLevel">March 2021</option>
-  </select>
-</div>
-  `;
 
   const classSchedule = `
   <div class="schedule-bloc">
@@ -127,7 +135,7 @@ export const createDailyHours = (classId) => {
   <div class="container-fluid row blue-light-text" id="daily-hours">
     <div class="daily-title label-text col-md-4">${classId} | Daily Contact Hours</div>
     <div class="label-text col-md-2"></div>
-    <div class="col-md-3">${periodSelect}</div>
+    <div class="col-md-3">${selectPeriod}</div>
     <div class="label-text col-md-1"></div>
     <div class="container-fluid row col-md-2">
       <button type="button" id="daily-hours-btn" class="btn dark-blue-text blue-light-bg col-sm-6">Save</button>

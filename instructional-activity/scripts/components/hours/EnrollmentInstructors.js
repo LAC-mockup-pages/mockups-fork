@@ -3,25 +3,23 @@
 //TODO Address the case of a new course, GetInstrHours method
 // returns an empty hash table (pending GJ answer - 03/03/21)
 
+// Creates yearly array of monthly periods, format is "MM01".
+// Starts in July, beginning of Fiscal Year.
+export const buildPeriods = () => {
+  const firstSemester = [];
+  const secondSemester = [];
+  for (let i = 7, j = 1; i < 13, j < 7; i++, j++) {
+    const month2 = i < 10 ? `0${i}01` : `${i}01`;
+    const month1 = `0${j}01`;
+    firstSemester.push(month1);
+    secondSemester.push(month2);
+  }
+  return [...secondSemester, ...firstSemester];
+};
 // Create Object with 12 months of instructional hours for
 // an instructor and a total column.
 const createMonthlyHours = (list) => {
   let row = "";
-
-  // Creates yearly array of monthly periods, format is "MM01".
-  // Starts in July, beginning of Fiscal Year.
-  const buildPeriods = () => {
-    const firstSemester = [];
-    const secondSemester = [];
-    for (let i = 7, j = 1; i < 13, j < 7; i++, j++) {
-      const month2 = i < 10 ? `0${i}01` : `${i}01`;
-      const month1 = `0${j}01`;
-      firstSemester.push(month1);
-      secondSemester.push(month2);
-    }
-    return [...secondSemester, ...firstSemester];
-  };
-
   const periods = buildPeriods();
   let totalInstrHours = 0;
 

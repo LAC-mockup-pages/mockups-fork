@@ -1,34 +1,31 @@
 // Actions and logic
 
-const testDate = () => {
+const buildPeriods = () => {
   const firstSemester = [];
   const secondSemester = [];
-  for (let i = 6, j = 0; i < 12, j < 6; i++, j++) {
-    const date1 = new Date("2021", i, "01");
-    const date2 = new Date("2021", j, "01");
-
-    const month1 = `${date1.toDateString().substr(4, 3)}Hours`;
-    const month2 = `${date2.toDateString().substr(4, 3)}Hours`;
-
+  for (let i = 7, j = 1; i < 13, j < 7; i++, j++) {
+    const month2 = i < 10 ? `0${i}01` : `${i}01`;
+    const month1 = `0${j}01`;
     firstSemester.push(month1);
     secondSemester.push(month2);
   }
   return [...secondSemester, ...firstSemester];
 };
+const buildHashTable = (num, fiscalYear) => {
+  const periods = buildPeriods();
+  // const agency = SESSION_VARIABLE[0].AgencyID.includes("%= Session")
+  //   ? "PRA"
+  //   : SESSION_VARIABLE[0].AgencyID;
+  const agency = "PRA";
+  const hashTable = [];
 
-const testDate2 = () => {
-  const createMonthList = (num) => {
-    return new Array(6).fill("Hours", 0, 6).map((item, indx) => {
-      const month = new Date("2021", indx + num, "01")
-        .toDateString()
-        .substr(4, 3);
-      return month + item;
-    });
-  };
-  const first = createMonthList(0);
-  const second = createMonthList(6);
-  return [...second, ...first];
+  for (let i = 0; i < num; i++) {
+    const calendarYear = i < 6 ? fiscalYear - 1 : fiscalYear;
+    const PeriodID = `${agency}${calendarYear}${periods[i]}`;
+    const month = `${periods[i]} ${calendarYear}`;
+    hashTable.push({ PeriodID, month });
+  }
+  return hashTable;
 };
 
-// console.log("testDate() :>> ", testDate());
-console.log("testDate2() :>> ", testDate2());
+console.log(buildHashTable(9, 2021));
