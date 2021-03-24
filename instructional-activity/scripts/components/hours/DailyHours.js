@@ -1,7 +1,43 @@
 //* Displaying Daily contact hours for a given course
 //* after clicking the DCH button in HoursView
 
+import { setFiscalYear } from "../../main.js";
+
+// Initializing Luxon DateTime class for the module
+const DT = luxon.DateTime;
+
 export const createDailyHours = (classId) => {
+  // const today = DT.now().toISODate();
+  // const someDay = setFiscalYear("2019-02-01");
+  // const period = DT.fromISO("20190201").toISODate();
+  // const agency = "RSCD";
+  // const day = DT.now().toFormat(`'${agency}'yLL'01'`);
+  // console.table({ today, someDay, period, day });
+  const selectPeriod = "";
+  const classFY = $("#view-bloc").attr("data-year");
+  const course = $("#view-bloc").attr("id");
+  const presentFY = Number(SESSION_VARIABLE[0].FiscalYear)
+    ? SESSION_VARIABLE[0].FiscalYear
+    : setFiscalYear(DT.now().toISODate());
+  console.log("presentFY :>> ", presentFY);
+  if (classFY === presentFY) {
+    console.log("Same FY");
+    const firstDayFY = `${Number(presentFY) - 1}0701`;
+    const startFY = DT.fromISO(firstDayFY);
+    const today = DT.now();
+
+    // Returns the number of months between first day of present Fiscal
+    // Year (07/01 of Fiscal Year - 1) and now.
+    const diffMonths = Math.ceil(
+      today.diff(startFY, "months").toObject().months
+    );
+    console.log("diffMonths :>> ", diffMonths);
+
+    const hashTable = [];
+  } else {
+    console.log("Different FY");
+  }
+
   const periodSelect = `
   <div class="input-field form-group">
   <label for="primary-filter" class="blue-light-text filter-select">Month: </label>
