@@ -882,9 +882,11 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const rows = $(".student-hours-body tr").clone();
     const saveList = createSaveObj(rows);
+    console.table(saveList);
 
-    //TODO Check if list can be saved or if SP in back end
-    // accepts only 1 record at a time - Pending GJ answer 03/22
-    // saveMods(saveList, "student-hours-body", "GetContactHours_Annual");
+    //! =================================================
+    //! result = JSON Object to send back to database
+    const result = JSON.stringify(saveList);
+    //! =================================================
   });
 });
