@@ -17,11 +17,9 @@ const buildPeriodHashTable = (num, fiscalYear) => {
     : SESSION_VARIABLE[0].AgencyID;
   // const agency = "PRA";
   const hashTable = [];
-
   for (let i = 0; i < num; i++) {
     const calendarYear = i < 6 ? fiscalYear - 1 : fiscalYear;
     const PeriodID = `${agency}${calendarYear}${periods[i]}`;
-
     const month = DT.fromISO(`${calendarYear}${periods[i]}`).toFormat("LLLL y");
     hashTable.push({ PeriodID, month });
   }
@@ -29,40 +27,38 @@ const buildPeriodHashTable = (num, fiscalYear) => {
 };
 
 export const createDailyHours = (classId) => {
-  let selectPeriod = "";
   const classFY = $("#view-bloc").attr("data-year");
   const course = $("#view-bloc").attr("id");
   const presentFY = Number(SESSION_VARIABLE[0].FiscalYear)
     ? SESSION_VARIABLE[0].FiscalYear
     : setFiscalYear(DT.now().toISODate());
-  console.log("presentFY :>> ", presentFY);
+  let hashTable = [];
 
   if (classFY === presentFY) {
     console.log("Same FY");
     const firstDayFY = `${Number(presentFY) - 1}0701`;
     const startFY = DT.fromISO(firstDayFY);
     const today = DT.now();
-
     // Returns the number of months between first day of present Fiscal
     // Year (07/01 of Fiscal Year - 1) and now.
     const diffMonths = Math.ceil(
       today.diff(startFY, "months").toObject().months
     );
-    const hashTable = buildPeriodHashTable(diffMonths, Number(presentFY));
-
-    selectPeriod = elementSelectModal({
-      hashTable,
-      keyValue: "PeriodID",
-      selectedValue: "",
-      labelVal: "Period: ",
-      labelClassVal: "",
-      option: "",
-      optionText: "a month"
-    });
+    hashTable = buildPeriodHashTable(diffMonths, Number(presentFY));
   } else {
     console.log("Different FY");
+    // Other fiscal years, the period selector displays 12 months option
+    hashTable = buildPeriodHashTable(12, Number(classFY));
   }
-
+  const selectPeriod = elementSelectModal({
+    hashTable,
+    keyValue: "PeriodID",
+    selectedValue: "",
+    labelVal: "Period: ",
+    labelClassVal: "",
+    option: "",
+    optionText: "a month"
+  });
   const classSchedule = `
   <div class="schedule-bloc">
   <form class="weekday-banner" id="schedule">
