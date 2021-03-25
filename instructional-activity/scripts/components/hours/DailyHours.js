@@ -59,7 +59,7 @@ export const createDailyHours = (classId) => {
   });
   const classSchedule = `
   <div class="schedule-bloc">
-  <form class="weekday-banner" id="schedule">
+  <form class="weekday-banner" id="schedule-static">
  <table class="schedule-table container-fluid table table-bordered">
  <thead>
   <tr><th class="blank-bloc"></th>
@@ -71,11 +71,9 @@ export const createDailyHours = (classId) => {
   <th class="weekday">Sat.</th>
   <th class="weekday">Sun.</th>
  </tr></thead>
-
-  <tbody class="week-schedule-body" data-toggle="tooltip" data-placement="right" title="" data-original-title="Click to Edit">
+  <tbody class="week-schedule-body">
     <tr>
       <td class="schedule-cell">Start Time</td>
-
       <td>
         <input class="schedule-input" disabled="" name="MonStartTime" value="09:00 AM">
       </td>
@@ -100,7 +98,6 @@ export const createDailyHours = (classId) => {
     </tr>
     <tr>
       <td class="schedule-cell">End Time</td>
-
       <td>
         <input class="schedule-input" disabled="" name="MonEndTime" value="12:30 PM">
       </td>
