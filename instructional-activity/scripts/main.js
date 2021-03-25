@@ -837,7 +837,7 @@ $(document).ready(() => {
   //* in Hours tables
   $(document).on(
     "blur",
-    ".student-hours-body input, .instr-hours-body input",
+    ".student-hours-body input, .instr-hours-body input, .daily-hours-body input",
     function (evnt) {
       evnt.stopPropagation();
       const parentId = $(this).parent().parent().attr("id");
