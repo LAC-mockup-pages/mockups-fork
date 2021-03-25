@@ -166,7 +166,7 @@
 }
 
 .scrolling {
-  height: 400px;
+  max-height: 400px;
   position: relative;
   overflow-y: auto;
   margin-bottom: 0.5%;
