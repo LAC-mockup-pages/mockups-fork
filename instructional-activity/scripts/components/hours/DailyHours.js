@@ -153,11 +153,20 @@ export const createDailyHoursTable = (dailyHoursList) => {
   // createHeaders() <== helperFunctions.js
   const header = createHeaders(["Name", ...dayList, "Total"]);
 
-  let body = " Table Body here";
+  let body = "";
 
   for (const record of dailyHoursList) {
     const { ID, StudentName, studentID, totalHours } = record;
-    const dailyValues = "";
+    let dailyValues = "";
+
+    for (const day of dayList) {
+      const valueHours = record[day];
+      dailyValues += `
+      <td class="cell-data daily-value">
+        <input class="cell-input" name=${day} value=${valueHours}>
+      </td>
+      `;
+    }
 
     body += `
     <tr id=${ID} data-student=${studentID}>
