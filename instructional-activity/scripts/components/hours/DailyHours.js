@@ -147,8 +147,14 @@ export const createDailyHoursTable = (dailyHoursList) => {
     fieldName.startsWith("Day")
   );
   console.log("dayList :>> ", dayList);
+  const selectedMonth = Number($("#PeriodID-view").val().substr(7, 2));
+  const dateList = dayList.map((day) => {
+    const dayNumber = day.slice(3);
+    return `${selectedMonth}/${dayNumber}`;
+  });
+
   // createHeaders() <== helperFunctions.js
-  const header = createHeaders(["Name", ...dayList, "Total"]);
+  const header = createHeaders(["Name", ...dateList, "Total"]);
 
   let body = "";
 
