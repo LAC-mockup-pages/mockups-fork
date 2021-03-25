@@ -1200,7 +1200,7 @@ const GetContactHours_Annual = [
 
 const GetDailyHours = [
   {
-    ID: "3451230",
+    ID: "15301595",
     ClassID: "PRABE4CPorter1",
     Class_PKID: "214640",
     ClassMonth: "7",
@@ -1225,7 +1225,7 @@ const GetDailyHours = [
     StudentName2: "AA1_Jacques, Gregory"
   },
   {
-    ID: "3451231",
+    ID: "15301583",
     ClassID: "PRABE4CPorter1",
     Class_PKID: "214640",
     ClassMonth: "7",
@@ -1250,7 +1250,7 @@ const GetDailyHours = [
     StudentName2: "Adams, John"
   },
   {
-    ID: "3451232",
+    ID: "15301560",
     ClassID: "PRABE4CPorter1",
     Class_PKID: "214640",
     ClassMonth: "7",
@@ -1275,7 +1275,7 @@ const GetDailyHours = [
     StudentName2: "Brown, Phoebe"
   },
   {
-    ID: "3451233",
+    ID: "15301572",
     ClassID: "PRABE4CPorter1",
     Class_PKID: "214640",
     ClassMonth: "7",

@@ -35,7 +35,6 @@ export const createDailyHours = (classId) => {
   let hashTable = [];
 
   if (classFY === presentFY) {
-    console.log("Same FY");
     const firstDayFY = `${Number(presentFY) - 1}0701`;
     const startFY = DT.fromISO(firstDayFY);
     const today = DT.now();
@@ -46,7 +45,6 @@ export const createDailyHours = (classId) => {
     );
     hashTable = buildPeriodHashTable(diffMonths, Number(presentFY));
   } else {
-    console.log("Different FY");
     // Other fiscal years, the period selector displays 12 months option
     hashTable = buildPeriodHashTable(12, Number(classFY));
   }
@@ -138,12 +136,11 @@ export const createDailyHours = (classId) => {
     </div>
   </div>
   <div class="week-schedule container-fluid row">
-  <div class="label-text blue-light-text col-md-3">Weekly Schedule</div>
-  <div class="col-md-8">
-  ${classSchedule}
-  </div>
-  <div class="col-md-1">
-  </div>
+    <div class="label-text blue-light-text col-md-3">Weekly Schedule</div>
+    <div class="col-md-8">
+      ${classSchedule}
+    </div>
+    <div class="col-md-1"></div>
   </div>
   `;
 };

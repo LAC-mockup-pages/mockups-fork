@@ -693,7 +693,8 @@ $(document).ready(() => {
       .empty()
       .append(enrollmentView)
       .attr("data-course", rowId)
-      .attr("data-year", FY);
+      .attr("data-year", FY)
+      .attr("data-class", ClassID);
 
     $("html, body").animate({ scrollTop: 220 }, 200);
     $("#offering").removeClass();
@@ -872,7 +873,7 @@ $(document).ready(() => {
   //* when clicking button in HoursView.
   $(document).on("click", "#daily-btn", function (evnt) {
     evnt.stopPropagation();
-    const dailyHrsView = createDailyHours("PRABE4CASTS_21");
+    const dailyHrsView = createDailyHours($("#view-bloc").attr("data-class"));
 
     $("#hours-bloc").empty().append(dailyHrsView);
   });
@@ -886,7 +887,27 @@ $(document).ready(() => {
 
     //! =================================================
     //! result = JSON Object to send back to database
+    //! for bulk update
     const result = JSON.stringify(saveList);
+    //! =================================================
+  });
+
+  //* Trigger for change in Daily Hours period selector
+  $(document).on("change", "#PeriodID-view", function (evnt) {
+    evnt.stopPropagation();
+    const period = $(this).val();
+    const courseId = $("#view-bloc").attr("data-course");
+
+    //! =================================================
+    //! response to request sent to back end with needed
+    //! parameters. Will be active after GJ changes for production
+    // const reponse= GetDailyHours(courseId,period)
+    //! =================================================
+
+    //! =================================================
+    //! Comment out the following for production
+    //! Only active for development
+    const response = GetDailyHours.slice(0);
     //! =================================================
   });
 });
