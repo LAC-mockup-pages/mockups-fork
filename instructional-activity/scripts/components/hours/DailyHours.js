@@ -144,3 +144,38 @@ export const createDailyHours = (classId) => {
   </div>
   `;
 };
+
+export const createDailyHoursTable = (dailyHoursList) => {
+  const dayList = Object.keys(dailyHoursList[0]).filter((fieldName) =>
+    fieldName.startsWith("Day")
+  );
+  console.log("dayList :>> ", dayList);
+  // createHeaders() <== helperFunctions.js
+  const header = createHeaders(["Name", ...dayList, "Total"]);
+
+  let body = " Table Body here";
+
+  for (const record of dailyHoursList) {
+    const { ID, StudentName, studentID, totalHours } = record;
+    const dailyValues = "";
+
+    body += `
+    <tr id=${ID} data-student=${studentID}>
+      <td class="cell-data student-name">${StudentName}</td>
+        ${dailyValues}
+      <td class="cell-data student-total">${totalHours}</td>
+  </tr>
+  `;
+  }
+
+  return `
+  <div class="scrolling">
+    <table class="table table-condensed scrolling-hours" id="daily-hours-table">
+      ${header}
+      <tbody class="daily-hours-body">
+        ${body}
+      </tbody>
+    </table>
+  </div>
+`;
+};

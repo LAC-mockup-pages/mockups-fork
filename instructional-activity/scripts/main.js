@@ -36,7 +36,10 @@ import {
 } from "./components/enrollment/AddStudent.js";
 import { editStudent } from "./components/enrollment/EnrollmentStudents.js";
 import { updateTotal } from "./components/hours/StudentHours.js";
-import { createDailyHours } from "./components/hours/DailyHours.js";
+import {
+  createDailyHours,
+  createDailyHoursTable
+} from "./components/hours/DailyHours.js";
 
 // Main elements
 export const rowLabels = [
@@ -910,7 +913,7 @@ $(document).ready(() => {
     const response = GetDailyHours.slice(0);
     //! =================================================
 
-    const dailyHoursView = "<h2>Daily Hours table</h2>";
+    const dailyHoursView = createDailyHoursTable(response);
     $("#hours-bloc").append(dailyHoursView);
   });
 });

@@ -1221,7 +1221,7 @@ const GetDailyHours = [
     Day27: "",
     Day29: "",
     Day31: "",
-    totalHours: "14",
+    totalHours: "",
     StudentName2: "AA1_Jacques, Gregory"
   },
   {

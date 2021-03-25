@@ -84,6 +84,5 @@ export const createStudentsBloc = (classId) => {
       </tbody>
     </table>
   </div>
-
   `;
 };
