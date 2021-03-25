@@ -146,7 +146,6 @@ export const createDailyHoursTable = (dailyHoursList) => {
   const dayList = Object.keys(dailyHoursList[0]).filter((fieldName) =>
     fieldName.startsWith("Day")
   );
-  console.log("dayList :>> ", dayList);
   const selectedMonth = Number($("#PeriodID-view").val().substr(7, 2));
   const dateList = dayList.map((day) => {
     const dayNumber = day.slice(3);
