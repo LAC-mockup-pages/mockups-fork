@@ -33,8 +33,10 @@ export const createDailyHours = (classId) => {
     ? SESSION_VARIABLE[0].FiscalYear
     : setFiscalYear(DT.now().toISODate());
   let hashTable = [];
+  let buttonState = " disabled";
 
   if (classFY === presentFY) {
+    buttonState = "";
     const firstDayFY = `${Number(presentFY) - 1}0701`;
     const startFY = DT.fromISO(firstDayFY);
     const today = DT.now();
@@ -45,7 +47,8 @@ export const createDailyHours = (classId) => {
     );
     hashTable = buildPeriodHashTable(diffMonths, Number(presentFY));
   } else {
-    // Other fiscal years, the period selector displays 12 months option
+    // Other fiscal years, the period selector displays 12 months option list.
+    // Save button stays disabled.
     hashTable = buildPeriodHashTable(12, Number(classFY));
   }
   const selectPeriod = elementSelectModal({
@@ -128,8 +131,8 @@ export const createDailyHours = (classId) => {
     <div class="label-text col-md-2"></div>
     <div class="col-md-3">${selectPeriod}</div>
     <div class="label-text col-md-1"></div>
-    <div class="container-fluid row col-md-2">
-      <button type="button" id="daily-hours-btn" class="btn dark-blue-text blue-light-bg col-sm-6">Save</button>
+    <div class="container-fluid row col-md-2 button-set">
+      <button type="button" id="daily-hours-btn" class="btn dark-blue-text blue-light-bg col-sm-6"${buttonState}>Save</button>
     </div>
   </div>
   <div class="week-schedule container-fluid row">

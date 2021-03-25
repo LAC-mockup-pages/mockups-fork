@@ -237,11 +237,13 @@
 }
 
 #hours-table th:first-of-type,
+#daily-hours-table th:first-of-type,
 #hours-table th:nth-of-type(2) {
   text-align: left;
 }
 
-#hours-table th {
+#hours-table th,
+#daily-hours-table th {
   text-align: right;
 }
 

@@ -876,9 +876,9 @@ $(document).ready(() => {
   //* when clicking button in HoursView.
   $(document).on("click", "#daily-btn", function (evnt) {
     evnt.stopPropagation();
-    const dailyHrsView = createDailyHours($("#view-bloc").attr("data-class"));
+    const topSection = createDailyHours($("#view-bloc").attr("data-class"));
 
-    $("#hours-bloc").empty().append(dailyHrsView);
+    $("#hours-bloc").empty().append(topSection);
   });
 
   //* Saving updated values in Student Hours table
