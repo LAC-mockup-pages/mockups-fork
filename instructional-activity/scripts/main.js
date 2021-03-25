@@ -909,5 +909,8 @@ $(document).ready(() => {
     //! Only active for development
     const response = GetDailyHours.slice(0);
     //! =================================================
+
+    const dailyHoursView = "<h2>Daily Hours table</h2>";
+    $("#hours-bloc").append(dailyHoursView);
   });
 });
