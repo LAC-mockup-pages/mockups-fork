@@ -60,7 +60,7 @@ export const createDailyHours = (classId) => {
   const classSchedule = `
   <div class="schedule-bloc">
   <form class="weekday-banner" id="schedule-static">
- <table class="schedule-table container-fluid table table-bordered">
+ <table class="schedule-table container-fluid table table-bordered table-condensed">
  <thead>
   <tr><th class="blank-bloc"></th>
   <th class="weekday">Mon.</th>
