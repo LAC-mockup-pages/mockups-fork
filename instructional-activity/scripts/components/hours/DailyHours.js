@@ -26,9 +26,15 @@ const buildPeriodHashTable = (num, fiscalYear) => {
   return hashTable;
 };
 
+const createWeekSchedule = () => {
+  const scheduleObj = JSON.parse($("#view-bloc").attr("data-schedule"));
+  console.log("scheduleObj :>> ", scheduleObj);
+};
+
 export const createDailyHours = (classId) => {
   const classFY = $("#view-bloc").attr("data-year");
   const course = $("#view-bloc").attr("id");
+  createWeekSchedule();
   const presentFY = Number(SESSION_VARIABLE[0].FiscalYear)
     ? SESSION_VARIABLE[0].FiscalYear
     : setFiscalYear(DT.now().toISODate());
@@ -144,6 +150,8 @@ export const createDailyHours = (classId) => {
   </div>
   `;
 };
+
+export const replaceInputs = (obj) => {};
 
 export const createDailyHoursTable = (dailyHoursList) => {
   const dayList = Object.keys(dailyHoursList[0]).filter((fieldName) =>

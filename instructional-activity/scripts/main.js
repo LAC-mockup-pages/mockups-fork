@@ -684,7 +684,7 @@ $(document).ready(() => {
     const selectedCourse = courseList.find((course) => course.ID === rowId);
     const { ClassID, StartDate, EndDate, FY } = selectedCourse;
     const schedule = createDataSchedule(selectedCourse);
-    console.log("schedule :>> ", schedule);
+    // console.log("schedule :>> ", schedule);
     const enrollmentView = createEnrollmentView(
       rowId,
       ClassID,
