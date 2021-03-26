@@ -914,6 +914,8 @@ $(document).ready(() => {
     //! =================================================
 
     const dailyHoursView = createDailyHoursTable(response);
+
+    $(".hours-table").remove();
     $("#hours-bloc").append(dailyHoursView);
   });
 });

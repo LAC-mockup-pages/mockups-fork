@@ -183,7 +183,7 @@ export const createDailyHoursTable = (dailyHoursList) => {
   }
 
   return `
-  <div class="scrolling">
+  <div class="scrolling hours-table">
     <table class="table table-condensed scrolling-hours" id="daily-hours-table">
       ${header}
       <tbody class="daily-hours-body">
