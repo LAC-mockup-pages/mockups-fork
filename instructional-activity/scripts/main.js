@@ -9,7 +9,8 @@ import { createNewRecordForm } from "./components/AddNewRecord.js";
 import {
   createFilterBloc,
   createShortList,
-  createSecondarySelect
+  createSecondarySelect,
+  createDataSchedule
 } from "./components/FilterBloc.js";
 import { createDetailsView } from "./components/details/DetailsView.js";
 import {
@@ -385,7 +386,7 @@ $(document).ready(() => {
     //});  //returns GetCourse
   });
 
-  //* Applying filters
+  //* Applying filters displaying all courses
   $(document).on("click", "#filter-apply-btn", function (evnt) {
     evnt.stopPropagation();
     courseList = GetCourse.slice(0);
@@ -682,7 +683,8 @@ $(document).ready(() => {
     const rowId = $(this).attr("id");
     const selectedCourse = courseList.find((course) => course.ID === rowId);
     const { ClassID, StartDate, EndDate, FY } = selectedCourse;
-
+    const schedule = createDataSchedule(selectedCourse);
+    console.log("schedule :>> ", schedule);
     const enrollmentView = createEnrollmentView(
       rowId,
       ClassID,
@@ -697,7 +699,8 @@ $(document).ready(() => {
       .append(enrollmentView)
       .attr("data-course", rowId)
       .attr("data-year", FY)
-      .attr("data-class", ClassID);
+      .attr("data-class", ClassID)
+      .attr("data-schedule", schedule);
 
     $("html, body").animate({ scrollTop: 220 }, 200);
     $("#offering").removeClass();
@@ -898,8 +901,8 @@ $(document).ready(() => {
   //* Trigger for change in Daily Hours period selector
   $(document).on("change", "#PeriodID-view", function (evnt) {
     evnt.stopPropagation();
-    const period = $(this).val();
     const courseId = $("#view-bloc").attr("data-course");
+    const period = $(this).val();
 
     //! =================================================
     //! response to request sent to back end with needed

@@ -146,3 +146,15 @@ export const createShortList = (year, category = "", categoryValue = "") => {
   }
   return shortList;
 };
+
+export const createDataSchedule = (course) => {
+  const shortDayList = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const resultObj = {};
+  Object.keys(course)
+    .filter((key) => shortDayList.includes(key.slice(0, 3)))
+    .forEach((prop) => {
+      const value = course[prop];
+      resultObj[prop] = value;
+    });
+  return JSON.stringify(resultObj);
+};
