@@ -39,12 +39,14 @@ const createWeekSchedule = () => {
 
   const scheduleStartTimes = startTimeList
     .map(
-      (time) => `<td class="schedule-cell" id=${time}>${scheduleObj[time]}</td>`
+      (time) =>
+        `<td class="schedule-daily" id=${time}>${scheduleObj[time]}</td>`
     )
     .join("");
   const scheduleEndTimes = endTimeList
     .map(
-      (time) => `<td class="schedule-cell" id=${time}>${scheduleObj[time]}</td>`
+      (time) =>
+        `<td class="schedule-daily" id=${time}>${scheduleObj[time]}</td>`
     )
     .join("");
 
@@ -103,10 +105,10 @@ export const createDailyHours = (classId) => {
  </tr></thead>
   <tbody class="week-schedule-body">
     <tr>
-      <td class="schedule-cell">Start Time</td>
+      <td class="schedule-daily">Start Time</td>
       ${scheduleStartTimes}
     <tr>
-      <td class="schedule-cell">End Time</td>
+      <td class="schedule-daily">End Time</td>
      ${scheduleEndTimes}
     </tr>
   </tbody></table></form></div>`;
