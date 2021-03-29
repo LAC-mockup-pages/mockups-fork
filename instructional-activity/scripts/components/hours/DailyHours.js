@@ -28,15 +28,12 @@ const buildPeriodHashTable = (num, fiscalYear) => {
 
 const createWeekSchedule = () => {
   const scheduleObj = JSON.parse($("#view-bloc").attr("data-schedule"));
-  // console.log("scheduleObj :>> ", scheduleObj);
   const startTimeList = Object.keys(scheduleObj).filter((key) =>
     key.endsWith("StartTime")
   );
   const endTimeList = Object.keys(scheduleObj).filter((key) =>
     key.endsWith("EndTime")
   );
-  console.log("startTimeList :>> ", startTimeList, endTimeList);
-
   const scheduleStartTimes = startTimeList
     .map(
       (time) =>
@@ -50,7 +47,6 @@ const createWeekSchedule = () => {
     )
     .join("");
 
-  console.log("scheduleStartTimes :>> ", scheduleStartTimes);
   return [scheduleStartTimes, scheduleEndTimes];
 };
 
