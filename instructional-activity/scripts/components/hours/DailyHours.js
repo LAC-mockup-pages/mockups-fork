@@ -28,13 +28,34 @@ const buildPeriodHashTable = (num, fiscalYear) => {
 
 const createWeekSchedule = () => {
   const scheduleObj = JSON.parse($("#view-bloc").attr("data-schedule"));
-  console.log("scheduleObj :>> ", scheduleObj);
+  // console.log("scheduleObj :>> ", scheduleObj);
+  const startTimeList = Object.keys(scheduleObj).filter((key) =>
+    key.endsWith("StartTime")
+  );
+  const endTimeList = Object.keys(scheduleObj).filter((key) =>
+    key.endsWith("EndTime")
+  );
+  console.log("startTimeList :>> ", startTimeList, endTimeList);
+
+  const scheduleStartTimes = startTimeList
+    .map(
+      (time) => `<td class="schedule-cell" id=${time}>${scheduleObj[time]}</td>`
+    )
+    .join("");
+  const scheduleEndTimes = endTimeList
+    .map(
+      (time) => `<td class="schedule-cell" id=${time}>${scheduleObj[time]}</td>`
+    )
+    .join("");
+
+  console.log("scheduleStartTimes :>> ", scheduleStartTimes);
+  return [scheduleStartTimes, scheduleEndTimes];
 };
 
 export const createDailyHours = (classId) => {
   const classFY = $("#view-bloc").attr("data-year");
   const course = $("#view-bloc").attr("id");
-  createWeekSchedule();
+  const [scheduleStartTimes, scheduleEndTimes] = createWeekSchedule();
   const presentFY = Number(SESSION_VARIABLE[0].FiscalYear)
     ? SESSION_VARIABLE[0].FiscalYear
     : setFiscalYear(DT.now().toISODate());
@@ -83,51 +104,10 @@ export const createDailyHours = (classId) => {
   <tbody class="week-schedule-body">
     <tr>
       <td class="schedule-cell">Start Time</td>
-      <td>
-        <input class="schedule-input" disabled="" name="MonStartTime" value="09:00 AM">
-      </td>
-      <td>
-        <input class="schedule-input" disabled="" name="TueStartTime" value="">
-      </td>
-      <td>
-        <input class="schedule-input" disabled="" name="WedStartTime" value="">
-      </td>
-      <td>
-        <input class="schedule-input" disabled="" name="ThuStartTime" value="">
-      </td>
-      <td>
-        <input class="schedule-input" disabled="" name="FriStartTime" value="04:00 PM">
-      </td>
-      <td>
-        <input class="schedule-input" disabled="" name="SatStartTime" value="">
-      </td>
-      <td>
-        <input class="schedule-input" disabled="" name="SunStartTime" value="">
-      </td>
-    </tr>
+      ${scheduleStartTimes}
     <tr>
       <td class="schedule-cell">End Time</td>
-      <td>
-        <input class="schedule-input" disabled="" name="MonEndTime" value="12:30 PM">
-      </td>
-      <td>
-        <input class="schedule-input" disabled="" name="TueEndTime" value="">
-      </td>
-      <td>
-        <input class="schedule-input" disabled="" name="WedEndTime" value="">
-      </td>
-      <td>
-        <input class="schedule-input" disabled="" name="ThuEndTime" value="">
-      </td>
-      <td>
-        <input class="schedule-input" disabled="" name="FriEndTime" value="07:30 PM">
-      </td>
-      <td>
-        <input class="schedule-input" disabled="" name="SatEndTime" value="">
-      </td>
-      <td>
-        <input class="schedule-input" disabled="" name="SunEndTime" value="">
-      </td>
+     ${scheduleEndTimes}
     </tr>
   </tbody></table></form></div>`;
 
