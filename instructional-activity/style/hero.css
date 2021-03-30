@@ -190,6 +190,16 @@
   font-weight: 500;
 }
 
+.large-number {
+  font-size: 1.2em;
+}
+
+#course-total {
+  padding-left: -10px;
+  padding-right: 0px;
+  padding: 0.5% 1% 1% 1%;
+}
+
 .dob,
 .assign-date {
   width: 7em;

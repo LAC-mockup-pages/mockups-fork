@@ -34,6 +34,7 @@ export const createStudentsBloc = (classId) => {
     "May",
     "Jun."
   ];
+  let courseTotal = 0;
 
   for (const record of yearlyHours) {
     const { ID, Class_PKID, Student_PKID, StudentName, BirthDate } = record;
@@ -47,6 +48,7 @@ export const createStudentsBloc = (classId) => {
     for (const key of monthlyHours) {
       const value = record[key];
       studentTotal += value ? Number(value) : 0;
+      courseTotal += value ? Number(value) : 0;
       monthValues += `
       <td class="cell-data month-value">
         <input class="cell-input" name=${key} value=${value}>
@@ -68,13 +70,16 @@ export const createStudentsBloc = (classId) => {
   const header = createHeaders(["Name", "Birth Date", ...months, "Total"]);
 
   return `
-  <div class="container-fluid row blue-light-text" id="student-hours">
-    <div class="student-title label-text col-md-4">${classId} | Student Hours</div>
-    <div class="label-text col-md-5"></div>
-    <div class="container-fluid row col-md-3">
-      <button type="button" id="student-hours-btn" class="btn dark-blue-text blue-light-bg col-sm-6">Save</button>
-      <button type="button" id="daily-btn" class="btn dark-blue-text yellow-bg col-sm-6">Daily Input</button>
+  <div class="container-fluid blue-light-text" id="student-hours">
+    <div class="row">
+      <div class="student-title label-text col-md-4">${classId} | Student Hours</div>
+      <div class="label-text col-md-5"></div>
+      <div class="container-fluid row col-md-3">
+        <button type="button" id="student-hours-btn" class="btn dark-blue-text blue-light-bg col-sm-6">Save</button>
+        <button type="button" id="daily-btn" class="btn dark-blue-text yellow-bg col-sm-6">Daily Input</button>
+      </div>
     </div>
+    <div class="student-title label-text" id="course-total">Total Student hours for the Course: <span class="large-number"> ${courseTotal}</span></div>
   </div>
   <div class="scrolling">
     <table class="table table-condensed scrolling-hours" id="hours-table">
