@@ -827,11 +827,11 @@ $(document).ready(() => {
   //* receives focus.
   $(document).on(
     "focusin",
-    ".student-hours-body input, .instr-hours-body input",
+    ".student-hours-body input, .instr-hours-body input, .daily-hours-body input",
     function (evnt) {
-      evnt.stopPropagation();
+      // evnt.stopPropagation();
       const parentId = $(this).parent().parent().attr("id");
-      const children = $(`#${parentId} > td`);
+      const children = $(`#${parentId} td`);
       $(children).toggleClass("border-blue");
     }
   );
@@ -854,24 +854,32 @@ $(document).ready(() => {
     }
   );
 
-  //* Down arrow to go to next cell under in Hours Student &
-  //* Instructors tables
+  //* Down/Up arrow to go to next cell under in Hours Student,
+  //* Instructors & Daily hour tables
   $(document).on(
     "keyup",
-    ".student-hours-body input, .instr-hours-body input",
+    ".student-hours-body input, .instr-hours-body input, .daily-hours-body input",
     function (evnt) {
       evnt.preventDefault();
       evnt.stopPropagation();
+      const inputName = $(this).attr("name");
+      const rowId = $(this).parent().parent().attr("id");
+      // const bodyClass = $(`#${rowId}`).attr("data-student")
+      //   ? ".student-hours-body"
+      //   : ".instr-hours-body";
+      let nextRowIndex = "";
+      const bodyClass = $(`#${rowId}`).parent().attr("class");
+      // console.log("bodyClass :>> ", bodyClass);
       if (evnt.which === 40) {
-        const inputName = $(this).attr("name");
-        const rowId = $(this).parent().parent().attr("id");
-        const nextRowIndex = $(`#${rowId}`).index() + 1;
-        const bodyClass = $(`#${rowId}`).attr("data-student")
-          ? ".student-hours-body"
-          : ".instr-hours-body";
-        const nextRowId = $(`${bodyClass} tr`).eq(nextRowIndex).attr("id");
-        $(`#${nextRowId} input[name=${inputName}]`).focus();
+        // Arrow Down
+        nextRowIndex = $(`#${rowId}`).index() + 1;
+      } else if (evnt.which === 38) {
+        // Arrow Up
+        nextRowIndex = $(`#${rowId}`).index() - 1;
       }
+
+      const nextRowId = $(`.${bodyClass} tr`).eq(nextRowIndex).attr("id");
+      $(`#${nextRowId} input[name=${inputName}]`).focus();
     }
   );
 
