@@ -28,24 +28,46 @@ const buildPeriodHashTable = (num, fiscalYear) => {
 
 const createWeekSchedule = () => {
   const scheduleObj = JSON.parse($("#view-bloc").attr("data-schedule"));
+  const trueDaysList = Object.keys(scheduleObj)
+    .filter((key) => key.slice(-3) === "day" && scheduleObj[key] === "True")
+    .map((day) => day.substr(0, 3));
+
+  console.log("trueDaysList :>> ", trueDaysList);
+  let scheduleStartTimes = "";
+  let scheduleEndTimes = "";
   const startTimeList = Object.keys(scheduleObj).filter((key) =>
     key.endsWith("StartTime")
   );
   const endTimeList = Object.keys(scheduleObj).filter((key) =>
     key.endsWith("EndTime")
   );
-  const scheduleStartTimes = startTimeList
-    .map(
-      (time) =>
-        `<td class="schedule-daily" id=${time}>${scheduleObj[time]}</td>`
-    )
-    .join("");
-  const scheduleEndTimes = endTimeList
-    .map(
-      (time) =>
-        `<td class="schedule-daily" id=${time}>${scheduleObj[time]}</td>`
-    )
-    .join("");
+
+  for (let i = 0; i < startTimeList.length; i++) {
+    const startTime = startTimeList[i];
+    const endTime = endTimeList[i];
+
+    const classNoTime = trueDaysList.includes(startTime.substr(0, 3))
+      ? !scheduleObj[startTime] && !scheduleObj[endTime]
+        ? " classDayNoTime"
+        : ""
+      : "";
+
+    scheduleStartTimes += `<td class="schedule-daily${classNoTime}" id=${startTime}>${scheduleObj[startTime]}</td>`;
+    scheduleEndTimes += `<td class="schedule-daily${classNoTime}" id=${endTime}>${scheduleObj[endTime]}</td>`;
+  }
+
+  // const scheduleStartTimes = startTimeList
+  //   .map(
+  //     (time) =>
+  //       `<td class="schedule-daily" id=${time}>${scheduleObj[time]}</td>`
+  //   )
+  //   .join("");
+  // const scheduleEndTimes = endTimeList
+  //   .map(
+  //     (time) =>
+  //       `<td class="schedule-daily" id=${time}>${scheduleObj[time]}</td>`
+  //   )
+  //   .join("");
 
   return [scheduleStartTimes, scheduleEndTimes];
 };

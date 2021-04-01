@@ -185,6 +185,10 @@
   background-color: #2479b5;
 }
 
+.classDayNoTime {
+  background-color: #d3e4f0;
+}
+
 .student-name,
 .instructor-name {
   font-weight: 500;
