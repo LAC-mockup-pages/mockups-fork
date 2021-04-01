@@ -247,6 +247,10 @@
   padding-left: 0.3em;
 }
 
+.weekday {
+  text-align: center;
+}
+
 .schedule-daily:first-of-type {
   font-weight: 600;
   font-size: 0.8em;
