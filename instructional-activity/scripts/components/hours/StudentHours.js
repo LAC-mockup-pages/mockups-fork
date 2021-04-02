@@ -12,6 +12,20 @@ export const updateTotal = (rowId, totalReference) => {
   $(totalCell).text(totalHours);
 };
 
+export const updateCourseTotal = () => {
+  const studentTotalList = $(".student-hours-body .student-total").clone();
+  const totalValueList = [];
+  studentTotalList.each(function (indx) {
+    const value = $(this).text();
+    totalValueList.push(value);
+  });
+  const totalCourseHours = totalValueList.reduce(
+    (tot, num) => tot + Number(num),
+    0
+  );
+  $(".large-number").text(totalCourseHours);
+};
+
 export const createStudentsBloc = (classId) => {
   let body = "";
 

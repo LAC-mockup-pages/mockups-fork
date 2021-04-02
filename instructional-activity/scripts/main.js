@@ -36,7 +36,10 @@ import {
   createStudentDataList
 } from "./components/enrollment/AddStudent.js";
 import { editStudent } from "./components/enrollment/EnrollmentStudents.js";
-import { updateTotal } from "./components/hours/StudentHours.js";
+import {
+  updateCourseTotal,
+  updateTotal
+} from "./components/hours/StudentHours.js";
 import {
   createDailyHours,
   createDailyHoursTable
@@ -851,6 +854,7 @@ $(document).ready(() => {
         : "instructor-total";
       // Updates total cell of the row with new sum
       updateTotal(parentId, totalCell);
+      updateCourseTotal();
     }
   );
 
