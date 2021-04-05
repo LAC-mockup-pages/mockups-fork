@@ -66,3 +66,19 @@ export const createHoursView = (courseID, classID, mainInstructor) => {
     ${instructorHours}
   </div>`;
 };
+
+export const saveInstructorHours = () => {
+  const rows = $(".instr-hours-body tr").clone();
+  const Class_PKID = $("#hours-bloc").attr("data-course");
+  const Personnel_PKID = this.attr("data-personnel-id");
+  const saveList = [];
+  $(rows).each(function (indx) {
+    const Personnel_PKID = $(this).attr("id");
+    const listValues = $("input", this).serializeArray();
+    // createObject() <== /helpers/helperFunctions.js
+    const monthlyHours = createObject(listValues);
+    saveList.push({ ID, Class_PKID, Personnel_PKID, ...monthlyHours });
+  });
+
+  return saveList;
+};

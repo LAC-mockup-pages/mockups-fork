@@ -913,12 +913,12 @@ $(document).ready(() => {
   //* Trigger for change in Daily Hours period selector
   $(document).on("change", "#PeriodID-view", function (evnt) {
     evnt.stopPropagation();
-    const courseId = $("#view-bloc").attr("data-course");
-    const period = $(this).val();
 
     //! =================================================
     //! response to request sent to back end with needed
     //! parameters. Will be active after GJ changes for production
+    // const courseId = $("#view-bloc").attr("data-course");
+    // const period = $(this).val();
     // const reponse= GetDailyHours(courseId,period)
     //! =================================================
 
@@ -932,5 +932,10 @@ $(document).ready(() => {
 
     $(".hours-table").remove();
     $("#hours-bloc").append(dailyHoursView);
+  });
+
+  //* Saving instructor hours
+  $(document).on("click", "#instructor-hours-btn", function (evnt) {
+    evnt.stopPropagation();
   });
 });

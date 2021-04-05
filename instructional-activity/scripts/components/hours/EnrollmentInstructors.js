@@ -48,7 +48,7 @@ const createMonthlyHours = (list) => {
 export const createInstructorHours = () => {
   let body = "";
   for (const instructorObj of GetClassInstructor.slice(0)) {
-    const { Personnel_PKID, PersonnelID, AssignDate, Name } = instructorObj;
+    const { ID, Personnel_PKID, PersonnelID, AssignDate, Name } = instructorObj;
     const instrHoursList = GetInstrHours.slice(0)
       .filter((period) => period.Personnel_PKID === Personnel_PKID)
       .sort((record1, record2) =>
@@ -60,7 +60,7 @@ export const createInstructorHours = () => {
       );
     const monthlyValues = createMonthlyHours(instrHoursList);
     body += `
-      <tr id=${Personnel_PKID} data-personnel=${PersonnelID}>
+      <tr id=${ID} data-personnel=${PersonnelID} data-personnel-id=${Personnel_PKID}>
         <td class="cell-data instructor-name">${Name}</td>
         <td class="cell-data assign-date">${AssignDate}</td>
         ${monthlyValues}
