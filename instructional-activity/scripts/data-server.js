@@ -1498,6 +1498,27 @@ const GetReportingPeriods = [
   }
 ];
 
+const GetIntsHours_Annual = [
+  {
+    ID: "1",
+    Class_PKID: "214651",
+    Personnel_PKID: "2256",
+    InstructorName: "Samantha, Porter",
+    JulHours: "10",
+    AugHours: "5",
+    SepHours: "10",
+    OctHours: "10",
+    NovHours: "10",
+    DecHours: "6",
+    JanHours: "1",
+    FebHours: "2",
+    MarHours: "3",
+    AprHours: "0",
+    MayHours: "0",
+    JunHours: "0"
+  }
+];
+
 const GetInstrHours = [
   {
     ID: "1697491",
