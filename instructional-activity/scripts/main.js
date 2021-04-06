@@ -28,7 +28,8 @@ import { createEnrollmentView } from "./components/enrollment/EnrollmentView.js"
 import {
   cellFocus,
   createHoursView,
-  createSaveObj
+  createSaveObj,
+  saveInstructorHours
 } from "./components/hours/HoursView.js";
 import {
   addStudentModalForm,
@@ -937,5 +938,6 @@ $(document).ready(() => {
   //* Saving instructor hours
   $(document).on("click", "#instructor-hours-btn", function (evnt) {
     evnt.stopPropagation();
+    saveInstructorHours();
   });
 });

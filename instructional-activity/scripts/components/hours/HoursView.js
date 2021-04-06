@@ -3,10 +3,10 @@
 
 import { createInstructorHours } from "./EnrollmentInstructors.js";
 import { createStudentsBloc } from "./StudentHours.js";
+const DT = luxon.DateTime;
 
 export const createSaveObj = (rows) => {
   const saveList = [];
-
   $(rows).each(function (index) {
     const ID = $(this).attr("id");
     const Class_PKID = $(this).attr("data-class");
@@ -70,15 +70,21 @@ export const createHoursView = (courseID, classID, mainInstructor) => {
 export const saveInstructorHours = () => {
   const rows = $(".instr-hours-body tr").clone();
   const Class_PKID = $("#hours-bloc").attr("data-course");
-  const Personnel_PKID = this.attr("data-personnel-id");
   const saveList = [];
   $(rows).each(function (indx) {
-    const Personnel_PKID = $(this).attr("id");
     const listValues = $("input", this).serializeArray();
+    const monthlyList = listValues.map((obj) => {
+      const { name, value } = obj;
+      const monthExpression = DT.fromISO(`2021${name}`).toFormat("LLL");
+      return { name: `${monthExpression}Hours`, value };
+    });
+    const ID = $(this).attr("id");
+    const Personnel_PKID = $(this).attr("data-personnel-id");
+
     // createObject() <== /helpers/helperFunctions.js
-    const monthlyHours = createObject(listValues);
+    const monthlyHours = createObject(monthlyList);
     saveList.push({ ID, Class_PKID, Personnel_PKID, ...monthlyHours });
   });
-
+  console.log("saveList :>> ", saveList);
   return saveList;
 };
