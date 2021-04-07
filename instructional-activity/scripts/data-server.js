@@ -1501,7 +1501,7 @@ const GetReportingPeriods = [
 const GetIntsHours_Annual = [
   {
     ID: "1",
-    Class_PKID: "214651",
+    Class_PKID: "232270",
     Personnel_PKID: "2256",
     InstructorName: "Samantha, Porter",
     JulHours: "10",
@@ -1513,6 +1513,24 @@ const GetIntsHours_Annual = [
     JanHours: "1",
     FebHours: "2",
     MarHours: "3",
+    AprHours: "0",
+    MayHours: "0",
+    JunHours: "0"
+  },
+  {
+    ID: "2",
+    Class_PKID: "232270",
+    Personnel_PKID: "28555",
+    InstructorName: "Alfieri, Shelley",
+    JulHours: "12",
+    AugHours: "15",
+    SepHours: "12",
+    OctHours: "8",
+    NovHours: "8",
+    DecHours: "7",
+    JanHours: "10",
+    FebHours: "21",
+    MarHours: "4",
     AprHours: "0",
     MayHours: "0",
     JunHours: "0"
