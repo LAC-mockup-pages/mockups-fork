@@ -897,19 +897,25 @@ $(document).ready(() => {
     $("#hours-bloc").empty().append(topSection);
   });
 
-  //* Saving updated values in Student Hours table
-  $(document).on("click", "#student-hours-btn", function (evnt) {
-    evnt.stopPropagation();
-    const rows = $(".student-hours-body tr").clone();
-    const saveList = createSaveObj(rows);
-    console.table(saveList);
+  //* Saving updated values in Student/Instructor Hours table
+  $(document).on(
+    "click",
+    "#student-hours-btn, #instructor-hours-btn",
+    function (evnt) {
+      evnt.stopPropagation();
+      const selectedBody =
+        $(this).attr("id") === "#student-hours-btn" ? "student" : "instructor";
+      const rows = $(`.${selectedBody}-hours-body tr`).clone();
+      const saveList = createSaveObj(rows);
+      console.table(saveList);
 
-    //! =================================================
-    //! result = JSON Object to send back to database
-    //! for bulk update
-    const result = JSON.stringify(saveList);
-    //! =================================================
-  });
+      //! =================================================
+      //! result = JSON Object to send back to database
+      //! for bulk update
+      const result = JSON.stringify(saveList);
+      //! =================================================
+    }
+  );
 
   //* Trigger for change in Daily Hours period selector
   $(document).on("change", "#PeriodID-view", function (evnt) {
@@ -933,11 +939,5 @@ $(document).ready(() => {
 
     $(".hours-table").remove();
     $("#hours-bloc").append(dailyHoursView);
-  });
-
-  //* Saving instructor hours
-  $(document).on("click", "#instructor-hours-btn", function (evnt) {
-    evnt.stopPropagation();
-    saveInstructorHours();
   });
 });

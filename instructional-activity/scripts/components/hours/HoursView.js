@@ -9,13 +9,19 @@ export const createSaveObj = (rows) => {
   const saveList = [];
   $(rows).each(function (index) {
     const ID = $(this).attr("id");
-    const Class_PKID = $(this).attr("data-class");
-    const Student_PKID = $(this).attr("data-student");
+    const Class_PKID = $("#hours-bloc").attr("data-course");
+    const saveObj = { ID, Class_PKID };
+
+    const category = $(this).attr("data-student") ? "student" : "personnel";
+    const categoryKey =
+      category === "student" ? "Student_PKID" : "Instructor_PKID";
+    saveObj[categoryKey] = $(this).attr(`data-${category}`);
+
     const listValues = $("input", this).serializeArray();
 
     // createObject() <== /helpers/helperFunctions.js
     const monthlyHours = createObject(listValues);
-    saveList.push({ ID, Class_PKID, Student_PKID, ...monthlyHours });
+    saveList.push({ ...saveObj, ...monthlyHours });
   });
   return saveList;
 };
