@@ -904,9 +904,14 @@ $(document).ready(() => {
     function (evnt) {
       evnt.stopPropagation();
       const selectedBody =
-        $(this).attr("id") === "#student-hours-btn" ? "student" : "instructor";
+        $(this).attr("id") === "student-hours-btn" ? "student" : "instr";
       const rows = $(`.${selectedBody}-hours-body tr`).clone();
+
+      console.log("selectedBody :>> ", selectedBody);
+      console.log("rows :>> ", rows);
+
       const saveList = createSaveObj(rows);
+
       console.table(saveList);
 
       //! =================================================
