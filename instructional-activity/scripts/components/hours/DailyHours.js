@@ -32,7 +32,6 @@ const createWeekSchedule = () => {
     .filter((key) => key.slice(-3) === "day" && scheduleObj[key] === "True")
     .map((day) => day.substr(0, 3));
 
-  console.log("trueDaysList :>> ", trueDaysList);
   let scheduleStartTimes = "";
   let scheduleEndTimes = "";
   const startTimeList = Object.keys(scheduleObj).filter((key) =>
@@ -56,25 +55,11 @@ const createWeekSchedule = () => {
     scheduleEndTimes += `<td class="schedule-daily${classNoTime}" id=${endTime}>${scheduleObj[endTime]}</td>`;
   }
 
-  // const scheduleStartTimes = startTimeList
-  //   .map(
-  //     (time) =>
-  //       `<td class="schedule-daily" id=${time}>${scheduleObj[time]}</td>`
-  //   )
-  //   .join("");
-  // const scheduleEndTimes = endTimeList
-  //   .map(
-  //     (time) =>
-  //       `<td class="schedule-daily" id=${time}>${scheduleObj[time]}</td>`
-  //   )
-  //   .join("");
-
   return [scheduleStartTimes, scheduleEndTimes];
 };
 
 export const createDailyHours = (classId) => {
   const classFY = $("#view-bloc").attr("data-year");
-  const course = $("#view-bloc").attr("id");
   const [scheduleStartTimes, scheduleEndTimes] = createWeekSchedule();
   const presentFY = Number(SESSION_VARIABLE[0].FiscalYear)
     ? SESSION_VARIABLE[0].FiscalYear
@@ -132,7 +117,7 @@ export const createDailyHours = (classId) => {
   </tbody></table></form></div>`;
 
   return `
-  <div class="container-fluid row blue-light-text" id="daily-hours">
+  <div class="container-fluid row blue-light-text" id="daily-hours" data-class-id=${classId}>
     <div class="daily-title label-text col-md-4">${classId} | Daily Contact Hours</div>
     <div class="label-text col-md-2"></div>
     <div class="col-md-3">${selectPeriod}</div>

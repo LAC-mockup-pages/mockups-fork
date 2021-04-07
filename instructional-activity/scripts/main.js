@@ -29,7 +29,7 @@ import {
   cellFocus,
   createHoursView,
   createSaveObj,
-  saveInstructorHours
+  saveDailyHours
 } from "./components/hours/HoursView.js";
 import {
   addStudentModalForm,
@@ -944,5 +944,18 @@ $(document).ready(() => {
 
     $(".hours-table").remove();
     $("#hours-bloc").append(dailyHoursView);
+  });
+
+  //* Saving Daily hours for students
+  $(document).on("click", "#daily-hours-btn", function (evnt) {
+    evnt.stopPropagation();
+    const rows = $(`.daily-hours-body tr`).clone();
+    const saveList = saveDailyHours(rows);
+
+    //! =================================================
+    //! result = JSON Object to send back to database
+    //! for bulk update
+    const result = JSON.stringify(saveList);
+    //! =================================================
   });
 });

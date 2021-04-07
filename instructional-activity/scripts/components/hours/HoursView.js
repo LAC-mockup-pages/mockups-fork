@@ -91,6 +91,22 @@ export const saveInstructorHours = () => {
     const monthlyHours = createObject(monthlyList);
     saveList.push({ ID, Class_PKID, Personnel_PKID, ...monthlyHours });
   });
-  console.log("saveList :>> ", saveList);
+  return saveList;
+};
+
+export const saveDailyHours = (rows) => {
+  const Class_PKID = $("#view-bloc").attr("data-course");
+  const ClassID = $("#view-bloc").attr("data-class");
+  const ClassperiodID = $("#PeriodID-view").val();
+  const saveList = [];
+  $(rows).each(function (indx) {
+    let saveObj = { Class_PKID, ClassID, ClassperiodID };
+    const ID = $(this).attr("id");
+    const studentID = $(this).attr("data-student");
+    const dailyValues = $("input", this).serializeArray();
+    const dailyHours = createObject(dailyValues);
+    saveObj = { ID, ...saveObj, studentID, ...dailyHours };
+    saveList.push(saveObj);
+  });
   return saveList;
 };
