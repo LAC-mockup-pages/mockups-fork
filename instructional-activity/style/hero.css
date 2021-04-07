@@ -225,7 +225,10 @@
   border-bottom: 1px solid #2479b5;
 }
 
-.month-value,
+.month-value {
+  width: 3.1em;
+}
+
 .daily-value {
   width: 3.9em;
 }
