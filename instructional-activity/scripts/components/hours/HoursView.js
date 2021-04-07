@@ -1,7 +1,7 @@
 // Hours view for the students and instructor(s) in a selected course
 // Accessible only from the Enrollment and Details views.
 
-import { createInstructorHours } from "./EnrollmentInstructors.js";
+import { createInstrBloc } from "./EnrollmentInstructors.js";
 import { createStudentsBloc } from "./StudentHours.js";
 const DT = luxon.DateTime;
 
@@ -43,8 +43,8 @@ export const cellFocus = () => {
 
   $(`#${firstRowId} input[name=${inputName}]`).focus();
 };
-export const createHoursView = (courseID, classID, mainInstructor) => {
-  const instructorHours = createInstructorHours(mainInstructor);
+export const createHoursView = (courseID, classID) => {
+  const instructorHours = createInstrBloc(courseID);
   const studentHours = createStudentsBloc(classID);
 
   const today = new Date();

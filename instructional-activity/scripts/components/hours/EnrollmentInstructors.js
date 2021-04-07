@@ -16,73 +16,57 @@ export const buildPeriods = () => {
   }
   return [...secondSemester, ...firstSemester];
 };
-// Create Object with 12 months of instructional hours for
-// an instructor and a total column.
-const createMonthlyHours = (list) => {
-  let row = "";
-  const periods = buildPeriods();
-  let totalInstrHours = 0;
 
-  for (const period of periods) {
-    let month = list.find((record) => record.PeriodID.slice(-4) === period);
-    if (month) {
-      totalInstrHours += Number(month.InstHours);
-      row += `
-      <td class="cell-data month-value">
-        <input class="cell-input" id=${month.ID} name=${period} value=${month.InstHours}>
-      </td>`;
-    } else {
-      row += `
-      <td class="cell-data month-value">
-        <input class="cell-input"  name=${period} value="">
-      </td>`;
-    }
-  }
-  row += `
-  <td class="cell-data instructor-total">${totalInstrHours}</td>
-  `;
-
-  return row;
-};
-
-export const createInstructorHours = () => {
+export const createInstrBloc = (classPkId) => {
   let body = "";
-  for (const instructorObj of GetClassInstructor.slice(0)) {
-    const { ID, Personnel_PKID, PersonnelID, AssignDate, Name } = instructorObj;
-    const instrHoursList = GetInstrHours.slice(0)
-      .filter((period) => period.Personnel_PKID === Personnel_PKID)
-      .sort((record1, record2) =>
-        record1.PeriodID < record2.PeriodID
-          ? -1
-          : record1.PeriodID > record2.PeriodID
-          ? 1
-          : 0
-      );
-    const monthlyValues = createMonthlyHours(instrHoursList);
+
+  //! Endpoint sending the request  -  Production only
+  //const annualInstrHours=GetIntsHours_Annual(coursePkId).slice(0)
+  //! Call to the data object in dataServer.js  -  Development only
+  const annualInstrHours = GetIntsHours_Annual.slice(0);
+
+  for (const record of annualInstrHours) {
+    const { ID, Personnel_PKID, InstructorName } = record;
+    let monthlyValues = "";
+    let instructorTotal = 0;
+    const monthlyHours = Object.keys(record).filter((field) =>
+      field.includes("Hours")
+    );
+
+    for (const key of monthlyHours) {
+      const value = record[key] === "0" ? "" : record[key];
+      instructorTotal += value ? Number(value) : 0;
+      monthlyValues += `
+      <td class="cell-data month-value">
+        <input class="cell-input" name=${key} value=${value}>
+      </td>
+      `;
+    }
     body += `
-      <tr id=${ID} data-personnel=${PersonnelID} data-personnel-id=${Personnel_PKID}>
-        <td class="cell-data instructor-name">${Name}</td>
-        <td class="cell-data assign-date">${AssignDate}</td>
+      <tr id=${ID}  data-personnel=${Personnel_PKID}>
+        <td class="cell-data instructor-name">${InstructorName}</td>
+        <td class="cell-data assign-date">MM-DD-YYYY</td>
         ${monthlyValues}
+        <td class="cell-data instructor-total">${instructorTotal}</td>
       </tr>
       `;
   }
 
   return `
-  <div class="container-fluid row blue-light-text" id="instructor-hours">
-    <div class="instr-title label-text col-md-4">Instructional Hours</div>
-    <div class="label-text col-md-5"></div>
-    <div class="container-fluid row col-md-3">
-      <button type="button" id="instructor-hours-btn" class="btn dark-blue-text blue-light-bg col-sm-6">Save</button>
-    </div>
+<div class="container-fluid row blue-light-text" id="instructor-hours">
+  <div class="instr-title label-text col-md-4">Instructional Hours</div>
+  <div class="label-text col-md-5"></div>
+  <div class="container-fluid row col-md-3">
+    <button type="button" id="instructor-hours-btn" class="btn dark-blue-text blue-light-bg col-sm-6">Save</button>
   </div>
-  <div class="instr-scrolling">
-    <table class="table table-condensed scrolling-hours" id="instr-hours-table">
+</div>
+<div class="instr-scrolling">
+  <table class="table table-condensed scrolling-hours" id="instr-hours-table">
 
-      <tbody class="instr-hours-body">
-        ${body}
-      </tbody>
-    </table>
-  </div>
-  `;
+    <tbody class="instr-hours-body">
+      ${body}
+    </tbody>
+  </table>
+</div>
+`;
 };
