@@ -951,7 +951,7 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const rows = $(`.daily-hours-body tr`).clone();
     const saveList = saveDailyHours(rows);
-
+    console.log("saveList :>> ", saveList);
     //! =================================================
     //! result = JSON Object to send back to database
     //! for bulk update

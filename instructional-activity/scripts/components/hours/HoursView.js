@@ -95,6 +95,18 @@ export const saveInstructorHours = () => {
 };
 
 export const saveDailyHours = (rows) => {
+  // Add missing day keys to dayObj to have 31 days no matter the month length
+  // or the number of classes in a month.
+  const addDays = (dayObj) => {
+    const keyList = Object.keys(dayObj);
+    const additionalDays = {};
+    for (let i = 1; i < 32; i++) {
+      const day = `Day${i}`;
+      if (!keyList.includes(day)) additionalDays[day] = "";
+    }
+    return { ...dayObj, ...additionalDays };
+  };
+
   const Class_PKID = $("#view-bloc").attr("data-course");
   const ClassID = $("#view-bloc").attr("data-class");
   const ClassperiodID = $("#PeriodID-view").val();
@@ -104,7 +116,9 @@ export const saveDailyHours = (rows) => {
     const ID = $(this).attr("id");
     const studentID = $(this).attr("data-student");
     const dailyValues = $("input", this).serializeArray();
-    const dailyHours = createObject(dailyValues);
+
+    // createObject() <== /helpers/helperFunctions.js
+    const dailyHours = addDays(createObject(dailyValues));
     saveObj = { ID, ...saveObj, studentID, ...dailyHours };
     saveList.push(saveObj);
   });
