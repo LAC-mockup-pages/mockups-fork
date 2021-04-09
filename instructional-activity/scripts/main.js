@@ -865,22 +865,19 @@ $(document).ready(() => {
     "keyup",
     ".student-hours-body input, .instr-hours-body input, .daily-hours-body input",
     function (evnt) {
-      evnt.preventDefault();
       evnt.stopPropagation();
       const inputName = $(this).attr("name");
       const rowId = $(this).parent().parent().attr("id");
-      // const bodyClass = $(`#${rowId}`).attr("data-student")
-      //   ? ".student-hours-body"
-      //   : ".instr-hours-body";
       let nextRowIndex = "";
       const bodyClass = $(`#${rowId}`).parent().attr("class");
-      // console.log("bodyClass :>> ", bodyClass);
       if (evnt.which === 40) {
         // Arrow Down
         nextRowIndex = $(`#${rowId}`).index() + 1;
       } else if (evnt.which === 38) {
         // Arrow Up
         nextRowIndex = $(`#${rowId}`).index() - 1;
+      } else {
+        return; // Do nothing if pressed key code is not 38 or 40
       }
 
       const nextRowId = $(`.${bodyClass} tr`).eq(nextRowIndex).attr("id");
