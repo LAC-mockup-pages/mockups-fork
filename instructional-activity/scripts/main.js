@@ -903,14 +903,8 @@ $(document).ready(() => {
       const selectedBody =
         $(this).attr("id") === "student-hours-btn" ? "student" : "instr";
       const rows = $(`.${selectedBody}-hours-body tr`).clone();
-
-      console.log("selectedBody :>> ", selectedBody);
-      console.log("rows :>> ", rows);
-
       const saveList = createSaveObj(rows);
-
       console.table(saveList);
-
       //! =================================================
       //! result = JSON Object to send back to database
       //! for bulk update
@@ -948,7 +942,7 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const rows = $(`.daily-hours-body tr`).clone();
     const saveList = saveDailyHours(rows);
-    console.log("saveList :>> ", saveList);
+    console.table(saveList);
     //! =================================================
     //! result = JSON Object to send back to database
     //! for bulk update

@@ -5,6 +5,16 @@ import { createInstrBloc } from "./EnrollmentInstructors.js";
 import { createStudentsBloc } from "./StudentHours.js";
 const DT = luxon.DateTime;
 
+const createTotalHoursProp = (valueObj) => {
+  const totalHours = Object.keys(valueObj)
+    .reduce((total, day) => {
+      const value = valueObj[day] ? Number(valueObj[day]) : 0;
+      return total + value;
+    }, 0)
+    .toString();
+  return totalHours;
+};
+
 export const createSaveObj = (rows) => {
   const saveList = [];
   $(rows).each(function (index) {
@@ -21,7 +31,8 @@ export const createSaveObj = (rows) => {
 
     // createObject() <== /helpers/helperFunctions.js
     const monthlyHours = createObject(listValues);
-    saveList.push({ ...saveObj, ...monthlyHours });
+    const TotalHours = createTotalHoursProp(monthlyHours);
+    saveList.push({ ...saveObj, ...monthlyHours, TotalHours });
   });
   return saveList;
 };
@@ -73,30 +84,9 @@ export const createHoursView = (courseID, classID) => {
   </div>`;
 };
 
-export const saveInstructorHours = () => {
-  const rows = $(".instr-hours-body tr").clone();
-  const Class_PKID = $("#hours-bloc").attr("data-course");
-  const saveList = [];
-  $(rows).each(function (indx) {
-    const listValues = $("input", this).serializeArray();
-    const monthlyList = listValues.map((obj) => {
-      const { name, value } = obj;
-      const monthExpression = DT.fromISO(`2021${name}`).toFormat("LLL");
-      return { name: `${monthExpression}Hours`, value };
-    });
-    const ID = $(this).attr("id");
-    const Personnel_PKID = $(this).attr("data-personnel-id");
-
-    // createObject() <== /helpers/helperFunctions.js
-    const monthlyHours = createObject(monthlyList);
-    saveList.push({ ID, Class_PKID, Personnel_PKID, ...monthlyHours });
-  });
-  return saveList;
-};
-
 export const saveDailyHours = (rows) => {
-  // Add missing day keys to dayObj to have 31 days no matter the month length
-  // or the number of classes in a month.
+  // Add missing day keys to dayObj to have 31 days no matter the
+  // month length or the number of classes in a month.
   const addDays = (dayObj) => {
     const keyList = Object.keys(dayObj);
     const additionalDays = {};
@@ -119,7 +109,8 @@ export const saveDailyHours = (rows) => {
 
     // createObject() <== /helpers/helperFunctions.js
     const dailyHours = addDays(createObject(dailyValues));
-    saveObj = { ID, ...saveObj, studentID, ...dailyHours };
+    const TotalHours = createTotalHoursProp(dailyHours);
+    saveObj = { ID, ...saveObj, studentID, ...dailyHours, TotalHours };
     saveList.push(saveObj);
   });
   return saveList;
