@@ -175,7 +175,7 @@
 .instr-scrolling {
   max-height: 100px;
   position: relative;
-  overflow-y: scroll;
+  overflow-y: auto;
   margin-bottom: 0.5%;
 }
 
