@@ -5,12 +5,12 @@
 
 const tileSet = [
   {
-    id: "tile1",
-    header: "Post Test",
-    background: "rgba(247,224,149,0), rgba(247,224,149,1)",
-    details: ["75%"],
+    id: "tile2",
+    header: "Employment Q2",
+    background: "rgba(172,143,194,0), rgba(172,143,194,1)",
+    details: ["52%"],
     formatDetails: "",
-    target: "../dashboard-post/index.html"
+    target: "../assets/coming-soon.html"
   },
   {
     id: "tile0",
@@ -20,15 +20,15 @@ const tileSet = [
     formatDetails: "",
     target: "../dashboard-msg/index.html"
   },
-
   {
-    id: "tile2",
-    header: "Employment Q2",
-    background: "rgba(172,143,194,0), rgba(172,143,194,1)",
-    details: ["52%"],
+    id: "tile1",
+    header: "Post Test",
+    background: "rgba(247,224,149,0), rgba(247,224,149,1)",
+    details: ["75%"],
     formatDetails: "",
-    target: "../assets/coming-soon.html"
+    target: "../dashboard-post/index.html"
   },
+
   {
     id: "tile3",
     header: "Employment Q4",
@@ -248,11 +248,11 @@ const createLeftNavBar = () => {
     let tileClass = "";
 
     switch (record.id) {
-      case "tile1":
+      case "tile2":
         tileClass = "large-tile";
         break;
       case "tile0":
-      case "tile2":
+      case "tile1":
       case "tile3":
         tileClass = "medium-tile";
         break;
