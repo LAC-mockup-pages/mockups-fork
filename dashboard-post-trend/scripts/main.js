@@ -35,7 +35,7 @@ const tileSet = [
     background: "rgba(166,166,166,0), rgba(166,166,166,1)",
     details: ["23%"],
     formatDetails: "",
-    target: "../assets/coming-soon.html"
+    target: "../dashboard-eq4/index.html"
   },
   {
     id: "tile4",
