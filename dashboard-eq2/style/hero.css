@@ -184,7 +184,7 @@
 .stat-graph,
 .table1,
 .table2 {
-  height: 26em;
+  height: 27em;
   width: 90%;
   background-color: #f5f5f5;
   margin-top: 1.5%;
@@ -200,7 +200,7 @@ th {
 .table2 {
   height: 9em;
   color: #333;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .table1 thead th,
@@ -231,7 +231,6 @@ th {
   padding: 0px;
   padding-left: 2px;
   vertical-align: top;
-  width: 45%;
   font-size: 0.9em;
   line-height: 1.8em;
 }

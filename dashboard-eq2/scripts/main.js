@@ -43,7 +43,7 @@ const tileSet = [
     background: "rgb(211,228,240)",
     details: [
       ["Enrolled:", "450"],
-      ["Hours:", "22,000"]
+      ["Hours:", "22000"]
     ],
     formatDetails: "tile-details-small",
     target: "../assets/coming-soon.html"
@@ -101,105 +101,79 @@ const tileSet = [
 
 const dataSet1 = [
   {
-    Site: "Enterprise site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+    Reporting_Year: "2020",
+    Exit_Quarter: "Jul. to Sep. 2018",
+    Match_Cohort: "350",
+    Match: "0.42",
+    Survey_Cohort: "1200",
+    Survey: "0.1",
+    ReportLink: ""
   },
   {
-    Site: "Far site",
-    Enrollment: "560",
-    PostTest: "0.07",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+    Reporting_Year: "2020",
+    Exit_Quarter: "Oct. to Dec. 2018",
+    Match_Cohort: "200",
+    Match: "0.55",
+    Survey_Cohort: "990",
+    Survey: "0.05",
+    ReportLink: ""
   },
   {
-    Site: "Mulberry site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+    Reporting_Year: "2020",
+    Exit_Quarter: "Jan. to Mar. 2019",
+    Match_Cohort: "420",
+    Match: "0.35",
+    Survey_Cohort: "1086",
+    Survey: "0.09",
+    ReportLink: ""
   },
   {
-    Site: "Alpha site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Old English site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Decrepit site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Voyager site",
-    Enrollment: "299",
-    PostTest: "0.57",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+    Reporting_Year: "2020",
+    Exit_Quarter: "Apr. to Jun. 2019",
+    Match_Cohort: "500",
+    Match: "0.59",
+    Survey_Cohort: "1336",
+    Survey: "0.11",
+    ReportLink: ""
   }
 ];
 
 const dataSet2 = [
   {
-    Teacher: "James T. Kirk",
-    Enrollment: "18",
-    PostTest: "0.22",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
+    Reporting_Year: "2021",
+    Exit_Quarter: "Jul. to Sep. 2019",
+    Match_Cohort: "350",
+    Match: "0.42",
+    Survey_Cohort: "1200",
+    Survey: "0.1",
+    ReportLink: ""
   },
   {
-    Teacher: "Katherine Janway",
-    Enrollment: "22",
-    PostTest: "0.72",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
+    Reporting_Year: "2021",
+    Exit_Quarter: "Oct. to Dec. 2019",
+    Match_Cohort: "200",
+    Match: "0.55",
+    Survey_Cohort: "990",
+    Survey: "0.05",
+    ReportLink: ""
   },
   {
-    Teacher: "Phillippa Gorgious",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
+    Reporting_Year: "2021",
+    Exit_Quarter: "Jan. to Mar. 2020",
+    Match_Cohort: "420",
+    Match: "0.35",
+    Survey_Cohort: "1086",
+    Survey: "0.09",
+    ReportLink: ""
   },
   {
-    Teacher: "New Kid",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Peter Cetera",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Alan Greenspan",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Ben Sisko",
-    Enrollment: "22",
-    PostTest: "0.35",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
+    Reporting_Year: "2021",
+    Exit_Quarter: "Apr. to Jun. 2020",
+    Match_Cohort: "500",
+    Match: "0.59",
+    Survey_Cohort: "1336",
+    Survey: "0.11",
+    ReportLink: ""
   }
 ];
 
@@ -309,7 +283,9 @@ const createTableBody = (list) => {
     const link = ` href=${obj.ReportLink}`;
     for (const key of Object.keys(obj)) {
       if (key === "ReportLink") continue;
-      const value = key === "PostTest" ? percentFormat(obj[key]) : obj[key];
+      const value = ["Match", "Survey"].includes(key)
+        ? percentFormat(obj[key])
+        : obj[key];
       row += `<td class="cell-data">${value}</td>`;
     }
     body += `<tr${link}>${row}</tr$>`;
@@ -319,8 +295,11 @@ const createTableBody = (list) => {
 
 const createTable = (dataList) => {
   const tableHeader = createTableHeader(
-    Object.keys(dataList[0]).filter((str) => str !== "ReportLink")
-  ).replace("PostTest", "Post Test");
+    Object.keys(dataList[0])
+      .filter((str) => str !== "ReportLink")
+      .map((str) => str.replace("_", " "))
+  );
+
   const tableBody = createTableBody(dataList);
   return `<table class="table">${tableHeader}${tableBody}</table>`;
 };
@@ -341,7 +320,9 @@ $(document).ready(() => {
 
   //* Displaying report in a new browser tab when a table row is clicked
   $(document).on("click", ".table tbody tr", function () {
-    const selectedReport = $(this).attr("href");
+    const selectedReport = $(this).attr("href")
+      ? $(this).attr("href")
+      : "../assets/coming-soon.html";
     console.log("selectedReport :>> ", selectedReport);
     window.open(selectedReport);
   });
