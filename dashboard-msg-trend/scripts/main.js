@@ -18,7 +18,7 @@ const tileSet = [
     background: "rgba(247,224,149,0), rgba(247,224,149,1)",
     details: ["75%"],
     formatDetails: "",
-    target: "../assets/coming-soon.html"
+    target: "../dashboard-post/index.html"
   },
   {
     id: "tile2",
@@ -26,7 +26,7 @@ const tileSet = [
     background: "rgba(172,143,194,0), rgba(172,143,194,1)",
     details: ["52%"],
     formatDetails: "",
-    target: "../assets/coming-soon.html"
+    target: "../dashboard-eq2/index.html"
   },
   {
     id: "tile3",
