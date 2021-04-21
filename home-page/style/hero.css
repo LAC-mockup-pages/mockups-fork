@@ -57,3 +57,7 @@ label {
 .form-group {
   margin-bottom: 0;
 }
+
+#top-nav {
+  z-index: 100;
+}
