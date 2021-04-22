@@ -58,6 +58,13 @@ label {
   margin-bottom: 0;
 }
 
-#top-nav {
-  z-index: 100;
+/* Top nav bar  */
+/* =========================== */
+
+.top-nav {
+  margin: 3% 0%;
+  background-color: #f0f0f5;
+}
+.hamburger-label {
+  margin-left: 5%;
 }
