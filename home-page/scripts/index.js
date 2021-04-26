@@ -157,6 +157,16 @@ $(document).ready(() => {
     $(this).toggleClass("blue-light-bg blue-text");
   });
 
+  //* Open side nav
+  $(document).on("click", "#menu-button", function (evnt) {
+    $("#sidenav").width("20%");
+  });
+
+  //* Close side nav
+  $(document).on("click", ".closebtn", function (evnt) {
+    $("#sidenav").width("5%");
+  });
+
   // * Data viewing
   $(".hero").append(renderViewBloc(agencyData[0]));
   // Enables customized tooltips
