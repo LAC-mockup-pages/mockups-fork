@@ -3,7 +3,6 @@
 
 import { createInstrBloc } from "./EnrollmentInstructors.js";
 import { createStudentsBloc } from "./StudentHours.js";
-const DT = luxon.DateTime;
 
 const createTotalHoursProp = (valueObj) => {
   const totalHours = Object.keys(valueObj)
