@@ -889,9 +889,21 @@ $(document).ready(() => {
   //* when clicking button in HoursView.
   $(document).on("click", "#daily-btn", function (evnt) {
     evnt.stopPropagation();
-    const topSection = createDailyHours($("#view-bloc").attr("data-class"));
+    const courseId = $("#hours-bloc").attr("data-course");
+    const modalBody = `
+      <div class="warning-text container">
+        <p>Are you sure you want to create or update this course</p>
+        <p>to input Contact hours on a daily basis?</p>
+        <p class="warning-line">WARNING - This action cannot be reversed.</p>
+      </div>
+      <div class="container">
+        <button class="btn btn-danger" id="confirm-btn" type="button">Confirm
+        </button>
+      </div>
+      `;
+    // const topSection = createDailyHours($("#view-bloc").attr("data-class"));
 
-    $("#hours-bloc").empty().append(topSection);
+    // $("#hours-bloc").empty().append(topSection);
   });
 
   //* Saving updated values in Student/Instructor Hours table
