@@ -169,10 +169,10 @@ const dataSet2 = [
   {
     Reporting_Year: "2021",
     Exit_Quarter: "Apr. to Jun. 2020",
-    Match_Cohort: "500",
-    Match: "0.59",
-    Survey_Cohort: "1336",
-    Survey: "0.11",
+    Match_Cohort: "",
+    Match: "",
+    Survey_Cohort: "",
+    Survey: "",
     ReportLink: ""
   }
 ];
@@ -283,7 +283,10 @@ const createTableBody = (list) => {
     const link = ` href=${obj.ReportLink}`;
     for (const key of Object.keys(obj)) {
       if (key === "ReportLink") continue;
-      const value = ["Match", "Survey"].includes(key)
+
+      const value = !obj[key]
+        ? "N/A"
+        : ["Match", "Survey"].includes(key)
         ? percentFormat(obj[key])
         : obj[key];
       row += `<td class="cell-data">${value}</td>`;
