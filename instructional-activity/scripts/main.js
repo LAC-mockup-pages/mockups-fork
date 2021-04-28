@@ -891,16 +891,25 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const courseId = $("#hours-bloc").attr("data-course");
     const modalBody = `
-      <div class="warning-text container">
-        <p>Are you sure you want to create or update this course</p>
-        <p>to input Contact hours on a daily basis?</p>
-        <p class="warning-line">WARNING - This action cannot be reversed.</p>
-      </div>
-      <div class="container">
-        <button class="btn btn-danger" id="confirm-btn" type="button">Confirm
-        </button>
+      <div class="warning-bloc">
+        <div class="warning-text container-fluid">
+          <p>Are you sure you want to update this course for entering Contact hours on a daily basis?</p>
+          <p class="warning-line">WARNING - This action cannot be reversed.</p>
+        </div>
+        <div class=" container-fluid">
+          <button class="btn btn-danger" id="confirm-btn" type="button">Confirm
+          </button>
+        </div>
       </div>
       `;
+
+    $("#modalBloc").modal("toggle");
+    $("#edit-form").empty();
+    $(".warning-bloc").remove();
+    $("#close-btn").text("Cancel");
+    $(".modal-title").text("");
+    $("#save-btn").addClass("hidden");
+    $(".modal-body").append(modalBody);
     // const topSection = createDailyHours($("#view-bloc").attr("data-class"));
 
     // $("#hours-bloc").empty().append(topSection);
