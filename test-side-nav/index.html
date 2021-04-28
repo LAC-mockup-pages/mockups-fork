@@ -35,7 +35,7 @@
       src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
       defer
     ></script>
-
+    <link rel="stylesheet" href="./style/index.css" type="text/css" />
     <script type="text/javascript" src="./scripts/main.js" defer></script>
 
     <!-- !============================= -->
@@ -45,16 +45,79 @@
     <title>Test Side Navbar</title>
   </head>
   <body>
-    <h2>This is working!</h2>
-    <p id="test">Nothing here</p>
-    <!-- <button id="test-button" type="button" class="btn btn-primary">
-      Click ME
-    </button> -->
+    <header>
+      <!-- Top nav -->
+      <div class="container-fluid row top-nav">
+        <div class="col-md-1"></div>
+        <div class="col-md-3 menu-open">
+          <span
+            style="font-size: 30px; cursor: pointer; font-weight: 500"
+            id="menu-button"
+            >&#9776; <span class="hamburger-label">Open</span>
+          </span>
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-2">
+          <div class="dropdown">
+            <a
+              href="#"
+              class="dropdown-toggle"
+              data-toggle="dropdown"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="true"
+              ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              User Name<span class="caret"></span
+            ></a>
+            <ul class="dropdown-menu">
+              <li role="presentation" class="dropdown-header">
+                Hello Full-Name
+              </li>
+              <li>
+                <a href="/logout.aspx"
+                  ><span
+                    class="glyphicon glyphicon-log-out"
+                    aria-hidden="true"
+                  ></span>
+                  Logout</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- End top nav -->
+    </header>
+    <div class="main-text container">
+      <p>
+        Bacon ipsum dolor amet exercitation aliquip consectetur andouille pork
+        occaecat. Ut esse et ut aliquip, picanha quis strip steak enim aliqua
+        exercitation anim magna pork belly reprehenderit. Spare ribs tongue duis
+        venison laborum cillum id voluptate aute et shoulder. Magna velit dolore
+        tenderloin cow ground round beef ribs porchetta id est. Dolor officia
+        commodo shoulder filet mignon biltong magna porchetta irure spare ribs
+        ipsum prosciutto. Shankle turducken quis ullamco spare ribs. Chuck spare
+        ribs est, tempor lorem salami velit filet mignon turkey laborum rump
+        burgdoggen exercitation.
+      </p>
 
-    <span
-      style="font-size: 30px; cursor: pointer; font-weight: 900"
-      id="test-button"
-      >&#9776; Menu open</span
-    >
+      <p>
+        Dolore cupidatat ex et kevin shoulder fatback sunt pastrami pariatur
+        bacon pancetta mollit t-bone. Labore beef short ribs sed ex. Aliquip
+        consectetur meatball elit meatloaf velit strip steak salami. Et aliquip
+        minim, chuck commodo hamburger leberkas. Aliqua in corned beef flank
+        sausage rump. Beef ribs duis kielbasa in sint sausage esse. Prosciutto
+        anim proident jerky meatball, pork belly ham hock enim.
+      </p>
+
+      <p>
+        Deserunt tail ball tip shank pork loin, strip steak turkey. Bacon
+        prosciutto pig, ex excepteur duis anim in pork belly veniam officia.
+        Kevin irure pastrami veniam. Ut consequat meatball leberkas short loin
+        pork loin ribeye nulla magna brisket, turkey flank. Frankfurter
+        exercitation cillum fugiat, deserunt fatback sed pig cupidatat pancetta.
+        Ut excepteur quis leberkas nulla ex esse dolor ea elit.
+      </p>
+    </div>
   </body>
 </html>
