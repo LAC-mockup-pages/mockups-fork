@@ -907,7 +907,7 @@ $(document).ready(() => {
     $("#edit-form").empty();
     $(".warning-bloc").remove();
     $("#close-btn").text("Cancel");
-    $(".modal-title").text("");
+    $(".modal-title").text("Please confirm");
     $("#save-btn").addClass("hidden");
     $(".modal-body").append(modalBody);
     // const topSection = createDailyHours($("#view-bloc").attr("data-class"));
