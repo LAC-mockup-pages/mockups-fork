@@ -910,9 +910,13 @@ $(document).ready(() => {
     $(".modal-title").text("Please confirm");
     $("#save-btn").addClass("hidden");
     $(".modal-body").append(modalBody);
-    // const topSection = createDailyHours($("#view-bloc").attr("data-class"));
+  });
 
-    // $("#hours-bloc").empty().append(topSection);
+  //* Confirm displaying daily hours view
+  $(document).on("click", "#confirm-btn", function (evnt) {
+    $("#modalBloc").modal("toggle");
+    const topSection = createDailyHours($("#view-bloc").attr("data-class"));
+    $("#hours-bloc").empty().append(topSection);
   });
 
   //* Saving updated values in Student/Instructor Hours table
