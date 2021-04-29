@@ -7,12 +7,16 @@
 //*=================================================
 
 $(document).ready(() => {
-  //* Testing the integration
-  $("#test-button").on("click", function (evnt) {
-    const target = $("#test");
+  //* Opening side Nav
+  $(document).on("click", "#menu-btn", function (evnt) {
+    $(".sidenav").width("20%");
+    $(".sidenav a").toggleClass("hidden");
+    $(".sidenav .small-label").toggleClass("hidden");
+  });
 
-    const message =
-      $(target).text() === "Nothing here" ? "Replaced text" : "Nothing here";
-    $(target).text(message);
+  //* Closing side Nav
+  $(document).on("click", ".close-btn", function (evnt) {
+    $(".sidenav").width("3%");
+    $(".sidenav a, .small-label").toggleClass("hidden");
   });
 });

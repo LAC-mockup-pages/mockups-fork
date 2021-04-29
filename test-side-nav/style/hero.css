@@ -62,15 +62,23 @@ label {
 /* =========================== */
 
 .top-nav {
-  margin: 3% 0%;
+  margin: 2% 0%;
   background-color: #f0f0f5;
 }
+
+.dropdown-user {
+  margin-top: 0.7%;
+  font-size: 1.2em;
+}
+
 .hamburger-label {
   margin-left: 5%;
 }
 
 /* Main text */
-
+.main-text {
+  border: 3px solid #2479b5;
+}
 .main-text p {
   font-size: 1.6em;
 }
@@ -80,15 +88,15 @@ label {
 /* The side navigation menu */
 .sidenav {
   height: 100%; /* 100% Full-height */
-  width: 5%; /* 0 width - change this with JavaScript */
+  width: 3%; /* 0 width - change this with JavaScript */
   position: fixed; /* Stay in place */
   z-index: 100; /* Stay on top */
   top: 0; /* Stay at the top */
   left: 0;
-  background-color: #111; /* Black*/
+  background-color: #2479b5;
   overflow-x: hidden; /* Disable horizontal scroll */
   padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+  transition: 0.3s; /* 0.5 second transition effect to slide in the sidenav */
 }
 
 /* The navigation menu links */
@@ -96,21 +104,33 @@ label {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 25px;
-  color: #818181;
+  color: #d3e4f0;
   display: block;
-  transition: 0.3s;
+  transition: 0.2s;
 }
 
 /* When you mouse over the navigation links, change their color */
 .sidenav a:hover {
-  color: #f1f1f1;
+  color: #f0e2d5;
 }
 
 /* Position and style the close button (top right corner) */
-.sidenav .closebtn {
+.sidenav .close-btn {
   position: absolute;
   top: 0;
+  color: #dd5814;
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+}
+
+.small-label {
+  color: #d3e4f0;
+  font-size: 1.5em;
+  margin-top: 0.5%;
+}
+.menu-top {
+  margin-bottom: 1%;
+  border-bottom: 2px solid #d3e4f0;
+  padding: 0% 0% 5% 1%;
 }
