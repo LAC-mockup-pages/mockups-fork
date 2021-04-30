@@ -890,33 +890,18 @@ $(document).ready(() => {
   $(document).on("click", "#daily-btn", function (evnt) {
     evnt.stopPropagation();
     const courseId = $("#hours-bloc").attr("data-course");
-    const modalBody = `
-      <div class="warning-bloc">
-        <div class="warning-text container-fluid">
-          <p>Are you sure you want to update this course for entering Contact hours on a daily basis?</p>
-          <p class="warning-line">WARNING - This action cannot be reversed.</p>
-        </div>
-        <div class=" container-fluid">
-          <button class="btn btn-danger" id="confirm-btn" type="button">Confirm
-          </button>
-        </div>
-      </div>
-      `;
 
-    $("#modalBloc").modal("toggle");
-    $("#edit-form").empty();
-    $(".warning-bloc").remove();
-    $("#close-btn").text("Cancel");
-    $(".modal-title").text("Please confirm");
-    $("#save-btn").addClass("hidden");
-    $(".modal-body").append(modalBody);
+    $("#modalConfirm").modal("toggle");
   });
 
   //* Confirm displaying daily hours view
-  $(document).on("click", "#confirm-btn", function (evnt) {
-    $("#modalBloc").modal("toggle");
-    const topSection = createDailyHours($("#view-bloc").attr("data-class"));
-    $("#hours-bloc").empty().append(topSection);
+  $(document).on("click", "#confirm-btn, #daily-cancel-btn", function (evnt) {
+    $("#modalConfirm").modal("toggle");
+
+    if ($(this).attr("id") === "confirm-btn") {
+      const topSection = createDailyHours($("#view-bloc").attr("data-class"));
+      $("#hours-bloc").empty().append(topSection);
+    }
   });
 
   //* Saving updated values in Student/Instructor Hours table
