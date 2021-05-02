@@ -21,6 +21,13 @@
 		"prefix":"click",
 		"body":["$LINE_COMMENT* $1 \n$(document).on('click', '${2:anchor}', function (evnt) {\nevnt.stopPropagation()\nconst formId = '#' + $(this).attr('form') \n$0})"],
 		"description":"Click event code bloc"
+	},
+
+	"Testing module":{
+		"scope":"javascript",
+		"prefix":"test",
+		"body":["QUnit.module( $1, () => {\n QUnit.test($2, (assert) => { assert.$0 \n})\n})"],
+		"description":"QUnit test module"
 	}
 
 }
