@@ -26,7 +26,7 @@
 	"Testing module":{
 		"scope":"javascript",
 		"prefix":"test",
-		"body":["QUnit.module( $1, () => {\n QUnit.test($2, (assert) => { assert.$0 \n})\n})"],
+		"body":["QUnit.module( $1, () => { QUnit.test($2, (assert) => { \nassert.$0 \n})})"],
 		"description":"QUnit test module"
 	}
 
