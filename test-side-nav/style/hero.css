@@ -94,22 +94,21 @@ label {
 
 /* Left side nav bar  */
 /* =========================== */
-/* The side navigation menu */
 .sidenav {
-  height: 100%; /* 100% Full-height */
-  width: 3%; /* 0 width - change this with JavaScript */
-  position: fixed; /* Stay in place */
-  z-index: 100; /* Stay on top */
-  top: 0; /* Stay at the top */
+  height: 100%;
+  width: 3%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
   left: 0;
   background-color: #2479b5;
-  overflow-x: hidden; /* Disable horizontal scroll */
-  padding-top: 60px; /* Place content 60px from the top */
-  transition: 0.3s; /* 0.5 second transition effect to slide in the sidenav */
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.3s;
 }
 
-/* The navigation menu links */
-.sidenav a:not(.close-btn) {
+.sidenav a:not(.close-btn),
+.sidenav .dropdown-btn {
   padding: 8px 8px 8px 32px;
   text-decoration: none;
   font-size: 1.5em;
@@ -118,9 +117,8 @@ label {
   transition: 0.2s;
 }
 
-/* When you mouse over the navigation links, change their color */
-.sidenav a:hover:not(.close-btn) {
-  /* color: #f0e2d5; */
+.sidenav a:hover:not(.close-btn),
+.sidenav .dropdown-btn:hover {
   background-color: #d3e4f0;
   color: #2479b5;
 }
@@ -128,8 +126,19 @@ label {
 .sidenav .close-btn:hover {
   color: #d3e4f0;
 }
+.dropdown-container {
+  display: none;
+  background-color: green;
+  padding-left: 8px;
+}
+.dropdown-user .dropdown-toggle,
+.dropdown-user a,
+.dropdown-header {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.1em;
+}
 
-/* Position and style the close button (top right corner) */
 .sidenav .close-btn {
   position: absolute;
   top: 0;
