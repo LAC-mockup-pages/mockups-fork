@@ -19,7 +19,7 @@
 	"Click event":{
 		"scope":"javascript",
 		"prefix":"click",
-		"body":["$LINE_COMMENT* $1 \n$(document).on('click', '${2:anchor}', function (evnt) {\nevnt.stopPropagation()\nconst formId = '#' + $(this).attr('form') \n$0})"],
+		"body":["$LINE_COMMENT* $1 \n$(document).on('click', '${2:anchor}', function (evnt) {\nevnt.stopPropagation()\n$0})"],
 		"description":"Click event code bloc"
 	},
 
