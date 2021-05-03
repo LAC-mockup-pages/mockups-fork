@@ -104,7 +104,7 @@ label {
   background-color: #2479b5;
   overflow-x: hidden;
   padding-top: 60px;
-  transition: 0.3s;
+  transition: 0.1s;
 }
 
 .sidenav a:not(.close-btn),
@@ -129,7 +129,7 @@ label {
 .dropdown-container {
   display: none;
   background-color: green;
-  padding-left: 8px;
+  padding-left: 15px;
 }
 .dropdown-user .dropdown-toggle,
 .dropdown-user a,

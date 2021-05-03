@@ -15,7 +15,7 @@ $(document).ready(() => {
     ).toggleClass("hidden");
   });
 
-  //* Closing side Nav
+  //* Closing sidenav by clicking close-btn or sidenav losing focus
   $(document).on("click", ".close-btn", function (evnt) {
     $(".sidenav").width("3%");
     $(".sidenav .main-tab, .sidenav .close-btn , .small-label").toggleClass(
