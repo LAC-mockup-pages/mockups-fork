@@ -524,14 +524,14 @@ Back to Top button
   transition: 0.1s;
 }
 
-.sidenav a:not(.close-btn) {
+.main-tab a {
   padding: 3.5% 1% 3.5% 5%;
   margin-left: 1%;
   text-decoration: none;
   font-size: 1.5em;
-  color: #d3e4f0;
-  background-color: #2479b5;
   width: 100%;
+  background-color: #2479b5;
+  color: #d3e4f0;
   text-align: left;
   display: block;
   transition: 0.2s;
@@ -545,6 +545,14 @@ Back to Top button
 
 .sidenav .close-btn:hover {
   color: #d3e4f0;
+}
+
+.active {
+  font-weight: 700;
+}
+
+.dropdown-container .glyphicon {
+  font-size: 0.75em;
 }
 
 .dropdown-container {
@@ -567,6 +575,11 @@ Back to Top button
   right: 25px;
   font-size: 36px;
   margin-left: 50px;
+}
+
+.small-logo {
+  width: 50px;
+  height: 37px;
 }
 
 .small-label {

@@ -28,13 +28,18 @@ $(document).ready(() => {
   //* Selecting a menu item and displaying the sub-menu
   $(document).on("click", ".dropdown-btn", function (evnt) {
     $(".dropdown-container").css("display", "none");
+    $(".main-tab .dropdown-btn").removeClass("active");
 
     $(this).siblings(".dropdown-container").css("display", "block");
+
+    $(this).toggleClass("active");
   });
 
   //* Selecting a submenu item
   $(document).on("click", ".dropdown-container a", function (evnt) {
     $(".dropdown-container").css("display", "none");
+    $(".main-tab .dropdown-btn").removeClass("active");
+
     $(".sidenav").width("3%");
     toggleSideNav();
   });
