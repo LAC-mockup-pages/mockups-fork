@@ -481,3 +481,102 @@ Back to Top button
   font-size: 1.3em;
   font-weight: 600;
 }
+
+/* Top Nav bar
+============================
+*/
+.main-logo {
+  width: 20%;
+  height: 10%;
+  padding: 1% 0% 0% 8%;
+}
+
+.top-logo {
+  background-color: #f0f0f5;
+}
+
+.top-nav {
+  padding: 0.6% 0%;
+  background-color: #f0f0f5;
+}
+
+.dropdown-user {
+  margin-top: 0.7%;
+  font-size: 1.2em;
+}
+
+.hamburger-label {
+  margin-left: 5%;
+}
+
+/* Left side nav bar
+=========================== */
+.sidenav {
+  height: 100%;
+  width: 3%;
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  background-color: #2479b5;
+  overflow-x: hidden;
+  padding-top: 60px;
+  transition: 0.1s;
+}
+
+.sidenav a:not(.close-btn),
+.sidenav .dropdown-btn {
+  padding: 3.5% 1% 3.5% 5%;
+  margin-left: 1%;
+  text-decoration: none;
+  font-size: 1.5em;
+  color: #d3e4f0;
+  background-color: #2479b5;
+  width: 100%;
+  text-align: left;
+  display: block;
+  transition: 0.2s;
+}
+
+.sidenav a:hover:not(.close-btn),
+.sidenav .dropdown-btn:hover {
+  background-color: #d3e4f0;
+  color: #2479b5;
+}
+
+.sidenav .close-btn:hover {
+  color: #d3e4f0;
+}
+
+.dropdown-container {
+  display: none;
+  padding-left: 15px;
+}
+
+.dropdown-user .dropdown-toggle,
+.dropdown-user a,
+.dropdown-header {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+
+.sidenav .close-btn {
+  position: absolute;
+  top: 0;
+  color: #dd5814;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.small-label {
+  color: #d3e4f0;
+  font-size: 1.5em;
+  margin-top: 0.5%;
+}
+.menu-top {
+  margin-bottom: 1%;
+  border-bottom: 2px solid #d3e4f0;
+  padding: 0% 0% 5% 1%;
+}
