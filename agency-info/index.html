@@ -48,7 +48,7 @@
     <script src="../helpers/constants.js" type="text/javascript" defer></script>
 
     <script
-      src="../navbar/scripts/index.js"
+      src="../sidenav/scripts/main.js"
       type="text/javascript"
       defer
     ></script>
@@ -65,249 +65,215 @@
   </head>
   <body>
     <header>
-      <!-- NavBar -->
-      <div class="navbar blue-light-text blue-bg">
-        <div class="container-fluid">
-          <div class="row">
-            <!-- Logo -->
-            <div class="col-md-1 col-sm-1" id="main-logo">
-              <img
-                src="../assets/Main-Logo.png"
-                alt="Main Logo"
-                width="100%"
-                height="100%"
-              />
-            </div>
-            <!-- Nav Items -->
-            <div class="nav-items">
-              <div class="navbar-header col-md-10">
-                <div class="collapse navbar-collapse" id="parentMenu">
-                  <ul
-                    class="nav navbar-nav row"
-                    id="parentMenu1"
-                    role="menu"
-                    aria-labelledby="dropdownMenu"
-                  >
-                    <li class="dropdown">
-                      <a
-                        href="#"
-                        class="dropdown-toggle blue-light-text"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="true"
-                        >Program Info <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a>Agency Info </a>
-                        </li>
-                        <li>
-                          <a>Personnel Info </a>
-                        </li>
-                        <li>
-                          <a>Staff Development </a>
-                        </li>
-                        <li>
-                          <a>Edit EPE Amend Log </a>
-                        </li>
-                      </ul>
-                    </li>
-
-                    <li class="dropdown">
-                      <a
-                        href="#"
-                        class="dropdown-toggle blue-light-text"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="true"
-                        >Student Info <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a>Add Student Info </a>
-                        </li>
-                        <li>
-                          <a>Edit Student Info </a>
-                        </li>
-                      </ul>
-                    </li>
-                    <li class="dropdown">
-                      <a
-                        href="#"
-                        class="dropdown-toggle blue-light-text"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="true"
-                        >Instructional Activity <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a>Add New Course Offering </a>
-                        </li>
-                        <li>
-                          <a>Edit Instructional Activity </a>
-                        </li>
-                      </ul>
-                    </li>
-
-                    <li class="dropdown">
-                      <a
-                        href="#"
-                        class="dropdown-toggle blue-light-text"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="true"
-                        >Management Reports<span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a>Instructional Offering Roster </a>
-                        </li>
-                        <li>
-                          <a>Data Management </a>
-                        </li>
-                        <li>
-                          <a>Turnaround Reports </a>
-                        </li>
-                        <li>
-                          <a>TASC Reports </a>
-                        </li>
-                        <li>
-                          <a>Staff Development Reports </a>
-                        </li>
-                        <li>
-                          <a>TASC Reports </a>
-                        </li>
-                        <li role="separator" class="divider"></li>
-                        <li>
-                          <a>Data Exports </a>
-                        </li>
-                      </ul>
-                    </li>
-
-                    <li class="dropdown">
-                      <a
-                        href="#"
-                        class="dropdown-toggle blue-light-text"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="true"
-                        >Funding Reports Current FY <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a>WIOA / NRS Tables </a>
-                        </li>
-                        <li><a>WIOA / NRS Tables Data Check</a></li>
-                        <li><a>WIO / NRS Data Checks</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a>WIOA / NRS Program Evaluation</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a>NRS Data Checks</a></li>
-                        <li><a>NRS Program Evaluation</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a>EPE Reports</a></li>
-                        <li role="separator" class="divider"></li>
-
-                        <li>
-                          <a
-                            >Funding Reports Previous FY
-                            <span class="caret"></span
-                          ></a>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <!-- Kebab Menu -->
-              <div
-                id="nav-icon"
-                class="col-md-1 dropdown-toggle"
-                data-toggle="dropdown"
-              >
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <ul class="dropdown-menu dropdown-menu-right blue-text">
-                  <li>Help</li>
-                  <li role="separator" class="divider"></li>
-                  <li>Logout</li>
-                </ul>
-              </div>
-            </div>
-          </div>
+      <div class="top-logo">
+        <img src="../assets/Main-Logo.png" class="main-logo" />
+      </div>
+      <!-- Top nav -->
+      <div class="container-fluid row top-nav">
+        <div class="col-md-1"></div>
+        <div class="col-md-3 menu-open">
+          <span
+            style="font-size: 25px; cursor: pointer; font-weight: 500"
+            id="menu-btn"
+            >&#9776; <span class="hamburger-label">Menu</span>
+          </span>
         </div>
-        <!-- User Info -->
-        <div class="user-info blue-bg">
-          <div class="col-md-10">
-            <p>
-              Logged in as: Samantha PorterAnabella -
-              <span>Program Associate at the Practice Agency</span>
-            </p>
+        <div class="col-md-6"></div>
+        <div class="col-md-2 dropdown-user">
+          <div class="dropdown">
+            <a
+              href="#"
+              class="dropdown-toggle"
+              data-toggle="dropdown"
+              role="button"
+              aria-haspopup="true"
+              aria-expanded="true"
+              ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+              User Name<span class="caret"></span
+            ></a>
+            <ul class="dropdown-menu">
+              <li role="presentation" class="dropdown-header">
+                Hello Full-Name
+              </li>
+              <li>
+                <a href="/logout.aspx" id="logout-text"
+                  ><span
+                    class="glyphicon glyphicon-log-out"
+                    aria-hidden="true"
+                  ></span>
+                  Logout</a
+                >
+              </li>
+            </ul>
           </div>
         </div>
       </div>
+      <!-- End top nav -->
+
       <!-- Sub NavBar -->
       <div class="container-fluid blue-bg blue-light-text sub-navbar">
         <ul id="sub-nav" class="nav-justified">
-          <li class="blue-light-bg">
-            <a
-              class="blue-light-bg blue-text"
-              href="../agency-info/index.html"
-              type="text/html"
-              >Agency</a
-            >
+          <li class="blue-light-bg dark-blue-text">
+            <a href="../agency-info/index.html" type="text/html">Agency</a>
           </li>
           <li>
-            <a
-              class="blue-light-text blue-bg"
-              href="../agency-sources/index.html"
-              type="text/html"
+            <a href="../agency-sources/index.html" type="text/html"
               >Funding Sources</a
             >
           </li>
           <li>
-            <a
-              class="blue-light-text blue-bg"
-              href="../agency-sites/index.html"
-              type="text/html"
-              >Sites</a
-            >
+            <a href="../agency-sites/index.html" type="text/html">Sites</a>
           </li>
           <li>
-            <a
-              class="blue-light-text blue-bg"
-              href="../agency-referral-partners/index.html"
-              type="text/html"
+            <a href="../agency-referral-partners/index.html" type="text/html"
               >Referral Partners</a
             >
           </li>
           <li>
-            <a
-              class="blue-light-text blue-bg"
-              href="../agency-non-nrs-outcomes/index.html"
-              type="text/html"
+            <a href="../agency-non-nrs-outcomes/index.html" type="text/html"
               >Non-NRS Outcomes</a
             >
           </li>
           <li>
-            <a
-              class="blue-light-text blue-bg"
-              href="../agency-IELCE-partners/index.html"
-              type="text/html"
+            <a href="../agency-IELCE-partners/index.html" type="text/html"
               >IET / IELCE Cost Tracking</a
             >
           </li>
         </ul>
       </div>
     </header>
+    <!-- Side Nav bar -->
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="close-btn hidden">&times;</a>
+      <div class="menu-top">
+        <img src="../assets/logo_sm.png" class="small-logo" />
+        <span class="small-label hidden">ASISTS</span>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#">Program</a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Agency</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span>
+            Personnel</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Staff
+            Development</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Edit EPE
+            Amend Log</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#">Students</a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Add
+            Student</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Edit
+            Student</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#">Instructional Activity</a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Add New
+            Course</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Edit
+            Instructional Activity</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#">Management Reports</a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span>
+            Instructional Offering Roster</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Data
+            Management</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Turnaround
+            Reports</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> TASC
+            Reports</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Staff
+            Development Reports</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Data
+            Exports</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#">Funding Reports Current FY</a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
+            Tables</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
+            Tables Data Check</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIO / NRS
+            Data Checks</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
+            Program Evaluation</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> NRS Data
+            Checks</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> NRS
+            Program Evaluation</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> EPE
+            Reports</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Funding
+            Reports Prev. FY</a
+          >
+        </div>
+      </div>
+    </div>
+    <!-- End Side Nav bar -->
+
     <!-- Hero -->
     <div class="container hero">
       <!-- Data viewing -->

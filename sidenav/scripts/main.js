@@ -45,4 +45,11 @@ $(document).ready(() => {
     $(".sidenav").width("3%");
     toggleSideNav();
   });
+
+  // * Selecting another page in subnav bar
+  $("#sub-nav li").on("click", function (evnt) {
+    evnt.stopPropagation();
+    $("#sub-nav li").removeClass("blue-light-bg blue-text");
+    $(this).toggleClass("blue-light-bg blue-text");
+  });
 });
