@@ -27,7 +27,9 @@ $(document).ready(() => {
 
   //* Selecting a menu item and displaying the sub-menu
   $(document).on("click", ".dropdown-btn", function (evnt) {
-    $(".dropdown-container").css("display", "block");
+    $(".dropdown-container").css("display", "none");
+
+    $(this).siblings(".dropdown-container").css("display", "block");
   });
 
   //* Selecting a submenu item
