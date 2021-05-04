@@ -21,6 +21,8 @@ $(document).ready(() => {
 
   //* Closing sidenav by clicking close-btn or sidenav losing focus
   $(document).on("click", ".close-btn", function (evnt) {
+    $(".dropdown-container").css("display", "none");
+    $(".main-tab .dropdown-btn").removeClass("active");
     $(".sidenav").width("3%");
     toggleSideNav();
   });

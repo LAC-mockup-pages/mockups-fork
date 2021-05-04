@@ -562,7 +562,8 @@ Back to Top button
 
 .dropdown-user .dropdown-toggle,
 .dropdown-user a,
-.dropdown-header {
+.dropdown-header,
+#logout-text {
   color: #333;
   text-decoration: none;
   font-size: 1.1em;
