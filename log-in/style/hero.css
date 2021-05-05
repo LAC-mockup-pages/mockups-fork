@@ -1,0 +1,153 @@
+/*  Local CSS rules for the page */
+
+body {
+  background-color: #f0f0f5;
+  height: 100vh;
+}
+
+.hero {
+  margin: 0%;
+  border-radius: 0px;
+  height: 59%;
+}
+
+/* Header | Login box
+=========================== */
+
+header {
+  padding: 3% 0% 2% 0%;
+}
+
+#loginform {
+  padding: 7% 0% 0% 10%;
+}
+
+.form-group:not(.submit-btn) {
+  padding-right: 12%;
+}
+
+.form-group:first-of-type {
+  padding-left: 3%;
+  font-size: 1.2em;
+}
+
+.forgot {
+  padding-left: 28%;
+  padding-top: 2%;
+  font-size: 1.2em;
+}
+
+.top-section,
+.top-section .col-md-4,
+.top-section .col-md-8 {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.submit-btn {
+  float: right;
+}
+/* LAC ASISTS info
+=========================== */
+
+.welcome-info {
+  padding: 1% 0%;
+  color: white;
+  background-color: #a6a6a6;
+  background-image: url(../../assets/SUNY-Seal.png);
+  background-position: 15% 32%;
+  background-repeat: no-repeat;
+  font-weight: 600;
+  font-size: 1.3em;
+}
+
+.glyphicon-registration-mark {
+  font-weight: 200;
+  font-size: 0.7em;
+  vertical-align: text-top;
+}
+
+.small-text,
+.regular {
+  padding-left: 10%;
+}
+
+.regular {
+  font-weight: 300;
+  font-size: 0.9em;
+  padding-right: 6%;
+}
+
+/* Link panels
+=========================== */
+.link-panel {
+  background-color: #f0f0f5;
+  padding: 1.5% 1%;
+  height: 100%;
+}
+
+.heading-bar {
+  color: #fff;
+  background: #694e77;
+  /* background: #2479b5; */
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 8px;
+  padding-bottom: 0.75em;
+  padding-top: 0.75em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.float-right {
+  float: right;
+}
+
+.quick-links {
+  display: block;
+  font-size: 1.2em;
+  list-style-type: none;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 30px;
+  padding-inline-end: 30px;
+  line-height: 2em;
+}
+
+.quick-links a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.quick-links a:link,
+.quick-links a:visited,
+.quick-links a:hover,
+.quick-links a:active {
+  text-decoration: none;
+  color: #1d6294;
+}
+
+.quick-links li:hover,
+.quick-links a:active {
+  background-color: #d3e4f0;
+}
+
+/* Footer
+ =========================== */
+.footer-logos {
+  border-top: 2px solid #a6a6a6;
+  padding: 0.5% 0% 0.5% 7%;
+  background-color: #f0f0f5;
+}
+.logo {
+  height: inherit;
+}
+.logo img {
+  margin: 0% 5%;
+}
+.row {
+  margin-right: 0;
+  margin-left: 0;
+}
