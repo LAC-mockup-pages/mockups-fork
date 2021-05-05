@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../assets/favicon.ico"
+    />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"
+      defer
+    ></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+    />
+
+    <!-- Optional theme -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"
+    />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
+      defer
+    ></script>
+
+    <!-- Links and scripts local app -->
+    <link rel="stylesheet" href="style/index.css" type="text/css" />
+
+    <script src="../helpers/constants.js" type="text/javascript" defer></script>
+
+    <script src="./scripts/index.js" type="text/javascript" defer></script>
+
+    <!-- !============================= -->
+    <!-- ! File: /logininfo.aspx -->
+    <!-- !============================= -->
+
+    <title>Mock-up ASISTS Login</title>
+  </head>
+  <body>
+    <header>
+      <div class="container top-section">
+        <div class="row">
+          <div class="col-md-4">
+            <img src="../assets/Main-Logo.png" alt="Asists" />
+          </div>
+          <div class="col-md-8">
+            <form
+              class="form-inline"
+              method="post"
+              action="./login.aspx"
+              id="loginform"
+              role="form"
+            >
+              <!-- User name -->
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"
+                    ><i class="glyphicon glyphicon-user"></i
+                  ></span>
+                  <input
+                    name="ctl00$LoginContentPlaceHolder$Login1$UserName"
+                    type="text"
+                    id="LoginContentPlaceHolder_Login1_UserName"
+                    class="form-control"
+                    placeholder="User name"
+                  />
+                </div>
+              </div>
+
+              <!-- Password -->
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"
+                    ><i class="glyphicon glyphicon-lock"></i
+                  ></span>
+                  <input
+                    name="ctl00$LoginContentPlaceHolder$Login1$Password"
+                    type="password"
+                    id="LoginContentPlaceHolder_Login1_Password"
+                    class="form-control"
+                    placeholder="Password"
+                  />
+                </div>
+              </div>
+              <!--  Submit button -->
+              <div class="form-group submit-btn">
+                <div class="controls">
+                  <input
+                    type="submit"
+                    name="ctl00$LoginContentPlaceHolder$Login1$Login"
+                    value="Sign In"
+                    id="LoginContentPlaceHolder_Login1_Login"
+                    class="btn btn-md btn-primary btn-block"
+                  />
+                </div>
+              </div>
+
+              <div class="form-group forgot">
+                <a href="passwordrecovery.aspx">Forgot your password?</a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Hero -->
+
+    <div class="section welcome-info">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-md-5">
+            <div class="small-text">
+              The Literacy Assistance Center's web-based data management system
+              for New York State adult literacy programs
+            </div>
+          </div>
+          <!--/.col-->
+          <div class="col-md-7">
+            <div class="regular">
+              ASISTS<span class="glyphicon glyphicon-registration-mark"></span>
+              Forms, data management tools, and user support and training make
+              it possible for programs to fulfill National Reporting System
+              (NRS) and other data requirements accurately, easily, and quickly.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero dark-blue-bg">
+      <div class="link-panel container">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="background">
+              <h3 class="heading-bar">
+                Training Calendar
+                <span class="float-right"
+                  ><span class="glyphicon glyphicon-link"></span>
+                </span>
+              </h3>
+              <p></p>
+              <ul class="quick-links">
+                <li>
+                  <a target="_blank" href="http://www.newyorkcityraen.org"
+                    >New York City</a
+                  >
+                </li>
+                <li>
+                  <a target="_blank" href="http://longislandraen.org"
+                    >Long Island</a
+                  >
+                </li>
+                <li>
+                  <a target="_blank" href="http://www.hudsonvalleyraen.org"
+                    >Hudson Valley</a
+                  >
+                </li>
+                <li>
+                  <a
+                    target="_blank"
+                    href="http://calendar.nysed.gov/cgi-bin/Calcium.pl?CalendarName=RAEN"
+                  >
+                    Capital/North Country</a
+                  >
+                </li>
+                <li>
+                  <a
+                    target="_blank"
+                    href="http://www.centralsoutherntierraen.org"
+                    >Central/Southern Tier</a
+                  >
+                </li>
+                <li>
+                  <a target="_blank" href="http://flraen.org">Finger Lakes</a>
+                </li>
+                <li>
+                  <a target="_blank" href="http://www.wnypdc.org">West</a>
+                </li>
+                <li>
+                  <a
+                    target="_blank"
+                    href="http://calendar.nysed.gov/cgi-bin/Calcium.pl?CalendarName=RAEN"
+                  >
+                    State Training Calendar</a
+                  >
+                </li>
+              </ul>
+              <p></p>
+
+              <!--/.nav-->
+            </div>
+            <!--/.background-->
+          </div>
+          <div class="col-md-4">
+            <div class="background">
+              <h3 class="heading-bar">
+                News
+                <span class="float-right"
+                  ><span class="glyphicon glyphicon-link"></span
+                ></span>
+              </h3>
+              <p></p>
+              <ul class="quick-links">
+                <li>
+                  <a
+                    class="modalButton"
+                    data-toggle="modal"
+                    href="#myModal"
+                    data-height="300px"
+                    data-width="100%"
+                    data-target="#myModal"
+                    data-id="1"
+                    data-news="Reminder:
+ASISTS will be offline for
+maintenance from
+Friday evening, 4/9/2021,
+through Saturday, 4/10/2021.
+
+ASISTS will be back online no later
+than Sunday morning, 4/11/2021."
+                  >
+                    ASISTS Offline for Maintenance 4/10/2021</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    class="modalButton"
+                    data-toggle="modal"
+                    href="#myModal"
+                    data-height="300px"
+                    data-width="100%"
+                    data-target="#myModal"
+                    data-id="2"
+                    data-news="The 2020-2021 NYSED Calendar of Due Dates
+is now available in the ASISTS Resource Section or
+by copying and pasting the link below:
+
+https://drive.google.com/file/d/11z4jhihXVVNqPOCxLgdwx5Aqu7wL3GVP/view?usp=sharing"
+                  >
+                    New NYSED Calendar of Due Dates</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    class="modalButton"
+                    data-toggle="modal"
+                    href="#myModal"
+                    data-height="300px"
+                    data-width="100%"
+                    data-target="#myModal"
+                    data-id="3"
+                    data-news="There is NO new Individual Student Record Form
+for FY2021.
+
+Please continue to use the form originally released for FY2020
+
+This form is available in 7 languages other than English.
+
+Please access it through the ASIST Resource bank,
+or via the link below:
+
+https://drive.google.com/open?id=1zmCseCQK_rnU6y01LN4c3HGbnimLEyEf"
+                  >
+                    FY2020-2021 ISRF Translations</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    class="modalButton"
+                    data-toggle="modal"
+                    href="#myModal"
+                    data-height="300px"
+                    data-width="100%"
+                    data-target="#myModal"
+                    data-id="4"
+                    data-news="Password Procedure Changes - December 2017
+
+Password Change procedure/ New User Request instructions:
+https://docs.google.com/presentation/d/1YDS7N_L4ogiGdxkwyuCCjGYl2zo3iHjo8Lw3uxGA5KM/edit?usp=sharing
+
+Single User Request Form:
+https://docs.google.com/forms/d/e/1FAIpQLSccqpE92wpLBLekUoXskSFWtPf4ik81riyc9Tt18sRLTmXobg/viewform?usp=sf_link
+
+Multiple User Request Form:
+https://docs.google.com/spreadsheets/d/1EDORIweHOmevJu2OfdaD4u6csIoVVbA9S4mMsg5pO48/edit?usp=sharing"
+                  >
+                    Password Procedure</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    class="modalButton"
+                    data-toggle="modal"
+                    href="#myModal"
+                    data-height="300px"
+                    data-width="100%"
+                    data-target="#myModal"
+                    data-id="5"
+                    data-news="The Release Notes for ASISTS
+are available at the following link:
+
+https://docs.google.com/document/d/1ntHGJN83UZ3g3-wcurAYJY3xZs0HJUEVYCJRGwsJbUg/edit?usp=sharing"
+                  >
+                    ASISTS Release Notes</a
+                  >
+                </li>
+
+                <li>
+                  <a
+                    class="modalButton"
+                    data-toggle="modal"
+                    href="#myModal"
+                    data-height="300px"
+                    data-width="100%"
+                    data-target="#myModal"
+                    data-id="6"
+                    data-news="If you or a colleague are not currently receiving ASISTS
+emails and would like to be added to the list, please copy
+&amp; paste the link below into your browser to access the signup form:
+
+https://visitor.r20.constantcontact.com/d.jsp?llr=kftry8dab&amp;p=oi&amp;m=1103664565418&amp;sit=odycbxlfb&amp;f=dc912494-1663-4da8-be09-3897e89a98e0"
+                  >
+                    ASISTS Email List Signup Link</a
+                  >
+                </li>
+              </ul>
+
+              <p></p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="background">
+              <h3 class="heading-bar">
+                Quick Links
+                <span class="float-right"
+                  ><span class="glyphicon glyphicon-link"></span
+                ></span>
+              </h3>
+              <p></p>
+              <ul class="quick-links">
+                <li>
+                  <a target="_blank" href="https://www.asists.com/FAQ/faq.aspx"
+                    >FAQ</a
+                  >
+                </li>
+                <li>
+                  <a target="_blank" href="http://www.acces.nysed.gov/aepp/"
+                    >New York State Education Department</a
+                  >
+                </li>
+                <li>
+                  <a
+                    target="_blank"
+                    href="http://adult-education-accountability.org/"
+                    >NYS NRS Accountability</a
+                  >
+                </li>
+                <li>
+                  <a target="_blank" href="http://literacydata.weebly.com/"
+                    >Literacy Data</a
+                  >
+                </li>
+                <li><a target="_blank" href="http://www.nrsweb.org">NRS</a></li>
+                <li>
+                  <a target="_blank" href="http://www.nyacce.org/"
+                    >New York Association for Continuing and Community
+                    Education</a
+                  >
+                </li>
+                <li>
+                  <a target="_blank" href="http://www.nyccaliteracy.org/"
+                    >New York Coalition for Adult Literacy</a
+                  >
+                </li>
+                <li>
+                  <a target="_blank" href="http://teachingtothecoreny.org/"
+                    >Teaching To the Core New York</a
+                  >
+                </li>
+                <li>
+                  <a target="_blank" href="http://www.collectedny.org/"
+                    >CollectEdNY</a
+                  >
+                </li>
+                <li>
+                  <a target="_blank" href="http://www.lacnyc.org"
+                    >Literacy Assistance Center</a
+                  >
+                </li>
+              </ul>
+              <p></p>
+
+              <p></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <div class="footer-logos container-fluid">
+        <div class="row">
+          <div class="col-md-1"></div>
+          <div class="col-md-2">
+            <a class="logo" target="_blank" href="https://www.asists.com">
+              <img
+                src="../assets/footer-asists-logo.png"
+                alt="Asists"
+              />ASISTS</a
+            >
+          </div>
+          <div class="col-md-2"></div>
+
+          <div class="col-md-2">
+            <a class="logo" target="_blank" href="http://www.acces.nysed.gov/">
+              <img
+                src="../assets/footer-nysed-seal.png"
+                alt="New York State Education"
+              />NYSED</a
+            >
+          </div>
+          <div class="col-md-2"></div>
+
+          <div class="col-md-2">
+            <a class="logo" target="_blank" href="http://www.lacnyc.org">
+              <img
+                src="../assets/footer-lac-logo.png"
+                alt="Literacy Assistance Center"
+              />LACNYC
+            </a>
+          </div>
+          <div class="col-md-1"></div>
+        </div>
+      </div>
+    </footer>
+    <div
+      class="modal fade"
+      id="myModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="myModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-hidden="true"
+            >
+              ×
+            </button>
+            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+          </div>
+          <div class="modal-body">
+            <textarea
+              name="myModalTextBox"
+              rows="2"
+              cols="20"
+              readonly="readonly"
+              id="myModalTextBox"
+              style="height: 300px; width: 550px"
+            ></textarea>
+          </div>
+          <!-- /modal-body-->
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-dismiss="modal">
+              Close
+            </button>
+          </div>
+          <!-- /modal-footer -->
+        </div>
+        <!-- /.modal-content -->
+      </div>
+      <!-- /.modal-dialog -->
+    </div>
+  </body>
+</html>
