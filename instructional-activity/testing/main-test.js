@@ -4,7 +4,7 @@
 //* in the QUnit module.
 
 // Import functions here when JS modules are enabled
-// import myFunction from "myDirectory"
+// import myFunction from "myDirectory/myFile.js"
 
 const adding = (num1, num2) => {
   // return num1 + num2;
