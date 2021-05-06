@@ -13,6 +13,10 @@ const toggleSideNav = () => {
 //*=================================================
 
 $(document).ready(() => {
+  //* Side nav open at home page loading
+  $(".sidenav").width("20%");
+  toggleSideNav();
+
   //* Opening side Nav
   $(document).on("click", "#menu-btn", function (evnt) {
     $(".sidenav").width("20%");
