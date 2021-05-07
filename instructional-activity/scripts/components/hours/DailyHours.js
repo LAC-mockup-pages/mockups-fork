@@ -1,7 +1,7 @@
 //* Displaying Daily contact hours for a given course
 //* after clicking the DCH button in HoursView
 
-import { setFiscalYear } from "../../main.js";
+// import { setFiscalYear } from "../../main.js";
 import { buildPeriods } from "./EnrollmentInstructors.js";
 
 // Initializing Luxon DateTime class for the module
@@ -138,11 +138,12 @@ export const createDailyHours = (classId) => {
   `;
 };
 
-export const replaceInputs = (obj) => {};
+export const checkList = (list, propName) => {
+  // if (list.length <= 1 && !list[0][propName]) return false;
+  // return list[0][propName];
+};
 
 export const createDailyHoursTable = (dailyHoursList) => {
-
-
   const dayList = Object.keys(dailyHoursList[0]).filter((fieldName) =>
     fieldName.startsWith("Day")
   );
