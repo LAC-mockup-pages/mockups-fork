@@ -59,10 +59,11 @@ export const cellFocus = () => {
 
   $(`#${firstRowId} input[name=${inputName}]`).focus();
 };
+
+// Create the main view to display student and instructors hours
 export const createHoursView = (courseID, classID) => {
   const instructorHours = createInstrBloc(courseID);
   const studentHours = createStudentsBloc(classID);
-
   const today = new Date();
   const month =
     today.getMonth() + 1 > 9
