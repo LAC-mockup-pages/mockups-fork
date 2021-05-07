@@ -138,7 +138,7 @@ export const createDailyHours = (classId) => {
   `;
 };
 
-export const checkList = (list, propName) => {
+export const checkHashtable = (list, propName) => {
   // if (list.length <= 1 && !list[0][propName]) return false;
   // return list[0][propName];
 };
