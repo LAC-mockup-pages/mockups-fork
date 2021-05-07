@@ -885,19 +885,16 @@ $(document).ready(() => {
     }
   );
 
-  //* Trigger for displaying the Daily Contact hours bloc
+  //* Trigger for displaying the Daily Contact hours modal
   //* when clicking button in HoursView.
   $(document).on("click", "#daily-btn", function (evnt) {
     evnt.stopPropagation();
-    const courseId = $("#hours-bloc").attr("data-course");
-
     $("#modalConfirm").modal("toggle");
   });
 
   //* Confirm displaying daily hours view
   $(document).on("click", "#confirm-btn, #daily-cancel-btn", function (evnt) {
     $("#modalConfirm").modal("toggle");
-
     if ($(this).attr("id") === "confirm-btn") {
       const topSection = createDailyHours($("#view-bloc").attr("data-class"));
       $("#hours-bloc").empty().append(topSection);
