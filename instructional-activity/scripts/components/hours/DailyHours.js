@@ -83,6 +83,8 @@ export const createDailyHours = (classId) => {
     // Save button stays disabled.
     hashTable = buildPeriodHashTable(12, Number(classFY));
   }
+
+  // elementSelectModal() <== helperFunctions.js
   const selectPeriod = elementSelectModal({
     hashTable,
     keyValue: "PeriodID",
@@ -139,6 +141,8 @@ export const createDailyHours = (classId) => {
 export const replaceInputs = (obj) => {};
 
 export const createDailyHoursTable = (dailyHoursList) => {
+
+
   const dayList = Object.keys(dailyHoursList[0]).filter((fieldName) =>
     fieldName.startsWith("Day")
   );
@@ -150,7 +154,6 @@ export const createDailyHoursTable = (dailyHoursList) => {
 
   // createHeaders() <== helperFunctions.js
   const header = createHeaders(["Name", ...dateList, "Total"]);
-
   let body = "";
 
   for (const record of dailyHoursList) {
@@ -165,7 +168,6 @@ export const createDailyHoursTable = (dailyHoursList) => {
       </td>
       `;
     }
-
     body += `
     <tr id=${ID} data-student=${studentID}>
       <td class="cell-data student-name">${StudentName}</td>
