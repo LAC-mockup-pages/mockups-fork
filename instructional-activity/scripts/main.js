@@ -5,6 +5,7 @@ export let courseList = GetCourse.slice(0);
 export let instructorList = GetInstructor.slice(0);
 
 // Imports
+import { setFiscalYear } from "./utilities.js";
 import { createNewRecordForm } from "./components/AddNewRecord.js";
 import {
   createFilterBloc,
@@ -63,22 +64,6 @@ export const rowLabels = [
     Format: "Format"
   }
 ];
-
-export const setFiscalYear = (datePD) => {
-  const dateEvent = new Date(datePD);
-  const currentYear = dateEvent.getFullYear();
-  const startFY = new Date(`07/01/${currentYear}`);
-  const endYear = new Date(`12/31/${currentYear}`);
-  if (dateEvent >= startFY) {
-    if (dateEvent <= endYear) {
-      return (currentYear + 1).toString();
-    } else {
-      return currentYear.toString();
-    }
-  } else {
-    return currentYear.toString();
-  }
-};
 
 export const setDefaultDate = () => {
   let firstDay = "07/01";

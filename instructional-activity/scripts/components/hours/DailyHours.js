@@ -1,7 +1,7 @@
 //* Displaying Daily contact hours for a given course
 //* after clicking the DCH button in HoursView
 
-// import { setFiscalYear } from "../../main.js";
+import { setFiscalYear } from "../../utilities.js";
 import { buildPeriods } from "./EnrollmentInstructors.js";
 
 // Initializing Luxon DateTime class for the module

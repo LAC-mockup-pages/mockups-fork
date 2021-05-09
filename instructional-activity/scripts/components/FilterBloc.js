@@ -1,5 +1,6 @@
 // Block for sorting courses in main-table
-import { courseList, setFiscalYear } from "../main.js";
+import { courseList } from "../main.js";
+import { setFiscalYear } from "../utilities.js";
 
 const typeList = GetInstructionType.slice(0);
 const instructorList = GetInstructor.slice(0).map((record) => {
