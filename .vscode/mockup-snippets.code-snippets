@@ -29,7 +29,7 @@
     "scope": "javascript",
     "prefix": "test",
     "body": [
-      "QUnit.module( $1, () => { QUnit.config.collapse = false\nQUnit.test($2, (assert) => { \nassert.$0 \n})})"
+      "QUnit.module( $1, () => { QUnit.test($2, (assert) => { \nassert.$0 \n})})"
     ],
     "description": "QUnit test module"
   }
