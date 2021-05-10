@@ -1,17 +1,23 @@
 // Actions and logic
 
-const days = { Day1: "2", Day3: "", Day18: "4" };
+const listOrigin = [
+  { ID: "101", Student_PKID: "10" },
+  { ID: "102", Student_PKID: "11" },
+  { ID: "103", Student_PKID: "12" }
+];
 
-const addDays = (dayObj) => {
-  const keyList = Object.keys(dayObj);
-  const additionalDays = {};
-  for (let i = 1; i < 32; i++) {
-    const day = `Day${i}`;
-    if (!keyList.includes(day)) {
-      additionalDays[day] = "";
-    }
-  }
-  return { ...dayObj, ...additionalDays };
+const listResult = [
+  { ID: "101", Student_PKID: "10" },
+  { ID: "102", Student_PKID: "11" }
+];
+
+// Compares 2 hashtables for equality
+const testFunction = (list1, list2) => {
+  if (list1.length !== list2.length) return false;
+  const string1 = JSON.stringify(list1);
+  const string2 = JSON.stringify(list2);
+  return string1 === string2;
 };
 
-console.log(addDays(days));
+console.log(testFunction(listOrigin, listResult));
+// console.log(typeof JSON.stringify(listOrigin));
