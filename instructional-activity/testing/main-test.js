@@ -20,29 +20,48 @@ const arraysAreEqual = (list1, list2) => {
 //*=================================
 $(document).ready(() => {
   QUnit.config.collapse = false;
+  const roster = [
+    { ID: "01", Student_PKID: "10" },
+    { ID: "02", Student_PKID: "11" },
+    { ID: "03", Student_PKID: "12" }
+  ];
   QUnit.module("checkHashtable", () => {
     QUnit.test("should check an Array of objects", (assert) => {
       assert.equal(checkHashtable([{}]), false, "false if list = [{}]");
       assert.equal(checkHashtable([{ ID: "1" }]), "1", "value of ID exists");
     });
 
-    QUnit.test("should return an array of objects", (assert) => {
-      const roster = [
-        { ID: "01", Student_PKID: "10" },
-        { ID: "02", Student_PKID: "11" },
-        { ID: "03", Student_PKID: "12" }
-      ];
-      const listDailyHours = [
-        { ID: "101", Student_PKID: "10" },
-        { ID: "102", Student_PKID: "11" },
-        { ID: "103", Student_PKID: "12" }
-      ];
-      const result = checkHashtable(listDailyHours, roster) | [{}];
+    QUnit.test(
+      "should return listDailyHours if all students in roster are in DailyHours",
+      (assert) => {
+        const listDailyHours1 = [
+          { ID: "101", Student_PKID: "10" },
+          { ID: "102", Student_PKID: "11" },
+          { ID: "103", Student_PKID: "12" }
+        ];
 
-      assert.ok(
-        arraysAreEqual(result, listDailyHours),
-        "Result is equal to input of Daily Hours"
-      );
-    });
+        const result1 = checkHashtable(listDailyHours1, roster) | [{}];
+
+        assert.ok(
+          arraysAreEqual(result1, listDailyHours1),
+          "Output is equal to Daily Hours input"
+        );
+      }
+    );
+
+    QUnit.test(
+      "should add missing students to listDailyHours with ID = '0'",
+      (assert) => {
+        const listDailyHours2 = [
+          { ID: "101", Student_PKID: "10" },
+          { ID: "102", Student_PKID: "11" }
+        ];
+        const result2 = [
+          { ID: "101", Student_PKID: "10" },
+          { ID: "102", Student_PKID: "11" },
+          { ID: "0", Student_PKID: "12" }
+        ];
+      }
+    );
   });
 });
