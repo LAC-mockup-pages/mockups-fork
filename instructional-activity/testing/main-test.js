@@ -34,16 +34,16 @@ $(document).ready(() => {
     QUnit.test(
       "should return listDailyHours if all students in roster are in DailyHours",
       (assert) => {
-        const listDailyHours1 = [
+        const listDailyHours = [
           { ID: "101", Student_PKID: "10" },
           { ID: "102", Student_PKID: "11" },
           { ID: "103", Student_PKID: "12" }
         ];
 
-        const result1 = checkHashtable(listDailyHours1, roster) | [{}];
+        const result = checkHashtable(listDailyHours, roster) | [{}];
 
         assert.ok(
-          arraysAreEqual(result1, listDailyHours1),
+          arraysAreEqual(result, listDailyHours),
           "Output is equal to Daily Hours input"
         );
       }
@@ -52,15 +52,29 @@ $(document).ready(() => {
     QUnit.test(
       "should add missing students to listDailyHours with ID = '0'",
       (assert) => {
-        const listDailyHours2 = [
+        const listDailyHours = [
           { ID: "101", Student_PKID: "10" },
           { ID: "102", Student_PKID: "11" }
         ];
-        const result2 = [
+        const expected = [
           { ID: "101", Student_PKID: "10" },
           { ID: "102", Student_PKID: "11" },
           { ID: "0", Student_PKID: "12" }
         ];
+        const result = checkHashtable(listDailyHours, roster) | [{}];
+        const missingStudent = result.filter(
+          (item) => item.Student_PKID === "12"
+        );
+
+        assert.ok(
+          arraysAreEqual(result, expected),
+          "Output is equal to Daily Hours + missing student"
+        );
+        assert.equal(
+          missingStudent.ID,
+          "0",
+          "Missing student is added with ID = '0'"
+        );
       }
     );
   });
