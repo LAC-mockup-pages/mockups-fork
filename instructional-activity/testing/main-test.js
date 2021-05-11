@@ -53,13 +53,13 @@ $(document).ready(() => {
       "should add missing students to listDailyHours with ID = '0'",
       (assert) => {
         const listDailyHours = [
-          { ID: "101", Student_PKID: "10" },
-          { ID: "102", Student_PKID: "11" }
+          { ID: "101", Student_PKID: "10", Day1: "", Day3: "", Day6: "" },
+          { ID: "102", Student_PKID: "11", Day1: "", Day3: "", Day6: "" }
         ];
         const expected = [
-          { ID: "101", Student_PKID: "10" },
-          { ID: "102", Student_PKID: "11" },
-          { ID: "0", Student_PKID: "12" }
+          { ID: "101", Student_PKID: "10", Day1: "", Day3: "", Day6: "" },
+          { ID: "102", Student_PKID: "11", Day1: "", Day3: "", Day6: "" },
+          { ID: "0", Student_PKID: "12", Day1: "", Day3: "", Day6: "" }
         ];
         const result = checkHashtable(listDailyHours, roster) | [{}];
         const missingStudent = result.filter(
@@ -75,6 +75,23 @@ $(document).ready(() => {
           "0",
           "Missing student is added with ID = '0'"
         );
+      }
+    );
+
+    QUnit.test(
+      "should show the same schedule for each student",
+
+      (assert) => {
+        const listDailyHours = [
+          { ID: "101", Student_PKID: "10", Day1: "", Day3: "", Day6: "" },
+          { ID: "102", Student_PKID: "11", Day1: "", Day3: "", Day6: "" }
+        ];
+
+        const expected = [
+          { ID: "101", Student_PKID: "10", Day1: "", Day3: "", Day6: "" },
+          { ID: "102", Student_PKID: "11", Day1: "", Day3: "", Day6: "" },
+          { ID: "0", Student_PKID: "12", Day1: "", Day3: "", Day6: "" }
+        ];
       }
     );
   });
