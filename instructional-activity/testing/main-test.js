@@ -78,21 +78,35 @@ $(document).ready(() => {
       }
     );
 
-    QUnit.test(
-      "should show the same schedule for each student",
+    QUnit.test("should show the same schedule for each student", (assert) => {
+      const listDailyHours = [
+        { ID: "101", Student_PKID: "10", Day1: "", Day3: "", Day6: "" },
+        { ID: "102", Student_PKID: "11", Day1: "", Day3: "", Day6: "" }
+      ];
 
-      (assert) => {
-        const listDailyHours = [
-          { ID: "101", Student_PKID: "10", Day1: "", Day3: "", Day6: "" },
-          { ID: "102", Student_PKID: "11", Day1: "", Day3: "", Day6: "" }
-        ];
+      const expected = [
+        { ID: "101", Student_PKID: "10", Day1: "", Day3: "", Day6: "" },
+        { ID: "102", Student_PKID: "11", Day1: "", Day3: "", Day6: "" },
+        { ID: "0", Student_PKID: "12", Day1: "", Day3: "", Day6: "" }
+      ];
 
-        const expected = [
-          { ID: "101", Student_PKID: "10", Day1: "", Day3: "", Day6: "" },
-          { ID: "102", Student_PKID: "11", Day1: "", Day3: "", Day6: "" },
-          { ID: "0", Student_PKID: "12", Day1: "", Day3: "", Day6: "" }
-        ];
-      }
-    );
+      // Filters the schedule props in array of POJOs
+      // Returns the number of different schedules. Should return true.
+      const checkClassDays = (arr) => {
+        const result = new Set();
+        const schedules = arr.map((student) =>
+          Object.keys(student)
+            .filter((prop) => prop.startsWith("Day"))
+            .join(" ")
+        );
+        schedules.forEach((str) => result.add(str));
+        return result.size === 1;
+      };
+
+      assert.true(
+        checkClassDays(checkHashtable(listDailyHours, roster) | [{}]),
+        "All objects have the same schedule props"
+      );
+    });
   });
 });

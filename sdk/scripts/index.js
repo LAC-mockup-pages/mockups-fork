@@ -1,23 +1,21 @@
 // Actions and logic
 
-const listOrigin = [
-  { ID: "101", Student_PKID: "10" },
-  { ID: "102", Student_PKID: "11" },
-  { ID: "103", Student_PKID: "12" }
+const expected = [
+  { ID: "101", Student_PKID: "10", Day1: "", Day3: "", Day6: "" },
+  { ID: "102", Student_PKID: "11", Day1: "", Day3: "", Day6: "" },
+  { ID: "0", Student_PKID: "12", Day2: "", Day3: "", Day6: "" }
 ];
 
-const listResult = [
-  { ID: "101", Student_PKID: "10" },
-  { ID: "102", Student_PKID: "11" }
-];
+const testFunction = (arr) => {
+  const result = new Set();
+  const schedules = arr.map((student) =>
+    Object.keys(student)
+      .filter((prop) => prop.startsWith("Day"))
+      .join(" ")
+  );
+  schedules.forEach((str) => result.add(str));
 
-// Compares 2 hashtables for equality
-const testFunction = (list1, list2) => {
-  if (list1.length !== list2.length) return false;
-  const string1 = JSON.stringify(list1);
-  const string2 = JSON.stringify(list2);
-  return string1 === string2;
+  return result.size === 1;
 };
 
-console.log(testFunction(listOrigin, listResult));
-// console.log(typeof JSON.stringify(listOrigin));
+console.log(testFunction(expected));
