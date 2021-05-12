@@ -420,13 +420,27 @@ Back to Top button
 ============================
 */
 .main-logo {
-  width: 20%;
-  height: 10%;
-  padding: 1% 0% 0% 8%;
+  width: 65%;
+  height: 100%;
+  padding: 1% 0% 0% 25%;
 }
 
-.top-logo {
+.top-band {
   background-color: #f0f0f5;
+}
+
+.quick-link {
+  color: #333;
+  display: block;
+  font-size: 1.2em;
+  padding-top: 5%;
+  /* background-color: rgb(210, 210, 210); */
+  /* padding: 1% 4%; */
+  text-decoration: none;
+}
+
+.plus-icon {
+  margin-right: 3%;
 }
 
 .top-nav {
