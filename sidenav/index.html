@@ -2,9 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+    <!-- Custom links and scripts -->
+    <!-- ======================== -->
     <link
       rel="icon"
       type="image/png"
@@ -34,39 +36,36 @@
       defer
     ></script>
 
-    <!-- Links and scripts local app -->
-    <link rel="stylesheet" href="style/index.css" type="text/css" />
+    <!-- Local links and scripts -->
+    <link rel="stylesheet" href="./style/index.css" type="text/css" />
 
-    <script src="scripts/data.js" type="text/javascript" defer></script>
-
-    <script
-      src="../helpers/helperFunctions.js"
-      type="text/javascript"
-      defer
-    ></script>
-
-    <script src="../helpers/constants.js" type="text/javascript" defer></script>
-
-    <script
-      src="../sidenav/scripts/main.js"
-      type="text/javascript"
-      defer
-    ></script>
-
-    <script src="scripts/data-check.js" type="text/javascript" defer></script>
-
-    <script src="scripts/index.js" type="text/javascript" defer></script>
+    <script type="text/javascript" src="./scripts/main.js" defer></script>
 
     <!-- !============================= -->
-    <!-- ! File: /agency/agencyinfo.aspx -->
+    <!-- ! File: /homeinfo.aspx -->
     <!-- !============================= -->
 
-    <title>Mock-up Agency Info</title>
+    <title>Test Side Navbar</title>
   </head>
   <body>
     <header>
-      <div class="top-logo">
-        <img src="../assets/Main-Logo.png" class="main-logo" />
+      <div class="row top-band">
+        <div class="top-logo col-md-4">
+          <img src="../assets/Main-Logo.png" class="main-logo" />
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-2">
+          <a
+            class="quick-link"
+            href="#"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="true"
+          >
+            <span class="glyphicon glyphicon-plus plus-icon"></span> Add
+            Student</a
+          >
+        </div>
       </div>
       <!-- Top nav -->
       <div class="container-fluid row top-nav">
@@ -109,42 +108,11 @@
         </div>
       </div>
       <!-- End top nav -->
-
-      <!-- Sub NavBar -->
-      <div class="container-fluid blue-bg blue-light-text sub-navbar">
-        <ul id="sub-nav" class="nav-justified">
-          <li class="blue-light-bg dark-blue-text">
-            <a href="../agency-info/index.html" type="text/html">Agency</a>
-          </li>
-          <li>
-            <a href="../agency-sources/index.html" type="text/html"
-              >Funding Sources</a
-            >
-          </li>
-          <li>
-            <a href="../agency-sites/index.html" type="text/html">Sites</a>
-          </li>
-          <li>
-            <a href="../agency-referral-partners/index.html" type="text/html"
-              >Referral Partners</a
-            >
-          </li>
-          <li>
-            <a href="../agency-non-nrs-outcomes/index.html" type="text/html"
-              >Non-NRS Outcomes</a
-            >
-          </li>
-          <li>
-            <a href="../agency-IELCE-partners/index.html" type="text/html"
-              >IET / IELCE Cost Tracking</a
-            >
-          </li>
-        </ul>
-      </div>
     </header>
+
     <!-- Side Nav bar -->
     <div id="mySidenav" class="sidenav">
-      <a href="javascript:void(0)" class="close-btn hidden">&times;</a>
+      <a href="javascript:void(0)" class="close-btn hidden">&#9776;</a>
       <div class="menu-top">
         <img src="../assets/logo_sm.png" class="small-logo" />
         <span class="small-label hidden">ASISTS</span>
@@ -153,7 +121,7 @@
       <div class="hidden main-tab">
         <a class="dropdown-btn" href="#">Program</a>
         <div class="dropdown-container">
-          <a href="../agency-info/index.html" type="text/html"
+          <a href="#"
             ><span class="glyphicon glyphicon-chevron-right"> </span> Agency</a
           >
           <a href="#"
@@ -273,43 +241,36 @@
       </div>
     </div>
     <!-- End Side Nav bar -->
+    <div class="main-text container">
+      <p>
+        Bacon ipsum dolor amet exercitation aliquip consectetur andouille pork
+        occaecat. Ut esse et ut aliquip, picanha quis strip steak enim aliqua
+        exercitation anim magna pork belly reprehenderit. Spare ribs tongue duis
+        venison laborum cillum id voluptate aute et shoulder. Magna velit dolore
+        tenderloin cow ground round beef ribs porchetta id est. Dolor officia
+        commodo shoulder filet mignon biltong magna porchetta irure spare ribs
+        ipsum prosciutto. Shankle turducken quis ullamco spare ribs. Chuck spare
+        ribs est, tempor lorem salami velit filet mignon turkey laborum rump
+        burgdoggen exercitation.
+      </p>
 
-    <!-- Hero -->
-    <div class="container hero">
-      <!-- Data viewing -->
+      <p>
+        Dolore cupidatat ex et kevin shoulder fatback sunt pastrami pariatur
+        bacon pancetta mollit t-bone. Labore beef short ribs sed ex. Aliquip
+        consectetur meatball elit meatloaf velit strip steak salami. Et aliquip
+        minim, chuck commodo hamburger leberkas. Aliqua in corned beef flank
+        sausage rump. Beef ribs duis kielbasa in sint sausage esse. Prosciutto
+        anim proident jerky meatball, pork belly ham hock enim.
+      </p>
+
+      <p>
+        Deserunt tail ball tip shank pork loin, strip steak turkey. Bacon
+        prosciutto pig, ex excepteur duis anim in pork belly veniam officia.
+        Kevin irure pastrami veniam. Ut consequat meatball leberkas short loin
+        pork loin ribeye nulla magna brisket, turkey flank. Frankfurter
+        exercitation cillum fugiat, deserunt fatback sed pig cupidatat pancetta.
+        Ut excepteur quis leberkas nulla ex esse dolor ea elit.
+      </p>
     </div>
-    <!-- Modal for Editing Top Bloc data -->
-    <div class="modal fade" id="modal-bloc">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">
-              <span aria-hidden="true">&times;</span
-              ><span class="sr-only">Close</span>
-            </button>
-            <h4 class="modal-title">Editing</h4>
-          </div>
-          <div class="modal-body">
-            <form role="form" id="edit-form"></form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">
-              Close without saving
-            </button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              id="save-button"
-              form="edit-form"
-            >
-              Save changes
-            </button>
-          </div>
-        </div>
-        <!-- /.modal-content -->
-      </div>
-      <!-- /.modal-dialog -->
-    </div>
-    <!-- /.modal -->
   </body>
 </html>
