@@ -138,9 +138,21 @@ export const createDailyHours = (classId) => {
   `;
 };
 
-export const checkHashtable = (list, propName, roster) => {
-  // if (list.length <= 1 && !list[0][propName]) return false;
-  // return list[0][propName];
+// Input: Daily Hours list, class roster.
+// Output: > false if DH list is [{}],
+//         > DH list if all students in roster are present in DH list,
+//         > DH list + all students in roster NOT present in DH list. Added
+//           students have ID = "0".
+export const checkHashtable = (list, roster) => {
+  if (!list[0].ID) return false;
+  const studentsInRoster = roster
+    .map((student) => student.Student_PKID)
+    .join(" ");
+  const studentsInList = list.map((student) => student.Student_PKID).join(" ");
+
+  if (studentsInRoster === studentsInList) {
+    return list;
+  }
 };
 
 export const createDailyHoursTable = (dailyHoursList) => {

@@ -25,25 +25,30 @@ $(document).ready(() => {
     { ID: "02", Student_PKID: "11" },
     { ID: "03", Student_PKID: "12" }
   ];
+
+  const completeList = [
+    { ID: "101", Student_PKID: "10", Day1: "", Day3: "", Day6: "" },
+    { ID: "102", Student_PKID: "11", Day1: "", Day3: "", Day6: "" },
+    { ID: "103", Student_PKID: "12", Day1: "", Day3: "", Day6: "" }
+  ];
+
+  const incompleteList = [
+    { ID: "101", Student_PKID: "10", Day1: "", Day3: "", Day6: "" },
+    { ID: "102", Student_PKID: "11", Day1: "", Day3: "", Day6: "" }
+  ];
+
   QUnit.module("checkHashtable", () => {
     QUnit.test("should check an Array of objects", (assert) => {
-      assert.equal(checkHashtable([{}]), false, "false if list = [{}]");
-      assert.equal(checkHashtable([{ ID: "1" }]), "1", "value of ID exists");
+      assert.equal(checkHashtable([{}], roster), false, "false if list = [{}]");
     });
 
     QUnit.test(
       "should return listDailyHours if all students in roster are in DailyHours",
       (assert) => {
-        const listDailyHours = [
-          { ID: "101", Student_PKID: "10" },
-          { ID: "102", Student_PKID: "11" },
-          { ID: "103", Student_PKID: "12" }
-        ];
-
-        const result = checkHashtable(listDailyHours, roster) | [{}];
+        const result = checkHashtable(completeList, roster);
 
         assert.ok(
-          arraysAreEqual(result, listDailyHours),
+          arraysAreEqual(result, completeList),
           "Output is equal to Daily Hours input"
         );
       }
@@ -52,17 +57,13 @@ $(document).ready(() => {
     QUnit.test(
       "should add missing students to listDailyHours with ID = '0'",
       (assert) => {
-        const listDailyHours = [
-          { ID: "101", Student_PKID: "10", Day1: "", Day3: "", Day6: "" },
-          { ID: "102", Student_PKID: "11", Day1: "", Day3: "", Day6: "" }
-        ];
         const expected = [
           { ID: "101", Student_PKID: "10", Day1: "", Day3: "", Day6: "" },
           { ID: "102", Student_PKID: "11", Day1: "", Day3: "", Day6: "" },
           { ID: "0", Student_PKID: "12", Day1: "", Day3: "", Day6: "" }
         ];
-        const result = checkHashtable(listDailyHours, roster) | [{}];
-        const missingStudent = result.filter(
+        const result = checkHashtable(incompleteList, roster) || [{}];
+        const missingStudent = result.find(
           (item) => item.Student_PKID === "12"
         );
 
@@ -99,7 +100,7 @@ $(document).ready(() => {
       };
 
       assert.true(
-        checkClassDays(checkHashtable(listDailyHours, roster) | [{}]),
+        !checkClassDays(checkHashtable(incompleteList, roster) || [{}]),
         "All objects have the same schedule props"
       );
     });
