@@ -80,11 +80,6 @@ $(document).ready(() => {
     );
 
     QUnit.test("should show the same schedule for each student", (assert) => {
-      const listDailyHours = [
-        { ID: "101", Student_PKID: "10", Day1: "", Day3: "", Day6: "" },
-        { ID: "102", Student_PKID: "11", Day1: "", Day3: "", Day6: "" }
-      ];
-
       // Filters the schedule props in array of POJOs.
       // Returns the number of different schedules.
       // Should return true.
@@ -93,6 +88,9 @@ $(document).ready(() => {
         const schedules = arr.map((student) =>
           Object.keys(student)
             .filter((prop) => prop.startsWith("Day"))
+            .sort((item1, item2) =>
+              item1 < item2 ? -1 : item1 > item2 ? 1 : 0
+            )
             .join(" ")
         );
         schedules.forEach((str) => result.add(str));
