@@ -15,14 +15,21 @@
 /* .main-text {
   border: 3px solid #2479b5;
 }
-.main-text p {
-  font-size: 1.6em;
-} */
+*/
 
+.main-text {
+  box-sizing: border-box;
+  /* font-family: "Permanent Marker", cursive;
+*/
+  font-size: 3em;
+}
 /* Index card */
 /* ================================== */
 
 .card {
+  font-family: "Permanent Marker", cursive;
+  /* font-size: 2em; */
+
   background-color: white;
   background-image: linear-gradient(
       180deg,
@@ -41,9 +48,21 @@
   box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
   height: 45vh;
   width: 70vh;
-
   margin: auto;
   position: relative;
+  padding: 0% 2%;
   top: 60%;
   transform: translate(20%, 30%);
+}
+
+.card-head {
+  font-size: 16px;
+}
+
+.text-card {
+  display: block;
+  /* padding-top: 3%; */
+  color: red;
+  font-family: "Permanent Marker", cursive;
+  font-size: 3rem;
 }
