@@ -8,35 +8,50 @@ const toggleSideNav = () => {
   ).toggleClass("hidden");
 };
 
-const createCards = () => {
-  const cardContent = {
-    card00Text: [
+const createCardContent = () => {
+  const cardText = {
+    card0Text: [
       "You have created XXX classes",
       "For the current fiscal year",
       "Click HERE to display them."
     ],
-    card01Text: [
+    card1Text: [
       "There are XXX students enrolled in these classes",
       "Of these, XXX students are still active",
       "Click HERE to display your classes' roster."
     ],
-    card02Text: [
+    card2Text: [
       "XXX students had less than 12hrs of attendance",
       "Click HERE to display them."
     ],
-    card03Text: [
+    card3Text: [
       "XXX of your NRS students had no pre-test.",
       "XXX of your NYRS students had no pre-test",
       "Click HERE to display the NRS Students without Pre-Test report.",
       "Click HERE to display the NYRS Students without Pre-Test report."
     ],
-    card04Text: [
+    card4Text: [
       "XXX of your NRS students had no post-test.",
       "XXX of your NYRS students had no post-test",
       "Click HERE to display the NRS Students without Post-Test report.",
       "Click HERE to display the NYRS Students without Post-Test report."
     ]
   };
+
+  const cardValues = [
+    ["105"],
+    ["234", "210"],
+    ["54"],
+    ["21", "34"],
+    ["54", "N/A"]
+  ];
+
+  const cardContent = {};
+
+  for (const valueList of cardValues) {
+    const indx = cardValues.indexOf(valueList);
+    const cardId = `card${indx}`;
+  }
 };
 
 //*=================================================
