@@ -9,39 +9,34 @@ const toggleSideNav = () => {
 };
 
 const createCards = () => {
-  const cardContent = [
-    {
-      cardHead: "You have created XXX classes",
-      cardText: ["For the current fiscal year", "Click HERE to display them."]
-    },
-    {
-      cardHead: "There are XXX students enrolled in these classes",
-      cardText: [
-        "Of these, XXX students are still active",
-        "Click HERE to display your classes' roster."
-      ]
-    },
-    {
-      cardHead: "XXX students had less than 12hrs of attendance",
-      cardText: ["Click HERE to display them."]
-    },
-    {
-      cardHead: "XXX of your NRS students had no pretest.",
-      cardText: [
-        "XXX of your NYRS students had no pretest",
-        "Click HERE to display the NRS Students without Pretest report.",
-        "Click HERE to display the NYRS Students without Pretest report."
-      ]
-    },
-    {
-      cardHead: "XXX of your NRS students had no posttest.",
-      cardText: [
-        "XXX of your NYRS students had no posttest",
-        "Click HERE to display the NRS Students without Posttest report.",
-        "Click HERE to display the NYRS Students without Posttest report."
-      ]
-    }
-  ];
+  const cardContent = {
+    card00Text: [
+      "You have created XXX classes",
+      "For the current fiscal year",
+      "Click HERE to display them."
+    ],
+    card01Text: [
+      "There are XXX students enrolled in these classes",
+      "Of these, XXX students are still active",
+      "Click HERE to display your classes' roster."
+    ],
+    card02Text: [
+      "XXX students had less than 12hrs of attendance",
+      "Click HERE to display them."
+    ],
+    card03Text: [
+      "XXX of your NRS students had no pre-test.",
+      "XXX of your NYRS students had no pre-test",
+      "Click HERE to display the NRS Students without Pre-Test report.",
+      "Click HERE to display the NYRS Students without Pre-Test report."
+    ],
+    card04Text: [
+      "XXX of your NRS students had no post-test.",
+      "XXX of your NYRS students had no post-test",
+      "Click HERE to display the NRS Students without Post-Test report.",
+      "Click HERE to display the NYRS Students without Post-Test report."
+    ]
+  };
 };
 
 //*=================================================

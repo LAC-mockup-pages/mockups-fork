@@ -12,69 +12,20 @@
 /* Main text */
 /* ================================== */
 
-/* .main-text {
-  border: 3px solid #2479b5;
-}
-*/
-
 .main-text {
   box-sizing: border-box;
-  /* font-family: "Permanent Marker", cursive;
-*/
   font-size: 3em;
 }
+
 /* Index card */
 /* ================================== */
 
-.card {
-  font-family: "Permanent Marker", cursive;
-  /* font-size: 2em; */
-
-  background-color: white;
-  background-image: linear-gradient(
-      180deg,
-      white 6rem,
-      #f0a4a4 calc(6rem),
-      #f0a4a4 calc(6rem + 2px),
-      transparent 1px
-    ),
-    repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 5rem,
-      #ddd 1px,
-      #ddd calc(5rem + 1px)
-    );
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.25);
+.card-block {
+  width: 40vw;
   height: 45vh;
-  width: 70vh;
-
-  margin: 15% 0% 0% 30%;
-
-  /* margin: auto; */
-  position: relative;
-  padding: 0% 2%;
-  top: 60%;
-  /* transform: translate(20%, 30%); */
-}
-
-.card-head {
-  font-size: 1em;
-}
-
-.card-text {
-  display: block;
-  font-family: "Permanent Marker", cursive;
-  font-size: 2.5rem;
-  line-height: 2em;
-}
-
-.chevron {
-  border-radius: 50%;
-  font-size: 0.5em;
-  margin-top: 1%;
-}
-
-.button-block {
-  margin-left: 85%;
+  background-color: #f0f0f5;
+  border: 2px solid #aaa;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  margin: 10% 0% 0% 40%;
 }
