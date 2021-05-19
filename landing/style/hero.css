@@ -47,10 +47,10 @@
 
 .chevron {
   border-radius: 50%;
-  font-size: 0.5em;
+  font-size: 0.7em;
   margin-top: 1%;
 }
 
 .button-block {
-  margin-left: 85%;
+  margin: 1.5% 0% 0% 85%;
 }
