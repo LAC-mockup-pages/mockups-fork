@@ -10,43 +10,33 @@ const toggleSideNav = () => {
 
 const createCardContent = () => {
   const cardText = {
-    card0Text: [
-      "You have created XXX classes",
+    card0: [
+      "You have created 123 classes",
       "For the current fiscal year",
       "Click HERE to display them."
     ],
-    card1Text: [
-      "There are XXX students enrolled in these classes",
-      "Of these, XXX students are still active",
+    card1: [
+      "There are 456 students enrolled in these classes",
+      "Of these, 455 students are still active",
       "Click HERE to display your classes' roster."
     ],
-    card2Text: [
-      "XXX students had less than 12hrs of attendance",
+    card2: [
+      "235 students had less than 12hrs of attendance",
       "Click HERE to display them."
     ],
-    card3Text: [
-      "XXX of your NRS students had no pre-test.",
+    card3: [
+      " of your NRS students had no pre-test.",
       "XXX of your NYRS students had no pre-test",
       "Click HERE to display the NRS Students without Pre-Test report.",
       "Click HERE to display the NYRS Students without Pre-Test report."
     ],
-    card4Text: [
+    card4: [
       "XXX of your NRS students had no post-test.",
       "XXX of your NYRS students had no post-test",
       "Click HERE to display the NRS Students without Post-Test report.",
       "Click HERE to display the NYRS Students without Post-Test report."
     ]
   };
-
-  const cardValues = [
-    ["105"],
-    ["234", "210"],
-    ["54"],
-    ["21", "34"],
-    ["54", "N/A"]
-  ];
-
-  const cardContent = {};
 
   for (const valueList of cardValues) {
     const indx = cardValues.indexOf(valueList);

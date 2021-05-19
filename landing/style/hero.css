@@ -14,7 +14,8 @@
 
 .main-text {
   box-sizing: border-box;
-  font-size: 3em;
+  font-size: 2.5em;
+  font-weight: 600;
 }
 
 /* Index card */
@@ -28,4 +29,21 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   margin: 10% 0% 0% 40%;
+}
+
+.card-text:first-of-type {
+  padding-top: 5%;
+}
+.card-text {
+  padding-left: 3%;
+}
+
+.chevron {
+  border-radius: 50%;
+  font-size: 0.5em;
+  margin-top: 1%;
+}
+
+.button-block {
+  margin-left: 85%;
 }
