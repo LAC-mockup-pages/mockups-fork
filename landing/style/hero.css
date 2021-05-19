@@ -31,11 +31,18 @@
   margin: 10% 0% 0% 40%;
 }
 
-.card-text:first-of-type {
+.card-text:first-of-type,
+.card-text:last-of-type {
   padding-top: 5%;
 }
+
 .card-text {
-  padding-left: 3%;
+  padding-left: 8%;
+}
+
+.large-num {
+  font-size: 1.5em;
+  color: #3f8fc7;
 }
 
 .chevron {
