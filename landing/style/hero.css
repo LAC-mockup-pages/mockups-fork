@@ -51,6 +51,11 @@
   margin-top: 1%;
 }
 
+.here-btn {
+  font-size: 0.6em;
+  font-weight: 600;
+}
+
 .button-block {
   margin: 1.5% 0% 0% 85%;
 }
