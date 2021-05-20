@@ -4,9 +4,8 @@
 
 const cardText = {
   card0: `<div class="card-text">
-        You have created <span class="large-num">123</span> classes
+        You have created <span class="large-num">123</span> classes for the current fiscal year.
       </div>
-      <div class="card-text">for the current fiscal year.</div>
       <div class="card-text">
         Click
         <span>
