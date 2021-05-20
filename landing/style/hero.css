@@ -12,9 +12,9 @@
 /* Main text */
 /* ================================== */
 
-.main-text {
+.main-body {
   box-sizing: border-box;
-  font-size: 2.5em;
+  font-size: 2em;
   font-weight: 600;
 }
 
@@ -22,13 +22,13 @@
 /* ================================== */
 
 .card-block {
-  width: 40vw;
-  height: 45vh;
+  width: 50vw;
+  height: 50vh;
   background-color: #f0f0f5;
   border: 2px solid #aaa;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 10% 0% 0% 40%;
+  margin: 10% 0% 0% 38%;
 }
 
 .card-text:first-of-type,
@@ -41,7 +41,7 @@
 }
 
 .large-num {
-  font-size: 1.5em;
+  font-size: 1.2em;
   color: #3f8fc7;
 }
 

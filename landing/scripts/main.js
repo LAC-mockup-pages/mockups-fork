@@ -25,7 +25,7 @@ const cardText = {
   </span>
   to display your classes' roster.
 </div>`,
-  card2: `<div class="card-text"><span class="large-num">235</span> students had less than 12hrs of attendance.
+  card2: `<div class="card-text"><span class="large-num">235</span> students had less than 12 hours of attendance.
 </div>
   <div class="card-text">
   Click
@@ -127,10 +127,31 @@ $(document).ready(() => {
     toggleSideNav();
   });
 
-  // * Selecting another page in subnav bar
+  //* Selecting another page in subnav bar
   $("#sub-nav li").on("click", function (evnt) {
     evnt.stopPropagation();
     $("#sub-nav li").removeClass("blue-light-bg blue-text");
     $(this).toggleClass("blue-light-bg blue-text");
+  });
+
+  //* Selecting next/previous card
+  $(document).on("click", ".chevron", function (evnt) {
+    evnt.stopPropagation();
+    const direction = $(this).attr("id");
+    const currentCardIndex = Number($(".card-block").attr("id").slice(4));
+    const nextCardId =
+      direction === "go-right"
+        ? `card${currentCardIndex + 1}`
+        : `card${currentCardIndex - 1}`;
+
+    const nextCard = cardText[nextCardId];
+    $(".card-block").empty().append(nextCard).attr("id", nextCardId);
+    if (nextCardId === "card0") {
+      $("#go-left").prop("disabled", true);
+    } else if (nextCardId === `card${Object.keys(cardText).length - 1}`) {
+      $("#go-right").prop("disabled", true);
+    } else {
+      $(".chevron").prop("disabled", false);
+    }
   });
 });
