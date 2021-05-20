@@ -2,6 +2,74 @@
 //* Actions and Logic
 //*=================================================
 
+const cardText = {
+  card0: `<div class="card-text">
+        You have created <span class="large-num">123</span> classes
+      </div>
+      <div class="card-text">for the current fiscal year.</div>
+      <div class="card-text">
+        Click
+        <span>
+          <button type="button" class="btn btn-default here-btn">HERE</button>
+        </span>
+        to display them.
+      </div>`,
+  card1: `<div class="card-text">
+  There are  <span class="large-num">456</span>  students enrolled in these classes.
+</div>
+<div class="card-text">Of these, <span class="large-num">456</span> students are still active</div>
+<div class="card-text">
+  Click
+  <span>
+    <button type="button" class="btn btn-default here-btn">HERE</button>
+  </span>
+  to display your classes' roster.
+</div>`,
+  card2: `<div class="card-text"><span class="large-num">235</span> students had less than 12hrs of attendance.
+</div>
+  <div class="card-text">
+  Click
+  <span>
+    <button type="button" class="btn btn-default here-btn">HERE</button>
+  </span>
+  to display them.
+</div>`,
+  card3: `<div class="card-text"><span class="large-num">123</span> of your NRS students had no pre-test.
+  </div><div class="card-text"><span class="large-num">23</span> of your NYRS students had no pre-test.
+  </div>
+  <div class="card-text">
+  Click
+  <span>
+    <button type="button" class="btn btn-default here-btn">HERE</button>
+  </span>
+  to display the NRS Students without Pre-Test report.
+</div>
+<div class="card-text">
+  Click
+  <span>
+    <button type="button" class="btn btn-default here-btn">HERE</button>
+  </span>
+  to display the NYRS Students without Pre-Test report.
+</div>`,
+  card4: `<div class="card-text"><span class="large-num">123</span> of your NRS students had no post-test.
+  </div><div class="card-text"><span class="large-num">23</span> of your NYRS students had no post-test.
+  </div>
+  <div class="card-text">
+  Click
+  <span>
+    <button type="button" class="btn btn-default here-btn">HERE</button>
+  </span>
+  to display the NRS Students without Post-Test report.
+</div>
+<div class="card-text">
+  Click
+  <span>
+    <button type="button" class="btn btn-default here-btn">HERE</button>
+  </span>
+  to display the NYRS Students without Post-Test report.
+</div>`
+};
+
 const toggleSideNav = () => {
   $(
     ".sidenav .main-tab, .sidenav .close-btn, .sidenav .small-label"
@@ -9,35 +77,6 @@ const toggleSideNav = () => {
 };
 
 const createCardContent = () => {
-  const cardText = {
-    card0: [
-      "You have created 123 classes",
-      "For the current fiscal year",
-      "Click HERE to display them."
-    ],
-    card1: [
-      "There are 456 students enrolled in these classes",
-      "Of these, 455 students are still active",
-      "Click HERE to display your classes' roster."
-    ],
-    card2: [
-      "235 students had less than 12hrs of attendance",
-      "Click HERE to display them."
-    ],
-    card3: [
-      " of your NRS students had no pre-test.",
-      "XXX of your NYRS students had no pre-test",
-      "Click HERE to display the NRS Students without Pre-Test report.",
-      "Click HERE to display the NYRS Students without Pre-Test report."
-    ],
-    card4: [
-      "XXX of your NRS students had no post-test.",
-      "XXX of your NYRS students had no post-test",
-      "Click HERE to display the NRS Students without Post-Test report.",
-      "Click HERE to display the NYRS Students without Post-Test report."
-    ]
-  };
-
   for (const valueList of cardValues) {
     const indx = cardValues.indexOf(valueList);
     const cardId = `card${indx}`;
@@ -59,6 +98,11 @@ $(document).ready(() => {
     toggleSideNav();
   });
 
+  //* On first rendering, load the first card.
+  const firstCard = cardText.card0;
+  $(".card-block").empty().append(firstCard).attr("id", "card0");
+  $("#go-left").prop("disabled", true);
+
   //* Closing sidenav by clicking close-btn or sidenav losing focus
   $(document).on("click", ".close-btn", function (evnt) {
     $(".dropdown-container").css("display", "none");
@@ -71,9 +115,7 @@ $(document).ready(() => {
   $(document).on("click", ".dropdown-btn", function (evnt) {
     $(".dropdown-container").css("display", "none");
     $(".main-tab .dropdown-btn").removeClass("active");
-
     $(this).siblings(".dropdown-container").css("display", "block");
-
     $(this).toggleClass("active");
   });
 
@@ -81,7 +123,6 @@ $(document).ready(() => {
   $(document).on("click", ".dropdown-container a", function (evnt) {
     $(".dropdown-container").css("display", "none");
     $(".main-tab .dropdown-btn").removeClass("active");
-
     $(".sidenav").width("3%");
     toggleSideNav();
   });
