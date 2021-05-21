@@ -82,15 +82,33 @@ const toggleSideNav = () => {
 $(document).ready(() => {
   //* Side nav open at home page loading
   $(".sidenav").width("20%");
-  // $(".top-logo").css("margin-left", "13%");
   toggleSideNav();
 
   //* Opening side Nav
   $(document).on("click", "#menu-btn", function (evnt) {
     $(".sidenav").width("20%");
-    // $(".top-logo").css("margin-left", "13%");
     toggleSideNav();
   });
+
+  //* On first rendering, add user info.
+  let { fullname, rolename, AgencyID } = SESSION_VARIABLE[0];
+
+  // For Dev Env only. Can stay for Production.
+  if (!fullname || fullname.startsWith("<%=")) {
+    fullname = "Kate Tornese";
+    rolename = "LAC TECH Support";
+    AgencyID = "PRA";
+  }
+  const welcomeLine = `
+    <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="welcome-text col-sm-4">Hello ${fullname} (${AgencyID})
+      </div>
+      <div class="role-text col-sm-4">User Role: ${rolename}
+      </div>
+    </div>`;
+
+  $(".user-info").append(welcomeLine);
 
   //* On first rendering, load the first card.
   const firstCard = cardText.card0;
@@ -102,7 +120,6 @@ $(document).ready(() => {
     $(".dropdown-container").css("display", "none");
     $(".main-tab .dropdown-btn").removeClass("active");
     $(".sidenav").width("3%");
-    // $(".top-logo").css("margin-left", "0%");
     toggleSideNav();
   });
 
