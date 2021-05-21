@@ -16,6 +16,20 @@
   float: right;
   padding-left: 16%;
 }
+.help-mark {
+  font-size: 1.5em;
+  font-weight: 800;
+  padding-right: 9%;
+}
+#help-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+
+.glyphicon-log-out {
+  padding-right: 7%;
+}
 
 /* Main text */
 /* ================================== */
