@@ -6,7 +6,13 @@ const SESSION_VARIABLE = [
     AuditUserID: '<%= Session["UserID"] %>',
     FiscalYear: '<%= Session["CFY"] %>',
     rolename: '<%= Session["RoleName"] %>',
-    UserSiteID: '<%= Session["UserSiteID"] %>'
+    UserSiteID: '<%= Session["UserSiteID"] %>',
+    uname: '<%= Session["uname"] %>',
+    fullname: '<%= Session["fullname"] %>',
+    UserPersonnelID: '<%= Session["UserPersonnelID"] %>',
+    SecurityLevel: '<%= Session["SecurityLevel"] %>',
+    UserLevel: '<%= Session["UserLevel"] %>',
+    CanExportData: '<%= Session["CanExportData"] %>'
   }
 ];
 
