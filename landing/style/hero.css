@@ -9,9 +9,13 @@
   border-width: 2em 0;
 }
 
-/* .top-logo {
-  margin-left: 13%;
-} */
+/* Top section */
+/* ================================== */
+
+.main-logo {
+  float: right;
+  padding-left: 16%;
+}
 
 /* Main text */
 /* ================================== */

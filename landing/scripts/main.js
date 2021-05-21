@@ -82,13 +82,13 @@ const toggleSideNav = () => {
 $(document).ready(() => {
   //* Side nav open at home page loading
   $(".sidenav").width("20%");
-  $(".top-logo").css("margin-left", "13%");
+  // $(".top-logo").css("margin-left", "13%");
   toggleSideNav();
 
   //* Opening side Nav
   $(document).on("click", "#menu-btn", function (evnt) {
     $(".sidenav").width("20%");
-    $(".top-logo").css("margin-left", "13%");
+    // $(".top-logo").css("margin-left", "13%");
     toggleSideNav();
   });
 
@@ -102,7 +102,7 @@ $(document).ready(() => {
     $(".dropdown-container").css("display", "none");
     $(".main-tab .dropdown-btn").removeClass("active");
     $(".sidenav").width("3%");
-    $(".top-logo").css("margin-left", "0%");
+    // $(".top-logo").css("margin-left", "0%");
     toggleSideNav();
   });
 
