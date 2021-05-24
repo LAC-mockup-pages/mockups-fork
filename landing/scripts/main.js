@@ -9,7 +9,7 @@ const cardText = {
       <div class="card-text">
         Click
         <span>
-          <button type="button" class="btn btn-default here-btn">HERE</button>
+          <a href="#" >here</a>
         </span>
         to display them.
       </div>`,
@@ -20,7 +20,7 @@ const cardText = {
 <div class="card-text">
   Click
   <span>
-    <button type="button" class="btn btn-default here-btn">HERE</button>
+    <a href="#" >here</a>
   </span>
   to display your classes' roster.
 </div>`,
@@ -29,7 +29,7 @@ const cardText = {
   <div class="card-text">
   Click
   <span>
-    <button type="button" class="btn btn-default here-btn">HERE</button>
+    <a href="#" >here</a>
   </span>
   to display them.
 </div>`,
@@ -39,14 +39,14 @@ const cardText = {
   <div class="card-text">
   Click
   <span>
-    <button type="button" class="btn btn-default here-btn">HERE</button>
+    <a href="#" >here</a>
   </span>
   to display the NRS Students without Pre-Test report.
 </div>
 <div class="card-text">
   Click
   <span>
-    <button type="button" class="btn btn-default here-btn">HERE</button>
+    <a href="#" >here</a>
   </span>
   to display the NYRS Students without Pre-Test report.
 </div>`,
@@ -56,14 +56,14 @@ const cardText = {
   <div class="card-text">
   Click
   <span>
-    <button type="button" class="btn btn-default here-btn">HERE</button>
+    <a href="#" >here</a>
   </span>
   to display the NRS Students without Post-Test report.
 </div>
 <div class="card-text">
   Click
   <span>
-    <button type="button" class="btn btn-default here-btn">HERE</button>
+    <a href="#" >here</a>
   </span>
   to display the NYRS Students without Post-Test report.
 </div>`
