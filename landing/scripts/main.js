@@ -69,6 +69,19 @@ const cardText = {
 </div>`
 };
 
+const cardColors = {
+  card0: "rgb(70,152,170)",
+  card1: "rgb(105,78,119)",
+  card2: "rgb(172,143,194)",
+  card3: "rgb(221,88,20)",
+  card4: "rgb(155,187,202)"
+};
+
+const applyColor = (colorStr) => {
+  $(".large-num").css("color", colorStr);
+  $(".card-block").css("border-color", colorStr);
+};
+
 const toggleSideNav = () => {
   $(
     ".sidenav .main-tab, .sidenav .close-btn, .sidenav .small-label"
@@ -107,12 +120,13 @@ $(document).ready(() => {
       <div class="role-text col-sm-4">User Role: ${rolename}
       </div>
     </div>`;
-
   $(".user-info").append(welcomeLine);
 
   //* On first rendering, load the first card.
   const firstCard = cardText.card0;
+  const firstCardColor = cardColors.card0;
   $(".card-block").empty().append(firstCard).attr("id", "card0");
+  applyColor(firstCardColor);
   $("#go-left").prop("disabled", true);
 
   //* Closing sidenav by clicking close-btn or sidenav losing focus
@@ -157,7 +171,9 @@ $(document).ready(() => {
         : `card${currentCardIndex - 1}`;
 
     const nextCard = cardText[nextCardId];
+    const nextCardColor = cardColors[nextCardId];
     $(".card-block").empty().append(nextCard).attr("id", nextCardId);
+    applyColor(nextCardColor);
     if (nextCardId === "card0") {
       $("#go-left").prop("disabled", true);
     } else if (nextCardId === `card${Object.keys(cardText).length - 1}`) {
