@@ -123,11 +123,11 @@ $(document).ready(() => {
   $(".user-info").append(welcomeLine);
 
   //* On first rendering, load the first card.
-  const firstCard = cardText.card0;
-  const firstCardColor = cardColors.card0;
-  $(".card-block").empty().append(firstCard).attr("id", "card0");
-  applyColor(firstCardColor);
-  $("#go-left").prop("disabled", true);
+  // const firstCard = cardText.card0;
+  // const firstCardColor = cardColors.card0;
+  // $(".card-block").empty().append(firstCard).attr("id", "card0");
+  // applyColor(firstCardColor);
+  // $("#go-left").prop("disabled", true);
 
   //* Closing sidenav by clicking close-btn or sidenav losing focus
   $(document).on("click", ".close-btn", function (evnt) {
