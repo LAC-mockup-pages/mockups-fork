@@ -182,4 +182,32 @@ $(document).ready(() => {
       $(".chevron").prop("disabled", false);
     }
   });
+
+  const showSlides = (num) => {
+    let indx;
+    const slides = $(".cards");
+    const dots = $(".dot");
+    if (num > slides.length) slideIndex = 1;
+    if (num < 1) slideIndex = slides.length;
+    for (indx = 0; indx < slides.length; indx++) {
+      $(slides[indx]).css("display", "none");
+    }
+    for (indx = 0; indx < dots.length; indx++) {
+      $(dots.indx).removeClass("active");
+    }
+
+    $(slides[slideIndex - 1]).css("display", "block");
+    $(dots[slideIndex - 1]).addClass("active");
+  };
+
+  let slideIndex = 1;
+  showSlides(slideIndex);
+
+  const plusSlides = (num) => {
+    showSlides((slideIndex += num));
+  };
+
+  const currentSlide = (num) => {
+    showSlides((slideIndex = num));
+  };
 });
