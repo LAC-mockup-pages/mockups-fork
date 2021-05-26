@@ -22,25 +22,28 @@ const toggleSideNav = () => {
 };
 
 let slideIndex = 1;
-const showSlides = (num, direction) => {
+const showSlides = (num) => {
   let indx;
   const slides = $(".cards");
   const dots = $(".dot");
   if (num > slides.length) slideIndex = 1;
   if (num < 1) slideIndex = slides.length;
   for (indx = 0; indx < slides.length; indx++) {
-    $(slides[indx]).hide({ direction: "right" }, 600);
+    $(slides[indx]).hide({ direction: "right" }, 600).removeClass("visible");
   }
   for (indx = 0; indx < dots.length; indx++) {
     $(dots[indx]).removeClass("active");
   }
-  // $(slides[slideIndex - 1]).css("display", "block");
   $(slides[slideIndex - 1])
     .delay(600)
-    .show({ direction: "left" }, 600);
-
+    .show({ direction: "left" }, 600)
+    .addClass("visible");
   $(dots[slideIndex - 1]).addClass("active");
-  console.log($(".cards").height());
+  const blockHeight = $(".card-block").height();
+  const cardHeight = Number($(".visible").css("height").match(/\d/g).join(""));
+  const lineHeight = $(".dot").height() / 2;
+  const addedMargin = (blockHeight - cardHeight) / 2 - lineHeight;
+  $(slides[slideIndex - 1]).css("margin-top", `${addedMargin}px`);
 };
 
 //*=================================================
@@ -78,11 +81,6 @@ $(document).ready(() => {
   $(".user-info").append(welcomeLine);
 
   //* On first rendering, display the first card.
-  // const firstCard = cardText.card0;
-  // const firstCardColor = cardColors.card0;
-  // $(".card-block").empty().append(firstCard).attr("id", "card0");
-  // applyColor(firstCardColor);
-  // $("#go-left").prop("disabled", true);
   showSlides(slideIndex);
 
   //* Closing sidenav by clicking close-btn or sidenav losing focus
@@ -119,9 +117,8 @@ $(document).ready(() => {
   //* Display next or previous card when a chevron is clicked on
   $(document).on("click", ".prev, .next", function (evnt) {
     evnt.stopPropagation();
-    const tempArr = $(this).hasClass("next") ? [1, "next"] : [-1, "prev"];
-    const [num, direction] = tempArr;
-    showSlides((slideIndex += num), direction);
+    const num = $(this).hasClass("next") ? 1 : -1;
+    showSlides((slideIndex += num));
   });
 
   //* Display selected card when a number is clicked on

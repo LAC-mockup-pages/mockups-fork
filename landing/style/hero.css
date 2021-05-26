@@ -48,7 +48,7 @@
 
 .main-body {
   box-sizing: border-box;
-  font-size: 2em;
+  font-size: 1.7em;
   font-weight: 600;
   text-align: center;
 }
@@ -64,15 +64,16 @@
   border: 3px solid #aaa;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 10% 0% 0% 35%;
+  margin: 7% 0% 0% 35%;
 }
 
 .cards {
   display: none;
-  width: 65%;
-  margin-left: auto;
+  width: 75%;
+  margin: auto;
+  /* margin-left: auto;
   margin-right: auto;
-  margin-top: auto;
+  margin-top: auto; */
 }
 
 .prev,
@@ -106,7 +107,7 @@
 }
 
 .btn-numbers {
-  margin: 2% 0% 0% 28%;
+  margin: 2% 0% 0% 35%;
 }
 
 .dot {
