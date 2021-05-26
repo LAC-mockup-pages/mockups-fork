@@ -39,6 +39,9 @@ const showSlides = (num) => {
     .show({ direction: "left" }, 600)
     .addClass("visible");
   $(dots[slideIndex - 1]).addClass("active");
+
+  // Calculate the top margin necessary to center the card inside
+  // card-block
   const blockHeight = $(".card-block").height();
   const cardHeight = Number($(".visible").css("height").match(/\d/g).join(""));
   const lineHeight = $(".dot").height() / 2;
