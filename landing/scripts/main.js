@@ -88,6 +88,23 @@ const toggleSideNav = () => {
   ).toggleClass("hidden");
 };
 
+let slideIndex = 1;
+const showSlides = (num) => {
+  let indx;
+  const slides = $(".cards");
+  const dots = $(".dot");
+  if (num > slides.length) slideIndex = 1;
+  if (num < 1) slideIndex = slides.length;
+  for (indx = 0; indx < slides.length; indx++) {
+    $(slides[indx]).css("display", "none");
+  }
+  for (indx = 0; indx < dots.length; indx++) {
+    $(dots[indx]).removeClass("active");
+  }
+  $(slides[slideIndex - 1]).css("display", "block");
+  $(dots[slideIndex - 1]).addClass("active");
+};
+
 //*=================================================
 //* jQuery section
 //*=================================================
@@ -122,12 +139,13 @@ $(document).ready(() => {
     </div>`;
   $(".user-info").append(welcomeLine);
 
-  //* On first rendering, load the first card.
+  //* On first rendering, display the first card.
   // const firstCard = cardText.card0;
   // const firstCardColor = cardColors.card0;
   // $(".card-block").empty().append(firstCard).attr("id", "card0");
   // applyColor(firstCardColor);
   // $("#go-left").prop("disabled", true);
+  showSlides(slideIndex);
 
   //* Closing sidenav by clicking close-btn or sidenav losing focus
   $(document).on("click", ".close-btn", function (evnt) {
@@ -183,31 +201,17 @@ $(document).ready(() => {
     }
   });
 
-  const showSlides = (num) => {
-    let indx;
-    const slides = $(".cards");
-    const dots = $(".dot");
-    if (num > slides.length) slideIndex = 1;
-    if (num < 1) slideIndex = slides.length;
-    for (indx = 0; indx < slides.length; indx++) {
-      $(slides[indx]).css("display", "none");
-    }
-    for (indx = 0; indx < dots.length; indx++) {
-      $(dots.indx).removeClass("active");
-    }
-
-    $(slides[slideIndex - 1]).css("display", "block");
-    $(dots[slideIndex - 1]).addClass("active");
-  };
-
-  let slideIndex = 1;
-  showSlides(slideIndex);
-
-  const plusSlides = (num) => {
+  //* Display next or previous card when a chevron is clicked on
+  $(document).on("click", ".prev, .next", function (evnt) {
+    evnt.stopPropagation();
+    const num = $(this).hasClass("next") ? 1 : -1;
     showSlides((slideIndex += num));
-  };
+  });
 
-  const currentSlide = (num) => {
-    showSlides((slideIndex = num));
-  };
+  //* Display selected card when a number is clicked on
+  $(document).on("click", ".dot", function (evnt) {
+    evnt.stopPropagation();
+    const selectedCardIndex = Number($(this).text());
+    showSlides((slideIndex = selectedCardIndex));
+  });
 });
