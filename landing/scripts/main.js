@@ -35,9 +35,12 @@ const showSlides = (num, direction) => {
     $(dots[indx]).removeClass("active");
   }
   // $(slides[slideIndex - 1]).css("display", "block");
-  $(slides[slideIndex - 1]).show({ direction: "left" }, 600);
+  $(slides[slideIndex - 1])
+    .delay(600)
+    .show({ direction: "left" }, 600);
 
   $(dots[slideIndex - 1]).addClass("active");
+  console.log($(".cards").height());
 };
 
 //*=================================================
