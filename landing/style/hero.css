@@ -59,6 +59,7 @@
 .card-block {
   width: 45vw;
   height: 50vh;
+  position: relative;
   background-color: #f0f0f5;
   border: 3px solid #aaa;
   border-radius: 10px;
@@ -68,33 +69,42 @@
 
 .cards {
   display: none;
+  width: 65%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
 }
+
 .prev,
 .next {
   cursor: pointer;
-  /* position: absolute; */
-  /* top: 50%; */
+  position: absolute;
+  top: 43%;
   width: auto;
-  /* margin-top: -22px; */
-  padding: 16px;
+  padding: 1%;
   color: #aaa;
   font-weight: bold;
-  font-size: 2em;
+  font-size: 1.2em;
   transition: 0.3s ease;
-  border-radius: 0 3px 3px 0;
+  border-radius: 20%;
   user-select: none;
 }
 
-/* Position the "next button" to the right */
 .next {
-  right: 0;
-  border-radius: 3px 0 0 3px;
+  right: 1%;
 }
+
+.prev {
+  left: 1%;
+}
+
 .prev:hover,
 .next:hover {
-  background-color: #717171;
+  background-color: #999;
   color: white;
+  text-decoration: none;
 }
+
 .dot {
   cursor: pointer;
   height: 15px;
@@ -110,31 +120,7 @@
 .dot:hover {
   background-color: #717171;
 }
-/* Fading animation */
-.fade {
-  -webkit-animation-name: fade;
-  -webkit-animation-duration: 1.5s;
-  animation-name: fade;
-  animation-duration: 1.5s;
-}
 
-@-webkit-keyframes fade {
-  from {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes fade {
-  from {
-    opacity: 0.4;
-  }
-  to {
-    opacity: 1;
-  }
-}
 .card-text:first-of-type,
 .card-text:last-of-type {
   padding-top: 5%;
@@ -149,13 +135,3 @@
   font-size: 1.2em;
   color: #3f8fc7;
 }
-
-/* .chevron {
-  border-radius: 50%;
-  font-size: 0.7em;
-  margin-top: 1%;
-}
-
-.button-block {
-  margin: 1.5% 0% 0% 80%;
-} */

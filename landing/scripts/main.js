@@ -2,73 +2,6 @@
 //* Actions and Logic
 //*=================================================
 
-const cardText = {
-  card0: `<div class="card-text">
-        You have created <span class="large-num">123</span> classes for the current fiscal year.
-      </div>
-      <div class="card-text">
-        Click
-        <span>
-          <a href="#" >here</a>
-        </span>
-        to display them.
-      </div>`,
-  card1: `<div class="card-text">
-  There are  <span class="large-num">456</span>  students enrolled in these classes.
-</div>
-<div class="card-text">Of these, <span class="large-num">456</span> students are still active</div>
-<div class="card-text">
-  Click
-  <span>
-    <a href="#" >here</a>
-  </span>
-  to display your classes' roster.
-</div>`,
-  card2: `<div class="card-text"><span class="large-num">235</span> students had less than 12 hours of attendance.
-</div>
-  <div class="card-text">
-  Click
-  <span>
-    <a href="#" >here</a>
-  </span>
-  to display them.
-</div>`,
-  card3: `<div class="card-text"><span class="large-num">123</span> of your NRS students had no pre-test.
-  </div><div class="card-text"><span class="large-num">23</span> of your NYRS students had no pre-test.
-  </div>
-  <div class="card-text">
-  Click
-  <span>
-    <a href="#" >here</a>
-  </span>
-  to display the NRS Students without Pre-Test report.
-</div>
-<div class="card-text">
-  Click
-  <span>
-    <a href="#" >here</a>
-  </span>
-  to display the NYRS Students without Pre-Test report.
-</div>`,
-  card4: `<div class="card-text"><span class="large-num">123</span> of your NRS students had no post-test.
-  </div><div class="card-text"><span class="large-num">23</span> of your NYRS students had no post-test.
-  </div>
-  <div class="card-text">
-  Click
-  <span>
-    <a href="#" >here</a>
-  </span>
-  to display the NRS Students without Post-Test report.
-</div>
-<div class="card-text">
-  Click
-  <span>
-    <a href="#" >here</a>
-  </span>
-  to display the NYRS Students without Post-Test report.
-</div>`
-};
-
 const cardColors = {
   card0: "rgb(70,152,170)",
   card1: "rgb(105,78,119)",
@@ -89,19 +22,21 @@ const toggleSideNav = () => {
 };
 
 let slideIndex = 1;
-const showSlides = (num) => {
+const showSlides = (num, direction) => {
   let indx;
   const slides = $(".cards");
   const dots = $(".dot");
   if (num > slides.length) slideIndex = 1;
   if (num < 1) slideIndex = slides.length;
   for (indx = 0; indx < slides.length; indx++) {
-    $(slides[indx]).css("display", "none");
+    $(slides[indx]).hide({ direction: "right" }, 600);
   }
   for (indx = 0; indx < dots.length; indx++) {
     $(dots[indx]).removeClass("active");
   }
-  $(slides[slideIndex - 1]).css("display", "block");
+  // $(slides[slideIndex - 1]).css("display", "block");
+  $(slides[slideIndex - 1]).show({ direction: "left" }, 600);
+
   $(dots[slideIndex - 1]).addClass("active");
 };
 
@@ -178,34 +113,12 @@ $(document).ready(() => {
     $(this).toggleClass("blue-light-bg blue-text");
   });
 
-  //* Selecting next/previous card
-  $(document).on("click", ".chevron", function (evnt) {
-    evnt.stopPropagation();
-    const direction = $(this).attr("id");
-    const currentCardIndex = Number($(".card-block").attr("id").slice(4));
-    const nextCardId =
-      direction === "go-right"
-        ? `card${currentCardIndex + 1}`
-        : `card${currentCardIndex - 1}`;
-
-    const nextCard = cardText[nextCardId];
-    const nextCardColor = cardColors[nextCardId];
-    $(".card-block").empty().append(nextCard).attr("id", nextCardId);
-    applyColor(nextCardColor);
-    if (nextCardId === "card0") {
-      $("#go-left").prop("disabled", true);
-    } else if (nextCardId === `card${Object.keys(cardText).length - 1}`) {
-      $("#go-right").prop("disabled", true);
-    } else {
-      $(".chevron").prop("disabled", false);
-    }
-  });
-
   //* Display next or previous card when a chevron is clicked on
   $(document).on("click", ".prev, .next", function (evnt) {
     evnt.stopPropagation();
-    const num = $(this).hasClass("next") ? 1 : -1;
-    showSlides((slideIndex += num));
+    const tempArr = $(this).hasClass("next") ? [1, "next"] : [-1, "prev"];
+    const [num, direction] = tempArr;
+    showSlides((slideIndex += num), direction);
   });
 
   //* Display selected card when a number is clicked on
