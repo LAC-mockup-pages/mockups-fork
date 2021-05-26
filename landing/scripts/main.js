@@ -2,13 +2,17 @@
 //* Actions and Logic
 //*=================================================
 
-const cardColors = {
-  card0: "rgb(70,152,170)",
-  card1: "rgb(105,78,119)",
-  card2: "rgb(172,143,194)",
-  card3: "rgb(221,88,20)",
-  card4: "rgb(155,187,202)"
-};
+const cardColors = [
+  "rgb(70,152,170)",
+  "rgb(105,78,119)",
+  "rgb(172,143,194)",
+  "rgb(221,88,20)",
+  "rgb(155,187,202)",
+  "rgb(70,152,170)",
+  "rgb(105,78,119)",
+  "rgb(172,143,194)",
+  "rgb(221,88,20)"
+];
 
 const applyColor = (colorStr) => {
   $(".large-num").css("color", colorStr);
@@ -21,21 +25,17 @@ const toggleSideNav = () => {
   ).toggleClass("hidden");
 };
 
-let slideIndex = 1;
+let slideIndex = 0;
 const showSlides = (num) => {
-  let indx;
   const slides = $(".cards");
   const dots = $(".dot");
-  if (num > slides.length) slideIndex = 1;
-  if (num < 1) slideIndex = slides.length;
+  if (num > slides.length) slideIndex = 0;
+  if (num < 0) slideIndex = slides.length - 1;
   $(slides).hide(600).removeClass("visible");
   $(dots).removeClass("active");
 
-  $(slides[slideIndex - 1])
-    .delay(600)
-    .show(600)
-    .addClass("visible");
-  $(dots[slideIndex - 1]).addClass("active");
+  $(slides[slideIndex]).delay(50).show(600).addClass("visible");
+  $(dots[slideIndex]).addClass("active");
 
   // Calculate the top margin necessary to center the card inside
   // card-block
@@ -43,7 +43,9 @@ const showSlides = (num) => {
   const cardHeight = Number($(".visible").css("height").match(/\d/g).join(""));
   const lineHeight = $(".dot").height() / 2;
   const addedMargin = (blockHeight - cardHeight) / 2 - lineHeight;
-  $(slides[slideIndex - 1]).css("margin-top", `${addedMargin}px`);
+  $(slides[slideIndex]).css("margin-top", `${addedMargin}px`);
+
+  applyColor(cardColors[slideIndex]);
 };
 
 //*=================================================
