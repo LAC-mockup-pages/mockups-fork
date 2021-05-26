@@ -28,15 +28,12 @@ const showSlides = (num) => {
   const dots = $(".dot");
   if (num > slides.length) slideIndex = 1;
   if (num < 1) slideIndex = slides.length;
-  for (indx = 0; indx < slides.length; indx++) {
-    $(slides[indx]).hide({ direction: "right" }, 600).removeClass("visible");
-  }
-  for (indx = 0; indx < dots.length; indx++) {
-    $(dots[indx]).removeClass("active");
-  }
+  $(slides).hide(600).removeClass("visible");
+  $(dots).removeClass("active");
+
   $(slides[slideIndex - 1])
     .delay(600)
-    .show({ direction: "left" }, 600)
+    .show(600)
     .addClass("visible");
   $(dots[slideIndex - 1]).addClass("active");
 
