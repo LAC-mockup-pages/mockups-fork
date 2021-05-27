@@ -71,9 +71,6 @@
   display: none;
   width: 75%;
   margin: auto;
-  /* margin-left: auto;
-  margin-right: auto;
-  margin-top: auto; */
 }
 
 .prev,
@@ -119,6 +116,10 @@
   border-radius: 50%;
   display: inline-block;
   transition: background-color 1s ease;
+}
+
+.quick-link {
+  font-size: 1.7em;
 }
 
 .active,
