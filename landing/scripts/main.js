@@ -62,6 +62,8 @@ $(document).ready(() => {
     $(".sidenav").width("20%");
     toggleSideNav();
   });
+  // Enables customized tooltips
+  $("[data-toggle='tooltip']").tooltip();
 
   //* On first rendering, add user info.
   let { fullname, rolename, AgencyID } = SESSION_VARIABLE[0];
