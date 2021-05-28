@@ -82,8 +82,8 @@ $(document).ready(() => {
 
   const welcomeLine = `
     <div class="row">
-      <div class="col-sm-3"></div>
-      <div class="welcome-text col-sm-5">Hello ${fullname} (${AgencyName})
+      <div class="col-sm-1"></div>
+      <div class="welcome-text col-sm-7">Hello ${fullname} (${AgencyName})
       </div>
       <div class="role-text col-sm-4">User Role: ${rolename}
       </div>

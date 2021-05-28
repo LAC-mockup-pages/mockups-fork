@@ -56,108 +56,113 @@
   </head>
   <body>
     <header>
-      <div class="container-fluid row top-band">
+      <div class="container-fluid top-band">
         <!-- <div class="col-md-1"></div> -->
-        <div class="col-md-2 menu-open">
-          <span id="menu-btn"
-            >&#9776; <span class="hamburger-label">Menu</span>
-          </span>
-        </div>
-        <div class="top-logo col-md-3">
-          <div>
-            <img src="../assets/Main-Logo.png" class="main-logo" />
+        <div class="row">
+          <div class="col-md-2 menu-open">
+            <span id="menu-btn"
+              >&#9776; <span class="hamburger-label">Menu</span>
+            </span>
+          </div>
+          <div class="top-logo col-md-3">
+            <div>
+              <img src="../assets/Main-Logo.png" class="main-logo" />
+            </div>
+          </div>
+          <!-- <div class="col-md-1"></div> -->
+          <div class="col-md-7">
+            <section class="icons row">
+              <a
+                class="col-sm-3"
+                href="#"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Add Students"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link">
+                  person_add_alt
+                </span></a
+              >
+              <a
+                class="col-sm-3"
+                href="#"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Attendance"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link"> rule </span></a
+              >
+
+              <a
+                class="col-sm-3"
+                href="#"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="NRS Program Evaluation Report"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link"> summarize </span></a
+              >
+              <a
+                class="col-sm-3"
+                href="#"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="NYRS Program Evaluation Report"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link"> summarize </span></a
+              >
+            </section>
+            <section class="user-bloc row">
+              <div class="col-sm-10 user-info"></div>
+              <div class="col-sm-2 dropdown-user">
+                <div class="dropdown">
+                  <a
+                    href="#"
+                    class="dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="true"
+                    ><span
+                      class="glyphicon glyphicon-user"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="caret"></span
+                  ></a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li>
+                      <a href="#" id="help-link" id="help-text"
+                        ><span class="help-mark">? </span> Help</a
+                      >
+                    </li>
+                    <li>
+                      <a href="/logout.aspx" id="logout-text"
+                        ><span
+                          class="glyphicon glyphicon-log-out"
+                          aria-hidden="true"
+                        ></span>
+                        Logout</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
           </div>
         </div>
-        <div class="col-md-2"></div>
-        <div class="col-md-4 row">
-          <a
-            class="col-sm-3"
-            href="#"
-            role="button"
-            data-toggle="tooltip"
-            data-placement="bottom"
-            title="Add Students"
-            aria-haspopup="true"
-            aria-expanded="true"
-          >
-            <span class="material-icons quick-link"> person_add_alt </span></a
-          >
-          <a
-            class="col-sm-3"
-            href="#"
-            role="button"
-            data-toggle="tooltip"
-            data-placement="bottom"
-            title="Attendance"
-            aria-haspopup="true"
-            aria-expanded="true"
-          >
-            <span class="material-icons quick-link"> rule </span></a
-          >
-
-          <a
-            class="col-sm-3"
-            href="#"
-            role="button"
-            data-toggle="tooltip"
-            data-placement="bottom"
-            title="NRS Program Evaluation Report"
-            aria-haspopup="true"
-            aria-expanded="true"
-          >
-            <span class="material-icons quick-link"> summarize </span></a
-          >
-          <a
-            class="col-sm-3"
-            href="#"
-            role="button"
-            data-toggle="tooltip"
-            data-placement="bottom"
-            title="NYRS Program Evaluation Report"
-            aria-haspopup="true"
-            aria-expanded="true"
-          >
-            <span class="material-icons quick-link"> summarize </span></a
-          >
-        </div>
       </div>
-      <!-- Top nav -->
-      <div class="container-fluid row top-nav">
-        <div class="col-md-1"></div>
-
-        <div class="col-md-6 user-info"></div>
-        <div class="col-md-2 dropdown-user">
-          <div class="dropdown">
-            <a
-              href="#"
-              class="dropdown-toggle"
-              data-toggle="dropdown"
-              role="button"
-              aria-haspopup="true"
-              aria-expanded="true"
-              ><span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-              <span class="caret"></span
-            ></a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="#" id="help-link" id="help-text"
-                  ><span class="help-mark">? </span> Help</a
-                >
-              </li>
-              <li>
-                <a href="/logout.aspx" id="logout-text"
-                  ><span
-                    class="glyphicon glyphicon-log-out"
-                    aria-hidden="true"
-                  ></span>
-                  Logout</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <!-- End top nav -->
     </header>
 
     <!-- Side Nav bar -->
