@@ -72,6 +72,13 @@
   margin-top: -0.6%;
 }
 
+/* Side Nav bar */
+/* ================================== */
+
+.sidenav {
+  transition: width 0.4s;
+}
+
 /* Main text */
 /* ================================== */
 
@@ -93,7 +100,7 @@
   border: 3px solid #aaa;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  margin: 7% 0% 0% 35%;
+  margin: 13% 0% 0% 35%;
 }
 
 .cards {
