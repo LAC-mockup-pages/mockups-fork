@@ -63,6 +63,9 @@ $(document).ready(() => {
   //* Opening side Nav
   $(document).on("click", "#menu-btn", function (evnt) {
     $(".sidenav").width("20%");
+    $(".card-btn").css("padding-left", "31%");
+    $(".btn-numbers").css("margin-left", "0%");
+
     toggleSideNav();
   });
   // Enables customized tooltips
@@ -98,6 +101,9 @@ $(document).ready(() => {
     $(".dropdown-container").css("display", "none");
     $(".main-tab .dropdown-btn").removeClass("active");
     $(".sidenav").width("3%");
+    $(".card-btn").css("padding-left", "15%");
+    $(".btn-numbers").css("margin-left", "-17%");
+
     toggleSideNav();
   });
 
