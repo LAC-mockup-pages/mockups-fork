@@ -64,7 +64,7 @@ $(document).ready(() => {
   $(document).on("click", "#menu-btn", function (evnt) {
     $(".sidenav").width("20%");
     $(".card-btn").css("padding-left", "31%");
-    $(".btn-numbers").css("margin-left", "0%");
+    $(".btn-numbers").css("margin-left", "10%");
 
     toggleSideNav();
   });

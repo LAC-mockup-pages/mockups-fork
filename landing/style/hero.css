@@ -115,12 +115,14 @@
 .main-body .btn-numbers {
   display: inline-block;
   margin-top: 2%;
+  margin-left: 10%;
 }
 
 .card-btn {
   padding-top: 15%;
   padding-left: 31%;
 }
+
 .prev,
 .next {
   cursor: pointer;
