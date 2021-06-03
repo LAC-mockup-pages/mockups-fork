@@ -154,18 +154,37 @@ export const checkHashtable = (list, roster) => {
     return list;
   } else {
     const newStudentsList = [];
+
     const ID = "0";
     const { ClassID, Class_PKID, ClassMonth, ClassperiodID } = list[0];
-    const classDays = Object.keys(list[0]).filter((key) =>
-      key.startsWith("Day")
+    const classDaysObj = Object.fromEntries(
+      Object.keys(list[0])
+        .filter((key) => key.startsWith("Day"))
+        .map((day) => [day, ""])
     );
     const newStudentIdList = studentsInRoster.filter(
       (student) => !studentsInList.includes(student)
     );
+    let commonProps = {
+      ID,
+      ClassID,
+      Class_PKID,
+      ClassMonth,
+      ClassperiodID,
+      ...classDaysObj,
+      totalHours: ""
+    };
 
     for (const student of newStudentIdList) {
       const studentInfo = roster.find((item) => item.Student_PKID === student);
       const { StudentID, StudentName } = studentInfo;
+      const newStudent = {
+        student,
+        StudentID,
+        StudentName,
+        StudentName2: StudentName
+      };
+      newStudentsList.push({ ...commonProps, ...newStudent });
     }
     return [...list, ...newStudentsList];
   }
