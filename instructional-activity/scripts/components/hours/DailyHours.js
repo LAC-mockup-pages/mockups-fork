@@ -145,13 +145,29 @@ export const createDailyHours = (classId) => {
 //           students have ID = "0".
 export const checkHashtable = (list, roster) => {
   if (!list[0].ID) return false;
-  const studentsInRoster = roster
-    .map((student) => student.Student_PKID)
-    .join(" ");
-  const studentsInList = list.map((student) => student.Student_PKID).join(" ");
+  const studentsInRoster = roster.map((student) => student.Student_PKID).sort();
+  const rosterLength = studentsInRoster.length;
+  const studentsInList = list.map((student) => student.Student_PKID).sort();
+  const listLength = studentsInList.length;
 
-  if (studentsInRoster === studentsInList) {
+  if (rosterLength === listLength) {
     return list;
+  } else {
+    const newStudentsList = [];
+    const ID = "0";
+    const { ClassID, Class_PKID, ClassMonth, ClassperiodID } = list[0];
+    const classDays = Object.keys(list[0]).filter((key) =>
+      key.startsWith("Day")
+    );
+    const newStudentIdList = studentsInRoster.filter(
+      (student) => !studentsInList.includes(student)
+    );
+
+    for (const student of newStudentIdList) {
+      const studentInfo = roster.find((item) => item.Student_PKID === student);
+      const { StudentID, StudentName } = studentInfo;
+    }
+    return [...list, ...newStudentsList];
   }
 };
 
