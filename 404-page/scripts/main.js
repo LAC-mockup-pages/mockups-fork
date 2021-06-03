@@ -13,9 +13,10 @@ const toggleSideNav = () => {
 //*=================================================
 
 $(document).ready(() => {
-  //* Side nav open at home page loading
-  $(".sidenav").width("20%");
-  toggleSideNav();
+  //* Side nav closed at page loading
+  $(".dropdown-container").css("display", "none");
+  $(".sidenav").width("3%");
+  // toggleSideNav();
 
   //* Opening side Nav
   $(document).on("click", "#menu-btn", function (evnt) {
