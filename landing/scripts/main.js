@@ -53,7 +53,7 @@ const showSlides = (num) => {
 
 const getRoleName = (userLevelStr) => {
   const roleList = [
-    "LAC TECH Support",
+    "LAC TECH Support", //! indx 0 to 4 can select multiple agencies
     "NYSED Staff",
     "RAEN Director",
     "LPA Editor",
@@ -79,6 +79,10 @@ const getRoleName = (userLevelStr) => {
 //*=================================================
 
 $(document).ready(() => {
+  //* ===================================
+  //* First rendering actions
+  //* ===================================
+
   //* Side nav open at home page loading
   $(".sidenav").width("20%");
   toggleSideNav();
@@ -94,7 +98,7 @@ $(document).ready(() => {
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
 
-  //* On first rendering, add user info.
+  //* Add user info.
   let { fullname, rolename, UserLevel, AgencyName } = SESSION_VARIABLE[0];
 
   //! =========================================
@@ -119,8 +123,25 @@ $(document).ready(() => {
     </div>`;
   $(".user-info").append(welcomeLine);
 
-  //* On first rendering, display the first card.
+  //* Display the first card.
   showSlides(slideIndex);
+
+  //* Open Agency selection modal depending on the user role in
+  //* SESSION_VARIABLE
+
+  if (
+    [
+      "LAC TECH Support", //! Those roles can select multiple agencies
+      "NYSED Staff",
+      "RAEN Director",
+      "LPA Editor",
+      "LPA Reviewer"
+    ].includes(rolename)
+  ) {
+    $("#modalBloc").modal("toggle");
+  }
+
+  //* ===================================
 
   //* Closing sidenav by clicking close-btn or sidenav losing focus
   $(document).on("click", ".close-btn", function (evnt) {
