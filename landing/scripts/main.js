@@ -51,6 +51,29 @@ const showSlides = (num) => {
   applyColor(cardColors[slideIndex]);
 };
 
+const getRoleName = (userLevelStr) => {
+  const roleList = [
+    "LAC TECH Support",
+    "NYSED Staff",
+    "RAEN Director",
+    "LPA Editor",
+    "LPA Reviewer",
+    "Program ASISTS Administrator",
+    "Program Data Editor",
+    "Program Data Reviewer",
+    "Site Administrator",
+    "Site Data Editor",
+    "Site Data Reviewer",
+    "Teacher/Editor",
+    "Teacher/Reviewer",
+    "LPA Administrator",
+    "DYCD Editor",
+    "DYCD Reviewer"
+  ];
+  const indx = Number(userLevelStr) - 1;
+  return roleList[indx];
+};
+
 //*=================================================
 //* jQuery section
 //*=================================================
@@ -72,23 +95,24 @@ $(document).ready(() => {
   $("[data-toggle='tooltip']").tooltip();
 
   //* On first rendering, add user info.
-  let { fullname, rolename, AgencyName } = SESSION_VARIABLE[0];
+  let { fullname, UserLevel, AgencyName } = SESSION_VARIABLE[0];
 
   //! =========================================
   //! For Dev Env only. Can stay for Production.
   if (!fullname || fullname.startsWith("<%=")) {
-    fullname = "Kate Tornese";
-    rolename = "LAC TECH Support";
+    fullname = "Kate Tornese (default)";
+    UserLevel = "1";
     AgencyName = "Practice Agency";
   }
   //! =========================================
 
+  let roleName = getRoleName(UserLevel);
   const welcomeLine = `
     <div class="row">
       <div class="col-sm-1"></div>
       <div class="welcome-text col-sm-7">Hello ${fullname} (${AgencyName})
       </div>
-      <div class="role-text col-sm-4">User Role: ${rolename}
+      <div class="role-text col-sm-4">User Role: ${roleName}
       </div>
     </div>`;
   $(".user-info").append(welcomeLine);
