@@ -95,24 +95,26 @@ $(document).ready(() => {
   $("[data-toggle='tooltip']").tooltip();
 
   //* On first rendering, add user info.
-  let { fullname, UserLevel, AgencyName } = SESSION_VARIABLE[0];
+  let { fullname, rolename, UserLevel, AgencyName } = SESSION_VARIABLE[0];
 
   //! =========================================
   //! For Dev Env only. Can stay for Production.
+  //! =========================================
+
   if (!fullname || fullname.startsWith("<%=")) {
     fullname = "Kate Tornese (default)";
     UserLevel = "1";
+    rolename = "LAC TECH Support";
     AgencyName = "Practice Agency";
   }
   //! =========================================
 
-  let roleName = getRoleName(UserLevel);
   const welcomeLine = `
     <div class="row">
       <div class="col-sm-1"></div>
       <div class="welcome-text col-sm-7">Hello ${fullname} (${AgencyName})
       </div>
-      <div class="role-text col-sm-4">User Role: ${roleName}
+      <div class="role-text col-sm-4" data-level=${UserLevel}>User Role: ${rolename}
       </div>
     </div>`;
   $(".user-info").append(welcomeLine);
