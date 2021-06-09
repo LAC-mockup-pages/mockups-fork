@@ -13,7 +13,7 @@
 /* ================================== */
 
 .top-band {
-  height: 12.5vh;
+  max-height: 15vh;
   padding-right: 0px;
 }
 
