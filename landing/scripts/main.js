@@ -74,6 +74,34 @@ const getRoleName = (userLevelStr) => {
   return roleList[indx];
 };
 
+const createAgencySelect = (list) => {
+  const hashTable = list
+    .map((obj) => {
+      const { AgencyID, AgencyName } = obj;
+      return { AgencyID, AgencyName };
+    })
+    .sort(
+      // Sorting alphabetically on AgencyName
+      (obj1, obj2) =>
+        obj1.AgencyName < obj2.AgencyName
+          ? -1
+          : obj1.AgencyName > obj2.AgencyName
+          ? 1
+          : 0
+    );
+
+  // elementSelectModal <= helperFunctions.js
+  return elementSelectModal({
+    hashTable,
+    keyValue: "AgencyID",
+    selectedValue: "",
+    labelVal: "Agency",
+    labelClassVal: "",
+    option: "",
+    optionText: "an agency"
+  });
+};
+
 //*=================================================
 //* jQuery section
 //*=================================================
@@ -105,7 +133,7 @@ $(document).ready(() => {
   //! For Dev Env only. Can stay for Production.
   //! =========================================
 
-  if (!fullname || fullname.startsWith("<%=")) {
+  if (!AgencyName || AgencyName.startsWith("<%=")) {
     fullname = "Kate Tornese (default)";
     UserLevel = "1";
     rolename = "LAC TECH Support";
@@ -138,6 +166,9 @@ $(document).ready(() => {
       "LPA Reviewer"
     ].includes(rolename)
   ) {
+    const agencySelection = createAgencySelect(GetAgencyIndex.slice(0));
+    // $(".modal-body").append("<h2>Selctor here</h2>");
+    $("#edit-form").append(agencySelection);
     $("#modalBloc").modal("toggle");
   }
 
@@ -192,54 +223,16 @@ $(document).ready(() => {
   });
 
   //* Select Agency in dropdown list
-  $("body").on("keyup", "#Student_PKID-view", function (event) {
-    // get keycode of current keypress event
-    var code = event.keyCode || event.which;
-
-    // do nothing if it's an arrow key
-    // if (code == 37 || code == 38 || code == 39 || code == 40) { return; }
-
-    if ([37, 38, 39, 40].includes(code)) {
-      return;
-    } else {
-      const firstLetters = $(this).val();
-      if (firstLetters.length > 2) {
-        //for live data
-        //RefreshStudentList(firstLetters);
-      }
-
-      $(this).autocomplete({
-        minLength: 3,
-        delay: 500,
-        appendTo: $("#Student_PKID_AC"),
-        autoFocus: true,
-        source: function (request, response) {
-          response(
-            $.map(GetStudentLookup, function (obj, key) {
-              var name = obj.StudentName.toUpperCase();
-
-              if (name.indexOf(request.term.toUpperCase()) != -1) {
-                return {
-                  label: obj.StudentName + " (" + obj.StudentID + ")", // Label for Display
-                  value: obj.ID // Value for record
-                };
-              } else {
-                return null;
-              }
-            })
-          );
-        },
-        focus: function (event, ui) {
-          event.preventDefault();
-        },
-        // Once value in list is selected, do the following:
-        select: function (event, ui) {
-          event.preventDefault();
-          // place student name value into textbox and assign ID
-          $("#Student_PKID-view").val(ui.item.label);
-          $("#Student_PKID-view").attr("id_", ui.item.value);
-        }
-      }); //Autocomplete
-    } //Not Arrow keys
-  }); //Student_PKID-view on keyup
+  $(document).on("change", "#AgencyID-view", function (evnt) {
+    evnt.stopPropagation();
+    const selectedId = $(this).val();
+    const selectedAgencyName = $("#AgencyID-view option:selected").text();
+    console.log("selectedId :>> ", selectedId);
+    console.log("selectedAgencyName :>> ", selectedAgencyName);
+    SESSION_VARIABLE[0].AgencyID = selectedId;
+    SESSION_VARIABLE[0].AgencyName = selectedAgencyName;
+    $(".welcome-text").trigger("create");
+    $("#modalBloc").modal("toggle");
+    console.log("SESSION_VARIABLE :>> ", SESSION_VARIABLE);
+  });
 });

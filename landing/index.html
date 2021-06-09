@@ -47,6 +47,12 @@
     <script src="../helpers/constants.js" type="text/javascript" defer></script>
 
     <script
+      src="../helpers/helperFunctions.js"
+      type="text/javascript"
+      defer
+    ></script>
+
+    <script
       type="text/javascript"
       src="./scripts/data-server.js"
       defer
@@ -488,10 +494,10 @@
               <span aria-hidden="true">&times;</span
               ><span class="sr-only">Close</span>
             </button>
-            <h4 class="modal-title">Select an Agency</h4>
+            <h4 class="modal-title">Agency Selection</h4>
           </div>
           <div class="modal-body">
-            <h3>Agency select here</h3>
+            <form role="form" id="edit-form"></form>
           </div>
           <div class="modal-footer">
             <button
