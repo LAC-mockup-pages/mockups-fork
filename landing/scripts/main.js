@@ -190,4 +190,56 @@ $(document).ready(() => {
     const selectedCardIndex = Number($(this).text());
     showSlides((slideIndex = selectedCardIndex));
   });
+
+  //* Select Agency in dropdown list
+  $("body").on("keyup", "#Student_PKID-view", function (event) {
+    // get keycode of current keypress event
+    var code = event.keyCode || event.which;
+
+    // do nothing if it's an arrow key
+    // if (code == 37 || code == 38 || code == 39 || code == 40) { return; }
+
+    if ([37, 38, 39, 40].includes(code)) {
+      return;
+    } else {
+      const firstLetters = $(this).val();
+      if (firstLetters.length > 2) {
+        //for live data
+        //RefreshStudentList(firstLetters);
+      }
+
+      $(this).autocomplete({
+        minLength: 3,
+        delay: 500,
+        appendTo: $("#Student_PKID_AC"),
+        autoFocus: true,
+        source: function (request, response) {
+          response(
+            $.map(GetStudentLookup, function (obj, key) {
+              var name = obj.StudentName.toUpperCase();
+
+              if (name.indexOf(request.term.toUpperCase()) != -1) {
+                return {
+                  label: obj.StudentName + " (" + obj.StudentID + ")", // Label for Display
+                  value: obj.ID // Value for record
+                };
+              } else {
+                return null;
+              }
+            })
+          );
+        },
+        focus: function (event, ui) {
+          event.preventDefault();
+        },
+        // Once value in list is selected, do the following:
+        select: function (event, ui) {
+          event.preventDefault();
+          // place student name value into textbox and assign ID
+          $("#Student_PKID-view").val(ui.item.label);
+          $("#Student_PKID-view").attr("id_", ui.item.value);
+        }
+      }); //Autocomplete
+    } //Not Arrow keys
+  }); //Student_PKID-view on keyup
 });
