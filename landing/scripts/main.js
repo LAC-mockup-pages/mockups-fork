@@ -140,7 +140,6 @@ $(document).ready(() => {
     AgencyName = "Practice Agency";
   }
   //! =========================================
-
   const welcomeLine = `
     <div class="row">
       <div class="col-sm-1"></div>
@@ -167,8 +166,11 @@ $(document).ready(() => {
     ].includes(rolename)
   ) {
     const agencySelection = createAgencySelect(GetAgencyIndex.slice(0));
-    // $(".modal-body").append("<h2>Selctor here</h2>");
     $("#edit-form").append(agencySelection);
+    $(".dropdown-menu").prepend(`
+      <li>
+        <a href="#" id="select-agency">Change Agency</a>
+      </li>`);
     $("#modalBloc").modal("toggle");
   }
 
@@ -230,9 +232,24 @@ $(document).ready(() => {
     console.log("selectedId :>> ", selectedId);
     console.log("selectedAgencyName :>> ", selectedAgencyName);
     SESSION_VARIABLE[0].AgencyID = selectedId;
-    SESSION_VARIABLE[0].AgencyName = selectedAgencyName;
-    $(".welcome-text").trigger("create");
+    SESSION_VARIABLE[0].AgencyName = selectedAgencyName
+      .replace("\n", "")
+      .trim();
+    const userFullName = SESSION_VARIABLE[0].fullname.startsWith("<%=")
+      ? "Kate Tornese (default)"
+      : SESSION_VARIABLE[0].fullname;
+    $(".welcome-text").text(
+      `Hello ${userFullName} (${SESSION_VARIABLE[0].AgencyName})`
+    );
     $("#modalBloc").modal("toggle");
-    console.log("SESSION_VARIABLE :>> ", SESSION_VARIABLE);
+    const agencySelection = createAgencySelect(GetAgencyIndex.slice(0));
+    $("#edit-form").empty().append(agencySelection);
+    console.table(SESSION_VARIABLE[0]);
+  });
+
+  //* Change agency => new agency selection
+  $(document).on("click", "#select-agency", function (evnt) {
+    evnt.stopPropagation();
+    $("#modalBloc").modal("toggle");
   });
 });
