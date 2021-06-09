@@ -3,6 +3,7 @@
 const SESSION_VARIABLE = [
   {
     AgencyID: '<%= Session["AgencyID"] %>',
+    AgencyName: '<%= Session["AgencyName"] %>',
     AuditUserID: '<%= Session["UserID"] %>',
     FiscalYear: '<%= Session["CFY"] %>',
     rolename: '<%= Session["RoleName"] %>',
