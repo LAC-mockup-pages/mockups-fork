@@ -83,7 +83,16 @@
 }
 
 .menu-top {
-  padding-bottom: 10%;
+  padding-bottom: 8%;
+}
+.menu-text {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.5em;
+  background-color: #2479b5;
+  color: #d3e4f0;
+  text-align: center;
+  display: block;
 }
 
 /* Main text */

@@ -21,7 +21,7 @@ const applyColor = (colorStr) => {
 
 const toggleSideNav = () => {
   $(
-    ".sidenav .main-tab, .sidenav .close-btn, .sidenav .small-label"
+    ".sidenav .main-tab, .sidenav .close-btn, .sidenav .menu-text, .small-logo"
   ).toggleClass("hidden");
 };
 
