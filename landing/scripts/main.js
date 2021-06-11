@@ -95,7 +95,7 @@ const createAgencySelect = (list) => {
     hashTable,
     keyValue: "AgencyID",
     selectedValue: "",
-    labelVal: "Agency",
+    labelVal: "",
     labelClassVal: "",
     option: "",
     optionText: "an agency"
