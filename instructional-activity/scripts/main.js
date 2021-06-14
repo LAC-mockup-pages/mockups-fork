@@ -915,15 +915,18 @@ $(document).ready(() => {
     // const courseId = $("#view-bloc").attr("data-course");
     // const period = $(this).val();
     // const reponse= GetDailyHours(courseId,period)
+    // const roster= GetEnrollInfo(courseId)
     //! =================================================
 
     //! =================================================
     //! Comment out the following for production
     //! Only active for development
     const response = GetDailyHours.slice(0);
+    // const response = [{}];
+    const roster = GetEnrollInfo.slice(0);
     //! =================================================
 
-    const dailyHoursView = createDailyHoursTable(response);
+    const dailyHoursView = createDailyHoursTable(response, roster);
 
     $(".hours-table").remove();
     $("#hours-bloc").append(dailyHoursView);

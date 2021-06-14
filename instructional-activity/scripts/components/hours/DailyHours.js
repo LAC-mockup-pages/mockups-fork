@@ -142,7 +142,7 @@ export const createDailyHours = (classId) => {
 //         > DH list if all students in roster are present in DH list,
 //         > DH list + all students in roster NOT present in DH list. Added
 //           students have ID = "0".
-export const checkHashtable = (list, roster) => {
+export const checkStudentList = (list, roster) => {
   // list is empty, the selected course is not on a daily hours input mode.
   if (!list[0].ID) return false;
 
@@ -179,11 +179,13 @@ export const checkHashtable = (list, roster) => {
       totalHours: ""
     };
 
-    for (const student of newStudentIdList) {
-      const studentInfo = roster.find((item) => item.Student_PKID === student);
+    for (const Student_PKID of newStudentIdList) {
+      const studentInfo = roster.find(
+        (item) => item.Student_PKID === Student_PKID
+      );
       const { StudentID, StudentName } = studentInfo;
       const newStudent = {
-        student,
+        Student_PKID,
         StudentID,
         StudentName,
         StudentName2: StudentName
@@ -194,8 +196,14 @@ export const checkHashtable = (list, roster) => {
   }
 };
 
-export const createDailyHoursTable = (dailyHoursList) => {
-  const dayList = Object.keys(dailyHoursList[0]).filter((fieldName) =>
+export const createDailyHoursTable = (dailyHoursList, rosterList) => {
+  const checkedList = checkStudentList(dailyHoursList, rosterList).sort(
+    (student1, student2) =>
+      student1 < student2 ? -1 : student1 > student2 ? 1 : 0
+  );
+  console.log("checkedList :>> ", checkedList);
+
+  const dayList = Object.keys(checkedList[0]).filter((fieldName) =>
     fieldName.startsWith("Day")
   );
   const selectedMonth = Number($("#PeriodID-view").val().substr(7, 2));
@@ -208,7 +216,7 @@ export const createDailyHoursTable = (dailyHoursList) => {
   const header = createHeaders(["Name", ...dateList, "Total"]);
   let body = "";
 
-  for (const record of dailyHoursList) {
+  for (const record of checkedList) {
     const { ID, StudentName, studentID, totalHours } = record;
     let dailyValues = "";
 
