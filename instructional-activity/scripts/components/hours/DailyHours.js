@@ -94,19 +94,18 @@ export const createDailyHours = (classId) => {
     option: "",
     optionText: "a month"
   });
+
+  const weekDays = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+    .map((day) => `<th class="weekday">${day}.</th>`)
+    .join("");
+
   const classSchedule = `
   <div class="schedule-bloc">
   <form class="weekday-banner" id="schedule-static">
  <table class="schedule-table container-fluid table table-bordered table-condensed">
  <thead>
   <tr><th class="blank-bloc"></th>
-  <th class="weekday">Mon.</th>
-  <th class="weekday">Tue.</th>
-  <th class="weekday">Wed.</th>
-  <th class="weekday">Thu.</th>
-  <th class="weekday">Fri. </th>
-  <th class="weekday">Sat.</th>
-  <th class="weekday">Sun.</th>
+  ${weekDays}
  </tr></thead>
   <tbody class="week-schedule-body">
     <tr>
