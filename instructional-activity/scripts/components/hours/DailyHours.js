@@ -144,17 +144,22 @@ export const createDailyHours = (classId) => {
 //         > DH list + all students in roster NOT present in DH list. Added
 //           students have ID = "0".
 export const checkHashtable = (list, roster) => {
+  // list is empty, the selected course is not on a daily hours input mode.
   if (!list[0].ID) return false;
+
+  // list is not empty
   const studentsInRoster = roster.map((student) => student.Student_PKID).sort();
   const rosterLength = studentsInRoster.length;
   const studentsInList = list.map((student) => student.Student_PKID).sort();
   const listLength = studentsInList.length;
 
+  // list and roster have the same number of students
   if (rosterLength === listLength) {
     return list;
+
+    // list and roster have a different number of students
   } else {
     const newStudentsList = [];
-
     const ID = "0";
     const { ClassID, Class_PKID, ClassMonth, ClassperiodID } = list[0];
     const classDaysObj = Object.fromEntries(
