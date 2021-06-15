@@ -5,12 +5,15 @@
 
 const tileSet = [
   {
-    id: "tile1",
-    header: "Post Test",
-    background: "rgba(247,224,149,0), rgba(247,224,149,1)",
-    details: ["75%"],
-    formatDetails: "",
-    target: "../dashboard-post/index.html"
+    id: "tile6",
+    header: "HSE",
+    background: "rgba(211,228,240)",
+    details: [
+      ["Referred:", "37"],
+      ["Passed:", "28"]
+    ],
+    formatDetails: "tile-details-small",
+    target: "../assets/coming-soon.html"
   },
   {
     id: "tile0",
@@ -20,7 +23,14 @@ const tileSet = [
     formatDetails: "",
     target: "../dashboard-msg/index.html"
   },
-
+  {
+    id: "tile1",
+    header: "Post Test",
+    background: "rgba(247,224,149,0), rgba(247,224,149,1)",
+    details: ["75%"],
+    formatDetails: "",
+    target: "../dashboard-post/index.html"
+  },
   {
     id: "tile2",
     header: "Employment Q2",
@@ -56,17 +66,7 @@ const tileSet = [
     formatDetails: "tile-details-small",
     target: "../assets/coming-soon.html"
   },
-  {
-    id: "tile6",
-    header: "HSE",
-    background: "rgba(240,226,213,0), rgba(240,226,213,1)",
-    details: [
-      ["Referred:", "37"],
-      ["Passed:", "28"]
-    ],
-    formatDetails: "tile-details-small",
-    target: "../assets/coming-soon.html"
-  },
+
   {
     id: "tile7",
     header: "TABE Tests",
@@ -99,110 +99,6 @@ const tileSet = [
   }
 ];
 
-const dataSet1 = [
-  {
-    Site: "Enterprise site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Far site",
-    Enrollment: "560",
-    PostTest: "0.07",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Mulberry site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Alpha site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Old English site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Decrepit site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Voyager site",
-    Enrollment: "299",
-    PostTest: "0.57",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  }
-];
-
-const dataSet2 = [
-  {
-    Teacher: "James T. Kirk",
-    Enrollment: "18",
-    PostTest: "0.22",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Katherine Janway",
-    Enrollment: "22",
-    PostTest: "0.72",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Phillippa Gorgious",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "New Kid",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Peter Cetera",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Alan Greenspan",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Ben Sisko",
-    Enrollment: "22",
-    PostTest: "0.35",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  }
-];
-
 const createDetailLines = (detailList) => {
   let rows = "";
   for (const list of detailList) {
@@ -220,10 +116,11 @@ const createDetailLines = (detailList) => {
 };
 const createTile = (dataObj, classButton, classTile) => {
   const { id, header, background, details, formatDetails, target } = dataObj;
-  const gradient =
+  let gradient =
     classTile === "large-tile" || classTile === "medium-tile"
       ? `style="background-image: linear-gradient(180deg, ${background})"`
       : "";
+  if (id === "tile6") gradient = "";
   const format = formatDetails ? formatDetails : "tile-details";
   const detailContent =
     details.length > 1 ? createDetailLines(details) : details[0];
@@ -248,10 +145,11 @@ const createLeftNavBar = () => {
     let tileClass = "";
 
     switch (record.id) {
-      case "tile1":
+      case "tile6":
         tileClass = "large-tile";
         break;
       case "tile0":
+      case "tile1":
       case "tile2":
       case "tile3":
         tileClass = "medium-tile";
