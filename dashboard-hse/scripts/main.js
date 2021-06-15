@@ -332,12 +332,12 @@ const createTable = (dataList) => {
 $(document).ready(() => {
   //* Building and displaying center part
   const leftNavBar = createLeftNavBar();
-  const table1 = createTable(dataSet1);
-  const table2 = createTable(dataSet2);
+  // const table1 = createTable(dataSet1);
+  // const table2 = createTable(dataSet2);
 
   $("#side-nav").append(leftNavBar);
-  $(".table1").append(table1);
-  $(".table2").append(table2);
+  // $(".table1").append(table1);
+  // $(".table2").append(table2);
 
   //* Displaying report in a new browser tab when a table row is clicked
   $(document).on("click", ".table tbody tr", function () {
