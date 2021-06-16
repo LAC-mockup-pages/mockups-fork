@@ -26,6 +26,11 @@ const buildPeriodHashTable = (num, fiscalYear) => {
   return hashTable;
 };
 
+const createDailySchedule = (month, year, weekObj) => {
+  let result = {};
+  return result;
+};
+
 const createWeekSchedule = () => {
   const scheduleObj = JSON.parse($("#view-bloc").attr("data-schedule"));
   const trueDaysList = Object.keys(scheduleObj)
