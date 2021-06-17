@@ -26,14 +26,16 @@ const buildPeriodHashTable = (num, fiscalYear) => {
   return hashTable;
 };
 
+// Month & year are numbers, dayslist is an array of the class days as per
+// schedule in GetCourse, like so: ["Monday", "Wednesday"].
+// Output is an Object like so: {Day1:"", Day4:"", ....}
 const createDailySchedule = (month, year, daysList) => {
   let result = {};
-  const daysInMonth=DT.local(year,month).daysInMonth
-
-  for (let i=0;i<daysInMonth; i++){
-    const dayNumber=i+1
-    const day=DT.local(year,month,dayNumber).toFormat('cccc')
-    if (daysList.includes(day)) result[`Day${dayNumber}`]=day
+  const daysInMonth = DT.local(year, month).daysInMonth;
+  for (let i = 0; i < daysInMonth; i++) {
+    const dayNumber = i + 1;
+    const day = DT.local(year, month, dayNumber).toFormat("cccc");
+    if (daysList.includes(day)) result[`Day${dayNumber}`] = day;
   }
   return result;
 };
@@ -160,9 +162,9 @@ export const checkStudentList = (list, roster) => {
   if (!list[0].ID) return false;
 
   // Testing createDailySchedule
-//TODO Add all parameter definitions in view of roster, fiscal year limits
-  const dailySchedule=createDailySchedule(2,2021,['Monday','Thursday'])
-  console.log('dailySchedule', dailySchedule)
+  //TODO Add all parameter definitions in view of roster, fiscal year limits
+  const dailySchedule = createDailySchedule(2, 2021, ["Monday", "Thursday"]);
+  console.log("dailySchedule", dailySchedule);
 
   // list is not empty
   const studentsInRoster = roster.map((student) => student.Student_PKID).sort();
