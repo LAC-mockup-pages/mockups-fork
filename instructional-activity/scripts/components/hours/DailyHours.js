@@ -160,7 +160,16 @@ export const createDailyHours = (classId) => {
 //           students have ID = "0".
 export const checkStudentList = (list, roster) => {
   // list is empty, the selected course is not on a daily hours input mode.
-  if (!list[0].ID) return false;
+  // if (!list[0].ID) return false;
+  const rosterLength = studentsInRoster.length;
+ if(rosterLength<1) return;
+   const studentsInRoster = roster.map((student) => student.Student_PKID).sort();
+   const {Class_PKID,ClassID,FY}=studentsInRoster[0]
+   const
+   const studentBaseObj={ID:'0',Class_PKID,ClassID}
+  if (!list[0].ID) {
+
+  }
 
   // Testing createDailySchedule
   //TODO Add all parameter definitions in view of roster, fiscal year limits
@@ -168,8 +177,6 @@ export const checkStudentList = (list, roster) => {
   console.log("dailySchedule", dailySchedule);
 
   // list is not empty
-  const studentsInRoster = roster.map((student) => student.Student_PKID).sort();
-  const rosterLength = studentsInRoster.length;
   const studentsInList = list.map((student) => student.Student_PKID).sort();
   const listLength = studentsInList.length;
 
