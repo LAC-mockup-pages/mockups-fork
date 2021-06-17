@@ -44,7 +44,8 @@ import {
 } from "./components/hours/StudentHours.js";
 import {
   createDailyHours,
-  createDailyHoursTable
+  createDailyHoursTable,
+  createNewDailyList
 } from "./components/hours/DailyHours.js";
 
 // Main elements
@@ -883,6 +884,7 @@ $(document).ready(() => {
     if ($(this).attr("id") === "confirm-btn") {
       const topSection = createDailyHours($("#view-bloc").attr("data-class"));
       $("#hours-bloc").empty().append(topSection);
+      console.log(createNewDailyList(GetEnrollInfo));
     }
   });
 

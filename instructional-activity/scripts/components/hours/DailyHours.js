@@ -36,7 +36,7 @@ const createDailySchedule = (month, year, daysList) => {
   for (let i = 0; i < daysInMonth; i++) {
     const dayIndex = i + 1;
     const day = DT.local(year, month, dayIndex).toFormat("cccc");
-    if (daysList.includes(day)) result[`Day${dayIndex}`] = day;
+    if (daysList.includes(day)) result[`Day${dayIndex}`] = "";
   }
   return result;
 };
@@ -152,30 +152,58 @@ export const createDailyHours = (classId) => {
   `;
 };
 
+// If the list of daily hours inputs is empty, creates the list from
+// the class roster
+export const createNewDailyList = (rosterList) => {
+  let result = [];
+  const { Class_PKID, ClassID, FY } = rosterList[0];
+  const referenceObj = GetCourse[0];
+  const classDaysInWeek = Object.keys(referenceObj).filter(
+    (key) => key.endsWith("day") && referenceObj[key] === "True"
+  );
+  const agencyCode = SESSION_VARIABLE[0].AgencyID.startsWith("<%=")
+    ? "PRA"
+    : SESSION_VARIABLE[0].AgencyID;
+  const studentBaseObj = { ID: "0", Class_PKID, ClassID, totalHours: "" };
+
+  for (const student of rosterList) {
+    const { Student_PKID, StudentName, StudentID } = student;
+
+    // creating 1 object per month with daily schedule
+    for (let month = 1; month < 13; month++) {
+      const calendarYear = month < 7 ? Number(FY) : Number(FY) - 1;
+      const monthStr = month < 10 ? `0${month}` : month.toString();
+      const ClassperiodID = `${agencyCode}${calendarYear}${monthStr}01`;
+      const classDaysInMonth = createDailySchedule(
+        month,
+        calendarYear,
+        classDaysInWeek
+      );
+      result.push({
+        ...studentBaseObj,
+        Student_PKID,
+        StudentName,
+        studentID: StudentID,
+        StudentName2: StudentName,
+        ClassperiodID,
+        ...classDaysInMonth
+      });
+    }
+  }
+  return result;
+};
+
 // Input: Daily Hours list, class roster.
 // Output: > if DH list is [{}], creates the DH list for all students on roster.
-//            Student_PKID will be "0"
+//            record ID will be "0"
 //         > DH list if all students in roster are present in DH list,
 //         > DH list + all students in roster NOT present in DH list. Added
 //           students have ID = "0".
 export const checkStudentList = (list, roster) => {
   // list is empty, the selected course is not on a daily hours input mode.
-  // if (!list[0].ID) return false;
-  const rosterLength = studentsInRoster.length;
+  const rosterLength = roster.length;
   if (rosterLength < 1) return;
   const studentsInRoster = roster.map((student) => student.Student_PKID).sort();
-  const { Class_PKID, ClassID, FY } = studentsInRoster[0];
-  const classDays = GetCourse[0].map();
-  const studentBaseObj = { ID: "0", Class_PKID, ClassID };
-  if (!list[0].ID) {
-  }
-
-  // Testing createDailySchedule
-  //TODO Add all parameter definitions in view of roster, fiscal year limits
-  const dailySchedule = createDailySchedule(2, 2021, ["Monday", "Thursday"]);
-  console.log("dailySchedule", dailySchedule);
-
-  // list is not empty
   const studentsInList = list.map((student) => student.Student_PKID).sort();
   const listLength = studentsInList.length;
 
