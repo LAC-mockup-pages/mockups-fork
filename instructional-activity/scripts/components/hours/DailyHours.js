@@ -26,8 +26,15 @@ const buildPeriodHashTable = (num, fiscalYear) => {
   return hashTable;
 };
 
-const createDailySchedule = (month, year, weekObj) => {
+const createDailySchedule = (month, year, daysList) => {
   let result = {};
+  const daysInMonth=DT.local(year,month).daysInMonth
+
+  for (let i=0;i<daysInMonth; i++){
+    const dayNumber=i+1
+    const day=DT.local(year,month,dayNumber).toFormat('cccc')
+    if (daysList.includes(day)) result[`Day${dayNumber}`]=day
+  }
   return result;
 };
 
@@ -150,6 +157,11 @@ export const createDailyHours = (classId) => {
 export const checkStudentList = (list, roster) => {
   // list is empty, the selected course is not on a daily hours input mode.
   if (!list[0].ID) return false;
+
+  // Testing createDailySchedule
+
+  const dailySchedule=createDailySchedule(2,2021,['Monday','Thursday'])
+  console.log('dailySchedule', dailySchedule)
 
   // list is not empty
   const studentsInRoster = roster.map((student) => student.Student_PKID).sort();
