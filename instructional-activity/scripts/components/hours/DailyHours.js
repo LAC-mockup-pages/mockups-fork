@@ -28,7 +28,8 @@ const buildPeriodHashTable = (num, fiscalYear) => {
 
 // Month & year are numbers, dayslist is an array of the class days as per
 // schedule in GetCourse, like so: ["Monday", "Wednesday"].
-// Output is an Object like so: {Day1:"", Day4:"", ....}
+// Output is an Object like so: {Day1:"", Day4:"", ....}.
+// Uses Luxon time methods. DateTime class must be initialized in the scope.
 const createDailySchedule = (month, year, daysList) => {
   let result = {};
   const daysInMonth = DT.local(year, month).daysInMonth;
