@@ -159,7 +159,7 @@ export const checkStudentList = (list, roster) => {
   if (!list[0].ID) return false;
 
   // Testing createDailySchedule
-
+//TODO Add all parameter definitions in view of roster, fiscal year limits
   const dailySchedule=createDailySchedule(2,2021,['Monday','Thursday'])
   console.log('dailySchedule', dailySchedule)
 
