@@ -150,7 +150,8 @@ export const createDailyHours = (classId) => {
 };
 
 // Input: Daily Hours list, class roster.
-// Output: > false if DH list is [{}],
+// Output: > if DH list is [{}], creates the DH list for all students on roster.
+//            Student_PKID will be "0"
 //         > DH list if all students in roster are present in DH list,
 //         > DH list + all students in roster NOT present in DH list. Added
 //           students have ID = "0".
