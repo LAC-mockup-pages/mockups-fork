@@ -162,13 +162,12 @@ export const checkStudentList = (list, roster) => {
   // list is empty, the selected course is not on a daily hours input mode.
   // if (!list[0].ID) return false;
   const rosterLength = studentsInRoster.length;
- if(rosterLength<1) return;
-   const studentsInRoster = roster.map((student) => student.Student_PKID).sort();
-   const {Class_PKID,ClassID,FY}=studentsInRoster[0]
-   const
-   const studentBaseObj={ID:'0',Class_PKID,ClassID}
+  if (rosterLength < 1) return;
+  const studentsInRoster = roster.map((student) => student.Student_PKID).sort();
+  const { Class_PKID, ClassID, FY } = studentsInRoster[0];
+  const classDays = GetCourse[0].map();
+  const studentBaseObj = { ID: "0", Class_PKID, ClassID };
   if (!list[0].ID) {
-
   }
 
   // Testing createDailySchedule
