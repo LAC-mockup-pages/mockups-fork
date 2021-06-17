@@ -34,9 +34,9 @@ const createDailySchedule = (month, year, daysList) => {
   let result = {};
   const daysInMonth = DT.local(year, month).daysInMonth;
   for (let i = 0; i < daysInMonth; i++) {
-    const dayNumber = i + 1;
-    const day = DT.local(year, month, dayNumber).toFormat("cccc");
-    if (daysList.includes(day)) result[`Day${dayNumber}`] = day;
+    const dayIndex = i + 1;
+    const day = DT.local(year, month, dayIndex).toFormat("cccc");
+    if (daysList.includes(day)) result[`Day${dayIndex}`] = day;
   }
   return result;
 };
