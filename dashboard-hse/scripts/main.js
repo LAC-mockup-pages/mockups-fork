@@ -114,6 +114,7 @@ const createDetailLines = (detailList) => {
     </tbody>
   </table>`;
 };
+
 const createTile = (dataObj, classButton, classTile) => {
   const { id, header, background, details, formatDetails, target } = dataObj;
   let gradient =

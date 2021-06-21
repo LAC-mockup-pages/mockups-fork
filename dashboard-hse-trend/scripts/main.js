@@ -122,10 +122,11 @@ const createDetailLines = (detailList) => {
 };
 const createTile = (dataObj, classButton, classTile) => {
   const { id, header, background, details, formatDetails, target } = dataObj;
-  const gradient =
+  let gradient =
     classTile === "large-tile" || classTile === "medium-tile"
       ? `style="background-image: linear-gradient(180deg, ${background})"`
       : "";
+  if (id === "tile6") gradient = "";
   const format = formatDetails ? formatDetails : "tile-details";
   const detailContent =
     details.length > 1 ? createDetailLines(details) : details[0];
@@ -150,9 +151,10 @@ const createLeftNavBar = () => {
     let tileClass = "";
 
     switch (record.id) {
-      case "tile0":
+      case "tile6":
         tileClass = "large-tile";
         break;
+      case "tile0":
       case "tile1":
       case "tile2":
       case "tile3":
