@@ -65,7 +65,7 @@ const tileSet = [
       ["Passed:", "28"]
     ],
     formatDetails: "tile-details-small",
-    target: "../assets/coming-soon.html"
+    target: "../dashboard-hse/index.html"
   },
   {
     id: "tile7",
