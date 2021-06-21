@@ -884,7 +884,6 @@ $(document).ready(() => {
     if ($(this).attr("id") === "confirm-btn") {
       const topSection = createDailyHours($("#view-bloc").attr("data-class"));
       $("#hours-bloc").empty().append(topSection);
-      console.log(createNewDailyList(GetEnrollInfo));
     }
   });
 
