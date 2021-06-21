@@ -193,6 +193,20 @@
   margin-bottom: 1.5%;
 }
 
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  padding: 0px;
+  padding-left: 2px;
+  vertical-align: top;
+  width: 45%;
+  font-size: 0.9em;
+  line-height: 1.8em;
+}
+
 #center-part {
   padding-right: 0px;
   padding-left: 0px;
