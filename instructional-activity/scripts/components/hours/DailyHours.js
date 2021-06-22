@@ -193,16 +193,17 @@ export const createNewDailyList = (rosterList) => {
   return result;
 };
 
-// Input: Daily Hours list, class roster.
-// Output: > if DH list is [{}], creates the DH list for all students on roster.
-//            record ID will be "0"
-//         > DH list if all students in roster are present in DH list,
+// Input: Daily Hours list, class roster list.
+// Output: > DH list if all students in roster are present in DH list,
 //         > DH list + all students in roster NOT present in DH list. Added
-//           students have ID = "0".
+//           records have ID = "0".
 export const checkStudentList = (list, roster) => {
-  // list is empty, the selected course is not on a daily hours input mode.
   const rosterLength = roster.length;
+
+  // Safety check that at least 1 student is enrolled in the course.
+  //TODO Some kind of feedback message for the user?
   if (rosterLength < 1) return;
+
   const studentsInRoster = roster.map((student) => student.Student_PKID).sort();
   const studentsInList = list.map((student) => student.Student_PKID).sort();
   const listLength = studentsInList.length;
@@ -210,9 +211,9 @@ export const checkStudentList = (list, roster) => {
   // list and roster have the same number of students
   if (rosterLength === listLength) {
     return list;
-
-    // list and roster have a different number of students
-  } else {
+  }
+  // list and roster have a different number of students
+  else {
     const newStudentsList = [];
     const ID = "0";
     const { ClassID, Class_PKID, ClassMonth, ClassperiodID } = list[0];
@@ -252,11 +253,12 @@ export const checkStudentList = (list, roster) => {
 };
 
 export const createDailyHoursTable = (dailyHoursList, rosterList) => {
+  // Check if all enrolled students are in the daily hours list.
+  // If not, add the missing students.
   const checkedList = checkStudentList(dailyHoursList, rosterList).sort(
     (student1, student2) =>
       student1 < student2 ? -1 : student1 > student2 ? 1 : 0
   );
-  console.log("checkedList :>> ", checkedList);
 
   const dayList = Object.keys(checkedList[0]).filter((fieldName) =>
     fieldName.startsWith("Day")
