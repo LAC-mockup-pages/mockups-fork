@@ -910,14 +910,29 @@ $(document).ready(() => {
   $(document).on("change", "#PeriodID-view", function (evnt) {
     evnt.stopPropagation();
 
-    //! =================================================
+    //! ====================================================================
     //! response to request sent to back end with needed
     //! parameters. Will be active after GJ changes for production
     // const courseId = $("#view-bloc").attr("data-course");
     // const period = $(this).val();
-    // const reponse= GetDailyHours(courseId,period)
+    // let reponse= GetDailyHours(courseId,period)
     // const roster= GetEnrollInfo(courseId)
-    //! =================================================
+
+    // response is empty ==> creating the records for each student for 1 year
+    // if (!response[0].ID) {
+    //   const newDailyList = createNewDailyList(roster);
+
+    //! ==============================================
+    //! Send a POST request to bulk update the DB with newDailList content.
+    //! newDailList= [{.......},{........},...]. Each object is a month
+    //! of daily hours for 1 student, 12 objects per student are created
+    //! to cover the whole fiscal year.
+    //! ==============================================
+
+    //
+    //   response = newDailyList.filter((obj) => obj.ClassperiodID === period);
+    // }
+    //! ====================================================================
 
     //! =================================================
     //! Comment out the following for production
