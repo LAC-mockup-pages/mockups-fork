@@ -499,51 +499,45 @@ $(document).ready(() => {
 
   //* Navigation from Enrollment view once a course has been
   //* selected in the Course Offering view shortlist.
-  $(document).on(
-    "click",
-    "#enrollment-tab, #hours-tab, #details-tab",
-    function () {
-      const selectedTab = $(this).attr("id");
+  $("#enrollment-tab, #hours-tab, #details-tab").click(function () {
+    const selectedTab = $(this).attr("id");
 
-      // console.log("selectedTab :>> ", selectedTab);
+    console.log("selectedTab :>> ", selectedTab);
 
-      const selectedCourse = $("#view-bloc").data("course").toString();
+    const selectedCourse = $("#view-bloc").data("course").toString();
 
-      const course = GetCourse.find((record) => record.ID === selectedCourse);
+    const course = GetCourse.find((record) => record.ID === selectedCourse);
 
-      let viewToDisplay = "";
-      switch (selectedTab) {
-        case "enrollment-tab":
-          viewToDisplay = createEnrollmentView(selectedCourse, course.ClassID);
-          break;
-        case "hours-tab":
-          viewToDisplay = createHoursView(
-            selectedCourse,
-            course.ClassID,
-            course.InstructorID
-          );
-          break;
-        case "details-tab":
-          // console.log("course :>> ", course);
-          viewToDisplay = createDetailsView(course);
-          break;
-        default:
-          break;
-      }
-
-      $("#view-bloc").empty().append(viewToDisplay);
-      $("#sub-nav > li").removeClass("selected-tab");
-      $(`#sub-nav #${selectedTab.replace("-tab", "")}`).addClass(
-        "selected-tab"
-      );
-
-      // Moves focus to 1st row, column today's month - 1
-      if (selectedTab === "hours-tab") cellFocus();
-
-      // Enables customized tooltips
-      $("[data-toggle='tooltip']").tooltip();
+    let viewToDisplay = "";
+    switch (selectedTab) {
+      case "enrollment-tab":
+        viewToDisplay = createEnrollmentView(selectedCourse, course.ClassID);
+        break;
+      case "hours-tab":
+        viewToDisplay = createHoursView(
+          selectedCourse,
+          course.ClassID,
+          course.InstructorID
+        );
+        break;
+      case "details-tab":
+        // console.log("course :>> ", course);
+        viewToDisplay = createDetailsView(course);
+        break;
+      default:
+        break;
     }
-  );
+
+    $("#view-bloc").empty().append(viewToDisplay);
+    $("#sub-nav > li").removeClass("selected-tab");
+    $(`#sub-nav #${selectedTab.replace("-tab", "")}`).addClass("selected-tab");
+
+    // Moves focus to 1st row, column today's month - 1
+    if (selectedTab === "hours-tab") cellFocus();
+
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
+  });
 
   //* Handling change for special program selected
   $(document).on("change", "#SpecialProgramID-view", function (evnt) {
