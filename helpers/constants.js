@@ -13,7 +13,8 @@ const SESSION_VARIABLE = [
     UserPersonnelID: '<%= Session["UserPersonnelID"] %>',
     SecurityLevel: '<%= Session["SecurityLevel"] %>',
     UserLevel: '<%= Session["UserLevel"] %>',
-    CanExportData: '<%= Session["CanExportData"] %>'
+    CanExportData: '<%= Session["CanExportData"] %>',
+    PrevAgency: "False"
   }
 ];
 
