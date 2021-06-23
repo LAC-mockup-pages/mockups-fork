@@ -151,8 +151,8 @@ $(document).ready(() => {
   if (!AgencyName || AgencyName.startsWith("<%=")) {
     fullname = "Kate Tornese (default)";
     UserLevel = "1";
-    rolename = "Program Data Editor";
-    // rolename = "LAC TECH Support";
+    // rolename = "Program Data Editor";
+    rolename = "LAC TECH Support";
     AgencyName = "Practice Agency";
   }
   //! =========================================
@@ -173,8 +173,8 @@ $(document).ready(() => {
   //* Display the first card.
   showSlides(slideIndex);
 
-  //* Open Agency selection modal depending on the user role in
-  //* SESSION_VARIABLE
+  //* Open Agency selection modal depending on the user role and
+  //* if an agency as already been selected.
 
   if (
     [
@@ -183,7 +183,8 @@ $(document).ready(() => {
       "RAEN Director",
       "LPA Editor",
       "LPA Reviewer"
-    ].includes(rolename)
+    ].includes(rolename) &&
+    SESSION_VARIABLE[0].PrevAgency === "False"
   ) {
     const agencySelection = createAgencySelect(GetAgencyIndex.slice(0));
     $("#edit-form").append(agencySelection);
@@ -191,6 +192,7 @@ $(document).ready(() => {
       <li>
         <a href="#" id="select-agency">Change Agency</a>
       </li>`);
+    SESSION_VARIABLE[0].PrevAgency = "True";
     $("#modalBloc").modal("toggle");
   }
 
