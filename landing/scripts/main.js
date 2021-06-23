@@ -25,6 +25,21 @@ const toggleSideNav = () => {
   ).toggleClass("hidden");
 };
 
+// Customizing the card content
+const addCustomContent = (list) => {
+  for (const obj of list) {
+    const { ID: cardId, values, report } = obj;
+    for (const val of values) {
+      const indxVal = values.indexOf(val);
+      $(`#${cardId}-val${indxVal}`).text(val);
+    }
+    for (const link of report) {
+      const indxLink = report.indexOf(link);
+      $(`#${cardId}-link${indxLink}`).attr("href", link);
+    }
+  }
+};
+
 let slideIndex = 1;
 const showSlides = (num) => {
   const slides = $(".cards");
@@ -136,7 +151,8 @@ $(document).ready(() => {
   if (!AgencyName || AgencyName.startsWith("<%=")) {
     fullname = "Kate Tornese (default)";
     UserLevel = "1";
-    rolename = "LAC TECH Support";
+    rolename = "Program Data Editor";
+    // rolename = "LAC TECH Support";
     AgencyName = "Practice Agency";
   }
   //! =========================================
@@ -149,6 +165,10 @@ $(document).ready(() => {
       </div>
     </div>`;
   $(".user-info").append(welcomeLine);
+
+  //* Update card content with custom values and links.
+  //TODO add requested parameters to GetAgencyCArdValues when shared by GJ.
+  addCustomContent(GetAgencyCardValues);
 
   //* Display the first card.
   showSlides(slideIndex);
