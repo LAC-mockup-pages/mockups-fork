@@ -101,7 +101,6 @@ const createTableHeader = (labelsObject) => {
 const createTableBody = (dataList, labelObj) => {
   let rows = "";
   const hiddenList = ["ID", "Address", "State", "City", "Zip", "County"];
-
   const filteredLabelList = Object.keys(labelObj).filter(
     (item) => !["AgencyID"].includes(item)
   );
@@ -136,7 +135,13 @@ const createViewBloc = () => {
   const tableHeader = createTableHeader(rowLabels[0]);
 
   // Sorting list of sites by descending ID
-  const list = dataPartners.sort((site1, site2) => site2.ID - site1.ID);
+  const list = dataPartners.sort((site1, site2) =>
+    site1.ReferralSiteName < site2.ReferralSiteName
+      ? -1
+      : site1.ReferralSiteName > site2.ReferralSiteName
+      ? 1
+      : 0
+  );
   const tableBody = createTableBody(list, rowLabels[0]);
   const viewBloc = tableHeader + tableBody;
   return viewBloc;

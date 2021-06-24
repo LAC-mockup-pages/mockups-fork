@@ -166,7 +166,13 @@ const createViewBloc = () => {
   const tableHeader = createTableHeader(rowLabels[0]);
 
   // Sorting list of sites by descending ID
-  const list = dataSites.sort((site1, site2) => site2.ID - site1.ID);
+  const list = dataSites.sort((site1, site2) =>
+    site1.SiteName < site2.SiteName
+      ? -1
+      : site1.SiteName > site2.SiteName
+      ? 1
+      : 0
+  );
   const tableBody = createTableBody(list, rowLabels[0]);
   const viewBloc = tableHeader + tableBody;
   return viewBloc;
