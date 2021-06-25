@@ -95,6 +95,13 @@
   display: block;
 }
 
+.main-tab a {
+  font-size: 1.3em;
+}
+.main-tab .dropdown-btn {
+  font-size: 1.5em;
+}
+
 /* Main text */
 /* ================================== */
 
