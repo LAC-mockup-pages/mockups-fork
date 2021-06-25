@@ -194,14 +194,10 @@
   color: #f0f0f5;
 }
 
-.card-text:first-of-type,
-.card-text:last-of-type {
-  padding-top: 5%;
-}
-
 .card-text {
   padding-right: 3%;
   padding-left: 3%;
+  padding-top: 3%;
 }
 
 .large-num {
