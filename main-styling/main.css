@@ -237,6 +237,13 @@ select {
   margin-top: 1%;
 }
 
+.main-logo {
+  padding-left: 16%;
+  padding-top: 2%;
+  width: 80%;
+  height: 80%;
+}
+
 .caret {
   border-top: 10px solid;
   border-right: 10px solid transparent;
