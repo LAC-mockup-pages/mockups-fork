@@ -850,14 +850,14 @@ $(document).ready(() => {
       const rowId = $(this).parent().parent().attr("id");
       let nextRowIndex = "";
       const bodyClass = $(`#${rowId}`).parent().attr("class");
-      if (evnt.which === 40) {
-        // Arrow Down
+      // Arrow Down (40) or Enter (13) are pressed
+      if ([13, 40].includes(evnt.which)) {
         nextRowIndex = $(`#${rowId}`).index() + 1;
-      } else if (evnt.which === 38) {
-        // Arrow Up
+      } // Arrow Up is pressed
+      else if (evnt.which === 38) {
         nextRowIndex = $(`#${rowId}`).index() - 1;
       } else {
-        return; // Do nothing if pressed key code is not 38 or 40
+        return; // Do nothing if pressed key code is not 13, 38 or 40
       }
 
       const nextRowId = $(`.${bodyClass} tr`).eq(nextRowIndex).attr("id");
