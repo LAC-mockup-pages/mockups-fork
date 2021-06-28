@@ -128,13 +128,14 @@
 
 .main-body .btn-numbers {
   display: inline-block;
-  margin-top: 2%;
-  margin-left: 10%;
+  margin-top: 2.5%;
 }
 
 .card-btn {
+  margin-left: auto;
+  margin-right: auto;
   padding-top: 15%;
-  padding-left: 31%;
+  padding-left: calc((80%-45vw) / 2);
 }
 
 .prev,
