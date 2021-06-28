@@ -55,6 +55,7 @@ export const topBanner = (title, list = null) => {
 
   if (
     ![
+      "Main Information",
       "Professional Development",
       "Personnel Information",
       "Instructional Hours",
@@ -192,11 +193,13 @@ const viewPersonnelList = (listObj) => {
     const row = createTableRow(key, listObj[key]);
     rows += row;
   }
-  $("#view-bloc").empty().append(
-    `<table class="table">${headerLine}
+  $("#view-bloc")
+    .empty()
+    .append(
+      `<table class="table">${headerLine}
         <tbody class="table-body">${rows}</tbody>
     </table>)`
-  );
+    );
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
 };
