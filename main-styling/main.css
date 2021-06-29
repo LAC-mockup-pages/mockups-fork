@@ -263,10 +263,6 @@ select {
   font-size: 18px;
 }
 
-.dropdown-menu > li > a:hover {
-  border-bottom: #3f8fc7 2px solid;
-}
-
 .dropdown-menu > li > a > .caret:hover {
   transform: rotate(-90deg);
 }
