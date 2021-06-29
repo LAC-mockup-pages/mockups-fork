@@ -8,13 +8,14 @@ body {
 .hero {
   margin: 0%;
   border-radius: 0px;
-  height: 59%;
+  height: 63%;
 }
 
 /* Header | Login box
 =========================== */
 
-header {
+header,
+.top-section {
   padding: 3% 0% 2% 0%;
 }
 
