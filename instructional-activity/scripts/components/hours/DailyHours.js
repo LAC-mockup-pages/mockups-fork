@@ -266,7 +266,7 @@ const updateTotalHours = (studentList, keyList) => {
 };
 
 export const createDailyHoursTable = (dailyHoursList, rosterList) => {
-  // Check if all enrolled students are in the daily hours list.
+  // Checks if all enrolled students are in the daily hours list.
   // If not, add the missing students.
   // Checked list is then sorted alphabetically by student name.
   const checkedList = checkStudentList(dailyHoursList, rosterList).sort(
