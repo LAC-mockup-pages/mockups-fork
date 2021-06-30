@@ -116,21 +116,26 @@ export const createDailyHours = (classId) => {
 
   const classSchedule = `
   <div class="schedule-bloc">
-  <form class="weekday-banner" id="schedule-static">
- <table class="schedule-table container-fluid table table-bordered table-condensed">
- <thead>
-  <tr><th class="blank-bloc"></th>
-  ${weekDays}
- </tr></thead>
-  <tbody class="week-schedule-body">
-    <tr>
-      <td class="schedule-daily">Start Time</td>
-      ${scheduleStartTimes}
-    <tr>
-      <td class="schedule-daily">End Time</td>
-     ${scheduleEndTimes}
-    </tr>
-  </tbody></table></form></div>`;
+    <form class="weekday-banner" id="schedule-static">
+      <table class="schedule-table container-fluid table table-bordered table-condensed">
+        <thead>
+          <tr>
+            <th class="blank-bloc"></th>
+            ${weekDays}
+          </tr>
+        </thead>
+        <tbody class="week-schedule-body">
+          <tr>
+            <td class="schedule-daily">Start Time</td>
+            ${scheduleStartTimes}
+          <tr>
+            <td class="schedule-daily">End Time</td>
+            ${scheduleEndTimes}
+          </tr>
+        </tbody>
+      </table>
+    </form>
+  </div>`;
 
   return `
   <div class="container-fluid row blue-light-text" id="daily-hours" data-class-id=${classId}>
@@ -277,14 +282,11 @@ export const createDailyHoursTable = (dailyHoursList, rosterList) => {
         ? 1
         : 0
   );
-
   const dayList = Object.keys(checkedList[0]).filter((fieldName) =>
     fieldName.startsWith("Day")
   );
-
   // Update the value of totalHours prop
   const checkedListWithTotals = updateTotalHours(checkedList, dayList);
-
   const selectedMonth = Number($("#PeriodID-view").val().substr(7, 2));
   const dateList = dayList.map((day) => {
     const dayNumber = day.slice(3);
