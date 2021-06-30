@@ -252,17 +252,39 @@ export const checkStudentList = (list, roster) => {
   }
 };
 
+const updateTotalHours = (studentList, keyList) => {
+  const result = studentList.map((student) => {
+    let totalHours = 0;
+    for (const key of keyList) {
+      const dayVal = Number(student[key] || 0);
+      totalHours += dayVal;
+    }
+    totalHours = totalHours.toString();
+    return { ...student, totalHours };
+  });
+  return result;
+};
+
 export const createDailyHoursTable = (dailyHoursList, rosterList) => {
   // Check if all enrolled students are in the daily hours list.
   // If not, add the missing students.
+  // Checked list is then sorted alphabetically by student name.
   const checkedList = checkStudentList(dailyHoursList, rosterList).sort(
     (student1, student2) =>
-      student1 < student2 ? -1 : student1 > student2 ? 1 : 0
+      student1.StudentName < student2.StudentName
+        ? -1
+        : student1.StudentName > student2.StudentName
+        ? 1
+        : 0
   );
 
   const dayList = Object.keys(checkedList[0]).filter((fieldName) =>
     fieldName.startsWith("Day")
   );
+
+  // Update the value of totalHours prop
+  const checkedListWithTotals = updateTotalHours(checkedList, dayList);
+
   const selectedMonth = Number($("#PeriodID-view").val().substr(7, 2));
   const dateList = dayList.map((day) => {
     const dayNumber = day.slice(3);
@@ -273,7 +295,7 @@ export const createDailyHoursTable = (dailyHoursList, rosterList) => {
   const header = createHeaders(["Name", ...dateList, "Total"]);
   let body = "";
 
-  for (const record of checkedList) {
+  for (const record of checkedListWithTotals) {
     const { ID, StudentName, studentID, totalHours } = record;
     let dailyValues = "";
 
@@ -290,10 +312,9 @@ export const createDailyHoursTable = (dailyHoursList, rosterList) => {
       <td class="cell-data student-name">${StudentName}</td>
         ${dailyValues}
       <td class="cell-data student-total">${totalHours}</td>
-  </tr>
+    </tr>
   `;
   }
-
   return `
   <div class="scrolling hours-table">
     <table class="table table-condensed scrolling-hours" id="daily-hours-table">

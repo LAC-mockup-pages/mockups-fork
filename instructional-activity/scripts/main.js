@@ -501,13 +501,8 @@ $(document).ready(() => {
   //* selected in the Course Offering view shortlist.
   $("#enrollment-tab, #hours-tab, #details-tab").click(function () {
     const selectedTab = $(this).attr("id");
-
-    console.log("selectedTab :>> ", selectedTab);
-
     const selectedCourse = $("#view-bloc").data("course").toString();
-
     const course = GetCourse.find((record) => record.ID === selectedCourse);
-
     let viewToDisplay = "";
     switch (selectedTab) {
       case "enrollment-tab":
@@ -521,7 +516,6 @@ $(document).ready(() => {
         );
         break;
       case "details-tab":
-        // console.log("course :>> ", course);
         viewToDisplay = createDetailsView(course);
         break;
       default:
