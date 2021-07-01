@@ -300,7 +300,7 @@ export const createDailyHoursTable = (dailyHoursList, rosterList) => {
   for (const record of checkedListWithTotals) {
     const { ID, StudentName, studentID, totalHours } = record;
     let dailyValues = "";
-
+    const indx = checkedListWithTotals.indexOf(record);
     for (const day of dayList) {
       const valueHours = record[day];
       dailyValues += `
@@ -310,7 +310,7 @@ export const createDailyHoursTable = (dailyHoursList, rosterList) => {
       `;
     }
     body += `
-    <tr id=${ID} data-student=${studentID}>
+    <tr id=${indx} data-recordid=${ID}  data-student=${studentID}>
       <td class="cell-data student-name">${StudentName}</td>
         ${dailyValues}
       <td class="cell-data student-total">${totalHours}</td>
