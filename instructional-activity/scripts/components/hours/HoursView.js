@@ -14,6 +14,10 @@ const createTotalHoursProp = (valueObj) => {
   return totalHours;
 };
 
+const extractMonth = (periodStr) => {
+  return periodStr.substr(-4, 2).replace(/^0/, "");
+};
+
 export const createSaveObj = (rows) => {
   const saveList = [];
   $(rows).each(function (index) {
@@ -100,10 +104,12 @@ export const saveDailyHours = (rows) => {
   const Class_PKID = $("#view-bloc").attr("data-course");
   const ClassID = $("#view-bloc").attr("data-class");
   const ClassperiodID = $("#PeriodID-view").val();
+  const ClassMonth = extractMonth(ClassperiodID);
+
   const saveList = [];
   $(rows).each(function (indx) {
-    let saveObj = { Class_PKID, ClassID, ClassperiodID };
-    const ID = $(this).attr("id");
+    let saveObj = { Class_PKID, ClassID, ClassperiodID, ClassMonth };
+    const ID = $(this).attr("data-recordid");
     const studentID = $(this).attr("data-student");
     const dailyValues = $("input", this).serializeArray();
 
