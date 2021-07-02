@@ -247,7 +247,8 @@ export const checkStudentList = (list, roster) => {
       const { StudentID, StudentName } = studentInfo;
       const newStudent = {
         Student_PKID,
-        StudentID,
+        studentID: StudentID, // Necessary conversion as key is Pascal Case in
+        // GetDailyHours ^^
         StudentName,
         StudentName2: StudentName
       };
