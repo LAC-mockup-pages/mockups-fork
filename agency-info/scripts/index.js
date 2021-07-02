@@ -150,13 +150,6 @@ const saveMods = (form) => {
 //* =================================================
 
 $(document).ready(() => {
-  // * Selecting another page
-  $("#sub-nav li").on("click", function (evnt) {
-    evnt.stopPropagation();
-    $("#sub-nav li").removeClass("blue-light-bg blue-text");
-    $(this).toggleClass("blue-light-bg blue-text");
-  });
-
   // * Data viewing
   $(".hero").append(renderViewBloc(agencyData[0]));
   // Enables customized tooltips
