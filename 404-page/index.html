@@ -2,9 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+    <!-- Custom links and scripts -->
+    <!-- ======================== -->
     <link
       rel="icon"
       type="image/png"
@@ -34,39 +36,36 @@
       defer
     ></script>
 
-    <!-- Links and scripts local app -->
-    <link rel="stylesheet" href="style/index.css" type="text/css" />
+    <!-- Local links and scripts -->
+    <link rel="stylesheet" href="./style/index.css" type="text/css" />
 
-    <script src="scripts/data.js" type="text/javascript" defer></script>
-
-    <script
-      src="../helpers/helperFunctions.js"
-      type="text/javascript"
-      defer
-    ></script>
-
-    <script src="../helpers/constants.js" type="text/javascript" defer></script>
-
-    <script
-      src="../sidenav/scripts/main.js"
-      type="text/javascript"
-      defer
-    ></script>
-
-    <script src="scripts/data-check.js" type="text/javascript" defer></script>
-
-    <script src="scripts/index.js" type="text/javascript" defer></script>
+    <script type="text/javascript" src="./scripts/main.js" defer></script>
 
     <!-- !============================= -->
-    <!-- ! File: /agency/agencyinfo.aspx -->
+    <!-- ! File: /404info.aspx -->
     <!-- !============================= -->
 
-    <title>Mock-up Agency Info</title>
+    <title>Test Error Page</title>
   </head>
   <body>
     <header>
-      <div class="top-logo">
-        <img src="../assets/Main-Logo.png" class="main-logo" />
+      <div class="row top-band">
+        <div class="top-logo col-md-4">
+          <img src="../assets/Main-Logo.png" class="main-logo" />
+        </div>
+        <div class="col-md-6"></div>
+        <div class="col-md-2">
+          <a
+            class="quick-link"
+            href="#"
+            role="button"
+            aria-haspopup="true"
+            aria-expanded="true"
+          >
+            <span class="glyphicon glyphicon-plus plus-icon"></span> Add
+            Student</a
+          >
+        </div>
       </div>
       <!-- Top nav -->
       <div class="container-fluid row top-nav">
@@ -109,45 +108,11 @@
         </div>
       </div>
       <!-- End top nav -->
-
-      <!-- Sub NavBar -->
-      <div class="container-fluid blue-bg blue-light-text sub-navbar">
-        <ul id="sub-nav" class="nav-justified">
-          <li class="blue-light-bg dark-blue-text">
-            <a href="../agency-info/index.html" type="text/html">Agency</a>
-          </li>
-          <li>
-            <a href="../agency-sources/index.html" type="text/html"
-              >Funding Sources</a
-            >
-          </li>
-          <li>
-            <a href="../agency-sites/index.html" type="text/html">Sites</a>
-          </li>
-          <li>
-            <a href="../agency-referral-partners/index.html" type="text/html"
-              >Referral Partners</a
-            >
-          </li>
-          <li>
-            <a href="../agency-non-nrs-outcomes/index.html" type="text/html"
-              >Non-NRS Outcomes</a
-            >
-          </li>
-          <!-- <li>
-            <a
-              class="blue-light-text blue-bg"
-              href="../agency-IELCE-partners/index.html"
-              type="text/html"
-              >IET / IELCE Cost Tracking</a
-            >
-          </li> -->
-        </ul>
-      </div>
     </header>
+
     <!-- Side Nav bar -->
     <div id="mySidenav" class="sidenav">
-      <a href="javascript:void(0)" class="close-btn hidden">&times;</a>
+      <a href="javascript:void(0)" class="close-btn hidden">&#9776;</a>
       <div class="menu-top">
         <img src="../assets/logo_sm.png" class="small-logo" />
         <span class="small-label hidden">ASISTS</span>
@@ -156,7 +121,7 @@
       <div class="hidden main-tab">
         <a class="dropdown-btn" href="#">Program</a>
         <div class="dropdown-container">
-          <a href="../agency-info/index.html" type="text/html"
+          <a href="#"
             ><span class="glyphicon glyphicon-chevron-right"> </span> Agency</a
           >
           <a href="#"
@@ -276,43 +241,25 @@
       </div>
     </div>
     <!-- End Side Nav bar -->
-
-    <!-- Hero -->
-    <div class="container hero">
-      <!-- Data viewing -->
-    </div>
-    <!-- Modal for Editing Top Bloc data -->
-    <div class="modal fade" id="modal-bloc">
-      <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">
-              <span aria-hidden="true">&times;</span
-              ><span class="sr-only">Close</span>
-            </button>
-            <h4 class="modal-title">Editing</h4>
-          </div>
-          <div class="modal-body">
-            <form role="form" id="edit-form"></form>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">
-              Close without saving
-            </button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              id="save-button"
-              form="edit-form"
-            >
-              Save changes
-            </button>
-          </div>
-        </div>
-        <!-- /.modal-content -->
+    <div class="main-text container">
+      <h2 style="color: blue; text-align: center; margin-top: 10%">
+        This page is coming soon in a future release.
+      </h2>
+      <h2 style="color: blue; text-align: center; margin-top: 10%">
+        Please click the back button to return to the Home page.
+      </h2>
+      <div class="container-fluid" style="height: 12vh; margin-top: 5%">
+        <button type="button" class="btn btn-default back-btn">
+          <a href="../landing/index.html" type="text/html">
+            <p
+              class="glyphicon glyphicon-step-backward"
+              style="font-size: large; color: #2700ff"
+              aria-hidden="true"
+            ></p>
+            <p>Back to Home Page</p>
+          </a>
+        </button>
       </div>
-      <!-- /.modal-dialog -->
     </div>
-    <!-- /.modal -->
   </body>
 </html>
