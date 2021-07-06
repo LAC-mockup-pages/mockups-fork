@@ -17,7 +17,7 @@ export const buildPeriods = () => {
   return [...secondSemester, ...firstSemester];
 };
 
-export const createInstrBloc = (classPkId) => {
+export const createInstrBloc = (buttonState) => {
   let body = "";
 
   //! Endpoint sending the request  -  Production only
@@ -57,7 +57,7 @@ export const createInstrBloc = (classPkId) => {
   <div class="instr-title label-text col-md-4">Instructional Hours</div>
   <div class="label-text col-md-5"></div>
   <div class="container-fluid row col-md-3">
-    <button type="button" id="instructor-hours-btn" class="btn dark-blue-text blue-light-bg col-sm-6">Save</button>
+    <button type="button" id="instructor-hours-btn"${buttonState} class="btn dark-blue-text blue-light-bg col-sm-6">Save</button>
   </div>
 </div>
 <div class="instr-scrolling">

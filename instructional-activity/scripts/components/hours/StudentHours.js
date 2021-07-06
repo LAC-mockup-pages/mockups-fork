@@ -26,7 +26,7 @@ export const updateCourseTotal = () => {
   $(".large-number").text(totalCourseHours);
 };
 
-export const createStudentsBloc = (classId) => {
+export const createStudentsBloc = (classId, buttonState) => {
   let body = "";
 
   // Sorting alphabetically by Student Name
@@ -89,7 +89,7 @@ export const createStudentsBloc = (classId) => {
       <div class="student-title label-text col-md-4">${classId} | Student Hours</div>
       <div class="label-text col-md-5"></div>
       <div class="container-fluid row col-md-3">
-        <button type="button" id="student-hours-btn" class="btn dark-blue-text blue-light-bg col-sm-6">Save</button>
+        <button type="button" id="student-hours-btn" class="btn dark-blue-text blue-light-bg col-sm-6"${buttonState}>Save</button>
         <button type="button" id="daily-btn" class="btn dark-blue-text yellow-bg col-sm-6">Daily Input</button>
       </div>
     </div>

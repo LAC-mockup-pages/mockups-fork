@@ -83,6 +83,7 @@ export const createDailyHours = (classId) => {
   let buttonState = " disabled";
 
   if (classFY === presentFY) {
+    // Save button is enabled
     buttonState = "";
     const firstDayFY = `${Number(presentFY) - 1}0701`;
     const startFY = DT.fromISO(firstDayFY);

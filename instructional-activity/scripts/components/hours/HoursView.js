@@ -1,8 +1,11 @@
 // Hours view for the students and instructor(s) in a selected course
 // Accessible only from the Enrollment and Details views.
 
+import { setFiscalYear } from "../../utilities.js";
 import { createInstrBloc } from "./EnrollmentInstructors.js";
 import { createStudentsBloc } from "./StudentHours.js";
+// Initializing Luxon DateTime class for the module
+const DT = luxon.DateTime;
 
 const createTotalHoursProp = (valueObj) => {
   const totalHours = Object.keys(valueObj)
@@ -66,8 +69,15 @@ export const cellFocus = () => {
 
 // Create the main view to display student and instructors hours
 export const createHoursView = (courseID, classID) => {
-  const instructorHours = createInstrBloc(courseID);
-  const studentHours = createStudentsBloc(classID);
+  // Checks if the class FY value allows for editing and saving hours
+  const classFY = $("#view-bloc").attr("data-year");
+  const presentFY = Number(SESSION_VARIABLE[0].FiscalYear)
+    ? SESSION_VARIABLE[0].FiscalYear
+    : setFiscalYear(DT.now().toISODate());
+  const saveButtonState = classFY === presentFY ? "" : " disabled";
+
+  const instructorHours = createInstrBloc(saveButtonState);
+  const studentHours = createStudentsBloc(classID, saveButtonState);
   const today = new Date();
   const month =
     today.getMonth() + 1 > 9
