@@ -2,68 +2,10 @@
 //* Actions and Logic
 //*=================================================
 
-const cardColors = [
-  "rgb(70,152,170)",
-  "rgb(105,78,119)",
-  "rgb(172,143,194)",
-  "rgb(221,88,20)",
-  "rgb(155,187,202)",
-  "rgb(70,152,170)",
-  "rgb(105,78,119)",
-  "rgb(172,143,194)",
-  "rgb(221,88,20)"
-];
-
-const applyColor = (colorStr) => {
-  $(".large-num").css("color", colorStr);
-  $(".card-block").css("border-color", colorStr);
-};
-
 const toggleSideNav = () => {
   $(
     ".sidenav .main-tab, .sidenav .close-btn, .sidenav .menu-text, .small-logo"
   ).toggleClass("hidden");
-};
-
-// Customizing the card content
-const addCustomContent = (list) => {
-  for (const obj of list) {
-    const { ID: cardId, values, report } = obj;
-    for (const val of values) {
-      const indxVal = values.indexOf(val);
-      $(`#${cardId}-val${indxVal}`).text(val);
-    }
-    for (const link of report) {
-      const indxLink = report.indexOf(link);
-      $(`#${cardId}-link${indxLink}`).attr("href", link);
-    }
-  }
-};
-
-let slideIndex = 1;
-const showSlides = (num) => {
-  const slides = $(".cards");
-  const dots = $(".dot");
-  if (num > slides.length) slideIndex = 1;
-  if (num < 0) slideIndex = slides.length;
-  $(slides).hide(600).removeClass("visible");
-  $(dots).removeClass("active");
-
-  $(slides[slideIndex - 1])
-    .delay(50)
-    .show(600)
-    .addClass("visible");
-  $(dots[slideIndex - 1]).addClass("active");
-
-  // Calculate the top margin necessary to center the card inside
-  // card-block
-  const blockHeight = $(".card-block").height();
-  const cardHeight = Number($(".visible").css("height").match(/\d/g).join(""));
-  const lineHeight = $(".dot").height() / 2;
-  const addedMargin = (blockHeight - cardHeight) / 2 - lineHeight;
-  $(slides[slideIndex - 1]).css("margin-top", `${addedMargin}px`);
-
-  applyColor(cardColors[slideIndex]);
 };
 
 const getRoleName = (userLevelStr) => {
@@ -89,34 +31,6 @@ const getRoleName = (userLevelStr) => {
   return roleList[indx];
 };
 
-const createAgencySelect = (list) => {
-  const hashTable = list
-    .map((obj) => {
-      const { AgencyID, AgencyName } = obj;
-      return { AgencyID, AgencyName };
-    })
-    .sort(
-      // Sorting alphabetically on AgencyName
-      (obj1, obj2) =>
-        obj1.AgencyName < obj2.AgencyName
-          ? -1
-          : obj1.AgencyName > obj2.AgencyName
-          ? 1
-          : 0
-    );
-
-  // elementSelectModal <= helperFunctions.js
-  return elementSelectModal({
-    hashTable,
-    keyValue: "AgencyID",
-    selectedValue: "",
-    labelVal: "",
-    labelClassVal: "",
-    option: "",
-    optionText: "an agency"
-  });
-};
-
 //*=================================================
 //* jQuery section
 //*=================================================
@@ -126,9 +40,9 @@ $(document).ready(() => {
   //* First rendering actions
   //* ===================================
 
-  //* Side nav open at home page loading
-  $(".sidenav").width("20%");
-  toggleSideNav();
+  //* Side nav closed at page loading
+  // $(".sidenav").width("20%");
+  // toggleSideNav();
 
   //* Opening side Nav
   $(document).on("click", "#menu-btn", function (evnt) {
@@ -166,35 +80,28 @@ $(document).ready(() => {
     </div>`;
   $(".user-info").append(welcomeLine);
 
-  //* Update card content with custom values and links.
-  //TODO add requested parameters to GetAgencyCArdValues when shared by GJ.
-  addCustomContent(GetAgencyCardValues);
-
-  //* Display the first card.
-  showSlides(slideIndex);
-
   //* Open Agency selection modal depending on the user role and
   //* if an agency as already been selected.
 
-  if (
-    [
-      "LAC TECH Support", //! Those roles can select multiple agencies
-      "NYSED Staff",
-      "RAEN Director",
-      "LPA Editor",
-      "LPA Reviewer"
-    ].includes(rolename) &&
-    SESSION_VARIABLE[0].PrevAgency === "False"
-  ) {
-    const agencySelection = createAgencySelect(GetAgencyIndex.slice(0));
-    $("#edit-form").append(agencySelection);
-    $(".dropdown-menu").prepend(`
-      <li>
-        <a href="#" id="select-agency">Change Agency</a>
-      </li>`);
-    SESSION_VARIABLE[0].PrevAgency = "True";
-    $("#modalBloc").modal("toggle");
-  }
+  // if (
+  //   [
+  //     "LAC TECH Support", //! Those roles can select multiple agencies
+  //     "NYSED Staff",
+  //     "RAEN Director",
+  //     "LPA Editor",
+  //     "LPA Reviewer"
+  //   ].includes(rolename) &&
+  //   SESSION_VARIABLE[0].PrevAgency === "False"
+  // ) {
+  //   const agencySelection = createAgencySelect(GetAgencyIndex.slice(0));
+  //   $("#edit-form").append(agencySelection);
+  //   $(".dropdown-menu").prepend(`
+  //     <li>
+  //       <a href="#" id="select-agency">Change Agency</a>
+  //     </li>`);
+  //   SESSION_VARIABLE[0].PrevAgency = "True";
+  //   $("#modalBloc").modal("toggle");
+  // }
 
   //* ===================================
 
@@ -230,20 +137,6 @@ $(document).ready(() => {
     evnt.stopPropagation();
     $("#sub-nav li").removeClass("blue-light-bg blue-text");
     $(this).toggleClass("blue-light-bg blue-text");
-  });
-
-  //* Display next or previous card when a chevron is clicked on
-  $(document).on("click", ".prev, .next", function (evnt) {
-    evnt.stopPropagation();
-    const num = $(this).hasClass("next") ? 1 : -1;
-    showSlides((slideIndex += num));
-  });
-
-  //* Display selected card when a number is clicked on
-  $(document).on("click", ".dot", function (evnt) {
-    evnt.stopPropagation();
-    const selectedCardIndex = Number($(this).text());
-    showSlides((slideIndex = selectedCardIndex));
   });
 
   //* Select Agency in dropdown list
