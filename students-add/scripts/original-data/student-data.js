@@ -1,6 +1,5 @@
 //! Return errors:
-//! GetStudents, GetEmploymentInfo, GetFundingInfo, GetHighestCredential,
-//! GetYearsSchooling
+//! GetEmploymentInfo
 
 const GetStudentHeader = [
   {
@@ -49,6 +48,48 @@ const GetGender = [
 
 // for ddlHighestGradeUS and ddlHighestGradeNYS
 const GetHighestGradeCompletedUS = [
+  { key: "NA", value: "NA " },
+  { key: "1", value: "Grade 1 " },
+  { key: "2", value: "Grade 2 " },
+  { key: "3", value: "Grade 3 " },
+  { key: "4", value: "Grade 4 " },
+  { key: "5", value: "Grade 5 " },
+  { key: "6", value: "Grade 6 " },
+  { key: "7", value: "Grade 7 " },
+  { key: "8", value: "Grade 8 " },
+  { key: "9", value: "Grade 9 " },
+  { key: "10", value: "Grade 10 " },
+  { key: "11", value: "Grade 11 " },
+  { key: "12", value: "Grade 12 HS Diploma" },
+  { key: "12D", value: "Grade 12D IEP Diploma" },
+  { key: "12E", value: "Grade 12E GED/TASC" },
+  { key: "13", value: "Some College" },
+  { key: "16", value: "Undergraduate degree" }
+];
+
+// ddlHighestCredential
+const GetHighestCredential = [
+  { key: "NA", value: "NA " },
+  { key: "1", value: "Grade 1 " },
+  { key: "2", value: "Grade 2 " },
+  { key: "3", value: "Grade 3 " },
+  { key: "4", value: "Grade 4 " },
+  { key: "5", value: "Grade 5 " },
+  { key: "6", value: "Grade 6 " },
+  { key: "7", value: "Grade 7 " },
+  { key: "8", value: "Grade 8 " },
+  { key: "9", value: "Grade 9 " },
+  { key: "10", value: "Grade 10 " },
+  { key: "11", value: "Grade 11 " },
+  { key: "12", value: "Grade 12 HS Diploma" },
+  { key: "12D", value: "Grade 12D IEP Diploma" },
+  { key: "12E", value: "Grade 12E GED/TASC" },
+  { key: "13", value: "Some College" },
+  { key: "16", value: "Undergraduate degree" }
+];
+
+// ddlYearsSchooling
+const GetYearsSchooling = [
   { key: "NA", value: "NA " },
   { key: "1", value: "Grade 1 " },
   { key: "2", value: "Grade 2 " },
@@ -378,5 +419,89 @@ const GetStaff = [
     InstructorName: "Zoro, Roronoa",
     PersonnelID: "ZoroRoronoaPRA9",
     AgencyID: "PRA"
+  }
+];
+
+// ddl ???
+const GetStudent = [
+  {
+    ID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    First: "Gregory",
+    Middle: "",
+    Last: "AA1_Jacques",
+    BirthDate: "07/12/1987",
+    BeginDate: "06/22/2010",
+    LengthOfStay: "11",
+    Address: "455 5th Ave",
+    City: "New York",
+    State: "NY",
+    Zip: "11234",
+    Phone: "(212) 803-3000",
+    Phone2: "(212) 803-4000",
+    ContactHome: "False",
+    StudEmail: "staff@asists.com",
+    EmergencyPhone: "",
+    EmergencyName: "",
+    SSN: "***-**-****",
+    VisaNum: "___-__-____",
+    NoSSNVisa: "1",
+    NoSSNVisaStaff: "",
+    Sex: "M",
+    EthnicityID: "N",
+    RaceID: "B3,A1",
+    Grade: "12",
+    NYSGrade: "",
+    LastSchoolNYS: "",
+    HighestCredential: "",
+    CredentialUS: "0",
+    CredentialOther: "0",
+    YearsUSSchools: "12E",
+    DOLCertify: "0",
+    DOLEnroll: "0",
+    ProgramID: "0",
+    OtherTraining: "0",
+    UUID: "",
+    Parent: "0",
+    SingleParent: "0",
+    CustodialParent: "1",
+    PreChild: "1",
+    ElemChild: "2",
+    JHSChild: "3",
+    HSChild: "4",
+    PreChildSchool: "",
+    ElemChildSchool: "",
+    JHSChildSchool: "",
+    HSChildSchool: "",
+    Homeless: "0",
+    HSGrad: "2",
+    Displaced: "2",
+    Disabled: "2",
+    LowIncome: "2",
+    Migrant: "2",
+    LearningDisabled: "2",
+    Runaway: "2",
+    NonNativeEnglish: "2",
+    ExOffender: "1",
+    FosterCare: "2",
+    LearningBarriers: "2",
+    WalkInTest: "2",
+    LongUnEmployed_LB: "2",
+    EXhaustTANF_LB: "2",
+    SingleParent_LB: "2",
+    ClassesID: null,
+    TASC: null,
+    signature: null
+  }
+];
+
+// ddl ???
+const GetFundingInfo = [
+  {
+    ID: "2212200",
+    FSID: "E",
+    FundAbbrev: "E | EPE",
+    FY: "2017",
+    Student_PKID: "1048303"
   }
 ];

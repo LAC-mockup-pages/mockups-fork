@@ -1,5 +1,52 @@
-//! Return error:
-//! GetPAStatusInfo, GetStudent_Additional
+// ddl ???
+const GetStudent_Additional = [
+  {
+    ID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    CountryID: "HA",
+    Status: "Citizen",
+    DateSettled: "05/02/2015",
+    Languages: "",
+    Correctional: "2",
+    Institutionalized: "2",
+    HeadHouse: "1",
+    OtherEd: "1",
+    Veteran: "2",
+    DislocatedWorker: "2",
+    EmployedAt200P: "2",
+    RuralResident: "2",
+    FamilyLiteracy: "2",
+    Parole: "2",
+    CommCorrection: "2",
+    OtherPopulation: "0",
+    OtherDescription: "",
+    Referral: "0",
+    RefSource: "L",
+    RefSourceName: ""
+  }
+];
+
+// ddl ???
+const GetPAStatusInfo = [
+  {
+    ID: "1543327",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    PACategory: "B | Food Stamps",
+    PAFY: "",
+    PACaseNum: "",
+    PAExhaustTANF: "",
+    Student_PKID: "1048303"
+  },
+  {
+    ID: "1870535",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    PACategory: "A | TANF",
+    PAFY: "",
+    PACaseNum: "124555",
+    PAExhaustTANF: "",
+    Student_PKID: "1048303"
+  }
+];
 
 // ddlCountry
 const GetCountrySource = [

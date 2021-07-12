@@ -1,5 +1,5 @@
 //! Returns error:
-//! GetCTED, GetEnroll, GetFYSource, GetStudentHeader, GetTransferTo
+//! GetCTED, GetFYSource, GetStudentHeader, GetTransferTo
 
 // ddlCTEDEnrollmentStatus
 const GetCTEDEnrollmentStatusSource = [
@@ -1128,6 +1128,75 @@ const GetCTEDStudentStatusSource = [
   { key: "5", value: "Unemployed" },
   { key: "6", value: "Not in Labor Force" },
   { key: "7", value: "Status Unknown" }
+];
+
+// ddl ???
+const GetEnroll = [
+  {
+    ID: "6698831",
+    Student_PKID: "1048303",
+    ClassID: "PRAES3CEnglish101-Urdu",
+    EnrollDate: "02/07/2021",
+    InactiveDate: "",
+    InactiveReason: "",
+    TransferTo: "",
+    ActiveStatus: "checked",
+    Description: "ES3CEnglish101-Urdu Porter, Samantha",
+    FY: "2021",
+    ISCMP: "0"
+  },
+  {
+    ID: "6702317",
+    Student_PKID: "1048303",
+    ClassID: "PRAES3CEnglish101-Uighur",
+    EnrollDate: "01/15/2021",
+    InactiveDate: "",
+    InactiveReason: "",
+    TransferTo: "",
+    ActiveStatus: "checked",
+    Description: "ES3CEnglish101-Uighur Porter, Samantha",
+    FY: "2021",
+    ISCMP: "0"
+  },
+  {
+    ID: "6695971",
+    Student_PKID: "1048303",
+    ClassID: "PRABE1CTutoring_2021",
+    EnrollDate: "07/01/2020",
+    InactiveDate: "",
+    InactiveReason: "T",
+    TransferTo: "BE6C1 Alisova, Muriana",
+    ActiveStatus: "checked",
+    Description: "BE1CTutoring_2021 Porter, Jane",
+    FY: "2021",
+    ISCMP: "0"
+  },
+  {
+    ID: "6548067",
+    Student_PKID: "1048303",
+    ClassID: "PRABE4CASTS_21",
+    EnrollDate: "07/01/2020",
+    InactiveDate: "01/15/2021",
+    InactiveReason: "T",
+    TransferTo: "ES3CEnglish101-Uighur Porter, Samantha",
+    ActiveStatus: "",
+    Description: "BE4CASTS_21 Porter, Samantha",
+    FY: "2021",
+    ISCMP: "0"
+  },
+  {
+    ID: "6692989",
+    Student_PKID: "1048303",
+    ClassID: "PRABE6C1",
+    EnrollDate: "07/01/2020",
+    InactiveDate: "",
+    InactiveReason: "",
+    TransferTo: "",
+    ActiveStatus: "",
+    Description: "BE6C1 Alisova, Muriana",
+    FY: "2021",
+    ISCMP: "0"
+  }
 ];
 
 // ddl ???
