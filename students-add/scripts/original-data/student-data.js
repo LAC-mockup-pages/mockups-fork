@@ -1,6 +1,3 @@
-//! Return errors:
-//! GetEmploymentInfo
-
 const GetStudentHeader = [
   {
     ID: "1048303",

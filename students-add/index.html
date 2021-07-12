@@ -427,6 +427,60 @@
           </form>
         </div>
       </section>
+
+      <section class="row">
+        <div class="col-md-6">
+          <div class="sub-header blue-bg blue-light-text">
+            <div class="sub-header-title">Gender | Race | Ethnic Identity</div>
+          </div>
+          <form class="gender-form" role="form">
+            <div class="input-field form-group">
+              <label for="Sex">Gender</label>
+              <select id="gender-select" class="modal-select" name="Sex">
+                <option value>Select a gender</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+                <option value="N">Non-Binary/Gender Non-Conforming</option>
+              </select>
+            </div>
+            <div class="input-field form-group">
+              <label for="EthnicityID">Ethnicity</label>
+              <select
+                id="ethnicity-select"
+                class="modal-select"
+                name="EthnicityID"
+              >
+                <option value>Select ONE</option>
+                <option value="H">Hispanic/Latino/a</option>
+                <option value="N">Non-Hispanic/Latino/a</option>
+              </select>
+
+              <div class="input-field form-group">
+                <label for="RaceID">Race - Choose all that apply</label>
+                <select id="race-select" class="modal-select" name="RaceID">
+                  <option value>Select AT LEAST ONE</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-6">
+          <div class="sub-header blue-bg blue-light-text">
+            <div class="sub-header-title">Employment Status</div>
+          </div>
+          <form class="employment-form" role="form">
+            <label for="Employment">Status</label>
+            <select
+              id="employment-select"
+              class="modal-select"
+              name="Employment"
+            >
+              <option value>Select a status</option>
+            </select>
+          </form>
+        </div>
+      </section>
     </main>
     <!-- End main display -->
 
