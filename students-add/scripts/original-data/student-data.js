@@ -1,3 +1,7 @@
+//! Return errors:
+//! GetStudents, GetEmploymentInfo, GetFundingInfo, GetHighestCredential,
+//! GetYearsSchooling
+
 const GetStudentHeader = [
   {
     ID: "1048303",

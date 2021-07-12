@@ -1,3 +1,6 @@
+//! Return error:
+//! GetPAStatusInfo, GetStudent_Additional
+
 // ddlCountry
 const GetCountrySource = [
   { key: "AF", value: "Afghanistan" },
