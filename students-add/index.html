@@ -329,23 +329,104 @@
     <!-- Main display -->
     <main class="hero container">
       <div class="container-fluid" id="entry-bloc"></div>
-      <section class="first-bloc row">
-        <form class="id-form col-md-6" role="form">
-          <div class="input-field form-group">
-            <label for="first-name">First name</label>
-            <input type="text" name="first-name" autocomplete="off" />
+      <section class="row">
+        <div class="col-md-6">
+          <div class="sub-header blue-bg blue-light-text">
+            <div class="sub-header-title">Identity</div>
           </div>
-          <div class="input-field form-group">
-            <label for="initial-name">Middle initial</label>
-            <input type="text" name="initial-name" autocomplete="off" />
+
+          <form class="id-form" role="form">
+            <div class="input-field form-group">
+              <label for="First">First name</label>
+              <input type="text" name="First" autocomplete="off" />
+            </div>
+            <div class="input-field form-group">
+              <label for="Middle">Middle initial</label>
+              <input type="text" name="Middle" autocomplete="off" />
+            </div>
+            <div class="input-field form-group">
+              <label for="Last">Last name</label>
+              <input type="text" name="Last" autocomplete="off" />
+            </div>
+            <div class="input-field form-group">
+              <label for="BirthDate">Birth date</label>
+              <input type="text" name="BirthDate" autocomplete="off" />
+            </div>
+            <div class="input-field form-group">
+              <label for="BeginDate">Original prog. start date</label>
+              <input type="text" name="BeginDate" autocomplete="off" />
+            </div>
+            <div class="input-field form-group">
+              <label for="Address">Address</label>
+              <input type="text" name="Address" autocomplete="off" />
+            </div>
+            <div class="input-field form-group">
+              <label for="City">City</label>
+              <input type="text" name="City" autocomplete="off" />
+            </div>
+            <div class="input-field form-group">
+              <label for="State">State</label>
+              <select id="state-select" class="modal-select" name="State">
+                <option value>Select a state</option>
+              </select>
+            </div>
+            <div class="input-field form-group">
+              <label for="Zip">ZIP code</label>
+              <input type="text" name="Zip" autocomplete="off" />
+            </div>
+          </form>
+        </div>
+
+        <div class="col-md-6">
+          <div class="sub-header blue-bg blue-light-text">
+            <div class="sub-header-title">Contact</div>
           </div>
-          <div class="input-field form-group">
-            <label for="last-name">Last name</label>
-            <input type="text" name="last-name" autocomplete="off" />
+          <form class="contact-form" role="form">
+            <div class="input-field form-group">
+              <label for="Phone">Home phone</label>
+              <input type="text" name="Phone" autocomplete="off" />
+            </div>
+            <div class="input-field form-group">
+              <label for="Phone2">Mobile phone</label>
+              <input type="text" name="Phone2" autocomplete="off" />
+            </div>
+            <div class="input-field form-group">
+              <label for="StudEmail">Email</label>
+              <input type="email" name="StudEmail" autocomplete="off" />
+            </div>
+            <div class="input-field form-group">
+              <label for="EmergencyPhone">Emergency contact</label>
+              <input type="text" name="EmergencyPhone" autocomplete="off" />
+            </div>
+            <div class="input-field form-group">
+              <label for="EmergencyName">Name/Relationship of contact</label>
+              <input type="text" name="EmergencyName" autocomplete="off" />
+            </div>
+          </form>
+
+          <div class="sub-header blue-bg blue-light-text">
+            <div class="sub-header-title">SS Number</div>
           </div>
-        </form>
+          <form class="ssn-form" role="form">
+            <div class="input-field form-group">
+              <label for="SSN">Social Security number</label>
+              <input type="text" name="SSN" autocomplete="off" />
+            </div>
+            <div class="input-field form-group">
+              <label for="NoSSNVisaStaff"
+                >If SSN not provided, intake staff full name</label
+              >
+              <select
+                id="nossn-select"
+                class="modal-select"
+                name="NoSSNVisaStaff"
+              >
+                <option value>Select a staff</option>
+              </select>
+            </div>
+          </form>
+        </div>
       </section>
-      <!-- <h2>This is working!</h2> -->
     </main>
     <!-- End main display -->
 
