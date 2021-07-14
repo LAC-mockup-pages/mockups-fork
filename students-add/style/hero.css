@@ -5,6 +5,7 @@
 .hero {
   width: 80%;
   padding-left: 3%;
+  margin-top: 1%;
 }
 
 .sub-header {
@@ -20,4 +21,12 @@
   line-height: 34px;
   padding-right: 1%;
   color: #fff;
+}
+
+.page-title {
+  line-height: 2em;
+  font-size: 1.3em;
+  font-weight: 700;
+  padding-left: 1%;
+  margin-bottom: 0.5%;
 }
