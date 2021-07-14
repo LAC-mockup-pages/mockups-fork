@@ -4,8 +4,10 @@
 /* Main */
 .hero {
   width: 80%;
-  padding-left: 3%;
+  padding-left: 1%;
+  padding-right: 1%;
   margin-top: 1%;
+  margin-left: calc((17% / 2) + 3%);
 }
 
 .sub-header {
@@ -21,6 +23,7 @@
   line-height: 34px;
   padding-right: 1%;
   color: #fff;
+  margin-bottom: 1%;
 }
 
 .page-title {
