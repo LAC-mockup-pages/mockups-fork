@@ -484,7 +484,7 @@
           <div class="sub-header blue-bg blue-light-text">
             <div class="sub-header-title">Educational Background</div>
           </div>
-          <form class="employment-form" role="form">
+          <form class="education-form" role="form">
             <div class="input-field form-group">
               <label for="Employment">Highest grade completed in US</label>
               <select
@@ -495,8 +495,6 @@
                 <option value>Select a grade</option>
               </select>
             </div>
-          </form>
-          <form class="employment-form" role="form">
             <div class="input-field form-group">
               <label for="Employment">in NY State</label>
               <select
@@ -507,15 +505,38 @@
                 <option value>Select a grade</option>
               </select>
             </div>
+            <div class="input-field form-group">
+              <label for="First">Last school attented (if NY State)</label>
+              <input type="text" name="First" autocomplete="off" />
+            </div>
+            <div class="input-field form-group">
+              <label for="Employment">Highest credential obtained in US</label>
+              <select id="uscred-select" class="modal-select" name="Employment">
+                <option value>Select a credential</option>
+              </select>
+            </div>
+            <div class="input-field form-group">
+              <label for="Employment">In other country</label>
+              <select
+                id="nysgrade-select"
+                class="modal-select"
+                name="Employment"
+              >
+                <option value>Select a credential</option>
+              </select>
+            </div>
+            <div class="input-field form-group">
+              <label for="year-schooling"
+                >Years of schooling in other Countries</label
+              >
+              <input type="text" name="year-schooling" autocomplete="off" />
+            </div>
           </form>
-          <div class="input-field form-group">
-            <label for="First">Last school attented (if NY State)</label>
-            <input type="text" name="First" autocomplete="off" />
-          </div>
 
           <div class="sub-header blue-bg blue-light-text">
             <div class="sub-header-title">School-aged Children</div>
           </div>
+          <form class="children-form" role="form"></form>
 
           <div class="sub-header blue-bg blue-light-text">
             <div class="sub-header-title">Barriers to Learning/Employment</div>
