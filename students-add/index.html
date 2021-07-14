@@ -330,6 +330,7 @@
     <main class="hero container">
       <div class="container-fluid" id="entry-bloc"></div>
       <section class="row">
+        <!-- Start Name | Contact | SSN | Gender | Race -->
         <div class="col-md-6">
           <div class="sub-header blue-bg blue-light-text">
             <div class="sub-header-title">Identity</div>
@@ -375,9 +376,7 @@
               <input type="text" name="Zip" autocomplete="off" />
             </div>
           </form>
-        </div>
 
-        <div class="col-md-6">
           <div class="sub-header blue-bg blue-light-text">
             <div class="sub-header-title">Contact</div>
           </div>
@@ -425,11 +424,7 @@
               </select>
             </div>
           </form>
-        </div>
-      </section>
 
-      <section class="row">
-        <div class="col-md-6">
           <div class="sub-header blue-bg blue-light-text">
             <div class="sub-header-title">Gender | Race | Ethnic Identity</div>
           </div>
@@ -464,22 +459,26 @@
             </div>
           </form>
         </div>
-
+        <!-- End Name | Contact | SSN | Gender | Race -->
+        <!-- Start Employment | Education | Children | Barriers -->
         <div class="col-md-6">
           <div class="sub-header blue-bg blue-light-text">
             <div class="sub-header-title">Employment Status</div>
           </div>
           <form class="employment-form" role="form">
-            <label for="Employment">Status</label>
-            <select
-              id="employment-select"
-              class="modal-select"
-              name="Employment"
-            >
-              <option value>Select a status</option>
-            </select>
+            <div class="input-field form-group">
+              <label for="Employment">Status</label>
+              <select
+                id="employment-select"
+                class="modal-select"
+                name="Employment"
+              >
+                <option value>Select a status</option>
+              </select>
+            </div>
           </form>
         </div>
+        <!-- End Employment | Education | Children | Barriers -->
       </section>
     </main>
     <!-- End main display -->
