@@ -37,3 +37,7 @@
 .children-header {
   background-color: #2479b5;
 }
+
+#yes-no-select {
+  width: 9%;
+}
