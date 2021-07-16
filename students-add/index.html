@@ -332,112 +332,124 @@
       <section class="page-title blue-bg blue-light-text">
         New Student Entry - ISRF
       </section>
-      <section class="row">
-        <!-- Start Name | Contact | SSN | Gender | Race -->
-        <div class="col-md-6">
-          <div class="sub-header blue-bg blue-light-text">
-            <div class="sub-header-title">Identity</div>
-          </div>
+      <!-- Start Name | Contact | SSN | Gender | Race -->
 
-          <form class="id-form" role="form">
-            <div class="input-field form-group">
-              <label for="First">First name</label>
-              <input
-                id="first-name"
-                type="text"
-                name="First"
-                autocomplete="off"
-              />
-            </div>
-            <div class="input-field form-group">
-              <label for="Middle">Middle initial</label>
-              <input
-                type="text"
-                id="middle-name"
-                name="Middle"
-                autocomplete="off"
-              />
-            </div>
-            <div class="input-field form-group">
-              <label for="Last">Last name</label>
-              <input
-                type="text"
-                id="last-name"
-                name="Last"
-                autocomplete="off"
-              />
-            </div>
-            <div class="input-field form-group">
-              <label for="BirthDate">Birth date</label>
-              <input
-                type="text"
-                id="birthdate"
-                name="BirthDate"
-                autocomplete="off"
-              />
-            </div>
-            <div class="input-field form-group">
-              <label for="BeginDate">Original prog. start date</label>
-              <input type="text" name="BeginDate" autocomplete="off" />
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">Address</label>
-              <input type="text" name="Address" autocomplete="off" />
-            </div>
-            <div class="input-field form-group">
-              <label for="City">City</label>
-              <input type="text" name="City" autocomplete="off" />
-            </div>
-            <div class="input-field form-group">
-              <label for="State">State</label>
-              <select id="state-select" class="modal-select" name="State">
-                <option value>Select a state</option>
-              </select>
-            </div>
-            <div class="input-field form-group">
-              <label for="Zip">ZIP code</label>
-              <input type="text" name="Zip" autocomplete="off" />
-            </div>
-          </form>
+      <div class="sub-header blue-bg blue-light-text">
+        <div class="sub-header-title">Basic Information</div>
+      </div>
 
-          <div class="sub-header blue-bg blue-light-text">
-            <div class="sub-header-title">Contact</div>
+      <form class="id-form" role="form">
+        <!-- Name section  -->
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-4">
+            <label for="First">First name</label>
+            <input
+              id="first-name"
+              type="text"
+              name="First"
+              autocomplete="off"
+            />
           </div>
-          <form class="contact-form" role="form">
-            <div class="input-field form-group">
-              <label for="Phone">Home phone</label>
-              <input type="text" name="Phone" autocomplete="off" />
-            </div>
-            <div class="input-field form-group">
-              <label for="Phone2">Mobile phone</label>
-              <input type="text" name="Phone2" autocomplete="off" />
-            </div>
-            <div class="input-field form-group">
-              <label for="StudEmail">Email</label>
-              <input type="email" name="StudEmail" autocomplete="off" />
-            </div>
-            <div class="input-field form-group">
-              <label for="EmergencyPhone">Emergency contact</label>
-              <input type="text" name="EmergencyPhone" autocomplete="off" />
-            </div>
-            <div class="input-field form-group">
-              <label for="EmergencyName">Name/Relationship of contact</label>
-              <input type="text" name="EmergencyName" autocomplete="off" />
-            </div>
-          </form>
+          <div class="input-field form-group col-sm-4">
+            <label for="Middle">Middle initial</label>
+            <input
+              type="text"
+              id="middle-name"
+              name="Middle"
+              autocomplete="off"
+            />
+          </div>
+          <div class="input-field form-group col-sm-4">
+            <label for="Last">Last name</label>
+            <input type="text" id="last-name" name="Last" autocomplete="off" />
+          </div>
+        </div>
 
-          <div class="sub-header blue-bg blue-light-text">
-            <div class="sub-header-title">SS Number</div>
+        <!-- DOB, start date -->
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-6">
+            <label for="BirthDate">Birth date</label>
+            <input
+              type="text"
+              id="birthdate"
+              name="BirthDate"
+              autocomplete="off"
+            />
           </div>
-          <form class="ssn-form" role="form">
+          <div class="input-field form-group col-sm-6">
+            <label for="BeginDate">Original prog. start date</label>
+            <input type="text" name="BeginDate" autocomplete="off" />
+          </div>
+        </div>
+
+        <!-- Address -->
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-4">
+            <label for="Address">Address</label>
+            <input type="text" name="Address" autocomplete="off" />
+          </div>
+          <div class="input-field form-group col-sm-4">
+            <label for="City">City</label>
+            <input type="text" name="City" autocomplete="off" />
+          </div>
+          <div class="input-field form-group col-sm-2">
+            <label for="State">State</label>
+            <select id="state-select" class="modal-select" name="State">
+              <option value>Select a state</option>
+            </select>
+          </div>
+          <div class="input-field form-group col-sm-2">
+            <label for="Zip">ZIP</label>
+            <input type="text" name="Zip" autocomplete="off" />
+          </div>
+        </div>
+
+        <!-- Contact info -->
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-4">
+            <label for="Phone">Home phone</label>
+            <input type="text" name="Phone" autocomplete="off" />
+          </div>
+          <div class="input-field form-group col-sm-4">
+            <label for="Phone2">Mobile phone</label>
+            <input type="text" name="Phone2" autocomplete="off" />
+          </div>
+          <div class="input-field form-group col-sm-4">
+            <label for="StudEmail">Email</label>
+            <input type="email" name="StudEmail" autocomplete="off" />
+          </div>
+        </div>
+
+        <!-- Emergency contact -->
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-5">
+            <label for="EmergencyPhone">Emergency contact</label>
+            <input type="text" name="EmergencyPhone" autocomplete="off" />
+          </div>
+          <div class="input-field form-group col-sm-7">
+            <label for="EmergencyName">Name/Relationship of contact</label>
+            <input type="text" name="EmergencyName" autocomplete="off" />
+          </div>
+        </div>
+      </form>
+
+      <!-- SSN -->
+      <div class="sub-header blue-bg blue-light-text">
+        <div class="sub-header-title">SS Number</div>
+      </div>
+      <form class="ssn-form" role="form">
+        <div class="container-fluid row">
+          <div class="col-sm-6">
+            <label for="SSN">Social Security number</label>
             <div class="input-field form-group">
-              <label for="SSN">Social Security number</label>
               <input type="text" name="SSN" autocomplete="off" />
             </div>
+          </div>
+          <div class="col-sm-6">
+            <label for="NoSSNVisaStaff"
+              >If SSN not provided, intake staff full name</label
+            >
             <div class="input-field form-group">
-              <label for="NoSSNVisaStaff"
-                >If SSN not provided, intake staff full name</label
-              >
               <select
                 id="nossn-select"
                 class="modal-select"
@@ -446,14 +458,19 @@
                 <option value>Select a staff</option>
               </select>
             </div>
-          </form>
+          </div>
+        </div>
+      </form>
 
+      <div class="container-fluid row">
+        <div class="col-md-6">
+          <!-- Gender -->
           <div class="sub-header blue-bg blue-light-text">
-            <div class="sub-header-title">Gender | Race | Ethnic Identity</div>
+            <div class="sub-header-title">Gender</div>
           </div>
           <form class="gender-form" role="form">
             <div class="input-field form-group">
-              <label for="Sex">Gender</label>
+              <label for="Sex"></label>
               <select id="gender-select" class="modal-select" name="Sex">
                 <option value>Select a gender</option>
                 <option value="M">Male</option>
@@ -461,36 +478,15 @@
                 <option value="N">Non-Binary/Gender Non-Conforming</option>
               </select>
             </div>
-            <div class="input-field form-group">
-              <label for="EthnicityID">Ethnicity</label>
-              <select
-                id="ethnicity-select"
-                class="modal-select"
-                name="EthnicityID"
-              >
-                <option value>Select ONE</option>
-                <option value="H">Hispanic/Latino/a</option>
-                <option value="N">Non-Hispanic/Latino/a</option>
-              </select>
-
-              <div class="input-field form-group">
-                <label for="RaceID">Race - Choose all that apply</label>
-                <select id="race-select" class="modal-select" name="RaceID">
-                  <option value>Select AT LEAST ONE</option>
-                </select>
-              </div>
-            </div>
           </form>
-        </div>
-        <!-- End Name | Contact | SSN | Gender | Race -->
-        <!-- Start Employment | Education | Children | Barriers -->
-        <div class="col-md-6">
+
+          <!-- Employment -->
           <div class="sub-header blue-bg blue-light-text">
             <div class="sub-header-title">Employment Status</div>
           </div>
-          <form class="employment-form" role="form">
-            <div class="input-field form-group">
-              <label for="Employment">Status</label>
+          <form class="employment-form row" role="form">
+            <div class="input-field form-group col-sm-8">
+              <label for="Employment"> </label>
               <select
                 id="employment-select"
                 class="modal-select"
@@ -499,114 +495,154 @@
                 <option value>Select a status</option>
               </select>
             </div>
-          </form>
-
-          <div class="sub-header blue-bg blue-light-text">
-            <div class="sub-header-title">Educational Background</div>
-          </div>
-          <form class="education-form" role="form">
-            <div class="input-field form-group">
-              <label for="Employment">Highest grade completed in US</label>
-              <select
-                id="usgrade-select"
-                class="modal-select"
-                name="Employment"
-              >
-                <option value>Select a grade</option>
+            <div class="input-field form-group col-sm-4">
+              <label for="FY"> </label>
+              <select id="FY-select" class="modal-select" name="FY">
+                <option value>Fiscal Year</option>
               </select>
-            </div>
-            <div class="input-field form-group">
-              <label for="Employment">in NY State</label>
-              <select
-                id="nysgrade-select"
-                class="modal-select"
-                name="Employment"
-              >
-                <option value>Select a grade</option>
-              </select>
-            </div>
-            <div class="input-field form-group">
-              <label for="First">Last school attented (if NY State)</label>
-              <input type="text" name="First" autocomplete="off" />
-            </div>
-            <div class="input-field form-group">
-              <label for="Employment">Highest credential obtained in US</label>
-              <select id="uscred-select" class="modal-select" name="Employment">
-                <option value>Select a credential</option>
-              </select>
-            </div>
-            <div class="input-field form-group">
-              <label for="Employment">In other country</label>
-              <select
-                id="othercred-select"
-                class="modal-select"
-                name="Employment"
-              >
-                <option value>Select a credential</option>
-              </select>
-            </div>
-            <div class="input-field form-group">
-              <label for="year-schooling"
-                >Years of schooling in other Countries</label
-              >
-              <input type="text" name="year-schooling" autocomplete="off" />
             </div>
           </form>
+        </div>
 
+        <!-- Race, Ethnicity -->
+        <div class="col-md-6">
           <div class="sub-header blue-bg blue-light-text">
-            <div class="sub-header-title">School-aged Children</div>
-          </div>
-          <form class="children-form" role="form">
-            <div class="input-field form-group">
-              <label for="under-21"
-                >Parent or guardian of a child/children under 21</label
-              >
-              <input type="checkbox" name="under-21" /><span>
-                <input type="checkbox" name="under-21"
-              /></span>
-            </div>
-            <div class="input-field form-group">
-              <label for="single-parent">Single parent</label>
-              <input type="checkbox" name="single-parent" /><span
-                ><input type="checkbox" name="single-parent"
-              /></span>
-            </div>
-            <table>
-              <thead>
-                <th class="children-header">PreSchool</th>
-                <th class="children-header">Elementary</th>
-                <th class="children-header">Junior HS</th>
-                <th class="children-header">High School</th>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                  <td>0</td>
-                </tr>
-              </tbody>
-            </table>
-          </form>
-
-          <div class="sub-header blue-bg blue-light-text">
-            <div class="sub-header-title">Barriers to Learning/Employment</div>
+            <div class="sub-header-title">Race | Ethnicity</div>
           </div>
           <div class="input-field form-group">
-            <label for="Barriers">Choose AT LEAST ONE</label>
-            <select id="barrier-select" class="modal-select" name="Barriers">
-              <option value>Select a value</option></select
-            ><span>
-              <label for="yes-no"></label>
-              <select id="yes-no-select" class="modal-select" name="yes-no">
-                <option value="0">No</option>
-                <option value="1">Yes</option>
+            <label for="EthnicityID">Ethnicity</label>
+            <select
+              id="ethnicity-select"
+              class="modal-select"
+              name="EthnicityID"
+            >
+              <option value>Select ONE</option>
+              <option value="H">Hispanic/Latino/a</option>
+              <option value="N">Non-Hispanic/Latino/a</option>
+            </select>
+
+            <div class="input-field form-group">
+              <label for="RaceID">Race - Choose all that apply</label>
+              <select id="race-select" class="modal-select" name="RaceID">
+                <option value>Select AT LEAST ONE</option>
               </select>
-            </span>
+            </div>
           </div>
         </div>
-        <!-- End Employment | Education | Children | Barriers -->
-      </section>
+      </div>
+
+      <!-- End Name | Contact | SSN | Gender | Race -->
+      <!-- Education  -->
+      <div class="sub-header blue-bg blue-light-text">
+        <div class="sub-header-title">Educational Background</div>
+      </div>
+
+      <form class="education-form" role="form">
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-6">
+            <label for="Employment">Highest grade completed in US</label>
+            <select id="usgrade-select" class="modal-select" name="Employment">
+              <option value>Select a grade</option>
+            </select>
+          </div>
+          <div class="input-field form-group col-sm-6">
+            <label for="Employment">Highest grade completed in NY State</label>
+            <select id="nysgrade-select" class="modal-select" name="Employment">
+              <option value>Select a grade</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-field form-group">
+          <label for="First">Last school attented (if NY State)</label>
+          <input type="text" name="First" autocomplete="off" />
+        </div>
+
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-6">
+            <label for="Employment">Highest credential obtained in US</label>
+            <select id="uscred-select" class="modal-select" name="Employment">
+              <option value>Select a credential</option>
+            </select>
+          </div>
+          <div class="input-field form-group col-sm-6">
+            <label for="Employment"
+              >Highest credential obtained in other country</label
+            >
+            <select
+              id="othercred-select"
+              class="modal-select"
+              name="Employment"
+            >
+              <option value>Select a credential</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="input-field form-group">
+          <label for="year-schooling"
+            >Years of schooling in other Countries</label
+          >
+          <input type="text" name="year-schooling" autocomplete="off" />
+        </div>
+      </form>
+
+      <div class="sub-header blue-bg blue-light-text">
+        <div class="sub-header-title">School-aged Children</div>
+      </div>
+      <form class="children-form row" role="form">
+        <div class="col-sm-6">
+          <div class="input-field form-group">
+            <label for="under-21"
+              >Parent or guardian of a child/children under 21</label
+            >
+            <input type="checkbox" name="under-21" /><span>
+              <input type="checkbox" name="under-21"
+            /></span>
+          </div>
+          <div class="input-field form-group">
+            <label for="single-parent">Single parent</label>
+            <input type="checkbox" name="single-parent" /><span
+              ><input type="checkbox" name="single-parent"
+            /></span>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <table>
+            <thead>
+              <th class="children-header">PreSchool</th>
+              <th class="children-header">Elementary</th>
+              <th class="children-header">Junior HS</th>
+              <th class="children-header">High School</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+                <td>0</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
+
+      <div class="sub-header blue-bg blue-light-text">
+        <div class="sub-header-title">Barriers to Learning/Employment</div>
+      </div>
+      <div class="input-field form-group">
+        <label for="Barriers">Choose AT LEAST ONE</label>
+        <select id="barrier-select" class="modal-select" name="Barriers">
+          <option value>Select a value</option></select
+        ><span>
+          <label for="yes-no"></label>
+          <select id="yes-no-select" class="modal-select" name="yes-no">
+            <option value="0">No</option>
+            <option value="1">Yes</option>
+          </select>
+        </span>
+      </div>
+      <!-- End Employment | Education | Children | Barriers -->
     </main>
     <!-- End main display -->
 
