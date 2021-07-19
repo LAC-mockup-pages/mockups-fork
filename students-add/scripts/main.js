@@ -6,7 +6,7 @@ import { createDuplicatesTable } from "./components/duplicates.js";
 
 const increaseBar = (elem, tableContent) => {
   let width = 1;
-  const id = setInterval(frame, 400);
+  const id = setInterval(frame, 300);
   function frame() {
     if (width >= 100) {
       clearInterval(id);

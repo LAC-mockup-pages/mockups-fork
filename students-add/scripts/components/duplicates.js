@@ -37,9 +37,11 @@ export const createDuplicatesTable = (firstName, lastName, dateOfBirth) => {
     "DOB",
     "Student ID"
   ]);
-
+  const orderedList = possibleDuplicates.sort((item1, item2) =>
+    item1.Last < item2.Last ? -1 : item1.Last > item2.Last ? 1 : 0
+  );
   let rows = "";
-  for (const record of possibleDuplicates) {
+  for (const record of orderedList) {
     const { ID, StudentID, First, Middle, Last, BirthDate } = record;
     const row = `<tr id=${ID}>
     <td class="cell-data">${Last}</td>
@@ -48,9 +50,7 @@ export const createDuplicatesTable = (firstName, lastName, dateOfBirth) => {
     <td class="cell-data">${BirthDate}</td>
     <td class="cell-data">${StudentID}</td>
     </tr>`;
-
     rows += row;
   }
-
   return `${tableHeader}<tbody>${rows}</tbody>`;
 };
