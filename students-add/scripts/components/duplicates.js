@@ -4,7 +4,8 @@
 
 export const createDuplicatesTable = (firstName, lastName, dateOfBirth) => {
   //! ==========================================
-  //! IN PRODUCTION: change the name to real name
+  //! IN PRODUCTION: change the method name GetDuplicates
+  //! to real name.
   //! ==========================================
   // const possibleDuplicates = GetDuplicates(firstName, lastName, dateOfBirth);
   //! Comment out the following
@@ -27,34 +28,28 @@ export const createDuplicatesTable = (firstName, lastName, dateOfBirth) => {
     }
   ];
   //! ==========================================
-  console.log("firstName :>> ", firstName);
-  console.log("lastName :>> ", lastName);
-  console.log("dateOfBirth :>> ", dateOfBirth);
-  const labelObj = [
-    {
-      ID: "ID",
-      StudentID: "Student ID",
-      First: "First name",
-      Middle: "Middle",
-      Last: "Last name",
-      BirthDate: "DOB"
-    }
-  ];
-  // const labels = Object.keys(labelObj[0]).map((item) => labelObj[0].item);
 
-  const labelList = ["Last name", "First name", "Middle", "DOB", "Student ID"];
   // createHeaders() <== helperFunctions.js
-  const tableHeader = createHeaders(labelList);
+  const tableHeader = createHeaders([
+    "Last name",
+    "First name",
+    "Middle",
+    "DOB",
+    "Student ID"
+  ]);
 
   let rows = "";
   for (const record of possibleDuplicates) {
-    // createRow() <== helperFunction.js
-    rows += createRow({
-      record,
-      labelList,
-      labelObj,
-      hiddenList: ["ID"]
-    });
+    const { ID, StudentID, First, Middle, Last, BirthDate } = record;
+    const row = `<tr id=${ID}>
+    <td class="cell-data">${Last}</td>
+    <td class="cell-data">${First}</td>
+    <td class="cell-data">${Middle}</td>
+    <td class="cell-data">${BirthDate}</td>
+    <td class="cell-data">${StudentID}</td>
+    </tr>`;
+
+    rows += row;
   }
 
   return `${tableHeader}<tbody>${rows}</tbody>`;

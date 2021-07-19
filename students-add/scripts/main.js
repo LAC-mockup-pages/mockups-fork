@@ -4,13 +4,14 @@
 
 import { createDuplicatesTable } from "./components/duplicates.js";
 
-const increaseBar = (elem) => {
+const increaseBar = (elem, tableContent) => {
   let width = 1;
   const id = setInterval(frame, 400);
   function frame() {
     if (width >= 100) {
       clearInterval(id);
       $("#bar-container").toggleClass("hidden");
+      $("#duplicates-table").append(tableContent);
     } else {
       width += Math.floor(Math.random() * 10 + 1);
       elem.width(`${width}%`);
@@ -26,9 +27,10 @@ $(document).ready(() => {
   //* Send focus on first name input
   $("#first-name").focus();
 
-  //* Removes hidden class on closing modal
+  //* Removes hidden class and table on closing modal
   $("#close-button").click(() => {
     $("#bar-container").toggleClass("hidden");
+    $("#duplicates-table").empty();
     $("#modalBloc").modal("toggle");
   });
 
@@ -44,8 +46,6 @@ $(document).ready(() => {
     $("#modalBloc").modal("toggle");
     const element = $("#load-bar");
     $("#bar-container").removeClass("hidden");
-    increaseBar(element);
-
-    $("#duplicates-table").append(table);
+    increaseBar(element, table);
   });
 });
