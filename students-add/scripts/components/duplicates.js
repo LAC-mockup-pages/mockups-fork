@@ -43,7 +43,7 @@ export const createDuplicatesTable = (firstName, lastName, dateOfBirth) => {
   let rows = "";
   for (const record of orderedList) {
     const { ID, StudentID, First, Middle, Last, BirthDate } = record;
-    const row = `<tr id=${ID}>
+    const row = `<tr id=${ID} title="Click to display" data-toggle='tooltip' data-placement="left">
     <td class="cell-data">${Last}</td>
     <td class="cell-data">${First}</td>
     <td class="cell-data">${Middle}</td>

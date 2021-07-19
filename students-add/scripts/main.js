@@ -12,6 +12,9 @@ const increaseBar = (elem, tableContent) => {
       clearInterval(id);
       $("#bar-container").toggleClass("hidden");
       $("#duplicates-table").append(tableContent);
+
+      // Enables customized tooltips
+      $("[data-toggle='tooltip']").tooltip();
     } else {
       width += Math.floor(Math.random() * 10 + 1);
       elem.width(`${width}%`);
