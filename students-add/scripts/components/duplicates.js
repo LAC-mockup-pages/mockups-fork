@@ -42,16 +42,16 @@ export const createDuplicatesTable = (firstName, lastName, dateOfBirth) => {
   ];
   // const labels = Object.keys(labelObj[0]).map((item) => labelObj[0].item);
 
-  const labels = ["Last name", "First name", "Middle", "DOB", "StudentID"];
+  const labelList = ["Last name", "First name", "Middle", "DOB", "Student ID"];
   // createHeaders() <== helperFunctions.js
-  const tableHeader = createHeaders(labels);
+  const tableHeader = createHeaders(labelList);
 
   let rows = "";
   for (const record of possibleDuplicates) {
     // createRow() <== helperFunction.js
     rows += createRow({
       record,
-      labelList: labels,
+      labelList,
       labelObj,
       hiddenList: ["ID"]
     });

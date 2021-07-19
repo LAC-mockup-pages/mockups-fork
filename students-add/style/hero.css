@@ -41,3 +41,9 @@
 #yes-no-select {
   width: 9%;
 }
+
+/* Duplicates table */
+/* ============================ */
+th {
+  background-color: #2479b5;
+}

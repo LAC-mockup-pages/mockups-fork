@@ -39,7 +39,7 @@ $(document).ready(() => {
     evnt.preventDefault();
     const first = $("#first-name").val();
     const last = $("#last-name").val();
-    const dateOfBirth = $(this).val();
+    const dateOfBirth = $("#birthdate").val();
     const table = createDuplicatesTable(first, last, dateOfBirth);
     $("#modalBloc").modal("toggle");
     const element = $("#load-bar");
