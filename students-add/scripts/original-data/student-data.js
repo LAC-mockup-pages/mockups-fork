@@ -11,6 +11,130 @@ const GetStudentHeader = [
   }
 ];
 
+// ddl ???
+const GetEmploymentInfo = [
+  {
+    ID: "3693213",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatID: "A",
+    EmployStat: "Employed full-time",
+    EmployStatusFY: "2019",
+    EmployerID: "",
+    EmployerName: "",
+    EmployDate: "",
+    LastEmployDate: "",
+    ReleaseDate: "",
+    IncomeFY: "",
+    IncomeFYName: "",
+    Student_PKID: "1048303"
+  },
+  {
+    ID: "3267957",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatID: "A",
+    EmployStat: "Employed full-time",
+    EmployStatusFY: "2017",
+    EmployerID: "lac",
+    EmployerName: "lac",
+    EmployDate: "01/05/2017",
+    LastEmployDate: "01/01/2017",
+    ReleaseDate: "07/06/2017",
+    IncomeFY: "9",
+    IncomeFYName: "$100,000 to $149,999",
+    Student_PKID: "1048303"
+  },
+  {
+    ID: "3503725",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatID: "A",
+    EmployStat: "Employed full-time",
+    EmployStatusFY: "2016",
+    EmployerID: "LAC",
+    EmployerName: "LAC",
+    EmployDate: "08/04/2015",
+    LastEmployDate: "02/15/2016",
+    ReleaseDate: "",
+    IncomeFY: "",
+    IncomeFYName: "",
+    Student_PKID: "1048303"
+  },
+  {
+    ID: "2459053",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatID: "A",
+    EmployStat: "Employed full-time",
+    EmployStatusFY: "2013",
+    EmployerID: "Test",
+    EmployerName: "Test",
+    EmployDate: "01/21/2017",
+    LastEmployDate: "01/01/2013",
+    ReleaseDate: "",
+    IncomeFY: "6",
+    IncomeFYName: "$35,000 to $49,999",
+    Student_PKID: "1048303"
+  },
+  {
+    ID: "2372518",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatID: "A",
+    EmployStat: "Employed full-time",
+    EmployStatusFY: "2012",
+    EmployerID: "",
+    EmployerName: "",
+    EmployDate: "",
+    LastEmployDate: "",
+    ReleaseDate: "",
+    IncomeFY: "",
+    IncomeFYName: "",
+    Student_PKID: "1048303"
+  },
+  {
+    ID: "2631980",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatID: "A",
+    EmployStat: "Employed full-time",
+    EmployStatusFY: "2011",
+    EmployerID: "",
+    EmployerName: "",
+    EmployDate: "",
+    LastEmployDate: "",
+    ReleaseDate: "",
+    IncomeFY: "",
+    IncomeFYName: "",
+    Student_PKID: "1048303"
+  },
+  {
+    ID: "2631981",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatID: "A",
+    EmployStat: "Employed full-time",
+    EmployStatusFY: "2007",
+    EmployerID: "",
+    EmployerName: "",
+    EmployDate: "",
+    LastEmployDate: "",
+    ReleaseDate: "",
+    IncomeFY: "",
+    IncomeFYName: "",
+    Student_PKID: "1048303"
+  },
+  {
+    ID: "2631982",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatID: "D",
+    EmployStat: "Unemployed \u003c1 yr available",
+    EmployStatusFY: "2004",
+    EmployerID: "",
+    EmployerName: "",
+    EmployDate: "",
+    LastEmployDate: "",
+    ReleaseDate: "",
+    IncomeFY: "",
+    IncomeFYName: "",
+    Student_PKID: "1048303"
+  }
+];
+
 // ddlEmploymentStatus
 const GetEmploymentStatus = [
   { key: "A", value: "Employed full-time" },
