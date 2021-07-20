@@ -3,6 +3,7 @@
 //*=================================================
 
 import { createDuplicatesTable } from "./components/duplicates.js";
+import { createOptionList } from "./components/utilities.js";
 
 const increaseBar = (elem, tableContent) => {
   let width = 1;
@@ -27,9 +28,17 @@ const increaseBar = (elem, tableContent) => {
 //*=================================================
 
 $(document).ready(() => {
+  //* At first rendering
+  //* =====================================
+
   //* Send focus on first name input
   $("#first-name").focus();
 
+  //* Add option list for states dropdown select, with NY as default.
+  const optionStates = createOptionList(DDL_STATES);
+  $("#state-select").append(optionStates);
+
+  //* =====================================
   //* Removes hidden class and table on closing modal
   $("#close-button").click(() => {
     $("#bar-container").toggleClass("hidden");
