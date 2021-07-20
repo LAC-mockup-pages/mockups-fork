@@ -1,6 +1,3 @@
-//! Returns error:
-//! GetCTED, GetFYSource, GetStudentHeader, GetTransferTo
-
 // ddlCTEDEnrollmentStatus
 const GetCTEDEnrollmentStatusSource = [
   { key: "1", value: "Left CTEDS" },
@@ -1223,4 +1220,48 @@ const GetInstructionSource = [
 // ddlCMInstructor
 const GetInstructionSource_CM = [
   { key: "236328", value: "Porter, Jane (CaseMgmt-Summer)" }
+];
+
+// ddl ???
+const GetCTED = [
+  {
+    ID: "65871",
+    Student_PKID: "1048303",
+    CTEDPrimaryProg: "10000",
+    CTDEFY: "2014",
+    CTEDEnrollmentStatus: "1",
+    CTEDStudentStatus: "3",
+    ProgramDesc: "AGRICULTURE, GENERAL ",
+    CTEDStudentEnrollmentStatusDesc: "Left CTEDS",
+    CTEDStudentStatusDesc: "The Military"
+  }
+];
+
+// ddl ???
+const GetStudentHeader = [
+  {
+    ID: "1048303",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    StudentName: "AA1_Jacques, Gregory ",
+    Pop_Order: "",
+    POPHours: "",
+    POP_Status: "",
+    FY_Funding: "Not Enrolled",
+    OtherCode: "",
+    OtherCodetxt: ""
+  }
+];
+
+// ddlTransfer
+const GetTransferTo = [
+  { ID: "236531", Description: "BE1CTutoring_2021 Porter, Jane" },
+  { ID: "232270", Description: "BE4CASTS_21 Porter, Samantha" },
+  { ID: "202360", Description: "BE6C1 Alisova, Muriana" },
+  { ID: "232271", Description: "BE6CIntake_Summer2021 Porter, Samantha" },
+  { ID: "236328", Description: "CM1GCaseMgmt-Summer Porter, Jane" },
+  { ID: "242700", Description: "ES2TDL_S_MSmit Smith, Mary" },
+  { ID: "236450", Description: "ES3CEnglish101-Uighur Porter, Samantha" },
+  { ID: "236431", Description: "ES3CEnglish101-Urdu Porter, Samantha" },
+  { ID: "237004", Description: "H6CTwoWeekTest Kenobi, General" }
 ];

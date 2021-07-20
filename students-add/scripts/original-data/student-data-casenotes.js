@@ -126,3 +126,163 @@ const GetKeyCodeSource = [
   { key: "115", value: "WE-2 Work Ethic - Adequate" },
   { key: "116", value: "WE-3 Work Ethic - Very Good" }
 ];
+
+// ddlContactType
+const GetContactTypeSource = [
+  { key: "1", value: "Telephone" },
+  { key: "2", value: "Message" },
+  { key: "3", value: "Mail" },
+  { key: "4", value: "Case Manager" },
+  { key: "5", value: "Counselor" },
+  { key: "6", value: "In Person" },
+  { key: "7", value: "CMP" }
+];
+
+// ddlStaff
+const GetInstructorSource = [
+  { key: "0", value: "" },
+  { key: "51885", value: "Aaaa, Rrr" },
+  { key: "28555", value: "Alfieri, Shelley" },
+  { key: "24386", value: "Alisova, Muriana" },
+  { key: "24234", value: "Barnes, Julia" },
+  { key: "52310", value: "Bartowksi, Charles" },
+  { key: "51590", value: "Blade, Senua" },
+  { key: "51065", value: "Brady, Tom" },
+  { key: "33828", value: "Campbell, Don" },
+  { key: "53190", value: "Charlotin, Wilson" },
+  { key: "51261", value: "Cooper, Dale" },
+  { key: "47016", value: "Cooper, Gary " },
+  { key: "23853", value: "Dains, Michille" },
+  { key: "56402", value: "Dante, Elizabeth" },
+  { key: "46763", value: "Donovan, Ray" },
+  { key: "45229", value: "Dryja, Kelly " },
+  { key: "23847", value: "EEESS, JLNAA" },
+  { key: "49708", value: "Frazier, Clyde" },
+  { key: "1359", value: "Frown, Janice" },
+  { key: "52619", value: "Fuller, Martin" },
+  { key: "27812", value: "GEORGIA, WASHINGTON" },
+  { key: "50951", value: "Hyde, Steven" },
+  { key: "44988", value: "John, Laura" },
+  { key: "53184", value: "Johnson, Norma" },
+  { key: "47045", value: "jones, fred" },
+  { key: "51968", value: "Jones, Yoga" },
+  { key: "54035", value: "Katie, LaBonte" },
+  { key: "49118", value: "Kenobi, General" },
+  { key: "25120", value: "MacAlinney, MARY" },
+  { key: "38951", value: "McConnell07, Grace" },
+  { key: "35612", value: "mehmet, ayfer" },
+  { key: "50202", value: "Melfi, Jennifer" },
+  { key: "44987", value: "Peet, Tammy " },
+  { key: "28083", value: "Porter, Jane" },
+  { key: "2256", value: "Porter, Samantha" },
+  { key: "51033", value: "Scott, Adam" },
+  { key: "51442", value: "Silvers, Rayleigh" },
+  { key: "24202", value: "Sines, Kelly" },
+  { key: "51884", value: "Smith, Jon" },
+  { key: "47093", value: "Smith, Mary" },
+  { key: "2233", value: "Smith, Sharon" },
+  { key: "50653", value: "Tanken, Serj" },
+  { key: "38704", value: "Taylor, Teresa" },
+  { key: "24447", value: "TesterCMP, Venu" },
+  { key: "40178", value: "TestThelakkat, Venu" },
+  { key: "46765", value: "Vause, Alex" },
+  { key: "28561", value: "Woodhams, Mellissa" },
+  { key: "53348", value: "Ynoa, Marcos" },
+  { key: "52916", value: "Zoro, Roronoa" }
+];
+
+// ddl ???
+const GetNotes = [
+  {
+    ID: "444133",
+    Student_PKID: "1048303",
+    KeyCodeID: "0",
+    ContactDate: "06/09/2019",
+    ContactDesc: "Telephone",
+    ContactName: "Melfi, Jennifer",
+    ContactHours: "1.5",
+    ContactNotes: "Test RS 12.5",
+    KeyCodeDescription: "",
+    Attachment: "",
+    AttachmentLink: ""
+  },
+  {
+    ID: "385441",
+    Student_PKID: "1048303",
+    KeyCodeID: "0",
+    ContactDate: "06/02/2018",
+    ContactDesc: "Telephone",
+    ContactName: "Donovan, Ray",
+    ContactHours: "0.5",
+    ContactNotes: "RS Test 11.4",
+    KeyCodeDescription: "",
+    Attachment: "",
+    AttachmentLink: ""
+  },
+  {
+    ID: "376501",
+    Student_PKID: "1048303",
+    KeyCodeID: "0",
+    ContactDate: "04/07/2018",
+    ContactDesc: "Telephone",
+    ContactName: "Silvers, Rayleigh",
+    ContactHours: "0.5",
+    ContactNotes: "Test RS 11.3",
+    KeyCodeDescription: "",
+    Attachment: "",
+    AttachmentLink: ""
+  },
+  {
+    ID: "282027",
+    Student_PKID: "1048303",
+    KeyCodeID: "30",
+    ContactDate: "08/23/2016",
+    ContactDesc: "Case Manager",
+    ContactName: "Dains, Michille",
+    ContactHours: "6",
+    ContactNotes:
+      "NI-2 Fathi has an excellent resume, reference list, and a letter of rec. from his new supervisor at Wegmans stating his work ethic is excellent as he always arrives to his job early.",
+    KeyCodeDescription: "DA-1 Discipline - Severity Low",
+    Attachment: "",
+    AttachmentLink: ""
+  },
+  {
+    ID: "277915",
+    Student_PKID: "1048303",
+    KeyCodeID: "0",
+    ContactDate: "07/15/2016",
+    ContactDesc: "Telephone",
+    ContactName: "Porter, Samantha",
+    ContactHours: "",
+    ContactNotes: "test ASISTS 9.5",
+    KeyCodeDescription: "",
+    Attachment: "",
+    AttachmentLink: ""
+  },
+  {
+    ID: "198694",
+    Student_PKID: "1048303",
+    KeyCodeID: "0",
+    ContactDate: "03/06/2015",
+    ContactDesc: "Message",
+    ContactName: "Alfieri, Shelley",
+    ContactHours: "",
+    ContactNotes: "test",
+    KeyCodeDescription: "",
+    Attachment: "",
+    AttachmentLink: ""
+  },
+  {
+    ID: "198268",
+    Student_PKID: "1048303",
+    KeyCodeID: "2",
+    ContactDate: "03/05/2015",
+    ContactDesc: "Telephone",
+    ContactName: "Buran, David",
+    ContactHours: "2.5",
+    ContactNotes: "test",
+    KeyCodeDescription: "AD-2 Addiction - Severity Medium",
+    Attachment: "",
+    AttachmentLink: ""
+  }
+];
