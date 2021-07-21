@@ -23,6 +23,20 @@ const increaseBar = (elem, tableContent) => {
   }
 };
 
+const createStaffList = (list) => {
+  const orderedList = list.sort((item1, item2) =>
+    item1.InstructorName < item2.InstructorName
+      ? -1
+      : item1.InstructorName > item2.InstructorName
+      ? 1
+      : 0
+  );
+  return orderedList.map((staff) => {
+    const { ID, InstructorName } = staff;
+    return { objKey: ID, objValue: InstructorName };
+  });
+};
+
 //*=================================================
 //* jQuery section
 //*=================================================
@@ -34,9 +48,13 @@ $(document).ready(() => {
   //* Send focus on first name input
   $("#first-name").focus();
 
-  //* Add option list for states dropdown select, with NY as default.
+  //* Add option list for:
+  // states dropdown select, with NY as default.
   const optionStates = createOptionList(DDL_STATES);
   $("#state-select").append(optionStates);
+  // staff dropdown select
+  const optionStaff = createOptionList(createStaffList(GetStaff));
+  $("#nossn-select").append(optionStaff);
 
   //* =====================================
   //* Removes hidden class and table on closing modal
