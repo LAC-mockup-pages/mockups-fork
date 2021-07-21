@@ -56,6 +56,11 @@ $(document).ready(() => {
   // staff dropdown select
   const optionStaff = createOptionList(createStaffList(GetStaff));
   $("#nossn-select").append(optionStaff);
+  //TODO employment fiscal year dropdown select
+
+  // race dropdown select
+  const optionRace = createOptionList(ddlRace);
+  $("#race-select").append(optionRace);
 
   //* =====================================
 

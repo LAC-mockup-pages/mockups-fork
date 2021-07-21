@@ -297,3 +297,16 @@ const GetStaff = [
     AgencyID: "PRA"
   }
 ];
+
+const ddlRace = [
+  { objKey: "B3", objValue: "Native Hawaiian" },
+  { objKey: "B2", objValue: "Pacific Islander" },
+  { objKey: "C3", objValue: "African" },
+  { objKey: "A1", objValue: "Native American" },
+  { objKey: "C1", objValue: "African American" },
+  { objKey: "D", objValue: "Latino/a" },
+  { objKey: "A2", objValue: "Alaskan Native" },
+  { objKey: "C2", objValue: "Afro-Caribbean" },
+  { objKey: "E1", objValue: "White" },
+  { objKey: "B1", objValue: "Asian" }
+];
