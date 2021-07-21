@@ -42,6 +42,7 @@ const createStaffList = (list) => {
 //*=================================================
 
 $(document).ready(() => {
+  //* =====================================
   //* At first rendering
   //* =====================================
 
@@ -50,13 +51,14 @@ $(document).ready(() => {
 
   //* Add option list for:
   // states dropdown select, with NY as default.
-  const optionStates = createOptionList(DDL_STATES);
+  const optionStates = createOptionList(DDL_STATES, "NY");
   $("#state-select").append(optionStates);
   // staff dropdown select
   const optionStaff = createOptionList(createStaffList(GetStaff));
   $("#nossn-select").append(optionStaff);
 
   //* =====================================
+
   //* Removes hidden class and table on closing modal
   $("#close-button").click(() => {
     $("#bar-container").toggleClass("hidden");

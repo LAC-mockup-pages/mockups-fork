@@ -1,12 +1,13 @@
 // ==============================================
 // Utility functions
 // ==============================================
-export const createOptionList = (dataObj) => {
+export const createOptionList = (dataObj, defaultValue) => {
   const optionList = dataObj.map((record) => {
     const [key, value] = Object.keys(record);
     const keyData = record[key];
     const valueData = record[value];
-    const defaultVal = keyData === "NY" ? " selected" : "";
+    const defaultVal =
+      defaultValue && keyData === defaultValue ? " selected" : "";
     return `<option${defaultVal} value=${keyData}>${valueData}</option>`;
   });
   return optionList.join("");
