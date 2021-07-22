@@ -65,6 +65,9 @@ $(document).ready(() => {
   // Covers Highest Grade in US and Other Countries
   const optionGrade = createOptionList(ddlHighestGradeCompletedUS);
   $("#usgrade-select, #nysgrade-select").append(optionGrade);
+  // barriers dropdown select
+  const optionBarriers = createOptionList(ddlBarriers);
+  $("#barrier-select").append(optionBarriers);
 
   //* =====================================
 
