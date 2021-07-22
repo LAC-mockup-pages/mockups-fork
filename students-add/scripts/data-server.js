@@ -310,3 +310,23 @@ const ddlRace = [
   { objKey: "E1", objValue: "White" },
   { objKey: "B1", objValue: "Asian" }
 ];
+
+const GetYearsSchooling = [
+  { key: "NA", value: "N/A " },
+  { key: "1", value: "Grade 1 " },
+  { key: "2", value: "Grade 2 " },
+  { key: "3", value: "Grade 3 " },
+  { key: "4", value: "Grade 4 " },
+  { key: "5", value: "Grade 5 " },
+  { key: "6", value: "Grade 6 " },
+  { key: "7", value: "Grade 7 " },
+  { key: "8", value: "Grade 8 " },
+  { key: "9", value: "Grade 9 " },
+  { key: "10", value: "Grade 10 " },
+  { key: "11", value: "Grade 11 " },
+  { key: "12", value: "Grade 12 HS Diploma" },
+  { key: "12D", value: "Grade 12D IEP Diploma" },
+  { key: "12E", value: "Grade 12E GED/TASC" },
+  { key: "13", value: "Some College" },
+  { key: "16", value: "Undergraduate degree" }
+];
