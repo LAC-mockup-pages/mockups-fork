@@ -311,7 +311,7 @@ const ddlRace = [
   { objKey: "B1", objValue: "Asian" }
 ];
 
-const GetYearsSchooling = [
+const GetHighestGradeCompletedUS = [
   { key: "NA", value: "N/A " },
   { key: "1", value: "Grade 1 " },
   { key: "2", value: "Grade 2 " },
