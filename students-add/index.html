@@ -571,20 +571,23 @@
         <div class="container-fluid row">
           <div class="input-field form-group col-sm-6">
             <label for="Employment">Highest credential obtained </label>
-            <select id="uscred-select" class="modal-select" name="Employment">
-              <option value>Select a credential</option>
+            <select id="us-select" class="modal-select" name="Employment">
+              <option value='1' selected>in the US</option>
+              <option value="2">in another country</option>
             </select>
           </div>
           <div class="input-field form-group col-sm-6">
-            <label for="Employment"
-              >Highest credential obtained in other country</label
-            >
-            <select
-              id="othercred-select"
+            <label for="Employment">
+          </label>    <select
+              id="cred-select"
               class="modal-select"
               name="Employment"
             >
               <option value>Select a credential</option>
+              <option value="1">Sec. school diploma or alt.</option>
+              <option value="2">High school equivalent</option>
+              <option value="3">Some post-secondary</option>
+              <option value="4">Post-secondary or professional degree</option>
             </select>
           </div>
         </div>
@@ -593,7 +596,23 @@
           <label for="year-schooling"
             >Years of schooling in other Countries</label
           >
-          <input type="text" name="year-schooling" autocomplete="off" />
+          <select id="schoolingyears-select" class="modal-select" name="year-schooling" >
+<option value="">Select a number</option>
+<option value="NA">NA</option>
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="12P">12+</option>
+          </select>
         </div>
       </form>
 
