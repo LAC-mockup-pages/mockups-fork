@@ -63,7 +63,7 @@ $(document).ready(() => {
   $("#race-select").append(optionRace);
   // education background.
   // Covers Highest Grade in US and Other Countries
-  const optionGrade = createOptionList(GetHighestGradeCompletedUS);
+  const optionGrade = createOptionList(ddlHighestGradeCompletedUS);
   $("#usgrade-select, #nysgrade-select").append(optionGrade);
 
   //* =====================================
