@@ -617,27 +617,27 @@
       </form>
 
       <div class="sub-header blue-bg blue-light-text">
-        <div class="sub-header-title">School-aged Children</div>
+        <div class="sub-header-title">Parental | Child Information</div>
       </div>
       <form class="children-form row" role="form">
         <div class="col-sm-6">
           <div class="input-field form-group">
-            <label for="under-21"
-              >Parent or guardian of a child/children under 21</label
-            >
-            <input type="checkbox" name="under-21" /><span>
-              <input type="checkbox" name="under-21"
-            /></span>
+            <label for="Parent">Parent or guardian of a child/children</label>
+            <select name="Parent" id="parent-select" class="modal-select">
+              <option value="0" selected>No</option>
+              <option value="1">Yes</option>
+            </select>
           </div>
           <div class="input-field form-group">
-            <label for="single-parent">Single parent</label>
-            <input type="checkbox" name="single-parent" /><span
-              ><input type="checkbox" name="single-parent"
-            /></span>
+            <label for="SingleParent">Single parent</label>
+            <select name="SingleParent" id="single-select" class="modal-select">
+              <option value="0" selected>No</option>
+              <option value="1">Yes</option>
+            </select>
           </div>
         </div>
         <div class="col-sm-6">
-          <table>
+          <table class="table table-condensed">
             <thead>
               <th class="children-header">PreSchool</th>
               <th class="children-header">Elementary</th>
@@ -659,18 +659,20 @@
       <div class="sub-header blue-bg blue-light-text">
         <div class="sub-header-title">Barriers to Learning/Employment</div>
       </div>
-      <div class="input-field form-group">
-        <label for="Barriers">Choose AT LEAST ONE</label>
-        <select id="barrier-select" class="modal-select" name="Barriers">
-          <option value>Select a value</option></select
-        ><span>
-          <label for="yes-no"></label>
-          <select id="yes-no-select" class="modal-select" name="yes-no">
-            <option value="0">No</option>
-            <option value="1">Yes</option>
-          </select>
-        </span>
-      </div>
+      <form id="barriers-form" role="form">
+        <div class="input-field form-group">
+          <label for="Barriers">Choose AT LEAST ONE</label>
+          <select id="barrier-select" class="modal-select" name="Barriers">
+            <option value>Select a value</option></select
+          ><span>
+            <label for="yes-no"></label>
+            <select id="yes-no-select" class="modal-select" name="yes-no">
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+            </select>
+          </span>
+        </div>
+      </form>
       <!-- End Employment | Education | Children | Barriers -->
     </main>
     <!-- End main display -->

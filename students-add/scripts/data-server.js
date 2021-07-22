@@ -330,3 +330,22 @@ const ddlHighestGradeCompletedUS = [
   { key: "13", value: "Some College" },
   { key: "16", value: "Undergraduate degree" }
 ];
+
+const ddlBarriers = [
+  { key: "Homeless", value: "Homeless" },
+  { key: "HSGrad", value: "HS graduate or equivalent (US)" },
+  { key: "Displaced", value: "Displaced homemaker" },
+  { key: "Disabled", value: "Disabled" },
+  { key: "LowIncome", value: "Low income" },
+  { key: "Migrant", value: "Migrant / Seasonnal worker" },
+  { key: "LearningDisabled", value: "Learning disabled" },
+  { key: "Runaway", value: "Runaway youth" },
+  { key: "WalkInTest", value: "Walk-in from TASC test" },
+  { key: "NonNativeEnglish", value: "Non native English speaker" },
+  { key: "ExOffender", value: "Ex-offender" },
+  { key: "FosterCare", value: "Youth in foster care / Aged out of system" },
+  { key: "LearningBarriers", value: "Cultural barriers to learning" },
+  { key: "LongUnEmployed_LB", value: "Long-term unemployed" },
+  { key: "EXhaustTANF_LB", value: "Exhausting TANF within 2 years" },
+  { key: "SingleParent_LB", value: "Single Parent" }
+];
