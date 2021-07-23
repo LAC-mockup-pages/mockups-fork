@@ -60,7 +60,7 @@ $(document).ready(() => {
 
   // race dropdown select
   const optionRace = createOptionList(ddlRace);
-  $("#race-select").append(optionRace);
+  $(".race-select select").append(optionRace);
   // education background.
   // Covers Highest Grade in US and Other Countries
   const optionGrade = createOptionList(ddlHighestGradeCompletedUS);
@@ -91,5 +91,31 @@ $(document).ready(() => {
     const element = $("#load-bar");
     $("#bar-container").removeClass("hidden");
     increaseBar(element, table);
+  });
+
+  //* Creates additional select element when the primary element
+  //* has a value. The option list shows all values except those
+  //* already selected.
+
+  // Race selection
+  $(document).on("change", ".race-select > select:last-of-type", (evnt) => {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const raceSelection = $(".ethnicity-form")
+      .serializeArray()
+      .filter((objRace) => objRace.name === "RaceID")
+      .map((item) => item.value);
+    const updatedDdlRace = ddlRace.filter(
+      (obj) => !raceSelection.includes(obj.objKey)
+    );
+    if (updatedDdlRace.length < 1) return;
+    const newRaceSelect = `
+    <label></label>
+    <select class="modal-select" name="RaceID">
+      <option value>Select a value</option>
+      ${createOptionList(updatedDdlRace)}
+    </select>`;
+    $(".race-select").append(newRaceSelect);
+    $(".race-select > select:last-of-type").focus();
   });
 });

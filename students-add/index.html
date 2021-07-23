@@ -461,7 +461,6 @@
           </div>
         </div>
       </form>
-
       <div class="container-fluid row">
         <div class="col-md-6">
           <!-- Gender -->
@@ -519,25 +518,26 @@
           <div class="sub-header blue-bg blue-light-text">
             <div class="sub-header-title">Race | Ethnicity</div>
           </div>
-          <div class="input-field form-group">
-            <label for="EthnicityID">Ethnicity</label>
-            <select
-              id="ethnicity-select"
-              class="modal-select"
-              name="EthnicityID"
-            >
-              <option value>Select ONE</option>
-              <option value="H">Hispanic/Latino/a</option>
-              <option value="N">Non-Hispanic/Latino/a</option>
-            </select>
-
+          <form class="ethnicity-form" role="form">
             <div class="input-field form-group">
-              <label for="RaceID">Race</label>
-              <select id="race-select" class="modal-select" name="RaceID">
-                <option value>Select AT LEAST ONE</option>
+              <label for="EthnicityID">Ethnicity</label>
+              <select
+                id="ethnicity-select"
+                class="modal-select"
+                name="EthnicityID"
+              >
+                <option value>Select ONE</option>
+                <option value="H">Hispanic/Latino/a</option>
+                <option value="N">Non-Hispanic/Latino/a</option>
               </select>
+              <div class="input-field form-group race-select">
+                <label for="RaceID">Race</label>
+                <select class="modal-select" name="RaceID">
+                  <option value>Select AT LEAST ONE</option>
+                </select>
+              </div>
             </div>
-          </div>
+          </form>
         </div>
       </div>
 
