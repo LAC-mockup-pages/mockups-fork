@@ -3,7 +3,6 @@
 //*=================================================
 
 import { createDuplicatesTable } from "./components/duplicates.js";
-import { createOptionList } from "./components/utilities.js";
 
 const increaseBar = (elem, tableContent) => {
   let width = 1;
@@ -21,6 +20,18 @@ const increaseBar = (elem, tableContent) => {
       elem.width(`${width}%`);
     }
   }
+};
+
+const createOptionList = (dataObj, defaultValue) => {
+  const optionList = dataObj.map((record) => {
+    const [key, value] = Object.keys(record);
+    const keyData = record[key];
+    const valueData = record[value];
+    const defaultVal =
+      defaultValue && keyData === defaultValue ? " selected" : "";
+    return `<option${defaultVal} value=${keyData}>${valueData}</option>`;
+  });
+  return optionList.join("");
 };
 
 const createStaffList = (list) => {
@@ -118,4 +129,7 @@ $(document).ready(() => {
     $(".race-select").append(newRaceSelect);
     $(".race-select > select:last-of-type").focus();
   });
+
+  // Barriers selection
+  $(document).on("change");
 });
