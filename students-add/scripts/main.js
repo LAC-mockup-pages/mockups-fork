@@ -78,7 +78,7 @@ $(document).ready(() => {
   $("#usgrade-select, #nysgrade-select").append(optionGrade);
   // barriers dropdown select
   const optionBarriers = createOptionList(ddlBarriers);
-  $("#barrier-select").append(optionBarriers);
+  $(".barrier-group select[name='Barriers']").append(optionBarriers);
 
   //* =====================================
 
@@ -110,7 +110,6 @@ $(document).ready(() => {
 
   // Race selection
   $(document).on("change", ".race-select > select:last-of-type", (evnt) => {
-    evnt.stopPropagation();
     evnt.preventDefault();
     const raceSelection = $(".ethnicity-form")
       .serializeArray()
@@ -131,5 +130,39 @@ $(document).ready(() => {
   });
 
   // Barriers selection
-  $(document).on("change");
+  $(document).on("change", "#barriers-form select[name='yes-no']", (evnt) => {
+    evnt.preventDefault();
+
+    const barrierSelection = $("#barriers-form")
+      .serializeArray()
+      .filter((objBarriers) => objBarriers.name === "Barriers")
+      .map((item) => item.value);
+
+    console.log("barriersSelection :>> ", barrierSelection);
+
+    const updatedDdlBarriers = ddlBarriers.filter(
+      (obj) => !barrierSelection.includes(obj.key)
+    );
+
+    if (updatedDdlBarriers.length < 1) return;
+
+    const newBarrierSelect = `
+    <div class="input-field form-group barrier-group">
+    <label></label>
+    <select class="modal-select" name="Barriers">
+      <option value>Select a value</option>
+      ${createOptionList(updatedDdlBarriers)}
+    </select><span>
+    <label for="yes-no"></label>
+    <select class="modal-select" name="yes-no">
+      <option value="">Select a value</option>
+      <option value="0">No</option>
+      <option value="1">Yes</option>
+    </select>
+  </span>
+  </div>`;
+
+    $("#barriers-form").append(newBarrierSelect);
+    $("#barriers-form select[name='Barriers']:last-of-type").focus();
+  });
 });
