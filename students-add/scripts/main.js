@@ -53,8 +53,10 @@ const createStaffList = (list) => {
 
 export const transformDate = (strDate) => {
   const dateObj = DT.fromFormat(strDate, "LL/dd/yyyy");
-  return dateObj.toFormat("Ldyyyy");
+  return dateObj.toFormat("dLyyyy");
 };
+
+export const createStudentID = (list, agency) => {};
 
 //*=================================================
 //* jQuery section
