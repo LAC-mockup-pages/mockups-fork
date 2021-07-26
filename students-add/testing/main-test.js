@@ -56,7 +56,7 @@ $(document).ready(() => {
   });
 
   QUnit.module("createStudentID", () => {
-    const result = createStudentID(dataList, "PRA");
+    const result = createStudentID(dataList, agency);
 
     QUnit.test("Should return a string", (assert) => {
       assert.ok(typeof result === "string", "returns a string");
@@ -80,7 +80,12 @@ $(document).ready(() => {
       );
     });
 
-    QUnit.test("Should return a Student ID with ", (assert) => {});
+    QUnit.test("Should return a Student ID with ", (assert) => {
+      assert.ok(result.includes("Alan"), "the student's first name");
+      assert.ok(result.includes("Smith"), "the student's last name");
+    });
+
+    QUnit.test("The last name should be in first place.");
   });
 
   // End jQuery
