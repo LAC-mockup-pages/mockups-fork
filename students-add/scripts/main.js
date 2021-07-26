@@ -132,20 +132,14 @@ $(document).ready(() => {
   // Barriers selection
   $(document).on("change", "#barriers-form select[name='yes-no']", (evnt) => {
     evnt.preventDefault();
-
     const barrierSelection = $("#barriers-form")
       .serializeArray()
       .filter((objBarriers) => objBarriers.name === "Barriers")
       .map((item) => item.value);
-
-    console.log("barriersSelection :>> ", barrierSelection);
-
     const updatedDdlBarriers = ddlBarriers.filter(
       (obj) => !barrierSelection.includes(obj.key)
     );
-
     if (updatedDdlBarriers.length < 1) return;
-
     const newBarrierSelect = `
     <div class="input-field form-group barrier-group">
     <label></label>
@@ -161,7 +155,6 @@ $(document).ready(() => {
     </select>
   </span>
   </div>`;
-
     $("#barriers-form").append(newBarrierSelect);
     $("#barriers-form select[name='Barriers']:last-of-type").focus();
   });
