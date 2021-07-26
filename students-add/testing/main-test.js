@@ -7,6 +7,7 @@
 // Import functions here when JS modules are enabled like so:
 // import { myFunction } from "myDirectory/myFile.js"
 // =================================
+import { transformDate } from "../scripts/main.js";
 
 // Utility functions if needed
 // =================================
@@ -33,5 +34,22 @@ $(document).ready(() => {
   // Tests
   // =================================
 
-  QUnit.module("");
+  QUnit.module("transformDate", () => {
+    QUnit.test("Should return a string", (assert) => {
+      assert.ok(
+        typeof transformDate("01/10/1980") === "string",
+        "returns a string"
+      );
+    });
+    QUnit.test(
+      "Should return a date without symbols nor leading zeros",
+      (assert) => {
+        assert.equal(
+          transformDate("01/10/1980"),
+          "1101980",
+          "01/10/1980 ==> 1101980"
+        );
+      }
+    );
+  });
 });

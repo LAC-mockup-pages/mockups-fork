@@ -4,6 +4,9 @@
 
 import { createDuplicatesTable } from "./components/duplicates.js";
 
+// Initializing Luxon DateTime class for the module
+const DT = luxon.DateTime;
+
 const increaseBar = (elem, tableContent) => {
   let width = 1;
   const id = setInterval(frame, 300);
@@ -46,6 +49,11 @@ const createStaffList = (list) => {
     const { ID, InstructorName } = staff;
     return { objKey: ID, objValue: InstructorName };
   });
+};
+
+export const transformDate = (strDate) => {
+  const dateObj = DT.fromFormat(strDate, "LL/dd/yyyy");
+  return dateObj.toFormat("Ldyyyy");
 };
 
 //*=================================================
