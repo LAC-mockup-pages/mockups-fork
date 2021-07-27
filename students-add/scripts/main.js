@@ -67,7 +67,7 @@ $(document).ready(() => {
   //* At first rendering
   //* =====================================
 
-  //* Send focus on first name input
+  //* Set focus on first name input
   $("#first-name").focus();
 
   //* Add option list for:
