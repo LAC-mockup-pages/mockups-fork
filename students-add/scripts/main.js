@@ -60,11 +60,13 @@ export const createStudentID = (list, agency) => {
   // createObject() <== helperFunctions.js
   const dataObj = createObject(list);
   const { First, Last, BeginDate, BirthDate } = dataObj;
-  const fullName = `${Last}${First}`.replace(/\s/g, "");
+  const fullName = `${Last}${First}`.replace(/\W/g, "");
   return `${fullName}${agency.toUpperCase()}${transformDate(
     BeginDate
   )}${transformDate(BirthDate)}`;
 };
+
+const createSaveObj = (list, agency) => {};
 
 //*=================================================
 //* jQuery section

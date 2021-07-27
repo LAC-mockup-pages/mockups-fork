@@ -41,6 +41,16 @@
       defer
     ></script>
 
+    <!-- Luxon JS library from CDN - Dates and time management-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/luxon@2.0.1/build/global/luxon.min.js"
+      type="text/javascript"
+      defer
+    ></script>
+
+    <!-- Luxon JS polyfill for IE 10 or 11-->
+    <script src="https://cdn.polyfill.io/v3/polyfill.js?features=default,String.prototype.repeat,Array.prototype.find,Array.prototype.findIndex,Math.trunc,Math.sign,Object.is"></script>
+
     <!-- Local links and scripts -->
     <link rel="stylesheet" href="./style/index.css" type="text/css" />
 
@@ -715,7 +725,7 @@
           </div>
           <div class="modal-footer">
             <button id="close-button" type="button" class="btn btn-default">
-              Close and continue data entry
+              Close and continue new student entry
             </button>
           </div>
         </div>

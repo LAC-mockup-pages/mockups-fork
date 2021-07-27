@@ -8,8 +8,11 @@
 // import { myFunction } from "myDirectory/myFile.js"
 // =================================
 import { createDuplicatesTable } from "../scripts/components/duplicates.js";
-import { transformDate } from "../scripts/main.js";
-import { createStudentID } from "../scripts/main.js";
+import {
+  transformDate,
+  createStudentID,
+  createSaveObj
+} from "../scripts/main.js";
 
 // Utility functions if needed
 // =================================
@@ -135,5 +138,6 @@ $(document).ready(() => {
     );
   });
 
+  QUnit.module("createSaveObj", () => {});
   // End jQuery
 });
