@@ -85,7 +85,36 @@ $(document).ready(() => {
       assert.ok(result.includes("Smith"), "the student's last name");
     });
 
-    QUnit.test("The last name should be in first place.");
+    QUnit.test(
+      "Should display last name - first with no whitespace",
+      (assert) => {
+        const dataList2 = [
+          { name: "First", value: "Alan" },
+          { name: "Middle", value: "S." },
+          { name: "Last", value: "De Oliveira" },
+          { name: "BirthDate", value: "02/01/1988" },
+          { name: "BeginDate", value: "10/02/2020" },
+          { name: "Address", value: "" }
+        ];
+        assert.equal(
+          result.slice(0, 9),
+          "SmithAlan",
+          "No whitespace and displays last-first name string"
+        );
+        assert.equal(
+          createStudentID(dataList2, agency).slice(0, 14),
+          "DeOliveiraAlan",
+          "No whitespace and displays last-first name string"
+        );
+      }
+    );
+
+    QUnit.test(
+      "Should return a string with last name, first name, begin date and DOB",
+      (assert) => {
+        assert.equal(result, "SmithAlanPRA20102020521987", `returns ${result}`);
+      }
+    );
   });
 
   // End jQuery
