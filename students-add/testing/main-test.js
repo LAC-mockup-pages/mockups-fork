@@ -112,7 +112,25 @@ $(document).ready(() => {
     QUnit.test(
       "Should return a string with last name, first name, begin date and DOB",
       (assert) => {
-        assert.equal(result, "SmithAlanPRA20102020521987", `returns ${result}`);
+        const dataList2 = [
+          { name: "First", value: "Alan" },
+          { name: "Middle", value: "S." },
+          { name: "Last", value: "De Oliveira" },
+          { name: "BirthDate", value: "02/01/1988" },
+          { name: "BeginDate", value: "10/02/2020" },
+          { name: "Address", value: "" }
+        ];
+        assert.equal(
+          result,
+          "SmithAlanPRA20102020521987",
+          `returns SmithAlanPRA20102020521987`
+        );
+
+        assert.equal(
+          createStudentID(dataList2, agency),
+          "DeOliveiraAlanPRA2102020121988",
+          `returns DeOliveiraAlanPRA2102020121988`
+        );
       }
     );
   });

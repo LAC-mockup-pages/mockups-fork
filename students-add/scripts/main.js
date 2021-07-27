@@ -56,7 +56,15 @@ export const transformDate = (strDate) => {
   return dateObj.toFormat("dLyyyy");
 };
 
-export const createStudentID = (list, agency) => {};
+export const createStudentID = (list, agency) => {
+  // createObject() <== helperFunctions.js
+  const dataObj = createObject(list);
+  const { First, Last, BeginDate, BirthDate } = dataObj;
+  const fullName = `${Last}${First}`.replace(/\s/g, "");
+  return `${fullName}${agency.toUpperCase()}${transformDate(
+    BeginDate
+  )}${transformDate(BirthDate)}`;
+};
 
 //*=================================================
 //* jQuery section
