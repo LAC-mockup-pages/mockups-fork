@@ -66,7 +66,9 @@ export const createStudentID = (list, agency) => {
   )}${transformDate(BirthDate)}`;
 };
 
-const createSaveObj = (list, agency) => {};
+export const createShortSaveObj = (list, agency) => {
+  // return [];
+};
 
 //*=================================================
 //* jQuery section

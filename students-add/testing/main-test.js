@@ -11,11 +11,18 @@ import { createDuplicatesTable } from "../scripts/components/duplicates.js";
 import {
   transformDate,
   createStudentID,
-  createSaveObj
+  createShortSaveObj
 } from "../scripts/main.js";
 
 // Utility functions if needed
 // =================================
+// Compares 2 arrays for equality
+const arraysAreEqual = (list1, list2) => {
+  if (list1.length !== list2.length) return false;
+  const string1 = JSON.stringify(list1);
+  const string2 = JSON.stringify(list2);
+  return string1 === string2;
+};
 
 //*=================================
 //* jQuery section
@@ -32,6 +39,14 @@ $(document).ready(() => {
     { name: "Last", value: "Smith" },
     { name: "BirthDate", value: "02/05/1987" },
     { name: "BeginDate", value: "10/20/2020" },
+    { name: "Address", value: "" }
+  ];
+  const dataList2 = [
+    { name: "First", value: "Alan" },
+    { name: "Middle", value: "S." },
+    { name: "Last", value: "De Oliveira-Alonzo" },
+    { name: "BirthDate", value: "02/01/1988" },
+    { name: "BeginDate", value: "10/02/2020" },
     { name: "Address", value: "" }
   ];
   const agency = "PRA";
@@ -68,17 +83,7 @@ $(document).ready(() => {
     QUnit.test("Should not contain any whitespace", (assert) => {
       assert.false(result.includes(" "), "No whitespace");
       assert.false(
-        createStudentID(
-          [
-            { name: "First", value: "Alan" },
-            { name: "Middle", value: "S." },
-            { name: "Last", value: "De Oliveira" },
-            { name: "BirthDate", value: "02/01/1988" },
-            { name: "BeginDate", value: "10/02/2020" },
-            { name: "Address", value: "" }
-          ],
-          "PRA"
-        ).includes(" "),
+        createStudentID(dataList2, "PRA").includes(" "),
         "No whitespace"
       );
     });
@@ -91,22 +96,14 @@ $(document).ready(() => {
     QUnit.test(
       "Should display last name - first with no whitespace",
       (assert) => {
-        const dataList2 = [
-          { name: "First", value: "Alan" },
-          { name: "Middle", value: "S." },
-          { name: "Last", value: "De Oliveira" },
-          { name: "BirthDate", value: "02/01/1988" },
-          { name: "BeginDate", value: "10/02/2020" },
-          { name: "Address", value: "" }
-        ];
         assert.equal(
           result.slice(0, 9),
           "SmithAlan",
           "No whitespace and displays last-first name string"
         );
         assert.equal(
-          createStudentID(dataList2, agency).slice(0, 14),
-          "DeOliveiraAlan",
+          createStudentID(dataList2, agency).slice(0, 20),
+          "DeOliveiraAlonzoAlan",
           "No whitespace and displays last-first name string"
         );
       }
@@ -115,14 +112,6 @@ $(document).ready(() => {
     QUnit.test(
       "Should return a string with last name, first name, begin date and DOB",
       (assert) => {
-        const dataList2 = [
-          { name: "First", value: "Alan" },
-          { name: "Middle", value: "S." },
-          { name: "Last", value: "De Oliveira" },
-          { name: "BirthDate", value: "02/01/1988" },
-          { name: "BeginDate", value: "10/02/2020" },
-          { name: "Address", value: "" }
-        ];
         assert.equal(
           result,
           "SmithAlanPRA20102020521987",
@@ -131,13 +120,38 @@ $(document).ready(() => {
 
         assert.equal(
           createStudentID(dataList2, agency),
-          "DeOliveiraAlanPRA2102020121988",
-          `returns DeOliveiraAlanPRA2102020121988`
+          "DeOliveiraAlonzoAlanPRA2102020121988",
+          `returns DeOliveiraAlonzoAlanPRA2102020121988`
         );
       }
     );
   });
 
-  QUnit.module("createSaveObj", () => {});
+  QUnit.module("createShortSaveObj", () => {
+    const result = createShortSaveObj(dataList, agency);
+    const propList = [
+      "First",
+      "Middle",
+      "Last",
+      "BirthDate",
+      "BeginDate",
+      "StudentID"
+    ];
+
+    QUnit.test("Should return a JS object in an array", (assert) => {
+      assert.true(Array.isArray(result), "Result is an array");
+      assert.true(
+        result[0] instanceof Object,
+        "Resultis an array containing an JS object"
+      );
+    });
+
+    QUnit.test("Should have all the props at that point", (assert) => {
+      assert.true(
+        arraysAreEqual(Object.keys(result[0]), propList),
+        "Has all the props"
+      );
+    });
+  });
   // End jQuery
 });
