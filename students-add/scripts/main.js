@@ -183,4 +183,24 @@ $(document).ready(() => {
     $("#barriers-form").append(newBarrierSelect);
     $("#barriers-form select[name='Barriers']:last-of-type").focus();
   });
+
+  //* Triggers initial data save when BeginDate is entered.
+  //* Creates StudentID and Student_PKID
+  $("#begin-date").focusout((evnt) => {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const agency = SESSION_VARIABLE[0].AgencyID.startsWith("<%= Session")
+      ? "PRA"
+      : SESSION_VARIABLE[0].AgencyID;
+
+    const dataList = $(".id-form")
+      .serializeArray()
+      .filter((item) =>
+        ["First", "Middle", "Last", "BirthDate", "BeginDate"].includes(
+          item.name
+        )
+      );
+
+    const shortSaveObj = createShortSaveObj(dataList, agency);
+  });
 });
