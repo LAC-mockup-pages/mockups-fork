@@ -2,6 +2,7 @@
 //* Actions and Logic for local page
 //*=================================================
 
+import { initialSave } from "./components/data-save.js";
 import { createDuplicatesTable } from "./components/duplicates.js";
 
 // Initializing Luxon DateTime class for the module
@@ -186,13 +187,12 @@ $(document).ready(() => {
 
   //* Triggers initial data save when BeginDate is entered.
   //* Creates StudentID and Student_PKID
-  $("#begin-date").focusout((evnt) => {
+  $("#address").focusin((evnt) => {
     evnt.stopPropagation();
     evnt.preventDefault();
     const agency = SESSION_VARIABLE[0].AgencyID.startsWith("<%= Session")
       ? "PRA"
       : SESSION_VARIABLE[0].AgencyID;
-
     const dataList = $(".id-form")
       .serializeArray()
       .filter((item) =>
@@ -200,7 +200,12 @@ $(document).ready(() => {
           item.name
         )
       );
-
     const shortSaveObj = createShortSaveObj(dataList, agency);
+    console.log("shortSaveObj :>> ", shortSaveObj);
+    const response = initialSave(shortSaveObj);
+    const studentPKID = response[0].ID;
+    const studentID = shortSaveObj.StudentID;
+    $(".hero").attr("data-studentpkid", studentPKID);
+    $(".hero").attr("data-studentid", studentID);
   });
 });
