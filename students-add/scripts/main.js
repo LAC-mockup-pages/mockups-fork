@@ -70,7 +70,7 @@ export const createShortSaveObj = (list, agency) => {
   // createObject() <== helperFunctions.js
   const { First, Middle, Last, BirthDate, BeginDate } = createObject(list);
   const StudentID = createStudentID(list, agency);
-  return [{ StudentID, First, Middle, Last, BirthDate, BeginDate }];
+  return [{ First, Middle, Last, BirthDate, BeginDate, StudentID }];
 };
 
 //*=================================================
