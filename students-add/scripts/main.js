@@ -204,7 +204,7 @@ $(document).ready(() => {
     console.log("shortSaveObj :>> ", shortSaveObj);
     const response = initialSave(shortSaveObj);
     const studentPKID = response[0].ID;
-    const studentID = shortSaveObj.StudentID;
+    const studentID = shortSaveObj[0].StudentID;
     $(".hero").attr("data-studentpkid", studentPKID);
     $(".hero").attr("data-studentid", studentID);
   });
