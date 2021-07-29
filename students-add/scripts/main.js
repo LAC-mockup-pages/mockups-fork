@@ -10,7 +10,7 @@ const DT = luxon.DateTime;
 
 const increaseBar = (elem, tableContent) => {
   let width = 1;
-  const id = setInterval(frame, 300);
+  const id = setInterval(frame, 200);
   function frame() {
     if (width >= 100) {
       clearInterval(id);
@@ -162,25 +162,36 @@ $(document).ready(() => {
       .serializeArray()
       .filter((objBarriers) => objBarriers.name === "Barriers")
       .map((item) => item.value);
+
+    console.log("barrierSelection :>> ", barrierSelection);
     const updatedDdlBarriers = ddlBarriers.filter(
       (obj) => !barrierSelection.includes(obj.key)
     );
     if (updatedDdlBarriers.length < 1) return;
+    console.log("updatedDdlBarriers :>> ", updatedDdlBarriers);
+    const newOptionList = createOptionList(updatedDdlBarriers);
     const newBarrierSelect = `
-    <div class="input-field form-group barrier-group">
-    <label></label>
-    <select class="modal-select" name="Barriers">
-      <option value>Select a value</option>
-      ${createOptionList(updatedDdlBarriers)}
-    </select><span>
-    <label for="yes-no"></label>
-    <select class="modal-select" name="yes-no">
-      <option value="">Select a value</option>
-      <option value="0">No</option>
-      <option value="1">Yes</option>
-    </select>
-  </span>
-  </div>`;
+    <div class="container-fluid row">
+          <div class="col-sm-6">
+            <div class="input-field form-group barrier-group">
+              <label for="Barriers"></label>
+              <select class="modal-select" name="Barriers">
+                <option value>Select a value</option>
+                ${newOptionList}
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="input-field form-group barrier-group">
+              <select class="modal-select small-input" name="yes-no">
+              <option value>Select a value</option>
+              <option value="0">No</option>
+              <option value="1">Yes</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-3"></div>
+        </div>`;
     $("#barriers-form").append(newBarrierSelect);
     $("#barriers-form select[name='Barriers']:last-of-type").focus();
   });

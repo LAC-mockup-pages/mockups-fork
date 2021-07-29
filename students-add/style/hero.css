@@ -55,8 +55,9 @@
   margin-bottom: 1.5vh;
 }
 
-.large-label {
-  width: 50%;
+.input-field > input,
+.input-field > select {
+  background-color: inherit;
 }
 .input-field > .small-input {
   width: 30%;
