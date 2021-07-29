@@ -528,7 +528,8 @@
             <div class="sub-header-title">Employment Status</div>
           </div>
           <form class="employment-form row form-style" role="form">
-            <div class="input-field form-group col-sm-8">
+            <div class="col-sm-1"></div>
+            <div class="input-field form-group col-sm-9">
               <label for="Employment"> </label>
               <select
                 id="employment-select"
@@ -548,7 +549,7 @@
                 <option value="I">Empl - Military sep. Pending</option>
               </select>
             </div>
-            <div class="input-field form-group col-sm-4">
+            <div class="input-field form-group col-sm-2">
               <label for="FY"> </label>
               <select id="FY-select" class="modal-select" name="FY">
                 <option value>2021</option>
@@ -608,56 +609,72 @@
           </div>
         </div>
 
-        <div class="input-field form-group">
-          <label for="First">Last school attented (if NY State)</label>
-          <input type="text" name="First" autocomplete="off" />
+        <div class="container-fluid row">
+          <div class="col-sm-6">
+            <label for="LastSchool">Last school attented (if NY State)</label>
+            <div class="input-field form-group">
+              <label></label
+              ><input type="text" name="LastSchool" autocomplete="off" />
+            </div>
+          </div>
         </div>
 
         <div class="container-fluid row">
-          <div class="input-field form-group col-sm-6">
+          <div class="col-sm-6">
             <label for="Employment">Highest credential obtained </label>
-            <select id="us-select" class="modal-select" name="Employment">
-              <option value="1" selected>in the US</option>
-              <option value="2">in another country</option>
-            </select>
+            <div class="input-field form-group">
+              <label></label>
+              <select id="us-select" class="modal-select" name="Employment">
+                <option value="1" selected>in the US</option>
+                <option value="2">in another country</option>
+              </select>
+            </div>
           </div>
-          <div class="input-field form-group col-sm-6">
+
+          <div class="col-sm-6">
             <label for="Employment"> </label>
-            <select id="cred-select" class="modal-select" name="Employment">
-              <option value>Select a credential</option>
-              <option value="1">Sec. school diploma or alt.</option>
-              <option value="2">High school equivalent</option>
-              <option value="3">Some post-secondary</option>
-              <option value="4">Post-secondary or professional degree</option>
-            </select>
+            <div class="input-field form-group">
+              <label></label>
+              <select id="cred-select" class="modal-select" name="Employment">
+                <option value>Select a credential</option>
+                <option value="1">Sec. school diploma or alt.</option>
+                <option value="2">High school equivalent</option>
+                <option value="3">Some post-secondary</option>
+                <option value="4">Post-secondary or professional degree</option>
+              </select>
+            </div>
           </div>
         </div>
 
-        <div class="input-field form-group">
-          <label for="year-schooling"
-            >Years of schooling in other Countries</label
-          >
-          <select
-            id="schoolingyears-select"
-            class="modal-select"
-            name="year-schooling"
-          >
-            <option value="">Select a number</option>
-            <option value="NA">NA</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-            <option value="8">8</option>
-            <option value="9">9</option>
-            <option value="10">10</option>
-            <option value="11">11</option>
-            <option value="12">12</option>
-            <option value="12P">12+</option>
-          </select>
+        <div class="container-fluid row">
+          <div class="col-sm-6">
+            <div class="input-field form-group">
+              <label for="year-schooling"
+                >Years of schooling in other Countries</label
+              >
+              <select
+                id="schoolingyears-select"
+                class="modal-select"
+                name="year-schooling"
+              >
+                <option value="">Select a number</option>
+                <option value="NA">NA</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="12P">12+</option>
+              </select>
+            </div>
+          </div>
         </div>
       </form>
 
@@ -682,7 +699,7 @@
           </div>
         </div>
         <div class="col-sm-6">
-          <table class="table table-condensed">
+          <table class="table table-condensed children-table">
             <thead>
               <th class="children-header">PreSchool</th>
               <th class="children-header">Elementary</th>
@@ -705,18 +722,24 @@
         <div class="sub-header-title">Barriers to Learning | Employment</div>
       </div>
       <form id="barriers-form form-style" role="form">
-        <div class="input-field form-group barrier-group">
-          <label for="Barriers">Choose AT LEAST ONE</label>
-          <select class="modal-select" name="Barriers">
-            <option value>Select a value</option></select
-          ><span>
-            <label for="yes-no"></label>
-            <select class="modal-select" name="yes-no">
-              <option value="">Select a value</option>
-              <option value="0">No</option>
-              <option value="1">Yes</option>
-            </select>
-          </span>
+        <div class="container-fluid row">
+          <div class="col-sm-6">
+            <div class="input-field form-group barrier-group">
+              <label for="Barriers">Choose AT LEAST ONE</label>
+              <select class="modal-select" name="Barriers">
+                <option value>Select a value</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="input-field form-group barrier-group">
+              <select class="modal-select small-input" name="yes-no">
+                <option value="0">No</option>
+                <option value="1" selected>Yes</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-3"></div>
         </div>
       </form>
       <!-- End Employment | Education | Children | Barriers -->

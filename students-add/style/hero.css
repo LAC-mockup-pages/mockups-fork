@@ -36,12 +36,21 @@
 
 .children-header {
   background-color: #2479b5;
+  text-align: center;
+  font-size: 0.9em;
 }
 
 #yes-no-select {
   width: 9%;
 }
+.container-fluid {
+  padding-left: 0%;
+  padding-right: 0px;
+}
 
+.col-sm-9 {
+  padding-left: 0px;
+}
 .form-style {
   margin-bottom: 1.5vh;
 }
@@ -56,8 +65,15 @@
 .input-field > .medium-input {
   width: 52%;
 }
+
 /* Duplicates table */
 /* ============================ */
 th {
   background-color: #2479b5;
+}
+
+/* Children table */
+/* ============================ */
+.children-table > tbody > tr > td {
+  text-align: right;
 }
