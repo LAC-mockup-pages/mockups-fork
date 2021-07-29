@@ -348,12 +348,13 @@
         <div class="sub-header-title">Basic Information</div>
       </div>
 
-      <form class="id-form" role="form">
+      <form class="id-form form-style" role="form">
         <!-- Name section  -->
         <div class="container-fluid row">
           <div class="input-field form-group col-sm-4">
             <label for="First">First name</label>
             <input
+              class="medium-input"
               id="first-name"
               type="text"
               name="First"
@@ -363,6 +364,7 @@
           <div class="input-field form-group col-sm-4">
             <label for="Middle">Middle initial</label>
             <input
+              class="medium-input"
               type="text"
               id="middle-name"
               name="Middle"
@@ -371,7 +373,13 @@
           </div>
           <div class="input-field form-group col-sm-4">
             <label for="Last">Last name</label>
-            <input type="text" id="last-name" name="Last" autocomplete="off" />
+            <input
+              class="medium-input"
+              type="text"
+              id="last-name"
+              name="Last"
+              autocomplete="off"
+            />
           </div>
         </div>
 
@@ -401,21 +409,23 @@
 
         <!-- Address -->
         <div class="container-fluid row">
-          <div class="input-field form-group col-sm-4">
+          <div class="input-field form-group col-sm-6">
             <label for="Address">Address</label>
             <input id="address" type="text" name="Address" autocomplete="off" />
           </div>
-          <div class="input-field form-group col-sm-4">
+          <div class="input-field form-group col-sm-6">
             <label for="City">City</label>
             <input type="text" name="City" autocomplete="off" />
           </div>
-          <div class="input-field form-group col-sm-2">
+        </div>
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-6">
             <label for="State">State</label>
             <select id="state-select" class="modal-select" name="State">
               <option value>Select a state</option>
             </select>
           </div>
-          <div class="input-field form-group col-sm-2">
+          <div class="input-field form-group col-sm-6">
             <label for="Zip">ZIP</label>
             <input type="text" name="Zip" autocomplete="off" />
           </div>
@@ -425,26 +435,41 @@
         <div class="container-fluid row">
           <div class="input-field form-group col-sm-4">
             <label for="Phone">Home phone</label>
-            <input type="text" name="Phone" autocomplete="off" />
+            <input
+              class="medium-input"
+              type="text"
+              name="Phone"
+              autocomplete="off"
+            />
           </div>
           <div class="input-field form-group col-sm-4">
             <label for="Phone2">Mobile phone</label>
-            <input type="text" name="Phone2" autocomplete="off" />
+            <input
+              class="medium-input"
+              type="text"
+              name="Phone2"
+              autocomplete="off"
+            />
           </div>
           <div class="input-field form-group col-sm-4">
             <label for="StudEmail">Email</label>
-            <input type="email" name="StudEmail" autocomplete="off" />
+            <input
+              class="medium-input"
+              type="email"
+              name="StudEmail"
+              autocomplete="off"
+            />
           </div>
         </div>
 
         <!-- Emergency contact -->
         <div class="container-fluid row">
-          <div class="input-field form-group col-sm-5">
+          <div class="input-field form-group col-sm-6">
             <label for="EmergencyPhone">Emergency contact</label>
             <input type="text" name="EmergencyPhone" autocomplete="off" />
           </div>
-          <div class="input-field form-group col-sm-7">
-            <label for="EmergencyName">Name/Relationship of contact</label>
+          <div class="input-field form-group col-sm-6">
+            <label for="EmergencyName">Contact Name</label>
             <input type="text" name="EmergencyName" autocomplete="off" />
           </div>
         </div>
@@ -454,11 +479,12 @@
       <div class="sub-header blue-bg blue-light-text">
         <div class="sub-header-title">SS Number</div>
       </div>
-      <form class="ssn-form" role="form">
+      <form class="ssn-form form-style" role="form">
         <div class="container-fluid row">
           <div class="col-sm-6">
             <label for="SSN">Social Security number</label>
             <div class="input-field form-group">
+              <label></label>
               <input type="text" name="SSN" autocomplete="off" />
             </div>
           </div>
@@ -467,6 +493,7 @@
               >If SSN not provided, intake staff full name</label
             >
             <div class="input-field form-group">
+              <label></label>
               <select
                 id="nossn-select"
                 class="modal-select"
@@ -484,7 +511,7 @@
           <div class="sub-header blue-bg blue-light-text">
             <div class="sub-header-title">Gender</div>
           </div>
-          <form class="gender-form" role="form">
+          <form class="gender-form form-style" role="form">
             <div class="input-field form-group">
               <label for="Sex"></label>
               <select id="gender-select" class="modal-select" name="Sex">
@@ -500,7 +527,7 @@
           <div class="sub-header blue-bg blue-light-text">
             <div class="sub-header-title">Employment Status</div>
           </div>
-          <form class="employment-form row" role="form">
+          <form class="employment-form row form-style" role="form">
             <div class="input-field form-group col-sm-8">
               <label for="Employment"> </label>
               <select
@@ -524,7 +551,8 @@
             <div class="input-field form-group col-sm-4">
               <label for="FY"> </label>
               <select id="FY-select" class="modal-select" name="FY">
-                <option value>Fiscal Year</option>
+                <option value>2021</option>
+                <option value>2022</option>
               </select>
             </div>
           </form>
@@ -535,7 +563,7 @@
           <div class="sub-header blue-bg blue-light-text">
             <div class="sub-header-title">Race | Ethnicity</div>
           </div>
-          <form class="ethnicity-form" role="form">
+          <form class="ethnicity-form form-style" role="form">
             <div class="input-field form-group">
               <label for="EthnicityID">Ethnicity</label>
               <select
@@ -564,7 +592,7 @@
         <div class="sub-header-title">Educational Background</div>
       </div>
 
-      <form class="education-form" role="form">
+      <form class="education-form form-style" role="form">
         <div class="container-fluid row">
           <div class="input-field form-group col-sm-6">
             <label for="Grade">Highest grade completed in US</label>
@@ -636,7 +664,7 @@
       <div class="sub-header blue-bg blue-light-text">
         <div class="sub-header-title">Parental | Child Information</div>
       </div>
-      <form class="children-form row" role="form">
+      <form class="children-form row form-style" role="form">
         <div class="col-sm-6">
           <div class="input-field form-group">
             <label for="Parent">Parent or guardian of a child/children</label>
@@ -676,7 +704,7 @@
       <div class="sub-header blue-bg blue-light-text">
         <div class="sub-header-title">Barriers to Learning | Employment</div>
       </div>
-      <form id="barriers-form" role="form">
+      <form id="barriers-form form-style" role="form">
         <div class="input-field form-group barrier-group">
           <label for="Barriers">Choose AT LEAST ONE</label>
           <select class="modal-select" name="Barriers">

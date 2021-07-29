@@ -42,6 +42,20 @@
   width: 9%;
 }
 
+.form-style {
+  margin-bottom: 1.5vh;
+}
+
+.large-label {
+  width: 50%;
+}
+.input-field > .small-input {
+  width: 30%;
+}
+
+.input-field > .medium-input {
+  width: 52%;
+}
 /* Duplicates table */
 /* ============================ */
 th {
