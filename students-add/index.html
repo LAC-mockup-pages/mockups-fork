@@ -408,24 +408,26 @@
         </div>
 
         <!-- Address -->
-        <div class="container-fluid row">
-          <div class="input-field form-group col-sm-6">
+        <div class="container-fluid">
+          <div class="input-field form-group">
             <label for="Address">Address</label>
             <input id="address" type="text" name="Address" autocomplete="off" />
           </div>
-          <div class="input-field form-group col-sm-6">
+        </div>
+
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-4">
             <label for="City">City</label>
             <input type="text" name="City" autocomplete="off" />
           </div>
-        </div>
-        <div class="container-fluid row">
-          <div class="input-field form-group col-sm-6">
+
+          <div class="input-field form-group col-sm-4">
             <label for="State">State</label>
             <select id="state-select" class="modal-select" name="State">
               <option value>Select a state</option>
             </select>
           </div>
-          <div class="input-field form-group col-sm-6">
+          <div class="input-field form-group col-sm-4">
             <label for="Zip">ZIP</label>
             <input type="text" name="Zip" autocomplete="off" />
           </div>
@@ -743,6 +745,14 @@
         </div>
       </form>
       <!-- End Employment | Education | Children | Barriers -->
+
+      <div class="sub-header button-container blue-bg">
+        <div class="sub-header-title">
+          <button type="button" class="btn btn-default" id="save-button">
+            Save entry
+          </button>
+        </div>
+      </div>
     </main>
     <!-- End main display -->
 
