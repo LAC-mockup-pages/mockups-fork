@@ -160,13 +160,17 @@ $(document).ready(() => {
   });
 
   QUnit.module.only("setFiscalYearList", () => {
+    // Today's date using Luxon
+    const today = DT.now().toLocaleString();
     // Cases for function parameter
     const dates = [
       "01/01/2021",
       "07/02/2021",
       "06/30/2021",
       "07/02/2020",
-      "06/01/2020"
+      "06/01/2020",
+      "08/03/2021",
+      "09/15/2021"
     ];
 
     QUnit.test("Should return an Array with 2 strings elements", (assert) => {
@@ -181,11 +185,36 @@ $(document).ready(() => {
     });
 
     QUnit.test("Should return the proper values", (assert) => {
-      // Today's date using Luxon
-      const today = DT.now().toLocaleString();
-      const resultList = dates
-        .map((date) => setFiscalYearList(date))
-        .push(setFiscalYearList(today));
+      const resultList = dates.map((date) => setFiscalYearList(date));
+
+      assert.true(
+        arraysAreEqual(resultList[0], ["2021", "2021"]),
+        `OK for ${resultList[0]}, date is ${dates[0]}`
+      );
+      assert.true(
+        arraysAreEqual(resultList[1], ["2021", "2022"]),
+        `OK for ${resultList[1]}, date is ${dates[1]}`
+      );
+      assert.true(
+        arraysAreEqual(resultList[2], ["2021", "2021"]),
+        `OK for ${resultList[2]}, date is ${dates[2]}`
+      );
+      assert.true(
+        arraysAreEqual(resultList[3], ["2020", "2021"]),
+        `OK for ${resultList[3]}, date is ${dates[3]}`
+      );
+      assert.true(
+        arraysAreEqual(resultList[4], ["2020", "2020"]),
+        `OK for ${resultList[4]}, date is ${dates[4]}`
+      );
+      assert.true(
+        arraysAreEqual(resultList[5], ["2021", "2022"]),
+        `OK for ${resultList[5]}, date is ${dates[5]}`
+      );
+      assert.true(
+        arraysAreEqual(resultList[6], ["2022", "2022"]),
+        `OK for ${resultList[6]}, date is ${dates[6]}`
+      );
     });
   });
   // End jQuery
