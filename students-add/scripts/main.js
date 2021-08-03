@@ -74,6 +74,11 @@ export const createShortSaveObj = (list, agency) => {
   return [{ First, Middle, Last, BirthDate, BeginDate, StudentID }];
 };
 
+// Returns an array of 2 values for Fiscal Year select from today's date
+export const setFiscalYearList = (todayDate) => {
+  return;
+};
+
 //*=================================================
 //* jQuery section
 //*=================================================
@@ -113,6 +118,7 @@ $(document).ready(() => {
     $("#bar-container").toggleClass("hidden");
     $("#duplicates-table").empty();
     $("#modalBloc").modal("toggle");
+    $("#begin-date").focus();
   });
 
   //* Triggers search for possible duplicates after first, middle,

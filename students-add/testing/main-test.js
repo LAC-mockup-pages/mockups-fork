@@ -5,24 +5,28 @@
 //* in the QUnit browser tab.
 
 // Import functions here when JS modules are enabled like so:
-// import { myFunction } from "myDirectory/myFile.js"
+// import { myFunction } from "../myDirectory/myFile.js"
 // =================================
 import { createDuplicatesTable } from "../scripts/components/duplicates.js";
 import {
   transformDate,
   createStudentID,
-  createShortSaveObj
+  createShortSaveObj,
+  setFiscalYearList
 } from "../scripts/main.js";
 
 // Utility functions if needed
 // =================================
-// Compares 2 arrays for equality
+// Compares 2 arrays for equality. Values need to be in the same order.
 const arraysAreEqual = (list1, list2) => {
   if (list1.length !== list2.length) return false;
   const string1 = JSON.stringify(list1);
   const string2 = JSON.stringify(list2);
   return string1 === string2;
 };
+
+// Initializing Luxon DateTime class for the module
+const DT = luxon.DateTime;
 
 //*=================================
 //* jQuery section
@@ -142,7 +146,7 @@ $(document).ready(() => {
       assert.true(Array.isArray(result), "Result is an array");
       assert.true(
         result[0] instanceof Object,
-        "Resultis an array containing an JS object"
+        "Result is an array containing an JS object"
       );
     });
 
@@ -150,6 +154,22 @@ $(document).ready(() => {
       assert.true(
         arraysAreEqual(Object.keys(result[0]), propList),
         "Has all the props"
+      );
+    });
+  });
+
+  QUnit.module.only("setFiscalYearList", () => {
+    // Cases for function parameter
+    const dates = ["01/01/2021", "07/02/2021", "06/30/2021", "07/02/2020"];
+
+    QUnit.test("Should return an Array with 2 strings elements", (assert) => {
+      const result = setFiscalYearList(dates[0]);
+
+      assert.true(Array.isArray(result), "Returns an array");
+      assert.true(result.length === 2, "Returns an array of 2 elements");
+      assert.true(
+        result.every((item) => typeof item === "string"),
+        "Returns an array of 2 string elements"
       );
     });
   });
