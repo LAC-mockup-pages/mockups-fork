@@ -79,8 +79,12 @@ th {
 
 /* Children table */
 /* ============================ */
-.children-table > tbody > tr > td {
+.children-table .cell-input {
   text-align: right;
+  width: 100%;
+  height: 100%;
+  border: none;
+  background-color: inherit;
 }
 
 .children-table > tbody > tr:hover {
