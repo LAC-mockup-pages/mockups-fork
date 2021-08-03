@@ -17,7 +17,8 @@ import {
 
 // Utility functions if needed
 // =================================
-// Compares 2 arrays for equality. Values need to be in the same order.
+// Compares 2 arrays for equality, returning true or false.
+// Values need to be in the same order.
 const arraysAreEqual = (list1, list2) => {
   if (list1.length !== list2.length) return false;
   const string1 = JSON.stringify(list1);
@@ -160,7 +161,13 @@ $(document).ready(() => {
 
   QUnit.module.only("setFiscalYearList", () => {
     // Cases for function parameter
-    const dates = ["01/01/2021", "07/02/2021", "06/30/2021", "07/02/2020"];
+    const dates = [
+      "01/01/2021",
+      "07/02/2021",
+      "06/30/2021",
+      "07/02/2020",
+      "06/01/2020"
+    ];
 
     QUnit.test("Should return an Array with 2 strings elements", (assert) => {
       const result = setFiscalYearList(dates[0]);
@@ -171,6 +178,14 @@ $(document).ready(() => {
         result.every((item) => typeof item === "string"),
         "Returns an array of 2 string elements"
       );
+    });
+
+    QUnit.test("Should return the proper values", (assert) => {
+      // Today's date using Luxon
+      const today = DT.now().toLocaleString();
+      const resultList = dates
+        .map((date) => setFiscalYearList(date))
+        .push(setFiscalYearList(today));
     });
   });
   // End jQuery
