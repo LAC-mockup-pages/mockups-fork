@@ -71,6 +71,10 @@
   width: 70%;
 }
 
+#FY-select {
+  width: 100%;
+}
+
 /* Duplicates table */
 /* ============================ */
 th {
