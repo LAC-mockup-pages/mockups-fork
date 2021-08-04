@@ -91,12 +91,12 @@ const setFiscalYear = (datePD) => {
 };
 
 // Returns an array of 2 values for Fiscal Year select from today's date
-export const setFiscalYearList = (todayDate) => {
-  const today = DT.fromFormat(todayDate, "mm/dd/yyyy");
+export const setFiscalYearList = () => {
+  const today = DT.now();
   const systemFY = SESSION_VARIABLE[0].FiscalYear.startsWith("<%= Session")
     ? today.year.toString()
     : SESSION_VARIABLE[0].FiscalYear;
-  const nextFY = setFiscalYear(todayDate);
+  const nextFY = setFiscalYear(today.toLocaleString());
   return [systemFY, nextFY];
 };
 
@@ -119,8 +119,12 @@ $(document).ready(() => {
   // staff dropdown select
   const optionStaff = createOptionList(createStaffList(GetStaff));
   $("#nossn-select").append(optionStaff);
-  //TODO employment fiscal year dropdown select
-const optionFY
+  //employment fiscal year dropdown select
+  const [value1, value2] = setFiscalYearList();
+  $("#FY-select").append(`
+    <option value=${value1}>${value1}</option>
+    <option value=${value2}>${value2}</option>
+  `);
   // race dropdown select
   const optionRace = createOptionList(ddlRace);
   $(".race-select select").append(optionRace);
