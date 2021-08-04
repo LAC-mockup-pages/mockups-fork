@@ -74,9 +74,30 @@ export const createShortSaveObj = (list, agency) => {
   return [{ First, Middle, Last, BirthDate, BeginDate, StudentID }];
 };
 
+const setFiscalYear = (datePD) => {
+  const dateEvent = new Date(datePD);
+  const currentYear = dateEvent.getFullYear();
+  const startFY = new Date(`07/01/${currentYear}`);
+  const endYear = new Date(`12/31/${currentYear}`);
+  if (dateEvent >= startFY) {
+    if (dateEvent <= endYear) {
+      return (currentYear + 1).toString();
+    } else {
+      return currentYear.toString();
+    }
+  } else {
+    return currentYear.toString();
+  }
+};
+
 // Returns an array of 2 values for Fiscal Year select from today's date
 export const setFiscalYearList = (todayDate) => {
-  return;
+  const today = DT.fromFormat(todayDate, "mm/dd/yyyy");
+  const systemFY = SESSION_VARIABLE[0].FiscalYear.startsWith("<%= Session")
+    ? today.year.toString()
+    : SESSION_VARIABLE[0].FiscalYear;
+  const nextFY = setFiscalYear(todayDate);
+  return [systemFY, nextFY];
 };
 
 //*=================================================
@@ -99,7 +120,7 @@ $(document).ready(() => {
   const optionStaff = createOptionList(createStaffList(GetStaff));
   $("#nossn-select").append(optionStaff);
   //TODO employment fiscal year dropdown select
-
+const optionFY
   // race dropdown select
   const optionRace = createOptionList(ddlRace);
   $(".race-select select").append(optionRace);

@@ -160,8 +160,6 @@ $(document).ready(() => {
   });
 
   QUnit.module.only("setFiscalYearList", () => {
-    // Today's date using Luxon
-    const today = DT.now().toLocaleString();
     // Cases for function parameter
     const dates = [
       "01/01/2021",
@@ -175,7 +173,6 @@ $(document).ready(() => {
 
     QUnit.test("Should return an Array with 2 strings elements", (assert) => {
       const result = setFiscalYearList(dates[0]);
-
       assert.true(Array.isArray(result), "Returns an array");
       assert.true(result.length === 2, "Returns an array of 2 elements");
       assert.true(
@@ -212,7 +209,7 @@ $(document).ready(() => {
         `OK for ${resultList[5]}, date is ${dates[5]}`
       );
       assert.true(
-        arraysAreEqual(resultList[6], ["2022", "2022"]),
+        arraysAreEqual(resultList[6], ["2021", "2022"]),
         `OK for ${resultList[6]}, date is ${dates[6]}`
       );
     });
