@@ -22,7 +22,23 @@ export const initialSave = () => {
   return [{ ID: "999999" }];
 };
 
+const raceIDProcess = (list) => {
+  const raceList = list.filter((obj) => obj.name === "RaceID" && obj.value);
+  console.log("raceList :>> ", raceList);
+
+  const raceValues = raceList.map((obj) => obj.value).join(",");
+  console.log("raceValues :>> ", raceValues);
+
+  return raceValues;
+};
+
 export const finalSave = () => {
   const dataList = $("form").serializeArray();
-  console.log("dataList :>> ", dataList);
+  // console.log("dataList :>> ", dataList);
+  const raceIdentifier = raceIDProcess(dataList);
+
+  const filteredDataList = dataList.filter((obj) => obj.name !== "RaceID");
+  filteredDataList.push({ name: "RaceID", value: raceIdentifier });
+
+  console.log("filteredDataList :>> ", filteredDataList);
 };
