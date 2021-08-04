@@ -610,18 +610,20 @@
         <div class="container-fluid row">
           <div class="col-sm-6">
             <div class="input-field form-group">
-              <label for="LastSchool">Last school attended (if NY State)</label>
-              <input type="text" name="LastSchool" autocomplete="off" />
+              <label for="LastSchoolNYS"
+                >Last school attended (if NY State)</label
+              >
+              <input type="text" name="LastSchoolNYS" autocomplete="off" />
             </div>
           </div>
         </div>
 
         <div class="container-fluid row">
           <div class="col-sm-6">
-            <label for="Employment">Highest credential obtained </label>
+            <label for="CredentialUS">Highest credential obtained </label>
             <div class="input-field form-group">
               <label></label>
-              <select id="us-select" class="modal-select" name="Employment">
+              <select id="us-select" class="modal-select" name="CredentialUS">
                 <option value="1" selected>in the US</option>
                 <option value="2">in another country</option>
               </select>
@@ -629,10 +631,14 @@
           </div>
 
           <div class="col-sm-6">
-            <label for="Employment"> </label>
+            <label for="HighestCredential"> </label>
             <div class="input-field form-group">
               <label></label>
-              <select id="cred-select" class="modal-select" name="Employment">
+              <select
+                id="cred-select"
+                class="modal-select"
+                name="HighestCredential"
+              >
                 <option value>Select a credential</option>
                 <option value="1">Sec. school diploma or alt.</option>
                 <option value="2">High school equivalent</option>
@@ -646,13 +652,13 @@
         <div class="container-fluid row">
           <div class="col-sm-6">
             <div class="input-field form-group">
-              <label for="year-schooling"
+              <label for="YearsUSSchools"
                 >Years of schooling in other Countries</label
               >
               <select
                 id="schoolingyears-select"
                 class="modal-select"
-                name="year-schooling"
+                name="YearsUSSchools"
               >
                 <option value="">Select a number</option>
                 <option value="NA">NA</option>
@@ -726,7 +732,7 @@
       <div class="sub-header blue-bg blue-light-text">
         <div class="sub-header-title">Barriers to Learning | Employment</div>
       </div>
-      <form id="barriers-form form-style" role="form">
+      <form class="barriers-form form-style" role="form">
         <div class="container-fluid row">
           <div class="col-sm-6">
             <div class="input-field form-group barrier-group">

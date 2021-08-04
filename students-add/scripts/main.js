@@ -2,7 +2,7 @@
 //* Actions and Logic for local page
 //*=================================================
 
-import { initialSave } from "./components/data-save.js";
+import { finalSave, initialSave } from "./components/data-save.js";
 import { createDuplicatesTable } from "./components/duplicates.js";
 
 // Initializing Luxon DateTime class for the module
@@ -249,5 +249,13 @@ $(document).ready(() => {
     const studentID = shortSaveObj[0].StudentID;
     $(".hero").attr("data-studentpkid", studentPKID);
     $(".hero").attr("data-studentid", studentID);
+  });
+
+  //* Triggers final save after all entries are done
+  $("#save-button").click((evnt) => {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+
+    finalSave();
   });
 });

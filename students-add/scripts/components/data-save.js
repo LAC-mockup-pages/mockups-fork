@@ -21,3 +21,8 @@
 export const initialSave = () => {
   return [{ ID: "999999" }];
 };
+
+export const finalSave = () => {
+  const dataList = $("form").serializeArray();
+  console.log("dataList :>> ", dataList);
+};
