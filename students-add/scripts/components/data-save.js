@@ -17,28 +17,23 @@
 //! ==================================================
 //! Only for development - Comment out for production
 //! ==================================================
-
 export const initialSave = () => {
   return [{ ID: "999999" }];
 };
+//! ==================================================
 
+// Removes all the objects with RaceID, concatenate the values in 1 string
+// and add a unique object {name: "RaceID", value: raceValues}.
+// Returns the updated list of data objects.
 const raceIDProcess = (list) => {
   const raceList = list.filter((obj) => obj.name === "RaceID" && obj.value);
-  console.log("raceList :>> ", raceList);
-
   const raceValues = raceList.map((obj) => obj.value).join(",");
-  console.log("raceValues :>> ", raceValues);
-
-  return raceValues;
+  const filteredList = list.filter((obj) => obj.name !== "RaceID");
+  filteredList.push({ name: "RaceID", value: raceValues });
+  return filteredList;
 };
 
 export const finalSave = () => {
   const dataList = $("form").serializeArray();
-  // console.log("dataList :>> ", dataList);
-  const raceIdentifier = raceIDProcess(dataList);
-
-  const filteredDataList = dataList.filter((obj) => obj.name !== "RaceID");
-  filteredDataList.push({ name: "RaceID", value: raceIdentifier });
-
-  console.log("filteredDataList :>> ", filteredDataList);
+  const updatedListWithRaceID = raceIDProcess(dataList);
 };
