@@ -186,10 +186,15 @@ $(document).ready(() => {
     $(".race-select > select:last-of-type").focus();
   });
 
-  // Barriers selection
-  $(document).on("change", "#barriers-form select[name='yes-no']", (evnt) => {
+  // Adding field name data attribute in yes-no
+  $(document).on("focusout", "select[name='Barriers]", (evnt) => {
     evnt.preventDefault();
-    const barrierSelection = $("#barriers-form")
+  });
+
+  // Barriers selection
+  $(document).on("change", ".barriers-form select[name='yes-no']", (evnt) => {
+    evnt.preventDefault();
+    const barrierSelection = $(".barriers-form")
       .serializeArray()
       .filter((objBarriers) => objBarriers.name === "Barriers")
       .map((item) => item.value);
@@ -214,7 +219,7 @@ $(document).ready(() => {
           </div>
           <div class="col-sm-3">
             <div class="input-field form-group barrier-group">
-              <select class="modal-select small-input" name="yes-no">
+              <select class="modal-select medium-input" name="yes-no">
               <option value>Select a value</option>
               <option value="0">No</option>
               <option value="1">Yes</option>
@@ -223,8 +228,8 @@ $(document).ready(() => {
           </div>
           <div class="col-sm-3"></div>
         </div>`;
-    $("#barriers-form").append(newBarrierSelect);
-    $("#barriers-form select[name='Barriers']:last-of-type").focus();
+    $(".barriers-form").append(newBarrierSelect);
+    $(".barriers-form select[name='Barriers']:last-of-type").focus();
   });
 
   //* Triggers initial data save when BeginDate is entered.

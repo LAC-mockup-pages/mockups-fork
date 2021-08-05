@@ -34,6 +34,7 @@ const raceIDProcess = (list) => {
 };
 
 export const finalSave = () => {
-  const dataList = $("form").serializeArray();
+  const dataList = $("form").not(".barriers-form").serializeArray();
   const updatedListWithRaceID = raceIDProcess(dataList);
+  console.log("updatedListWithRaceID :>> ", updatedListWithRaceID);
 };
