@@ -187,8 +187,11 @@ $(document).ready(() => {
   });
 
   // Adding field name data attribute in yes-no
-  $(document).on("focusout", "select[name='Barriers]", (evnt) => {
+  $(document).on("focusout", ".barrier-group:last-of-type", (evnt) => {
     evnt.preventDefault();
+    const fieldName = $(".barrier-group:last-of-type select").val();
+    console.log("fieldName :>> ", fieldName);
+    $("[name='yes-no']:last-of-type").attr("data-fieldname", fieldName);
   });
 
   // Barriers selection
@@ -218,7 +221,7 @@ $(document).ready(() => {
             </div>
           </div>
           <div class="col-sm-3">
-            <div class="input-field form-group barrier-group">
+            <div class="input-field form-group">
               <select class="modal-select medium-input" name="yes-no">
               <option value>Select a value</option>
               <option value="0">No</option>

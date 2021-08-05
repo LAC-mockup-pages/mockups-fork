@@ -33,6 +33,13 @@ const raceIDProcess = (list) => {
   return filteredList;
 };
 
+const barriersProcess = () => {
+  const fields = $(".barriers-form select[name='yes-no']");
+  const list = [];
+
+  return list;
+};
+
 export const finalSave = () => {
   const dataList = $("form").not(".barriers-form").serializeArray();
   const updatedListWithRaceID = raceIDProcess(dataList);
