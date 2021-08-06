@@ -33,15 +33,38 @@ const raceIDProcess = (list) => {
   return filteredList;
 };
 
+// Add all the selected barriers with their yes/no answer.
 const barriersProcess = () => {
-  const fields = $(".barriers-form select[name='yes-no']");
-  const list = [];
+  const fields = $(".barriers-form").serializeArray();
+  const fieldsObj = {};
+  const fieldsList = [];
 
-  return list;
+  const filteredList = fields.filter((obj) => obj.value);
+  const filteredListLength = filteredList.length;
+
+  for (let i = 0; i < filteredListLength; i += 2) {
+    const key = filteredList[i].value;
+    const val = filteredList[i + 1].value;
+    fieldsObj[key] = val;
+    fieldsList.push(key);
+  }
+  ddlBarriers
+    .map((obj) => obj.key)
+    .filter((item) => !fieldsList.includes(item))
+    .forEach((item) => (fieldsObj[item] = "2"));
+
+  return fieldsObj;
 };
 
 export const finalSave = () => {
   const dataList = $("form").not(".barriers-form").serializeArray();
-  const updatedListWithRaceID = raceIDProcess(dataList);
-  console.log("updatedListWithRaceID :>> ", updatedListWithRaceID);
+
+  // createObject() <== helperFunctions.js
+  const updatedObjWithRaceID = createObject(raceIDProcess(dataList));
+  // console.log("updatedListWithRaceID :>> ", updatedListWithRaceID);
+  const barriersFields = barriersProcess();
+  console.log("barriersFields :>> ", barriersFields);
+
+  const saveObj = { ...updatedObjWithRaceID, ...barriersFields };
+  console.log("saveObj :>> ", saveObj);
 };

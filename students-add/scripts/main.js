@@ -186,14 +186,6 @@ $(document).ready(() => {
     $(".race-select > select:last-of-type").focus();
   });
 
-  // Adding field name data attribute in yes-no
-  $(document).on("focusout", ".barrier-group:last-of-type", (evnt) => {
-    evnt.preventDefault();
-    const fieldName = $(".barrier-group:last-of-type select").val();
-    console.log("fieldName :>> ", fieldName);
-    $("[name='yes-no']:last-of-type").attr("data-fieldname", fieldName);
-  });
-
   // Barriers selection
   $(document).on("change", ".barriers-form select[name='yes-no']", (evnt) => {
     evnt.preventDefault();
