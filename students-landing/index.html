@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Custom links and scripts -->
+    <!-- ======================== -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../assets/favicon.ico"
+    />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"
+      defer
+    ></script>
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+    />
+
+    <!-- Optional theme -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"
+    />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
+      defer
+    ></script>
+
+    <!-- Local links and scripts -->
+    <link rel="stylesheet" href="./style/index.css" type="text/css" />
+
+    <script src="../helpers/constants.js" type="text/javascript" defer></script>
+
+    <script
+      src="../helpers/helperFunctions.js"
+      type="text/javascript"
+      defer
+    ></script>
+
+    <script
+      type="text/javascript"
+      src="./scripts/data-server.js"
+      defer
+    ></script>
+
+    <script type="text/javascript" src="./scripts/nav-frame.js" defer></script>
+
+    <script type="module" src="./scripts/main.js" defer></script>
+
+    <!-- !============================= -->
+    <!-- ! File: /<YOUR_FILE>.aspx -->
+    <!-- !============================= -->
+
+    <title>Students - landing</title>
+  </head>
+  <body>
+    <header>
+      <div class="container-fluid top-band">
+        <div class="row">
+          <div class="col-md-2 menu-open">
+            <span id="menu-btn"
+              >&#9776; <span class="hamburger-label">Menu</span>
+            </span>
+          </div>
+          <div class="top-logo col-md-3">
+            <div>
+              <a
+                href="../landing/index.html"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="Home page"
+              >
+                <img src="../assets/Main-Logo.png" class="main-logo" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <section class="icons row">
+              <div class="col-sm-8"></div>
+              <a
+                class="col-sm-1"
+                href="../404-page/index.html"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Add Students"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link">
+                  person_add_alt
+                </span></a
+              >
+              <a
+                class="col-sm-1"
+                href="../404-page/index.html"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Attendance"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link"> rule </span></a
+              >
+
+              <a
+                class="col-sm-1"
+                href="../404-page/index.html"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="NRS Program Evaluation Report"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link"> summarize </span></a
+              >
+              <a
+                class="col-sm-1"
+                href="../404-page/index.html"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="NYRS Program Evaluation Report"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link"> summarize </span></a
+              >
+            </section>
+            <section class="user-bloc row">
+              <div class="col-sm-10 user-info"></div>
+              <div class="col-sm-2 dropdown-user">
+                <div class="dropdown">
+                  <a
+                    href="#"
+                    class="dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="true"
+                    ><span
+                      class="glyphicon glyphicon-user"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="caret"></span
+                  ></a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li>
+                      <a href="../404-page/index.html" id="change-password">
+                        Change Password</a
+                      >
+                    </li>
+                    <li>
+                      <a href="../404-page/index.html" id="help-link"
+                        ><span class="help-mark">? </span> Help</a
+                      >
+                    </li>
+                    <li>
+                      <a href="/logout.aspx" id="logout-text"
+                        ><span
+                          class="glyphicon glyphicon-log-out"
+                          aria-hidden="true"
+                        ></span>
+                        Logout</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Side Nav bar -->
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="close-btn hidden">&#9776;</a>
+      <div class="menu-top">
+        <img src="../assets/logo_sm.png" class="small-logo" />
+        <div class="menu-text hidden">Menu</div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#"
+          >Program information <span class="caret"></span
+        ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Agency</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span>
+            Personnel</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Staff
+            Development</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Edit EPE
+            Amend Log</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#"
+          >Students <span class="caret"></span
+        ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Add
+            Student</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Edit
+            Student</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#"
+          >Instructional Activity <span class="caret"></span
+        ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Add/Edit
+            Instructional Activity</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#"
+          >Management Reports <span class="caret"></span
+        ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span>
+            Instructional Offering Roster</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Data
+            Management</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Turnaround
+            Reports</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> TASC
+            Reports</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Staff
+            Development Reports</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Data
+            Exports</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#"
+          >Funding Reports<span class="caret"></span
+        ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
+            Tables</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
+            Tables Data Check</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIO / NRS
+            Data Checks</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
+            Program Evaluation</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> NRS Data
+            Checks</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> NRS
+            Program Evaluation</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> EPE
+            Reports</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Funding
+            Reports Prev. FY</a
+          >
+        </div>
+      </div>
+    </div>
+    <!-- End Side Nav bar -->
+    <!-- Main display and card carousel -->
+    <main class="main-body container"></main>
+    <!-- End main display -->
+
+    <!-- Modal start -->
+    <div class="modal fade" id="modalBloc">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span
+              ><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title">Agency Selection</h4>
+          </div>
+          <div class="modal-body">
+            <form role="form" id="edit-form"></form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="close-btn"
+              class="btn btn-default"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal -->
+  </body>
+</html>
