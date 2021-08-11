@@ -326,11 +326,27 @@
       </div>
     </div>
     <!-- End Side Nav bar -->
-    <!-- Main display and card carousel -->
+    <!-- Main display -->
     <main class="main-body container">
       <h2>Landing page for selected student</h2>
 
-      <div class="container-fluid row">
+      <section class="container-fluid student-select">
+        <div class="container blue-bg blue-light-text">
+          <div class="title-select">Student selection</div>
+
+          <form class="form" role="form">
+            <div class="input-field form-group">
+              <label for="student-search"
+                >Enter the first three characters of the student's last
+                name</label
+              >
+              <select name="student-search" id="student-select"></select>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <div class="container-fluid row student-display">
         <!-- Left section -->
         <div class="col-md-6">
           <h3>Left section</h3>
