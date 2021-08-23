@@ -1,55 +1,26 @@
-//* Data objects for Landing Page
+//* Data objects for Student Landing Page
 //*=================================
 
-const GetAgencyIndex = [
+const GetStudentID = [
   {
-    AgencyID: "PHIP",
-    AgencyName: "Phipps Community Development Corporation",
-    Division: ""
-  },
-  { AgencyID: "PWSD", AgencyName: "Port Washington UFSD", Division: "" },
-  {
-    AgencyID: "PRA",
-    AgencyName: "Practice Agency",
-    Division: "AAA Division Changes Made Dec 2 Venu"
-  },
-  { AgencyID: "PRA1", AgencyName: "Practice Agency 1", Division: "" },
-  { AgencyID: "PRY", AgencyName: "Project Reach Youth", Division: "" },
-  {
-    AgencyID: "PNWB",
-    AgencyName: "Putnam/Northern Westchester BOCES",
-    Division: ""
-  }
-];
-
-const GetAgencyCardValues = [
-  { ID: "card0", values: ["20"], report: ["../404-page/index-test.html"] },
-  { ID: "card1", values: ["125"], report: [""] },
-  { ID: "card2", values: ["120"], report: ["../404-page/index-test.html"] },
-  { ID: "card3", values: ["24"], report: ["../404-page/index-test.html"] },
-  {
-    ID: "card4",
-    values: ["100", "101"],
-    report: ["../404-page/index-test.html", "../404-page/index-test.html"]
+    ID: "0001",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    First: "Gregory",
+    Middle: "",
+    Last: "AA1_Jacques"
   },
   {
-    ID: "card5",
-    values: ["121", "16"],
-    report: ["../404-page/index-test.html", "../404-page/index-test.html"]
+    ID: "0002",
+    StudentID: "MartinJohn22620101271987",
+    First: "John",
+    Middle: "B",
+    Last: "Martin"
   },
   {
-    ID: "card6",
-    values: ["21%", "25%"],
-    report: ["../404-page/index-test.html"]
-  },
-  {
-    ID: "card7",
-    values: ["15%", "14%"],
-    report: ["../404-page/index-test.html"]
-  },
-  {
-    ID: "card8",
-    values: ["1240", "45"],
-    report: ["../404-page/index-test.html"]
+    ID: "0003",
+    StudentID: "MartensAlan22620101271987",
+    First: "Alan",
+    Middle: "B",
+    Last: "Martens"
   }
 ];
