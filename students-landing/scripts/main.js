@@ -36,9 +36,7 @@ $(document).ready(() => {
   $("#search-input").keyup((evnt) => {
     evnt.stopPropagation();
     evnt.preventDefault();
-    console.log("Starting!");
     const input = $("#search-input").val();
-    console.log("input :>> ", input);
 
     if (input.length > 2) {
       const datalist = createDataList(input);
@@ -48,4 +46,20 @@ $(document).ready(() => {
   });
 
   //* Search button is clicked or pressed
+  // $(document).on("click", "#search-btn", (evnt) => {
+  $("#search-btn").click((evnt) => {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const selection = $("#search-input").val();
+    const optionList = [];
+    $("#students option").each(function (indx) {
+      const display =
+        $(this).val() === selection ? $(this).attr("data-id") : "";
+      console.log("display :>> ", display);
+      if (display) optionList.push(display);
+    });
+
+    console.log(selection);
+    console.log("optionList :>> ", optionList);
+  });
 });
