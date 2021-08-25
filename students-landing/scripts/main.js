@@ -11,9 +11,9 @@ const createDataList = (inputString) => {
   );
 
   for (const student of studentList) {
-    const { ID, StudentID, First, Middle, Last } = student;
+    const { ID, BirthDate, First, Middle, Last } = student;
     result.push(
-      `<option value="${Last}, ${First} ${Middle} | ${StudentID}" data-id=${ID}/>`
+      `<option value="${Last}, ${First} ${Middle} | Birth Date: ${BirthDate}" data-id=${ID}/>`
     );
   }
 
@@ -40,13 +40,12 @@ $(document).ready(() => {
 
     if (input.length > 2) {
       const datalist = createDataList(input);
-      $("#students").append(datalist);
+      $("#students").empty().append(datalist);
       $("#students").click();
     }
   });
 
   //* Search button is clicked or pressed
-  // $(document).on("click", "#search-btn", (evnt) => {
   $("#search-btn").click((evnt) => {
     evnt.stopPropagation();
     evnt.preventDefault();
