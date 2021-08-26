@@ -35,6 +35,8 @@
 .student-display {
   text-align: initial;
   max-width: 83%;
+  background-color: #f0f0f5;
+  font-size: 0.8em;
 }
 
 .page-title {
@@ -44,4 +46,24 @@
   padding-left: 1%;
   margin-bottom: 0.5%;
   margin-top: 0.5%;
+}
+
+.sub-header {
+  line-height: 30px;
+  padding-left: 5px;
+  font-size: 1.1em;
+  font-weight: 600;
+  border-top: 2px solid #fff;
+}
+
+.sub-header-title {
+  text-align: right;
+  line-height: 34px;
+  padding-right: 1%;
+  color: #fff;
+  margin-bottom: 1%;
+}
+
+.input-field > label {
+  font-size: 0.85em;
 }
