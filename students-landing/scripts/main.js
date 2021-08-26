@@ -60,5 +60,7 @@ $(document).ready(() => {
 
     console.log(selection);
     console.log("optionList :>> ", optionList);
+
+    $(".student-search, .sub-navbar, .student-display").toggleClass("hidden");
   });
 });
