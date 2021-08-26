@@ -1,8 +1,9 @@
+/* =============================== */
 /* Specific CSS rules  */
 /* =============================== */
 
 /* Search bar */
-
+/* =============================== */
 .student-search {
   margin: 1% 0 1% 0;
   padding: 1% 0 1% 0;
@@ -20,4 +21,10 @@
   font-size: 0.8em;
   text-align: left;
   padding: 0% 0% 1% 1%;
+}
+
+/* Sub Nav Bar */
+/* =============================== */
+#sub-nav a {
+  font-size: 0.7em;
 }
