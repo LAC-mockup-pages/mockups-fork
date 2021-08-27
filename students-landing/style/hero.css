@@ -44,13 +44,20 @@
 
 .page-title {
   line-height: 2.3em;
-  font-size: 1.1em;
+  font-size: 1.3em;
   font-weight: 700;
   padding-left: 1%;
   margin-bottom: 1%;
   margin-top: 0.5%;
-  color: #fff;
+  /* background-color: #2479b5; */
+  background-color: #d3e4f0;
   border-radius: 1em;
+  border: 1px solid #2479b5;
+}
+
+.title-text {
+  /* color: #fff; */
+  color: #2479b5;
 }
 
 .info-box {
