@@ -83,7 +83,37 @@
   color: #694e77;
 }
 
-/* .value {
-  font-weight: 700;
-  font-size: 1em;
-} */
+/* Tables */
+/* =============================== */
+
+.table > thead > tr > th {
+  color: #2479b5;
+  font-weight: 600;
+  font-size: 0.75em;
+}
+
+.table > thead > tr > th:last-of-type {
+  max-width: 3vw;
+}
+
+.table > tbody > tr > td {
+  font-weight: 600;
+  font-size: 0.7em;
+  line-height: 1.3em;
+}
+
+.table > tbody > tr > td:last-of-type {
+  text-align: right;
+}
+.enrollments > .table > tbody > tr:last-of-type > td:first-of-type {
+  text-align: center;
+}
+.enrollments > .table > tbody > tr:last-of-type > td {
+  border-top: #2479b5 1px solid;
+}
+.table > tbody > tr:hover {
+  background-color: #f5f5f5;
+}
+.assessments > .table > tbody > tr > td:nth-child(4) {
+  text-align: right;
+}
