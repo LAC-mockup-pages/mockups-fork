@@ -49,15 +49,19 @@
   padding-left: 1%;
   margin-bottom: 1%;
   margin-top: 0.5%;
-  /* background-color: #2479b5; */
-  background-color: #d3e4f0;
+  background-color: #2479b5;
+  /* background-color: #d3e4f0; */
   border-radius: 1em;
   border: 1px solid #2479b5;
 }
 
 .title-text {
-  /* color: #fff; */
-  color: #2479b5;
+  color: #fff;
+  /* color: #2479b5; */
+}
+
+.title-text:last-of-type {
+  text-align: right;
 }
 
 .info-box {
