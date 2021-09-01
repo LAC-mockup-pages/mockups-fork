@@ -67,11 +67,22 @@ export const createStudentID = (list, agency) => {
   )}${transformDate(BirthDate)}`;
 };
 
-export const createShortSaveObj = (list, agency) => {
+export const createShortSaveObj = (list, agency, user) => {
   // createObject() <== helperFunctions.js
   const { First, Middle, Last, BirthDate, BeginDate } = createObject(list);
   const StudentID = createStudentID(list, agency);
-  return [{ First, Middle, Last, BirthDate, BeginDate, StudentID }];
+  return [
+    {
+      AgencyID: agency,
+      AuditUserID: user,
+      First,
+      Middle,
+      Last,
+      BirthDate,
+      BeginDate,
+      StudentID
+    }
+  ];
 };
 
 const setFiscalYear = (datePD) => {
@@ -162,7 +173,7 @@ $(document).ready(() => {
   });
 
   //* Creates additional select element when the primary element
-  //* has a value. The option list shows all values except those
+  //* has a value. The new option list only includes the values not
   //* already selected.
 
   // Race selection
@@ -238,6 +249,10 @@ $(document).ready(() => {
     const agency = SESSION_VARIABLE[0].AgencyID.startsWith("<%= Session")
       ? "PRA"
       : SESSION_VARIABLE[0].AgencyID;
+    const user = SESSION_VARIABLE[0].AuditUserID.startsWith("<%= Session")
+      ? "0000001"
+      : SESSION_VARIABLE[0].AuditUserID;
+
     const dataList = $(".id-form")
       .serializeArray()
       .filter((item) =>
@@ -245,7 +260,7 @@ $(document).ready(() => {
           item.name
         )
       );
-    const shortSaveObj = createShortSaveObj(dataList, agency);
+    const shortSaveObj = createShortSaveObj(dataList, agency, user);
     const response = initialSave(shortSaveObj);
     const studentPKID = response[0].ID;
     const studentID = shortSaveObj[0].StudentID;
