@@ -68,3 +68,17 @@ export const finalSave = () => {
   const saveObj = { ...updatedObjWithRaceID, ...barriersFields };
   console.log("saveObj :>> ", saveObj);
 };
+
+// jQuery code snippet to get the dynamic variables stored in the url as parameters and store them as JavaScript variables ready for use with your scripts:
+// $.urlParam = function (name) {
+//   const results = new RegExp("[?&]" + name + "=([^&#]*)").exec(
+//     window.location.href
+//   );
+//   if (!results) {
+//     return null;
+//   }
+//   return decodeURI(results[1]) || 0;
+// };
+
+// Apply URLSearcParams from URL API
+// https://developer.mozilla.org/en-US/docs/Web/API/URL_API
