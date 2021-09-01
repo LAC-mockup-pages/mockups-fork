@@ -198,7 +198,13 @@ $(document).ready(() => {
     const updatedDdlBarriers = ddlBarriers.filter(
       (obj) => !barrierSelection.includes(obj.key)
     );
+
+    // Activate save-button
+    $("#save-button").removeAttr("disabled");
+
+    // Checks if there is at least 1 value left in the barriers list
     if (updatedDdlBarriers.length < 1) return;
+
     console.log("updatedDdlBarriers :>> ", updatedDdlBarriers);
     const newOptionList = createOptionList(updatedDdlBarriers);
     const newBarrierSelect = `
