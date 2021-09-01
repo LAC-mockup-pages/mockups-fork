@@ -193,8 +193,6 @@ $(document).ready(() => {
       .serializeArray()
       .filter((objBarriers) => objBarriers.name === "Barriers")
       .map((item) => item.value);
-
-    console.log("barrierSelection :>> ", barrierSelection);
     const updatedDdlBarriers = ddlBarriers.filter(
       (obj) => !barrierSelection.includes(obj.key)
     );
@@ -205,7 +203,6 @@ $(document).ready(() => {
     // Checks if there is at least 1 value left in the barriers list
     if (updatedDdlBarriers.length < 1) return;
 
-    console.log("updatedDdlBarriers :>> ", updatedDdlBarriers);
     const newOptionList = createOptionList(updatedDdlBarriers);
     const newBarrierSelect = `
     <div class="container-fluid row">
@@ -249,7 +246,6 @@ $(document).ready(() => {
         )
       );
     const shortSaveObj = createShortSaveObj(dataList, agency);
-    console.log("shortSaveObj :>> ", shortSaveObj);
     const response = initialSave(shortSaveObj);
     const studentPKID = response[0].ID;
     const studentID = shortSaveObj[0].StudentID;
