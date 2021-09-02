@@ -61,6 +61,10 @@ $(document).ready(() => {
     console.log(selection);
     console.log("optionList :>> ", optionList);
 
-    $(".student-search, .sub-navbar, .student-display").toggleClass("hidden");
+    //! ========================================
+    //! For Development only.
+    //! In Production, replace the localhost URL by the .aspx URL in the
+    //! targetUrl variable.
+    //! ========================================
   });
 });
