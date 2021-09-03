@@ -65,7 +65,7 @@ $(document).ready(() => {
     //! student landing page.
     //! =====================================
 
-    const landingUrl = "http://localhost:5500/students-landing/index.html";
+    const landingUrl = "http://localhost:5500/students-profile/index.html";
 
     //! =====================================
 
