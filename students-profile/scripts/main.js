@@ -7,7 +7,7 @@ const createCredentials = () => {
     ? "PRA"
     : SESSION_VARIABLE[0].AgencyID;
   const UserID = SESSION_VARIABLE[0].AuditUserID.startsWith("<%= Session")
-    ? "0000001"
+    ? "999999"
     : SESSION_VARIABLE[0].AuditUserID;
 
   return { AgencyID, UserID };
@@ -29,4 +29,15 @@ $(document).ready(() => {
   const requestObj = [{ ...credentials, Student_PKID }];
 
   console.log("requestObj :>> ", requestObj);
+
+  //! =====================================
+  //! For Production, this is the end points for the different requests
+  //! to the back-end, using requestObj.
+  //! =====================================
+  // const response =
+
+  //! =====================================
+  //! For Development only.
+  //! Comment out for Production.
+  //! =====================================
 });
