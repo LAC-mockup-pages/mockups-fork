@@ -70,7 +70,7 @@ $(document).ready(() => {
     //! =====================================
 
     // optionList[0] provides the selected student's PKID as a string
-    const targetUrl = `${landingUrl}?st_id=${optionList[0]}`;
+    const targetUrl = `${landingUrl}?stid=${optionList[0]}`;
     window.location.assign(targetUrl);
   });
 });

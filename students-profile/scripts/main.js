@@ -12,7 +12,7 @@ $(document).ready(() => {
   //* =====================================
   const currentUrl = new URL(window.location.href);
   const params = new URLSearchParams(currentUrl.search);
-  const Student_PKID = params.get("st_id");
+  const Student_PKID = params.get("stid");
   // createCredentials <== /helpers/helperFunctions.js
   const credentials = createCredentials();
 
