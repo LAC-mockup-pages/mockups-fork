@@ -262,3 +262,16 @@ const dateValid = (date) => {
 
   return dateEval;
 };
+
+// Creates data object starter with AgencyID and UserID from
+// SESSION_VARIABLE content.
+const createCredentials = () => {
+  const AgencyID = SESSION_VARIABLE[0].AgencyID.startsWith("<%= Session")
+    ? "PRA"
+    : SESSION_VARIABLE[0].AgencyID;
+  const UserID = SESSION_VARIABLE[0].AuditUserID.startsWith("<%= Session")
+    ? "999999"
+    : SESSION_VARIABLE[0].AuditUserID;
+
+  return { AgencyID, UserID };
+};
