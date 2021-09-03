@@ -32,6 +32,8 @@ $(document).ready(() => {
   //* Set focus on name input
   $("#search-input").focus();
 
+  //* =====================================
+
   //* User input first 3 letters
   $("#search-input").keyup((evnt) => {
     evnt.stopPropagation();
@@ -40,7 +42,7 @@ $(document).ready(() => {
 
     if (input.length > 2) {
       const datalist = createDataList(input);
-      $("#students").empty().append(datalist);
+      $("#students").append(datalist);
       $("#students").click();
     }
   });
@@ -51,16 +53,26 @@ $(document).ready(() => {
     evnt.preventDefault();
     const selection = $("#search-input").val();
     const optionList = [];
+    let display;
     $("#students option").each(function (indx) {
-      const display =
-        $(this).val() === selection ? $(this).attr("data-id") : "";
-      console.log("display :>> ", display);
+      display = $(this).val() === selection ? $(this).attr("data-id") : "";
       if (display) optionList.push(display);
     });
 
-    console.log(selection);
+    console.log("selection :>>", selection);
     console.log("optionList :>> ", optionList);
 
-    $(".student-search, .sub-navbar, .student-display").toggleClass("hidden");
+    // $(".student-search, .sub-navbar, .student-display").toggleClass("hidden");
+    //! =====================================
+    //! For Development only.
+    //! In Production, replace landingUrl value with URL of .aspx
+    //! student landing page.
+    //! =====================================
+
+    const landingUrl = "http://localhost:5500/student-landing/index.html";
+    const targetUrl = `${landingUrl}?${optionList[0]}`;
+    // $("#students").empty();
+
+    window.location.assign(targetUrl);
   });
 });
