@@ -59,20 +59,18 @@ $(document).ready(() => {
       if (display) optionList.push(display);
     });
 
-    console.log("selection :>>", selection);
-    console.log("optionList :>> ", optionList);
-
-    // $(".student-search, .sub-navbar, .student-display").toggleClass("hidden");
     //! =====================================
     //! For Development only.
     //! In Production, replace landingUrl value with URL of .aspx
     //! student landing page.
     //! =====================================
 
-    const landingUrl = "http://localhost:5500/student-landing/index.html";
-    const targetUrl = `${landingUrl}?${optionList[0]}`;
-    // $("#students").empty();
+    const landingUrl = "http://localhost:5500/students-landing/index.html";
 
+    //! =====================================
+
+    // optionList[0] provides the selected student's PKID as a string
+    const targetUrl = `${landingUrl}?st_id=${optionList[0]}`;
     window.location.assign(targetUrl);
   });
 });

@@ -329,43 +329,13 @@
 
     <!-- Main display -->
     <main class="main-body container-fluid">
-      <!-- Search box -->
-      <div class="container student-search blue-bg">
-        <div class="blue-light-text search-title">
-          Searching for a student by name
-        </div>
-        <form class="form-inline" role="form" id="search-form">
-          <input
-            type="text"
-            id="search-input"
-            class="form-control blue-text"
-            list="students"
-            autocomplete="off"
-            placeholder="Type the first letters of the last or first name"
-            title="Only alphanumerical characters"
-          />
-          <datalist id="students"> </datalist>
-
-          <button
-            type="button"
-            id="search-btn"
-            form="search-form"
-            class="btn btn-default blue-text"
-            aria-label="Search"
-          >
-            <!-- <span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
-            Display Summary
-          </button>
-        </form>
-      </div>
-      <!-- End Search box -->
       <!-- Sub NavBar -->
-      <div class="container-fluid blue-bg blue-light-text sub-navbar hidden">
+      <div class="container-fluid blue-bg blue-light-text sub-navbar">
         <ul id="sub-nav" class="nav-justified">
           <li>
             <a
               class="blue-light-text blue-bg"
-              href="../students-landing/index.html"
+              href="../students-search/index.html"
               type="text/html"
               >Student search</a
             >
@@ -413,10 +383,10 @@
       <!-- End Sub NavBar -->
 
       <!-- Student summary display -->
-      <div class="container-fluid student-display hidden">
+      <div class="container-fluid student-display">
         <section class="page-title row">
           <div class="col-md-6 title-text">AA1_Jacques, Gregory</div>
-          <div class="col-md-6 title-text">Birth date: 10/01/1987</div>
+          <div class="col-md-6 title-text">Birth date: 07/12/1987</div>
         </section>
 
         <div class="row">

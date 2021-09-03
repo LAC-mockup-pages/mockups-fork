@@ -25,3 +25,98 @@
   text-align: left;
   padding: 0% 0% 1% 1%;
 }
+/* Sub Nav Bar */
+/* =============================== */
+#sub-nav a {
+  font-size: 0.7em;
+  line-height: 2em;
+}
+
+/* Summary display */
+/* =============================== */
+.student-display {
+  text-align: initial;
+  max-width: 85%;
+  /* background-color: #f0f0f5; */
+  font-size: 0.8em;
+}
+
+.page-title {
+  line-height: 2.3em;
+  font-size: 1.3em;
+  font-weight: 700;
+  padding-left: 1%;
+  margin-bottom: 1%;
+  margin-top: 0.5%;
+  background-color: #2479b5;
+  /* background-color: #d3e4f0; */
+  border-radius: 1em;
+  border: 1px solid #2479b5;
+}
+
+.title-text {
+  color: #fff;
+  /* color: #2479b5; */
+}
+
+.title-text:last-of-type {
+  text-align: right;
+}
+
+.info-box {
+  background-color: #f5f5f5;
+  border: 0.25em solid #2479b5;
+  padding: 1% 3%;
+  border-radius: 1em;
+  line-height: 1.8em;
+  margin-bottom: 2%;
+  /* font-size: 1.2em; */
+}
+
+.rubrique,
+.box-title {
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.box-title {
+  text-align: right;
+  border-bottom: 1px solid #694e77;
+  margin-bottom: 1%;
+  color: #694e77;
+}
+
+/* Tables */
+/* =============================== */
+
+.table > thead > tr > th {
+  color: #2479b5;
+  font-weight: 600;
+  font-size: 0.75em;
+}
+
+.table > thead > tr > th:last-of-type {
+  max-width: 3vw;
+}
+
+.table > tbody > tr > td {
+  font-weight: 600;
+  font-size: 0.7em;
+  line-height: 1.3em;
+}
+
+.table > tbody > tr > td:last-of-type {
+  text-align: right;
+}
+.enrollments > .table > tbody > tr:last-of-type > td:first-of-type {
+  text-align: center;
+}
+.enrollments > .table > tbody > tr:last-of-type > td {
+  border-top: #2479b5 1px solid;
+}
+.table > tbody > tr:hover {
+  background-color: #f5f5f5;
+}
+.assessments > .table > tbody > tr > td:nth-child(4) {
+  text-align: right;
+}
