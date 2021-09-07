@@ -158,7 +158,8 @@ $(document).ready(() => {
   });
 
   //* Triggers search for possible duplicates after first, middle,
-  //* last and DOB are entered
+  //* last and DOB are entered.
+  //* Event triggers when BirthDate loses focus.
   $("#birthdate").focusout((evnt) => {
     evnt.stopPropagation();
     evnt.preventDefault();
