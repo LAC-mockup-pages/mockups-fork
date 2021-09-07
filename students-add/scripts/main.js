@@ -3,12 +3,17 @@
 //*=================================================
 
 import { finalSave, initialSave } from "./components/data-save.js";
-import { createDuplicatesTable } from "./components/duplicates.js";
+import {
+  createDuplicatesTable,
+  replaceTableBody
+} from "./components/duplicates.js";
 
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
 
 const increaseBar = (elem, tableContent) => {
+  $("#bar-container").toggleClass("hidden");
+
   let width = 1;
   const id = setInterval(frame, 200);
   function frame() {
@@ -151,9 +156,16 @@ $(document).ready(() => {
 
   //* Removes hidden class and table on closing modal
   $("#close-button").click(() => {
-    $("#bar-container").toggleClass("hidden");
-    $("#modalBloc").modal("toggle");
-    $("#begin-date").focus();
+    const buttonText = $("#close-button").text();
+    console.log("buttonText :>> ", buttonText);
+    if (buttonText.includes("continue")) {
+      $("#bar-container").toggleClass("hidden");
+      $("#modalBloc").modal("toggle");
+      $("#begin-date").focus();
+    } else {
+      $("#modalBloc").modal("toggle");
+      location.reload();
+    }
   });
 
   //* Triggers search for possible duplicates after first, middle,
@@ -169,7 +181,7 @@ $(document).ready(() => {
     const table = createDuplicatesTable(first, last, dateOfBirth);
     $("#modalBloc").modal("toggle");
     const element = $("#load-bar");
-    $("#bar-container").removeClass("hidden");
+    // $("#bar-container").toggleClass("hidden");
     increaseBar(element, table);
   });
 
@@ -263,7 +275,7 @@ $(document).ready(() => {
       );
     const shortSaveObj = createShortSaveObj(dataList, agency, user);
     // const studentID = shortSaveObj[0].StudentID;
-    const studentID = "AdamsAlbertPRA2252017111983";
+    const studentID = "AdamsAlbertPRA2252017111981";
     // console.log("shortSaveObj :>> ", shortSaveObj);
     const duplicatesList = JSON.parse(
       $("#duplicates-table").attr("data-duplicates")
@@ -272,7 +284,15 @@ $(document).ready(() => {
       ? duplicatesList.find((student) => student.StudentID === studentID)
       : "";
     if (exactDuplicate) {
-      alert("There is an exact duplicate");
+      // alert("There is an exact duplicate");
+      const newTableBody = `<tbody>${replaceTableBody(exactDuplicate)}</tbody>`;
+      $("#duplicates-table tbody").replaceWith(newTableBody);
+      // Enables customized tooltips
+      $("[data-toggle='tooltip']").tooltip();
+      $("#bar-container").toggleClass("hidden");
+      $(".modal-title").text("This student already exists in the database.");
+      $("#close-button").text("Close and enter another student");
+      $("#modalBloc").modal("toggle");
     } else {
       console.log("No exact duplicate found!");
       const response = initialSave(shortSaveObj);

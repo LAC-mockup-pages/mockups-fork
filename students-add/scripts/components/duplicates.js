@@ -60,3 +60,16 @@ export const createDuplicatesTable = (firstName, lastName, dateOfBirth) => {
   }
   return `${tableHeader}<tbody>${rows}</tbody>`;
 };
+
+export const replaceTableBody = (student) => {
+  const { ID, StudentID, First, Middle, Last, BirthDate } = student;
+  const row = `<tr id=${ID} title="Click to display" data-toggle='tooltip' data-placement="left">
+    <td class="cell-data">${Last}</td>
+    <td class="cell-data">${First}</td>
+    <td class="cell-data">${Middle}</td>
+    <td class="cell-data">${BirthDate}</td>
+    <td class="cell-data">${StudentID}</td>
+    </tr>`;
+
+  return row;
+};
