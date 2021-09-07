@@ -284,7 +284,6 @@ $(document).ready(() => {
       ? duplicatesList.find((student) => student.StudentID === studentID)
       : "";
     if (exactDuplicate) {
-      // alert("There is an exact duplicate");
       const newTableBody = `<tbody>${replaceTableBody(exactDuplicate)}</tbody>`;
       $("#duplicates-table tbody").replaceWith(newTableBody);
       // Enables customized tooltips
@@ -294,12 +293,31 @@ $(document).ready(() => {
       $("#close-button").text("Close and enter another student");
       $("#modalBloc").modal("toggle");
     } else {
-      console.log("No exact duplicate found!");
       const response = initialSave(shortSaveObj);
       const studentPKID = response[0].ID;
       $(".hero").attr("data-studentpkid", studentPKID);
       $(".hero").attr("data-studentid", studentID);
     }
+  });
+
+  //* Redirect user to the selected student Profil page
+  //* when the table row is clicked.
+  $(document).on("click", "#duplicates-table tbody tr", function (evnt) {
+    evnt.preventDefault();
+    const selectedId = $(this).attr("id");
+
+    //! =====================================
+    //! For Development only.
+    //! In Production, replace landingUrl value with URL of .aspx
+    //! student landing page.
+    //! =====================================
+
+    const landingUrl = "http://localhost:5500/students-profile/index.html";
+
+    //! =====================================
+
+    const targetUrl = `${landingUrl}?stid=${selectedId}`;
+    window.location.assign(targetUrl);
   });
 
   //* Triggers final save after all entries are done
