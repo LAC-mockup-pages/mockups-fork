@@ -40,6 +40,12 @@ export const createDuplicatesTable = (firstName, lastName, dateOfBirth) => {
   const orderedList = possibleDuplicates.sort((item1, item2) =>
     item1.Last < item2.Last ? -1 : item1.Last > item2.Last ? 1 : 0
   );
+
+  console.log(orderedList);
+
+  if (orderedList.length > 0) {
+    $("#duplicates-table").attr("data-duplicates", JSON.stringify(orderedList));
+  }
   let rows = "";
   for (const record of orderedList) {
     const { ID, StudentID, First, Middle, Last, BirthDate } = record;

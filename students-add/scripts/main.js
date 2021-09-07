@@ -152,7 +152,6 @@ $(document).ready(() => {
   //* Removes hidden class and table on closing modal
   $("#close-button").click(() => {
     $("#bar-container").toggleClass("hidden");
-    $("#duplicates-table").empty();
     $("#modalBloc").modal("toggle");
     $("#begin-date").focus();
   });
@@ -166,6 +165,7 @@ $(document).ready(() => {
     const first = $("#first-name").val();
     const last = $("#last-name").val();
     const dateOfBirth = $("#birthdate").val();
+    $("#duplicates-table").empty();
     const table = createDuplicatesTable(first, last, dateOfBirth);
     $("#modalBloc").modal("toggle");
     const element = $("#load-bar");
@@ -243,7 +243,7 @@ $(document).ready(() => {
   });
 
   //* Triggers initial data save when BeginDate is entered.
-  //* Creates StudentID and Student_PKID
+  //* Creates StudentID and Student_PKID.
   $("#address").focusin((evnt) => {
     evnt.stopPropagation();
     evnt.preventDefault();
@@ -262,11 +262,24 @@ $(document).ready(() => {
         )
       );
     const shortSaveObj = createShortSaveObj(dataList, agency, user);
-    const response = initialSave(shortSaveObj);
-    const studentPKID = response[0].ID;
-    const studentID = shortSaveObj[0].StudentID;
-    $(".hero").attr("data-studentpkid", studentPKID);
-    $(".hero").attr("data-studentid", studentID);
+    // const studentID = shortSaveObj[0].StudentID;
+    const studentID = "AdamsAlbertPRA2252017111983";
+    // console.log("shortSaveObj :>> ", shortSaveObj);
+    const duplicatesList = JSON.parse(
+      $("#duplicates-table").attr("data-duplicates")
+    );
+    const exactDuplicate = duplicatesList
+      ? duplicatesList.find((student) => student.StudentID === studentID)
+      : "";
+    if (exactDuplicate) {
+      alert("There is an exact duplicate");
+    } else {
+      console.log("No exact duplicate found!");
+      const response = initialSave(shortSaveObj);
+      const studentPKID = response[0].ID;
+      $(".hero").attr("data-studentpkid", studentPKID);
+      $(".hero").attr("data-studentid", studentID);
+    }
   });
 
   //* Triggers final save after all entries are done
