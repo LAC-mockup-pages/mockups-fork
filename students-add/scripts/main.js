@@ -121,6 +121,21 @@ export const setFiscalYearList = () => {
 //*=================================================
 
 $(document).ready(() => {
+  //! =====================================
+  //! For Development only.
+  //! In Production, replace profileUrl value with URL of .aspx
+  //! student Profile page.
+  //! =====================================
+
+  const profileUrl = "http://localhost:5500/students-profile/index.html";
+
+  //! =====================================
+
+  const redirectToProfile = (studentPkId) => {
+    const targetUrl = `${profileUrl}?stid=${studentPkId}`;
+    window.location.assign(targetUrl);
+  };
+
   //* =====================================
   //* At first rendering
   //* =====================================
@@ -274,8 +289,8 @@ $(document).ready(() => {
         )
       );
     const shortSaveObj = createShortSaveObj(dataList, agency, user);
-    // const studentID = shortSaveObj[0].StudentID;
-    const studentID = "AdamsAlbertPRA2252017111981";
+    const studentID = shortSaveObj[0].StudentID;
+    // const studentID = "AdamsAlbertPRA2252017111981";
     // console.log("shortSaveObj :>> ", shortSaveObj);
     const duplicatesList = JSON.parse(
       $("#duplicates-table").attr("data-duplicates")
@@ -305,19 +320,7 @@ $(document).ready(() => {
   $(document).on("click", "#duplicates-table tbody tr", function (evnt) {
     evnt.preventDefault();
     const selectedId = $(this).attr("id");
-
-    //! =====================================
-    //! For Development only.
-    //! In Production, replace landingUrl value with URL of .aspx
-    //! student landing page.
-    //! =====================================
-
-    const landingUrl = "http://localhost:5500/students-profile/index.html";
-
-    //! =====================================
-
-    const targetUrl = `${landingUrl}?stid=${selectedId}`;
-    window.location.assign(targetUrl);
+    redirectToProfile(selectedId);
   });
 
   //* Triggers final save after all entries are done
@@ -326,5 +329,7 @@ $(document).ready(() => {
     evnt.preventDefault();
 
     finalSave();
+    const selectedId = $(".hero").attr("data-studentpkid");
+    redirectToProfile(selectedId);
   });
 });

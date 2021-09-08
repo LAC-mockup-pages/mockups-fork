@@ -59,26 +59,26 @@ const barriersProcess = () => {
 export const finalSave = () => {
   const dataList = $("form").not(".barriers-form").serializeArray();
 
-  // createObject() <== helperFunctions.js
+  // createCredentials <== /helpers/helperFunctions.js
+  const credentials = createCredentials();
+  // createObject() <== /helpers/helperFunctions.js
   const updatedObjWithRaceID = createObject(raceIDProcess(dataList));
   // console.log("updatedListWithRaceID :>> ", updatedListWithRaceID);
   const barriersFields = barriersProcess();
   console.log("barriersFields :>> ", barriersFields);
 
-  const saveObj = { ...updatedObjWithRaceID, ...barriersFields };
+  const saveObj = {
+    ...credentials,
+    ...updatedObjWithRaceID,
+    ...barriersFields
+  };
   console.log("saveObj :>> ", saveObj);
+
+  //! =====================================
+  //! JSON.stringify(saveObj) is the string sent to the
+  //! back-end with POST request to update the Student record
+  //! created at the initial save stage.
+  //! =====================================
+
+  //TODO Add entered data validation
 };
-
-// jQuery code snippet to get the dynamic variables stored in the url as parameters and store them as JavaScript variables ready for use with your scripts:
-// $.urlParam = function (name) {
-//   const results = new RegExp("[?&]" + name + "=([^&#]*)").exec(
-//     window.location.href
-//   );
-//   if (!results) {
-//     return null;
-//   }
-//   return decodeURI(results[1]) || 0;
-// };
-
-// Apply URLSearcParams from URL API
-// https://developer.mozilla.org/en-US/docs/Web/API/URL_API
