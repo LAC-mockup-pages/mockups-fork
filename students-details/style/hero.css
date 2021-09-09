@@ -46,3 +46,7 @@
 .form-group {
   line-height: 1.7vh;
 }
+
+.form:hover {
+  background-color: #d3e4f0;
+}
