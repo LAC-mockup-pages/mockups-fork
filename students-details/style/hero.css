@@ -50,3 +50,18 @@
 .form:hover {
   background-color: #d3e4f0;
 }
+
+/* Tables */
+.table > thead > tr > th {
+  color: #2479b5;
+  font-weight: 600;
+  font-size: 0.75em;
+}
+.table > tbody > tr > td {
+  font-weight: 600;
+  font-size: 0.7em;
+  line-height: 1.3em;
+}
+.table > tbody > tr:hover {
+  background-color: inherit;
+}
