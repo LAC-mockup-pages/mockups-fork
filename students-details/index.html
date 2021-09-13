@@ -631,8 +631,6 @@
             </div>
             <form class="form" role="form">
               <div class="input-field form-group container-fluid">
-                <!-- <label for="Address">Highest grade completed in US</label> -->
-
                 <table class="table">
                   <tbody>
                     <tr>
@@ -651,10 +649,46 @@
             <div class="sub-header blue-bg blue-light-text">
               <div class="sub-header-title">Nationality</div>
             </div>
+            <div class="input-field form-group">
+              <label for="Address">Country of birth</label>
+              <input type="text" name="Address" disabled value="Haiti" />
+            </div>
+            <div class="input-field form-group">
+              <label for="Address">Status</label>
+              <input type="text" name="Address" disabled value="Citizen" />
+            </div>
+            <div class="input-field form-group">
+              <label for="Address">Date of US settlement</label>
+              <input type="text" name="Address" disabled value="05/02/2015" />
+            </div>
+            <div class="input-field form-group">
+              <label for="Address">Primary language</label>
+              <input type="text" name="Address" disabled value="" />
+            </div>
 
             <div class="sub-header blue-bg blue-light-text">
               <div class="sub-header-title">Population categories</div>
             </div>
+            <form class="form" role="form">
+              <div class="input-field form-group container-fluid">
+                <table class="table">
+                  <tbody>
+                    <tr>
+                      <td>Head of houshold</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Enrolled in other Education/Training program</td>
+                      <td>Yes</td>
+                    </tr>
+                    <tr>
+                      <td>Other</td>
+                      <td>No</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </form>
           </section>
           <section class="col-md-6">
             <div class="sub-header blue-bg blue-light-text">
@@ -670,11 +704,57 @@
                   value="Custodial parent"
                 />
               </div>
+              <div>School aged children</div>
+              <table class="table children-table">
+                <thead>
+                  <th class="children-header">PreSchool</th>
+                  <th class="children-header">Elementary</th>
+                  <th class="children-header">Junior HS</th>
+                  <th class="children-header">High School</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cell-data">
+                      <input class="cell-input" name="PreChild" value="1" />
+                    </td>
+                    <td class="cell-data">
+                      <input class="cell-input" name="ElemChild" value="2" />
+                    </td>
+                    <td class="cell-data">
+                      <input class="cell-input" name="JHSChild" value="3" />
+                    </td>
+                    <td class="cell-data">
+                      <input class="cell-input" name="HSChild" value="4" />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </form>
 
             <div class="sub-header blue-bg blue-light-text">
               <div class="sub-header-title">Public assistance</div>
             </div>
+            <table class="table table-bordered">
+              <thead>
+                <tr class="blue-light-bg">
+                  <th>Type</th>
+                  <th>FY</th>
+                  <th>Case number</th>
+                  <th>Exhaust TANF</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Food stamps</td>
+                </tr>
+                <tr>
+                  <td>TANF</td>
+                  <td>2019</td>
+                  <td>123456</td>
+                  <td>Yes</td>
+                </tr>
+              </tbody>
+            </table>
 
             <div class="sub-header blue-bg blue-light-text">
               <div class="sub-header-title">Referral</div>
