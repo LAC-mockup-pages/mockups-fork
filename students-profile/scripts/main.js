@@ -1,6 +1,15 @@
 //*=================================================
 //* Actions and Logic for local page
 //*=================================================
+//! =====================================
+//! For Development only.
+//! Comment out for Production.
+//! =====================================
+const studentData = GetStudentProfile.slice[0];
+const assessmentData = GetAssessmentProfile.slice[0];
+const enrollmentData = GetEnrollmentProfile.slice[0];
+const employmentData = GetEmploymentProfile.slice[0];
+//! =====================================
 
 //*=================================================
 //* jQuery section
@@ -12,7 +21,8 @@ $(document).ready(() => {
   //* =====================================
   const currentUrl = new URL(window.location.href);
   const params = new URLSearchParams(currentUrl.search);
-  const Student_PKID = params.get("stid");
+  // Default Student_PKID if no query string in URL
+  const Student_PKID = params.get("stid") ? params.get("stid") : "1048303";
   // createCredentials <== /helpers/helperFunctions.js
   const credentials = createCredentials();
 
@@ -21,13 +31,12 @@ $(document).ready(() => {
   console.log("requestObj :>> ", requestObj);
 
   //! =====================================
-  //! For Production, this is the end points for the different requests
-  //! to the back-end, using requestObj.
+  //! For Production, this section regroups the end points
+  //! for the different requests to the back-end, using requestObj.
   //! =====================================
-  // const response =
-
-  //! =====================================
-  //! For Development only.
-  //! Comment out for Production.
+  // const studentData =
+  // const assessmentData =
+  // const enrollmentData =
+  // const employmentData =
   //! =====================================
 });

@@ -193,7 +193,7 @@ const GetStudentProfile = [
   }
 ];
 
-const GetFundingProfile = [
+const GetSomethingProfile = [
   {
     AgencyID: "PRA",
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
