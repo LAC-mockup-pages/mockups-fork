@@ -1,11 +1,14 @@
 //*=================================================
 //* Actions and Logic for local page
 //*=================================================
+
+import { titleSection, contactSection } from "./components/student.js";
+
 //! =====================================
 //! For Development only.
 //! Comment out for Production.
 //! =====================================
-const studentData = GetStudentProfile.slice[0];
+const studentData = GetStudentProfile[0];
 const assessmentData = GetAssessmentProfile.slice[0];
 const enrollmentData = GetEnrollmentProfile.slice[0];
 const employmentData = GetEmploymentProfile.slice[0];
@@ -39,4 +42,12 @@ $(document).ready(() => {
   // const enrollmentData =
   // const employmentData =
   //! =====================================
+
+  //* =====================================
+
+  //* Updating all sections with live data
+  const sectionList = [titleSection(studentData), contactSection(studentData)];
+  for (const section of sectionList) {
+    $(section[0]).append(section[1]);
+  }
 });
