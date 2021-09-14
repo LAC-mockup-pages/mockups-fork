@@ -31,3 +31,17 @@ export const contactSection = (dataObj) => {
 `;
   return [".contact", sectionContent];
 };
+
+export const keyDemoSection = (dataObj) => {
+  const { SexDesc, EthnicityDesc, RaceDesc } = dataObj;
+  const raceElement = RaceDesc.split(",")
+    .map((item) => `<div class="value">${item}</div>`)
+    .join("");
+  const sectionContent = `
+  <div class="box-title">Key demographics</div>
+  <div class="value">${SexDesc}</div>
+  <div class="value">${EthnicityDesc}</div>
+  ${raceElement}
+  `;
+  return [".key-demo", sectionContent];
+};

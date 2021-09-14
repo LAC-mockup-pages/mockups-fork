@@ -2,7 +2,11 @@
 //* Actions and Logic for local page
 //*=================================================
 
-import { titleSection, contactSection } from "./components/student.js";
+import {
+  titleSection,
+  contactSection,
+  keyDemoSection
+} from "./components/student.js";
 
 //! =====================================
 //! For Development only.
@@ -31,13 +35,11 @@ $(document).ready(() => {
 
   const requestObj = [{ ...credentials, Student_PKID }];
 
-  console.log("requestObj :>> ", requestObj);
-
   //! =====================================
   //! For Production, this section regroups the end points
   //! for the different requests to the back-end, using requestObj.
   //! =====================================
-  // const studentData =
+  // const studentData[0] =
   // const assessmentData =
   // const enrollmentData =
   // const employmentData =
@@ -46,7 +48,11 @@ $(document).ready(() => {
   //* =====================================
 
   //* Updating all sections with live data
-  const sectionList = [titleSection(studentData), contactSection(studentData)];
+  const sectionList = [
+    titleSection(studentData),
+    contactSection(studentData),
+    keyDemoSection(studentData)
+  ];
   for (const section of sectionList) {
     $(section[0]).append(section[1]);
   }
