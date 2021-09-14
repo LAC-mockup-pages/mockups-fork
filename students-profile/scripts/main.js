@@ -5,7 +5,8 @@
 import {
   titleSection,
   contactSection,
-  keyDemoSection
+  keyDemoSection,
+  populationSection
 } from "./components/student.js";
 
 //! =====================================
@@ -13,9 +14,9 @@ import {
 //! Comment out for Production.
 //! =====================================
 const studentData = GetStudentProfile[0];
-const assessmentData = GetAssessmentProfile.slice[0];
-const enrollmentData = GetEnrollmentProfile.slice[0];
-const employmentData = GetEmploymentProfile.slice[0];
+const assessmentData = GetAssessmentProfile.slice(0);
+const enrollmentData = GetEnrollmentProfile.slice(0);
+const employmentData = GetEmploymentProfile.slice(0);
 //! =====================================
 
 //*=================================================
@@ -48,10 +49,16 @@ $(document).ready(() => {
   //* =====================================
 
   //* Updating all sections with live data
+  const latestEmploymentRecord = employmentData.sort(
+    (record1, record2) => Number(record2.ID) - Number(record1.ID)
+  )[0];
+  const populationStr = studentData.PopulationDesc;
+
   const sectionList = [
     titleSection(studentData),
     contactSection(studentData),
-    keyDemoSection(studentData)
+    keyDemoSection(studentData, latestEmploymentRecord),
+    populationSection(populationStr)
   ];
   for (const section of sectionList) {
     $(section[0]).append(section[1]);

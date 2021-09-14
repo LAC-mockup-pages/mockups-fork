@@ -70,7 +70,10 @@
   border-radius: 1em;
   line-height: 1.8em;
   margin-bottom: 2%;
-  /* font-size: 1.2em; */
+}
+
+.no-data {
+  text-align: center;
 }
 
 .rubrique,
@@ -95,7 +98,7 @@
   font-size: 0.75em;
 }
 
-.table > thead > tr > th:last-of-type {
+.table:not(.employment-table) > thead > tr > th:last-of-type {
   max-width: 3vw;
 }
 
@@ -105,7 +108,7 @@
   line-height: 1.3em;
 }
 
-.table > tbody > tr > td:last-of-type {
+.table:not(.employment-table) > tbody > tr > td:last-of-type {
   text-align: right;
 }
 .enrollments > .table > tbody > tr:last-of-type > td:first-of-type {

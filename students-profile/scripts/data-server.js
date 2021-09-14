@@ -189,7 +189,8 @@ const GetStudentProfile = [
     EthnicityDesc: "Non-Hispanic/Latino",
     RaceID: "B3,A1",
     RaceDesc: "Native Hawaiian,Native American",
-    PopulationDesc: "Ex-offender"
+    PopulationDesc: "Ex-offender,No boots"
+    // PopulationDesc: ""
   }
 ];
 
