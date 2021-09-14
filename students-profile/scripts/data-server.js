@@ -164,3 +164,273 @@ const ddlBarriers = [
   { key: "EXhaustTANF_LB", value: "Exhausting TANF within 2 years" },
   { key: "SingleParent_LB", value: "Single Parent" }
 ];
+
+const GetStudentProfile = [
+  {
+    AgencyID: "PRA",
+    Student_PKID: "1048303",
+    First: "Gregory",
+    Last: "AA1_Jacques",
+    Middle: "NULL",
+    BirthDate: "07/12/1987",
+    BeginDate: "06/22/2010",
+    Address: "455 5th Ave",
+    City: "New York",
+    State: "NY",
+    Zip: "11234",
+    HomePhone: "(212) 803-3000",
+    CellPhone: "(212) 803-4000",
+    StudEmail: "staff@asists.com",
+    EmergencyPhone: "NULL",
+    EmergencyName: "NULL",
+    Sex: "M",
+    SexDesc: "Male",
+    EthnicityID: "N",
+    EthnicityDesc: "Non-Hispanic/Latino",
+    RaceID: "B3,A1",
+    RaceDesc: "Native Hawaiian,Native American",
+    PopulationDesc: "Ex-offender, "
+  }
+];
+
+const GetFundingProfile = [
+  {
+    AgencyID: "PRA",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    Name: "NULL",
+    Pop_Order: "1",
+    POPStarted: "NULL",
+    POPEnded: "2019-10-31 ",
+    POPHours: "152",
+    POPPreTest: "07/01/2019 BESTP2 D ",
+    POPPostTest: "NULL"
+  }
+];
+
+const GetAssessmentProfile = [
+  {
+    AgencyID: "PRA",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    Pop_Order: "1",
+    Test_Order: "1",
+    TestDesc: "Pre1",
+    Type: "TR",
+    Form: "12",
+    Level: "M",
+    ScaleScore: "505",
+    NRSLevel: "3",
+    NYRSLevel: "3.0"
+  },
+  {
+    AgencyID: "PRA",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    Pop_Order: "1",
+    Test_Order: "2",
+    TestDesc: "Post1",
+    Type: "TR",
+    Form: "11",
+    Level: "M",
+    ScaleScore: "575",
+    NRSLevel: "4",
+    NYRSLevel: "4.5"
+  },
+  {
+    AgencyID: "PRA",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    Pop_Order: "2",
+    Test_Order: "1",
+    TestDesc: "Pre2",
+    Type: "TR",
+    Form: "11",
+    Level: "M",
+    ScaleScore: "575",
+    NRSLevel: "4",
+    NYRSLevel: "4.5"
+  }
+];
+
+const GetEnrollmentProfile = [
+  {
+    AgencyID: "PRA",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    InstructionDescription: "MA5CGJa_2022  Porter, Jane",
+    ExitDate: "NULL",
+    Hours: "10",
+    ActiveStudent: "1",
+    NotActiveStudent: "0",
+    InactiveDate: "NULL",
+    InactiveReason: "NULL"
+  }
+];
+
+const GetEmploymentProfile = [
+  {
+    ID: "3989875",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatusFY: "2022",
+    EmploymentStatus: "A",
+    EmploymentStatusDesc: "Employed full-time",
+    EmployDate: "07/15/2000",
+    EmployerID: "LAC",
+    EmployerName: "LAC",
+    LastEmployDate: "NULL",
+    ReleaseDate: "NULL",
+    IncomeFY: "5",
+    IncomeFYDesc: "$25,000 to $34,999"
+  },
+  {
+    ID: "3989874",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatusFY: "2021",
+    EmploymentStatus: "A",
+    EmploymentStatusDesc: "Employed full-time",
+    EmployDate: "NULL",
+    EmployerID: "NULL",
+    EmployerName: "NULL",
+    LastEmployDate: "NULL",
+    ReleaseDate: "NULL",
+    IncomeFY: "NULL",
+    IncomeFYDesc: "NULL"
+  },
+  {
+    ID: "3989873",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatusFY: "2020",
+    EmploymentStatus: "A",
+    EmploymentStatusDesc: "Employed full-time",
+    EmployDate: "NULL",
+    EmployerID: "NULL",
+    EmployerName: "NULL",
+    LastEmployDate: "NULL",
+    ReleaseDate: "NULL",
+    IncomeFY: "NULL",
+    IncomeFYDesc: "NULL"
+  },
+  {
+    ID: "3693213",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatusFY: "2019",
+    EmploymentStatus: "A",
+    EmploymentStatusDesc: "Employed full-time",
+    EmployDate: "NULL",
+    EmployerID: "NULL",
+    EmployerName: "NULL",
+    LastEmployDate: "NULL",
+    ReleaseDate: "NULL",
+    IncomeFY: "NULL",
+    IncomeFYDesc: "NULL"
+  },
+  {
+    ID: "3267957",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatusFY: "2017",
+    EmploymentStatus: "A",
+    EmploymentStatusDesc: "Employed full-time",
+    EmployDate: "01/05/2017",
+    EmployerID: "lac",
+    EmployerName: "lac",
+    LastEmployDate: "01/01/2017",
+    ReleaseDate: "07/06/2017",
+    IncomeFY: "9",
+    IncomeFYDesc: "$100,000 to $149,999"
+  },
+  {
+    ID: "3503725",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatusFY: "2016",
+    EmploymentStatus: "A",
+    EmploymentStatusDesc: "Employed full-time",
+    EmployDate: "08/04/2015",
+    EmployerID: "LAC",
+    EmployerName: "LAC",
+    LastEmployDate: "02/15/2016",
+    ReleaseDate: "NULL",
+    IncomeFY: "NULL",
+    IncomeFYDesc: "NULL"
+  },
+  {
+    ID: "2459053",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatusFY: "2013",
+    EmploymentStatus: "A",
+    EmploymentStatusDesc: "Employed full-time",
+    EmployDate: "01/21/2017",
+    EmployerID: "Test",
+    EmployerName: "Test",
+    LastEmployDate: "01/01/2013",
+    ReleaseDate: "NULL",
+    IncomeFY: "6",
+    IncomeFYDesc: "$35,000 to $49,999"
+  },
+  {
+    ID: "2372518",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatusFY: "2012",
+    EmploymentStatus: "A",
+    EmploymentStatusDesc: "Employed full-time",
+    EmployDate: "NULL",
+    EmployerID: "NULL",
+    EmployerName: "NULL",
+    LastEmployDate: "NULL",
+    ReleaseDate: "NULL",
+    IncomeFY: "NULL",
+    IncomeFYDesc: "NULL"
+  },
+  {
+    ID: "2631980",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatusFY: "2011",
+    EmploymentStatus: "A",
+    EmploymentStatusDesc: "Employed full-time",
+    EmployDate: "NULL",
+    EmployerID: "NULL",
+    EmployerName: "NULL",
+    LastEmployDate: "NULL",
+    ReleaseDate: "NULL",
+    IncomeFY: "NULL",
+    IncomeFYDesc: "NULL"
+  },
+  {
+    ID: "2631981",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatusFY: "2007",
+    EmploymentStatus: "A",
+    EmploymentStatusDesc: "Employed full-time",
+    EmployDate: "NULL",
+    EmployerID: "NULL",
+    EmployerName: "NULL",
+    LastEmployDate: "NULL",
+    ReleaseDate: "NULL",
+    IncomeFY: "NULL",
+    IncomeFYDesc: "NULL"
+  },
+  {
+    ID: "2631982",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    EmployStatusFY: "2004",
+    EmploymentStatus: "D",
+    EmploymentStatusDesc: "Unemployed <1 yr available",
+    EmployDate: "NULL",
+    EmployerID: "NULL",
+    EmployerName: "NULL",
+    LastEmployDate: "NULL",
+    ReleaseDate: "NULL",
+    IncomeFY: "NULL",
+    IncomeFYDesc: "NULL"
+  }
+];
