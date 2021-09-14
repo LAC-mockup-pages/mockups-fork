@@ -171,8 +171,8 @@ const GetStudentProfile = [
     Student_PKID: "1048303",
     First: "Gregory",
     Last: "AA1_Jacques",
-    Middle: "NULL",
-    BirthDate: "07/12/1987",
+    Middle: "",
+    BirthDate: "07/12/1988",
     BeginDate: "06/22/2010",
     Address: "455 5th Ave",
     City: "New York",
@@ -181,8 +181,8 @@ const GetStudentProfile = [
     HomePhone: "(212) 803-3000",
     CellPhone: "(212) 803-4000",
     StudEmail: "staff@asists.com",
-    EmergencyPhone: "NULL",
-    EmergencyName: "NULL",
+    EmergencyPhone: "",
+    EmergencyName: "",
     Sex: "M",
     SexDesc: "Male",
     EthnicityID: "N",
@@ -197,13 +197,13 @@ const GetSomethingProfile = [
   {
     AgencyID: "PRA",
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
-    Name: "NULL",
+    Name: "",
     Pop_Order: "1",
-    POPStarted: "NULL",
+    POPStarted: "",
     POPEnded: "2019-10-31 ",
     POPHours: "152",
     POPPreTest: "07/01/2019 BESTP2 D ",
-    POPPostTest: "NULL"
+    POPPostTest: ""
   }
 ];
 
@@ -258,12 +258,12 @@ const GetEnrollmentProfile = [
     Student_PKID: "1048303",
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
     InstructionDescription: "MA5CGJa_2022  Porter, Jane",
-    ExitDate: "NULL",
+    ExitDate: "",
     Hours: "10",
     ActiveStudent: "1",
     NotActiveStudent: "0",
-    InactiveDate: "NULL",
-    InactiveReason: "NULL"
+    InactiveDate: "",
+    InactiveReason: ""
   }
 ];
 
@@ -278,8 +278,8 @@ const GetEmploymentProfile = [
     EmployDate: "07/15/2000",
     EmployerID: "LAC",
     EmployerName: "LAC",
-    LastEmployDate: "NULL",
-    ReleaseDate: "NULL",
+    LastEmployDate: "",
+    ReleaseDate: "",
     IncomeFY: "5",
     IncomeFYDesc: "$25,000 to $34,999"
   },
@@ -290,13 +290,13 @@ const GetEmploymentProfile = [
     EmployStatusFY: "2021",
     EmploymentStatus: "A",
     EmploymentStatusDesc: "Employed full-time",
-    EmployDate: "NULL",
-    EmployerID: "NULL",
-    EmployerName: "NULL",
-    LastEmployDate: "NULL",
-    ReleaseDate: "NULL",
-    IncomeFY: "NULL",
-    IncomeFYDesc: "NULL"
+    EmployDate: "",
+    EmployerID: "",
+    EmployerName: "",
+    LastEmployDate: "",
+    ReleaseDate: "",
+    IncomeFY: "",
+    IncomeFYDesc: ""
   },
   {
     ID: "3989873",
@@ -305,13 +305,13 @@ const GetEmploymentProfile = [
     EmployStatusFY: "2020",
     EmploymentStatus: "A",
     EmploymentStatusDesc: "Employed full-time",
-    EmployDate: "NULL",
-    EmployerID: "NULL",
-    EmployerName: "NULL",
-    LastEmployDate: "NULL",
-    ReleaseDate: "NULL",
-    IncomeFY: "NULL",
-    IncomeFYDesc: "NULL"
+    EmployDate: "",
+    EmployerID: "",
+    EmployerName: "",
+    LastEmployDate: "",
+    ReleaseDate: "",
+    IncomeFY: "",
+    IncomeFYDesc: ""
   },
   {
     ID: "3693213",
@@ -320,13 +320,13 @@ const GetEmploymentProfile = [
     EmployStatusFY: "2019",
     EmploymentStatus: "A",
     EmploymentStatusDesc: "Employed full-time",
-    EmployDate: "NULL",
-    EmployerID: "NULL",
-    EmployerName: "NULL",
-    LastEmployDate: "NULL",
-    ReleaseDate: "NULL",
-    IncomeFY: "NULL",
-    IncomeFYDesc: "NULL"
+    EmployDate: "",
+    EmployerID: "",
+    EmployerName: "",
+    LastEmployDate: "",
+    ReleaseDate: "",
+    IncomeFY: "",
+    IncomeFYDesc: ""
   },
   {
     ID: "3267957",
@@ -354,9 +354,9 @@ const GetEmploymentProfile = [
     EmployerID: "LAC",
     EmployerName: "LAC",
     LastEmployDate: "02/15/2016",
-    ReleaseDate: "NULL",
-    IncomeFY: "NULL",
-    IncomeFYDesc: "NULL"
+    ReleaseDate: "",
+    IncomeFY: "",
+    IncomeFYDesc: ""
   },
   {
     ID: "2459053",
@@ -369,7 +369,7 @@ const GetEmploymentProfile = [
     EmployerID: "Test",
     EmployerName: "Test",
     LastEmployDate: "01/01/2013",
-    ReleaseDate: "NULL",
+    ReleaseDate: "",
     IncomeFY: "6",
     IncomeFYDesc: "$35,000 to $49,999"
   },
@@ -380,13 +380,13 @@ const GetEmploymentProfile = [
     EmployStatusFY: "2012",
     EmploymentStatus: "A",
     EmploymentStatusDesc: "Employed full-time",
-    EmployDate: "NULL",
-    EmployerID: "NULL",
-    EmployerName: "NULL",
-    LastEmployDate: "NULL",
-    ReleaseDate: "NULL",
-    IncomeFY: "NULL",
-    IncomeFYDesc: "NULL"
+    EmployDate: "",
+    EmployerID: "",
+    EmployerName: "",
+    LastEmployDate: "",
+    ReleaseDate: "",
+    IncomeFY: "",
+    IncomeFYDesc: ""
   },
   {
     ID: "2631980",
@@ -395,13 +395,13 @@ const GetEmploymentProfile = [
     EmployStatusFY: "2011",
     EmploymentStatus: "A",
     EmploymentStatusDesc: "Employed full-time",
-    EmployDate: "NULL",
-    EmployerID: "NULL",
-    EmployerName: "NULL",
-    LastEmployDate: "NULL",
-    ReleaseDate: "NULL",
-    IncomeFY: "NULL",
-    IncomeFYDesc: "NULL"
+    EmployDate: "",
+    EmployerID: "",
+    EmployerName: "",
+    LastEmployDate: "",
+    ReleaseDate: "",
+    IncomeFY: "",
+    IncomeFYDesc: ""
   },
   {
     ID: "2631981",
@@ -410,13 +410,13 @@ const GetEmploymentProfile = [
     EmployStatusFY: "2007",
     EmploymentStatus: "A",
     EmploymentStatusDesc: "Employed full-time",
-    EmployDate: "NULL",
-    EmployerID: "NULL",
-    EmployerName: "NULL",
-    LastEmployDate: "NULL",
-    ReleaseDate: "NULL",
-    IncomeFY: "NULL",
-    IncomeFYDesc: "NULL"
+    EmployDate: "",
+    EmployerID: "",
+    EmployerName: "",
+    LastEmployDate: "",
+    ReleaseDate: "",
+    IncomeFY: "",
+    IncomeFYDesc: ""
   },
   {
     ID: "2631982",
@@ -425,12 +425,12 @@ const GetEmploymentProfile = [
     EmployStatusFY: "2004",
     EmploymentStatus: "D",
     EmploymentStatusDesc: "Unemployed <1 yr available",
-    EmployDate: "NULL",
-    EmployerID: "NULL",
-    EmployerName: "NULL",
-    LastEmployDate: "NULL",
-    ReleaseDate: "NULL",
-    IncomeFY: "NULL",
-    IncomeFYDesc: "NULL"
+    EmployDate: "",
+    EmployerID: "",
+    EmployerName: "",
+    LastEmployDate: "",
+    ReleaseDate: "",
+    IncomeFY: "",
+    IncomeFYDesc: ""
   }
 ];
