@@ -73,10 +73,13 @@ const createEmploymentTable = (obj) => {
 
 export const keyDemoSection = (dataObj, employmentObj) => {
   const { SexDesc, EthnicityDesc, RaceDesc } = dataObj;
+  const currentFiscalYear = SESSION_VARIABLE[0].FiscalYear;
   const raceElement = RaceDesc.split(",")
     .map((item) => `<div class="value">${item}</div>`)
     .join("");
-  const employmentElement = createEmploymentTable(employmentObj);
+  const employmentElement = employmentObj
+    ? createEmploymentTable(employmentObj)
+    : `<div class="no-data">Missing FY22 employment</div>`;
   const sectionContent = `
   <div class="box-title">Key demographics</div>
   <div class="value">${SexDesc}</div>
@@ -93,7 +96,7 @@ export const populationSection = (dataStr) => {
         .split(",")
         .map((item) => `<div class="value">${item}</div>`)
         .join("")
-    : `<div class="no-data">No Data</div>`;
+    : `<div class="no-data">No population categories selected</div>`;
   const sectionContent = `
   <div class="box-title">Population categories</div>
     ${populationElement}

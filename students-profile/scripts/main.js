@@ -16,7 +16,8 @@ import {
 const studentData = GetStudentProfile[0];
 const assessmentData = GetAssessmentProfile.slice(0);
 const enrollmentData = GetEnrollmentProfile.slice(0);
-const employmentData = GetEmploymentProfile.slice(0);
+// const employmentData = GetEmploymentProfile.slice(0);
+const employmentData = [{}];
 //! =====================================
 
 //*=================================================
@@ -26,6 +27,10 @@ const employmentData = GetEmploymentProfile.slice(0);
 $(document).ready(() => {
   //TODO ==================================================
   //TODO Add logic for sub nav bar tab selection
+  //TODO ==================================================
+
+  //TODO ==================================================
+  //TODO Add logic for navigation from info-boxes
   //TODO ==================================================
 
   //* =====================================
@@ -53,9 +58,11 @@ $(document).ready(() => {
   //* =====================================
 
   //* Updating all sections with live data
-  const latestEmploymentRecord = employmentData.sort(
-    (record1, record2) => Number(record2.ID) - Number(record1.ID)
-  )[0];
+  const latestEmploymentRecord = employmentData[0].ID
+    ? employmentData.sort(
+        (record1, record2) => Number(record2.ID) - Number(record1.ID)
+      )[0]
+    : null;
   const populationStr = studentData.PopulationDesc;
 
   const sectionList = [
