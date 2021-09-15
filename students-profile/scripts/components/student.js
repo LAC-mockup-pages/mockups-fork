@@ -73,7 +73,9 @@ const createEmploymentTable = (obj) => {
 
 export const keyDemoSection = (dataObj, employmentObj) => {
   const { SexDesc, EthnicityDesc, RaceDesc } = dataObj;
-  const currentFiscalYear = SESSION_VARIABLE[0].FiscalYear;
+
+  // createCredentials() <== /helpers/helperFunctions.js
+  const currentFiscalYear = createCredentials().FiscalYear;
   const raceElement = RaceDesc.split(",")
     .map((item) => `<div class="value">${item}</div>`)
     .join("");

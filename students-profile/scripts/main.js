@@ -16,8 +16,8 @@ import {
 const studentData = GetStudentProfile[0];
 const assessmentData = GetAssessmentProfile.slice(0);
 const enrollmentData = GetEnrollmentProfile.slice(0);
-// const employmentData = GetEmploymentProfile.slice(0);
-const employmentData = [{}];
+const employmentData = GetEmploymentProfile.slice(0);
+// const employmentData = [{}];
 //! =====================================
 
 //*=================================================
