@@ -2,20 +2,25 @@
 
 Landing page with comprehensive information for the selected student.
 
+### .aspx page name
+
 ## File structure
 
-```
-/starter
-.
-├── [07/08/21]  README.md
-├── [07/08/21]  index.html
-├── [07/08/21]  scripts
-│   ├── [07/02/21]  data-server.js
-│   ├── [07/08/21]  main.js
-│   └── [07/08/21]  nav-frame.js
-└── [07/08/21]  style
-    ├── [07/08/21]  index.css
-    └── [07/08/21]  nav-frame.css
+```javascript
+/students-profile
+├── [09/15/21]  README.md
+├── [09/15/21]  index.html
+├── [09/15/21]  scripts
+│   ├── [09/15/21]  components
+│   │   ├── [09/15/21]  enrollment.js
+│   │   └── [09/15/21]  student.js
+│   ├── [09/15/21]  data-server.js
+│   ├── [09/15/21]  main.js
+│   └── [09/15/21]  nav-frame.js
+└── [09/15/21]  style
+    ├── [09/15/21]  hero.css
+    ├── [09/15/21]  index.css
+    └── [09/15/21]  nav-frame.css
 ```
 
 NB: Date is last modification date.
@@ -26,8 +31,11 @@ NB: Date is last modification date.
 
 ### Dev Notes
 
-To start a new page, create the folder in a new branch.
-
-Copy all the folders and files in `/starter` and paste them in the new folder.
-
-Edit `index.html` with the new page title and `.aspx` file name. Edit the `README.md` file.
+| Steps                   | Status         | Date |
+| ----------------------- | -------------- | ---- |
+| Screenshots             | Done           |      |
+| Trello card             | Done           |      |
+| Initial VSC set up      | Done           |      |
+| Mockup                  | Done           |      |
+| Roughing/static lay out | Done, accepted |      |
+| Data objects            | Incomplete     |      |
