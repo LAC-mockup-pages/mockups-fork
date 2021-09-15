@@ -8,6 +8,7 @@ import {
   keyDemoSection,
   populationSection
 } from "./components/student.js";
+import { enrollmentSection } from "./components/enrollment.js";
 
 //! =====================================
 //! For Development only.
@@ -69,7 +70,8 @@ $(document).ready(() => {
     titleSection(studentData),
     contactSection(studentData),
     keyDemoSection(studentData, latestEmploymentRecord),
-    populationSection(populationStr)
+    populationSection(populationStr),
+    enrollmentSection(enrollmentData)
   ];
   for (const section of sectionList) {
     $(section[0]).append(section[1]);

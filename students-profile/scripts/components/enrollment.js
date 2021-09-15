@@ -2,8 +2,8 @@
 //* =====================================================
 
 export const enrollmentSection = (dataList) => {
-  let body = "";
-  const totalHours = 0;
+  let rows = "";
+  let totalHours = 0;
   const header = `
   <thead>
     <tr class="blue-light-bg">
@@ -14,23 +14,28 @@ export const enrollmentSection = (dataList) => {
   </thead>`;
 
   for (const record of dataList) {
-    //      body = `
-    // <tbody>
-    //   <tr>
-    //     <td>${}</td>
-    //     <td>${}</td>
-    //     <td>${}</td>
-    //   </tr>
-    // </tbody>
-    // `;
+    const { ClassID, ActiveStudent, Hours } = record;
+    const status = ActiveStudent === "1" ? "Active" : "Inactive";
+    rows += `
+      <tr>
+        <td>${ClassID}</td>
+        <td>${status}</td>
+        <td>${Hours}</td>
+      </tr>
+      `;
+    totalHours += Number(Hours);
   }
+
+  console.log("totalHours :>> ", totalHours);
 
   const table = `
 <table class="table table-bordered enrollment-table">
-  ${header}${body}
+  ${header}
+  <tbody>
+    ${rows}
+  </tbody>
 </table>
 `;
-
   const sectionContent = `
 <div class="box-title">Current year enrollments</div>
 ${table}`;
