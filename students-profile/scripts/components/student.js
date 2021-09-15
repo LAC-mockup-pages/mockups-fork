@@ -79,7 +79,7 @@ export const keyDemoSection = (dataObj, employmentObj) => {
     .join("");
   const employmentElement = employmentObj
     ? createEmploymentTable(employmentObj)
-    : `<div class="no-data">Missing FY22 employment</div>`;
+    : `<div class="no-data">Missing FY${currentFiscalYear} employment</div>`;
   const sectionContent = `
   <div class="box-title">Key demographics</div>
   <div class="value">${SexDesc}</div>
