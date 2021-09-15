@@ -263,15 +263,14 @@ const dateValid = (date) => {
   return dateEval;
 };
 
-// Creates data object starter with AgencyID and UserID from
-// SESSION_VARIABLE content.
+// Creates data object starter with AgencyID, UserID, Fiscal Year from
+// SESSION_VARIABLE object with default values if Dev environment.
 const createCredentials = () => {
-  const AgencyID = SESSION_VARIABLE[0].AgencyID.startsWith("<%= Session")
-    ? "PRA"
-    : SESSION_VARIABLE[0].AgencyID;
-  const UserID = SESSION_VARIABLE[0].AuditUserID.startsWith("<%= Session")
-    ? "999999"
-    : SESSION_VARIABLE[0].AuditUserID;
+  const str = "<%= Session";
+  const { AgencyID, AuditUserID, FiscalYear } = SESSION_VARIABLE[0];
+  const agency = AgencyID.startsWith(str) ? "PRA" : AgencyID;
+  const user = AuditUserID.startsWith(str) ? "999999" : AuditUserID;
+  const FY = FiscalYear.startsWith(str) ? "2022" : FiscalYear;
 
-  return { AgencyID, UserID };
+  return { AgencyID: agency, AuditUserID: user, FiscalYear: FY };
 };
