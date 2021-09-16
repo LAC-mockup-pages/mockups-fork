@@ -10,37 +10,39 @@ export const enrollmentSection = (dataList) => {
   // empty object.
   if (dataList[0].ClassID) {
     const header = `
-  <thead>
-    <tr class="blue-light-bg">
-      <th>Course</th>
-      <th>Status</th>
-      <th>Contact hrs</th>
-    </tr>
-  </thead>`;
+      <thead>
+        <tr class="blue-light-bg">
+          <th>Course</th>
+          <th>Status</th>
+          <th>Contact hrs</th>
+        </tr>
+      </thead>
+  `;
     for (const record of dataList) {
       const { ClassID, ActiveStudent, Hours } = record;
       const status = ActiveStudent === "1" ? "Active" : "Inactive";
       rows += `
-      <tr>
-        <td>${ClassID}</td>
-        <td>${status}</td>
-        <td>${Hours}</td>
-      </tr>
+        <tr>
+          <td>${ClassID}</td>
+          <td>${status}</td>
+          <td>${Hours}</td>
+        </tr>
       `;
       totalHours += Number(Hours);
     }
     const table = `
-<table class="table table-bordered enrollment-table">
-  ${header}
-  <tbody>
-    ${rows}
-  </tbody>
-</table>
-<div class="total-hours blue-light-bg blue-text">Total contact hours: ${totalHours}</div>
+      <table class="table table-bordered enrollment-table">
+        ${header}
+        <tbody>
+          ${rows}
+        </tbody>
+      </table>
+      <div class="total-hours blue-light-bg blue-text">Total contact hours: ${totalHours}</div>
 `;
     sectionContent = `
-<div class="box-title">Current year enrollments</div>
-${table}`;
+      <div class="box-title">Current year enrollments</div>
+      ${table}
+`;
   } else {
     sectionContent = `
       <div class="box-title">Current year enrollments</div>
