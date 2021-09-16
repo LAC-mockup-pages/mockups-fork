@@ -17,6 +17,7 @@ import { enrollmentSection } from "./components/enrollment.js";
 const studentData = GetStudentProfile[0];
 const assessmentData = GetAssessmentProfile.slice(0);
 const enrollmentData = GetEnrollmentProfile.slice(0);
+// const enrollmentData = [{}];
 const employmentData = GetEmploymentProfile.slice(0);
 // const employmentData = [{}];
 //! =====================================
