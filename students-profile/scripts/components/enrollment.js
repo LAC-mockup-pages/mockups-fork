@@ -17,7 +17,6 @@ export const enrollmentSection = (dataList) => {
       <th>Contact hrs</th>
     </tr>
   </thead>`;
-
     for (const record of dataList) {
       const { ClassID, ActiveStudent, Hours } = record;
       const status = ActiveStudent === "1" ? "Active" : "Inactive";
@@ -30,9 +29,6 @@ export const enrollmentSection = (dataList) => {
       `;
       totalHours += Number(Hours);
     }
-
-    console.log("totalHours :>> ", totalHours);
-
     const table = `
 <table class="table table-bordered enrollment-table">
   ${header}
