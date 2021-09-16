@@ -40,7 +40,7 @@ export const enrollmentSection = (dataList) => {
     ${rows}
   </tbody>
 </table>
-<div class="total-hours blue-light-bg">Total contact hours: ${totalHours}</div>
+<div class="total-hours blue-light-bg blue-text">Total contact hours: ${totalHours}</div>
 `;
     sectionContent = `
 <div class="box-title">Current year enrollments</div>
