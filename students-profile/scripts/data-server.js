@@ -459,3 +459,15 @@ const GetEmploymentProfile = [
     IncomeFYDesc: ""
   }
 ];
+
+const GetOutcomeProfile = [
+  {
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    LastActiveMonth: "August 2021",
+    Q2_Outcome: "Q3 FY2021",
+    Q4_Outcome: "null",
+    HSE_Outcome: "Q1 FY2022",
+    FY_Funding: "EPE,WIOA-Title II"
+  }
+];
