@@ -11,17 +11,19 @@ import {
 import { enrollmentSection } from "./components/enrollment.js";
 import { assessmentSection } from "./components/assessment.js";
 import { fundingSection } from "./components/funding.js";
+import { exitSection } from "./components/exit.js";
 
 //! =====================================
 //! For Development only.
 //! Comment out for Production.
 //! =====================================
 const studentData = GetStudentProfile[0];
-const assessmentData = GetAssessmentProfile.slice(0);
-const enrollmentData = GetEnrollmentProfile.slice(0);
-// const enrollmentData = [{}];
-const employmentData = GetEmploymentProfile.slice(0);
-// const employmentData = [{}];
+// const assessmentData = GetAssessmentProfile.slice(0);
+const assessmentData = [{}];
+// const enrollmentData = GetEnrollmentProfile.slice(0);
+const enrollmentData = [{}];
+// const employmentData = GetEmploymentProfile.slice(0);
+const employmentData = [{}];
 const outcomeData = GetOutcomeProfile[0];
 // const outcomeData = [{}];
 //! =====================================
@@ -59,6 +61,7 @@ $(document).ready(() => {
   // const assessmentData =
   // const enrollmentData =
   // const employmentData =
+  // const outcomeData[0] =
   //! =====================================
 
   //* =====================================
@@ -70,7 +73,8 @@ $(document).ready(() => {
       )[0]
     : null;
   const populationStr = studentData.PopulationDesc;
-  const fundingSources = outcomeData.FY_Funding;
+  // const fundingSources = outcomeData.FY_Funding;
+  const fundingSources = "";
 
   const sectionList = [
     titleSection(studentData),
@@ -79,7 +83,8 @@ $(document).ready(() => {
     populationSection(populationStr),
     enrollmentSection(enrollmentData),
     assessmentSection(assessmentData),
-    fundingSection(fundingSources)
+    fundingSection(fundingSources),
+    exitSection(outcomeData)
   ];
   for (const section of sectionList) {
     $(section[0]).append(section[1]);
