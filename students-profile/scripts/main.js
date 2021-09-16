@@ -10,6 +10,7 @@ import {
 } from "./components/student.js";
 import { enrollmentSection } from "./components/enrollment.js";
 import { assessmentSection } from "./components/assessment.js";
+import { fundingSection } from "./components/funding.js";
 
 //! =====================================
 //! For Development only.
@@ -21,6 +22,8 @@ const enrollmentData = GetEnrollmentProfile.slice(0);
 // const enrollmentData = [{}];
 const employmentData = GetEmploymentProfile.slice(0);
 // const employmentData = [{}];
+const outcomeData = GetOutcomeProfile[0];
+// const outcomeData = [{}];
 //! =====================================
 
 //*=================================================
@@ -67,6 +70,7 @@ $(document).ready(() => {
       )[0]
     : null;
   const populationStr = studentData.PopulationDesc;
+  const fundingSources = outcomeData.FY_Funding;
 
   const sectionList = [
     titleSection(studentData),
@@ -74,7 +78,8 @@ $(document).ready(() => {
     keyDemoSection(studentData, latestEmploymentRecord),
     populationSection(populationStr),
     enrollmentSection(enrollmentData),
-    assessmentSection(assessmentData)
+    assessmentSection(assessmentData),
+    fundingSection(fundingSources)
   ];
   for (const section of sectionList) {
     $(section[0]).append(section[1]);
