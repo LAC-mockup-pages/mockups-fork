@@ -34,10 +34,6 @@ const outcomeData = GetOutcomeProfile[0];
 
 $(document).ready(() => {
   //TODO ==================================================
-  //TODO Add logic for sub nav bar tab selection
-  //TODO ==================================================
-
-  //TODO ==================================================
   //TODO Add logic for navigation from info-boxes
   //TODO ==================================================
 
