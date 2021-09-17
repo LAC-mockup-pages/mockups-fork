@@ -256,7 +256,7 @@ const GetAssessmentProfile = [
   }
 ];
 
-const GetEnrollmentProfile2 = [
+const GetAssessmentProfile2 = [
   {
     AgencyID: "PRA",
     Student_PKID: "1048303",

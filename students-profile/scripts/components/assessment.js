@@ -17,20 +17,13 @@ export const assessmentSection = (dataList) => {
       </thead>`;
 
     for (const record of dataList) {
-      const {
-        TestName,
-        TestDesc,
-        Form,
-        Level,
-        ScaleScore,
-        NRSLevel,
-        NYRSLevel
-      } = record;
+      const { TestName, TestDesc, TestForm, ScaleScore, NRSLevel, NYRSLevel } =
+        record;
       rows += `
       <tr>
         <td>${TestDesc}</td>
         <td>${TestName}</td>
-        <td>${Form}${Level}</td>
+        <td>${TestForm}</td>
         <td>${ScaleScore}</td>
         <td>${NRSLevel} / ${NYRSLevel}</td>
       </tr>`;

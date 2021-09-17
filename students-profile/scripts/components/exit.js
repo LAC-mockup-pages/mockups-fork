@@ -9,7 +9,6 @@ export const exitSection = (dataObj) => {
       return item === "null" ? "Not Applicable" : item;
     }
   );
-  console.log("valueList :>> ", valueList);
   const sectionContent = `
 <div class="box-title">Exit status</div>
 <div class="row">

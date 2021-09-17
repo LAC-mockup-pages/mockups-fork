@@ -18,12 +18,12 @@ import { exitSection } from "./components/exit.js";
 //! Comment out for Production.
 //! =====================================
 const studentData = GetStudentProfile[0];
-// const assessmentData = GetAssessmentProfile.slice(0);
-const assessmentData = [{}];
-// const enrollmentData = GetEnrollmentProfile.slice(0);
-const enrollmentData = [{}];
-// const employmentData = GetEmploymentProfile.slice(0);
-const employmentData = [{}];
+const assessmentData = GetAssessmentProfile2.slice(0);
+// const assessmentData = [{}];
+const enrollmentData = GetEnrollmentProfile.slice(0);
+// const enrollmentData = [{}];
+const employmentData = GetEmploymentProfile.slice(0);
+// const employmentData = [{}];
 const outcomeData = GetOutcomeProfile[0];
 // const outcomeData = [{}];
 //! =====================================
