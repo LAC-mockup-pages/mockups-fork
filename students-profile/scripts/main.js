@@ -89,4 +89,23 @@ $(document).ready(() => {
   for (const section of sectionList) {
     $(section[0]).append(section[1]);
   }
+
+  //* Navigation from sub navbar on top
+  $("#sub-nav li").click(function () {
+    $("#sub-nav li").removeClass("blue-light-bg blue-text");
+    $(this).toggleClass("blue-light-bg blue-text");
+    const rootUrl = "http://localhost:5500/";
+    const destinationsObj = {
+      details: "students-details",
+      assessments: "student-assessments",
+      enrollments: "student-enrollment",
+      goals: "student-goals"
+    };
+    const queryString = `/index.html?stid=${Student_PKID}`;
+    const destination = $(this).attr("data-target");
+    console.log("destination :>> ", destination);
+    const targetUrl = `${rootUrl}${destinationsObj[destination]}${queryString}`;
+
+    window.location.assign(targetUrl);
+  });
 });
