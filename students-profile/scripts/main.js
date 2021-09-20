@@ -104,22 +104,30 @@ $(document).ready(() => {
     const queryString = `?stid=${Student_PKID}`;
     const destination = $(this).attr("data-target");
     const targetUrl = `${rootUrl}${destinationsObj[destination]}${queryString}`;
-
     window.location.assign(targetUrl);
   });
 
   //* Navigation from info-boxes
-  $(".info-box").click(function (evnt) {
-    evnt.stopPropagation();
-    // console.log("=== Event hit ===");
-    const destination = $(this).hasClass("enrollments")
-      ? "enrollments"
-      : $(this).hasClass("assessments")
-      ? "assessments"
-      : "details";
+  $(".info-box")
+    .hover(function (evnt) {
+      evnt.stopPropagation();
+      $("td", this).toggleClass("blue-light-bg");
+    })
+    .blur(function (evnt) {
+      evnt.stopPropagation();
+      $("td", this).toggleClass("blue-light-bg");
+    })
+    .click(function (evnt) {
+      evnt.stopPropagation();
+      // console.log("=== Event hit ===");
+      const destination = $(this).hasClass("enrollments")
+        ? "enrollments"
+        : $(this).hasClass("assessments")
+        ? "assessments"
+        : "details";
 
-    const queryString = `?stid=${Student_PKID}`;
-    const targetUrl = `${rootUrl}${destinationsObj[destination]}${queryString}`;
-    window.location.assign(targetUrl);
-  });
+      const queryString = `?stid=${Student_PKID}`;
+      const targetUrl = `${rootUrl}${destinationsObj[destination]}${queryString}`;
+      window.location.assign(targetUrl);
+    });
 });

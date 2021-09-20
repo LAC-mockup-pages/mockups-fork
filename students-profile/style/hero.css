@@ -56,7 +56,6 @@
 
 .title-text {
   color: #fff;
-  /* color: #2479b5; */
 }
 
 .title-text:last-of-type {
@@ -70,6 +69,15 @@
   border-radius: 1em;
   line-height: 1.8em;
   margin-bottom: 2%;
+}
+
+.info-box:hover {
+  background-color: #d3e4f0;
+  cursor: pointer;
+}
+
+.info-box > .table > tbody > tr {
+  background-color: inherit;
 }
 
 .no-data {
