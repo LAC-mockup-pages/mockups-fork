@@ -40,7 +40,8 @@ NB: Date is last modification date.
 | Roughing/static lay out | Done, accepted |            |
 | Data objects            | Done           | 09/16/2021 |
 | Main coding             | Done           | 09/20/2021 |
-| Navigation to/from page | WIP            | 09/17/2021 |
+| Navigation to/from page | Done           | 09/20/2021 |
+| Ready for Alpha         | Done           | 09/20/2021 |
 | Alpha build             |                |            |
 | Review                  |                |            |
 | Alterations             |                |            |
