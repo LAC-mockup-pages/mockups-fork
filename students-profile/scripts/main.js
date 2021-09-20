@@ -26,6 +26,7 @@ const employmentData = GetEmploymentProfile.slice(0);
 // const employmentData = [{}];
 const outcomeData = GetOutcomeProfile[0];
 // const outcomeData = [{}];
+
 //! =====================================
 
 //*=================================================
@@ -49,16 +50,28 @@ $(document).ready(() => {
 
   const requestObj = [{ ...credentials, Student_PKID }];
 
-  //! =====================================
+  //! =============================================================
   //! For Production, this section regroups the end points
   //! for the different requests to the back-end, using requestObj.
-  //! =====================================
+  //! =============================================================
   // const studentData[0] =
   // const assessmentData =
   // const enrollmentData =
   // const employmentData =
   // const outcomeData[0] =
-  //! =====================================
+
+  // Navigation variables.
+  // In Production, update with actual rootUrl and destinations
+  // once they are known.
+  const rootUrl = "http://localhost:5500/";
+  const destinationsObj = {
+    details: "students-details/index.html",
+    assessments: "student-assessments/index.html",
+    enrollments: "student-enrollment/index.html",
+    goals: "student-goals/index.html"
+  };
+
+  //! =============================================================
 
   //* =====================================
 
@@ -90,16 +103,8 @@ $(document).ready(() => {
   $("#sub-nav li").click(function () {
     $("#sub-nav li").removeClass("blue-light-bg blue-text");
     $(this).toggleClass("blue-light-bg blue-text");
-    const rootUrl = "http://localhost:5500/";
-    const destinationsObj = {
-      details: "students-details",
-      assessments: "student-assessments",
-      enrollments: "student-enrollment",
-      goals: "student-goals"
-    };
-    const queryString = `/index.html?stid=${Student_PKID}`;
+    const queryString = `?stid=${Student_PKID}`;
     const destination = $(this).attr("data-target");
-    console.log("destination :>> ", destination);
     const targetUrl = `${rootUrl}${destinationsObj[destination]}${queryString}`;
 
     window.location.assign(targetUrl);
