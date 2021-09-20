@@ -34,10 +34,6 @@ const outcomeData = GetOutcomeProfile[0];
 //*=================================================
 
 $(document).ready(() => {
-  //TODO ==================================================
-  //TODO Add logic for navigation from info-boxes
-  //TODO ==================================================
-
   //* =====================================
   //* At first rendering
   //* =====================================
@@ -100,13 +96,29 @@ $(document).ready(() => {
   }
 
   //* Navigation from sub navbar on top
-  $("#sub-nav li").click(function () {
+  $("#sub-nav li").click(function (evnt) {
+    evnt.stopPropagation();
     $("#sub-nav li").removeClass("blue-light-bg blue-text");
     $(this).toggleClass("blue-light-bg blue-text");
     const queryString = `?stid=${Student_PKID}`;
     const destination = $(this).attr("data-target");
     const targetUrl = `${rootUrl}${destinationsObj[destination]}${queryString}`;
 
+    window.location.assign(targetUrl);
+  });
+
+  //* Navigation from info-boxes
+  $(".info-box").click(function (evnt) {
+    evnt.stopPropagation();
+    // console.log("=== Event hit ===");
+    const destination = $(this).hasClass("enrollments")
+      ? "enrollments"
+      : $(this).hasClass("assessments")
+      ? "assessments"
+      : "details";
+
+    const queryString = `?stid=${Student_PKID}`;
+    const targetUrl = `${rootUrl}${destinationsObj[destination]}${queryString}`;
     window.location.assign(targetUrl);
   });
 });
