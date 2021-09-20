@@ -49,6 +49,7 @@ $(document).ready(() => {
   //! =============================================================
   //! For Production, this section regroups the end points
   //! for the different requests to the back-end, using requestObj.
+  //! Navigation variables are defined here as well.
   //! =============================================================
   // const studentData[0] =
   // const assessmentData =
