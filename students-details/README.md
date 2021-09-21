@@ -29,3 +29,20 @@ NB: Date is last modification date.
 ### Training Notes
 
 ### Dev Notes
+
+| Steps                   | Status         | Date       |
+| ----------------------- | -------------- | ---------- |
+| Screenshots             | Done           |            |
+| Trello card             | Done           |            |
+| Initial VSC set up      | Done           |            |
+| Mockup                  | Done           |            |
+| Roughing/static lay out | Done, accepted |            |
+| Data objects            | Done           | 09/16/2021 |
+| Main coding             |                |            |
+| Navigation to/from page |                |            |
+| Ready for Alpha         |                |            |
+| Alpha build             |                |            |
+| Review                  |                |            |
+| Alterations             |                |            |
+| Final review            |                |            |
+| Golden                  |                |            |
