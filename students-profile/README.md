@@ -8,19 +8,24 @@ Landing page with comprehensive information for the selected student.
 
 ```javascript
 /students-profile
-├── [09/15/21]  README.md
-├── [09/15/21]  index.html
-├── [09/15/21]  scripts
-│   ├── [09/15/21]  components
-│   │   ├── [09/15/21]  enrollment.js
-│   │   └── [09/15/21]  student.js
-│   ├── [09/15/21]  data-server.js
-│   ├── [09/15/21]  main.js
-│   └── [09/15/21]  nav-frame.js
-└── [09/15/21]  style
-    ├── [09/15/21]  hero.css
-    ├── [09/15/21]  index.css
-    └── [09/15/21]  nav-frame.css
+├── [09/21/21]  README.md
+├── [09/21/21]  index.html
+├── [09/21/21]  scripts
+│   ├── [09/21/21]  components
+│   │   ├── [09/21/21]  assessment.js
+│   │   ├── [09/21/21]  enrollment.js
+│   │   ├── [09/21/21]  exit.js
+│   │   ├── [09/21/21]  funding.js
+│   │   └── [09/21/21]  student.js
+│   ├── [09/21/21]  data-server.js
+│   ├── [09/21/21]  main.js
+│   └── [09/21/21]  nav-frame.js
+└── [09/21/21]  style
+    ├── [09/21/21]  hero.css
+    ├── [09/21/21]  index.css
+    └── [09/21/21]  nav-frame.css
+
+3 directories, 13 files
 ```
 
 NB: Date is last modification date.
