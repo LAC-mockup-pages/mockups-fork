@@ -58,16 +58,15 @@ const barriersProcess = () => {
 
 export const finalSave = () => {
   const dataList = $("form").not(".barriers-form").serializeArray();
-
+  const Student_PKID = $(".hero").attr("data-studentpkid");
   // createCredentials <== /helpers/helperFunctions.js
   const credentials = createCredentials();
   // createObject() <== /helpers/helperFunctions.js
   const updatedObjWithRaceID = createObject(raceIDProcess(dataList));
-  // console.log("updatedListWithRaceID :>> ", updatedListWithRaceID);
   const barriersFields = barriersProcess();
   console.log("barriersFields :>> ", barriersFields);
-
   const saveObj = {
+    Student_PKID,
     ...credentials,
     ...updatedObjWithRaceID,
     ...barriersFields
