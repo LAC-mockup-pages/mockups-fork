@@ -341,6 +341,9 @@
       <div class="container-fluid" id="entry-bloc"></div>
       <section class="page-title blue-bg blue-light-text">
         New Student Entry - ISRF
+        <div class="required-text blue-bg blue-light-text">
+          Elements in red are required
+        </div>
       </section>
       <!-- Start Name | Contact | SSN | Gender | Race -->
 
@@ -352,7 +355,7 @@
         <!-- Name section  -->
         <div class="container-fluid row">
           <div class="input-field form-group col-sm-4">
-            <label for="First">First name</label>
+            <label class="red-text" for="First">First name</label>
             <input
               class="medium-input"
               id="first-name"
@@ -372,7 +375,7 @@
             />
           </div>
           <div class="input-field form-group col-sm-4">
-            <label for="Last">Last name</label>
+            <label class="red-text" for="Last">Last name</label>
             <input
               class="medium-input"
               type="text"
@@ -386,7 +389,7 @@
         <!-- DOB, start date -->
         <div class="container-fluid row">
           <div class="input-field form-group col-sm-6">
-            <label for="BirthDate">Birth date</label>
+            <label class="red-text" for="BirthDate">Birth date</label>
             <input
               type="text"
               id="birthdate"
@@ -396,7 +399,9 @@
             />
           </div>
           <div class="input-field form-group col-sm-6">
-            <label for="BeginDate">Original prog. start date</label>
+            <label class="red-text" for="BeginDate"
+              >Original prog. start date</label
+            >
             <input
               id="begin-date"
               type="text"
@@ -525,7 +530,7 @@
           </div>
           <form class="gender-form form-style" role="form">
             <div class="input-field form-group">
-              <label for="Sex"></label>
+              <label class="red-text" for="Sex">Required</label>
               <select id="gender-select" class="modal-select" name="Sex">
                 <option value>Select a gender</option>
                 <option value="M">Male</option>
@@ -539,10 +544,9 @@
           <div class="sub-header blue-bg blue-light-text">
             <div class="sub-header-title">Employment Status</div>
           </div>
-          <form class="employment-form row form-style" role="form">
-            <div class="col-sm-1"></div>
-            <div class="input-field form-group col-sm-9">
-              <label for="Employment"> </label>
+          <form class="employment-form form-style" role="form">
+            <div class="input-field form-group">
+              <label class="red-text" for="Employment">Status</label>
               <select
                 id="employment-select"
                 class="modal-select"
@@ -561,7 +565,8 @@
                 <option value="I">Empl - Military sep. Pending</option>
               </select>
             </div>
-            <div class="input-field form-group col-sm-2">
+            <div class="input-field form-group">
+              <label class="red-text" for="FY">Fiscal Year</label>
               <select id="FY-select" class="modal-select" name="FY"></select>
             </div>
           </form>
@@ -574,7 +579,7 @@
           </div>
           <form class="ethnicity-form form-style" role="form">
             <div class="input-field form-group">
-              <label for="EthnicityID">Ethnicity</label>
+              <label class="red-text" for="EthnicityID">Ethnicity</label>
               <select
                 id="ethnicity-select"
                 class="modal-select"
@@ -585,7 +590,7 @@
                 <option value="N">Non-Hispanic/Latino/a</option>
               </select>
               <div class="input-field form-group race-select">
-                <label for="RaceID">Race</label>
+                <label class="red-text" for="RaceID">Race</label>
                 <select class="modal-select" name="RaceID">
                   <option value>Select AT LEAST ONE</option>
                 </select>
@@ -604,13 +609,17 @@
       <form class="education-form form-style" role="form">
         <div class="container-fluid row">
           <div class="input-field form-group col-sm-6">
-            <label for="Grade">Highest grade completed in US</label>
+            <label class="red-text" for="Grade"
+              >Highest grade completed in US</label
+            >
             <select id="usgrade-select" class="modal-select" name="Grade">
               <option value>Select a grade</option>
             </select>
           </div>
           <div class="input-field form-group col-sm-6">
-            <label for="NYSGrade">Highest grade completed in NY State</label>
+            <label class="red-text" for="NYSGrade"
+              >Highest grade completed in NY State</label
+            >
             <select id="nysgrade-select" class="modal-select" name="NYSGrade">
               <option value>Select a grade</option>
             </select>
@@ -620,7 +629,7 @@
         <div class="container-fluid row">
           <div class="col-sm-6">
             <div class="input-field form-group">
-              <label for="LastSchoolNYS"
+              <label class="red-text" for="LastSchoolNYS"
                 >Last school attended (if NY State)</label
               >
               <input type="text" name="LastSchoolNYS" autocomplete="off" />
@@ -630,7 +639,9 @@
 
         <div class="container-fluid row">
           <div class="col-sm-6">
-            <label for="CredentialUS">Highest credential obtained </label>
+            <label class="red-text" for="CredentialUS"
+              >Highest credential obtained
+            </label>
             <div class="input-field form-group">
               <label></label>
               <select id="us-select" class="modal-select" name="CredentialUS">
@@ -662,7 +673,7 @@
         <div class="container-fluid row">
           <div class="col-sm-6">
             <div class="input-field form-group">
-              <label for="YearsUSSchools"
+              <label class="red-text" for="YearsUSSchools"
                 >Years of schooling in other Countries</label
               >
               <select
@@ -746,7 +757,7 @@
         <div class="container-fluid row">
           <div class="col-sm-6">
             <div class="input-field form-group barrier-group">
-              <label for="Barriers">Choose AT LEAST ONE</label>
+              <label class="red-text" for="Barriers">Choose AT LEAST ONE</label>
               <select class="modal-select" name="Barriers">
                 <option value>Select a value</option>
               </select>

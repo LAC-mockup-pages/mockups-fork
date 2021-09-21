@@ -24,7 +24,7 @@
   text-align: right;
   line-height: 34px;
   padding-right: 1%;
-  color: #fff;
+  color: inherit;
   margin-bottom: 1%;
 }
 
@@ -35,6 +35,12 @@
   padding-left: 1%;
   margin-bottom: 0.5%;
   text-align: center;
+}
+
+.required-text {
+  text-align: left;
+  font-size: 1em;
+  font-weight: 500;
 }
 
 .children-header {
@@ -50,10 +56,6 @@
 .container-fluid {
   padding-left: 0%;
   padding-right: 0%;
-}
-
-.col-sm-9 {
-  padding-left: 0px;
 }
 
 .form-style {
@@ -75,10 +77,6 @@
 
 #state-select {
   width: 52%;
-}
-
-#FY-select {
-  width: 100%;
 }
 
 /* Duplicates table */
