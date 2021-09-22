@@ -274,6 +274,7 @@ $(document).ready(() => {
   $("#address").focusin((evnt) => {
     evnt.stopPropagation();
     evnt.preventDefault();
+    if ($(".hero").attr("data-studentpkid")) return;
     const agency = SESSION_VARIABLE[0].AgencyID.startsWith("<%= Session")
       ? "PRA"
       : SESSION_VARIABLE[0].AgencyID;
