@@ -48,6 +48,24 @@ const formatSSN = (ssn) => {
   return val.substring(0, 11);
 };
 
+const formatPhoneWithDashes = (phone) => {
+  // remove all non-dash and non-numerals
+  let val = phone.replace(/[^\d-]/g, "");
+  // add the first dash if number from the second group appear
+  val = val.replace(/^(\d{3})-?(\d{1,2})/, "$1-$2");
+  // add the second dash if numbers from the third group appear
+  val = val.replace(/^(\d{3})-?(\d{3})-?(\d{1,4})/, "$1-$2-$3");
+  // remove misplaced dashes
+  val = val
+    .split("")
+    .filter((val, idx) => {
+      return val !== "-" || idx === 3 || idx === 7;
+    })
+    .join("");
+  // enforce max length
+  return val.substring(0, 12);
+};
+
 const createOptionList = (dataObj, defaultValue) => {
   const optionList = dataObj.map((record) => {
     const [key, value] = Object.keys(record);
@@ -336,8 +354,12 @@ $(document).ready(() => {
   //* SSN dynamic formating
   $("#SSN").keyup(function (evnt) {
     evnt.stopPropagation();
-
     $(this).val(formatSSN($(this).val()));
+  });
+
+  $("#home-phone, #mobile-phone, #emergency-phone").keyup(function (evnt) {
+    evnt.stopPropagation();
+    $(this).val(formatPhoneWithDashes($(this).val()));
   });
 
   //* Redirect user to the selected student Profil page
