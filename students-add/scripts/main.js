@@ -30,7 +30,7 @@ const increaseBar = (elem, tableContent) => {
   }
 };
 
-const formatSSN = (ssn) => {
+const formatSSNWithDashes = (ssn) => {
   // remove all non-dash and non-numerals
   let val = ssn.replace(/[^\d-]/g, "");
   // add the first dash if number from the second group appear
@@ -351,10 +351,10 @@ $(document).ready(() => {
     }
   });
 
-  //* SSN dynamic formating
+  //* SSN and phone numbers dynamic formating
   $("#SSN").keyup(function (evnt) {
     evnt.stopPropagation();
-    $(this).val(formatSSN($(this).val()));
+    $(this).val(formatSSNWithDashes($(this).val()));
   });
 
   $("#home-phone, #mobile-phone, #emergency-phone").keyup(function (evnt) {
