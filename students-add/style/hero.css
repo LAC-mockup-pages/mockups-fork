@@ -72,11 +72,15 @@
 }
 
 .input-field > .medium-input {
-  width: 52%;
+  width: 50%;
 }
 
 #state-select {
   width: 52%;
+}
+
+.input-field > .medium-label {
+  width: 34%;
 }
 
 /* Duplicates table */
