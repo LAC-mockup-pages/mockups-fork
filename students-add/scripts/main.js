@@ -75,7 +75,7 @@ const createStaffList = (list) => {
 };
 
 export const transformDate = (strDate) => {
-  const dateObj = DT.fromFormat(strDate, "LL/dd/yyyy");
+  const dateObj = DT.fromFormat(strDate, "yyyy-LL-dd");
   return dateObj.toFormat("dLyyyy");
 };
 
@@ -209,8 +209,9 @@ $(document).ready(() => {
     const first = $("#first-name").val();
     const last = $("#last-name").val();
     const dateOfBirth = $("#birthdate").val();
-    $("#duplicates-table").empty();
     const table = createDuplicatesTable(first, last, dateOfBirth);
+    if (!table) return;
+    $("#duplicates-table").empty();
     $("#modalBloc").modal("toggle");
     const element = $("#load-bar");
     // $("#bar-container").toggleClass("hidden");

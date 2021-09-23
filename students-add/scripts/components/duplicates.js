@@ -27,8 +27,12 @@ export const createDuplicatesTable = (firstName, lastName, dateOfBirth) => {
       BirthDate: "01/01/1982"
     }
   ];
+
+  // const possibleDuplicates = [{}];
   //! ==========================================
 
+  // Check if possibleDuplicates is empty to avoid modal display
+  if (!possibleDuplicates[0].ID) return null;
   // createHeaders() <== helperFunctions.js
   const tableHeader = createHeaders([
     "Last name",
