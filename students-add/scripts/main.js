@@ -2,6 +2,7 @@
 //* Actions and Logic for local page
 //*=================================================
 
+import { initialCheck } from "./components/data-check.js";
 import { finalSave, initialSave } from "./components/data-save.js";
 import {
   createDuplicatesTable,
@@ -189,7 +190,6 @@ $(document).ready(() => {
   //* Removes hidden class and table on closing modal
   $("#close-button").click(() => {
     const buttonText = $("#close-button").text();
-    console.log("buttonText :>> ", buttonText);
     if (buttonText.includes("continue")) {
       $("#bar-container").toggleClass("hidden");
       $("#modalBloc").modal("toggle");
@@ -292,7 +292,10 @@ $(document).ready(() => {
   $("#address").focusin((evnt) => {
     evnt.stopPropagation();
     evnt.preventDefault();
+    // Avoiding going through initial save again
     if ($(".hero").attr("data-studentpkid")) return;
+
+    // Retrieving credentials for createShortSaveObject()
     const agency = SESSION_VARIABLE[0].AgencyID.startsWith("<%= Session")
       ? "PRA"
       : SESSION_VARIABLE[0].AgencyID;
@@ -307,6 +310,10 @@ $(document).ready(() => {
           item.name
         )
       );
+    const emptyValuesFound = initialCheck(dataList);
+    if (emptyValuesFound) {
+    }
+
     const shortSaveObj = createShortSaveObj(dataList, agency, user);
     const studentID = shortSaveObj[0].StudentID;
     // const studentID = "AdamsAlbertPRA2252017111981";
