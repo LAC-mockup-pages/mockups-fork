@@ -359,9 +359,23 @@ $(document).ready(() => {
   $("#save-button").click((evnt) => {
     evnt.stopPropagation();
     evnt.preventDefault();
-
     finalSave();
     const selectedId = $(".hero").attr("data-studentpkid");
     redirectToProfile(selectedId);
+  });
+
+  //* TEST BUTTON ACTION
+
+  let flag = true;
+  $("#test-button").click(function (evnt) {
+    evnt.stopPropagation();
+    console.log("first flag :>> ", flag);
+
+    $(".id-form input").prop("disabled", flag);
+    $("form:not(.id-form) input").prop("disabled", !flag);
+    $("form:not(.id-form) select").prop("disabled", !flag);
+
+    flag = flag ? false : true;
+    console.log("end flag :>> ", flag);
   });
 });
