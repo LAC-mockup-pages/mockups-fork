@@ -361,6 +361,10 @@
               id="first-name"
               type="text"
               name="First"
+              required
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Please fill this field"
               autocomplete="off"
             />
           </div>
@@ -381,6 +385,10 @@
               type="text"
               id="last-name"
               name="Last"
+              required
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Please fill this field"
               autocomplete="off"
             />
           </div>
@@ -394,6 +402,10 @@
               type="date"
               id="birthdate"
               name="BirthDate"
+              required
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Please fill this field"
               autocomplete="off"
             />
           </div>
@@ -403,6 +415,10 @@
               id="begin-date"
               type="date"
               name="BeginDate"
+              required
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Please fill this field"
               autocomplete="off"
             />
           </div>
@@ -542,7 +558,15 @@
           <form class="gender-form form-style" role="form">
             <div class="input-field form-group">
               <label class="red-text" for="Sex">Required</label>
-              <select id="gender-select" class="modal-select" name="Sex">
+              <select
+                id="gender-select"
+                class="modal-select"
+                name="Sex"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
+              >
                 <option value>Select a gender</option>
                 <option value="M">Male</option>
                 <option value="F">Female</option>
@@ -562,6 +586,10 @@
                 id="employment-select"
                 class="modal-select"
                 name="Employment"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
               >
                 <option value>Select a status</option>
                 <option value="A">Employed full-time</option>
@@ -582,6 +610,10 @@
                 id="FY-select"
                 class="modal-select small-input"
                 name="FY"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
               ></select>
             </div>
           </form>
@@ -598,6 +630,10 @@
               <select
                 id="ethnicity-select"
                 class="modal-select"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
                 name="EthnicityID"
               >
                 <option value>Select ONE</option>
@@ -606,7 +642,14 @@
               </select>
               <div class="input-field form-group race-select">
                 <label class="red-text" for="RaceID">Race</label>
-                <select class="modal-select" name="RaceID">
+                <select
+                  class="modal-select"
+                  name="RaceID"
+                  required
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Please fill this field"
+                >
                   <option value>Select AT LEAST ONE</option>
                 </select>
               </div>
@@ -627,7 +670,15 @@
             <label class="red-text" for="Grade"
               >Highest grade completed in US</label
             >
-            <select id="usgrade-select" class="modal-select" name="Grade">
+            <select
+              id="usgrade-select"
+              class="modal-select"
+              name="Grade"
+              required
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Please fill this field"
+            >
               <option value>Select a grade</option>
             </select>
           </div>
@@ -635,7 +686,15 @@
             <label class="red-text" for="NYSGrade"
               >Highest grade completed in NY State</label
             >
-            <select id="nysgrade-select" class="modal-select" name="NYSGrade">
+            <select
+              id="nysgrade-select"
+              class="modal-select"
+              name="NYSGrade"
+              required
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Please fill this field"
+            >
               <option value>Select a grade</option>
             </select>
           </div>
@@ -647,7 +706,15 @@
               <label class="red-text" for="LastSchoolNYS"
                 >Last school attended (if NY State)</label
               >
-              <input type="text" name="LastSchoolNYS" autocomplete="off" />
+              <input
+                type="text"
+                name="LastSchoolNYS"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
+                autocomplete="off"
+              />
             </div>
           </div>
         </div>
@@ -659,7 +726,15 @@
             </label>
             <div class="input-field form-group">
               <label></label>
-              <select id="us-select" class="modal-select" name="CredentialUS">
+              <select
+                id="us-select"
+                class="modal-select"
+                name="CredentialUS"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
+              >
                 <option value="1" selected>in the US</option>
                 <option value="2">in another country</option>
               </select>
@@ -674,6 +749,10 @@
                 id="cred-select"
                 class="modal-select"
                 name="HighestCredential"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
               >
                 <option value>Select a credential</option>
                 <option value="1">Sec. school diploma or alt.</option>
@@ -695,6 +774,10 @@
                 id="schoolingyears-select"
                 class="modal-select"
                 name="YearsUSSchools"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
               >
                 <option value="">Select a number</option>
                 <option value="NA">NA</option>
@@ -773,14 +856,28 @@
           <div class="col-sm-6">
             <div class="input-field form-group barrier-group">
               <label class="red-text" for="Barriers">Choose AT LEAST ONE</label>
-              <select class="modal-select" name="Barriers">
+              <select
+                class="modal-select"
+                name="Barriers"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
+              >
                 <option value>Select a value</option>
               </select>
             </div>
           </div>
           <div class="col-sm-3">
             <div class="input-field form-group">
-              <select class="modal-select medium-input" name="yes-no">
+              <select
+                class="modal-select medium-input"
+                name="yes-no"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
+              >
                 <option value>Select a value</option>
                 <option value="0">No</option>
                 <option value="1">Yes</option>
