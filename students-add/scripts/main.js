@@ -2,7 +2,7 @@
 //* Actions and Logic for local page
 //*=================================================
 
-import { initialCheck } from "./components/data-check.js";
+import { flagEmptyRequired, initialCheck } from "./components/data-check.js";
 import { finalSave, initialSave } from "./components/data-save.js";
 import {
   createDuplicatesTable,
@@ -294,15 +294,6 @@ $(document).ready(() => {
     evnt.preventDefault();
     // Avoiding going through initial save again
     if ($(".hero").attr("data-studentpkid")) return;
-
-    // Retrieving credentials for createShortSaveObject()
-    const agency = SESSION_VARIABLE[0].AgencyID.startsWith("<%= Session")
-      ? "PRA"
-      : SESSION_VARIABLE[0].AgencyID;
-    const user = SESSION_VARIABLE[0].AuditUserID.startsWith("<%= Session")
-      ? "0000001"
-      : SESSION_VARIABLE[0].AuditUserID;
-
     const dataList = $(".id-form")
       .serializeArray()
       .filter((item) =>
@@ -312,32 +303,36 @@ $(document).ready(() => {
       );
     const emptyValuesFound = initialCheck(dataList);
     if (emptyValuesFound) {
-    }
-
-    const shortSaveObj = createShortSaveObj(dataList, agency, user);
-    const studentID = shortSaveObj[0].StudentID;
-    // const studentID = "AdamsAlbertPRA2252017111981";
-    // console.log("shortSaveObj :>> ", shortSaveObj);
-    const duplicatesList = JSON.parse(
-      $("#duplicates-table").attr("data-duplicates")
-    );
-    const exactDuplicate = duplicatesList
-      ? duplicatesList.find((student) => student.StudentID === studentID)
-      : "";
-    if (exactDuplicate) {
-      const newTableBody = `<tbody>${replaceTableBody(exactDuplicate)}</tbody>`;
-      $("#duplicates-table tbody").replaceWith(newTableBody);
-      // Enables customized tooltips
-      $("[data-toggle='tooltip']").tooltip();
-      $("#bar-container").toggleClass("hidden");
-      $(".modal-title").text("This student already exists in the database.");
-      $("#close-button").text("Close and enter another student");
-      $("#modalBloc").modal("toggle");
+      flagEmptyRequired(emptyValuesFound);
     } else {
-      const response = initialSave(shortSaveObj);
-      const studentPKID = response[0].ID;
-      $(".hero").attr("data-studentpkid", studentPKID);
-      $(".hero").attr("data-studentid", studentID);
+      const { AgencyID, AuditUserID } = createCredentials();
+      const shortSaveObj = createShortSaveObj(dataList, AgencyID, AuditUserID);
+      const studentID = shortSaveObj[0].StudentID;
+      // const studentID = "AdamsAlbertPRA2252017111981";
+      console.log("shortSaveObj :>> ", shortSaveObj);
+      const duplicatesList = JSON.parse(
+        $("#duplicates-table").attr("data-duplicates")
+      );
+      const exactDuplicate = duplicatesList
+        ? duplicatesList.find((student) => student.StudentID === studentID)
+        : "";
+      if (exactDuplicate) {
+        const newTableBody = `<tbody>${replaceTableBody(
+          exactDuplicate
+        )}</tbody>`;
+        $("#duplicates-table tbody").replaceWith(newTableBody);
+        // Enables customized tooltips
+        $("[data-toggle='tooltip']").tooltip();
+        $("#bar-container").toggleClass("hidden");
+        $(".modal-title").text("This student already exists in the database.");
+        $("#close-button").text("Close and enter another student");
+        $("#modalBloc").modal("toggle");
+      } else {
+        const response = initialSave(shortSaveObj);
+        const studentPKID = response[0].ID;
+        $(".hero").attr("data-studentpkid", studentPKID);
+        $(".hero").attr("data-studentid", studentID);
+      }
     }
   });
 
