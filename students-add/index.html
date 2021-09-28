@@ -428,7 +428,13 @@
         <div class="container-fluid row">
           <div class="input-field form-group col-sm-6">
             <label for="Address">Address</label>
-            <input id="address" type="text" name="Address" autocomplete="off" />
+            <input
+              id="address"
+              type="text"
+              name="Address"
+              autocomplete="off"
+              disabled
+            />
           </div>
         </div>
 
@@ -440,12 +446,18 @@
               type="text"
               name="City"
               autocomplete="off"
+              disabled
             />
           </div>
 
           <div class="input-field form-group col-sm-4">
             <label for="State">State</label>
-            <select id="state-select" class="modal-select" name="State">
+            <select
+              id="state-select"
+              class="modal-select"
+              name="State"
+              disabled
+            >
               <option value>Select a state</option>
             </select>
           </div>
@@ -456,6 +468,7 @@
               type="text"
               name="Zip"
               autocomplete="off"
+              disabled
             />
           </div>
         </div>
@@ -470,6 +483,7 @@
               id="home-phone"
               name="Phone"
               placeholder="123-456-7890"
+              disabled
             />
           </div>
           <div class="input-field form-group col-sm-4">
@@ -481,6 +495,7 @@
               id="mobile-phone"
               placeholder="123-456-7890"
               autocomplete="off"
+              disabled
             />
           </div>
           <div class="input-field form-group col-sm-4">
@@ -490,6 +505,7 @@
               type="email"
               name="StudEmail"
               autocomplete="off"
+              disabled
             />
           </div>
         </div>
@@ -504,11 +520,17 @@
               id="emergency-phone"
               placeholder="123-456-7890"
               autocomplete="off"
+              disabled
             />
           </div>
           <div class="input-field form-group col-sm-6">
             <label for="EmergencyName">Contact Name</label>
-            <input type="text" name="EmergencyName" autocomplete="off" />
+            <input
+              type="text"
+              name="EmergencyName"
+              autocomplete="off"
+              disabled
+            />
           </div>
         </div>
       </form>
@@ -529,6 +551,7 @@
                 name="SSN"
                 autocomplete="off"
                 placeholder="123-45-6789"
+                disabled
               />
             </div>
           </div>
@@ -542,6 +565,7 @@
                 id="nossn-select"
                 class="modal-select"
                 name="NoSSNVisaStaff"
+                disabled
               >
                 <option value>Select a staff</option>
               </select>
@@ -566,6 +590,7 @@
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Please fill this field"
+                disabled
               >
                 <option value>Select a gender</option>
                 <option value="M">Male</option>
@@ -590,6 +615,7 @@
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Please fill this field"
+                disabled
               >
                 <option value>Select a status</option>
                 <option value="A">Employed full-time</option>
@@ -614,6 +640,7 @@
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Please fill this field"
+                disabled
               ></select>
             </div>
           </form>
@@ -635,6 +662,7 @@
                 data-placement="bottom"
                 title="Please fill this field"
                 name="EthnicityID"
+                disabled
               >
                 <option value>Select ONE</option>
                 <option value="H">Hispanic/Latino/a</option>
@@ -649,6 +677,7 @@
                   data-toggle="tooltip"
                   data-placement="bottom"
                   title="Please fill this field"
+                  disabled
                 >
                   <option value>Select AT LEAST ONE</option>
                 </select>
@@ -678,6 +707,7 @@
               data-toggle="tooltip"
               data-placement="bottom"
               title="Please fill this field"
+              disabled
             >
               <option value>Select a grade</option>
             </select>
@@ -694,6 +724,7 @@
               data-toggle="tooltip"
               data-placement="bottom"
               title="Please fill this field"
+              disabled
             >
               <option value>Select a grade</option>
             </select>
@@ -714,6 +745,7 @@
                 data-placement="bottom"
                 title="Please fill this field"
                 autocomplete="off"
+                disabled
               />
             </div>
           </div>
@@ -734,6 +766,7 @@
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Please fill this field"
+                disabled
               >
                 <option value="1" selected>in the US</option>
                 <option value="2">in another country</option>
@@ -753,6 +786,7 @@
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Please fill this field"
+                disabled
               >
                 <option value>Select a credential</option>
                 <option value="1">Sec. school diploma or alt.</option>
@@ -778,6 +812,7 @@
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Please fill this field"
+                disabled
               >
                 <option value="">Select a number</option>
                 <option value="NA">NA</option>
@@ -807,14 +842,24 @@
         <div class="col-sm-6">
           <div class="input-field form-group">
             <label for="Parent">Parent or guardian of a child/children</label>
-            <select name="Parent" id="parent-select" class="modal-select">
+            <select
+              name="Parent"
+              id="parent-select"
+              class="modal-select"
+              disabled
+            >
               <option value="0" selected>No</option>
               <option value="1">Yes</option>
             </select>
           </div>
           <div class="input-field form-group">
             <label for="SingleParent">Single parent</label>
-            <select name="SingleParent" id="single-select" class="modal-select">
+            <select
+              name="SingleParent"
+              id="single-select"
+              class="modal-select"
+              disabled
+            >
               <option value="0" selected>No</option>
               <option value="1">Yes</option>
             </select>
@@ -831,16 +876,31 @@
             <tbody>
               <tr>
                 <td class="cell-data">
-                  <input class="cell-input" name="PreChild" value="0" />
+                  <input
+                    class="cell-input"
+                    name="PreChild"
+                    value="0"
+                    disabled
+                  />
                 </td>
                 <td class="cell-data">
-                  <input class="cell-input" name="ElemChild" value="0" />
+                  <input
+                    class="cell-input"
+                    name="ElemChild"
+                    value="0"
+                    disabled
+                  />
                 </td>
                 <td class="cell-data">
-                  <input class="cell-input" name="JHSChild" value="0" />
+                  <input
+                    class="cell-input"
+                    name="JHSChild"
+                    value="0"
+                    disabled
+                  />
                 </td>
                 <td class="cell-data">
-                  <input class="cell-input" name="HSChild" value="0" />
+                  <input class="cell-input" name="HSChild" value="0" disabled />
                 </td>
               </tr>
             </tbody>
@@ -863,6 +923,7 @@
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Please fill this field"
+                disabled
               >
                 <option value>Select a value</option>
               </select>
@@ -877,6 +938,7 @@
                 data-toggle="tooltip"
                 data-placement="bottom"
                 title="Please fill this field"
+                disabled
               >
                 <option value>Select a value</option>
                 <option value="0">No</option>
