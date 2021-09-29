@@ -371,17 +371,17 @@ $(document).ready(() => {
   });
 
   //* TEST BUTTON ACTION
+  // Toggling disabled prop in forms
+  // let flag = true;
+  // $("#test-button").click(function (evnt) {
+  //   evnt.stopPropagation();
+  //   console.log("first flag :>> ", flag);
+  //   const formSelector = "form:not(.id-form)";
+  //   $(".id-form input").prop("disabled", flag);
+  //   $(`${formSelector} input, select`).prop("disabled", !flag);
 
-  let flag = true;
-  $("#test-button").click(function (evnt) {
-    evnt.stopPropagation();
-    console.log("first flag :>> ", flag);
-    const formSelector = "form:not(.id-form)";
-    $(".id-form input").prop("disabled", flag);
-    $(`${formSelector} input, select`).prop("disabled", !flag);
-
-    flag = flag ? false : true;
-    console.log("end flag :>> ", flag);
-    console.log("Required list: >>", getRequired(formSelector));
-  });
+  //   flag = flag ? false : true;
+  //   console.log("end flag :>> ", flag);
+  //   console.log("Required list: >>", getRequired(formSelector));
+  // });
 });
