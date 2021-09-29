@@ -3,7 +3,7 @@
 //*=================================================
 
 import { flagEmptyRequired, initialCheck } from "./components/data-check.js";
-import { finalSave, initialSave } from "./components/data-save.js";
+import { finalSave, getRequired, initialSave } from "./components/data-save.js";
 import {
   createDuplicatesTable,
   replaceTableBody
@@ -370,12 +370,12 @@ $(document).ready(() => {
   $("#test-button").click(function (evnt) {
     evnt.stopPropagation();
     console.log("first flag :>> ", flag);
-
+    const formSelector = "form:not(.id-form)";
     $(".id-form input").prop("disabled", flag);
-    $("form:not(.id-form) input").prop("disabled", !flag);
-    $("form:not(.id-form) select").prop("disabled", !flag);
+    $(`${formSelector} input, select`).prop("disabled", !flag);
 
     flag = flag ? false : true;
     console.log("end flag :>> ", flag);
+    console.log("Required list: >>", getRequired(formSelector));
   });
 });

@@ -56,6 +56,14 @@ const barriersProcess = () => {
   return fieldsObj;
 };
 
+export const getRequired = (formSelector) => {
+  const list = $(`${formSelector} input, select`).get();
+  const requiredList = list
+    .filter((item) => $(item).prop("required"))
+    .map((item) => $(item).attr("name"));
+  return requiredList;
+};
+
 export const finalSave = () => {
   const dataList = $("form").not(".barriers-form").serializeArray();
   const Student_PKID = $(".hero").attr("data-studentpkid");
@@ -79,5 +87,5 @@ export const finalSave = () => {
   //! created at the initial save stage.
   //! =====================================
 
-  //TODO Add entered data validation
+  //TODO Add entered data validation for full entry
 };
