@@ -79,6 +79,7 @@ export const finalSave = () => {
     ...updatedObjWithRaceID,
     ...barriersFields
   };
+
   console.log("saveObj :>> ", saveObj);
 
   //! =====================================

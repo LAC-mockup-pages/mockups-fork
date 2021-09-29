@@ -2,7 +2,11 @@
 //* Actions and Logic for local page
 //*=================================================
 
-import { flagEmptyRequired, initialCheck } from "./components/data-check.js";
+import {
+  finalCheck,
+  flagEmptyRequired,
+  initialCheck
+} from "./components/data-check.js";
 import { finalSave, getRequired, initialSave } from "./components/data-save.js";
 import {
   createDuplicatesTable,
@@ -254,6 +258,10 @@ $(document).ready(() => {
       (obj) => !barrierSelection.includes(obj.key)
     );
 
+    // Checking if any required field is empty, except in id-form.
+    // Fields in id-form have already been checked at initial save stage.
+    const requiredList = getRequired("form:not(.id-form");
+
     // Activate save-button
     $("#save-button").removeAttr("disabled");
 
@@ -353,7 +361,7 @@ $(document).ready(() => {
     $(this).val(formatPhoneWithDashes($(this).val()));
   });
 
-  //* Redirect user to the selected student Profil page
+  //* Redirect user to the selected student Profile page
   //* when the table row is clicked.
   $(document).on("click", "#duplicates-table tbody tr", function (evnt) {
     evnt.preventDefault();
@@ -365,6 +373,7 @@ $(document).ready(() => {
   $("#save-button").click((evnt) => {
     evnt.stopPropagation();
     evnt.preventDefault();
+
     finalSave();
     const selectedId = $(".hero").attr("data-studentpkid");
     redirectToProfile(selectedId);
@@ -384,4 +393,12 @@ $(document).ready(() => {
   //   console.log("end flag :>> ", flag);
   //   console.log("Required list: >>", getRequired(formSelector));
   // });
+  const formSelector = "form:not(.id-form)";
+  $(`${formSelector} input, select`).prop("disabled", false);
+
+  $("#test-button").click(function (evnt) {
+    evnt.stopPropagation();
+    const reqList = getRequired(formSelector);
+    finalCheck(reqList);
+  });
 });
