@@ -306,6 +306,11 @@ $(document).ready(() => {
       flagEmptyRequired(emptyValuesFound);
     } else {
       const { AgencyID, AuditUserID } = createCredentials();
+
+      // Toggling disabled prop forms
+      $(".id-form input").prop("disabled", true);
+      $("form:not(.id-form) input, select").prop("disabled", false);
+
       const shortSaveObj = createShortSaveObj(dataList, AgencyID, AuditUserID);
       const studentID = shortSaveObj[0].StudentID;
       // const studentID = "AdamsAlbertPRA2252017111981";
@@ -337,11 +342,12 @@ $(document).ready(() => {
   });
 
   //* SSN and phone numbers dynamic formating
+  // SSN
   $("#SSN").keyup(function (evnt) {
     evnt.stopPropagation();
     $(this).val(formatSSNWithDashes($(this).val()));
   });
-
+  // Phone numbers
   $("#home-phone, #mobile-phone, #emergency-phone").keyup(function (evnt) {
     evnt.stopPropagation();
     $(this).val(formatPhoneWithDashes($(this).val()));
