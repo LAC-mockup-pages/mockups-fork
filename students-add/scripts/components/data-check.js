@@ -41,13 +41,13 @@ export const finalCheck = () => {
   const formSelector = "form:not(.id-form)";
   const reqList = getRequired(formSelector);
   const fields = $(formSelector).serializeArray();
-  occurenceCheck(fields);
+  const occurences = occurenceCheck(fields);
 
   console.log("fields :>> ", fields);
   $(`${formSelector} :input`).css("background-color", "inherit");
-  const noValueFields = fields.filter(
-    (item) => reqList.includes(item.name) && !item.value
-  );
+  const noValueFields = fields
+    .filter((item) => occurences[item.name] < 2 || !occurences[item.name])
+    .filter((item) => reqList.includes(item.name) && !item.value);
   if (noValueFields.length < 1) return;
   console.log("noValueFields :>> ", noValueFields);
 
@@ -56,11 +56,6 @@ export const finalCheck = () => {
       "background-color",
       "#f7e095"
     );
-
-    // $(`${formSelector} select[name=${obj.name}]`).css(
-    //   "background-color",
-    //   "#f7e095"
-    // );
   }
 
   //! =============== IMPORTANT =================
