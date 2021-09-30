@@ -25,6 +25,9 @@ export const initialCheck = (list) => {
   return valueCheck.length > 0 ? valueCheck : null;
 };
 
+// Checking for multiple occurences on RaceID, Barriers, yes/no fields
+const occurenceCheck = (objList) => {};
+
 // At finalSave stage
 export const finalCheck = () => {
   const formSelector = "form:not(.id-form)";
@@ -36,7 +39,7 @@ export const finalCheck = () => {
   const noValueFields = fields.filter(
     (item) => reqList.includes(item.name) && !item.value
   );
-
+  if (noValueFields.length < 1) return;
   console.log("noValueFields :>> ", noValueFields);
 
   for (const obj of noValueFields) {

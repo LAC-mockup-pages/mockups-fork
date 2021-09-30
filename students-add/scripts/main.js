@@ -394,7 +394,7 @@ $(document).ready(() => {
   //   console.log("Required list: >>", getRequired(formSelector));
   // });
   const formSelector = "form:not(.id-form)";
-  $(`${formSelector} input, select`).prop("disabled", false);
+  $(`${formSelector} :input`).prop("disabled", false);
 
   $("#test-button").click(function (evnt) {
     evnt.stopPropagation();
