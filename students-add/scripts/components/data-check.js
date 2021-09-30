@@ -25,14 +25,23 @@ export const initialCheck = (list) => {
   return valueCheck.length > 0 ? valueCheck : null;
 };
 
-// Checking for multiple occurences on RaceID, Barriers, yes/no fields
-const occurenceCheck = (objList) => {};
+// Checking for multiple occurences on RaceID, Barriers, yes/no fields.
+// Returns an object with keys and counts.
+const occurenceCheck = (objList) => {
+  return objList
+    .filter((obj) => ["RaceID", "Barriers", "yes-no"].includes(obj.name))
+    .map((obj) => obj.name)
+    .reduce((acc, curr) => {
+      return acc[curr] ? ++acc[curr] : (acc[curr] = 1), acc;
+    }, {});
+};
 
 // At finalSave stage
 export const finalCheck = () => {
   const formSelector = "form:not(.id-form)";
   const reqList = getRequired(formSelector);
   const fields = $(formSelector).serializeArray();
+  occurenceCheck(fields);
 
   console.log("fields :>> ", fields);
   $(`${formSelector} :input`).css("background-color", "inherit");
@@ -53,6 +62,9 @@ export const finalCheck = () => {
     //   "#f7e095"
     // );
   }
+
+  //! =============== IMPORTANT =================
+  //TODO SSN / Staff name alternate check
 
   console.log("Check Done!");
 };
