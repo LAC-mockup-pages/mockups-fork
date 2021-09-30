@@ -67,6 +67,10 @@
   background-color: inherit;
 }
 
+.input-field option {
+  background-color: #f5f5f5;
+}
+
 .input-field > .small-input {
   width: 30%;
 }

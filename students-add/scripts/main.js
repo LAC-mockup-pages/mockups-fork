@@ -398,7 +398,7 @@ $(document).ready(() => {
 
   $("#test-button").click(function (evnt) {
     evnt.stopPropagation();
-    const reqList = getRequired(formSelector);
-    finalCheck(reqList);
+
+    finalCheck();
   });
 });

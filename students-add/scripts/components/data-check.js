@@ -1,6 +1,8 @@
 //* Checking data validity
 //* ===========================
 
+import { getRequired } from "./data-save.js";
+
 // Toggles background to yellow for listed field names.
 // Redirect focus on first element of the array.
 export const flagEmptyRequired = (nameList) => {
@@ -24,15 +26,30 @@ export const initialCheck = (list) => {
 };
 
 // At finalSave stage
-export const finalCheck = (list) => {
+export const finalCheck = () => {
   const formSelector = "form:not(.id-form)";
+  const reqList = getRequired(formSelector);
   const fields = $(formSelector).serializeArray();
 
   console.log("fields :>> ", fields);
-
-  const requiredFields = fields.filter(
-    (item) => list.includes(item.name) && !item.value
+  $(`${formSelector} :input`).css("background-color", "inherit");
+  const noValueFields = fields.filter(
+    (item) => reqList.includes(item.name) && !item.value
   );
 
-  console.log("requiredFields :>> ", requiredFields);
+  console.log("noValueFields :>> ", noValueFields);
+
+  for (const obj of noValueFields) {
+    $(`${formSelector} :input[name=${obj.name}]`).css(
+      "background-color",
+      "#f7e095"
+    );
+
+    // $(`${formSelector} select[name=${obj.name}]`).css(
+    //   "background-color",
+    //   "#f7e095"
+    // );
+  }
+
+  console.log("Check Done!");
 };
