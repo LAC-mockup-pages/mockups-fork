@@ -44,7 +44,7 @@ const socialSecNumCheck = () => {
   // createObject() <== helpers/helperFunctions.js
   const { SSN, NoSSNVisaStaff } = createObject(SSNFields);
   // Check SSN value has 9 digits.
-  if (SSN.match(/\d/g).length !== 9) return SSNFields[0];
+  if (SSN && SSN.match(/\d/g).length !== 9) return SSNFields[0];
   const fields = SSN ? null : NoSSNVisaStaff ? null : SSNFields[1];
   return fields;
 };

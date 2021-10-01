@@ -260,7 +260,7 @@ $(document).ready(() => {
 
     // Checking if any required field is empty, except in id-form.
     // Fields in id-form have already been checked at initial save stage.
-    const requiredList = getRequired("form:not(.id-form");
+    finalCheck();
 
     // Activate save-button
     $("#save-button").removeAttr("disabled");
@@ -302,6 +302,7 @@ $(document).ready(() => {
     evnt.preventDefault();
     // Avoiding going through initial save again
     if ($(".hero").attr("data-studentpkid")) return;
+
     const dataList = $(".id-form")
       .serializeArray()
       .filter((item) =>
@@ -317,7 +318,7 @@ $(document).ready(() => {
 
       // Toggling disabled prop forms
       $(".id-form input").prop("disabled", true);
-      $("form:not(.id-form) input, select").prop("disabled", false);
+      $("form:not(.id-form) :input").prop("disabled", false);
 
       const shortSaveObj = createShortSaveObj(dataList, AgencyID, AuditUserID);
       const studentID = shortSaveObj[0].StudentID;
@@ -393,12 +394,12 @@ $(document).ready(() => {
   //   console.log("end flag :>> ", flag);
   //   console.log("Required list: >>", getRequired(formSelector));
   // });
-  const formSelector = "form:not(.id-form)";
-  $(`${formSelector} :input`).prop("disabled", false);
+  // const formSelector = "form:not(.id-form)";
+  // $(`${formSelector} :input`).prop("disabled", false);
 
-  $("#test-button").click(function (evnt) {
-    evnt.stopPropagation();
+  // $("#test-button").click(function (evnt) {
+  //   evnt.stopPropagation();
 
-    finalCheck();
-  });
+  //   finalCheck();
+  // });
 });
