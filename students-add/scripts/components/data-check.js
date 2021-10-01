@@ -36,11 +36,27 @@ const occurenceCheck = (objList) => {
     }, {});
 };
 
+// Specific check for the SSN section. If SSN has no value, the staff field
+// must be populated. Alternatively, if there is a valid value in SSN, the
+// staff field is left empty.
+const socialSecNumCheck = () => {
+  const SSNFields = $(".ssn-form").serializeArray();
+
+  // createObject() <== helpers/helperFunctions.js
+  const { SSN, NoSSNVisaStaff } = createObject(SSNFields);
+
+  // Check there is  9 digits.
+  const fields = SSN ? null : NoSSNVisaStaff ? null : SSNFields[1];
+  return fields;
+};
+
 // At finalSave stage
 export const finalCheck = () => {
   const formSelector = "form:not(.id-form)";
   const reqList = getRequired(formSelector);
   const fields = $(formSelector).serializeArray();
+
+  // Checking for multiple occurences on RaceID, Barriers, yes/no fields.
   const occurences = occurenceCheck(fields);
 
   console.log("fields :>> ", fields);
@@ -48,6 +64,11 @@ export const finalCheck = () => {
   const noValueFields = fields
     .filter((item) => occurences[item.name] < 2 || !occurences[item.name])
     .filter((item) => reqList.includes(item.name) && !item.value);
+
+  // socialSecNumCheck();
+  const checkedSSNSection = socialSecNumCheck();
+  if (checkedSSNSection) noValueFields.push(checkedSSNSection);
+
   if (noValueFields.length < 1) return;
   console.log("noValueFields :>> ", noValueFields);
 
@@ -58,8 +79,7 @@ export const finalCheck = () => {
     );
   }
 
-  //! =============== IMPORTANT =================
-  //TODO SSN / Staff name alternate check
-
   console.log("Check Done!");
+
+  // return true if no empty required field
 };
