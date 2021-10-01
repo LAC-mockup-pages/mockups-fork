@@ -41,11 +41,10 @@ const occurenceCheck = (objList) => {
 // staff field is left empty.
 const socialSecNumCheck = () => {
   const SSNFields = $(".ssn-form").serializeArray();
-
   // createObject() <== helpers/helperFunctions.js
   const { SSN, NoSSNVisaStaff } = createObject(SSNFields);
-
-  // Check there is  9 digits.
+  // Check SSN value has 9 digits.
+  if (SSN.match(/\d/g).length !== 9) return SSNFields[0];
   const fields = SSN ? null : NoSSNVisaStaff ? null : SSNFields[1];
   return fields;
 };
