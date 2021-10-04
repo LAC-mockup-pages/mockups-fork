@@ -227,7 +227,8 @@ $(document).ready(() => {
   //* already selected.
 
   // Race selection
-  $(document).on("change", ".race-select > select:last-of-type", (evnt) => {
+  // $(document).on("change", ".race-select > select:last-of-type", (evnt) => {
+  $(document).on("blur", ".race-select > select:last-of-type", (evnt) => {
     evnt.preventDefault();
     const raceSelection = $(".ethnicity-form")
       .serializeArray()
@@ -394,8 +395,10 @@ $(document).ready(() => {
   //   console.log("end flag :>> ", flag);
   //   console.log("Required list: >>", getRequired(formSelector));
   // });
-  // const formSelector = "form:not(.id-form)";
-  // $(`${formSelector} :input`).prop("disabled", false);
+
+  // For test purposes.
+  const formSelector = "form:not(.id-form)";
+  $(`${formSelector} :input`).prop("disabled", false);
 
   // $("#test-button").click(function (evnt) {
   //   evnt.stopPropagation();
