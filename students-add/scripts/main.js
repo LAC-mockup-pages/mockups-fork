@@ -228,7 +228,7 @@ $(document).ready(() => {
 
   // Race selection
   // $(document).on("change", ".race-select > select:last-of-type", (evnt) => {
-  $(document).on("blur", ".race-select > select:last-of-type", (evnt) => {
+  $(document).on("blur", ".race-select > select:last-of-type", function (evnt) {
     evnt.preventDefault();
     const raceSelection = $(".ethnicity-form")
       .serializeArray()
@@ -237,6 +237,10 @@ $(document).ready(() => {
     const updatedDdlRace = ddlRace.filter(
       (obj) => !raceSelection.includes(obj.objKey)
     );
+    // Allows to jump to next input field without generation a new RaceID select
+    // element
+    if (!$(this).val()) return;
+    // Jump to next input field if the RaceId list is empty
     if (updatedDdlRace.length < 1) return;
     const newRaceSelect = `
     <label></label>
@@ -244,6 +248,7 @@ $(document).ready(() => {
       <option value>Select a value</option>
       ${createOptionList(updatedDdlRace)}
     </select>`;
+
     $(".race-select").append(newRaceSelect);
     $(".race-select > select:last-of-type").focus();
   });
@@ -399,6 +404,7 @@ $(document).ready(() => {
   // For test purposes.
   const formSelector = "form:not(.id-form)";
   $(`${formSelector} :input`).prop("disabled", false);
+  $("#ethnicity-select").focus();
 
   // $("#test-button").click(function (evnt) {
   //   evnt.stopPropagation();
