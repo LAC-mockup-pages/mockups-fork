@@ -254,28 +254,33 @@ $(document).ready(() => {
   });
 
   // Barriers selection
-  $(document).on("change", ".barriers-form select[name='yes-no']", (evnt) => {
-    evnt.preventDefault();
-    const barrierSelection = $(".barriers-form")
-      .serializeArray()
-      .filter((objBarriers) => objBarriers.name === "Barriers")
-      .map((item) => item.value);
-    const updatedDdlBarriers = ddlBarriers.filter(
-      (obj) => !barrierSelection.includes(obj.key)
-    );
+  $(document).on(
+    "blur",
+    ".barriers-form select[name='yes-no']",
+    function (evnt) {
+      evnt.preventDefault();
+      const barrierSelection = $(".barriers-form")
+        .serializeArray()
+        .filter((objBarriers) => objBarriers.name === "Barriers")
+        .map((item) => item.value);
+      const updatedDdlBarriers = ddlBarriers.filter(
+        (obj) => !barrierSelection.includes(obj.key)
+      );
+      // Checking if any required field is empty, except in id-form.
+      // Fields in id-form have already been checked at initial save stage.
+      finalCheck();
+      // Allows to jump to next input field without generation a new RaceID select
+      // element
+      if (!$(this).val()) return;
 
-    // Checking if any required field is empty, except in id-form.
-    // Fields in id-form have already been checked at initial save stage.
-    finalCheck();
+      // Activate save-button
+      $("#save-button").removeAttr("disabled");
 
-    // Activate save-button
-    $("#save-button").removeAttr("disabled");
+      // Checks if there is at least 1 value left in the barriers list
+      if (updatedDdlBarriers.length < 1) return;
 
-    // Checks if there is at least 1 value left in the barriers list
-    if (updatedDdlBarriers.length < 1) return;
-
-    const newOptionList = createOptionList(updatedDdlBarriers);
-    const newBarrierSelect = `
+      const newOptionList = createOptionList(updatedDdlBarriers);
+      const newBarrierSelect = `
     <div class="container-fluid row">
           <div class="col-sm-6">
             <div class="input-field form-group barrier-group">
@@ -297,9 +302,10 @@ $(document).ready(() => {
           </div>
           <div class="col-sm-3"></div>
         </div>`;
-    $(".barriers-form").append(newBarrierSelect);
-    $(".barriers-form select[name='Barriers']:last-of-type").focus();
-  });
+      $(".barriers-form").append(newBarrierSelect);
+      $(".barriers-form select[name='Barriers']:last-of-type").focus();
+    }
+  );
 
   //* Triggers initial data save when BeginDate is entered.
   //* Creates StudentID and Student_PKID.
@@ -404,7 +410,7 @@ $(document).ready(() => {
   // For test purposes.
   const formSelector = "form:not(.id-form)";
   $(`${formSelector} :input`).prop("disabled", false);
-  $("#ethnicity-select").focus();
+  $(".barrier-group select[name='Barriers']").focus();
 
   // $("#test-button").click(function (evnt) {
   //   evnt.stopPropagation();
