@@ -38,7 +38,7 @@ NB: Date is last modification date.
 | Mockup                  | Done           |            |
 | Roughing/static lay out | Done, accepted |            |
 | Data objects            | Done           | 09/16/2021 |
-| Main coding             |                |            |
+| Main coding             | Started        | 10/04/2021 |
 | Navigation to/from page |                |            |
 | Ready for Alpha         |                |            |
 | Alpha build             |                |            |
