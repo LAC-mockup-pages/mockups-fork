@@ -52,15 +52,28 @@ $(document).ready(() => {
   //* =====================================
 
   //* Triggers edit modal with selected form elements
-  $(".form").click(function (evnt) {
-    evnt.stopPropagation();
-    const sectionTitle = $(this).parent().children(".sub-header").text().trim();
-    console.log("sectionTitle :>> ", sectionTitle);
+  $(".form")
+    .not("#edit-form")
+    .click(function (evnt) {
+      evnt.stopPropagation();
+      const sectionTitle = $(this)
+        .parent()
+        .children(".sub-header")
+        .text()
+        .trim();
+      console.log("sectionTitle :>> ", sectionTitle);
 
-    const parentAttr = $(this).parent().attr("class");
-    console.log("parentAttr :>> ", parentAttr);
-    const editFormContent = $(this).clone();
-    $("#modalBloc").modal("toggle");
-    $("#edit-form").empty().append(editFormContent);
-  });
+      const parentAttr = $(this).parent().attr("class");
+      console.log("parentAttr :>> ", parentAttr);
+      const editFormContent = $(this).children().clone();
+
+      $("#modalBloc").modal("toggle");
+      $("#edit-form").empty().append(editFormContent);
+      $(".modal-title").text(`${sectionTitle} editing`);
+      $("#edit-form :input").prop("disabled", false);
+      const pointer = $("#edit-form :input").eq(0);
+      console.log("pointer :>> ", $(pointer).attr("name"));
+      console.log("pointer :>> ", pointer);
+      $(`#edit-form :input[name=${pointer.attr("name")}]`).focus();
+    });
 });

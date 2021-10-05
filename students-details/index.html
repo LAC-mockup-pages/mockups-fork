@@ -390,21 +390,16 @@
               </div>
               <form class="form student-info-form" role="form">
                 <div class="input-field form-group">
-                  <label for="Address">Last name</label>
-                  <input
-                    type="text"
-                    name="Address"
-                    disabled
-                    value="AA_1Jacques"
-                  />
+                  <label for="Last">Last name</label>
+                  <input type="text" name="Last" disabled value="AA_1Jacques" />
                 </div>
                 <div class="input-field form-group">
-                  <label for="Address">Middle</label>
-                  <input type="text" name="Address" disabled value="" />
+                  <label for="Middle">Middle</label>
+                  <input type="text" name="Middle" disabled value="" />
                 </div>
                 <div class="input-field form-group">
-                  <label for="Address">First name</label>
-                  <input type="text" name="Address" disabled value="Gregory" />
+                  <label for="First">First name</label>
+                  <input type="text" name="First" disabled value="Gregory" />
                 </div>
                 <div class="input-field form-group">
                   <label for="Address">Birth date</label>
@@ -804,7 +799,15 @@
               class="btn btn-default"
               data-dismiss="modal"
             >
-              Close
+              Close without saving
+            </button>
+            <button
+              type="button"
+              id="save-btn"
+              class="btn btn-default"
+              data-dismiss="modal"
+            >
+              Save
             </button>
           </div>
         </div>
