@@ -50,4 +50,17 @@ $(document).ready(() => {
   });
 
   //* =====================================
+
+  //* Triggers edit modal with selected form elements
+  $(".form").click(function (evnt) {
+    evnt.stopPropagation();
+    const sectionTitle = $(this).parent().children(".sub-header").text().trim();
+    console.log("sectionTitle :>> ", sectionTitle);
+
+    const parentAttr = $(this).parent().attr("class");
+    console.log("parentAttr :>> ", parentAttr);
+    const editFormContent = $(this).clone();
+    $("#modalBloc").modal("toggle");
+    $("#edit-form").empty().append(editFormContent);
+  });
 });

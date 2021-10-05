@@ -384,40 +384,52 @@
       <div class="container-fluid row student-display">
         <div class="row">
           <section class="col-md-6" title="Click to edit">
-            <div class="sub-header blue-bg blue-light-text">
-              <div class="sub-header-title">Student information</div>
-            </div>
-            <form class="form id-form" role="form">
-              <div class="input-field form-group">
-                <label for="Address">Last name</label>
-                <input
-                  type="text"
-                  name="Address"
-                  disabled
-                  value="AA_1Jacques"
-                />
+            <section class="student-info">
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">Student information</div>
               </div>
-              <div class="input-field form-group">
-                <label for="Address">Middle</label>
-                <input type="text" name="Address" disabled value="" />
-              </div>
-              <div class="input-field form-group">
-                <label for="Address">First name</label>
-                <input type="text" name="Address" disabled value="Gregory" />
-              </div>
-              <div class="input-field form-group">
-                <label for="Address">Birth date</label>
-                <input type="text" name="Address" disabled value="07/12/1987" />
-              </div>
-              <div class="input-field form-group">
-                <label for="Address">Start date</label>
-                <input type="text" name="Address" disabled value="06/22/2010" />
-              </div>
-              <div class="input-field form-group">
-                <label for="Address">Years of stay</label>
-                <input type="text" name="Address" disabled value="11" />
-              </div>
-            </form>
+              <form class="form student-info-form" role="form">
+                <div class="input-field form-group">
+                  <label for="Address">Last name</label>
+                  <input
+                    type="text"
+                    name="Address"
+                    disabled
+                    value="AA_1Jacques"
+                  />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Address">Middle</label>
+                  <input type="text" name="Address" disabled value="" />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Address">First name</label>
+                  <input type="text" name="Address" disabled value="Gregory" />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Address">Birth date</label>
+                  <input
+                    type="text"
+                    name="Address"
+                    disabled
+                    value="07/12/1987"
+                  />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Address">Start date</label>
+                  <input
+                    type="text"
+                    name="Address"
+                    disabled
+                    value="06/22/2010"
+                  />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Address">Years of stay</label>
+                  <input type="text" name="Address" disabled value="11" />
+                </div>
+              </form>
+            </section>
 
             <div class="sub-header blue-bg blue-light-text">
               <div class="sub-header-title">Gender | Ethnicity</div>
@@ -783,7 +795,7 @@
             <h4 class="modal-title">Agency Selection</h4>
           </div>
           <div class="modal-body">
-            <form role="form" id="edit-form"></form>
+            <form class="form" role="form" id="edit-form"></form>
           </div>
           <div class="modal-footer">
             <button
