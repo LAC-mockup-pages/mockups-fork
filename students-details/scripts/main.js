@@ -71,9 +71,5 @@ $(document).ready(() => {
       $("#edit-form").empty().append(editFormContent);
       $(".modal-title").text(`${sectionTitle} editing`);
       $("#edit-form :input").prop("disabled", false);
-      const pointer = $("#edit-form :input").eq(0);
-      console.log("pointer :>> ", $(pointer).attr("name"));
-      console.log("pointer :>> ", pointer);
-      $(`#edit-form :input[name=${pointer.attr("name")}]`).focus();
     });
 });
