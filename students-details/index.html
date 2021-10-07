@@ -384,7 +384,7 @@
       <!-- Student display start -->
       <div class="container-fluid row student-display">
         <div class="row">
-          <section class="col-md-6" title="Click to edit">
+          <div class="col-md-6">
             <!-- Student information start -->
             <section class="student-info">
               <div class="sub-header blue-bg blue-light-text">
@@ -393,37 +393,27 @@
               <form class="form student-info-form" role="form">
                 <div class="input-field form-group">
                   <label for="Last">Last name</label>
-                  <input type="text" name="Last" disabled value="AA_1Jacques" />
+                  <input type="text" name="Last" disabled />
                 </div>
                 <div class="input-field form-group">
                   <label for="Middle">Middle</label>
-                  <input type="text" name="Middle" disabled value="" />
+                  <input type="text" name="Middle" disabled />
                 </div>
                 <div class="input-field form-group">
                   <label for="First">First name</label>
-                  <input type="text" name="First" disabled value="Gregory" />
+                  <input type="text" name="First" disabled />
                 </div>
                 <div class="input-field form-group">
                   <label for="BirthDate">Birth date</label>
-                  <input
-                    type="text"
-                    name="BirthDate"
-                    disabled
-                    value="07/12/1987"
-                  />
+                  <input type="date" name="BirthDate" disabled />
                 </div>
                 <div class="input-field form-group">
                   <label for="BeginDate">Start date</label>
-                  <input
-                    type="text"
-                    name="BeginDate"
-                    disabled
-                    value="06/22/2010"
-                  />
+                  <input type="date" name="BeginDate" disabled />
                 </div>
                 <div class="input-field form-group">
                   <label for="LengthOfStay">Years of stay</label>
-                  <input type="text" name="LengthOfStay" disabled value="11" />
+                  <input type="text" name="LengthOfStay" disabled />
                 </div>
               </form>
             </section>
@@ -434,123 +424,132 @@
               <div class="sub-header blue-bg blue-light-text">
                 <div class="sub-header-title">Gender | Ethnicity</div>
               </div>
-              <div class="input-field form-group">
-                <label for="Sex">Gender</label>
-                <input type="text" name="Sex" disabled value="Male" />
-              </div>
-              <div class="input-field form-group">
-                <label for="EthnicityID">Race</label>
-                <input
-                  type="text"
-                  name="EthnicityID"
-                  disabled
-                  value="Non-hispanic/Latino"
-                />
-              </div>
-              <div class="input-field form-group">
-                <label for="RaceID">Ethnicity</label>
-                <input
-                  type="text"
-                  name="RaceID"
-                  disabled
-                  value="Native Hawaiian"
-                />
-                <label></label>
-                <input
-                  type="text"
-                  name="RaceID"
-                  disabled
-                  value="Native American"
-                />
-              </div>
+              <form class="form gender-form" role="form">
+                <div class="input-field form-group">
+                  <label for="Sex">Gender</label>
+                  <select class="modal-select" name="Sex" disabled>
+                    <option value>Select a gender</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="N">Non-Binary/Gender Non-Conforming</option>
+                  </select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="EthnicityID">Ethnicity</label>
+                  <select class="modal-select" name="EthnicityID" disabled>
+                    <option value>Select ONE</option>
+                    <option value="H">Hispanic/Latino/a</option>
+                    <option value="N">Non-Hispanic/Latino/a</option>
+                  </select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="RaceID">Race</label>
+                  <select type="text" name="RaceID" disabled>
+                    <option value>Select AT LEAST ONE</option>
+                  </select>
+                </div>
+              </form>
             </section>
             <!-- Gender ethnicity end -->
 
             <!-- Funding sources start -->
-            <div>
+            <section class="funding-source">
               <div class="sub-header blue-bg blue-light-text">
                 <div class="sub-header-title">Funding sources</div>
               </div>
-              <div class="input-field form-group">
-                <label for="Address"></label>
-                <input type="text" name="Address" disabled value="2017 - EPE" />
-              </div>
-            </div>
+              <form class="form funding-form" role="form">
+                <div class="input-field form-group">
+                  <label for="FundAbbrev">Funding source</label>
+                  <input type="text" name="FundAbbrev" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="FY">Fiscal year </label>
+                  <input type="text" name="FY" disabled />
+                </div>
+              </form>
+            </section>
             <!-- Funding sources end -->
-          </section>
+          </div>
+          <div class="col-md-6">
+            <!-- Contact info start -->
+            <section class="contact-info">
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">Contact information</div>
+              </div>
+              <form class="contact-form" role="form">
+                <div class="input-field form-group">
+                  <label for="Address">Address</label>
+                  <input type="text" name="Address" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="City">City</label>
+                  <input type="text" name="City" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="State">State</label>
+                  <input type="text" name="State" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Zip">ZIP</label>
+                  <input type="text" name="Zip" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Phone">Phone</label>
+                  <input type="text" name="Phone" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Phone2">Mobile phone</label>
+                  <input type="text" name="Phone2" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="StudEmail">Email</label>
+                  <input type="text" name="StudEmail" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="EmergencyPhone">Emergency contact</label>
+                  <input type="text" name="EmergencyPhone" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="EmergencyName">Name | Relation of contact</label>
+                  <input type="text" name="EmergencyName" disabled />
+                </div>
+              </form>
+            </section>
+            <!-- Contact info end -->
 
-          <section class="col-md-6">
-            <div class="sub-header blue-bg blue-light-text">
-              <div class="sub-header-title">Contact information</div>
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">Address</label>
-              <input type="text" name="Address" disabled value="455 5th Ave" />
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">City</label>
-              <input type="text" name="Address" disabled value="NEW YORK" />
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">State</label>
-              <input type="text" name="Address" disabled value="NY" />
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">ZIP</label>
-              <input type="text" name="Address" disabled value="11234" />
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">Phone</label>
-              <input
-                type="text"
-                name="Address"
-                disabled
-                value="(212) 803-3000"
-              />
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">Mobile phone</label>
-              <input
-                type="text"
-                name="Address"
-                disabled
-                value="(212) 803-4000"
-              />
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">Email</label>
-              <input
-                type="text"
-                name="Address"
-                disabled
-                value="staff@asists.com"
-              />
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">Emergency contact</label>
-              <input type="text" name="Address" disabled value="" />
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">Name | Relation of contact</label>
-              <input type="text" name="Address" disabled value="" />
-            </div>
-
-            <div class="sub-header blue-bg blue-light-text">
-              <div class="sub-header-title">Work eligibility</div>
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">SSN</label>
-              <input type="text" name="Address" disabled value="***-**-****" />
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">SSN provided</label>
-              <input type="text" name="Address" disabled value="Yes" />
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">Intake staff</label>
-              <input type="text" name="Address" disabled value="" />
-            </div>
-          </section>
+            <!-- Work eligibility start -->
+            <section class="SSN">
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">Work eligibility</div>
+              </div>
+              <form class="ssn-form">
+                <div class="input-field form-group">
+                  <label for="SSN">SSN</label>
+                  <input type="text" name="SSN" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="NoSSNVisa">SSN provided</label>
+                  <select class="modal-select" name="NoSSNVisa" disabled>
+                    <option value>Select a value</option>
+                    <option value="0">No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="NoSSNVisaStaff">Intake staff</label>
+                  <select
+                    class="modal-select"
+                    type="text"
+                    name="NoSSNVisaStaff"
+                    disabled
+                  >
+                    <option value="">Select a staff</option>
+                  </select>
+                </div>
+              </form>
+            </section>
+            <!-- Work eligibility end -->
+          </div>
         </div>
         <section>
           <div class="sub-header blue-bg blue-light-text">
