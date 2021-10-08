@@ -203,6 +203,174 @@ const dataSet2 = [
   }
 ];
 
+const dataSet3 = [
+  {
+    AgencyID: "SESD",
+    SiteID: "Boxing Club",
+    SiteName: "Literacy Zone West Athletic and Education Center",
+    Level1: 0,
+    "Level 2": 0,
+    "Level 3": 0,
+    "Level 4": 0,
+    "Level 5": 0,
+    "Level 6": 0
+  },
+  {
+    AgencyID: "SESD",
+    SiteID: "ELCADVAUTO",
+    SiteName: "Advanced Auto",
+    "Level 1": 2,
+    "Level 2": 2,
+    "Level 3": 2,
+    "Level 4": 0,
+    "Level 5": 0,
+    "Level 6": 2
+  },
+  {
+    AgencyID: "SESD",
+    SiteID: "ELCARCOM",
+    SiteName: "ARCOM",
+    "Level 1": 2,
+    "Level 2": 4,
+    "Level 3": 2,
+    "Level 4": 0,
+    "Level 5": 2,
+    "Level 6": 0
+  },
+  {
+    AgencyID: "SESD",
+    SiteID: "LZ",
+    SiteName: "Literacy Zone FWC Grant Middle School",
+    "Level 1": 2,
+    "Level 2": 0,
+    "Level 3": 0,
+    "Level 4": 0,
+    "Level 5": 0,
+    "Level 6": 0
+  },
+  {
+    AgencyID: "SESD",
+    SiteID: "LZ6",
+    SiteName: "Literacy Zone Dr. King Magnet School",
+    "Level 1": 0,
+    "Level 2": 0,
+    "Level 3": 0,
+    "Level 4": 0,
+    "Level 5": 0,
+    "Level 6": 0
+  },
+  {
+    AgencyID: "SESD",
+    SiteID: "LZEWeeks",
+    SiteName: "Literacy Zone FWC East Dr. Weeks",
+    "Level 1": 0,
+    "Level 2": 0,
+    "Level 3": 0,
+    "Level 4": 0,
+    "Level 5": 0,
+    "Level 6": 0
+  },
+  {
+    AgencyID: "SESD",
+    SiteID: "LZRound2",
+    SiteName: "LIteracy Zone FWC Dr. King",
+    "Level 1": 12,
+    "Level 2": 32,
+    "Level 3": 10,
+    "Level 4": 12,
+    "Level 5": 0,
+    "Level 6": 0
+  },
+  {
+    AgencyID: "SESD",
+    SiteID: "LZWEP",
+    SiteName: "Literacy Zone FWC Fowler",
+    "Level 1": 0,
+    "Level 2": 0,
+    "Level 3": 0,
+    "Level 4": 0,
+    "Level 5": 0,
+    "Level 6": 0
+  },
+  {
+    AgencyID: "SESD",
+    SiteID: "SCSDJustice",
+    SiteName: "Justice Center",
+    "Level 1": 0,
+    "Level 2": 0,
+    "Level 3": 0,
+    "Level 4": 0,
+    "Level 5": 0,
+    "Level 6": 0
+  },
+  {
+    AgencyID: "SESD",
+    SiteID: "SCSDProbation",
+    SiteName: "Onondaga County Probation Department",
+    "Level 1": 0,
+    "Level 2": 0,
+    "Level 3": 0,
+    "Level 4": 0,
+    "Level 5": 0,
+    "Level 6": 0
+  },
+  {
+    AgencyID: "SESD",
+    SiteID: "SCSDRefugee",
+    SiteName: "Refugee Center",
+    "Level 1": 225,
+    "Level 2": 156,
+    "Level 3": 74,
+    "Level 4": 74,
+    "Level 5": 41,
+    "Level 6": 9
+  },
+  {
+    AgencyID: "SESD",
+    SiteID: "SCSDRescue",
+    SiteName: "Rescue Mission Motivational Learning Center",
+    "Level 1": 0,
+    "Level 2": 0,
+    "Level 3": 0,
+    "Level 4": 0,
+    "Level 5": 0,
+    "Level 6": 0
+  },
+  {
+    AgencyID: "SESD",
+    SiteID: "SCSDSidney",
+    SiteName: "Sidney Johnson Vocational Center",
+    "Level 1": 0,
+    "Level 2": 0,
+    "Level 3": 0,
+    "Level 4": 2,
+    "Level 5": 0,
+    "Level 6": 0
+  },
+  {
+    AgencyID: "SESD",
+    SiteID: "SCSDWestside",
+    SiteName: "Westside Learning Center",
+    "Level 1": 32,
+    "Level 2": 79,
+    "Level 3": 31,
+    "Level 4": 25,
+    "Level 5": 41,
+    "Level 6": 13
+  },
+  {
+    AgencyID: "SESD",
+    SiteID: "WPLGiov",
+    SiteName: "Giovanni",
+    "Level 1": 0,
+    "Level 2": 4,
+    "Level 3": 0,
+    "Level 4": 0,
+    "Level 5": 0,
+    "Level 6": 0
+  }
+];
+
 const createDetailLines = (detailList) => {
   let rows = "";
   for (const list of detailList) {
