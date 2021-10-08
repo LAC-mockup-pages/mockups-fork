@@ -5,13 +5,17 @@
 
 const tileSet = [
   {
-    id: "tile1",
-    header: "Post Test",
-    background: "rgba(247,224,149,0), rgba(247,224,149,1)",
-    details: ["75%"],
-    formatDetails: "",
-    target: "../dashboard-post/index.html"
+    id: "tile7",
+    header: "TABE Tests",
+    background: "rgba(211,228,240)",
+    details: [
+      ["Pre:", "507"],
+      ["Post:", "205"]
+    ],
+    formatDetails: "tile-details-small",
+    target: "../dashboard-tabe/index.html"
   },
+
   {
     id: "tile0",
     header: "MSG",
@@ -20,7 +24,14 @@ const tileSet = [
     formatDetails: "",
     target: "../dashboard-msg/index.html"
   },
-
+  {
+    id: "tile1",
+    header: "Post Test",
+    background: "rgba(247,224,149,0), rgba(247,224,149,1)",
+    details: ["75%"],
+    formatDetails: "",
+    target: "../dashboard-post/index.html"
+  },
   {
     id: "tile2",
     header: "Employment Q2",
@@ -66,17 +77,6 @@ const tileSet = [
     ],
     formatDetails: "tile-details-small",
     target: "../dashboard-hse/index.html"
-  },
-  {
-    id: "tile7",
-    header: "TABE Tests",
-    background: "rgba(240,226,213,0), rgba(240,226,213,1)",
-    details: [
-      ["Pre:", "507"],
-      ["Post:", "205"]
-    ],
-    formatDetails: "tile-details-small",
-    target: "../assets/coming-soon.html"
   },
   {
     id: "tile8",
@@ -209,225 +209,225 @@ const dataSet3 = [
     SiteID: "Boxing Club",
     SiteName: "Literacy Zone West Athletic and Education Center",
     TRL: 0,
-    "TR-E": 4,
-    "TR-M": 12,
-    "TR-D": 14,
-    "TR-A": 0,
-    "TM-L": 0,
-    "TM-E": 4,
-    "TM-M": 22,
-    "TM-D": 4,
-    "TM-A": 0
+    TRE: 4,
+    TRM: 12,
+    TRD: 14,
+    TRA: 0,
+    TML: 0,
+    TME: 4,
+    TMM: 22,
+    TMD: 4,
+    TMA: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "ELCADVAUTO",
     SiteName: "Advanced Auto",
-    "TR-L": 0,
-    "TR-E": 0,
-    "TR-M": 0,
-    "TR-D": 0,
-    "TR-A": 0,
-    "TM-L": 0,
-    "TM-E": 0,
-    "TM-M": 0,
-    "TM-D": 0,
-    "TM-A": 0
+    TRL: 0,
+    TRE: 0,
+    TRM: 0,
+    TRD: 0,
+    TRA: 0,
+    TML: 0,
+    TME: 0,
+    TMM: 0,
+    TMD: 0,
+    TMA: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "ELCARCOM",
     SiteName: "ARCOM",
-    "TR-L": 0,
-    "TR-E": 0,
-    "TR-M": 0,
-    "TR-D": 0,
-    "TR-A": 0,
-    "TM-L": 0,
-    "TM-E": 0,
-    "TM-M": 0,
-    "TM-D": 0,
-    "TM-A": 0
+    TRL: 0,
+    TRE: 0,
+    TRM: 0,
+    TRD: 0,
+    TRA: 0,
+    TML: 0,
+    TME: 0,
+    TMM: 0,
+    TMD: 0,
+    TMA: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "LZ",
     SiteName: "Literacy Zone FWC Grant Middle School",
-    "TR-L": 0,
-    "TR-E": 14,
-    "TR-M": 16,
-    "TR-D": 12,
-    "TR-A": 0,
-    "TM-L": 0,
-    "TM-E": 30,
-    "TM-M": 16,
-    "TM-D": 0,
-    "TM-A": 0
+    TRL: 0,
+    TRE: 14,
+    TRM: 16,
+    TRD: 12,
+    TRA: 0,
+    TML: 0,
+    TME: 30,
+    TMM: 16,
+    TMD: 0,
+    TMA: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "LZ6",
     SiteName: "Literacy Zone Dr. King Magnet School",
-    "TR-L": 0,
-    "TR-E": 0,
-    "TR-M": 6,
-    "TR-D": 6,
-    "TR-A": 0,
-    "TM-L": 0,
-    "TM-E": 2,
-    "TM-M": 6,
-    "TM-D": 2,
-    "TM-A": 0
+    TRL: 0,
+    TRE: 0,
+    TRM: 6,
+    TRD: 6,
+    TRA: 0,
+    TML: 0,
+    TME: 2,
+    TMM: 6,
+    TMD: 2,
+    TMA: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "LZEWeeks",
     SiteName: "Literacy Zone FWC East Dr. Weeks",
-    "TR-L": 2,
-    "TR-E": 4,
-    "TR-M": 10,
-    "TR-D": 20,
-    "TR-A": 0,
-    "TM-L": 2,
-    "TM-E": 4,
-    "TM-M": 30,
-    "TM-D": 0,
-    "TM-A": 0
+    TRL: 2,
+    TRE: 4,
+    TRM: 10,
+    TRD: 20,
+    TRA: 0,
+    TML: 2,
+    TME: 4,
+    TMM: 30,
+    TMD: 0,
+    TMA: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "LZRound2",
     SiteName: "LIteracy Zone FWC Dr. King",
-    "TR-L": 2,
-    "TR-E": 13,
-    "TR-M": 25,
-    "TR-D": 22,
-    "TR-A": 0,
-    "TM-L": 2,
-    "TM-E": 16,
-    "TM-M": 34,
-    "TM-D": 6,
-    "TM-A": 0
+    TRL: 2,
+    TRE: 13,
+    TRM: 25,
+    TRD: 22,
+    TRA: 0,
+    TML: 2,
+    TME: 16,
+    TMM: 34,
+    TMD: 6,
+    TMA: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "LZWEP",
     SiteName: "Literacy Zone FWC Fowler",
-    "TR-L": 0,
-    "TR-E": 0,
-    "TR-M": 6,
-    "TR-D": 2,
-    "TR-A": 0,
-    "TM-L": 0,
-    "TM-E": 0,
-    "TM-M": 6,
-    "TM-D": 2,
-    "TM-A": 0
+    TRL: 0,
+    TRE: 0,
+    TRM: 6,
+    TRD: 2,
+    TRA: 0,
+    TML: 0,
+    TME: 0,
+    TMM: 6,
+    TMD: 2,
+    TMA: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "SCSDJustice",
     SiteName: "Justice Center",
-    "TR-L": 0,
-    "TR-E": 0,
-    "TR-M": 5,
-    "TR-D": 2,
-    "TR-A": 0,
-    "TM-L": 0,
-    "TM-E": 0,
-    "TM-M": 4,
-    "TM-D": 0,
-    "TM-A": 0
+    TRL: 0,
+    TRE: 0,
+    TRM: 5,
+    TRD: 2,
+    TRA: 0,
+    TML: 0,
+    TME: 0,
+    TMM: 4,
+    TMD: 0,
+    TMA: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "SCSDProbation",
     SiteName: "Onondaga County Probation Department",
-    "TR-L": 0,
-    "TR-E": 2,
-    "TR-M": 2,
-    "TR-D": 0,
-    "TR-A": 0,
-    "TM-L": 0,
-    "TM-E": 0,
-    "TM-M": 4,
-    "TM-D": 0,
-    "TM-A": 0
+    TRL: 0,
+    TRE: 2,
+    TRM: 2,
+    TRD: 0,
+    TRA: 0,
+    TML: 0,
+    TME: 0,
+    TMM: 4,
+    TMD: 0,
+    TMA: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "SCSDRefugee",
     SiteName: "Refugee Center",
-    "TR-L": 0,
-    "TR-E": 4,
-    "TR-M": 0,
-    "TR-D": 0,
-    "TR-A": 0,
-    "TM-L": 0,
-    "TM-E": 4,
-    "TM-M": 0,
-    "TM-D": 0,
-    "TM-A": 0
+    TRL: 0,
+    TRE: 4,
+    TRM: 0,
+    TRD: 0,
+    TRA: 0,
+    TML: 0,
+    TME: 4,
+    TMM: 0,
+    TMD: 0,
+    TMA: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "SCSDRescue",
     SiteName: "Rescue Mission Motivational Learning Center",
-    "TR-L": 0,
-    "TR-E": 2,
-    "TR-M": 2,
-    "TR-D": 0,
-    "TR-A": 0,
-    "TM-L": 0,
-    "TM-E": 3,
-    "TM-M": 1,
-    "TM-D": 0,
-    "TM-A": 0
+    TRL: 0,
+    TRE: 2,
+    TRM: 2,
+    TRD: 0,
+    TRA: 0,
+    TML: 0,
+    TME: 3,
+    TMM: 1,
+    TMD: 0,
+    TMA: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "SCSDSidney",
     SiteName: "Sidney Johnson Vocational Center",
-    "TR-L": 0,
-    "TR-E": 27,
-    "TR-M": 61,
-    "TR-D": 121,
-    "TR-A": 0,
-    "TM-L": 0,
-    "TM-E": 30,
-    "TM-M": 138,
-    "TM-D": 62,
-    "TM-A": 0
+    TRL: 0,
+    TRE: 27,
+    TRM: 61,
+    TRD: 121,
+    TRA: 0,
+    TML: 0,
+    TME: 30,
+    TMM: 138,
+    TMD: 62,
+    TMA: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "SCSDWestside",
     SiteName: "Westside Learning Center",
-    "TR-L": 0,
-    "TR-E": 0,
-    "TR-M": 0,
-    "TR-D": 0,
-    "TR-A": 0,
-    "TM-L": 0,
-    "TM-E": 0,
-    "TM-M": 0,
-    "TM-D": 0,
-    "TM-A": 0
+    TRL: 0,
+    TRE: 0,
+    TRM: 0,
+    TRD: 0,
+    TRA: 0,
+    TML: 0,
+    TME: 0,
+    TMM: 0,
+    TMD: 0,
+    TMA: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "WPLGiov",
     SiteName: "Giovanni",
-    "TR-L": 0,
-    "TR-E": 0,
-    "TR-M": 0,
-    "TR-D": 0,
-    "TR-A": 0,
-    "TM-L": 0,
-    "TM-E": 0,
-    "TM-M": 0,
-    "TM-D": 0,
-    "TM-A": 0
+    TRL: 0,
+    TRE: 0,
+    TRM: 0,
+    TRD: 0,
+    TRA: 0,
+    TML: 0,
+    TME: 0,
+    TMM: 0,
+    TMD: 0,
+    TMA: 0
   }
 ];
 
@@ -448,10 +448,14 @@ const createDetailLines = (detailList) => {
 };
 const createTile = (dataObj, classButton, classTile) => {
   const { id, header, background, details, formatDetails, target } = dataObj;
-  const gradient =
-    classTile === "large-tile" || classTile === "medium-tile"
-      ? `style="background-image: linear-gradient(180deg, ${background})"`
-      : "";
+  console.log("classButton :>> ", id, classButton);
+  console.log("classTile :>> ", classTile);
+  // Reserves gradient for the main tiles, tile0 to tile3
+  const gradient = !["tile0", "tile1", "tile2", "tile3"].includes(id)
+    ? ""
+    : classTile === "large-tile" || classTile === "medium-tile"
+    ? `style="background-image: linear-gradient(180deg, ${background})"`
+    : "";
   const format = formatDetails ? formatDetails : "tile-details";
   const detailContent =
     details.length > 1 ? createDetailLines(details) : details[0];
@@ -476,10 +480,11 @@ const createLeftNavBar = () => {
     let tileClass = "";
 
     switch (record.id) {
-      case "tile1":
+      case "tile7":
         tileClass = "large-tile";
         break;
       case "tile0":
+      case "tile1":
       case "tile2":
       case "tile3":
         tileClass = "medium-tile";
@@ -560,12 +565,12 @@ const createTable = (dataList) => {
 $(document).ready(() => {
   //* Building and displaying center part
   const leftNavBar = createLeftNavBar();
-  const table1 = createTable(dataSet1);
-  const table2 = createTable(dataSet2);
+  // const table1 = createTable(dataSet1);
+  // const table2 = createTable(dataSet2);
 
   $("#side-nav").append(leftNavBar);
-  $(".table1").append(table1);
-  $(".table2").append(table2);
+  // $(".table1").append(table1);
+  // $(".table2").append(table2);
 
   //* Displaying report in a new browser tab when a table row is clicked
   $(document).on("click", ".table tbody tr", function () {

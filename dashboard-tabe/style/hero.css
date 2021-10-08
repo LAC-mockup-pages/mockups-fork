@@ -156,7 +156,9 @@
   font-size: 3em;
   font-weight: 800;
 }
-
+#tile7 {
+  background-color: #d3e4f0;
+}
 .tile-details-small > .detail-table > tbody > tr > td {
   line-height: 1.1em;
   background-color: #d3e4f0;
