@@ -725,45 +725,46 @@
           <!-- Nationality end -->
 
           <div class="col-md-6">
-            <div class="sub-header blue-bg blue-light-text">
-              <div class="sub-header-title">Parent | Children</div>
-            </div>
-            <form class="form" role="form">
-              <div class="input-field form-group">
-                <label for="Address">Parental status</label>
-                <input
-                  type="text"
-                  name="Address"
-                  disabled
-                  value="Custodial parent"
-                />
+            <!-- Parent | Children start -->
+            <section class="parent-children">
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">Parent | Children</div>
               </div>
-              <div>School aged children</div>
-              <table class="table children-table">
-                <thead>
-                  <th class="children-header">PreSchool</th>
-                  <th class="children-header">Elementary</th>
-                  <th class="children-header">Junior HS</th>
-                  <th class="children-header">High School</th>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="cell-data">
-                      <input class="cell-input" name="PreChild" value="1" />
-                    </td>
-                    <td class="cell-data">
-                      <input class="cell-input" name="ElemChild" value="2" />
-                    </td>
-                    <td class="cell-data">
-                      <input class="cell-input" name="JHSChild" value="3" />
-                    </td>
-                    <td class="cell-data">
-                      <input class="cell-input" name="HSChild" value="4" />
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </form>
+              <form class="form parent" role="form">
+                <div class="input-field form-group">
+                  <label for="Address">Parental status</label>
+                  <select class="modal-select" name="Address" disabled>
+                    <option value="">Select an option</option>
+                  </select>
+                </div>
+                <div>School aged children</div>
+                <table class="table children-table">
+                  <thead>
+                    <th class="children-header">PreSchool</th>
+                    <th class="children-header">Elementary</th>
+                    <th class="children-header">Junior HS</th>
+                    <th class="children-header">High School</th>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="cell-data">
+                        <input class="cell-input" name="PreChild" value="1" />
+                      </td>
+                      <td class="cell-data">
+                        <input class="cell-input" name="ElemChild" value="2" />
+                      </td>
+                      <td class="cell-data">
+                        <input class="cell-input" name="JHSChild" value="3" />
+                      </td>
+                      <td class="cell-data">
+                        <input class="cell-input" name="HSChild" value="4" />
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </form>
+            </section>
+            <!-- Parent | Children end -->
 
             <div class="sub-header blue-bg blue-light-text">
               <div class="sub-header-title">Population categories</div>
