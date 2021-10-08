@@ -99,110 +99,6 @@ const tileSet = [
   }
 ];
 
-const dataSet1 = [
-  {
-    Site: "Enterprise site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Far site",
-    Enrollment: "560",
-    PostTest: "0.07",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Mulberry site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Alpha site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Old English site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Decrepit site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Voyager site",
-    Enrollment: "299",
-    PostTest: "0.57",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  }
-];
-
-const dataSet2 = [
-  {
-    Teacher: "James T. Kirk",
-    Enrollment: "18",
-    PostTest: "0.22",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Katherine Janway",
-    Enrollment: "22",
-    PostTest: "0.72",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Phillippa Gorgious",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "New Kid",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Peter Cetera",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Alan Greenspan",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Ben Sisko",
-    Enrollment: "22",
-    PostTest: "0.35",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  }
-];
-
 const dataSet3 = [
   {
     AgencyID: "SESD",
@@ -556,9 +452,7 @@ const createTable = (dataList) => {
   const headerList = Object.keys(dataList[0])
     .filter((str) => str.startsWith("T"))
     .map((str) => `${str.substr(0, 2)}-${str.slice(-1)}`);
-
   const tableHeader = createTableHeader(["Site", ...headerList]);
-
   const tableBody = createTableBody(dataList);
   return `<table class="table">${tableHeader}${tableBody}</table>`;
 };
