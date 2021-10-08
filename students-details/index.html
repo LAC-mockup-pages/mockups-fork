@@ -591,80 +591,115 @@
         </section>
 
         <div class="row">
-          <section class="col-md-6">
-            <div class="sub-header blue-bg blue-light-text">
-              <div class="sub-header-title">Educational background</div>
-            </div>
-            <form class="form" role="form">
-              <div class="input-field form-group">
-                <label for="Address">Highest grade completed in US</label>
-                <input
-                  type="text"
-                  name="Address"
-                  disabled
-                  value="Grade 12 HS Diploma"
-                />
+          <div class="col-md-6">
+            <!-- Education start -->
+            <section class="education">
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">Educational background</div>
               </div>
-              <div class="input-field form-group">
-                <label for="Address">Highest grade completed in NY State</label>
-                <input type="text" name="Address" disabled value="" />
-              </div>
-              <div class="input-field form-group">
-                <label for="Address"
-                  >Last school district and school attended in NYS</label
-                >
-                <input
-                  type="text"
-                  name="Address"
-                  disabled
-                  value="WA Cunningham"
-                />
-              </div>
-              <div class="input-field form-group">
-                <label for="Address">Highest credential obtained</label>
-                <input type="text" name="Address" disabled value="" />
-              </div>
-              <div class="input-field form-group">
-                <label for="Address"></label>
-                <input type="text" name="Address" disabled value="" />
-              </div>
-              <div class="input-field form-group">
-                <label for="Address"
-                  >Years of schooling in other countries</label
-                >
-                <input type="text" name="Address" disabled value="12" />
-              </div>
-              <div class="input-field form-group">
-                <label for="Address">UU ID</label>
-                <input type="text" name="Address" disabled value="" />
-              </div>
-            </form>
+              <form class="form education-form" role="form">
+                <div class="input-field form-group">
+                  <label for="Grade">Highest grade completed in US</label>
+                  <select
+                    class="modal-select"
+                    type="text"
+                    name="Grade"
+                    disabled
+                  >
+                    <option value>Select a grade</option>
+                  </select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="NYSGrade"
+                    >Highest grade completed in NY State</label
+                  >
+                  <select
+                    class="modal-select"
+                    type="text"
+                    name="NYSGrade"
+                    disabled
+                  >
+                    <option value>Select a grade</option>
+                  </select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="LastSchoolNYS"
+                    >Last school district and school attended in NYS</label
+                  >
+                  <input type="text" name="LastSchoolNYS" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="HighestCredential"
+                    >Highest credential obtained</label
+                  >
+                  <select
+                    class="modal-select"
+                    type="text"
+                    name="HighestCredential"
+                    disabled
+                  >
+                    <option value>Select a value</option>
+                  </select>
+                </div>
 
-            <div class="sub-header blue-bg blue-light-text">
-              <div class="sub-header-title">
-                Barriers to learning / employment
-              </div>
-            </div>
-            <form class="form" role="form">
-              <div class="input-field form-group container-fluid">
-                <table class="table">
-                  <tbody>
-                    <tr>
-                      <td>Homeless</td>
-                      <td>No</td>
-                    </tr>
-                    <tr>
-                      <td>Ex-offender</td>
-                      <td>Yes</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </form>
+                <!-- =================================================== -->
+                <!-- CHECK WHAT GOES IN THIS PART -->
+                <!-- <div class="input-field form-group">
+                  <label for="Address"></label>
+                  <input type="text" name="Address" disabled value="" />
+                </div> -->
+                <!-- =================================================== -->
 
-            <div class="sub-header blue-bg blue-light-text">
-              <div class="sub-header-title">Nationality</div>
-            </div>
+                <div class="input-field form-group">
+                  <label for="YearsUSSchools"
+                    >Years of schooling in other countries</label
+                  >
+                  <input type="text" name="YearsUSSchools" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="UUID">UU ID</label>
+                  <input type="text" name="UUID" disabled />
+                </div>
+              </form>
+            </section>
+            <!-- Education end -->
+
+            <!-- Barriers start -->
+            <section class="barriers">
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">
+                  Barriers to learning / employment
+                </div>
+              </div>
+              <form class="form barriers-form" role="form">
+                <div class="input-field form-group container-fluid">
+                  <table class="table">
+                    <tbody>
+                      <tr>
+                        <td>Homeless</td>
+                        <td>No</td>
+                      </tr>
+                      <tr>
+                        <td>Ex-offender</td>
+                        <td>Yes</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </form>
+            </section>
+            <!-- Barriers end -->
+
+            <!-- Nationality start -->
+            <section class="nationality">
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">
+                  Nationality
+                </div>
+              </div>
+            <form class="form nationality-form" role="form">
+
+
             <div class="input-field form-group">
               <label for="Address">Country of birth</label>
               <input type="text" name="Address" disabled value="Haiti" />
@@ -681,7 +716,9 @@
               <label for="Address">Primary language</label>
               <input type="text" name="Address" disabled value="" />
             </div>
-          </section>
+          </form>
+        </section>
+
           <section class="col-md-6">
             <div class="sub-header blue-bg blue-light-text">
               <div class="sub-header-title">Parent | Children</div>
