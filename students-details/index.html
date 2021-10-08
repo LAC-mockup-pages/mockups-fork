@@ -444,7 +444,7 @@
                 </div>
                 <div class="input-field form-group">
                   <label for="RaceID">Race</label>
-                  <select type="text" name="RaceID" disabled>
+                  <select name="RaceID" disabled>
                     <option value>Select AT LEAST ONE</option>
                   </select>
                 </div>
@@ -537,12 +537,7 @@
                 </div>
                 <div class="input-field form-group">
                   <label for="NoSSNVisaStaff">Intake staff</label>
-                  <select
-                    class="modal-select"
-                    type="text"
-                    name="NoSSNVisaStaff"
-                    disabled
-                  >
+                  <select class="modal-select" name="NoSSNVisaStaff" disabled>
                     <option value="">Select a staff</option>
                   </select>
                 </div>
@@ -602,12 +597,7 @@
               <form class="form education-form" role="form">
                 <div class="input-field form-group">
                   <label for="Grade">Highest grade completed in US</label>
-                  <select
-                    class="modal-select"
-                    type="text"
-                    name="Grade"
-                    disabled
-                  >
+                  <select class="modal-select" name="Grade" disabled>
                     <option value>Select a grade</option>
                   </select>
                 </div>
@@ -615,12 +605,7 @@
                   <label for="NYSGrade"
                     >Highest grade completed in NY State</label
                   >
-                  <select
-                    class="modal-select"
-                    type="text"
-                    name="NYSGrade"
-                    disabled
-                  >
+                  <select class="modal-select" name="NYSGrade" disabled>
                     <option value>Select a grade</option>
                   </select>
                 </div>
@@ -636,7 +621,6 @@
                   >
                   <select
                     class="modal-select"
-                    type="text"
                     name="HighestCredential"
                     disabled
                   >
@@ -699,25 +683,27 @@
               </div>
               <form class="form nationality-form" role="form">
                 <div class="input-field form-group">
-                  <label for="Address">Country of birth</label>
-                  <input type="text" name="Address" disabled value="Haiti" />
+                  <label for="CountryID">Country of birth</label>
+                  <select name="CountryID" disabled value="Haiti">
+                    <option value>Select a country</option>
+                  </select>
                 </div>
                 <div class="input-field form-group">
-                  <label for="Address">Status</label>
-                  <input type="text" name="Address" disabled value="Citizen" />
+                  <label for="Status">Status</label>
+                  <select class="modal-select" name="Status" disabled>
+                    <option value>Select a status</option>
+                    <option value="Citizen">Citizen</option>
+                    <option value="Refugee">Refugee</option>
+                    <option value="Immigrant">Immigrant</option>
+                  </select>
                 </div>
                 <div class="input-field form-group">
-                  <label for="Address">Date of US settlement</label>
-                  <input
-                    type="text"
-                    name="Address"
-                    disabled
-                    value="05/02/2015"
-                  />
+                  <label for="DateSettled">Date of US settlement</label>
+                  <input type="date" name="DateSettled" disabled />
                 </div>
                 <div class="input-field form-group">
-                  <label for="Address">Primary language</label>
-                  <input type="text" name="Address" disabled value="" />
+                  <label for="Languages">Primary language</label>
+                  <input type="text" name="Languages" disabled />
                 </div>
               </form>
             </section>
