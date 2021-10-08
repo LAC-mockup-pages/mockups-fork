@@ -551,6 +551,8 @@
             <!-- Work eligibility end -->
           </div>
         </div>
+
+        <!-- Employment start -->
         <section>
           <div class="sub-header blue-bg blue-light-text">
             <div class="sub-header-title">Employment history</div>
@@ -589,7 +591,7 @@
             </tbody>
           </table>
         </section>
-
+        <!-- Employment end -->
         <div class="row">
           <div class="col-md-6">
             <!-- Education start -->
@@ -693,33 +695,36 @@
             <!-- Nationality start -->
             <section class="nationality">
               <div class="sub-header blue-bg blue-light-text">
-                <div class="sub-header-title">
-                  Nationality
-                </div>
+                <div class="sub-header-title">Nationality</div>
               </div>
-            <form class="form nationality-form" role="form">
+              <form class="form nationality-form" role="form">
+                <div class="input-field form-group">
+                  <label for="Address">Country of birth</label>
+                  <input type="text" name="Address" disabled value="Haiti" />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Address">Status</label>
+                  <input type="text" name="Address" disabled value="Citizen" />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Address">Date of US settlement</label>
+                  <input
+                    type="text"
+                    name="Address"
+                    disabled
+                    value="05/02/2015"
+                  />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Address">Primary language</label>
+                  <input type="text" name="Address" disabled value="" />
+                </div>
+              </form>
+            </section>
+          </div>
+          <!-- Nationality end -->
 
-
-            <div class="input-field form-group">
-              <label for="Address">Country of birth</label>
-              <input type="text" name="Address" disabled value="Haiti" />
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">Status</label>
-              <input type="text" name="Address" disabled value="Citizen" />
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">Date of US settlement</label>
-              <input type="text" name="Address" disabled value="05/02/2015" />
-            </div>
-            <div class="input-field form-group">
-              <label for="Address">Primary language</label>
-              <input type="text" name="Address" disabled value="" />
-            </div>
-          </form>
-        </section>
-
-          <section class="col-md-6">
+          <div class="col-md-6">
             <div class="sub-header blue-bg blue-light-text">
               <div class="sub-header-title">Parent | Children</div>
             </div>
@@ -818,7 +823,7 @@
                 <input type="text" name="Address" disabled value="Library" />
               </div>
             </form>
-          </section>
+          </div>
         </div>
       </div>
       <!-- Student display end -->
