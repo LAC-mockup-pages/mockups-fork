@@ -448,8 +448,6 @@ const createDetailLines = (detailList) => {
 };
 const createTile = (dataObj, classButton, classTile) => {
   const { id, header, background, details, formatDetails, target } = dataObj;
-  console.log("classButton :>> ", id, classButton);
-  console.log("classTile :>> ", classTile);
   // Reserves gradient for the main tiles, tile0 to tile3
   const gradient = !["tile0", "tile1", "tile2", "tile3"].includes(id)
     ? ""
@@ -527,7 +525,7 @@ const createTableHeader = (list) => {
 const createTableBody = (list) => {
   let body = "";
   let orderedList = [];
-  if (list === dataSet1) {
+  if (list === dataSet3) {
     orderedList = list.sort((item1, item2) =>
       item1.Site < item2.Site ? -1 : item1.Site > item2.Site ? 1 : 0
     );
@@ -539,21 +537,28 @@ const createTableBody = (list) => {
 
   for (const obj of orderedList) {
     let row = "";
-    const link = ` href=${obj.ReportLink}`;
-    for (const key of Object.keys(obj)) {
-      if (key === "ReportLink") continue;
-      const value = key === "PostTest" ? percentFormat(obj[key]) : obj[key];
-      row += `<td class="cell-data">${value}</td>`;
-    }
+
+    // const link = ` href=${obj.ReportLink}`;
+    // for (const key of Object.keys(obj)) {
+    //   if (key === "ReportLink") continue;
+    //   const value = key === "PostTest" ? percentFormat(obj[key]) : obj[key];
+    //   row += `<td class="cell-data">${value}</td>`;
+    // }
+    const { ReportLink } = obj;
+    const link = ReportLink ? ` href=${ReportLink}` : "";
+
     body += `<tr${link}>${row}</tr$>`;
   }
   return `<tbody>${body}</tbody>`;
 };
 
 const createTable = (dataList) => {
-  const tableHeader = createTableHeader(
-    Object.keys(dataList[0]).filter((str) => str !== "ReportLink")
-  ).replace("PostTest", "Post Test");
+  const headerList = Object.keys(dataList[0])
+    .filter((str) => str.startsWith("T"))
+    .map((str) => `${str.substr(0, 2)}-${str.slice(-1)}`);
+
+  const tableHeader = createTableHeader(["Site", ...headerList]);
+
   const tableBody = createTableBody(dataList);
   return `<table class="table">${tableHeader}${tableBody}</table>`;
 };
@@ -565,11 +570,11 @@ const createTable = (dataList) => {
 $(document).ready(() => {
   //* Building and displaying center part
   const leftNavBar = createLeftNavBar();
-  // const table1 = createTable(dataSet1);
+  const table1 = createTable(dataSet3);
   // const table2 = createTable(dataSet2);
 
   $("#side-nav").append(leftNavBar);
-  // $(".table1").append(table1);
+  $(".table1").append(table1);
   // $(".table2").append(table2);
 
   //* Displaying report in a new browser tab when a table row is clicked
