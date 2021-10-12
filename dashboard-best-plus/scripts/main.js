@@ -99,57 +99,57 @@ const tileSet = [
   }
 ];
 
-const dataSet1 = [
-  {
-    Site: "Enterprise site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Far site",
-    Enrollment: "560",
-    PostTest: "0.07",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Mulberry site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Alpha site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Old English site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Decrepit site",
-    Enrollment: "560",
-    PostTest: "0.64",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  },
-  {
-    Site: "Voyager site",
-    Enrollment: "299",
-    PostTest: "0.57",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-  }
-];
+// const dataSet1 = [
+//   {
+//     Site: "Enterprise site",
+//     Enrollment: "560",
+//     PostTest: "0.64",
+//     ReportLink:
+//       "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+//   },
+//   {
+//     Site: "Far site",
+//     Enrollment: "560",
+//     PostTest: "0.07",
+//     ReportLink:
+//       "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+//   },
+//   {
+//     Site: "Mulberry site",
+//     Enrollment: "560",
+//     PostTest: "0.64",
+//     ReportLink:
+//       "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+//   },
+//   {
+//     Site: "Alpha site",
+//     Enrollment: "560",
+//     PostTest: "0.64",
+//     ReportLink:
+//       "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+//   },
+//   {
+//     Site: "Old English site",
+//     Enrollment: "560",
+//     PostTest: "0.64",
+//     ReportLink:
+//       "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+//   },
+//   {
+//     Site: "Decrepit site",
+//     Enrollment: "560",
+//     PostTest: "0.64",
+//     ReportLink:
+//       "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+//   },
+//   {
+//     Site: "Voyager site",
+//     Enrollment: "299",
+//     PostTest: "0.57",
+//     ReportLink:
+//       "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
+//   }
+// ];
 
 const dataSet = [
   {
@@ -397,34 +397,37 @@ const createTableHeader = (list) => {
 // list = dataSet#
 const createTableBody = (list) => {
   let body = "";
-  let orderedList = [];
-  if (list === dataSet1) {
-    orderedList = list.sort((item1, item2) =>
-      item1.Site < item2.Site ? -1 : item1.Site > item2.Site ? 1 : 0
-    );
-  } else {
-    orderedList = list.sort((item1, item2) =>
-      item1.Teacher < item2.Teacher ? -1 : item1.Teacher > item2.Teacher ? 1 : 0
-    );
-  }
 
+  const orderedList = list.sort((item1, item2) =>
+    item1.SiteName < item2.SiteName
+      ? -1
+      : item1.SiteName > item2.SiteName
+      ? 1
+      : 0
+  );
   for (const obj of orderedList) {
-    let row = "";
-    const link = ` href=${obj.ReportLink}`;
-    for (const key of Object.keys(obj)) {
-      if (key === "ReportLink") continue;
-      const value = key === "PostTest" ? percentFormat(obj[key]) : obj[key];
-      row += `<td class="cell-data">${value}</td>`;
+    const row = [];
+    const { SiteName } = obj;
+    row.push(`<td class="cell-data">${SiteName}</td>`);
+    for (const key in obj) {
+      if (key.startsWith("Level"))
+        row.push(`<td class="cell-data number-alignment">${obj[key]}</td>`);
     }
-    body += `<tr${link}>${row}</tr$>`;
+    body += `<tr>${row.join("")}</tr>`;
   }
   return `<tbody>${body}</tbody>`;
 };
 
 const createTable = (dataList) => {
-  const tableHeader = createTableHeader(
-    Object.keys(dataList[0]).filter((str) => str !== "ReportLink")
-  ).replace("PostTest", "Post Test");
+  const tableHeader = createTableHeader([
+    "Site",
+    "Level 1",
+    "Level 2",
+    "Level 3",
+    "Level 4",
+    "Level 5",
+    "Level 6"
+  ]);
   const tableBody = createTableBody(dataList);
   return `<table class="table">${tableHeader}${tableBody}</table>`;
 };
