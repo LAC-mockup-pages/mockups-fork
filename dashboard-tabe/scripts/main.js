@@ -413,26 +413,31 @@ const percentFormat = (str) => {
 };
 
 const createTableHeader = (list) => {
-  const headers = list.map((str) => `<th>${str}</th>`).join("");
+  console.log("list :>> ", list);
+
+  const headers = list.map((str) => `<th>${str}</th>`).join();
   return `<thead><tr>${headers}</tr></thead>`;
 };
 
 // list = dataSet#
 const createTableBody = (list) => {
   let body = "";
-  let orderedList = [];
-  if (list === dataSet3) {
-    orderedList = list.sort((item1, item2) =>
-      item1.Site < item2.Site ? -1 : item1.Site > item2.Site ? 1 : 0
-    );
-  } else {
-    orderedList = list.sort((item1, item2) =>
-      item1.Teacher < item2.Teacher ? -1 : item1.Teacher > item2.Teacher ? 1 : 0
-    );
-  }
+  const orderedList = list.sort((item1, item2) =>
+    item1.SiteName < item2.SiteName
+      ? -1
+      : item1.SiteName > item2.SiteName
+      ? 1
+      : 0
+  );
 
   for (const obj of orderedList) {
-    let row = "";
+    const row = [];
+    const { SiteName } = obj;
+    row.push(`<td class="cell-data">${SiteName}</td>`);
+    for (const key in obj) {
+      if (key.startsWith("T"))
+        row.push(`<td class="cell-data">${obj[key]}</td>`);
+    }
 
     // const link = ` href=${obj.ReportLink}`;
     // for (const key of Object.keys(obj)) {
@@ -440,19 +445,21 @@ const createTableBody = (list) => {
     //   const value = key === "PostTest" ? percentFormat(obj[key]) : obj[key];
     //   row += `<td class="cell-data">${value}</td>`;
     // }
-    const { ReportLink } = obj;
-    const link = ReportLink ? ` href=${ReportLink}` : "";
+    // const { ReportLink } = obj;
+    // const link = ReportLink ? ` href=${ReportLink}` : "";
 
-    body += `<tr${link}>${row}</tr$>`;
+    body += `<tr>${row.join()}</tr>`;
   }
   return `<tbody>${body}</tbody>`;
+  // return `<tbody>${"body"}</tbody>`;
 };
 
 const createTable = (dataList) => {
   const headerList = Object.keys(dataList[0])
     .filter((str) => str.startsWith("T"))
     .map((str) => `${str.substr(0, 2)}-${str.slice(-1)}`);
-  const tableHeader = createTableHeader(["Site", ...headerList]);
+  // const tableHeader = createTableHeader(["Site", ...headerList]);
+  const tableHeader = "header";
   const tableBody = createTableBody(dataList);
   return `<table class="table">${tableHeader}${tableBody}</table>`;
 };
@@ -472,9 +479,9 @@ $(document).ready(() => {
   // $(".table2").append(table2);
 
   //* Displaying report in a new browser tab when a table row is clicked
-  $(document).on("click", ".table tbody tr", function () {
-    const selectedReport = $(this).attr("href");
-    console.log("selectedReport :>> ", selectedReport);
-    window.open(selectedReport);
-  });
+  // $(document).on("click", ".table tbody tr", function () {
+  //   const selectedReport = $(this).attr("href");
+  //   console.log("selectedReport :>> ", selectedReport);
+  //   window.open(selectedReport);
+  // });
 });
