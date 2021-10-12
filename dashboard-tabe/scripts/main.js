@@ -87,7 +87,7 @@ const tileSet = [
       ["Post:", "180"]
     ],
     formatDetails: "tile-details-small",
-    target: "../assets/coming-soon.html"
+    target: "../dashboard-best-plus/index.html"
   },
   {
     id: "tile9",
