@@ -99,58 +99,6 @@ const tileSet = [
   }
 ];
 
-// const dataSet1 = [
-//   {
-//     Site: "Enterprise site",
-//     Enrollment: "560",
-//     PostTest: "0.64",
-//     ReportLink:
-//       "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-//   },
-//   {
-//     Site: "Far site",
-//     Enrollment: "560",
-//     PostTest: "0.07",
-//     ReportLink:
-//       "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-//   },
-//   {
-//     Site: "Mulberry site",
-//     Enrollment: "560",
-//     PostTest: "0.64",
-//     ReportLink:
-//       "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-//   },
-//   {
-//     Site: "Alpha site",
-//     Enrollment: "560",
-//     PostTest: "0.64",
-//     ReportLink:
-//       "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-//   },
-//   {
-//     Site: "Old English site",
-//     Enrollment: "560",
-//     PostTest: "0.64",
-//     ReportLink:
-//       "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-//   },
-//   {
-//     Site: "Decrepit site",
-//     Enrollment: "560",
-//     PostTest: "0.64",
-//     ReportLink:
-//       "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-//   },
-//   {
-//     Site: "Voyager site",
-//     Enrollment: "299",
-//     PostTest: "0.57",
-//     ReportLink:
-//       "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=6&tfc=MP&cf=2NYS&nfy=1"
-//   }
-// ];
-
 const dataSet = [
   {
     AgencyID: "SESD",
