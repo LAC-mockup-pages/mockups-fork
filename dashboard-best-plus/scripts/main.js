@@ -5,13 +5,17 @@
 
 const tileSet = [
   {
-    id: "tile1",
-    header: "Post Test",
-    background: "rgba(247,224,149,0), rgba(247,224,149,1)",
-    details: ["75%"],
-    formatDetails: "",
-    target: "../dashboard-post/index.html"
+    id: "tile8",
+    header: "Best + Tests",
+    background: "rgba(211,228,240)",
+    details: [
+      ["Pre:", "300"],
+      ["Post:", "180"]
+    ],
+    formatDetails: "tile-details-small",
+    target: "../dashboard-best-plus/index.html"
   },
+
   {
     id: "tile0",
     header: "MSG",
@@ -20,7 +24,14 @@ const tileSet = [
     formatDetails: "",
     target: "../dashboard-msg/index.html"
   },
-
+  {
+    id: "tile1",
+    header: "Post Test",
+    background: "rgba(247,224,149,0), rgba(247,224,149,1)",
+    details: ["75%"],
+    formatDetails: "",
+    target: "../dashboard-post/index.html"
+  },
   {
     id: "tile2",
     header: "Employment Q2",
@@ -76,18 +87,7 @@ const tileSet = [
       ["Post:", "205"]
     ],
     formatDetails: "tile-details-small",
-    target: "../assets/coming-soon.html"
-  },
-  {
-    id: "tile8",
-    header: "Best + Tests",
-    background: "rgba(240,226,213,0), rgba(240,226,213,1)",
-    details: [
-      ["Pre:", "300"],
-      ["Post:", "180"]
-    ],
-    formatDetails: "tile-details-small",
-    target: "../assets/coming-soon.html"
+    target: "../dashboard-tabe/index.html"
   },
   {
     id: "tile9",
@@ -151,223 +151,171 @@ const dataSet1 = [
   }
 ];
 
-const dataSet2 = [
-  {
-    Teacher: "James T. Kirk",
-    Enrollment: "18",
-    PostTest: "0.22",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Katherine Janway",
-    Enrollment: "22",
-    PostTest: "0.72",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Phillippa Gorgious",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "New Kid",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Peter Cetera",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Alan Greenspan",
-    Enrollment: "31",
-    PostTest: "0.66",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  },
-  {
-    Teacher: "Ben Sisko",
-    Enrollment: "22",
-    PostTest: "0.35",
-    ReportLink:
-      "../reports/POP_Reports/POPProgramEval.aspx?st=07/01/2020&en=06/30/2021&ag=RCSD&nfc=5&tfc=BaduraDonaldRCSD9&cf=2NYS&nfy=1"
-  }
-];
-
-const dataSet3 = [
+const dataSet = [
   {
     AgencyID: "SESD",
     SiteID: "Boxing Club",
     SiteName: "Literacy Zone West Athletic and Education Center",
     Level1: 0,
-    "Level 2": 0,
-    "Level 3": 0,
-    "Level 4": 0,
-    "Level 5": 0,
-    "Level 6": 0
+    Level2: 0,
+    Level4: 0,
+    Level5: 0,
+    Level6: 0,
+    Level3: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "ELCADVAUTO",
     SiteName: "Advanced Auto",
-    "Level 1": 2,
-    "Level 2": 2,
-    "Level 3": 2,
-    "Level 4": 0,
-    "Level 5": 0,
-    "Level 6": 2
+    Level1: 2,
+    Level2: 2,
+    Level3: 2,
+    Level4: 0,
+    Level5: 0,
+    Level6: 2
   },
   {
     AgencyID: "SESD",
     SiteID: "ELCARCOM",
     SiteName: "ARCOM",
-    "Level 1": 2,
-    "Level 2": 4,
-    "Level 3": 2,
-    "Level 4": 0,
-    "Level 5": 2,
-    "Level 6": 0
+    Level1: 2,
+    Level2: 4,
+    Level3: 2,
+    Level4: 0,
+    Level5: 2,
+    Level6: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "LZ",
     SiteName: "Literacy Zone FWC Grant Middle School",
-    "Level 1": 2,
-    "Level 2": 0,
-    "Level 3": 0,
-    "Level 4": 0,
-    "Level 5": 0,
-    "Level 6": 0
+    Level1: 2,
+    Level2: 0,
+    Level3: 0,
+    Level4: 0,
+    Level5: 0,
+    Level6: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "LZ6",
     SiteName: "Literacy Zone Dr. King Magnet School",
-    "Level 1": 0,
-    "Level 2": 0,
-    "Level 3": 0,
-    "Level 4": 0,
-    "Level 5": 0,
-    "Level 6": 0
+    Level1: 0,
+    Level2: 0,
+    Level3: 0,
+    Level4: 0,
+    Level5: 0,
+    Level6: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "LZEWeeks",
     SiteName: "Literacy Zone FWC East Dr. Weeks",
-    "Level 1": 0,
-    "Level 2": 0,
-    "Level 3": 0,
-    "Level 4": 0,
-    "Level 5": 0,
-    "Level 6": 0
+    Level1: 0,
+    Level2: 0,
+    Level3: 0,
+    Level4: 0,
+    Level5: 0,
+    Level6: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "LZRound2",
     SiteName: "LIteracy Zone FWC Dr. King",
-    "Level 1": 12,
-    "Level 2": 32,
-    "Level 3": 10,
-    "Level 4": 12,
-    "Level 5": 0,
-    "Level 6": 0
+    Level1: 12,
+    Level2: 32,
+    Level3: 10,
+    Level4: 12,
+    Level5: 0,
+    Level6: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "LZWEP",
     SiteName: "Literacy Zone FWC Fowler",
-    "Level 1": 0,
-    "Level 2": 0,
-    "Level 3": 0,
-    "Level 4": 0,
-    "Level 5": 0,
-    "Level 6": 0
+    Level1: 0,
+    Level2: 0,
+    Level3: 0,
+    Level4: 0,
+    Level5: 0,
+    Level6: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "SCSDJustice",
     SiteName: "Justice Center",
-    "Level 1": 0,
-    "Level 2": 0,
-    "Level 3": 0,
-    "Level 4": 0,
-    "Level 5": 0,
-    "Level 6": 0
+    Level1: 0,
+    Level2: 0,
+    Level3: 0,
+    Level4: 0,
+    Level5: 0,
+    Level6: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "SCSDProbation",
     SiteName: "Onondaga County Probation Department",
-    "Level 1": 0,
-    "Level 2": 0,
-    "Level 3": 0,
-    "Level 4": 0,
-    "Level 5": 0,
-    "Level 6": 0
+    Level1: 0,
+    Level2: 0,
+    Level3: 0,
+    Level4: 0,
+    Level5: 0,
+    Level6: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "SCSDRefugee",
     SiteName: "Refugee Center",
-    "Level 1": 225,
-    "Level 2": 156,
-    "Level 3": 74,
-    "Level 4": 74,
-    "Level 5": 41,
-    "Level 6": 9
+    Level1: 225,
+    Level2: 156,
+    Level3: 74,
+    Level4: 74,
+    Level5: 41,
+    Level6: 9
   },
   {
     AgencyID: "SESD",
     SiteID: "SCSDRescue",
     SiteName: "Rescue Mission Motivational Learning Center",
-    "Level 1": 0,
-    "Level 2": 0,
-    "Level 3": 0,
-    "Level 4": 0,
-    "Level 5": 0,
-    "Level 6": 0
+    Level1: 0,
+    Level2: 0,
+    Level3: 0,
+    Level4: 0,
+    Level5: 0,
+    Level6: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "SCSDSidney",
     SiteName: "Sidney Johnson Vocational Center",
-    "Level 1": 0,
-    "Level 2": 0,
-    "Level 3": 0,
-    "Level 4": 2,
-    "Level 5": 0,
-    "Level 6": 0
+    Level1: 0,
+    Level2: 0,
+    Level3: 0,
+    Level4: 2,
+    Level5: 0,
+    Level6: 0
   },
   {
     AgencyID: "SESD",
     SiteID: "SCSDWestside",
     SiteName: "Westside Learning Center",
-    "Level 1": 32,
-    "Level 2": 79,
-    "Level 3": 31,
-    "Level 4": 25,
-    "Level 5": 41,
-    "Level 6": 13
+    Level1: 32,
+    Level2: 79,
+    Level3: 31,
+    Level4: 25,
+    Level5: 41,
+    Level6: 13
   },
   {
     AgencyID: "SESD",
     SiteID: "WPLGiov",
     SiteName: "Giovanni",
-    "Level 1": 0,
-    "Level 2": 4,
-    "Level 3": 0,
-    "Level 4": 0,
-    "Level 5": 0,
-    "Level 6": 0
+    Level1: 0,
+    Level2: 4,
+    Level3: 0,
+    Level4: 0,
+    Level5: 0,
+    Level6: 0
   }
 ];
 
@@ -388,10 +336,12 @@ const createDetailLines = (detailList) => {
 };
 const createTile = (dataObj, classButton, classTile) => {
   const { id, header, background, details, formatDetails, target } = dataObj;
-  const gradient =
-    classTile === "large-tile" || classTile === "medium-tile"
-      ? `style="background-image: linear-gradient(180deg, ${background})"`
-      : "";
+  // Reserves gradient for the main tiles, tile0 to tile3
+  const gradient = !["tile0", "tile1", "tile2", "tile3"].includes(id)
+    ? ""
+    : classTile === "large-tile" || classTile === "medium-tile"
+    ? `style="background-image: linear-gradient(180deg, ${background})"`
+    : "";
   const format = formatDetails ? formatDetails : "tile-details";
   const detailContent =
     details.length > 1 ? createDetailLines(details) : details[0];
@@ -414,12 +364,12 @@ const createLeftNavBar = () => {
   for (const record of tileSet) {
     let buttonClass = "side-navbar-button";
     let tileClass = "";
-
     switch (record.id) {
-      case "tile1":
+      case "tile8":
         tileClass = "large-tile";
         break;
       case "tile0":
+      case "tile1":
       case "tile2":
       case "tile3":
         tileClass = "medium-tile";
@@ -428,23 +378,9 @@ const createLeftNavBar = () => {
         tileClass = "small-tile";
         break;
     }
-
     block += createTile(record, buttonClass, tileClass);
   }
   return block;
-};
-
-//TODO Add logic to reorder the tiles depending on the selected
-//TODO dashboard. Tiles 0 to 3 are always on top.
-//TODO If the top tile is not a large tile in the landing page
-//TODO tiles 0 to 3 come right after.
-const shuffleTileSet = (list, tileId) => {
-  const majorTiles = ["tile0", "tile1", "tile2", "tile3"];
-  let shuffledList = [];
-
-  if (majorTiles.includes(tileId)) {
-  }
-  return shuffledList;
 };
 
 // Input is a decimal number as a string, fraction of 1.
@@ -500,17 +436,7 @@ const createTable = (dataList) => {
 $(document).ready(() => {
   //* Building and displaying center part
   const leftNavBar = createLeftNavBar();
-  const table1 = createTable(dataSet1);
-  const table2 = createTable(dataSet2);
-
+  const table1 = createTable(dataSet);
   $("#side-nav").append(leftNavBar);
   $(".table1").append(table1);
-  $(".table2").append(table2);
-
-  //* Displaying report in a new browser tab when a table row is clicked
-  $(document).on("click", ".table tbody tr", function () {
-    const selectedReport = $(this).attr("href");
-    console.log("selectedReport :>> ", selectedReport);
-    window.open(selectedReport);
-  });
 });
