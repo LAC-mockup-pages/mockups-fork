@@ -99,7 +99,7 @@ const tileSet = [
   }
 ];
 
-const dataSet3 = [
+const dataSet = [
   {
     AgencyID: "SESD",
     SiteID: "Boxing Club",
@@ -334,7 +334,6 @@ const createDetailLines = (detailList) => {
     const detailValue = key === "Hours:" ? Math.round(Number(value)) : value;
     rows += `<tr><td>${key}</td><td>${detailValue}</td></tr>`;
   }
-
   return `
   <table class="table table-condensed detail-table">
     <tbody>
@@ -342,6 +341,7 @@ const createDetailLines = (detailList) => {
     </tbody>
   </table>`;
 };
+
 const createTile = (dataObj, classButton, classTile) => {
   const { id, header, background, details, formatDetails, target } = dataObj;
   // Reserves gradient for the main tiles, tile0 to tile3
@@ -353,7 +353,6 @@ const createTile = (dataObj, classButton, classTile) => {
   const format = formatDetails ? formatDetails : "tile-details";
   const detailContent =
     details.length > 1 ? createDetailLines(details) : details[0];
-
   const tile = `
     <div class="${classButton}">
       <button class=${classTile} ${gradient} type="button" id=${id}>
@@ -363,7 +362,6 @@ const createTile = (dataObj, classButton, classTile) => {
         </a>
       </button>
     </div>`;
-
   return tile;
 };
 
@@ -372,7 +370,6 @@ const createLeftNavBar = () => {
   for (const record of tileSet) {
     let buttonClass = "side-navbar-button";
     let tileClass = "";
-
     switch (record.id) {
       case "tile7":
         tileClass = "large-tile";
@@ -387,23 +384,9 @@ const createLeftNavBar = () => {
         tileClass = "small-tile";
         break;
     }
-
     block += createTile(record, buttonClass, tileClass);
   }
   return block;
-};
-
-//TODO Add logic to reorder the tiles depending on the selected
-//TODO dashboard. Tiles 0 to 3 are always on top.
-//TODO If the top tile is not a large tile in the landing page
-//TODO tiles 0 to 3 come right after.
-const shuffleTileSet = (list, tileId) => {
-  const majorTiles = ["tile0", "tile1", "tile2", "tile3"];
-  let shuffledList = [];
-
-  if (majorTiles.includes(tileId)) {
-  }
-  return shuffledList;
 };
 
 // Input is a decimal number as a string, fraction of 1.
@@ -413,13 +396,10 @@ const percentFormat = (str) => {
 };
 
 const createTableHeader = (list) => {
-  console.log("list :>> ", list);
-
-  const headers = list.map((str) => `<th>${str}</th>`).join();
+  const headers = list.map((str) => `<th>${str}</th>`).join("");
   return `<thead><tr>${headers}</tr></thead>`;
 };
 
-// list = dataSet#
 const createTableBody = (list) => {
   let body = "";
   const orderedList = list.sort((item1, item2) =>
@@ -429,7 +409,6 @@ const createTableBody = (list) => {
       ? 1
       : 0
   );
-
   for (const obj of orderedList) {
     const row = [];
     const { SiteName } = obj;
@@ -438,28 +417,16 @@ const createTableBody = (list) => {
       if (key.startsWith("T"))
         row.push(`<td class="cell-data">${obj[key]}</td>`);
     }
-
-    // const link = ` href=${obj.ReportLink}`;
-    // for (const key of Object.keys(obj)) {
-    //   if (key === "ReportLink") continue;
-    //   const value = key === "PostTest" ? percentFormat(obj[key]) : obj[key];
-    //   row += `<td class="cell-data">${value}</td>`;
-    // }
-    // const { ReportLink } = obj;
-    // const link = ReportLink ? ` href=${ReportLink}` : "";
-
-    body += `<tr>${row.join()}</tr>`;
+    body += `<tr>${row.join("")}</tr>`;
   }
   return `<tbody>${body}</tbody>`;
-  // return `<tbody>${"body"}</tbody>`;
 };
 
 const createTable = (dataList) => {
   const headerList = Object.keys(dataList[0])
     .filter((str) => str.startsWith("T"))
     .map((str) => `${str.substr(0, 2)}-${str.slice(-1)}`);
-  // const tableHeader = createTableHeader(["Site", ...headerList]);
-  const tableHeader = "header";
+  const tableHeader = createTableHeader(["Site", ...headerList]);
   const tableBody = createTableBody(dataList);
   return `<table class="table">${tableHeader}${tableBody}</table>`;
 };
@@ -471,17 +438,7 @@ const createTable = (dataList) => {
 $(document).ready(() => {
   //* Building and displaying center part
   const leftNavBar = createLeftNavBar();
-  const table1 = createTable(dataSet3);
-  // const table2 = createTable(dataSet2);
-
+  const table1 = createTable(dataSet);
   $("#side-nav").append(leftNavBar);
   $(".table1").append(table1);
-  // $(".table2").append(table2);
-
-  //* Displaying report in a new browser tab when a table row is clicked
-  // $(document).on("click", ".table tbody tr", function () {
-  //   const selectedReport = $(this).attr("href");
-  //   console.log("selectedReport :>> ", selectedReport);
-  //   window.open(selectedReport);
-  // });
 });
