@@ -49,6 +49,8 @@ $(document).ready(() => {
     window.location.assign(targetUrl);
   });
 
+  // Populating input element values
+
   //* =====================================
 
   //* Triggers edit modal with selected form elements

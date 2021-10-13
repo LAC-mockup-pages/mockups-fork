@@ -684,7 +684,7 @@
               <form class="form nationality-form" role="form">
                 <div class="input-field form-group">
                   <label for="CountryID">Country of birth</label>
-                  <select name="CountryID" disabled value="Haiti">
+                  <select class="modal-select" name="CountryID" disabled>
                     <option value>Select a country</option>
                   </select>
                 </div>
@@ -718,11 +718,32 @@
               </div>
               <form class="form parent" role="form">
                 <div class="input-field form-group">
-                  <label for="Address">Parental status</label>
-                  <select class="modal-select" name="Address" disabled>
-                    <option value="">Select an option</option>
+                  <label for="CustodialParent"
+                    >Parent or guardian of a child/children</label
+                  >
+                  <select
+                    name="CustodialParent"
+                    id="parent-select"
+                    class="modal-select"
+                    disabled
+                  >
+                    <option value="0" selected>No</option>
+                    <option value="1">Yes</option>
                   </select>
                 </div>
+                <div class="input-field form-group">
+                  <label for="SingleParent">Single parent</label>
+                  <select
+                    name="SingleParent"
+                    id="single-select"
+                    class="modal-select"
+                    disabled
+                  >
+                    <option value="0" selected>No</option>
+                    <option value="1">Yes</option>
+                  </select>
+                </div>
+
                 <div>School aged children</div>
                 <table class="table children-table">
                   <thead>
