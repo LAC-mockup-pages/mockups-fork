@@ -15,6 +15,32 @@ const dateFormat = (str) => {
   return `${str.slice(-4)}-${str.substr(0, 2)}-${str.substr(3, 2)}`;
 };
 
+const createOptionList = (dataObj, defaultValue) => {
+  const optionList = dataObj.map((record) => {
+    const [key, value] = Object.keys(record);
+    const keyData = record[key];
+    const valueData = record[value];
+    const defaultVal =
+      defaultValue && keyData === defaultValue ? " selected" : "";
+    return `<option${defaultVal} value=${keyData}>${valueData}</option>`;
+  });
+  return optionList.join("");
+};
+
+const createStaffList = (list) => {
+  const orderedList = list.sort((item1, item2) =>
+    item1.InstructorName < item2.InstructorName
+      ? -1
+      : item1.InstructorName > item2.InstructorName
+      ? 1
+      : 0
+  );
+  return orderedList.map((staff) => {
+    const { ID, InstructorName } = staff;
+    return { objKey: ID, objValue: InstructorName };
+  });
+};
+
 //*=================================================
 //* jQuery section
 //*=================================================
@@ -76,8 +102,14 @@ $(document).ready(() => {
     const name = $(this).attr("name");
     $(this).val(fundingInfo[name]);
   });
-  // Populating Work Eligibility section values.
+  // Populating Work Eligibility section select values.
   // Origin: GetStudent
+  $(".ssn-form select[name='NoSSNVisa']").val(studentInfo.NoSSNVisa);
+  const optionStaff = createOptionList(
+    createStaffList(GetStaff),
+    studentInfo.NoSSNVisaStaff
+  );
+  $(".ssn-form select[name='NoSSNVisaStaff']").append(optionStaff);
 
   //* =====================================
 

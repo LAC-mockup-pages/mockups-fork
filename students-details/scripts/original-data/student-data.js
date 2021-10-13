@@ -567,7 +567,7 @@ export const GetStudent = [
     SSN: "***-**-****",
     VisaNum: "___-__-____",
     NoSSNVisa: "1",
-    NoSSNVisaStaff: "",
+    NoSSNVisaStaff: "24386",
     Sex: "M",
     EthnicityID: "N",
     RaceID: "B3,A1",
