@@ -617,7 +617,7 @@ export const GetStudent = [
 ];
 
 // ddl ???
-const GetFundingInfo = [
+export const GetFundingInfo = [
   {
     ID: "2212200",
     FSID: "E",

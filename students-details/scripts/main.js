@@ -6,8 +6,9 @@
 //! For Development only.
 //! Comment out for Production.
 //! =============================================================
-import { GetStudent } from "./original-data/student-data.js";
-export const studentInfo = GetStudent.slice(0)[0];
+import { GetStudent, GetFundingInfo } from "./original-data/student-data.js";
+const studentInfo = GetStudent.slice(0)[0];
+const fundingInfo = GetFundingInfo.slice(0)[0];
 //! =============================================================
 
 const dateFormat = (str) => {
@@ -32,6 +33,7 @@ $(document).ready(() => {
   //! Navigation variables are defined here as well.
   //! =============================================================
   // const studentInfo =
+  // const fundingInfo =
   // const employmentData =
 
   // Navigation variables.
@@ -59,15 +61,23 @@ $(document).ready(() => {
   });
 
   // Populating input element values
-
-  $("form input").each(function (indx) {
-    const elementName = $(this).attr("name");
+  // Origin: GetStudent
+  $("form input").each(function () {
+    const name = $(this).attr("name");
     const value =
-      $(this).attr("type") === "date" && elementName !== "DateSettled"
-        ? dateFormat(studentInfo[elementName])
-        : studentInfo[elementName];
+      $(this).attr("type") === "date" && name !== "DateSettled"
+        ? dateFormat(studentInfo[name])
+        : studentInfo[name];
     $(this).val(value);
   });
+  // Populating Funding Source section values.
+  // Origin: GetFundingInfo
+  $(".funding-form input").each(function () {
+    const name = $(this).attr("name");
+    $(this).val(fundingInfo[name]);
+  });
+  // Populating Work Eligibility section values.
+  // Origin: GetStudent
 
   //* =====================================
 
