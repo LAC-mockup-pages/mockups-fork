@@ -544,7 +544,7 @@ const GetStaff = [
 ];
 
 // ddl ???
-const GetStudent = [
+export const GetStudent = [
   {
     ID: "1048303",
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
@@ -553,7 +553,7 @@ const GetStudent = [
     Last: "AA1_Jacques",
     BirthDate: "07/12/1987",
     BeginDate: "06/22/2010",
-    LengthOfStay: "11",
+    LengthOfStay: "12",
     Address: "455 5th Ave",
     City: "New York",
     State: "NY",
@@ -582,7 +582,7 @@ const GetStudent = [
     DOLEnroll: "0",
     ProgramID: "0",
     OtherTraining: "0",
-    UUID: "",
+    UUID: "UVM",
     Parent: "0",
     SingleParent: "0",
     CustodialParent: "1",

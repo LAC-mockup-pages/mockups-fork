@@ -2,6 +2,18 @@
 //* Actions and Logic for local page
 //*=================================================
 
+//! =============================================================
+//! For Development only.
+//! Comment out for Production.
+//! =============================================================
+import { GetStudent } from "./original-data/student-data.js";
+export const studentInfo = GetStudent.slice(0)[0];
+//! =============================================================
+
+const dateFormat = (str) => {
+  return `${str.slice(-4)}-${str.substr(0, 2)}-${str.substr(3, 2)}`;
+};
+
 //*=================================================
 //* jQuery section
 //*=================================================
@@ -19,11 +31,8 @@ $(document).ready(() => {
   //! for the different requests to the back-end, using requestObj.
   //! Navigation variables are defined here as well.
   //! =============================================================
-  // const studentData[0] =
-  // const assessmentData =
-  // const enrollmentData =
+  // const studentInfo =
   // const employmentData =
-  // const outcomeData[0] =
 
   // Navigation variables.
   // In Production, update with actual rootUrl and destinations
@@ -50,6 +59,15 @@ $(document).ready(() => {
   });
 
   // Populating input element values
+
+  $("form input").each(function (indx) {
+    const elementName = $(this).attr("name");
+    const value =
+      $(this).attr("type") === "date" && elementName !== "DateSettled"
+        ? dateFormat(studentInfo[elementName])
+        : studentInfo[elementName];
+    $(this).val(value);
+  });
 
   //* =====================================
 
