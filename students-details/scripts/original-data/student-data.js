@@ -569,7 +569,7 @@ export const GetStudent = [
     NoSSNVisa: "1",
     NoSSNVisaStaff: "24386",
     Sex: "M",
-    EthnicityID: "N",
+    EthnicityID: "H",
     RaceID: "B3,A1",
     Grade: "12",
     NYSGrade: "",

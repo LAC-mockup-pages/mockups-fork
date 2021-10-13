@@ -103,13 +103,17 @@ $(document).ready(() => {
     $(this).val(fundingInfo[name]);
   });
   // Populating Work Eligibility section select values.
-  // Origin: GetStudent
+  // Origin: GetStudent, GetStaff
   $(".ssn-form select[name='NoSSNVisa']").val(studentInfo.NoSSNVisa);
   const optionStaff = createOptionList(
     createStaffList(GetStaff),
     studentInfo.NoSSNVisaStaff
   );
   $(".ssn-form select[name='NoSSNVisaStaff']").append(optionStaff);
+  // Populating Gender | Ethnicity section select values.
+  // Origin: GetStudent, ddlRace
+  $(".gender-form select[name='Sex']").val(studentInfo.Sex);
+  $(".gender-form select[name='EthnicityID']").val(studentInfo.EthnicityID);
 
   //* =====================================
 
