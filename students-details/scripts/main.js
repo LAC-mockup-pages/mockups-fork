@@ -174,12 +174,16 @@ $(document).ready(() => {
     studentInfo.CustodialParent
   );
   $(".parent-form select[name='SingleParent']").val(studentInfo.SingleParent);
+  //TODO Children table
   // Populating Referral section select values. Adding option list.
   // Data source: original-data/student-data-additional.js/GetStudent_Additional,
   //        original-data/student-data-additional.js/GetReferralSource
   $(".referral-form select[name='RefSource']").append(
     createOptionList(referral, additionalInfo.RefSource)
   );
+
+  //TODO Population categories section
+
   //* =====================================
 
   //* Triggers edit modal with selected form elements
