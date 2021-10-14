@@ -87,7 +87,7 @@ $(document).ready(() => {
   });
 
   // Populating input element values
-  // Origin: GetStudent
+  // Data source: original-data/student-data.js/GetStudent
   $("form input").each(function () {
     const name = $(this).attr("name");
     const value =
@@ -97,13 +97,14 @@ $(document).ready(() => {
     $(this).val(value);
   });
   // Populating Funding Source section values.
-  // Origin: GetFundingInfo
+  // Data source: original-data/student-data.js/GetFundingInfo
   $(".funding-form input").each(function () {
     const name = $(this).attr("name");
     $(this).val(fundingInfo[name]);
   });
-  // Populating Work Eligibility section select values.
-  // Origin: GetStudent, GetStaff
+  // Populating Work Eligibility section select values. Adding option list.
+  // Data source: original-data/student-data.js/GetStudent,
+  //        data-server.js/GetStaff
   $(".ssn-form select[name='NoSSNVisa']").val(studentInfo.NoSSNVisa);
   const optionStaff = createOptionList(
     createStaffList(GetStaff),
@@ -111,9 +112,17 @@ $(document).ready(() => {
   );
   $(".ssn-form select[name='NoSSNVisaStaff']").append(optionStaff);
   // Populating Gender | Ethnicity section select values.
-  // Origin: GetStudent, ddlRace
+  // Data source: original-data/student-data.js/GetStudent,
+  //        data-server.js/ddlRace
   $(".gender-form select[name='Sex']").val(studentInfo.Sex);
   $(".gender-form select[name='EthnicityID']").val(studentInfo.EthnicityID);
+  //TODO RaceID multiple selects
+
+  //TODO Populating Employment history table values
+  // Data source:
+
+  // Populating Educational background select values. Adding option lists.
+  // Data source: original-data/student-data.js/GetStudent
 
   //* =====================================
 
