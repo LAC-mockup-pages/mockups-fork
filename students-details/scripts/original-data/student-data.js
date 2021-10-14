@@ -168,7 +168,7 @@ const GetGender = [
 ];
 
 // for ddlHighestGradeUS and ddlHighestGradeNYS
-const GetHighestGradeCompletedUS = [
+export const GetHighestGradeCompletedUS = [
   { key: "NA", value: "NA " },
   { key: "1", value: "Grade 1 " },
   { key: "2", value: "Grade 2 " },
@@ -210,24 +210,22 @@ const GetHighestCredential = [
 ];
 
 // ddlYearsSchooling
-const GetYearsSchooling = [
-  { key: "NA", value: "NA " },
-  { key: "1", value: "Grade 1 " },
-  { key: "2", value: "Grade 2 " },
-  { key: "3", value: "Grade 3 " },
-  { key: "4", value: "Grade 4 " },
-  { key: "5", value: "Grade 5 " },
-  { key: "6", value: "Grade 6 " },
-  { key: "7", value: "Grade 7 " },
-  { key: "8", value: "Grade 8 " },
-  { key: "9", value: "Grade 9 " },
-  { key: "10", value: "Grade 10 " },
-  { key: "11", value: "Grade 11 " },
-  { key: "12", value: "Grade 12 HS Diploma" },
-  { key: "12D", value: "Grade 12D IEP Diploma" },
-  { key: "12E", value: "Grade 12E GED/TASC" },
-  { key: "13", value: "Some College" },
-  { key: "16", value: "Undergraduate degree" }
+export const GetYearsSchooling = [
+  { key: "NA", value: "NA" },
+  { key: "1", value: "1" },
+  { key: "2", value: "2" },
+  { key: "3", value: "3" },
+  { key: "4", value: "4" },
+  { key: "5", value: "5" },
+  { key: "6", value: "6" },
+  { key: "7", value: "7" },
+  { key: "8", value: "8" },
+  { key: "9", value: "9" },
+  { key: "10", value: "10" },
+  { key: "11", value: "11" },
+  { key: "12", value: "12" },
+  { key: "12E", value: "12" },
+  { key: "12P", value: "12+" }
 ];
 
 // ddlIncome_FY
@@ -572,8 +570,8 @@ export const GetStudent = [
     EthnicityID: "H",
     RaceID: "B3,A1",
     Grade: "12",
-    NYSGrade: "",
-    LastSchoolNYS: "",
+    NYSGrade: "2",
+    LastSchoolNYS: "Hard Knocks Central",
     HighestCredential: "",
     CredentialUS: "0",
     CredentialOther: "0",

@@ -6,9 +6,16 @@
 //! For Development only.
 //! Comment out for Production.
 //! =============================================================
-import { GetStudent, GetFundingInfo } from "./original-data/student-data.js";
+import {
+  GetStudent,
+  GetFundingInfo,
+  GetHighestGradeCompletedUS,
+  GetYearsSchooling
+} from "./original-data/student-data.js";
 const studentInfo = GetStudent.slice(0)[0];
 const fundingInfo = GetFundingInfo.slice(0)[0];
+const highestGrade = GetHighestGradeCompletedUS.slice(0);
+const yearsSchool = GetYearsSchooling.slice(0);
 //! =============================================================
 
 const dateFormat = (str) => {
@@ -123,7 +130,18 @@ $(document).ready(() => {
 
   // Populating Educational background select values. Adding option lists.
   // Data source: original-data/student-data.js/GetStudent
-
+  $(".education-form select[name='Grade']").append(
+    createOptionList(highestGrade, studentInfo.Grade || "NA")
+  );
+  $(".education-form select[name='NYSGrade']").append(
+    createOptionList(highestGrade, studentInfo.NYSGrade || "NA")
+  );
+  $(".education-form select[name='HighestCredential']").append(
+    createOptionList(highestGrade, studentInfo.HighestCredential || "NA")
+  );
+  $(".education-form select[name='YearsUSSchools']").append(
+    createOptionList(yearsSchool, studentInfo.YearsUSSchools || "NA")
+  );
   //* =====================================
 
   //* Triggers edit modal with selected form elements
