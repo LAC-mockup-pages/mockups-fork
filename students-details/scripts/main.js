@@ -14,7 +14,8 @@ import {
 } from "./original-data/student-data.js";
 import {
   GetStudent_Additional,
-  GetCountrySource
+  GetCountrySource,
+  GetReferralSource
 } from "./original-data/student-data-additional.js";
 const studentInfo = GetStudent.slice(0)[0];
 const fundingInfo = GetFundingInfo.slice(0)[0];
@@ -22,6 +23,7 @@ const highestGrade = GetHighestGradeCompletedUS.slice(0);
 const yearsSchool = GetYearsSchooling.slice(0);
 const additionalInfo = GetStudent_Additional.slice(0)[0];
 const countries = GetCountrySource.slice(0);
+const referral = GetReferralSource.slice(0);
 //! =============================================================
 
 const dateFormat = (str) => {
@@ -172,7 +174,12 @@ $(document).ready(() => {
     studentInfo.CustodialParent
   );
   $(".parent-form select[name='SingleParent']").val(studentInfo.SingleParent);
-
+  // Populating Referral section select values. Adding option list.
+  // Data source: original-data/student-data-additional.js/GetStudent_Additional,
+  //        original-data/student-data-additional.js/GetReferralSource
+  $(".referral-form select[name='RefSource']").append(
+    createOptionList(referral, additionalInfo.RefSource)
+  );
   //* =====================================
 
   //* Triggers edit modal with selected form elements

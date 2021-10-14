@@ -307,7 +307,7 @@ const GetPASource = [
 ];
 
 // ddlReferralSource
-const GetReferralSource = [
+export const GetReferralSource = [
   { key: "A", value: "A | Another student" },
   { key: "Z", value: "Z | Brochure" },
   { key: "Y", value: "Y | Church" },
