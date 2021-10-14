@@ -1,12 +1,12 @@
 // ddl ???
-const GetStudent_Additional = [
+export const GetStudent_Additional = [
   {
     ID: "1048303",
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
     CountryID: "HA",
     Status: "Citizen",
     DateSettled: "05/02/2015",
-    Languages: "",
+    Languages: "English, French",
     Correctional: "2",
     Institutionalized: "2",
     HeadHouse: "1",
@@ -49,7 +49,7 @@ const GetPAStatusInfo = [
 ];
 
 // ddlCountry
-const GetCountrySource = [
+export const GetCountrySource = [
   { key: "AF", value: "Afghanistan" },
   { key: "AC", value: "Africa" },
   { key: "AB", value: "Albania" },

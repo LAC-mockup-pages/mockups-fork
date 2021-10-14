@@ -12,10 +12,16 @@ import {
   GetHighestGradeCompletedUS,
   GetYearsSchooling
 } from "./original-data/student-data.js";
+import {
+  GetStudent_Additional,
+  GetCountrySource
+} from "./original-data/student-data-additional.js";
 const studentInfo = GetStudent.slice(0)[0];
 const fundingInfo = GetFundingInfo.slice(0)[0];
 const highestGrade = GetHighestGradeCompletedUS.slice(0);
 const yearsSchool = GetYearsSchooling.slice(0);
+const additionalInfo = GetStudent_Additional.slice(0)[0];
+const countries = GetCountrySource.slice(0);
 //! =============================================================
 
 const dateFormat = (str) => {
@@ -130,6 +136,8 @@ $(document).ready(() => {
 
   // Populating Educational background select values. Adding option lists.
   // Data source: original-data/student-data.js/GetStudent
+  //          original-data/student-data.js/GetHighestGradeCompletedUS
+  //          original-data/student-data.js/GetYearsSchooling
   $(".education-form select[name='Grade']").append(
     createOptionList(highestGrade, studentInfo.Grade || "NA")
   );
@@ -142,6 +150,22 @@ $(document).ready(() => {
   $(".education-form select[name='YearsUSSchools']").append(
     createOptionList(yearsSchool, studentInfo.YearsUSSchools || "NA")
   );
+  //TODO Credential in US / Other country select
+
+  // Populating Barriers multiple selects. Adding option lists.
+  //TODO Barriers
+
+  // Populating Nationality select values. Add option lists.
+  // Data source: original-data/student-data-additional.js/GetStudent_Additional
+  //          original-data/student-data-additional.js/GetCountrySource
+  $(".nationality-form select[name='CountryID']").append(
+    createOptionList(countries, additionalInfo.CountryID)
+  );
+  $(".nationality-form select[name='Status']").val(additionalInfo.Status);
+  $(".nationality-form input[name='DateSettled']").val(
+    dateFormat(additionalInfo.DateSettled)
+  );
+  $(".nationality-form input[name='Languages']").val(additionalInfo.Languages);
   //* =====================================
 
   //* Triggers edit modal with selected form elements
