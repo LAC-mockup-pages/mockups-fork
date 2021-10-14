@@ -166,6 +166,13 @@ $(document).ready(() => {
     dateFormat(additionalInfo.DateSettled)
   );
   $(".nationality-form input[name='Languages']").val(additionalInfo.Languages);
+  //Populating Parent/Children select values.
+  // Data source: original-data/student-data.js/GetStudent
+  $(".parent-form select[name='CustodialParent']").val(
+    studentInfo.CustodialParent
+  );
+  $(".parent-form select[name='SingleParent']").val(studentInfo.SingleParent);
+
   //* =====================================
 
   //* Triggers edit modal with selected form elements
