@@ -76,6 +76,11 @@ $(document).ready(() => {
   // const studentInfo =
   // const fundingInfo =
   // const employmentData =
+  // const highestGrade =
+  // const yearsSchool =
+  // const additionalInfo =
+  // const countries =
+  // const referral =
 
   // Navigation variables.
   // In Production, update with actual rootUrl and destinations
