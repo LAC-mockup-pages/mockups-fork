@@ -17,7 +17,11 @@ import {
   GetCountrySource,
   GetReferralSource
 } from "./original-data/student-data-additional.js";
-import { inputValues, ssnValues } from "./components.js/student-info.js";
+import {
+  genderValues,
+  inputValues,
+  ssnValues
+} from "./components.js/student-info.js";
 const studentInfo = GetStudent.slice(0)[0];
 const fundingInfo = GetFundingInfo.slice(0)[0];
 const highestGrade = GetHighestGradeCompletedUS.slice(0);
@@ -107,8 +111,11 @@ $(document).ready(() => {
     window.location.assign(targetUrl);
   });
 
+  //* Populating input and select elements for display.
+  //* Elements are disabled.
   inputValues(studentInfo);
   ssnValues(studentInfo);
+  genderValues(studentInfo);
 
   // Populating Funding Source section values.
   // Data source: original-data/student-data.js/GetFundingInfo
@@ -116,13 +123,6 @@ $(document).ready(() => {
     const name = $(this).attr("name");
     $(this).val(fundingInfo[name]);
   });
-
-  // Populating Gender | Ethnicity section select values.
-  // Data source: original-data/student-data.js/GetStudent,
-  //        data-server.js/ddlRace
-  $(".gender-form select[name='Sex']").val(studentInfo.Sex);
-  $(".gender-form select[name='EthnicityID']").val(studentInfo.EthnicityID);
-  //TODO RaceID multiple selects
 
   //TODO Populating Employment history table values
   // Data source:
