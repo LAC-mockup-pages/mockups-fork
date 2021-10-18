@@ -17,6 +17,7 @@ import {
   GetCountrySource,
   GetReferralSource
 } from "./original-data/student-data-additional.js";
+import { inputValues, ssnValues } from "./components.js/student-info.js";
 const studentInfo = GetStudent.slice(0)[0];
 const fundingInfo = GetFundingInfo.slice(0)[0];
 const highestGrade = GetHighestGradeCompletedUS.slice(0);
@@ -26,11 +27,11 @@ const countries = GetCountrySource.slice(0);
 const referral = GetReferralSource.slice(0);
 //! =============================================================
 
-const dateFormat = (str) => {
+export const dateFormat = (str) => {
   return `${str.slice(-4)}-${str.substr(0, 2)}-${str.substr(3, 2)}`;
 };
 
-const createOptionList = (dataObj, defaultValue) => {
+export const createOptionList = (dataObj, defaultValue) => {
   const optionList = dataObj.map((record) => {
     const [key, value] = Object.keys(record);
     const keyData = record[key];
@@ -42,7 +43,7 @@ const createOptionList = (dataObj, defaultValue) => {
   return optionList.join("");
 };
 
-const createStaffList = (list) => {
+export const createStaffList = (list) => {
   const orderedList = list.sort((item1, item2) =>
     item1.InstructorName < item2.InstructorName
       ? -1
@@ -106,31 +107,16 @@ $(document).ready(() => {
     window.location.assign(targetUrl);
   });
 
-  // Populating input element values
-  // Data source: original-data/student-data.js/GetStudent
-  $("form input").each(function () {
-    const name = $(this).attr("name");
-    const value =
-      $(this).attr("type") === "date" && name !== "DateSettled"
-        ? dateFormat(studentInfo[name])
-        : studentInfo[name];
-    $(this).val(value);
-  });
+  inputValues(studentInfo);
+  ssnValues(studentInfo);
+
   // Populating Funding Source section values.
   // Data source: original-data/student-data.js/GetFundingInfo
   $(".funding-form input").each(function () {
     const name = $(this).attr("name");
     $(this).val(fundingInfo[name]);
   });
-  // Populating Work Eligibility section select values. Adding option list.
-  // Data source: original-data/student-data.js/GetStudent,
-  //        data-server.js/GetStaff
-  $(".ssn-form select[name='NoSSNVisa']").val(studentInfo.NoSSNVisa);
-  const optionStaff = createOptionList(
-    createStaffList(GetStaff),
-    studentInfo.NoSSNVisaStaff
-  );
-  $(".ssn-form select[name='NoSSNVisaStaff']").append(optionStaff);
+
   // Populating Gender | Ethnicity section select values.
   // Data source: original-data/student-data.js/GetStudent,
   //        data-server.js/ddlRace
