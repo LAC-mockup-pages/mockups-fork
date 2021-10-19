@@ -35,18 +35,25 @@ export const ssnValues = (student) => {
 export const genderValues = (student) => {
   $(".gender-form select[name='Sex']").val(student.Sex);
   $(".gender-form select[name='EthnicityID']").val(student.EthnicityID);
-  //TODO RaceID multiple selects
+  // RaceID multiple selects
   const selectedList = student.RaceID.split(",");
   let raceElement = "";
   for (const val of selectedList) {
     const valIndex = selectedList.indexOf(val);
     const labelElement =
       valIndex === 0 ? `<label for="RaceID">Race</label>` : `<label></label>`;
+    const selectionList = selectedList.slice(0, valIndex + 1);
     const optionValuesList = ddlRace.filter(
-      (obj) => !selectedList.slice(0, valIndex + 1).includes(val)
+      (obj) => !selectionList.includes(obj.key)
     );
     const optionList = createOptionList(optionValuesList, val);
-    raceElement += `${labelElement}<select class="modal-select" name="RaceID" disabled>${optionList}</select>`;
+    raceElement += `
+    <div class="input-field form-group">
+      ${labelElement}
+      <select class="modal-select" name="RaceID" disabled>
+        ${optionList}
+      </select>
+    </div>`;
   }
   $(".race").empty().append(raceElement);
 };
