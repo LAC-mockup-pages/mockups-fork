@@ -43,6 +43,10 @@
   font-weight: 500;
 }
 
+.light-red-text {
+  color: rgb(246, 133, 133);
+}
+
 .children-header {
   background-color: #2479b5;
   text-align: center;
