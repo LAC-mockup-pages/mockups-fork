@@ -624,3 +624,34 @@ export const GetFundingInfo = [
     Student_PKID: "1048303"
   }
 ];
+
+export const GetFundingInfo2 = [
+  {
+    ID: "2689103",
+    FSID: "E",
+    FundAbbrev: "E | EPE",
+    FY: "2022",
+    Student_PKID: "1048303"
+  },
+  {
+    ID: "2689102",
+    FSID: "W",
+    FundAbbrev: "W | WEP",
+    FY: "2022",
+    Student_PKID: "1048303"
+  },
+  {
+    ID: "2689104",
+    FSID: "Y",
+    FundAbbrev: "Y | WIA/WIOA",
+    FY: "2022",
+    Student_PKID: "1048303"
+  },
+  {
+    ID: "2212200",
+    FSID: "E",
+    FundAbbrev: "E | EPE",
+    FY: "2017",
+    Student_PKID: "1048303"
+  }
+];
