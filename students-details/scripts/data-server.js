@@ -349,3 +349,18 @@ const ddlBarriers = [
   { key: "EXhaustTANF_LB", value: "Exhausting TANF within 2 years" },
   { key: "SingleParent_LB", value: "Single Parent" }
 ];
+
+const ddlPopulation = [
+  { key: "Correctional", value: "In correctional facility" },
+  { key: "Institutionalized", value: "Other institutionalized" },
+  { key: "HeadHouse", value: "Head of household" },
+  { key: "OtherEd", value: "Enrolled in other education/training program" },
+  { key: "Veteran", value: "Veteran" },
+  { key: "DislocatedWorker", value: "Dislocated Worker" },
+  { key: "EmployedAt200P", value: "Employed at 200% poverty level" },
+  { key: "RuralResident", value: "Rural Area resident" },
+  { key: "FamilyLiteracy", value: "Family literacy" },
+  { key: "Parole", value: "Parole" },
+  { key: "CommCorrection", value: "In community correctional facility" },
+  { key: "OtherPopulation", value: "Other" }
+];
