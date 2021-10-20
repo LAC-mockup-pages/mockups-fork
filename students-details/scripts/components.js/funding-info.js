@@ -9,24 +9,11 @@ import { createOptionList } from "../main.js";
 // Data source: original-data/student-data.js/GetFundingSource
 //           original-data/student-data.js/GetFundingInfo
 export const fundingValues = (list, sources) => {
-  const actualFiscalYear = SESSION_VARIABLE[0].FiscalYear.startsWith(
-    "<%= Session"
-  )
-    ? "2022"
-    : SESSION_VARIABLE[0].FiscalYear;
-
   for (const obj of list) {
     const { FSID, FY } = obj;
     const optionList = createOptionList(sources, FSID);
-    const selectFiscalYear = `
-    <div class="input-field form-group col-sm-4">
-      <select class="modal-select col-sm-4" name="FY">
-        <option value=${FY}>${FY}</option>
-        <option value=${(Number(FY) - 1).toString()}>${(
-      Number(FY) - 1
-    ).toString()}</option>
-      </select>
-    </div>`;
+    const FYMinus1 = (Number(FY) - 1).toString();
+    const selectFiscalYear = `<div class="input-field form-group col-sm-4"><select class="modal-select" name="FY"><option value=${FY} selected>${FY}</option><option value=${FYMinus1}>${FYMinus1}</option></select></div>`;
 
     const selectSource = `
     <div class="input-field form-group col-sm-8">
@@ -36,7 +23,10 @@ export const fundingValues = (list, sources) => {
     </div`;
 
     $(".funding-form").append(
-      `<div class="row">${selectSource}${selectFiscalYear}</div>`
+      `<div class="row">
+        ${selectSource}
+        ${selectFiscalYear}
+      </div>`
     );
   }
 };

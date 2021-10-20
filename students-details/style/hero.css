@@ -51,6 +51,12 @@
   background-color: #d3e4f0;
 }
 
+/* Multiple select sections */
+.funding-form .input-field > .modal-select {
+  width: fit-content;
+  /* margin-right: 1%; */
+}
+
 /* Tables */
 .table > thead > tr > th {
   color: #2479b5;

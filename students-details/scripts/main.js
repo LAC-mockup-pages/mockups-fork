@@ -11,7 +11,6 @@ import {
   GetFundingInfo,
   GetHighestGradeCompletedUS,
   GetYearsSchooling,
-  GetFundingInfo2,
   GetFundingSource
 } from "./original-data/student-data.js";
 import {
@@ -26,8 +25,7 @@ import {
 } from "./components.js/student-info.js";
 import { fundingValues } from "./components.js/funding-info.js";
 const studentInfo = GetStudent.slice(0)[0];
-const fundingInfo = GetFundingInfo.slice(0)[0];
-const fundingInfo2 = GetFundingInfo2.slice(0);
+const fundingInfo = GetFundingInfo.slice(0);
 const fundingSources = GetFundingSource.slice(0);
 const highestGrade = GetHighestGradeCompletedUS.slice(0);
 const yearsSchool = GetYearsSchooling.slice(0);
@@ -122,14 +120,7 @@ $(document).ready(() => {
   inputValues(studentInfo);
   ssnValues(studentInfo);
   genderValues(studentInfo);
-
-  // Populating Funding Source section values.
-  // Data source: original-data/student-data.js/GetFundingInfo
-  // $(".funding-form input").each(function () {
-  //   const name = $(this).attr("name");
-  //   $(this).val(fundingInfo[name]);
-  // });
-  fundingValues(fundingInfo2, fundingSources);
+  fundingValues(fundingInfo, fundingSources);
 
   //TODO Populating Employment history table values
   // Data source:

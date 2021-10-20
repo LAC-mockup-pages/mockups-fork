@@ -614,18 +614,18 @@ export const GetStudent = [
   }
 ];
 
-// ddl ???
-export const GetFundingInfo = [
-  {
-    ID: "2212200",
-    FSID: "E",
-    FundAbbrev: "E | EPE",
-    FY: "2017",
-    Student_PKID: "1048303"
-  }
-];
+// ddl ???== UNUSED ==
+// export const GetFundingInfo = [
+//   {
+//     ID: "2212200",
+//     FSID: "E",
+//     FundAbbrev: "E | EPE",
+//     FY: "2017",
+//     Student_PKID: "1048303"
+//   }
+// ];
 
-export const GetFundingInfo2 = [
+export const GetFundingInfo = [
   {
     ID: "2689103",
     FSID: "E",
