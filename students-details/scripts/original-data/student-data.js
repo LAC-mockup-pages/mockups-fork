@@ -150,7 +150,7 @@ const GetEmploymentStatus = [
 ];
 
 // ddlFund - For current FY
-const GetFundingSource = [
+export const GetFundingSource = [
   { key: "06-07", value: "06-07 | 06-07 registration fee (2021)" },
   { key: "ASP", value: "ASP | AHSEPP (2021)" },
   { key: "DYADL", value: "DYADL | Adolescent Literacy DYCD (2021)" },
