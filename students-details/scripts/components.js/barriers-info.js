@@ -12,12 +12,9 @@ import { createOptionList } from "../main.js";
 export const barriersValues = (obj) => {
   const valuesObj = {};
   const keyList = ddlBarriers.map((record) => record.key);
-  console.log("keyList :>> ", keyList);
   for (const key of keyList) {
     valuesObj[key] = obj[key];
   }
-  console.log("valuesObj :>> ", valuesObj);
-
   const fieldsWithAnswer = Object.keys(valuesObj).filter(
     (key) => valuesObj[key] !== "2"
   );
