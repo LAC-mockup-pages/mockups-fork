@@ -10,6 +10,44 @@ import { createOptionList } from "../main.js";
 //          /data-server.js/ddlBarriers
 
 export const barriersValues = (obj) => {
+  const valuesObj = {};
   const keyList = ddlBarriers.map((record) => record.key);
   console.log("keyList :>> ", keyList);
+  for (const key of keyList) {
+    valuesObj[key] = obj[key];
+  }
+  console.log("valuesObj :>> ", valuesObj);
+
+  const fieldsWithAnswer = Object.keys(valuesObj).filter(
+    (key) => valuesObj[key] !== "2"
+  );
+  const formContent = [];
+  for (const key of fieldsWithAnswer) {
+    const optionList = createOptionList(ddlBarriers, key);
+    const optionListYesNoNA = createOptionList(
+      [
+        { key: "0", value: "No" },
+        { key: "1", value: "Yes" },
+        { key: "2", value: "No answer" }
+      ],
+      valuesObj[key]
+    );
+    const row = `
+    <div class="input-field form-group col-sm-10">
+      <select class="modal-select" name=${key} disabled>
+        ${optionList}
+      </select>
+    </div>
+    <div class="input-field form-group col-sm-2">
+      <select class="modal-select" name=${key + "-value"} disabled>
+        ${optionListYesNoNA}
+      </select>
+    </div>`;
+    formContent.push(row);
+  }
+  $(".barriers-form").append(
+    `<div class="row">
+      ${formContent.join("")}
+    </div>`
+  );
 };
