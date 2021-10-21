@@ -124,6 +124,7 @@ $(document).ready(() => {
   genderValues(studentInfo);
   fundingValues(fundingInfo, fundingSources);
   populationValues(additionalInfo);
+  barriersValues(studentInfo);
 
   //TODO Populating Employment history table values
   // Data source:
@@ -147,8 +148,6 @@ $(document).ready(() => {
   //TODO Credential in US / Other country select
 
   // Populating Barriers multiple selects. Adding option lists.
-  //TODO Barriers
-  barriersValues(studentInfo);
 
   // Populating Nationality select values. Add option lists.
   // Data source: original-data/student-data-additional.js/GetStudent_Additional
