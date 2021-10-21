@@ -173,8 +173,6 @@ $(document).ready(() => {
     createOptionList(referral, additionalInfo.RefSource)
   );
 
-  //TODO Population categories section
-
   //* =====================================
 
   //* Triggers edit modal with selected form elements
