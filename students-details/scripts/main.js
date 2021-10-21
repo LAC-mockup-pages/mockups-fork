@@ -25,6 +25,7 @@ import {
 } from "./components.js/student-info.js";
 import { fundingValues } from "./components.js/funding-info.js";
 import { populationValues } from "./components.js/population-info.js";
+import { barriersValues } from "./components.js/barriers-info.js";
 const studentInfo = GetStudent.slice(0)[0];
 const fundingInfo = GetFundingInfo.slice(0);
 const fundingSources = GetFundingSource.slice(0);
@@ -147,6 +148,7 @@ $(document).ready(() => {
 
   // Populating Barriers multiple selects. Adding option lists.
   //TODO Barriers
+  barriersValues(studentInfo);
 
   // Populating Nationality select values. Add option lists.
   // Data source: original-data/student-data-additional.js/GetStudent_Additional
