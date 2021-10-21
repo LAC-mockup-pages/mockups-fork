@@ -17,10 +17,10 @@ export const fundingValues = (list, sources) => {
 
     const selectSource = `
     <div class="input-field form-group col-sm-8">
-      <select class="modal-select" name="FSID">
+      <select class="modal-select" name=${FSID}>
         ${optionList}
       </select>
-    </div`;
+    </div>`;
 
     $(".funding-form").append(
       `<div class="row">

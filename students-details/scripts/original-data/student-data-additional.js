@@ -18,7 +18,7 @@ export const GetStudent_Additional = [
     FamilyLiteracy: "2",
     Parole: "2",
     CommCorrection: "2",
-    OtherPopulation: "0",
+    OtherPopulation: "2",
     OtherDescription: "",
     Referral: "0",
     RefSource: "L",

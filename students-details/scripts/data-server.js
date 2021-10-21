@@ -354,7 +354,7 @@ const ddlPopulation = [
   { key: "Correctional", value: "In correctional facility" },
   { key: "Institutionalized", value: "Other institutionalized" },
   { key: "HeadHouse", value: "Head of household" },
-  { key: "OtherEd", value: "Enrolled in other education/training program" },
+  { key: "OtherEd", value: "Enrolled in other program" },
   { key: "Veteran", value: "Veteran" },
   { key: "DislocatedWorker", value: "Dislocated Worker" },
   { key: "EmployedAt200P", value: "Employed at 200% poverty level" },

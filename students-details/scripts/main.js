@@ -24,6 +24,7 @@ import {
   ssnValues
 } from "./components.js/student-info.js";
 import { fundingValues } from "./components.js/funding-info.js";
+import { populationValues } from "./components.js/population-info.js";
 const studentInfo = GetStudent.slice(0)[0];
 const fundingInfo = GetFundingInfo.slice(0);
 const fundingSources = GetFundingSource.slice(0);
@@ -121,6 +122,7 @@ $(document).ready(() => {
   ssnValues(studentInfo);
   genderValues(studentInfo);
   fundingValues(fundingInfo, fundingSources);
+  populationValues(additionalInfo);
 
   //TODO Populating Employment history table values
   // Data source:
