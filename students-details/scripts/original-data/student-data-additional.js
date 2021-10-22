@@ -27,23 +27,55 @@ export const GetStudent_Additional = [
 ];
 
 // ddl ???
-const GetPAStatusInfo = [
+// const GetPAStatusInfo = [
+//   {
+//     ID: "1543327",
+//     StudentID: "AA1_JacquesGregoryPRA22620101271987",
+//     PACategory: "B | Food Stamps",
+//     PAFY: "2021",
+//     PACaseNum: "12345",
+//     PAExhaustTANF: "",
+//     Student_PKID: "1048303"
+//   },
+//   {
+//     ID: "1870535",
+//     StudentID: "AA1_JacquesGregoryPRA22620101271987",
+//     PACategory: "A | TANF",
+//     PAFY: "2020",
+//     PACaseNum: "124555",
+//     PAExhaustTANF: "1",
+//     Student_PKID: "1048303"
+//   }
+// ];
+export const GetPAStatusInfo = [
   {
     ID: "1543327",
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    PACatID: "B",
     PACategory: "B | Food Stamps",
-    PAFY: "",
+    PAFY: "2021",
     PACaseNum: "",
-    PAExhaustTANF: "",
+    PAExhaustTANF: "0",
     Student_PKID: "1048303"
   },
   {
     ID: "1870535",
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    PACatID: "A",
     PACategory: "A | TANF",
-    PAFY: "",
+    PAFY: "2021",
     PACaseNum: "124555",
-    PAExhaustTANF: "",
+    PAExhaustTANF: "0",
+    Student_PKID: "1048303"
+  },
+  {
+    ID: "2070185",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    PACatID: "E",
+    PACategory: "E | Safety Net",
+    PAFY: "2020",
+    PACaseNum: "ABC-123",
+    PAExhaustTANF: "1",
     Student_PKID: "1048303"
   }
 ];
@@ -294,7 +326,7 @@ const GetNationality = [
 ];
 
 // ddlPAType
-const GetPASource = [
+export const GetPASource = [
   { key: "A", value: "A | TANF" },
   { key: "B", value: "B | Food Stamps" },
   { key: "C", value: "C | Refugee Cash Assistance" },
