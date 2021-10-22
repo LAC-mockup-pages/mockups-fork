@@ -16,7 +16,9 @@ import {
 import {
   GetStudent_Additional,
   GetCountrySource,
-  GetReferralSource
+  GetReferralSource,
+  GetPAStatusInfo,
+  GetPASource
 } from "./original-data/student-data-additional.js";
 import {
   genderValues,
@@ -34,6 +36,8 @@ const yearsSchool = GetYearsSchooling.slice(0);
 const additionalInfo = GetStudent_Additional.slice(0)[0];
 const countries = GetCountrySource.slice(0);
 const referral = GetReferralSource.slice(0);
+const assistance = GetPAStatusInfo.slice(0);
+const assistanceSource = GetPASource.slice(0);
 //! =============================================================
 
 export const dateFormat = (str) => {
