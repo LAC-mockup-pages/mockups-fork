@@ -30,14 +30,14 @@ export const assistanceValues = (list, source) => {
     const row = `
     <tr>
       <td>
-        <select name="PACatID">
+        <select name="PACatID" disabled>
           ${optionList}
         </select>
       </td>
-      <td><input name="PAFY" value=${PAFY}></td>
-      <td><input name="PACaseNum" value=${PACaseNum}></td>
+      <td><input name="PAFY" value=${PAFY} disabled></td>
+      <td><input name="PACaseNum" value=${PACaseNum} disabled></td>
       <td>
-        <select name="PAExhaustTANF">
+        <select name="PAExhaustTANF" disabled>
           ${optionListYesNo}
         </select>
       </td>

@@ -130,12 +130,10 @@ $(document).ready(() => {
   fundingValues(fundingInfo, fundingSources);
   populationValues(additionalInfo);
   barriersValues(studentInfo);
+  assistanceValues(assistanceInfo, assistanceSource);
 
   //TODO Populating Employment history table values
   // Data source:
-  //TODO Populating Public Assistance table values
-  // Data source:
-  assistanceValues(assistanceInfo, assistanceSource);
 
   // Populating Educational background select values. Adding option lists.
   // Data source: original-data/student-data.js/GetStudent
@@ -154,8 +152,6 @@ $(document).ready(() => {
     createOptionList(yearsSchool, studentInfo.YearsUSSchools || "NA")
   );
   //TODO Credential in US / Other country select
-
-  // Populating Barriers multiple selects. Adding option lists.
 
   // Populating Nationality select values. Add option lists.
   // Data source: original-data/student-data-additional.js/GetStudent_Additional
