@@ -6,5 +6,7 @@
 
 import { createOptionList } from "../main.js";
 
-// Data sources: /original-data/student-data-additional.js/GetPAStatusInfo
-export const employmentValues = (list, source) => {};
+// Data sources: /original-data/student-data.js/GetEmploymentInfo
+//          /original-data/student-data.js/GetEmploymentStatus
+//          /original-data/student-data.js/GetIncome
+export const employmentValues = (list, statusList, incomeList) => {};

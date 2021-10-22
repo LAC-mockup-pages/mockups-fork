@@ -12,7 +12,7 @@ const GetStudentHeader = [
 ];
 
 // ddl ???
-const GetEmploymentInfo = [
+export const GetEmploymentInfo = [
   {
     ID: "3693213",
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
@@ -136,7 +136,7 @@ const GetEmploymentInfo = [
 ];
 
 // ddlEmploymentStatus
-const GetEmploymentStatus = [
+export const GetEmploymentStatus = [
   { key: "A", value: "Employed full-time" },
   { key: "B", value: "Employed part-time" },
   { key: "C", value: "Unemployed \u003e1 yr available" },
@@ -229,7 +229,7 @@ export const GetYearsSchooling = [
 ];
 
 // ddlIncome_FY
-const GetIncome = [
+export const GetIncome = [
   { key: "1", value: "Less than $10,000" },
   { key: "2", value: "$10,000 to $14,99" },
   { key: "3", value: "$15,000 to $24,999" },

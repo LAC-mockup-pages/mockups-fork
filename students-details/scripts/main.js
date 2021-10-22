@@ -11,7 +11,10 @@ import {
   GetFundingInfo,
   GetHighestGradeCompletedUS,
   GetYearsSchooling,
-  GetFundingSource
+  GetFundingSource,
+  GetEmploymentInfo,
+  GetEmploymentStatus,
+  GetIncome
 } from "./original-data/student-data.js";
 import {
   GetStudent_Additional,
@@ -29,6 +32,7 @@ import { fundingValues } from "./components.js/funding-info.js";
 import { populationValues } from "./components.js/population-info.js";
 import { barriersValues } from "./components.js/barriers-info.js";
 import { assistanceValues } from "./components.js/assisstance-info.js";
+import { employmentValues } from "./components.js/employment-info.js";
 const studentInfo = GetStudent.slice(0)[0];
 const fundingInfo = GetFundingInfo.slice(0);
 const fundingSources = GetFundingSource.slice(0);
@@ -39,6 +43,9 @@ const countries = GetCountrySource.slice(0);
 const referral = GetReferralSource.slice(0);
 const assistanceInfo = GetPAStatusInfo.slice(0);
 const assistanceSource = GetPASource.slice(0);
+const employment = GetEmploymentInfo.slice(0);
+const employmentStatus = GetEmploymentStatus.slice(0);
+const employmentIncome = GetIncome.slice(0);
 //! =============================================================
 
 export const dateFormat = (str) => {
@@ -133,7 +140,7 @@ $(document).ready(() => {
   assistanceValues(assistanceInfo, assistanceSource);
 
   //TODO Populating Employment history table values
-  // Data source:
+  employmentValues(employment, employmentStatus, employmentIncome);
 
   // Populating Educational background select values. Adding option lists.
   // Data source: original-data/student-data.js/GetStudent
