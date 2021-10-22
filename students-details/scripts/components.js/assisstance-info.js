@@ -8,4 +8,43 @@ import { createOptionList } from "../main.js";
 
 // Data sources: /original-data/student-data-additional.js/GetPAStatusInfo
 //          /original-data/student-data-additional.js/GetPASource
-export const assistanceValues = (list, source) => {};
+export const assistanceValues = (list, source) => {
+  // Sorting records from most recent FY to oldest FY
+  const orderedList = list.sort((record1, record2) =>
+    record1.PAFY > record2.PAFY ? -1 : record1.PAFY < record2.PAFY ? 1 : 0
+  );
+  console.log("orderedList :>> ", orderedList);
+  const tableBodyContent = [];
+
+  for (const record of orderedList) {
+    let { PACatID, PAFY, PACaseNum, PAExhaustTANF } = record;
+    const optionList = createOptionList(source, PACatID);
+    PAExhaustTANF = PAExhaustTANF ? PAExhaustTANF : "0";
+    const optionListYesNo = createOptionList(
+      [
+        { key: "0", value: "No" },
+        { key: "1", value: "Yes" }
+      ],
+      PAExhaustTANF
+    );
+    const row = `
+    <tr>
+      <td>
+        <select name="PACatID">
+          ${optionList}
+        </select>
+      </td>
+      <td><input name="PAFY" value=${PAFY}></td>
+      <td><input name="PACaseNum" value=${PACaseNum}></td>
+      <td>
+        <select name="PAExhaustTANF">
+          ${optionListYesNo}
+        </select>
+      </td>
+    </tr>`;
+
+    tableBodyContent.push(row);
+  }
+
+  $(".population-form tbody").append(tableBodyContent);
+};

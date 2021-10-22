@@ -28,6 +28,7 @@ import {
 import { fundingValues } from "./components.js/funding-info.js";
 import { populationValues } from "./components.js/population-info.js";
 import { barriersValues } from "./components.js/barriers-info.js";
+import { assistanceValues } from "./components.js/assisstance-info.js";
 const studentInfo = GetStudent.slice(0)[0];
 const fundingInfo = GetFundingInfo.slice(0);
 const fundingSources = GetFundingSource.slice(0);
@@ -36,7 +37,7 @@ const yearsSchool = GetYearsSchooling.slice(0);
 const additionalInfo = GetStudent_Additional.slice(0)[0];
 const countries = GetCountrySource.slice(0);
 const referral = GetReferralSource.slice(0);
-const assistance = GetPAStatusInfo.slice(0);
+const assistanceInfo = GetPAStatusInfo.slice(0);
 const assistanceSource = GetPASource.slice(0);
 //! =============================================================
 
@@ -134,6 +135,7 @@ $(document).ready(() => {
   // Data source:
   //TODO Populating Public Assistance table values
   // Data source:
+  assistanceValues(assistanceInfo, assistanceSource);
 
   // Populating Educational background select values. Adding option lists.
   // Data source: original-data/student-data.js/GetStudent
