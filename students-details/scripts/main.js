@@ -138,8 +138,6 @@ $(document).ready(() => {
   populationValues(additionalInfo);
   barriersValues(studentInfo);
   assistanceValues(assistanceInfo, assistanceSource);
-
-  //TODO Populating Employment history table values
   employmentValues(employment, employmentStatus, employmentIncome);
 
   // Populating Educational background select values. Adding option lists.
