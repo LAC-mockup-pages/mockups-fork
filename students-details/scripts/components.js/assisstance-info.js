@@ -13,11 +13,9 @@ export const assistanceValues = (list, source) => {
   const orderedList = list.sort((record1, record2) =>
     record1.PAFY > record2.PAFY ? -1 : record1.PAFY < record2.PAFY ? 1 : 0
   );
-  console.log("orderedList :>> ", orderedList);
   const tableBodyContent = [];
-
   for (const record of orderedList) {
-    let { PACatID, PAFY, PACaseNum, PAExhaustTANF } = record;
+    let { ID, PACatID, PAFY, PACaseNum, PAExhaustTANF } = record;
     const optionList = createOptionList(source, PACatID);
     PAExhaustTANF = PAExhaustTANF ? PAExhaustTANF : "0";
     const optionListYesNo = createOptionList(
@@ -28,23 +26,21 @@ export const assistanceValues = (list, source) => {
       PAExhaustTANF
     );
     const row = `
-    <tr>
+    <tr id=${ID}>
       <td>
         <select name="PACatID" disabled>
           ${optionList}
         </select>
       </td>
-      <td><input name="PAFY" value=${PAFY} disabled></td>
-      <td><input name="PACaseNum" value=${PACaseNum} disabled></td>
+      <td><input type="text" name="PAFY" value=${PAFY} disabled></td>
+      <td><input type="text" name="PACaseNum" value=${PACaseNum} disabled></td>
       <td>
         <select name="PAExhaustTANF" disabled>
           ${optionListYesNo}
         </select>
       </td>
     </tr>`;
-
     tableBodyContent.push(row);
   }
-
   $(".population-form tbody").append(tableBodyContent);
 };
