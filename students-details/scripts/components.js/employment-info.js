@@ -19,9 +19,6 @@ export const employmentValues = (list, statusList, incomeList) => {
       : 0
   );
   const tableBodyContent = [];
-
-  console.log("orderedList :>> ", orderedList);
-
   for (const record of list) {
     const {
       ID,
@@ -33,7 +30,6 @@ export const employmentValues = (list, statusList, incomeList) => {
       ReleaseDate,
       IncomeFY
     } = record;
-
     const optionListStatus = createOptionList(statusList, EmployStatID);
     const optionListIncome = createOptionList(incomeList, IncomeFY);
     const { FiscalYear } = createCredentials();
@@ -95,9 +91,7 @@ export const employmentValues = (list, statusList, incomeList) => {
         </div>
       </td>
     </tr>`;
-
     tableBodyContent.push(row);
   }
-
   $(".employment-form tbody").append(tableBodyContent);
 };
