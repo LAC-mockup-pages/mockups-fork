@@ -4,7 +4,7 @@
 //* Sections: Employment
 //* =======================================
 
-import { createOptionList } from "../main.js";
+import { createOptionList, dateFormat } from "../main.js";
 
 // Data sources: /original-data/student-data.js/GetEmploymentInfo
 //          /original-data/student-data.js/GetEmploymentStatus
@@ -33,6 +33,7 @@ export const employmentValues = (list, statusList, incomeList) => {
       ReleaseDate,
       IncomeFY
     } = record;
+
     const optionListStatus = createOptionList(statusList, EmployStatID);
     const optionListIncome = createOptionList(incomeList, IncomeFY);
     const { FiscalYear } = createCredentials();
@@ -67,9 +68,30 @@ export const employmentValues = (list, statusList, incomeList) => {
       </td>
       <td>
         <div class="form-field input-group">
-          <input type="date" name="EmployDate" value=${
-            dateFormat(EmployDate) || "NA"
-          } disabled>
+          <input type="date" name="EmployDate" value=${dateFormat(
+            EmployDate
+          )} disabled>
+        </div>
+      </td>
+      <td>
+        <div class="form-field input-group">
+          <input type="date" name="LastEmployDate" value=${dateFormat(
+            LastEmployDate
+          )} disabled>
+        </div>
+      </td>
+      <td>
+        <div class="form-field input-group">
+          <input type="date" name="ReleaseDate" value=${dateFormat(
+            ReleaseDate
+          )} disabled>
+        </div>
+      </td>
+      <td>
+        <div class="form-field input-group">
+          <select class="modal-select" name="IncomeFY">
+            ${optionListIncome}
+          </select>
         </div>
       </td>
     </tr>`;
