@@ -9,4 +9,73 @@ import { createOptionList } from "../main.js";
 // Data sources: /original-data/student-data.js/GetEmploymentInfo
 //          /original-data/student-data.js/GetEmploymentStatus
 //          /original-data/student-data.js/GetIncome
-export const employmentValues = (list, statusList, incomeList) => {};
+export const employmentValues = (list, statusList, incomeList) => {
+  // Sorting records from most recent FY to oldest FY
+  const orderedList = list.sort((record1, record2) =>
+    record1.EmployStatusFY > record2.EmployStatusFY
+      ? -1
+      : record1.EmployStatusFY < record2.EmployStatusFY
+      ? 1
+      : 0
+  );
+  const tableBodyContent = [];
+
+  console.log("orderedList :>> ", orderedList);
+
+  for (const record of list) {
+    const {
+      ID,
+      EmployStatID,
+      EmployStatusFY,
+      EmployerID,
+      EmployDate,
+      LastEmployDate,
+      ReleaseDate,
+      IncomeFY
+    } = record;
+    const optionListStatus = createOptionList(statusList, EmployStatID);
+    const optionListIncome = createOptionList(incomeList, IncomeFY);
+    const { FiscalYear } = createCredentials();
+    const FYList = [];
+    for (let i = 0; i < 5; i++) {
+      const key = `${Number(FiscalYear) - i}`;
+      FYList.push({ key, value: key });
+    }
+    const optionListFY = createOptionList(FYList, FiscalYear);
+    const row = `
+    <tr id=${ID}>
+      <td>
+        <div class="form-field input-group">
+          <select class="modal-select" name="EmployStatID">
+            ${optionListStatus}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-field input-group">
+          <select class="modal-select" name="EmployStatusFY">
+            ${optionListFY}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-field input-group">
+          <input type="text" name="EmployerID" value=${
+            EmployerID || "-"
+          } disabled>
+        </div>
+      </td>
+      <td>
+        <div class="form-field input-group">
+          <input type="date" name="EmployDate" value=${
+            dateFormat(EmployDate) || "NA"
+          } disabled>
+        </div>
+      </td>
+    </tr>`;
+
+    tableBodyContent.push(row);
+  }
+
+  $(".employment-form tbody").append(tableBodyContent);
+};
