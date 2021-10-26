@@ -82,7 +82,6 @@ $(document).ready(() => {
 
   //* Populating input and select elements for display.
   //* Elements are disabled.
-  console.log("Test of name extract >> ", Object.keys({ dateFormat })[0]);
 
   //* =====================================
 
