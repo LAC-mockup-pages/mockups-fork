@@ -6,33 +6,6 @@
 //! For Development only.
 //! Comment out for Production.
 //! =============================================================
-import {
-  GetStudent,
-  GetFundingInfo,
-  GetHighestGradeCompletedUS,
-  GetYearsSchooling,
-  GetFundingSource
-} from "./original-data/student-data.js";
-import {
-  GetStudent_Additional,
-  GetCountrySource,
-  GetReferralSource
-} from "./original-data/student-data-additional.js";
-import {
-  genderValues,
-  inputValues,
-  ssnValues
-} from "./components.js/student-info.js";
-import { fundingValues } from "./components.js/funding-info.js";
-import { populationValues } from "./components.js/population-info.js";
-const studentInfo = GetStudent.slice(0)[0];
-const fundingInfo = GetFundingInfo.slice(0);
-const fundingSources = GetFundingSource.slice(0);
-const highestGrade = GetHighestGradeCompletedUS.slice(0);
-const yearsSchool = GetYearsSchooling.slice(0);
-const additionalInfo = GetStudent_Additional.slice(0)[0];
-const countries = GetCountrySource.slice(0);
-const referral = GetReferralSource.slice(0);
 //! =============================================================
 
 export const dateFormat = (str) => {
@@ -83,15 +56,6 @@ $(document).ready(() => {
   //! Navigation variables are defined here as well.
   //! =============================================================
   // const studentInfo =
-  // const fundingInfo =
-  // const fundingSources =
-  // const employmentData =
-  // const highestGrade =
-  // const yearsSchool =
-  // const additionalInfo =
-  // const countries =
-  // const referral =
-
   // Navigation variables.
   // In Production, update with actual rootUrl and destinations
   // once they are known.
@@ -118,59 +82,7 @@ $(document).ready(() => {
 
   //* Populating input and select elements for display.
   //* Elements are disabled.
-  inputValues(studentInfo);
-  ssnValues(studentInfo);
-  genderValues(studentInfo);
-  fundingValues(fundingInfo, fundingSources);
-  populationValues(additionalInfo);
-
-  //TODO Populating Employment history table values
-  // Data source:
-
-  // Populating Educational background select values. Adding option lists.
-  // Data source: original-data/student-data.js/GetStudent
-  //          original-data/student-data.js/GetHighestGradeCompletedUS
-  //          original-data/student-data.js/GetYearsSchooling
-  $(".education-form select[name='Grade']").append(
-    createOptionList(highestGrade, studentInfo.Grade || "NA")
-  );
-  $(".education-form select[name='NYSGrade']").append(
-    createOptionList(highestGrade, studentInfo.NYSGrade || "NA")
-  );
-  $(".education-form select[name='HighestCredential']").append(
-    createOptionList(highestGrade, studentInfo.HighestCredential || "NA")
-  );
-  $(".education-form select[name='YearsUSSchools']").append(
-    createOptionList(yearsSchool, studentInfo.YearsUSSchools || "NA")
-  );
-  //TODO Credential in US / Other country select
-
-  // Populating Barriers multiple selects. Adding option lists.
-  //TODO Barriers
-
-  // Populating Nationality select values. Add option lists.
-  // Data source: original-data/student-data-additional.js/GetStudent_Additional
-  //          original-data/student-data-additional.js/GetCountrySource
-  $(".nationality-form select[name='CountryID']").append(
-    createOptionList(countries, additionalInfo.CountryID)
-  );
-  $(".nationality-form select[name='Status']").val(additionalInfo.Status);
-  $(".nationality-form input[name='DateSettled']").val(
-    dateFormat(additionalInfo.DateSettled)
-  );
-  $(".nationality-form input[name='Languages']").val(additionalInfo.Languages);
-  //Populating Parent/Children select values.
-  // Data source: original-data/student-data.js/GetStudent
-  $(".parent-form select[name='CustodialParent']").val(
-    studentInfo.CustodialParent
-  );
-  $(".parent-form select[name='SingleParent']").val(studentInfo.SingleParent);
-  // Populating Referral section select values. Adding option list.
-  // Data source: original-data/student-data-additional.js/GetStudent_Additional,
-  //        original-data/student-data-additional.js/GetReferralSource
-  $(".referral-form select[name='RefSource']").append(
-    createOptionList(referral, additionalInfo.RefSource)
-  );
+  console.log("Test of name extract >> ", Object.keys({ dateFormat })[0]);
 
   //* =====================================
 
