@@ -10,16 +10,33 @@ ASISTS 2020 file:
 
 ```
 /students-details
-.
-├── [07/08/21]  README.md
-├── [07/08/21]  index.html
-├── [07/08/21]  scripts
-│   ├── [07/02/21]  data-server.js
-│   ├── [07/08/21]  main.js
-│   └── [07/08/21]  nav-frame.js
-└── [07/08/21]  style
-    ├── [07/08/21]  index.css
-    └── [07/08/21]  nav-frame.css
+├── [10/26/21]  README.md
+├── [10/26/21]  index.html
+├── [10/26/21]  scripts
+│   ├── [10/26/21]  components.js
+│   │   ├── [10/26/21]  assisstance-info.js
+│   │   ├── [10/26/21]  barriers-info.js
+│   │   ├── [10/26/21]  employment-info.js
+│   │   ├── [10/26/21]  funding-info.js
+│   │   ├── [10/26/21]  population-info.js
+│   │   └── [10/26/21]  student-info.js
+│   ├── [10/26/21]  data-server.js
+│   ├── [10/26/21]  main.js
+│   ├── [10/26/21]  nav-frame.js
+│   └── [10/26/21]  original-data
+│       ├── [10/26/21]  student-data-additional.js
+│       ├── [10/26/21]  student-data-assessment.js
+│       ├── [10/26/21]  student-data-casenotes.js
+│       ├── [10/26/21]  student-data-enrollment.js
+│       ├── [10/26/21]  student-data-goals.js
+│       ├── [10/26/21]  student-data-history.js
+│       └── [10/26/21]  student-data.js
+└── [10/26/21]  style
+    ├── [10/26/21]  hero.css
+    ├── [10/26/21]  index.css
+    └── [10/26/21]  nav-frame.css
+
+4 directories, 21 files
 ```
 
 NB: Date is last modification date.
