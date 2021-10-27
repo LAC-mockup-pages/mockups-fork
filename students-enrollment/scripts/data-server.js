@@ -1331,15 +1331,15 @@ const GetCTED = [
 
 // ddlTransfer
 const GetTransferTo = [
-  { ID: "236531", Description: "BE1CTutoring_2021 Porter, Jane" },
-  { ID: "232270", Description: "BE4CASTS_21 Porter, Samantha" },
-  { ID: "202360", Description: "BE6C1 Alisova, Muriana" },
-  { ID: "232271", Description: "BE6CIntake_Summer2021 Porter, Samantha" },
-  { ID: "236328", Description: "CM1GCaseMgmt-Summer Porter, Jane" },
-  { ID: "242700", Description: "ES2TDL_S_MSmit Smith, Mary" },
-  { ID: "236450", Description: "ES3CEnglish101-Uighur Porter, Samantha" },
-  { ID: "236431", Description: "ES3CEnglish101-Urdu Porter, Samantha" },
-  { ID: "237004", Description: "H6CTwoWeekTest Kenobi, General" }
+  { key: "236531", value: "BE1CTutoring_2021 Porter, Jane" },
+  { key: "232270", value: "BE4CASTS_21 Porter, Samantha" },
+  { key: "202360", value: "BE6C1 Alisova, Muriana" },
+  { key: "232271", value: "BE6CIntake_Summer2021 Porter, Samantha" },
+  { key: "236328", value: "CM1GCaseMgmt-Summer Porter, Jane" },
+  { key: "242700", value: "ES2TDL_S_MSmit Smith, Mary" },
+  { key: "236450", value: "ES3CEnglish101-Uighur Porter, Samantha" },
+  { key: "236431", value: "ES3CEnglish101-Urdu Porter, Samantha" },
+  { key: "237004", value: "H6CTwoWeekTest Kenobi, General" }
 ];
 
 const GetHours = [

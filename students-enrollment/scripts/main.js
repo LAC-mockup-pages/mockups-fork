@@ -3,6 +3,7 @@
 //*=================================================
 
 import { enrollValues } from "./components/enrollment.js";
+import { hourSummaryValues } from "./components/hours.js";
 
 //! =============================================================
 //! For Development only.
@@ -15,6 +16,13 @@ const courseList = GetInstructionSource.slice(0);
 const exitReasons = GetExitReasonSource.slice(0);
 const transferTo = GetTransferTo.slice(0);
 const caseList = GetEnroll.slice(0).filter((record) => record.ISCMP === "1");
+const courseCodeList = courseList.map((record) => {
+  const { key, value } = record;
+  const courseCode = value.split(" ")[0];
+  return { key, value: courseCode };
+});
+const hoursSummary = GetHours.slice(0);
+
 //! =============================================================
 
 export const dateFormat = (str) => {
@@ -93,6 +101,7 @@ $(document).ready(() => {
   //* Elements are disabled.
   enrollValues(enrollmentList, exitReasons, transferTo, ".classes-form tbody");
   enrollValues(caseList, exitReasons, transferTo, ".case-form tbody");
+  hourSummaryValues(hoursSummary, courseCodeList);
   //* =====================================
 
   //* Triggers edit modal with selected form elements

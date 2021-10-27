@@ -4,7 +4,7 @@
 //* Sections: Student Enrollment
 //* =======================================
 
-import { createOptionList, dateFormat } from "../main.js";
+import { createOptionList } from "../main.js";
 
 // Populating input element values
 // Data source: /data-server.js/GetEnroll
