@@ -67,7 +67,18 @@
   font-weight: 600;
   font-size: 0.7em;
   line-height: 1.3em;
+  border-bottom: solid 1px #dddddd;
 }
 .table > tbody > tr:hover {
   background-color: inherit;
+}
+
+table .hours-history {
+  height: 10%;
+  overflow-y: scroll;
+}
+
+table > .hours-history > thead > tr > th {
+  position: sticky;
+  top: 0;
 }
