@@ -8,12 +8,12 @@ import { createOptionList, dateFormat } from "../main.js";
 
 // Populating input element values
 // Data source: /data-server.js/GetEnroll
-export const enrollValues = (list, courses, reasons, transferList) => {
+export const enrollValues = (list, reasons, transferList, formName) => {
   // Sorting records in decreasing date of enrollment
   const orderedList = list.sort((record1, record2) =>
-    record1.EnrollDate > record2.EnrollDate
+    record1.EnrollDate < record2.EnrollDate
       ? -1
-      : record1.EnrollDate < record2.EnrollDate
+      : record1.EnrollDate > record2.EnrollDate
       ? 1
       : 0
   );
@@ -22,7 +22,7 @@ export const enrollValues = (list, courses, reasons, transferList) => {
   for (const record of orderedList) {
     const {
       ID,
-      DescriptionKey,
+      Description,
       EnrollDate,
       InactiveDate,
       InactiveReason,
@@ -30,7 +30,6 @@ export const enrollValues = (list, courses, reasons, transferList) => {
       ActiveStatus,
       FY
     } = record;
-    const optionListCourses = createOptionList(courses, DescriptionKey);
     const optionListReason = createOptionList(reasons, InactiveReason);
     const optionListTransfer = createOptionList(transferList, TransferTo);
     const optionListActive = createOptionList(
@@ -44,37 +43,37 @@ export const enrollValues = (list, courses, reasons, transferList) => {
     <tr id=${ID}>
       <td>
         <div class="form-field input-group">
-          <select class="modal-select" name="DescriptionKey">
-            ${optionListCourses}
-          </select>
+        <input type="text" name="Description" value=${Description} disabled>
         </div>
       </td>
       <td>
       <div class="form-field input-group">
-      <input type="date" name="EnrollDate" value=${dateFormat(EnrollDate)}>
+      <input type="text" name="EnrollDate" value=${EnrollDate} disabled>
     </div>
       </td>
       <td>
       <div class="form-field input-group">
-      <input type="date" name="InactiveDate" value=${dateFormat(InactiveDate)}>
+      <input type="text" name="InactiveDate" value=${
+        InactiveDate || "-"
+      } disabled>
     </div>
       </td>
       <td>
         <div class="form-field input-group">
-        <select class="modal-select" name="InactiveReason">
+        <select class="modal-select" name="InactiveReason" disabled>
         ${optionListReason}
       </select>
         </div>
       </td>
       <td>
         <div class="form-field input-group">
-        <select class="modal-select" name="TransferTo">
-        ${optionListTransfer}
+        <select class="modal-select" name="TransferTo" disabled>
+        ${TransferTo ? optionListTransfer : ""}
       </select>
         </div>
       </td>
       <td>
-      <select class="modal-select" name="ActiveStatus">
+      <select class="modal-select" name="ActiveStatus" disabled>
       ${optionListActive}
     </select>
   </div>
@@ -82,5 +81,5 @@ export const enrollValues = (list, courses, reasons, transferList) => {
     </tr>`;
     tableBodyContent.push(row);
   }
-  $(".classes-form tbody").append(tableBodyContent);
+  $(formName).append(tableBodyContent.join(""));
 };

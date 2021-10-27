@@ -8,10 +8,13 @@ import { enrollValues } from "./components/enrollment.js";
 //! For Development only.
 //! Comment out for Production.
 //! =============================================================
-const enrollmentList = GetEnroll.slice(0);
+const enrollmentList = GetEnroll.slice(0).filter(
+  (record) => record.ISCMP === "0"
+);
 const courseList = GetInstructionSource.slice(0);
 const exitReasons = GetExitReasonSource.slice(0);
 const transferTo = GetTransferTo.slice(0);
+const caseList = GetEnroll.slice(0).filter((record) => record.ISCMP === "1");
 //! =============================================================
 
 export const dateFormat = (str) => {
@@ -88,7 +91,7 @@ $(document).ready(() => {
 
   //* Populating input and select elements for display.
   //* Elements are disabled.
-  enrollValues(enrollmentList, courseList, exitReasons, transferTo);
+  enrollValues(enrollmentList, exitReasons, transferTo, ".classes-form tbody");
   //* =====================================
 
   //* Triggers edit modal with selected form elements
