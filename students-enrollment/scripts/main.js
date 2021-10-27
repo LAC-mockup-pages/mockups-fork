@@ -2,12 +2,16 @@
 //* Actions and Logic for local page
 //*=================================================
 
+import { enrollValues } from "./components/enrollment.js";
+
 //! =============================================================
 //! For Development only.
 //! Comment out for Production.
 //! =============================================================
-import { GetEnroll } from "./original-data/student-data-enrollment.js";
-const enrollment = GetEnroll.slice(0);
+const enrollmentList = GetEnroll.slice(0);
+const courseList = GetInstructionSource.slice(0);
+const exitReasons = GetExitReasonSource.slice(0);
+const transferTo = GetTransferTo.slice(0);
 //! =============================================================
 
 export const dateFormat = (str) => {
@@ -84,7 +88,7 @@ $(document).ready(() => {
 
   //* Populating input and select elements for display.
   //* Elements are disabled.
-
+  enrollValues(enrollmentList, courseList, exitReasons, transferTo);
   //* =====================================
 
   //* Triggers edit modal with selected form elements
