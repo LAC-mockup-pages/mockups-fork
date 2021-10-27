@@ -43,19 +43,19 @@ export const enrollValues = (list, reasons, transferList, formName) => {
     <tr id=${ID}>
       <td>
         <div class="form-field input-group">
-        <input type="text" name="Description" value=${Description} disabled>
+        <input type="text" name="Description" value=${JSON.stringify(
+          Description
+        )} disabled>
         </div>
       </td>
       <td>
       <div class="form-field input-group">
-      <input type="text" name="EnrollDate" value=${EnrollDate} disabled>
+      <input type="text" disabled name="EnrollDate" value=${EnrollDate} >
     </div>
       </td>
       <td>
       <div class="form-field input-group">
-      <input type="text" name="InactiveDate" value=${
-        InactiveDate || "-"
-      } disabled>
+      <input type="text" disabled name="InactiveDate" value=${InactiveDate} >
     </div>
       </td>
       <td>
