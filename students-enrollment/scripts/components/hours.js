@@ -4,9 +4,65 @@
 //* Sections: Contact hours summary, Contact hours history
 //* =======================================
 
-import { createOptionList } from "../main.js";
-
 // Populating input element values
 // Data source: /data-server.js/GetHours
 //          /data-server.js/GetInstructionSource
-export const hourSummaryValues = (list, codeList) => {};
+//          /data-server.js/GetInstructionSource_CM
+export const hourMonthlyValues = (list, codeList, tableName) => {
+  const tableBodyContent = [];
+  for (const record of list) {
+    const {
+      FY,
+      Class_PKID,
+      TotalHour,
+      JulHours,
+      AugHours,
+      SepHours,
+      OctHours,
+      NovHours,
+      DecHours,
+      JanHours,
+      FebHours,
+      MarHours,
+      AprHours,
+      MayHours,
+      JunHours
+    } = record;
+
+    const descriptionObj = codeList.filter(
+      (record) => record.key === Class_PKID
+    )[0];
+
+    const course = descriptionObj ? descriptionObj.value : "BS_Management_101";
+    console.log("descriptionObj :>> ", descriptionObj);
+    const FYValue = FY ? `<td>${FY}</td>` : "";
+    const monthlyHours = [
+      JulHours,
+      AugHours,
+      SepHours,
+      OctHours,
+      NovHours,
+      DecHours,
+      JanHours,
+      FebHours,
+      MarHours,
+      AprHours,
+      MayHours,
+      JunHours,
+      TotalHour
+    ]
+      .map((month) => `<td>${month || "0"}</td>`)
+      .join("");
+
+    const row = `
+      <tr>
+      ${FYValue}
+      <td>${course}</td>
+      ${monthlyHours}
+      </tr>`;
+
+    tableBodyContent.push(row);
+  }
+
+  $(`${tableName} tbody`).append(tableBodyContent.join(""));
+};

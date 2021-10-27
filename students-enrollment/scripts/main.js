@@ -3,7 +3,7 @@
 //*=================================================
 
 import { enrollValues } from "./components/enrollment.js";
-import { hourSummaryValues } from "./components/hours.js";
+import { hourMonthlyValues } from "./components/hours.js";
 
 //! =============================================================
 //! For Development only.
@@ -22,6 +22,7 @@ const courseCodeList = courseList.map((record) => {
   return { key, value: courseCode };
 });
 const hoursSummary = GetHours.slice(0);
+const hoursHistory = GetHoursHistory.slice(0);
 
 //! =============================================================
 
@@ -101,7 +102,16 @@ $(document).ready(() => {
   //* Elements are disabled.
   enrollValues(enrollmentList, exitReasons, transferTo, ".classes-form tbody");
   enrollValues(caseList, exitReasons, transferTo, ".case-form tbody");
-  hourSummaryValues(hoursSummary, courseCodeList);
+  hourMonthlyValues(
+    hoursSummary,
+    [...courseCodeList, ...GetInstructionSource_CM],
+    ".hours-summary"
+  );
+  hourMonthlyValues(
+    hoursHistory,
+    [...courseCodeList, ...GetInstructionSource_CM],
+    ".hours-history"
+  );
   //* =====================================
 
   //* Triggers edit modal with selected form elements
