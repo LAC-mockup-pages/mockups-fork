@@ -34,10 +34,10 @@ export const enrollValues = (list, reasons, transferList, formName) => {
     const optionListTransfer = createOptionList(transferList, TransferTo);
     const optionListActive = createOptionList(
       [
-        { key: "0", value: "No" },
-        { key: "1", value: "Yes" }
+        { key: "", value: "No" },
+        { key: "checked", value: "Yes" }
       ],
-      ActiveStatus === "checked" ? "1" : "0"
+      ActiveStatus
     );
     const row = `
     <tr id=${ID}>
