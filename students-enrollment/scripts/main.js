@@ -6,6 +6,8 @@
 //! For Development only.
 //! Comment out for Production.
 //! =============================================================
+import { GetEnroll } from "./original-data/student-data-enrollment.js";
+const enrollment = GetEnroll.slice(0);
 //! =============================================================
 
 export const dateFormat = (str) => {
