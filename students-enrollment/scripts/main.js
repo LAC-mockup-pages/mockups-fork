@@ -22,7 +22,8 @@ const courseCodeList = courseList.map((record) => {
   return { key, value: courseCode };
 });
 const hoursSummary = GetHours.slice(0);
-const hoursHistory = GetHoursHistory.slice(0);
+//TODO Temporary limitation. Remove when scrolling table implemented via CSS
+const hoursHistory = GetHoursHistory.slice(0, 6);
 
 //! =============================================================
 
