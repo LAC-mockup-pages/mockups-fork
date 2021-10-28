@@ -65,7 +65,7 @@ $(document).ready(() => {
     details: "students-details/index.html",
     profile: "students-profile/index.html",
     assessments: "student-assessments/index.html",
-    enrollments: "student-enrollment/index.html",
+    enrollment: "student-enrollment/index.html",
     goals: "student-goals/index.html"
   };
 
