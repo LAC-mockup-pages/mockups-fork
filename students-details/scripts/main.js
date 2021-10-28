@@ -110,9 +110,10 @@ $(document).ready(() => {
   // once they are known.
   const rootUrl = "http://localhost:5500/";
   const destinationsObj = {
+    profile: "student-profile/index.html",
     details: "students-details/index.html",
     assessments: "student-assessments/index.html",
-    enrollments: "student-enrollment/index.html",
+    enrollment: "student-enrollment/index.html",
     goals: "student-goals/index.html"
   };
 
