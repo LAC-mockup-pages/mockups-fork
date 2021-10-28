@@ -34,7 +34,6 @@ export const hourMonthlyValues = (list, codeList, tableName) => {
     )[0];
 
     const course = descriptionObj ? descriptionObj.value : "BS_Management_101";
-    console.log("descriptionObj :>> ", descriptionObj);
     const FYValue = FY ? `<td>${FY}</td>` : "";
     const monthlyHours = [
       JulHours,
