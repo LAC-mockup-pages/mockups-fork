@@ -33,8 +33,24 @@ export const ssnValues = (student) => {
 // Data source: original-data/student-data.js/GetStudent,
 //        data-server.js/ddlRace
 export const genderValues = (student) => {
-  $(".gender-form select[name='Sex']").val(student.Sex);
-  $(".gender-form select[name='EthnicityID']").val(student.EthnicityID);
+  const optionListSex = createOptionList(
+    [
+      { key: "M", value: "Male" },
+      { key: "F", value: "Female" },
+      { key: "N", value: "Non-Binary/Gender Non-Conforming" }
+    ],
+    student.Sex
+  );
+  const optionListEthnicity = createOptionList(
+    [
+      { key: "H", value: "Hispanic/Latino/a" },
+      { key: "N", value: "Non-Hispanic/Latino/a" }
+    ],
+    student.EthnicityID
+  );
+  $(".gender-form select[name='Sex']").append(optionListSex);
+  $(".gender-form select[name='EthnicityID']").append(optionListEthnicity);
+
   // RaceID multiple selects
   const selectedList = student.RaceID.split(",");
   let raceElement = "";

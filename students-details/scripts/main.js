@@ -196,14 +196,22 @@ $(document).ready(() => {
         .text()
         .trim();
       console.log("sectionTitle :>> ", sectionTitle);
-
-      const parentAttr = $(this).parent().attr("class");
-      console.log("parentAttr :>> ", parentAttr);
+      // Add field names which must stay disabled in edit-form
+      const stayingDisabled = ["LengthOfStay"];
+      // const parentAttr = $(this).parent().attr("class");
       const editFormContent = $(this).children().clone();
-
       $("#modalBloc").modal("toggle");
       $("#edit-form").empty().append(editFormContent);
       $(".modal-title").text(`${sectionTitle} editing`);
       $("#edit-form :input").prop("disabled", false);
+      for (const name of stayingDisabled) {
+        $(`#edit-form [name=${name}]`).prop("disabled", true);
+      }
     });
+
+  //* Saving changes after editing in modal
+  $("#save-btn").click(function (evnt) {
+    const saveList = $("#edit-form").serializeArray();
+    console.log("saveList :>> ", saveList);
+  });
 });
