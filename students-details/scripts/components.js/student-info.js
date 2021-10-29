@@ -43,6 +43,7 @@ export const genderValues = (student) => {
   );
   const optionListEthnicity = createOptionList(
     [
+      { key: "", value: "Select ONE" },
       { key: "H", value: "Hispanic/Latino/a" },
       { key: "N", value: "Non-Hispanic/Latino/a" }
     ],
