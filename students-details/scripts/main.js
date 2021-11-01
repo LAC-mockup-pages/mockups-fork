@@ -159,6 +159,16 @@ $(document).ready(() => {
   $(".education-form select[name='HighestCredential']").append(
     createOptionList(highestGrade, studentInfo.HighestCredential || "NA")
   );
+  $(".education-form select[name='CredentialUS']").append(
+    createOptionList(
+      [
+        { key: "1", value: "The US" },
+        { key: "2", value: "Another country" }
+      ],
+      studentInfo.CredentialUS || "NA"
+    )
+  );
+
   $(".education-form select[name='YearsUSSchools']").append(
     createOptionList(yearsSchool, studentInfo.YearsUSSchools || "NA")
   );
