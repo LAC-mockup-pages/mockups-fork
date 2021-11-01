@@ -104,6 +104,11 @@ $(document).ready(() => {
   // const additionalInfo =
   // const countries =
   // const referral =
+  // const assistanceInfo =
+  // const assistanceSource =
+  // const employment =
+  // const employmentStatus =
+  // const employmentIncome =
 
   // Navigation variables.
   // In Production, update with actual rootUrl and destinations
