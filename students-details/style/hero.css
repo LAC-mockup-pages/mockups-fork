@@ -83,6 +83,9 @@
 .table > tbody > tr:hover {
   background-color: inherit;
 }
+.employment-form {
+  display: block;
+}
 .table-scroll > thead > tr > th {
   position: sticky;
   top: 0;
