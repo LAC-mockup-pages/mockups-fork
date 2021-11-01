@@ -646,7 +646,11 @@
               <div class="sub-header blue-bg blue-light-text">
                 <div class="sub-header-title">Nationality</div>
               </div>
-              <form class="form nationality-form" role="form">
+              <form
+                class="form nationality-form"
+                role="form"
+                data-table="GetStudent_Additional"
+              >
                 <div class="input-field form-group">
                   <label for="CountryID">Country of birth</label>
                   <select class="modal-select" name="CountryID" disabled>
@@ -657,9 +661,6 @@
                   <label for="Status">Status</label>
                   <select class="modal-select" name="Status" disabled>
                     <option value>Select a status</option>
-                    <option value="Citizen">Citizen</option>
-                    <option value="Refugee">Refugee</option>
-                    <option value="Immigrant">Immigrant</option>
                   </select>
                 </div>
                 <div class="input-field form-group">

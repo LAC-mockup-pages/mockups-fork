@@ -178,7 +178,16 @@ $(document).ready(() => {
   $(".nationality-form select[name='CountryID']").append(
     createOptionList(countries, additionalInfo.CountryID)
   );
-  $(".nationality-form select[name='Status']").val(additionalInfo.Status);
+  $(".nationality-form select[name='Status']").append(
+    createOptionList(
+      [
+        { key: "Citizen", value: "Citizen" },
+        { key: "Refugee", value: "Refugee" },
+        { key: "Immigrant", value: "Immigrant" }
+      ],
+      additionalInfo.Status
+    )
+  );
   $(".nationality-form input[name='DateSettled']").val(
     dateFormat(additionalInfo.DateSettled)
   );
