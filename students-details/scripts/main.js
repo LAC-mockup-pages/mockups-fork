@@ -168,11 +168,9 @@ $(document).ready(() => {
       studentInfo.CredentialUS || "NA"
     )
   );
-
   $(".education-form select[name='YearsUSSchools']").append(
     createOptionList(yearsSchool, studentInfo.YearsUSSchools || "NA")
   );
-  //TODO Credential in US / Other country select
 
   // Populating Nationality select values. Add option lists.
   // Data source: original-data/student-data-additional.js/GetStudent_Additional
