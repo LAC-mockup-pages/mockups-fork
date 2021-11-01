@@ -217,6 +217,8 @@ $(document).ready(() => {
       for (const name of requiredList) {
         $(`#edit-form label[for=${name}]`).addClass("red-text");
       }
+      // Enables customized tooltips
+      $("[data-toggle='tooltip']").tooltip();
     });
 
   //* Saving changes after editing in modal
