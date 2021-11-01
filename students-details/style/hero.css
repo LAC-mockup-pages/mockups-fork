@@ -9,6 +9,18 @@
   line-height: 2em;
 }
 
+/* Modal view                      */
+/* =============================== */
+.required-text {
+  font-size: 1em;
+  margin-top: 1%;
+  font-weight: 500;
+}
+
+.light-red-text {
+  color: rgb(246, 133, 133);
+}
+
 /* Main display                     */
 /* =============================== */
 .student-display {

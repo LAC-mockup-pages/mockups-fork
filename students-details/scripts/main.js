@@ -200,12 +200,22 @@ $(document).ready(() => {
       const stayingDisabled = ["LengthOfStay"];
       // const parentAttr = $(this).parent().attr("class");
       const editFormContent = $(this).children().clone();
+      const targetTable = $(this).attr("data-table");
       $("#modalBloc").modal("toggle");
       $("#edit-form").empty().append(editFormContent);
+      $("#edit-form").removeAttr("data-table").attr("data-table", targetTable);
       $(".modal-title").text(`${sectionTitle} editing`);
       $("#edit-form :input").prop("disabled", false);
       for (const name of stayingDisabled) {
         $(`#edit-form [name=${name}]`).prop("disabled", true);
+      }
+      // Colors labels in red for required elements
+      const requiredList = $("#edit-form [required]")
+        .serializeArray()
+        .map((item) => item.name);
+      console.log("requiredList :>> ", requiredList);
+      for (const name of requiredList) {
+        $(`#edit-form label[for=${name}]`).addClass("red-text");
       }
     });
 
@@ -213,5 +223,7 @@ $(document).ready(() => {
   $("#save-btn").click(function (evnt) {
     const saveList = $("#edit-form").serializeArray();
     console.log("saveList :>> ", saveList);
+    const targetTable = $("#edit-form").attr("data-table");
+    console.log("targetTable :>> ", targetTable);
   });
 });
