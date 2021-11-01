@@ -83,3 +83,11 @@
 .table > tbody > tr:hover {
   background-color: inherit;
 }
+.table-scroll thead tr th {
+  position: sticky;
+  top: 0;
+}
+.table-scroll {
+  max-height: 15em;
+  overflow-y: auto;
+}
