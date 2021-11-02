@@ -36,6 +36,22 @@ export const ssnValues = (student) => {
   );
   $(".ssn-form select[name='NoSSNVisaStaff']").append(optionStaff);
 };
+
+// Adding an empty new line. Option list does not show the values
+// already selected.
+export const addNewRaceSelect = (list) => {
+  const selectedValues = ddlRace.filter((obj) => !list.includes(obj.objKey));
+  const newLineOptionList = createOptionList(selectedValues);
+  return `
+  <div class="input-field form-group">
+    <label></label>
+    <select class="modal-select" name="RaceID" >
+    <option value>Select a value</option>
+      ${newLineOptionList}
+    </select>
+  </div>`;
+};
+
 // Populating Gender | Ethnicity section select values.
 // Data source: original-data/student-data.js/GetStudent,
 //        data-server.js/ddlRace
@@ -50,7 +66,6 @@ export const genderValues = (student) => {
   );
   const optionListEthnicity = createOptionList(
     [
-      { key: "", value: "Select ONE" },
       { key: "H", value: "Hispanic/Latino/a" },
       { key: "N", value: "Non-Hispanic/Latino/a" }
     ],
@@ -58,7 +73,6 @@ export const genderValues = (student) => {
   );
   $(".gender-form select[name='Sex']").append(optionListSex);
   $(".gender-form select[name='EthnicityID']").append(optionListEthnicity);
-
   // RaceID multiple selects
   const selectedList = student.RaceID.split(",");
   let raceElement = "";
@@ -66,9 +80,9 @@ export const genderValues = (student) => {
     const valIndex = selectedList.indexOf(val);
     const labelElement =
       valIndex === 0 ? `<label for="RaceID">Race</label>` : `<label></label>`;
-    const selectionList = selectedList.slice(0, valIndex + 1);
+    const selectionList = selectedList.slice(0, valIndex);
     const optionValuesList = ddlRace.filter(
-      (obj) => !selectionList.includes(obj.key)
+      (obj) => !selectionList.includes(obj.objKey)
     );
     const optionList = createOptionList(optionValuesList, val);
     raceElement += `
@@ -79,18 +93,5 @@ export const genderValues = (student) => {
       </select>
     </div>`;
   }
-  // Adding an empty new line. Option list does not show the values
-  // already selected.
-  const selectedValues = ddlRace.filter(
-    (obj) => !selectedList.includes(obj.key)
-  );
-  const newLineOptionList = createOptionList(selectedValues);
-  const newLine = `
-  <div class="input-field form-group">
-    <label></label>
-    <select class="modal-select" name="RaceID" >
-      ${newLineOptionList}
-    </select>
-  </div>`;
   $(".race").empty().append(raceElement);
 };

@@ -24,6 +24,7 @@ import {
   GetPASource
 } from "./original-data/student-data-additional.js";
 import {
+  addNewRaceSelect,
   genderValues,
   inputValues,
   ssnValues
@@ -239,6 +240,13 @@ $(document).ready(() => {
       for (const name of requiredList) {
         $(`#edit-form label[for=${name}]`).addClass("red-text");
       }
+      // Add new Race select empty element for gender/race section
+      if ($(this).hasClass("gender-form")) {
+        const selectedOptions = $(`#edit-form [name="RaceID"]`)
+          .serializeArray()
+          .map((record) => record.value);
+        $("#edit-form .race").append(`${addNewRaceSelect(selectedOptions)}`);
+      }
       // Enables customized tooltips
       $("[data-toggle='tooltip']").tooltip();
     });
@@ -250,4 +258,15 @@ $(document).ready(() => {
     const targetTable = $("#edit-form").attr("data-table");
     console.log("targetTable :>> ", targetTable);
   });
+
+  //* Add new select element in modal when needed
+  $(document).on(
+    "blur",
+    "#edit-form [name='RaceID']:last-of-type",
+    function (evnt) {
+      evnt.stopPropagation();
+      const options = $("option", this).prop("selected", false);
+      const newSelectElement = ``;
+    }
+  );
 });
