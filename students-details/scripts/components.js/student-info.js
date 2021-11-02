@@ -22,7 +22,14 @@ export const inputValues = (student) => {
 // Data source: original-data/student-data.js/GetStudent,
 //        data-server.js/GetStaff
 export const ssnValues = (student) => {
-  $(".ssn-form select[name='NoSSNVisa']").val(student.NoSSNVisa);
+  const optionListNoSSNVisa = createOptionList(
+    [
+      { key: "0", value: "No" },
+      { key: "1", value: "Yes" }
+    ],
+    student.NoSSNVisa
+  );
+  $(".ssn-form select[name='NoSSNVisa']").append(optionListNoSSNVisa);
   const optionStaff = createOptionList(
     createStaffList(GetStaff),
     student.NoSSNVisaStaff
