@@ -79,5 +79,18 @@ export const genderValues = (student) => {
       </select>
     </div>`;
   }
+  // Adding an empty new line. Option list does not show the values
+  // already selected.
+  const selectedValues = ddlRace.filter(
+    (obj) => !selectedList.includes(obj.key)
+  );
+  const newLineOptionList = createOptionList(selectedValues);
+  const newLine = `
+  <div class="input-field form-group">
+    <label></label>
+    <select class="modal-select" name="RaceID" >
+      ${newLineOptionList}
+    </select>
+  </div>`;
   $(".race").empty().append(raceElement);
 };
