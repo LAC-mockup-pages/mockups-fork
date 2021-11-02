@@ -83,14 +83,13 @@
 .table > tbody > tr:hover {
   background-color: inherit;
 }
-.employment-form {
-  display: block;
+/* .tablescroll tbody,
+.tablescroll thead tr {
+  display: inline-block;
+  width: 100%;
 }
-.table-scroll > thead > tr > th {
-  position: sticky;
-  top: 0;
-}
-.employment-form > .table-scroll {
-  height: 12em;
+
+.tablescroll tbody {
+  height: 15vh;
   overflow-y: scroll;
-}
+} */
