@@ -259,14 +259,21 @@ $(document).ready(() => {
     console.log("targetTable :>> ", targetTable);
   });
 
-  //* Add new select element in modal when needed
+  //* Add new select element in modal when needed, with updated options.
   $(document).on(
-    "blur",
-    "#edit-form [name='RaceID']:last-of-type",
+    "change",
+    "#edit-form select[name='RaceID']:last-of-type",
     function (evnt) {
       evnt.stopPropagation();
-      const options = $("option", this).prop("selected", false);
-      const newSelectElement = ``;
+      // Allows to jump to next input field without generation a new RaceID select
+      // element
+      const currentSelectValue = $("#edit-form .race select").last().val();
+      if (!currentSelectValue) return;
+      const raceSelection = $("#edit-form select[name='RaceID']")
+        .serializeArray()
+        .map((record) => record.value);
+      $("#edit-form .race").append(addNewRaceSelect(raceSelection));
+      $("#edit-form select[name='RaceID']:last-of-type").focus();
     }
   );
 });
