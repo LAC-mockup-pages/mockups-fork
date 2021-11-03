@@ -259,7 +259,8 @@ $(document).ready(() => {
     console.log("targetTable :>> ", targetTable);
   });
 
-  //* Add new select element in modal when needed, with updated options.
+  //* Add new race select element in modal when needed, with updated
+  //* options.
   $(document).on(
     "change",
     "#edit-form select[name='RaceID']:last-of-type",
