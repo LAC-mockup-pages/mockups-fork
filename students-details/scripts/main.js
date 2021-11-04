@@ -254,6 +254,10 @@ $(document).ready(() => {
   //* Saving changes after editing in modal
   $("#save-btn").click(function (evnt) {
     const saveList = $("#edit-form").serializeArray();
+
+    //TODO Check for errors in inputs
+    //TODO Check for empty values
+    //TODO Re-formatting data and/or data structures to accomodate DB
     const targetTable = $("#edit-form").attr("data-table");
     const saveObj = createObject(saveList);
     const credentials = createCredentials();
