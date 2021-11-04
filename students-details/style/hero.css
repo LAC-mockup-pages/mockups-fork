@@ -83,13 +83,7 @@
 .table > tbody > tr:hover {
   background-color: inherit;
 }
-/* .tablescroll tbody,
-.tablescroll thead tr {
-  display: inline-block;
-  width: 100%;
-}
-*/
-.tablescroll tbody {
-  height: 5%;
-  overflow-y: auto;
+
+.funding-source {
+  height: 3%;
 }
