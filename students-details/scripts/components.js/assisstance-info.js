@@ -32,15 +32,15 @@ export const assistanceValues = (list, source) => {
           ${optionList}
         </select>
       </td>
-      <td><input type="text" name="PAFY" value=${PAFY} disabled></td>
-      <td><input type="text" name="PACaseNum" value=${PACaseNum} disabled></td>
+      <td><input type="text" disabled name="PAFY" value=${PAFY} ></td>
+      <td><input type="text" disabled name="PACaseNum" value=${PACaseNum} ></td>
       <td>
-        <select name="PAExhaustTANF" disabled>
+        <select disabled name="PAExhaustTANF" >
           ${optionListYesNo}
         </select>
       </td>
     </tr>`;
     tableBodyContent.push(row);
   }
-  $(".population-form tbody").append(tableBodyContent);
+  $(".assistance tbody").append(tableBodyContent.join(""));
 };

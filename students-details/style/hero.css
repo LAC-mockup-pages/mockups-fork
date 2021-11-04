@@ -83,7 +83,3 @@
 .table > tbody > tr:hover {
   background-color: inherit;
 }
-
-.funding-source {
-  height: 3%;
-}

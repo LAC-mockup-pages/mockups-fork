@@ -460,7 +460,7 @@
                       <th>Fiscal year</th>
                     </tr>
                   </thead>
-                  <tbody class="scrolling"></tbody>
+                  <tbody></tbody>
                 </table>
               </form>
             </section>
@@ -743,10 +743,14 @@
             </section>
             <!-- Parent | Children end -->
             <!-- Population | Publis assistance | Referral start -->
-            <div class="sub-header blue-bg blue-light-text">
-              <div class="sub-header-title">Population categories</div>
-            </div>
-            <form class="form population-form" role="form">
+            <section class="population">
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">Population categories</div>
+              </div>
+              <form class="form population-form" role="form"></form>
+            </section>
+
+            <section class="assistance">
               <div class="sub-header blue-bg blue-light-text">
                 <div class="sub-header-title">Public assistance</div>
               </div>
@@ -761,19 +765,21 @@
                 </thead>
                 <tbody></tbody>
               </table>
-            </form>
-            <div class="sub-header blue-bg blue-light-text">
-              <div class="sub-header-title">Referral</div>
-            </div>
-            <form class="form referral-form" role="form">
-              <div class="input-field form-group">
-                <label for="RefSource">Referral from other program</label>
-                <select class="modal-select" name="RefSource" disabled>
-                  <option value>Select a referral</option>
-                </select>
+            </section>
+            <section class="referral">
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">Referral</div>
               </div>
-            </form>
-            <!-- Population | Publis assistance | Referral end -->
+              <form class="form referral-form" role="form">
+                <div class="input-field form-group">
+                  <label for="RefSource">Referral from other program</label>
+                  <select class="modal-select" name="RefSource" disabled>
+                    <option value>Select a referral</option>
+                  </select>
+                </div>
+              </form>
+            </section>
+            <!-- Population | Public assistance | Referral end -->
           </div>
         </div>
       </div>
