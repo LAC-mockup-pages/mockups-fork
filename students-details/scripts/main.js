@@ -254,9 +254,19 @@ $(document).ready(() => {
   //* Saving changes after editing in modal
   $("#save-btn").click(function (evnt) {
     const saveList = $("#edit-form").serializeArray();
-    console.log("saveList :>> ", saveList);
     const targetTable = $("#edit-form").attr("data-table");
-    console.log("targetTable :>> ", targetTable);
+    const saveObj = createObject(saveList);
+    const credentials = createCredentials();
+    //! =================================================
+    //! For production, this is the end point for the Post request
+    //! to update the DB.
+    //! =================================================
+    const resultList = [
+      targetTable,
+      JSON.stringify({ ...credentials, ...saveObj })
+    ];
+    console.log("result :", resultList);
+    //! =================================================
   });
 
   //* Add new race select element in modal when needed, with updated
