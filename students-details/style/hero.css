@@ -88,8 +88,8 @@
   display: inline-block;
   width: 100%;
 }
-
+*/
 .tablescroll tbody {
-  height: 15vh;
-  overflow-y: scroll;
-} */
+  height: 5%;
+  overflow-y: auto;
+}

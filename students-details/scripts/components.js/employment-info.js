@@ -93,5 +93,5 @@ export const employmentValues = (list, statusList, incomeList) => {
     </tr>`;
     tableBodyContent.push(row);
   }
-  $(".employment-form tbody").append(tableBodyContent);
+  $(".employment-form tbody").append(tableBodyContent.join(""));
 };

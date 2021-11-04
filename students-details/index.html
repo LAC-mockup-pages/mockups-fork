@@ -444,11 +444,25 @@
             <!-- Gender ethnicity end -->
 
             <!-- Funding sources start -->
-            <section class="funding-source">
+            <section class="container-fluid funding-source">
               <div class="sub-header blue-bg blue-light-text">
                 <div class="sub-header-title">Funding sources</div>
               </div>
-              <form class="form funding-form" role="form"></form>
+              <form
+                class="form funding-form"
+                role="form"
+                data-table="GetFundingInfo"
+              >
+                <table class="table table-bordered funding-table">
+                  <thead>
+                    <tr class="blue-light-bg">
+                      <th>Funding source</th>
+                      <th>Fiscal year</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </form>
             </section>
             <!-- Funding sources end -->
           </div>
