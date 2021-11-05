@@ -57,6 +57,8 @@ export const addNewBarrierSelect = (list) => {
   const updatedDdlBarriers = list.filter(
     (record) => !barrierSelection.includes(record.key)
   );
+  // Checks if there is at least 1 value left in the barriers list
+  if (updatedDdlBarriers.length < 1) return;
   const newOptionList = createOptionList(updatedDdlBarriers);
   const newBarrierSelect = `
     <div class="input-field form-group col-sm-10">
@@ -67,11 +69,32 @@ export const addNewBarrierSelect = (list) => {
     </div>
     <div class="input-field form-group col-sm-2">
       <select class="modal-select medium-input" name="yes-no">
-        <option value>Select a value</option>
+        <option value></option>
         <option value="0">No</option>
         <option value="1">Yes</option>
       </select>
     </div>`;
   $("#edit-form .row").append(newBarrierSelect);
   $("#edit-form select[name='barrier']:last-of-type").focus();
+};
+
+//TODO Save pre-process for Barriers in edit modal
+// Add all the selected barriers with their yes/no answer.
+export const barriersProcess = () => {
+  const fields = $("#edit-form").serializeArray();
+  const fieldsObj = {};
+  const fieldsList = [];
+  const filteredList = fields.filter((obj) => obj.value);
+  const filteredListLength = filteredList.length;
+  for (let i = 0; i < filteredListLength; i += 2) {
+    const key = filteredList[i].value;
+    const val = filteredList[i + 1].value;
+    fieldsObj[key] = val;
+    fieldsList.push(key);
+  }
+  ddlBarriers
+    .map((obj) => obj.key)
+    .filter((item) => !fieldsList.includes(item))
+    .forEach((item) => (fieldsObj[item] = "2"));
+  return fieldsObj;
 };

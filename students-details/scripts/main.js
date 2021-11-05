@@ -33,6 +33,7 @@ import { fundingValues } from "./components/funding-info.js";
 import { populationValues } from "./components/population-info.js";
 import {
   addNewBarrierSelect,
+  barriersProcess,
   barriersValues
 } from "./components/barriers-info.js";
 import { assistanceValues } from "./components/assisstance-info.js";
@@ -259,12 +260,13 @@ $(document).ready(() => {
   //* Saving changes after editing in modal
   $("#save-btn").click(function (evnt) {
     const saveList = $("#edit-form").serializeArray();
-
     //TODO Check for errors in inputs
     //TODO Check for empty values
-    //TODO Re-formatting data and/or data structures to accomodate DB
     const targetTable = $("#edit-form").attr("data-table");
-    const saveObj = createObject(saveList);
+    let saveObj = createObject(saveList);
+    if ($("#edit-form select:first-of-type").attr("name") === "barrier") {
+      saveObj = barriersProcess();
+    }
     const credentials = createCredentials();
     //! =================================================
     //! For production, this is the end point for the Post request
@@ -294,6 +296,21 @@ $(document).ready(() => {
         .map((record) => record.value);
       $("#edit-form .race").append(addNewRaceSelect(raceSelection));
       $("#edit-form select[name='RaceID']:last-of-type").focus();
+    }
+  );
+
+  //* Add new Barrier select element in modal when needed, with updated
+  //* options.
+  $(document).on(
+    "change",
+    "#edit-form select[name='yes-no']:last-of-type",
+    function (evnt) {
+      evnt.stopPropagation();
+      evnt.preventDefault();
+      // Allows to jump to buttons without generating a new Barrier select
+      // element
+      if (!$(this).val()) return;
+      addNewBarrierSelect(ddlBarriers);
     }
   );
 });
