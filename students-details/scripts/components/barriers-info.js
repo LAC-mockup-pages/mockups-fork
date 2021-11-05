@@ -78,7 +78,6 @@ export const addNewBarrierSelect = (list) => {
   $("#edit-form select[name='barrier']:last-of-type").focus();
 };
 
-//TODO Save pre-process for Barriers in edit modal
 // Add all the selected barriers with their yes/no answer.
 export const barriersProcess = () => {
   const fields = $("#edit-form").serializeArray();
