@@ -29,11 +29,14 @@ import {
   inputValues,
   ssnValues
 } from "./components/student-info.js";
-import { fundingValues } from "./components/funding-info.js.js";
-import { populationValues } from "./components/population-info.js.js";
-import { barriersValues } from "./components/barriers-info.js.js";
-import { assistanceValues } from "./components/assisstance-info.js.js";
-import { employmentValues } from "./components/employment-info.js.js";
+import { fundingValues } from "./components/funding-info.js";
+import { populationValues } from "./components/population-info.js";
+import {
+  addNewBarrierSelect,
+  barriersValues
+} from "./components/barriers-info.js";
+import { assistanceValues } from "./components/assisstance-info.js";
+import { employmentValues } from "./components/employment-info.js";
 const studentInfo = GetStudent.slice(0)[0];
 const fundingInfo = GetFundingInfo.slice(0);
 const fundingSources = GetFundingSource.slice(0);
@@ -246,6 +249,8 @@ $(document).ready(() => {
           .serializeArray()
           .map((record) => record.value);
         $("#edit-form .race").append(`${addNewRaceSelect(selectedOptions)}`);
+      } else if ($(this).hasClass("barriers-form")) {
+        addNewBarrierSelect(ddlBarriers);
       }
       // Enables customized tooltips
       $("[data-toggle='tooltip']").tooltip();

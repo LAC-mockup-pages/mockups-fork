@@ -31,12 +31,12 @@ export const barriersValues = (obj) => {
     );
     const row = `
     <div class="input-field form-group col-sm-10">
-      <select class="modal-select" name=${key} disabled>
+      <select class="modal-select" name="barrier" disabled>
         ${optionList}
       </select>
     </div>
     <div class="input-field form-group col-sm-2">
-      <select class="modal-select" name=${key + "-value"} disabled>
+      <select class="modal-select" name="yes-no" disabled>
         ${optionListYesNoNA}
       </select>
     </div>`;
@@ -47,4 +47,31 @@ export const barriersValues = (obj) => {
       ${formContent.join("")}
     </div>`
   );
+};
+
+// List argument is dataSource /data-server.js/ddlBarriers
+export const addNewBarrierSelect = (list) => {
+  const barrierSelection = $("#edit-form [name='barrier']")
+    .serializeArray()
+    .map((item) => item.value);
+  const updatedDdlBarriers = list.filter(
+    (record) => !barrierSelection.includes(record.key)
+  );
+  const newOptionList = createOptionList(updatedDdlBarriers);
+  const newBarrierSelect = `
+    <div class="input-field form-group col-sm-10">
+      <select class="modal-select" name="barrier">
+        <option value>Select a value</option>
+        ${newOptionList}
+      </select>
+    </div>
+    <div class="input-field form-group col-sm-2">
+      <select class="modal-select medium-input" name="yes-no">
+        <option value>Select a value</option>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+    </div>`;
+  $("#edit-form .row").append(newBarrierSelect);
+  $("#edit-form select[name='barrier']:last-of-type").focus();
 };
