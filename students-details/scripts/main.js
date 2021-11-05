@@ -28,12 +28,12 @@ import {
   genderValues,
   inputValues,
   ssnValues
-} from "./components.js/student-info.js";
-import { fundingValues } from "./components.js/funding-info.js";
-import { populationValues } from "./components.js/population-info.js";
-import { barriersValues } from "./components.js/barriers-info.js";
-import { assistanceValues } from "./components.js/assisstance-info.js";
-import { employmentValues } from "./components.js/employment-info.js";
+} from "./components/student-info.js";
+import { fundingValues } from "./components/funding-info.js.js";
+import { populationValues } from "./components/population-info.js.js";
+import { barriersValues } from "./components/barriers-info.js.js";
+import { assistanceValues } from "./components/assisstance-info.js.js";
+import { employmentValues } from "./components/employment-info.js.js";
 const studentInfo = GetStudent.slice(0)[0];
 const fundingInfo = GetFundingInfo.slice(0);
 const fundingSources = GetFundingSource.slice(0);
