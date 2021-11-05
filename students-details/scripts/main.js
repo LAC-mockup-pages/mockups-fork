@@ -243,7 +243,7 @@ $(document).ready(() => {
       for (const name of requiredList) {
         $(`#edit-form label[for=${name}]`).addClass("red-text");
       }
-      // Add new Race select empty element for gender/race section
+      // Add new select empty element for gender/race, barriers sections
       if ($(this).hasClass("gender-form")) {
         const selectedOptions = $(`#edit-form [name="RaceID"]`)
           .serializeArray()
