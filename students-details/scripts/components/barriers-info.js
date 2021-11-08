@@ -30,7 +30,7 @@ export const barriersValues = (obj) => {
       valuesObj[key]
     );
     const row = `
-    <div class="input-field form-group col-sm-10">
+    <div class="input-field form-group col-sm-8">
       <select class="modal-select" name="barrier" disabled>
         ${optionList}
       </select>
@@ -39,7 +39,8 @@ export const barriersValues = (obj) => {
       <select class="modal-select" name="yes-no" disabled>
         ${optionListYesNoNA}
       </select>
-    </div>`;
+    </div>
+    <div class="col-sm-2"></div>`;
     formContent.push(row);
   }
   $(".barriers-form").append(
@@ -59,7 +60,7 @@ export const addNewSelect = (list, section) => {
   if (updatedDdl.length < 1) return;
   const newOptionList = createOptionList(updatedDdl);
   const newSelectLine = `
-    <div class="input-field form-group col-sm-10">
+    <div class="input-field form-group col-sm-8">
       <select class="modal-select" name=${section}>
         <option value>Select a value</option>
         ${newOptionList}
@@ -70,7 +71,8 @@ export const addNewSelect = (list, section) => {
         <option value="0">No</option>
         <option value="1">Yes</option>
       </select>
-    </div>`;
+    </div>
+    <div class="col-sm-2"></div>`;
   $("#edit-form .row").append(newSelectLine);
   $(`#edit-form select[name=${section}]:last-of-type`).focus();
 };

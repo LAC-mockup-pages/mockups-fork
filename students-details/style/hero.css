@@ -62,11 +62,14 @@
 .form:not(#edit-form):hover {
   background-color: #d3e4f0;
 }
+.form input:disabled,
+.form select:disabled {
+  background-color: inherit;
+}
 
 /* Multiple select sections */
 .funding-form .input-field > .modal-select {
   width: fit-content;
-  /* margin-right: 1%; */
 }
 
 /* Tables */
@@ -83,8 +86,25 @@
 .table > tbody > tr:hover {
   background-color: inherit;
 }
-
 .children-table input {
   text-align: right;
   width: 40%;
+}
+
+/* Parent section */
+.parent label {
+  width: 60%;
+}
+.parent select {
+  width: 20%;
+}
+
+/* Population section */
+.population .modal-select[name="population"] {
+  width: 90%;
+}
+
+/* Barriers section */
+.barriers .modal-select[name="barrier"] {
+  width: 90%;
 }

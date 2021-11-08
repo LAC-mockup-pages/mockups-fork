@@ -54,7 +54,7 @@ export const populationValues = (obj) => {
       valuesObj[key]
     );
     const row = `
-    <div class="input-field form-group col-sm-10">
+    <div class="input-field form-group col-sm-8">
       <select class="modal-select" name="population" disabled>
         ${optionList}
       </select>
@@ -63,7 +63,8 @@ export const populationValues = (obj) => {
       <select class="modal-select" name="yes-no" disabled>
         ${optionListYesNoNA}
       </select>
-    </div>`;
+    </div>
+    <div class="col-sm-2"></div>`;
     formContent.push(row);
   }
   $(".population-form").append(

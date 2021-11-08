@@ -27,17 +27,21 @@ export const assistanceValues = (list, source) => {
     );
     const row = `
     <tr id=${ID}>
-      <td>
-        <select name="PACatID" disabled>
+      <td><div class="input-field form-group">
+        <select class="modal-select" name="PACatID" disabled>
           ${optionList}
-        </select>
+        </select></div>
       </td>
-      <td><input type="text" disabled name="PAFY" value=${PAFY} ></td>
-      <td><input type="text" disabled name="PACaseNum" value=${PACaseNum} ></td>
-      <td>
-        <select disabled name="PAExhaustTANF" >
+      <td><div class="input-field form-group">
+      <input type="text" disabled name="PAFY" value=${PAFY} ></div>
+      </td>
+      <td><div class="input-field form-group">
+      <input type="text" disabled name="PACaseNum" value=${PACaseNum} ></div>
+      </td>
+      <td><div class="input-field form-group">
+        <select disabled class="modal-select" name="PAExhaustTANF" >
           ${optionListYesNo}
-        </select>
+        </select></div>
       </td>
     </tr>`;
     tableBodyContent.push(row);
