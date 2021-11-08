@@ -51,10 +51,6 @@
   font-size: 0.85em;
 }
 
-.input-field > input {
-  /* font-size: 1em; */
-}
-
 .form-group {
   line-height: 1.7vh;
 }
@@ -96,10 +92,10 @@
 
 /* Parent section */
 .parent label {
-  width: 60%;
+  width: 69%;
 }
 .parent select {
-  width: 20%;
+  width: 8%;
 }
 
 /* Population section */
