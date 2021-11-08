@@ -696,9 +696,9 @@
 
           <div class="col-md-6">
             <!-- Parent | Children start -->
-            <section class="parent-children">
+            <section class="parent">
               <div class="sub-header blue-bg blue-light-text">
-                <div class="sub-header-title">Parent | Children</div>
+                <div class="sub-header-title">Parent</div>
               </div>
               <form
                 class="form parent-form"
@@ -721,28 +721,40 @@
                     <option value="1">Yes</option>
                   </select>
                 </div>
+              </form>
+            </section>
+            <section class="children">
+              <form
+                class="form children-form"
+                role="form"
+                data-table="GetStudent"
+              >
+                <div class="sub-header blue-bg blue-light-text">
+                  <div class="sub-header-title">School aged children</div>
+                </div>
 
-                <div>School aged children</div>
-                <table class="table children-table">
+                <table class="table table-bordered children-table">
                   <thead>
-                    <th class="children-header">PreSchool</th>
-                    <th class="children-header">Elementary</th>
-                    <th class="children-header">Junior HS</th>
-                    <th class="children-header">High School</th>
+                    <tr class="blue-light-bg">
+                      <th>PreSchool</th>
+                      <th>Elementary</th>
+                      <th>Junior HS</th>
+                      <th>High School</th>
+                    </tr>
                   </thead>
                   <tbody>
                     <tr>
-                      <td class="cell-data">
-                        <input class="cell-input" name="PreChild" value="1" />
+                      <td>
+                        <input name="PreChild" value="1" />
                       </td>
-                      <td class="cell-data">
-                        <input class="cell-input" name="ElemChild" value="2" />
+                      <td>
+                        <input name="ElemChild" value="2" />
                       </td>
-                      <td class="cell-data">
-                        <input class="cell-input" name="JHSChild" value="3" />
+                      <td>
+                        <input name="JHSChild" value="3" />
                       </td>
-                      <td class="cell-data">
-                        <input class="cell-input" name="HSChild" value="4" />
+                      <td>
+                        <input name="HSChild" value="4" />
                       </td>
                     </tr>
                   </tbody>
