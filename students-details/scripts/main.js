@@ -32,8 +32,8 @@ import {
 import { fundingValues } from "./components/funding-info.js";
 import { populationValues } from "./components/population-info.js";
 import {
-  addNewBarrierSelect,
-  barriersProcess,
+  addNewSelect,
+  sectionProcess,
   barriersValues
 } from "./components/barriers-info.js";
 import { assistanceValues } from "./components/assisstance-info.js";
@@ -251,7 +251,9 @@ $(document).ready(() => {
           .map((record) => record.value);
         $("#edit-form .race").append(`${addNewRaceSelect(selectedOptions)}`);
       } else if ($(this).hasClass("barriers-form")) {
-        addNewBarrierSelect(ddlBarriers);
+        addNewSelect(ddlBarriers, "barrier");
+      } else if ($(this).hasClass("population-form")) {
+        addNewSelect(ddlPopulation, "population");
       }
       // Enables customized tooltips
       $("[data-toggle='tooltip']").tooltip();
@@ -264,8 +266,11 @@ $(document).ready(() => {
     //TODO Check for empty values
     const targetTable = $("#edit-form").attr("data-table");
     let saveObj = createObject(saveList);
-    if ($("#edit-form select:first-of-type").attr("name") === "barrier") {
-      saveObj = barriersProcess();
+    const sectionName = $("#edit-form select:first-of-type").attr("name");
+    if (["barrier", "population"].includes(sectionName)) {
+      const sectionDdl =
+        sectionName === "barrier" ? ddlBarriers : ddlPopulation;
+      saveObj = sectionProcess(sectionDdl);
     }
     const credentials = createCredentials();
     //! =================================================
@@ -274,7 +279,7 @@ $(document).ready(() => {
     //! =================================================
     const resultList = [
       targetTable,
-      JSON.stringify({ ...credentials, ...saveObj })
+      JSON.stringify({ ...credentials, ID: Student_PKID, ...saveObj })
     ];
     console.log("result :", resultList);
     //! =================================================
@@ -310,7 +315,7 @@ $(document).ready(() => {
       // Allows to jump to buttons without generating a new Barrier select
       // element
       if (!$(this).val()) return;
-      addNewBarrierSelect(ddlBarriers);
+      addNewSelect(ddlBarriers, "barrier");
     }
   );
 });

@@ -50,19 +50,17 @@ export const barriersValues = (obj) => {
 };
 
 // List argument is dataSource /data-server.js/ddlBarriers
-export const addNewBarrierSelect = (list) => {
-  const barrierSelection = $("#edit-form [name='barrier']")
+export const addNewSelect = (list, section) => {
+  const selection = $(`#edit-form [name=${section}]`)
     .serializeArray()
     .map((item) => item.value);
-  const updatedDdlBarriers = list.filter(
-    (record) => !barrierSelection.includes(record.key)
-  );
-  // Checks if there is at least 1 value left in the barriers list
-  if (updatedDdlBarriers.length < 1) return;
-  const newOptionList = createOptionList(updatedDdlBarriers);
-  const newBarrierSelect = `
+  const updatedDdl = list.filter((record) => !selection.includes(record.key));
+  // Checks if there is at least 1 value left in the list
+  if (updatedDdl.length < 1) return;
+  const newOptionList = createOptionList(updatedDdl);
+  const newSelectLine = `
     <div class="input-field form-group col-sm-10">
-      <select class="modal-select" name="barrier">
+      <select class="modal-select" name=${section}>
         <option value>Select a value</option>
         ${newOptionList}
       </select>
@@ -74,12 +72,12 @@ export const addNewBarrierSelect = (list) => {
         <option value="1">Yes</option>
       </select>
     </div>`;
-  $("#edit-form .row").append(newBarrierSelect);
-  $("#edit-form select[name='barrier']:last-of-type").focus();
+  $("#edit-form .row").append(newSelectLine);
+  $(`#edit-form select[name=${section}]:last-of-type`).focus();
 };
 
-// Add all the selected barriers with their yes/no answer.
-export const barriersProcess = () => {
+// Add all the selected choices with their yes/no answer.
+export const sectionProcess = (list) => {
   const fields = $("#edit-form").serializeArray();
   const fieldsObj = {};
   const fieldsList = [];
@@ -91,7 +89,7 @@ export const barriersProcess = () => {
     fieldsObj[key] = val;
     fieldsList.push(key);
   }
-  ddlBarriers
+  list
     .map((obj) => obj.key)
     .filter((item) => !fieldsList.includes(item))
     .forEach((item) => (fieldsObj[item] = "2"));

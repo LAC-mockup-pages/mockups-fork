@@ -55,12 +55,12 @@ export const populationValues = (obj) => {
     );
     const row = `
     <div class="input-field form-group col-sm-10">
-      <select class="modal-select" name=${key} disabled>
+      <select class="modal-select" name="population" disabled>
         ${optionList}
       </select>
     </div>
     <div class="input-field form-group col-sm-2">
-      <select class="modal-select" name=${key + "-value"} disabled>
+      <select class="modal-select" name="yes-no" disabled>
         ${optionListYesNoNA}
       </select>
     </div>`;
