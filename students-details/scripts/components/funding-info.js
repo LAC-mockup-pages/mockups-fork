@@ -7,53 +7,25 @@
 import { createOptionList } from "../main.js";
 
 // Data source: original-data/student-data.js/GetFundingInfo
-// export const fundingValues = (list, sources) => {
-//   for (const obj of list) {
-//     const { ID, FSID, FY } = obj;
-//     const optionList = createOptionList(sources, FSID);
-//     const FYMinus1 = (Number(FY) - 1).toString();
-//     const selectFiscalYear = `<div class="input-field form-group col-sm-4"><select class="modal-select" name="FY"><option value=${FY} selected>${FY}</option><option value=${FYMinus1}>${FYMinus1}</option></select></div>`;
-
-//     const selectSource = `
-//     <div class="input-field form-group col-sm-8">
-//       <select class="modal-select" name=${FSID}>
-//         ${optionList}
-//       </select>
-//     </div>`;
-
-//     $(".funding-form").append(
-//       `<div class="row" id=${ID}>
-//         ${selectSource}
-//         ${selectFiscalYear}
-//       </div>`
-//     );
-// }
-// };
-
 export const fundingValues = (list, sources) => {
-  // Sorting records from most recent FY to oldest FY
-  const orderedList = list.sort((record1, record2) =>
-    record1.FY > record2.FY ? -1 : record1.FY < record2.FY ? 1 : 0
-  );
-  const tableBodyContent = [];
-  for (const record of orderedList) {
-    const { ID, FY, FSID } = record;
-    const optionListSources = createOptionList(sources, FSID);
+  for (const obj of list) {
+    const { ID, FSID, FY } = obj;
+    const optionList = createOptionList(sources, FSID);
+    const FYMinus1 = (Number(FY) - 1).toString();
+    const selectFiscalYear = `<div class="input-field form-group col-sm-4"><select class="modal-select" disabled name="FY"><option value=${FY} selected>${FY}</option><option value=${FYMinus1}>${FYMinus1}</option></select></div>`;
 
-    const row = `
-    <tr id=${ID}>
-      <td>
-        <div class="form-field input-group">
-          <select class="modal-select" name="EmployStatID">
-            ${optionListSources}
-          </select>
-        </div>
-      </td>
-      <td>
-      ${FY}
-      </td>
-      </tr>`;
-    tableBodyContent.push(row);
+    const selectSource = `
+    <div class="input-field form-group col-sm-8">
+      <select class="modal-select" disabled name=${FSID}>
+        ${optionList}
+      </select>
+    </div>`;
+
+    $(".funding-form").append(
+      `<div class="row" id=${ID}>
+        ${selectSource}
+        ${selectFiscalYear}
+      </div>`
+    );
   }
-  $(".funding-form tbody").append(tableBodyContent.join(""));
 };

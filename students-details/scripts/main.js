@@ -199,6 +199,15 @@ $(document).ready(() => {
   $(".nationality-form input[name='Languages']").val(additionalInfo.Languages);
   //Populating Parent/Children select values.
   // Data source: original-data/student-data.js/GetStudent
+  $(".parent-form select[name='Parent']").append(
+    createOptionList(
+      [
+        { key: "0", value: "No" },
+        { key: "1", value: "Yes" }
+      ],
+      studentInfo.Parent
+    )
+  );
   $(".parent-form select[name='CustodialParent']").append(
     createOptionList(
       [

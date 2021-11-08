@@ -111,3 +111,10 @@
 .barriers .modal-select[name="barrier"] {
   width: 90%;
 }
+
+/* Funding form */
+.funding-form {
+  max-height: 13vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}

@@ -444,7 +444,7 @@
             <!-- Gender ethnicity end -->
 
             <!-- Funding sources start -->
-            <section class="container-fluid funding-source">
+            <section class="funding-source">
               <div class="sub-header blue-bg blue-light-text">
                 <div class="sub-header-title">Funding sources</div>
               </div>
@@ -452,17 +452,7 @@
                 class="form funding-form"
                 role="form"
                 data-table="GetFundingInfo"
-              >
-                <table class="table table-bordered funding-table">
-                  <thead>
-                    <tr class="blue-light-bg">
-                      <th>Funding source</th>
-                      <th>Fiscal year</th>
-                    </tr>
-                  </thead>
-                  <tbody></tbody>
-                </table>
-              </form>
+              ></form>
             </section>
             <!-- Funding sources end -->
           </div>
@@ -556,7 +546,7 @@
                     <th>Status</th>
                     <th>FY</th>
                     <th>Employer</th>
-                    <th>Employement date</th>
+                    <th>Employment date</th>
                     <th>Last employment date</th>
                     <th>Release date</th>
                     <th>Annual income</th>
@@ -706,8 +696,12 @@
                 data-table="GetStudent"
               >
                 <div class="input-field form-group">
+                  <label for="Parent">Parent of a child/children</label>
+                  <select name="Parent" class="modal-select" disabled></select>
+                </div>
+                <div class="input-field form-group">
                   <label for="CustodialParent"
-                    >Parent or guardian of a child/children</label
+                    >Guardian of a child/children</label
                   >
                   <select
                     name="CustodialParent"
