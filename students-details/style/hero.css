@@ -83,3 +83,8 @@
 .table > tbody > tr:hover {
   background-color: inherit;
 }
+
+.children-table input {
+  text-align: right;
+  width: 40%;
+}
