@@ -285,6 +285,12 @@ $(document).ready(() => {
       const sectionDdl =
         sectionName === "barrier" ? ddlBarriers : ddlPopulation;
       saveObj = sectionProcess(sectionDdl);
+    } else if (sectionName === "Sex") {
+      console.log("sectionName :>> ", sectionName);
+      saveObj.RaceID = saveList
+        .filter((record) => record.name === "RaceID" && record.value)
+        .map((record) => record.value)
+        .join(",");
     }
     const credentials = createCredentials();
     //! =================================================
