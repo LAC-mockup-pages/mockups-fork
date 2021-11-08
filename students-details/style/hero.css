@@ -52,7 +52,7 @@
 }
 
 .input-field > input {
-  font-size: 1em;
+  /* font-size: 1em; */
 }
 
 .form-group {
@@ -65,6 +65,9 @@
 .form input:disabled,
 .form select:disabled {
   background-color: inherit;
+}
+.form input:disabled {
+  color: rgb(120, 120, 120);
 }
 
 /* Multiple select sections */
