@@ -584,7 +584,7 @@ export const GetStudent = [
     Parent: "0",
     SingleParent: "0",
     CustodialParent: "1",
-    PreChild: "1",
+    PreChild: "0",
     ElemChild: "2",
     JHSChild: "3",
     HSChild: "4",

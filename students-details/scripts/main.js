@@ -199,10 +199,24 @@ $(document).ready(() => {
   $(".nationality-form input[name='Languages']").val(additionalInfo.Languages);
   //Populating Parent/Children select values.
   // Data source: original-data/student-data.js/GetStudent
-  $(".parent-form select[name='CustodialParent']").val(
-    studentInfo.CustodialParent
+  $(".parent-form select[name='CustodialParent']").append(
+    createOptionList(
+      [
+        { key: "0", value: "No" },
+        { key: "1", value: "Yes" }
+      ],
+      studentInfo.CustodialParent
+    )
   );
-  $(".parent-form select[name='SingleParent']").val(studentInfo.SingleParent);
+  $(".parent-form select[name='SingleParent']").append(
+    createOptionList(
+      [
+        { key: "0", value: "No" },
+        { key: "1", value: "Yes" }
+      ],
+      studentInfo.SingleParent
+    )
+  );
   // Populating Referral section select values. Adding option list.
   // Data source: original-data/student-data-additional.js/GetStudent_Additional,
   //        original-data/student-data-additional.js/GetReferralSource

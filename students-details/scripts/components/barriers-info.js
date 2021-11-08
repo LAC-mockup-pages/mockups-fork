@@ -67,7 +67,6 @@ export const addNewSelect = (list, section) => {
     </div>
     <div class="input-field form-group col-sm-2">
       <select class="modal-select medium-input" name="yes-no">
-        <option value></option>
         <option value="0">No</option>
         <option value="1">Yes</option>
       </select>
