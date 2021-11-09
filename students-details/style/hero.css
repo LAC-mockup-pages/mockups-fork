@@ -70,6 +70,9 @@
 .funding-form .input-field > .modal-select {
   width: fit-content;
 }
+.modal-select[name="yes-no"] {
+  width: 70%;
+}
 
 /* Tables */
 .table > thead > tr > th {
@@ -81,6 +84,7 @@
   font-weight: 600;
   font-size: 0.7em;
   line-height: 1.3em;
+  background-color: #f0f0f5;
 }
 .table > tbody > tr:hover {
   background-color: inherit;
@@ -88,6 +92,11 @@
 .children-table input {
   text-align: right;
   width: 40%;
+  border-bottom: none;
+}
+.assistance-table input,
+.assistance-table select {
+  border-bottom: none;
 }
 
 /* Parent section */
@@ -95,7 +104,7 @@
   width: 69%;
 }
 .parent select {
-  width: 8%;
+  width: 9%;
 }
 
 /* Population section */
