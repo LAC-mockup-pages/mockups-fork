@@ -43,49 +43,41 @@ export const employmentValues = (list, statusList, incomeList) => {
     <tr id=${ID}>
       <td>
         <div class="form-field input-group">
-          <select class="modal-select" name="EmployStatID">
+          <select class="modal-select" disabled name="EmployStatID">
             ${optionListStatus}
           </select>
         </div>
       </td>
       <td>
         <div class="form-field input-group">
-          <select class="modal-select" name="EmployStatusFY">
+          <select class="modal-select" disabled name="EmployStatusFY">
             ${optionListFY}
           </select>
         </div>
       </td>
       <td>
         <div class="form-field input-group">
-          <input type="text" name="EmployerID" value=${
-            EmployerID || "-"
-          } disabled>
+          <input type="text" disabled name="EmployerID" value=${EmployerID}>
         </div>
       </td>
       <td>
         <div class="form-field input-group">
-          <input type="date" name="EmployDate" value=${dateFormat(
-            EmployDate
-          )} disabled>
+          <input type="text" disabled name="EmployDate" value=${EmployDate} >
         </div>
       </td>
       <td>
         <div class="form-field input-group">
-          <input type="date" name="LastEmployDate" value=${dateFormat(
-            LastEmployDate
-          )} disabled>
+          <input type="text" disabled name="LastEmployDate" value=${LastEmployDate} >
         </div>
       </td>
       <td>
         <div class="form-field input-group">
-          <input type="date" name="ReleaseDate" value=${dateFormat(
-            ReleaseDate
-          )} disabled>
+          <input type="text" disabled name="ReleaseDate" value=${ReleaseDate} >
         </div>
       </td>
       <td>
         <div class="form-field input-group">
-          <select class="modal-select" name="IncomeFY">
+          <select class="modal-select" disabled name="IncomeFY">
             ${optionListIncome}
           </select>
         </div>

@@ -135,3 +135,28 @@
   top: 0px;
   z-index: 10;
 }
+.employment-table > tbody select[name="EmployStatID"],
+.employment-table > tbody select[name="EmployStatusFY"],
+.employment-table > tbody select[name="IncomeFY"] {
+  width: 100%;
+  border-bottom: none;
+}
+.employment-table > tbody input {
+  border: hidden;
+  font-size: 1.1em;
+  font-weight: 400;
+}
+.employment-table > tbody select {
+  font-size: 1.2em;
+}
+.employment-table > tbody > tr > td:nth-child(4),
+.employment-table > tbody > tr > td:nth-child(5),
+.employment-table > tbody > tr > td:nth-child(6) {
+  width: 10em;
+}
+
+.employment-table > tbody input[name="EmployDate"],
+.employment-table > tbody input[name="LastEmployDate"],
+.employment-table > tbody input[name="ReleaseDate"] {
+  width: 100%;
+}
