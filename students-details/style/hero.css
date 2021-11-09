@@ -54,10 +54,22 @@
 .form-group {
   line-height: 1.7vh;
 }
-
-.form:not(#edit-form):hover {
+.student-info:hover,
+.gender-ethnicity:hover,
+.funding-source:hover,
+.contact-info:hover,
+.SSN:hover,
+.education:hover,
+.barriers:hover,
+.nationality:hover,
+.parent:hover,
+.population:hover,
+.referral:hover {
   background-color: #d3e4f0;
 }
+/* .form:not(#edit-form, .parent-form):hover {
+  background-color: #d3e4f0;
+} */
 .form input:disabled,
 .form select:disabled {
   background-color: inherit;
@@ -84,7 +96,7 @@
   font-weight: 600;
   font-size: 0.7em;
   line-height: 1.3em;
-  background-color: #f0f0f5;
+  background-color: inherit;
 }
 /* .table:not(.employment-table) > tbody > tr:hover {
   background-color: inherit;
@@ -160,9 +172,9 @@
 .employment-table > tbody input[name="ReleaseDate"] {
   width: 100%;
 }
-.employment-table tbody tr :hover {
+/* .employment-table tbody tr :hover {
   background-color: #d3e4f0;
-}
+} */
 
 /* PA section */
 .assistance-table tbody select,

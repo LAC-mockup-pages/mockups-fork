@@ -237,7 +237,7 @@ $(document).ready(() => {
 
   //* Triggers edit modal with selected form elements
   $(".form")
-    .not("#edit-form")
+    .not("#edit-form, .employment-form, .children-form, .assistance-form")
     .click(function (evnt) {
       evnt.stopPropagation();
       const sectionTitle = $(this)
