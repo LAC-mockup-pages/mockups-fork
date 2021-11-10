@@ -43,9 +43,9 @@ export const enrollValues = (list, reasons, transferList, formName) => {
     <tr id=${ID}>
       <td>
         <div class="form-field input-group">
-        <input type="text" name="Description" value=${JSON.stringify(
+        <input type="text" disabled name="Description" value=${JSON.stringify(
           Description
-        )} disabled>
+        )} >
         </div>
       </td>
       <td>
@@ -60,19 +60,20 @@ export const enrollValues = (list, reasons, transferList, formName) => {
       </td>
       <td>
         <div class="form-field input-group">
-        <select class="modal-select" name="InactiveReason" disabled>
+        <select class="modal-select" disabled name="InactiveReason">
         ${optionListReason}
       </select>
         </div>
       </td>
       <td>
         <div class="form-field input-group">
-        <select class="modal-select" name="TransferTo" disabled>
+        <select class="modal-select" disabled name="TransferTo" >
         ${TransferTo ? optionListTransfer : ""}
       </select>
         </div>
       </td>
       <td>
+      <div class="form-field input-group">
       <select class="modal-select" name="ActiveStatus" disabled>
       ${optionListActive}
     </select>
