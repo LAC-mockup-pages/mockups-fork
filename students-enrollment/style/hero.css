@@ -53,9 +53,11 @@ section:not(.student-info) {
   font-size: 1.1em;
   color: rgb(115, 115, 115);
   width: 100%;
+  border-bottom: none;
 }
 .input-field > select {
   width: 100%;
+  border-bottom: none;
 }
 .form-group {
   line-height: 1.7vh;
@@ -64,12 +66,6 @@ section:not(.student-info) {
 
 .form:not(#edit-form):hover {
   background-color: #d3e4f0;
-}
-
-/* Multiple select sections */
-.funding-form .input-field > .modal-select {
-  width: fit-content;
-  /* margin-right: 1%; */
 }
 
 /* Tables */
