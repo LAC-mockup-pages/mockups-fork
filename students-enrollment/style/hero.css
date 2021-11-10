@@ -30,6 +30,10 @@
 section:not(.student-info) {
   margin-top: 1%;
 }
+.student-info {
+  height: 2.5em;
+  padding-top: 0.3em;
+}
 .sub-header {
   line-height: 30px;
   padding-left: 5px;
