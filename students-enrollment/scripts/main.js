@@ -13,6 +13,7 @@ import { hourMonthlyValues } from "./components/hours.js";
 const enrollmentList = GetEnroll.slice(0).filter(
   (record) => record.ISCMP === "0"
 );
+const studentInfo = GetStudentHeader.slice(0)[0];
 const courseList = GetInstructionSource.slice(0);
 const exitReasons = GetExitReasonSource.slice(0);
 const transferTo = GetTransferTo.slice(0);
@@ -91,6 +92,11 @@ $(document).ready(() => {
   };
 
   //! =============================================================
+  const { StudentName, StudentID } = studentInfo;
+  $(".student-info .name").text(StudentName);
+  $(".student-info .long-id").text(StudentID);
+
+  //* =====================================
 
   //* Navigation from sub navbar on top
   $("#sub-nav li").click(function (evnt) {
