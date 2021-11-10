@@ -49,16 +49,17 @@ section:not(.student-info) {
   margin-bottom: 1%;
 }
 
-.input-field > label {
-  font-size: 0.85em;
-}
-
 .input-field > input {
-  font-size: 1em;
+  font-size: 1.1em;
+  color: rgb(115, 115, 115);
+  width: 100%;
 }
-
+.input-field > select {
+  width: 100%;
+}
 .form-group {
   line-height: 1.7vh;
+  background-color: inherit;
 }
 
 .form:not(#edit-form):hover {
@@ -78,21 +79,8 @@ section:not(.student-info) {
   font-size: 0.75em;
 }
 .table > tbody > tr > td {
-  font-weight: 600;
+  font-weight: 400;
   font-size: 0.7em;
   line-height: 1.3em;
   border-bottom: solid 1px #dddddd;
-}
-.table > tbody > tr:hover {
-  background-color: inherit;
-}
-
-table .hours-history {
-  height: 10%;
-  overflow-y: scroll;
-}
-
-table > .hours-history > thead > tr > th {
-  position: sticky;
-  top: 0;
 }

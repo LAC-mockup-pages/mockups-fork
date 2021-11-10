@@ -42,42 +42,42 @@ export const enrollValues = (list, reasons, transferList, formName) => {
     const row = `
     <tr id=${ID}>
       <td>
-        <div class="form-field input-group">
-        <input type="text" disabled name="Description" value=${JSON.stringify(
-          Description
-        )} >
+        <div class="form-group input-field">
+          <input type="text" disabled name="Description" value=${JSON.stringify(
+            Description
+          )} >
         </div>
       </td>
       <td>
-      <div class="form-field input-group">
-      <input type="text" disabled name="EnrollDate" value=${EnrollDate} >
-    </div>
-      </td>
-      <td>
-      <div class="form-field input-group">
-      <input type="text" disabled name="InactiveDate" value=${InactiveDate} >
-    </div>
-      </td>
-      <td>
-        <div class="form-field input-group">
-        <select class="modal-select" disabled name="InactiveReason">
-        ${optionListReason}
-      </select>
+        <div class="form-group input-field">
+          <input type="text" disabled name="EnrollDate" value=${EnrollDate} >
         </div>
       </td>
       <td>
-        <div class="form-field input-group">
-        <select class="modal-select" disabled name="TransferTo" >
-        ${TransferTo ? optionListTransfer : ""}
-      </select>
+        <div class="form-group input-field">
+          <input type="text" disabled name="InactiveDate" value=${InactiveDate} >
         </div>
       </td>
       <td>
-      <div class="form-field input-group">
-      <select class="modal-select" name="ActiveStatus" disabled>
-      ${optionListActive}
-    </select>
-  </div>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="InactiveReason">
+            ${optionListReason}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="TransferTo" >
+            ${TransferTo ? optionListTransfer : ""}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" name="ActiveStatus" disabled>
+            ${optionListActive}
+          </select>
+        </div>
       </td>
     </tr>`;
     tableBodyContent.push(row);
