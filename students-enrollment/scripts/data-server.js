@@ -5,6 +5,21 @@ const GetCTEDEnrollmentStatusSource = [
   { key: "3", value: "Continuing" }
 ];
 
+const GetStudentHeader = [
+  {
+    ID: "1048303",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    StudentName: "AA1_Jacques, Gregory ",
+    Pop_Order: "",
+    POPHours: "",
+    POP_Status: "",
+    FY_Funding: "Not Enrolled",
+    OtherCode: "",
+    OtherCodetxt: ""
+  }
+];
+
 // ddlCTEDPrimaryProgram
 const GetCTEDSource = [
   { key: "520301", value: "ACCOUNTING (520301)" },
