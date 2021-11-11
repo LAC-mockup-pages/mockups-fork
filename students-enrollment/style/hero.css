@@ -50,13 +50,14 @@ section:not(.student-info) {
 }
 
 .input-field > input {
-  font-size: 1.1em;
+  font-size: 0.9em;
   color: rgb(115, 115, 115);
   width: 100%;
   border-bottom: none;
 }
 .input-field > select {
   width: 100%;
+  font-size: 0.9em;
   border-bottom: none;
 }
 .form-group {
@@ -80,7 +81,6 @@ section:not(.student-info) {
 }
 .table > tbody > tr > td {
   font-weight: 400;
-  font-size: 0.7em;
   line-height: 1.3em;
   border-bottom: solid 1px #dddddd;
 }
@@ -94,6 +94,7 @@ section:not(.student-info) {
 
 .contact-hours table > tbody > tr {
   background-color: inherit;
+  color: rgb(115, 115, 115);
 }
 .tablescroll {
   max-height: 10em;
