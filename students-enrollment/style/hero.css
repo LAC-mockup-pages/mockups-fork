@@ -97,11 +97,12 @@ section:not(.student-info) {
   color: rgb(115, 115, 115);
 }
 .tablescroll {
-  max-height: 10em;
+  max-height: 11.5em;
   overflow-y: auto;
   overflow-x: hidden;
 }
-.contact-hours thead > tr {
+.contact-hours thead > tr,
+.classes thead > tr {
   position: sticky;
   top: 0px;
   z-index: 10;
@@ -122,3 +123,5 @@ section:not(.student-info) {
 .align-right {
   text-align: right;
 }
+
+/* Enrollment */
