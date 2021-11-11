@@ -147,4 +147,12 @@ $(document).ready(() => {
       $(".modal-title").text(`${sectionTitle} editing`);
       $("#edit-form :input").prop("disabled", false);
     });
+
+  //* Switches Contact hours summary and history tables
+  $(".contact-hours .sub-header").click(function (evnt) {
+    evnt.stopPropagation();
+    if ($(this).hasClass("active")) return;
+    $(".contact-hours .sub-header").toggleClass("active inactive");
+    $(".contact-hours table").toggleClass("hidden");
+  });
 });

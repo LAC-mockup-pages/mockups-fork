@@ -412,10 +412,17 @@
             </table>
           </form>
         </section>
-        <section class="contact-hours-summary">
-          <div class="sub-header blue-bg blue-light-text">
-            <div class="sub-header-title">Contact hours summary</div>
+        <section class="contact-hours">
+          <div class="container-fluid row">
+            <div class="sub-header summary active col-md-6">
+              <div class="sub-header-title">Contact hours summary</div>
+            </div>
+
+            <div class="sub-header history inactive col-md-6">
+              <div class="sub-header-title">Contact hours history</div>
+            </div>
           </div>
+
           <table class="table table-bordered hours-summary">
             <thead>
               <tr class="blue-light-bg">
@@ -437,12 +444,7 @@
             </thead>
             <tbody></tbody>
           </table>
-        </section>
-        <section class="contact-hours-history">
-          <div class="sub-header blue-bg blue-light-text">
-            <div class="sub-header-title">Contact hours history</div>
-          </div>
-          <table class="table table-bordered hours-history">
+          <table class="table table-bordered hours-history hidden">
             <thead>
               <tr class="blue-light-bg">
                 <th>FY</th>
