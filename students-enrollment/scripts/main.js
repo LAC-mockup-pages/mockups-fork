@@ -27,7 +27,7 @@ const hoursSummary = GetHours.slice(0);
 const ctedList = GetCTED.slice(0);
 const ctedSource = GetCTEDSource.slice(0);
 //TODO Temporary limitation. Remove when scrolling table implemented via CSS
-const hoursHistory = GetHoursHistory.slice(0, 6);
+const hoursHistory = GetHoursHistory.slice(0);
 
 //! =============================================================
 

@@ -50,7 +50,7 @@ export const hourMonthlyValues = (list, codeList, tableName) => {
       JunHours,
       TotalHour
     ]
-      .map((month) => `<td>${month || "0"}</td>`)
+      .map((month) => `<td class="align-right">${month || "0"}</td>`)
       .join("");
 
     const row = `

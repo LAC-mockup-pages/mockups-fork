@@ -95,7 +95,16 @@ section:not(.student-info) {
 .contact-hours table > tbody > tr {
   background-color: inherit;
 }
-
+.tablescroll {
+  max-height: 10em;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.contact-hours thead > tr {
+  position: sticky;
+  top: 0px;
+  z-index: 10;
+}
 .inactive {
   color: #2479b5;
   background-color: #d3e4f0;
@@ -108,4 +117,7 @@ section:not(.student-info) {
 .active:hover,
 .inactive:hover {
   font-style: italic;
+}
+.align-right {
+  text-align: right;
 }
