@@ -68,6 +68,10 @@ section:not(.student-info) {
   background-color: #d3e4f0;
 }
 
+.table tbody {
+  background-color: inherit;
+}
+
 /* Tables */
 .table > thead > tr > th {
   color: #2479b5;
@@ -84,14 +88,17 @@ section:not(.student-info) {
 /* Contact hours */
 .active,
 .inactive {
-  border-bottom: 1px solid currentColor;
+  border-bottom: 2px solid #2479b5;
   cursor: pointer;
+}
+
+.contact-hours table > tbody > tr {
+  background-color: inherit;
 }
 
 .inactive {
   color: #2479b5;
   background-color: #d3e4f0;
-  border-bottom: 1px solid currentColor;
 }
 
 .active {
