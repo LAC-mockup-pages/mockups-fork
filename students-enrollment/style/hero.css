@@ -51,7 +51,6 @@ section:not(.student-info) {
 
 .input-field > input {
   font-size: 0.9em;
-  color: rgb(115, 115, 115);
   width: 100%;
   border-bottom: none;
 }
@@ -83,6 +82,10 @@ section:not(.student-info) {
   font-weight: 400;
   line-height: 1.3em;
   border-bottom: solid 1px #dddddd;
+}
+.table select:disabled {
+  opacity: 1;
+  background-color: inherit;
 }
 
 /* Contact hours */
