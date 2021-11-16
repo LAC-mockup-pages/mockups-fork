@@ -67,15 +67,12 @@
 .referral:hover {
   background-color: #d3e4f0;
 }
-/* .form:not(#edit-form, .parent-form):hover {
-  background-color: #d3e4f0;
-} */
 .form input:disabled,
 .form select:disabled {
   background-color: inherit;
 }
-.form input:disabled {
-  color: rgb(120, 120, 120);
+.modal-select:disabled {
+  opacity: 1;
 }
 
 /* Multiple select sections */
