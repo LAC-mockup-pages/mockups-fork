@@ -28,21 +28,29 @@ export const assistanceValues = (list, source) => {
     const row = `
     <tr id=${ID} data-toggle="tooltip" data-placement="left"
       title="Click to Edit">
-      <td><div class="input-field form-group">
-        <select class="modal-select" name="PACatID" disabled>
-          ${optionList}
-        </select></div>
+      <td>
+        <div class="input-field form-group">
+          <select class="modal-select" disabled name="PACatID" >
+            ${optionList}
+          </select>
+        </div>
       </td>
-      <td><div class="input-field form-group">
-      <input type="text" disabled name="PAFY" value=${PAFY} ></div>
+      <td>
+        <div class="input-field form-group">
+          <input type="text" disabled name="PAFY" value=${PAFY} >
+        </div>
       </td>
-      <td><div class="input-field form-group">
-      <input type="text" disabled name="PACaseNum" value=${PACaseNum} ></div>
+      <td>
+        <div class="input-field form-group">
+          <input type="text" disabled name="PACaseNum" value=${PACaseNum} >
+        </div>
       </td>
-      <td><div class="input-field form-group">
-        <select disabled class="modal-select" name="PAExhaustTANF" >
-          ${optionListYesNo}
-        </select></div>
+      <td>
+        <div class="input-field form-group">
+          <select disabled class="modal-select" name="PAExhaustTANF" >
+            ${optionListYesNo}
+          </select>
+        </div>
       </td>
     </tr>`;
     tableBodyContent.push(row);
