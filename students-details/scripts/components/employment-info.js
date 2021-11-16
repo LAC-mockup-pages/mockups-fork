@@ -19,7 +19,7 @@ export const employmentValues = (list, statusList, incomeList) => {
       : 0
   );
   const tableBodyContent = [];
-  for (const record of list) {
+  for (const record of orderedList) {
     const {
       ID,
       EmployStatID,
@@ -40,8 +40,7 @@ export const employmentValues = (list, statusList, incomeList) => {
     }
     const optionListFY = createOptionList(FYList, FiscalYear);
     const row = `
-    <tr id=${ID} data-toggle="tooltip" data-placement="left"
-      title="Click to Edit">
+    <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left" >
       <td>
         <div class="form-field input-group">
           <select class="modal-select" disabled name="EmployStatID">

@@ -347,4 +347,27 @@ $(document).ready(() => {
       addNewSelect(ddlBarriers, "barrier");
     }
   );
+
+  //* Editing a record in a table.
+  //* sections: Employment, Public assistance.
+  $(document).on("click", ".employment-table tbody > tr", function (evnt) {
+    evnt.stopPropagation();
+    const rowId = $(this).attr("id");
+    console.log("rowId :>> ", rowId);
+    console.log($(this));
+    const rowContent = $(this).children();
+    const header = $(this).parents("table").find("thead").clone();
+    // console.log("header => ", header);
+    const editFormContent = `
+    <table class="table table-bordered">
+
+    <tbody>
+
+    </tbody>
+    </table>`;
+    $("#modalBloc").modal("toggle");
+    $("#edit-form").empty().append(editFormContent);
+    $("#edit-form table").append(header);
+    $("#edit-form table tbody").append($(this));
+  });
 });
