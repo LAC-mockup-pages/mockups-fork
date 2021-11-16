@@ -26,7 +26,8 @@ export const assistanceValues = (list, source) => {
       PAExhaustTANF
     );
     const row = `
-    <tr id=${ID}>
+    <tr id=${ID} data-toggle="tooltip" data-placement="left"
+      title="Click to Edit">
       <td><div class="input-field form-group">
         <select class="modal-select" name="PACatID" disabled>
           ${optionList}
@@ -47,4 +48,6 @@ export const assistanceValues = (list, source) => {
     tableBodyContent.push(row);
   }
   $(".assistance tbody").append(tableBodyContent.join(""));
+  // Enables customized tooltips
+  $("[data-toggle='tooltip']").tooltip();
 };

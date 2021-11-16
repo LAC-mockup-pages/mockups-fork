@@ -40,7 +40,8 @@ export const employmentValues = (list, statusList, incomeList) => {
     }
     const optionListFY = createOptionList(FYList, FiscalYear);
     const row = `
-    <tr id=${ID}>
+    <tr id=${ID} data-toggle="tooltip" data-placement="left"
+      title="Click to Edit">
       <td>
         <div class="form-field input-group">
           <select class="modal-select" disabled name="EmployStatID">
@@ -86,4 +87,6 @@ export const employmentValues = (list, statusList, incomeList) => {
     tableBodyContent.push(row);
   }
   $(".employment-form tbody").append(tableBodyContent.join(""));
+  // Enables customized tooltips
+  $("[data-toggle='tooltip']").tooltip();
 };
