@@ -169,16 +169,23 @@
 .employment-table > tbody input[name="ReleaseDate"] {
   width: 100%;
 }
-/* .employment-table tbody tr :hover {
-  background-color: #d3e4f0;
-} */
 
+#add-assistance,
+#add-employment,
+#add-population {
+  font-weight: 600;
+  padding: 3px 4px;
+  margin-right: 0px;
+}
 /* PA section */
 .assistance-table tbody select,
 .assistance-table tbody input {
   width: 100%;
 }
-
+.assistance .sub-header-title,
+.population .sub-header-title {
+  padding-right: 3%;
+}
 .assistance-table tbody > tr > td:nth-child(2),
 .assistance-table tbody > tr > td:nth-child(4) {
   width: 5em;
