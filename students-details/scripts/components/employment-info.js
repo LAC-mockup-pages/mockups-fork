@@ -101,32 +101,43 @@ export const addNewEmployment = (statusList, incomeList) => {
     IncomeFY: "Annual income"
   };
   const content = [];
-  const optionListStatus = createOptionList(statusList);
-  const optionListIncome = createOptionList(incomeList);
+  // const optionListStatus = createOptionList(statusList);
+  // const optionListIncome = createOptionList(incomeList);
   const { FiscalYear } = createCredentials();
 
   for (const key in labels) {
     const labelText = labels[key];
     let field = "";
+    let labelClassVal = "";
+    let option = "";
     if (["Status", "Annual income"].includes(labelText)) {
-      const optionList =
-        labelText === "Status" ? optionListStatus : optionListIncome;
-      field = `
-      <div class="form-field input-group">
-      <label for=${key}>${labelText}</label>
-          <select class="modal-select" name=${key}>
-          <option value>Select a value</option>
-            ${optionList}
-          </select>
-        </div>
-      `;
+      const hashTable = labelText === "Status" ? statusList : incomeList;
+      if (labelText === "Status") {
+        labelClassVal = "class='red-text'";
+        option = "required";
+      }
+      // elementSelectModal() <== helpers/helperFunctions.js
+      field = elementSelectModal({
+        hashTable,
+        keyValue: key,
+        selectedValue: "",
+        labelVal: labelText,
+        labelClassVal,
+        option,
+        optionText: ""
+      });
     } else {
-      field = `
-      <div class="form-field input-group">
-      <label for=${key}>${labelText}</label>
-      <input type="text" name=${key}/>
-      </div>
-      `;
+      // elementInput() <== helpers/helperFunctions.js
+      field = elementInput({
+        keyVal: key,
+        labelVal: labelText,
+        value: "",
+        labelClassVal: "",
+        classVal: "",
+        option: "",
+        optionHidden: "form-group",
+        type: "text"
+      });
     }
 
     content.push(field);
