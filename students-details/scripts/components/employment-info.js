@@ -4,7 +4,7 @@
 //* Sections: Employment
 //* =======================================
 
-import { createOptionList, dateFormat } from "../main.js";
+import { createOptionList } from "../main.js";
 
 // Data sources: /original-data/student-data.js/GetEmploymentInfo
 //          /original-data/student-data.js/GetEmploymentStatus
@@ -12,9 +12,9 @@ import { createOptionList, dateFormat } from "../main.js";
 export const employmentValues = (list, statusList, incomeList) => {
   // Sorting records from most recent FY to oldest FY
   const orderedList = list.sort((record1, record2) =>
-    record1.EmployStatusFY > record2.EmployStatusFY
+    record1.EmployStatusFY < record2.EmployStatusFY
       ? -1
-      : record1.EmployStatusFY < record2.EmployStatusFY
+      : record1.EmployStatusFY > record2.EmployStatusFY
       ? 1
       : 0
   );
@@ -38,7 +38,7 @@ export const employmentValues = (list, statusList, incomeList) => {
       const key = `${Number(FiscalYear) - i}`;
       FYList.push({ key, value: key });
     }
-    const optionListFY = createOptionList(FYList, FiscalYear);
+    const optionListFY = createOptionList(FYList, EmployStatusFY);
     const row = `
     <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left" >
       <td>
@@ -88,4 +88,49 @@ export const employmentValues = (list, statusList, incomeList) => {
   $(".employment-form tbody").append(tableBodyContent.join(""));
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
+};
+
+export const addNewEmployment = (statusList, incomeList) => {
+  const labels = {
+    EmployStatID: "Status",
+    EmployStatusFY: "FY",
+    EmployerID: "Employer",
+    EmployDate: "Employment date",
+    LastEmployDate: "Last employ. date",
+    ReleaseDate: "Release date",
+    IncomeFY: "Annual income"
+  };
+  const content = [];
+  const optionListStatus = createOptionList(statusList);
+  const optionListIncome = createOptionList(incomeList);
+  const { FiscalYear } = createCredentials();
+
+  for (const key in labels) {
+    const labelText = labels[key];
+    let field = "";
+    if (["Status", "Annual income"].includes(labelText)) {
+      const optionList =
+        labelText === "Status" ? optionListStatus : optionListIncome;
+      field = `
+      <div class="form-field input-group">
+      <label for=${key}>${labelText}</label>
+          <select class="modal-select" name=${key}>
+          <option value>Select a value</option>
+            ${optionList}
+          </select>
+        </div>
+      `;
+    } else {
+      field = `
+      <div class="form-field input-group">
+      <label for=${key}>${labelText}</label>
+      <input type="text" name=${key}/>
+      </div>
+      `;
+    }
+
+    content.push(field);
+  }
+
+  return content.join("");
 };

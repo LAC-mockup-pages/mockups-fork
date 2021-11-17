@@ -37,7 +37,10 @@ import {
   barriersValues
 } from "./components/barriers-info.js";
 import { assistanceValues } from "./components/assisstance-info.js";
-import { employmentValues } from "./components/employment-info.js";
+import {
+  addNewEmployment,
+  employmentValues
+} from "./components/employment-info.js";
 const studentInfo = GetStudent.slice(0)[0];
 const fundingInfo = GetFundingInfo.slice(0);
 const fundingSources = GetFundingSource.slice(0);
@@ -355,19 +358,19 @@ $(document).ready(() => {
     const rowId = $(this).attr("id");
     console.log("rowId :>> ", rowId);
     console.log($(this));
-    const rowContent = $(this).children();
-    const header = $(this).parents("table").find("thead").clone();
-    // console.log("header => ", header);
-    const editFormContent = `
-    <table class="table table-bordered">
+  });
 
-    <tbody>
-
-    </tbody>
-    </table>`;
-    $("#modalBloc").modal("toggle");
+  //* Adding a new record
+  //* sections: Employment
+  $("#add-employment").click(function (evnt) {
+    evnt.stopPropagation();
+    // const editFormContent = "<h3>New Employment record</h3>";
+    const editFormContent = addNewEmployment(
+      employmentStatus,
+      employmentIncome
+    );
     $("#edit-form").empty().append(editFormContent);
-    $("#edit-form table").append(header);
-    $("#edit-form table tbody").append($(this));
+    $(".modal-title").empty().text("Adding new employment record");
+    $("#modalBloc").modal("toggle");
   });
 });
