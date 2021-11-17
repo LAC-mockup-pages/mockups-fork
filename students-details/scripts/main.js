@@ -311,7 +311,7 @@ $(document).ready(() => {
     //! =================================================
     const resultList = [
       targetTable,
-      JSON.stringify({ ...credentials, ID: Student_PKID, ...saveObj })
+      JSON.stringify({ ...credentials, Student_PKID, ...saveObj })
     ];
     console.log("result :", resultList);
     //! =================================================
@@ -364,12 +364,14 @@ $(document).ready(() => {
   //* sections: Employment
   $("#add-employment").click(function (evnt) {
     evnt.stopPropagation();
-    // const editFormContent = "<h3>New Employment record</h3>";
     const editFormContent = addNewEmployment(
       employmentStatus,
       employmentIncome
     );
-    $("#edit-form").empty().append(editFormContent);
+    $("#edit-form")
+      .empty()
+      .append(editFormContent)
+      .attr("data-table", "GetEmploymentInfo");
     $(".modal-title").empty().text("Adding new employment record");
     $("#modalBloc").modal("toggle");
   });
