@@ -101,10 +101,7 @@ export const addNewEmployment = (statusList, incomeList) => {
     IncomeFY: "Annual income"
   };
   const content = [];
-  // const optionListStatus = createOptionList(statusList);
-  // const optionListIncome = createOptionList(incomeList);
   const { FiscalYear } = createCredentials();
-
   for (const key in labels) {
     const labelText = labels[key];
     let field = "";
@@ -129,7 +126,6 @@ export const addNewEmployment = (statusList, incomeList) => {
     } else {
       const value = labelText === "FY" ? FiscalYear : "";
       const type = labelText.includes("date") ? "date" : "text";
-
       // elementInput() <== helpers/helperFunctions.js
       field = elementInput({
         keyVal: key,
@@ -142,9 +138,7 @@ export const addNewEmployment = (statusList, incomeList) => {
         type
       });
     }
-
     content.push(field);
   }
-
   return content.join("");
 };

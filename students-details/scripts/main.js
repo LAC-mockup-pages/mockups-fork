@@ -362,7 +362,7 @@ $(document).ready(() => {
 
   //* Adding a new record
   //* sections: Employment
-  $("#add-employment").click(function (evnt) {
+  $("#add-employment, #add-assistance").click(function (evnt) {
     evnt.stopPropagation();
     const editFormContent = addNewEmployment(
       employmentStatus,
