@@ -65,7 +65,7 @@ section:not("student-info") {
   /* max-height: 7em; */
   overflow-y: auto;
   overflow-x: hidden;
-  transition: max-height 300ms;
+  transition: max-height 200ms;
 }
 .visible {
   max-height: 15em;
