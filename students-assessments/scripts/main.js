@@ -6,4 +6,17 @@
 //* jQuery section
 //*=================================================
 
-$(document).ready(() => {});
+$(document).ready(() => {
+  //* =====================================
+  //* At first rendering
+  //* =====================================
+
+  //* =====================================
+
+  //* Expand underpinned table when section is clicked
+  $("section").click(function (evnt) {
+    evnt.stopPropagation();
+    $("section .visible").removeClass("visible").addClass("invisible");
+    $(".invisible", this).removeClass("invisible").addClass("visible");
+  });
+});
