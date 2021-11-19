@@ -374,5 +374,6 @@ $(document).ready(() => {
       .attr("data-table", "GetEmploymentInfo");
     $(".modal-title").empty().text("Adding new employment record");
     $("#modalBloc").modal("toggle");
+    $("#EmployStatID-view").focus();
   });
 });

@@ -125,6 +125,7 @@ export const addNewEmployment = (statusList, incomeList) => {
       });
     } else {
       const value = labelText === "FY" ? FiscalYear : "";
+      const option = labelText === "FY" ? "disabled" : "";
       const type = labelText.includes("date") ? "date" : "text";
       // elementInput() <== helpers/helperFunctions.js
       field = elementInput({
@@ -133,7 +134,7 @@ export const addNewEmployment = (statusList, incomeList) => {
         value,
         labelClassVal: "",
         classVal: "",
-        option: "",
+        option,
         optionHidden: "form-group",
         type
       });
