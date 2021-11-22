@@ -59,3 +59,57 @@ export const assistanceValues = (list, source) => {
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
 };
+
+export const addNewAssistance = (source) => {
+  const labels = {
+    PACatID: "Type",
+    PAFY: "FY",
+    PACaseNum: "Case number",
+    PAExhaustTANF: "Exhaust TANF"
+  };
+  const content = [];
+  const { FiscalYear } = createCredentials();
+  for (const key in labels) {
+    const labelText = labels[key];
+    let field = "";
+    let labelClassVal = "";
+    let option = "";
+    if (["Type", "Exhaust TANF"].includes(labelText)) {
+      const hashTable =
+        labelText === "Type"
+          ? source
+          : [
+              { key: "0", value: "No" },
+              { key: "1", value: "Yes" }
+            ];
+      labelClassVal = "class='red-text'";
+      option = "required";
+      // elementSelectModal() <== helpers/helperFunctions.js
+      field = elementSelectModal({
+        hashTable,
+        keyValue: key,
+        selectedValue: "",
+        labelVal: labelText,
+        labelClassVal,
+        option,
+        optionText: ""
+      });
+    } else {
+      const value = labelText === "FY" ? FiscalYear : "";
+      const option = labelText === "FY" ? "disabled" : "";
+      // elementInput() <== helpers/helperFunctions.js
+      field = elementInput({
+        keyVal: key,
+        labelVal: labelText,
+        value,
+        labelClassVal: "",
+        classVal: "",
+        option,
+        optionHidden: "form-group",
+        type: "text"
+      });
+    }
+    content.push(field);
+  }
+  return content.join("");
+};

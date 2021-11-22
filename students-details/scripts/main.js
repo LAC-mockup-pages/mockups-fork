@@ -36,7 +36,10 @@ import {
   sectionProcess,
   barriersValues
 } from "./components/barriers-info.js";
-import { assistanceValues } from "./components/assisstance-info.js";
+import {
+  addNewAssistance,
+  assistanceValues
+} from "./components/assisstance-info.js";
 import {
   addNewEmployment,
   employmentValues
@@ -368,7 +371,8 @@ $(document).ready(() => {
     let tableName = "GetEmploymentInfo";
     let modalTitle = "employment";
     if ($(this).attr("id") === "add-assistance") {
-      editFormContent = "<h2>New record Assistance</h2>";
+      // editFormContent = "<h2>New record Assistance</h2>";
+      editFormContent = addNewAssistance(assistanceSource);
       tableName = "GetPAStatusInfo";
       modalTitle = "assistance";
     }
