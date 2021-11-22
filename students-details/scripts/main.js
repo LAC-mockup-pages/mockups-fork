@@ -364,16 +364,20 @@ $(document).ready(() => {
   //* sections: Employment
   $("#add-employment, #add-assistance").click(function (evnt) {
     evnt.stopPropagation();
-    const editFormContent = addNewEmployment(
-      employmentStatus,
-      employmentIncome
-    );
+    let editFormContent = addNewEmployment(employmentStatus, employmentIncome);
+    let tableName = "GetEmploymentInfo";
+    let modalTitle = " employment";
+    if ($(this).attr("id") === "add-assistance") {
+      editFormContent = "<h2>New record Assistance</h2>";
+      tableName = "GetPAStatusInfo";
+      modalTitle = " assistance";
+    }
     $("#edit-form")
       .empty()
       .append(editFormContent)
-      .attr("data-table", "GetEmploymentInfo");
-    $(".modal-title").empty().text("Adding new employment record");
+      .attr("data-table", tableName);
+    $(".modal-title").empty().text(`Adding new${modalTitle} record`);
     $("#modalBloc").modal("toggle");
-    $("#EmployStatID-view").focus();
+    // $("#EmployStatID-view").focus();
   });
 });
