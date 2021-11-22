@@ -366,17 +366,17 @@ $(document).ready(() => {
     evnt.stopPropagation();
     let editFormContent = addNewEmployment(employmentStatus, employmentIncome);
     let tableName = "GetEmploymentInfo";
-    let modalTitle = " employment";
+    let modalTitle = "employment";
     if ($(this).attr("id") === "add-assistance") {
       editFormContent = "<h2>New record Assistance</h2>";
       tableName = "GetPAStatusInfo";
-      modalTitle = " assistance";
+      modalTitle = "assistance";
     }
     $("#edit-form")
       .empty()
       .append(editFormContent)
       .attr("data-table", tableName);
-    $(".modal-title").empty().text(`Adding new${modalTitle} record`);
+    $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
     $("#modalBloc").modal("toggle");
     // $("#EmployStatID-view").focus();
   });
