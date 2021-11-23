@@ -354,15 +354,6 @@ $(document).ready(() => {
     }
   );
 
-  //* Editing a record in a table.
-  //* sections: Employment, Public assistance.
-  $(document).on("click", ".employment-table tbody > tr", function (evnt) {
-    evnt.stopPropagation();
-    const rowId = $(this).attr("id");
-    console.log("rowId :>> ", rowId);
-    console.log($(this));
-  });
-
   //* Adding a new record
   //* sections: Employment, Assistance
   $("#add-employment, #add-assistance").click(function (evnt) {
@@ -390,8 +381,8 @@ $(document).ready(() => {
   $(document).on("click", ".employment-table tbody tr", function (evnt) {
     evnt.stopPropagation();
     const rowId = $(this).attr("id");
-    let tableName = GetEmploymentInfo;
-    let editFormContent = `<h2>Row editing table: ${tableName}`;
+    let tableName = "GetEmploymentInfo";
+    let editFormContent = `<h2>Row editing table: ${tableName}</h2>`;
     let modalTitle = "employment";
     $("#edit-form")
       .empty()
