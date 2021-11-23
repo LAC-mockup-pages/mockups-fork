@@ -90,7 +90,7 @@ export const employmentValues = (list, statusList, incomeList) => {
   $("[data-toggle='tooltip']").tooltip();
 };
 
-export const addNewEmployment = (statusList, incomeList) => {
+export const addNewEmployment = (statusList, incomeList, valuesObj) => {
   const labels = {
     EmployStatID: "Status",
     EmployStatusFY: "FY",
@@ -108,6 +108,7 @@ export const addNewEmployment = (statusList, incomeList) => {
     let labelClassVal = "";
     let option = "";
     if (["Status", "Annual income"].includes(labelText)) {
+      const selectedValue = valuesObj[key] ? valuesObj[key] : "";
       const hashTable = labelText === "Status" ? statusList : incomeList;
       if (labelText === "Status") {
         labelClassVal = "class='red-text'";
@@ -117,14 +118,18 @@ export const addNewEmployment = (statusList, incomeList) => {
       field = elementSelectModal({
         hashTable,
         keyValue: key,
-        selectedValue: "",
+        selectedValue,
         labelVal: labelText,
         labelClassVal,
         option,
         optionText: ""
       });
     } else {
-      const value = labelText === "FY" ? FiscalYear : "";
+      const value = valuesObj[key]
+        ? valuesObj[key]
+        : labelText === "FY"
+        ? FiscalYear
+        : "";
       const option = labelText === "FY" ? "disabled" : "";
       const type = labelText.includes("date") ? "date" : "text";
       // elementInput() <== helpers/helperFunctions.js

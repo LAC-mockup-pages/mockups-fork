@@ -290,6 +290,7 @@ $(document).ready(() => {
 
   //* Saving changes after editing in modal
   $("#save-btn").click(function (evnt) {
+    //TODO Remove disabled prop if used in edit-form
     const saveList = $("#edit-form").serializeArray();
     //TODO Check for errors in inputs
     //TODO Check for empty values
@@ -381,13 +382,20 @@ $(document).ready(() => {
   $(document).on("click", ".employment-table tbody tr", function (evnt) {
     evnt.stopPropagation();
     const rowId = $(this).attr("id");
+    const elements = $(":disabled", this).clone().prop("disabled", false);
+    const record = createObject($(elements).serializeArray());
     let tableName = "GetEmploymentInfo";
-    let editFormContent = `<h2>Row editing table: ${tableName}</h2>`;
+    let editFormContent = addNewEmployment(
+      employmentStatus,
+      employmentIncome,
+      record
+    );
     let modalTitle = "employment";
     $("#edit-form")
       .empty()
       .append(editFormContent)
-      .attr("data-table", tableName);
+      .attr("data-table", tableName)
+      .attr("data-row-id", rowId);
     $(".modal-title").empty().text(`Editing ${modalTitle} record ${rowId}`);
     $("#modalBloc").modal("toggle");
   });
