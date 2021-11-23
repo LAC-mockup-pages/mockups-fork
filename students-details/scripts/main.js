@@ -364,7 +364,7 @@ $(document).ready(() => {
   });
 
   //* Adding a new record
-  //* sections: Employment
+  //* sections: Employment, Assistance
   $("#add-employment, #add-assistance").click(function (evnt) {
     evnt.stopPropagation();
     let editFormContent = addNewEmployment(employmentStatus, employmentIncome);
@@ -383,5 +383,21 @@ $(document).ready(() => {
     $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
     $("#modalBloc").modal("toggle");
     // $("#EmployStatID-view").focus();
+  });
+
+  //* Editing a row in table
+  //* Sections: Employment
+  $(document).on("click", ".employment-table tbody tr", function (evnt) {
+    evnt.stopPropagation();
+    const rowId = $(this).attr("id");
+    let tableName = GetEmploymentInfo;
+    let editFormContent = `<h2>Row editing table: ${tableName}`;
+    let modalTitle = "employment";
+    $("#edit-form")
+      .empty()
+      .append(editFormContent)
+      .attr("data-table", tableName);
+    $(".modal-title").empty().text(`Editing ${modalTitle} record ${rowId}`);
+    $("#modalBloc").modal("toggle");
   });
 });
