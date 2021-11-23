@@ -374,11 +374,10 @@ $(document).ready(() => {
       .attr("data-table", tableName);
     $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
     $("#modalBloc").modal("toggle");
-    // $("#EmployStatID-view").focus();
   });
 
   //* Editing a row in table
-  //* Sections: Employment
+  //* Sections: Employment, Personal assistance
   $(document).on("click", ".employment-table tbody tr", function (evnt) {
     evnt.stopPropagation();
     const rowId = $(this).attr("id");
@@ -394,8 +393,7 @@ $(document).ready(() => {
     $("#edit-form")
       .empty()
       .append(editFormContent)
-      .attr("data-table", tableName)
-      .attr("data-row-id", rowId);
+      .attr({ "data-table": tableName, "data-row-id": rowId });
     $(".modal-title").empty().text(`Editing ${modalTitle} record ${rowId}`);
     $("#modalBloc").modal("toggle");
   });
