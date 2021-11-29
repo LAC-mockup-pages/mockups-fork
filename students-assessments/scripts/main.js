@@ -13,7 +13,7 @@ const currentTestInfo = GetTestinfo_CurrentFY.slice(0);
 //! =============================================================
 
 // Populating a table
-const createTableContent = (dataList, sectionName, tableName = "") => {
+const createCurrentContent = (dataList, sectionName, tableName = "") => {
   const fieldList = [
     "TestDate",
     "TestType",
@@ -95,7 +95,7 @@ $(document).ready(() => {
   $(".long-id").text(StudentID);
 
   // Populating current assessment table
-  const currentContent = createTableContent(currentTestInfo, "current");
+  const currentContent = createCurrentContent(currentTestInfo, "current");
   if (currentContent) {
     $(".current tbody").append(currentContent);
   } else {
