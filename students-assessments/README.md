@@ -35,8 +35,8 @@ NB: Date is last modification date.
 | Screenshots             | Done   | 11/17/2021 |
 | Trello card             | Done   | 11/18/2021 |
 | Initial VSC set up      | Done   | 11/18/2021 |
-| Mockup                  |        |            |
-| Roughing/static lay out |        |            |
+| Mockup                  | Done   | 11/23/21   |
+| Roughing/static lay out | Done   | 11/23/2021 |
 | Data objects            |        |            |
 | Main coding             |        |            |
 | Navigation to/from page |        |            |
