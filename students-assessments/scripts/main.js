@@ -28,9 +28,11 @@ const createTableContent = (dataList, sectionName, tableName = "") => {
     "NRSLevel"
   ];
   const orderedList = dataList.sort((record1, record2) =>
-    record1.TestDate < record2.TestDate
+    // DT#fromFormat <== Luxon method, "D" token describes mm/dd/yyyy format
+    DT.fromFormat(record1.TestDate, "D") > DT.fromFormat(record2.TestDate, "D")
       ? -1
-      : record1.TestDate > record2.TestDate
+      : DT.fromFormat(record1.TestDate, "D") <
+        DT.fromFormat(record2.TestDate, "D")
       ? 1
       : 0
   );
