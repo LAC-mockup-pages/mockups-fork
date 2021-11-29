@@ -2,6 +2,8 @@
 //* Actions and Logic for local page
 //*=================================================
 
+// Initializing Luxon DateTime class for the module
+const DT = luxon.DateTime;
 //! =============================================================
 //! For Development only.
 //! Comment out for Production.
@@ -25,8 +27,15 @@ const createTableContent = (dataList, sectionName, tableName = "") => {
     "GradeEquivalent",
     "NRSLevel"
   ];
+  const orderedList = dataList.sort((record1, record2) =>
+    record1.TestDate < record2.TestDate
+      ? -1
+      : record1.TestDate > record2.TestDate
+      ? 1
+      : 0
+  );
   let content = "";
-  for (const record of dataList) {
+  for (const record of orderedList) {
     const row = fieldList.map((key) => `<td>${record[key]}</td>`).join("");
     content += `<tr>${row}</tr>`;
   }
