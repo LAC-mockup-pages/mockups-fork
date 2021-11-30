@@ -4,6 +4,10 @@
 
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
+
+import { createTabeContent } from "./components/tabe.js";
+import { createBest2Content } from "./components/best2.js";
+import { createHseContent } from "./components/hse.js";
 //! =============================================================
 //! For Development only.
 //! Comment out for Production.
@@ -120,16 +124,16 @@ $(document).ready(() => {
     let tbodyContent = "";
     switch (testName) {
       case "tabe11":
-        // tbodyContent=createTabeContent(tabeInfo)
+        tbodyContent = createTabeContent(tabeInfo);
         break;
       case "best-plus2":
-        // tbodyContent=createBest2Content(best2Info)
+        tbodyContent = createBest2Content(best2Info);
         break;
       case "best-lit":
-        // tbodyContent=createBestLitContent(bestLitInfo)
+        tbodyContent = createBest2Content(bestLitInfo);
         break;
       case "hse":
-        // tbodyContent = createHseContent(hseInfo);
+        tbodyContent = createHseContent(hseInfo);
         break;
       default:
         break;
