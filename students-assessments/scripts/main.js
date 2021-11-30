@@ -111,6 +111,8 @@ $(document).ready(() => {
     evnt.stopPropagation();
     $("section .visible").removeClass("visible").addClass("invisible");
     $(this).siblings(".invisible").removeClass("invisible").addClass("visible");
+    const testName = $(this).parent().attr("class");
+    console.log("testName :>> ", testName);
   });
 
   //* Triggers edit modal with selected row elements and values
