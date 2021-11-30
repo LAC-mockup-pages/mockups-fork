@@ -8,6 +8,7 @@
   font-size: 0.7em;
   line-height: 2em;
 }
+
 /* Main display                     */
 /* =============================== */
 .student-display {
@@ -19,7 +20,6 @@
   margin-left: auto;
   margin-top: 1%;
 }
-
 .name,
 .long-id {
   font-size: 1.3em;
@@ -41,16 +41,13 @@ section:not("student-info") {
   padding-left: 5px;
   font-size: 1em;
   font-weight: 600;
-  /* border-top: 2px solid #fff; */
 }
 .sub-header:hover {
   cursor: pointer;
 }
-
 .sub-header-title {
   text-align: right;
   padding-right: 1%;
-  /* color: #fff; */
   margin-bottom: 1px;
 }
 
@@ -60,9 +57,7 @@ section:not("student-info") {
   font-weight: 600;
   font-size: 0.9em;
 }
-
 .tablescroll {
-  /* max-height: 7em; */
   overflow-y: auto;
   overflow-x: hidden;
   transition: max-height 200ms;
@@ -72,4 +67,14 @@ section:not("student-info") {
 }
 .invisible {
   max-height: 0em;
+}
+.current table > tbody > tr:hover {
+  background-color: inherit;
+}
+.editable:hover {
+  background-color: #d3e4f0;
+  cursor: pointer;
+}
+.not-editable:hover {
+  background-color: inherit;
 }
