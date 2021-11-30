@@ -10,10 +10,14 @@ const DT = luxon.DateTime;
 //! =============================================================
 const studentInfo = GetStudentHeader.slice(0)[0];
 const currentTestInfo = GetTestinfo_CurrentFY.slice(0);
+const tabeInfo = GetTestinfo_TABE11.slice(0);
+const best2Info = GetTests_BestPlus2.slice(0);
+const bestLitInfo = GetTests_BestLit.slice(0);
+const hseInfo = GetTest_TASC.slice(0);
 //! =============================================================
 
 // Populating a table
-const createCurrentContent = (dataList, sectionName, tableName = "") => {
+const createCurrentContent = (dataList, testName, tableName = "") => {
   const fieldList = [
     "TestDate",
     "TestType",
@@ -41,7 +45,6 @@ const createCurrentContent = (dataList, sectionName, tableName = "") => {
     const row = fieldList.map((key) => `<td>${record[key]}</td>`).join("");
     content += `<tr>${row}</tr>`;
   }
-
   return content;
 };
 //*=================================================
@@ -113,6 +116,31 @@ $(document).ready(() => {
     $(this).siblings(".invisible").removeClass("invisible").addClass("visible");
     const testName = $(this).parent().attr("class");
     console.log("testName :>> ", testName);
+    if (testName === "current") return;
+    let tbodyContent = "";
+    switch (testName) {
+      case "tabe11":
+        // tbodyContent=createTabeContent(tabeInfo)
+        break;
+      case "best-plus2":
+        // tbodyContent=createBest2Content(best2Info)
+        break;
+      case "best-lit":
+        // tbodyContent=createBestLitContent(bestLitInfo)
+        break;
+      case "hse":
+        // tbodyContent = createHseContent(hseInfo);
+        break;
+      default:
+        break;
+    }
+    if (tbodyContent) {
+      $(`.${testName} tbody`).append(tbodyContent);
+    } else {
+      $(`.${testName} .tablescroll table`).replaceWith(
+        `<h2 style="text-align:center">No assessment on record for ${StudentName}`
+      );
+    }
   });
 
   //* Triggers edit modal with selected row elements and values
