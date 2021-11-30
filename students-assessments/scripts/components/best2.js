@@ -4,8 +4,20 @@
 //* Sections: best-plus2
 //* =======================================
 
+// Initializing Luxon DateTime class for the module
+const DT = luxon.DateTime;
+
 export const createBest2Content = (list) => {
   let content = "";
-
+  const fieldList = [];
+  const orderedList = list.sort((record1, record2) =>
+    // DT#fromFormat <== Luxon method, "D" token describes mm/dd/yyyy format
+    DT.fromFormat(record1.TestDate, "D") > DT.fromFormat(record2.TestDate, "D")
+      ? -1
+      : DT.fromFormat(record1.TestDate, "D") <
+        DT.fromFormat(record2.TestDate, "D")
+      ? 1
+      : 0
+  );
   return content;
 };

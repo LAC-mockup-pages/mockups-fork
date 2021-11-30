@@ -127,10 +127,10 @@ $(document).ready(() => {
         tbodyContent = createTabeContent(tabeInfo);
         break;
       case "best-plus2":
-        tbodyContent = createBest2Content(best2Info);
+        tbodyContent = createBest2Content(best2Info, testName);
         break;
       case "best-lit":
-        tbodyContent = createBest2Content(bestLitInfo);
+        tbodyContent = createBest2Content(bestLitInfo, testName);
         break;
       case "hse":
         tbodyContent = createHseContent(hseInfo);
