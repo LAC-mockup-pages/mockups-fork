@@ -2,7 +2,6 @@
 //* Actions and Logic for local page
 //*=================================================
 
-import { ctedValues } from "./components/cted.js";
 import { enrollValues } from "./components/enrollment.js";
 import { hourMonthlyValues } from "./components/hours.js";
 
@@ -24,8 +23,6 @@ const courseCodeList = courseList.map((record) => {
   return { key, value: courseCode };
 });
 const hoursSummary = GetHours.slice(0);
-const ctedList = GetCTED.slice(0);
-const ctedSource = GetCTEDSource.slice(0);
 const hoursHistory = GetHoursHistory.slice(0);
 
 //! =============================================================
@@ -122,7 +119,7 @@ $(document).ready(() => {
     [...courseCodeList, ...GetInstructionSource_CM],
     ".hours-history"
   );
-  ctedValues(ctedList, ctedSource);
+  // ctedValues(ctedList, ctedSource);
   //* =====================================
 
   //* Triggers edit modal with selected form elements
