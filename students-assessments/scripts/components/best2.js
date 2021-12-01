@@ -7,7 +7,7 @@
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
 
-export const createBest2Content = (list) => {
+export const createBest2Content = (list, test) => {
   let content = "";
   const fieldList = [];
   const orderedList = list.sort((record1, record2) =>

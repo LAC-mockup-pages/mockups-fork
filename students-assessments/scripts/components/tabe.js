@@ -7,9 +7,10 @@
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
 
-export const createTabeContent = (list, test) => {
+export const createTabeContent = (list) => {
   let content = "";
-  const fieldList = [];
+  const { FiscalYear } = createCredentials();
+  const fieldList = ["TABEDate", "TestName"];
   const orderedList = list.sort((record1, record2) =>
     // DT#fromFormat <== Luxon method, "D" token describes mm/dd/yyyy format
     DT.fromFormat(record1.TABEDate, "D") > DT.fromFormat(record2.TABEDate, "D")
