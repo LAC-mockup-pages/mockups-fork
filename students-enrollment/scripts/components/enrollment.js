@@ -4,6 +4,9 @@
 //* Sections: Student Enrollment
 //* =======================================
 
+// Initializing Luxon DateTime class for the module
+const DT = luxon.DateTime;
+
 import { createOptionList } from "../main.js";
 
 // Populating input element values
@@ -11,9 +14,12 @@ import { createOptionList } from "../main.js";
 export const enrollValues = (list, reasons, transferList, formName) => {
   // Sorting records in decreasing date of enrollment
   const orderedList = list.sort((record1, record2) =>
-    record1.EnrollDate < record2.EnrollDate
+    // DT#fromFormat <== Luxon method, "D" token describes mm/dd/yyyy format
+    DT.fromFormat(record1.EnrollDate, "D") >
+    DT.fromFormat(record2.EnrollDate, "D")
       ? -1
-      : record1.EnrollDate > record2.EnrollDate
+      : DT.fromFormat(record1.EnrollDate, "D") <
+        DT.fromFormat(record2.EnrollDate, "D")
       ? 1
       : 0
   );
