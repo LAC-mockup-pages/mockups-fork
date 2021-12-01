@@ -19,6 +19,9 @@
   margin-right: auto;
   margin-left: auto;
   margin-top: 1%;
+  border-bottom: 1.2em solid #2479b5;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .name,
 .long-id {
@@ -40,7 +43,6 @@ section:not(.student-info) {
   padding-left: 5px;
   font-size: 1em;
   font-weight: 600;
-  /* border-top: 2px solid #fff; */
 }
 
 .sub-header-title {
@@ -128,3 +130,16 @@ section:not(.student-info) {
 }
 
 /* Enrollment */
+
+/* Notes */
+.notes {
+  margin-bottom: 01em;
+}
+.note-display {
+  width: 45vw;
+  max-height: 10vh;
+}
+.note-display:hover {
+  cursor: pointer;
+  box-shadow: 4px 4px 4px 4px #2479b5;
+}
