@@ -122,27 +122,29 @@ $(document).ready(() => {
   // ctedValues(ctedList, ctedSource);
   //* =====================================
 
-  //* Triggers edit modal with selected form elements
-  $(".form")
-    .not("#edit-form")
-    .click(function (evnt) {
-      evnt.stopPropagation();
-      const sectionTitle = $(this)
-        .parent()
-        .children(".sub-header")
-        .text()
-        .trim();
-      console.log("sectionTitle :>> ", sectionTitle);
+  //* Triggers edit modal with selected row values
+  //* Case and Enrollment tables
 
-      const parentAttr = $(this).parent().attr("class");
-      console.log("parentAttr :>> ", parentAttr);
-      const editFormContent = $(this).children().clone();
+  // $("form")
+  //   .not("#edit-form")
+  //   .click(function (evnt) {
+  //     evnt.stopPropagation();
+  //     const sectionTitle = $(this)
+  //       .parents()
+  //       .children(".sub-header")
+  //       .text()
+  //       .trim();
+  //     console.log("sectionTitle :>> ", sectionTitle);
 
-      $("#modalBloc").modal("toggle");
-      $("#edit-form").empty().append(editFormContent);
-      $(".modal-title").text(`${sectionTitle} editing`);
-      $("#edit-form :input").prop("disabled", false);
-    });
+  //     const parentAttr = $(this).parent().attr("class");
+  //     console.log("parentAttr :>> ", parentAttr);
+  //     const editFormContent = $(this).children().clone();
+
+  //     $("#modalBloc").modal("toggle");
+  //     $("#edit-form").empty().append(editFormContent);
+  //     $(".modal-title").text(`${sectionTitle} editing`);
+  //     $("#edit-form :input").prop("disabled", false);
+  //   });
 
   //* Switches Contact hours summary and history tables
   $(".contact-hours .sub-header").click(function (evnt) {
