@@ -124,7 +124,13 @@ $(document).ready(() => {
 
   //* Triggers edit modal with selected row values
   //* Case and Enrollment tables
-
+  $("form table > tbody > tr").click(function (evnt) {
+    evnt.stopPropagation();
+    const rowId = $(this).attr("id");
+    console.log("rowId :>> ", rowId);
+    const $row = $(":input", this).clone().prop("disabled", false);
+    console.log("row :>> ", $row.serializeArray());
+  });
   // $("form")
   //   .not("#edit-form")
   //   .click(function (evnt) {
