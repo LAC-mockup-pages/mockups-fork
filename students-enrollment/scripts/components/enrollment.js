@@ -104,4 +104,14 @@ export const enrollValues = (
   $(formName).append(tableBodyContent.join(""));
 };
 
-export const editRow = (rowId, dataObj) => {};
+export const editRow = (rowId, dataObj) => {
+  const labels = {
+    DescriptionKey: "Course",
+    EnrollDate: "Started",
+    InactiveDate: "Left",
+    InactiveReason: "Reason",
+    Transfer_PKID: "Transfer to",
+    ActiveStatus: "Active"
+  };
+  const content = "";
+};

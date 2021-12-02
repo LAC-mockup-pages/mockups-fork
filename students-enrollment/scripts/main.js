@@ -141,11 +141,16 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const rowId = $(this).attr("id");
     console.log("rowId :>> ", rowId);
-    const $row = $(":input", this).clone().prop("disabled", false);
+    const $row = $(":input", this).clone(true).prop("disabled", false);
+
+    console.log("$row :>> ", $row);
     console.log("row :>> ", $row.serializeArray());
     // createObject() <== helpers/helperFunctions.js
     const rowData = createObject($row.serializeArray());
     console.log("rowData :>> ", rowData);
+
+    $("#modalBloc").modal("toggle");
+    $("#edit-form").empty().append($row.wrap("<div class='red-text'></div>"));
   });
   // $("form")
   //   .not("#edit-form")
