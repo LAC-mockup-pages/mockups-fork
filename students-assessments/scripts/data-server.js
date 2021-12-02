@@ -454,6 +454,93 @@ const GetPreTests = [
 ];
 
 // ddl ???
+// const GetTestinfo_TABE11 = [
+//   {
+//     ID: "6",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TABEDate: "07/01/2018",
+//     TestName: "TM|TABE Math",
+//     TestLevelLong: "D|Difficult",
+//     TestForm: "11",
+//     TestMode: "PP",
+//     TestModeDesc: "Paper",
+//     SubScore1: "25",
+//     SubScore2: "0",
+//     ScaleScore: "572",
+//     GradeEquivalent: "0",
+//     NRSLevel: "4",
+//     PreTest: "",
+//     Pre_Post: "",
+//     Name: "Alfieri, Shelley",
+//     Move: "",
+//     FY: "0"
+//   },
+//   {
+//     ID: "666",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TABEDate: "09/01/2018",
+//     TestName: "ML|TABE Locator Math",
+//     TestLevelLong: "X|Locator",
+//     TestForm: "99",
+//     TestMode: "PP",
+//     TestModeDesc: "Paper",
+//     SubScore1: "22",
+//     SubScore2: "0",
+//     ScaleScore: "0",
+//     GradeEquivalent: "0",
+//     NRSLevel: "0",
+//     PreTest: "",
+//     Pre_Post: "",
+//     Name: "Alfieri, Shelley",
+//     Move: "",
+//     FY: "0"
+//   },
+//   {
+//     ID: "10012",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TABEDate: "09/15/2019",
+//     TestName: "TM|TABE Math",
+//     TestLevelLong: "D|Difficult",
+//     TestForm: "12",
+//     TestMode: "PP",
+//     TestModeDesc: "Paper",
+//     SubScore1: "35",
+//     SubScore2: "0",
+//     ScaleScore: "656",
+//     GradeEquivalent: "0",
+//     NRSLevel: "5",
+//     PreTest: "",
+//     Pre_Post: "",
+//     Name: "Alfieri, Shelley",
+//     Move: "",
+//     FY: "0"
+//   },
+//   {
+//     ID: "181467",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TABEDate: "07/01/2020",
+//     TestName: "TR|TABE Reading",
+//     TestLevelLong: "M|Moderate",
+//     TestForm: "11",
+//     TestMode: "PP",
+//     TestModeDesc: "Paper",
+//     SubScore1: "35",
+//     SubScore2: "0",
+//     ScaleScore: "548",
+//     GradeEquivalent: "0",
+//     NRSLevel: "4",
+//     PreTest: "",
+//     Pre_Post: "",
+//     Name: "Barnes, Julia",
+//     Move: "",
+//     FY: "2020"
+//   }
+// ];
+
 const GetTestinfo_TABE11 = [
   {
     ID: "6",
@@ -461,6 +548,8 @@ const GetTestinfo_TABE11 = [
     PostPre: "0",
     TABEDate: "07/01/2018",
     TestName: "TM|TABE Math",
+    TestType: "TM",
+    TestLevel: "D",
     TestLevelLong: "D|Difficult",
     TestForm: "11",
     TestMode: "PP",
@@ -472,6 +561,7 @@ const GetTestinfo_TABE11 = [
     NRSLevel: "4",
     PreTest: "",
     Pre_Post: "",
+    Personnel_PKID: "28555",
     Name: "Alfieri, Shelley",
     Move: "",
     FY: "0"
@@ -482,6 +572,8 @@ const GetTestinfo_TABE11 = [
     PostPre: "0",
     TABEDate: "09/01/2018",
     TestName: "ML|TABE Locator Math",
+    TestType: "ML",
+    TestLevel: "X",
     TestLevelLong: "X|Locator",
     TestForm: "99",
     TestMode: "PP",
@@ -493,6 +585,7 @@ const GetTestinfo_TABE11 = [
     NRSLevel: "0",
     PreTest: "",
     Pre_Post: "",
+    Personnel_PKID: "28555",
     Name: "Alfieri, Shelley",
     Move: "",
     FY: "0"
@@ -503,6 +596,8 @@ const GetTestinfo_TABE11 = [
     PostPre: "0",
     TABEDate: "09/15/2019",
     TestName: "TM|TABE Math",
+    TestType: "TM",
+    TestLevel: "D",
     TestLevelLong: "D|Difficult",
     TestForm: "12",
     TestMode: "PP",
@@ -514,6 +609,7 @@ const GetTestinfo_TABE11 = [
     NRSLevel: "5",
     PreTest: "",
     Pre_Post: "",
+    Personnel_PKID: "28555",
     Name: "Alfieri, Shelley",
     Move: "",
     FY: "0"
@@ -524,6 +620,8 @@ const GetTestinfo_TABE11 = [
     PostPre: "0",
     TABEDate: "07/01/2020",
     TestName: "TR|TABE Reading",
+    TestType: "TR",
+    TestLevel: "M",
     TestLevelLong: "M|Moderate",
     TestForm: "11",
     TestMode: "PP",
@@ -535,13 +633,129 @@ const GetTestinfo_TABE11 = [
     NRSLevel: "4",
     PreTest: "",
     Pre_Post: "",
+    Personnel_PKID: "24234",
     Name: "Barnes, Julia",
     Move: "",
     FY: "2020"
+  },
+  {
+    ID: "181470",
+    Student_PKID: "1048303",
+    PostPre: "0",
+    TABEDate: "07/25/2020",
+    TestName: "TR|TABE Reading",
+    TestType: "TR",
+    TestLevel: "E",
+    TestLevelLong: "E|Easy",
+    TestForm: "12",
+    TestMode: "PP",
+    TestModeDesc: "Paper",
+    SubScore1: "20",
+    SubScore2: "0",
+    ScaleScore: "460",
+    GradeEquivalent: "0",
+    NRSLevel: "2",
+    PreTest: "",
+    Pre_Post: "",
+    Personnel_PKID: "51590",
+    Name: "Blade, Senua",
+    Move: "checked",
+    FY: "2020"
+  },
+  {
+    ID: "181469",
+    Student_PKID: "1048303",
+    PostPre: "0",
+    TABEDate: "07/01/2021",
+    TestName: "TR|TABE Reading",
+    TestType: "TR",
+    TestLevel: "M",
+    TestLevelLong: "M|Moderate",
+    TestForm: "12",
+    TestMode: "PP",
+    TestModeDesc: "Paper",
+    SubScore1: "30",
+    SubScore2: "0",
+    ScaleScore: "528",
+    GradeEquivalent: "0",
+    NRSLevel: "3",
+    PreTest: "",
+    Pre_Post: "",
+    Personnel_PKID: "33828",
+    Name: "Campbell, Don",
+    Move: "",
+    FY: "2021"
   }
 ];
-
 // ddl ???
+// const GetTests_BestLit = [
+//   {
+//     ID: "44062",
+//     Student_PKID: "1048303",
+//     PostPre: "1",
+//     TestDate: "02/12/2013",
+//     Score: "77",
+//     NRSLevel: "6",
+//     PreTest: "checked",
+//     Pre_Post: "",
+//     Name: "Frown, Janice",
+//     Move: "",
+//     FY: "0"
+//   },
+//   {
+//     ID: "99969",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TestDate: "07/11/2016",
+//     Score: "78",
+//     NRSLevel: "6",
+//     PreTest: "",
+//     Pre_Post: "",
+//     Name: "Frown, Janice",
+//     Move: "",
+//     FY: "0"
+//   },
+//   {
+//     ID: "99968",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TestDate: "07/20/2016",
+//     Score: "25",
+//     NRSLevel: "2",
+//     PreTest: "checked",
+//     Pre_Post: "",
+//     Name: "Alisova, Muriana",
+//     Move: "",
+//     FY: "0"
+//   },
+//   {
+//     ID: "99967",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TestDate: "07/21/2016",
+//     Score: "78",
+//     NRSLevel: "6",
+//     PreTest: "checked",
+//     Pre_Post: "",
+//     Name: "Barnes, Julia",
+//     Move: "",
+//     FY: "0"
+//   },
+//   {
+//     ID: "126337",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TestDate: "08/05/2018",
+//     Score: "25",
+//     NRSLevel: "2",
+//     PreTest: "",
+//     Pre_Post: "",
+//     Name: "Woodhams, Mellissa",
+//     Move: "",
+//     FY: "0"
+//   }
+// ];
+
 const GetTests_BestLit = [
   {
     ID: "44062",
@@ -552,6 +766,7 @@ const GetTests_BestLit = [
     NRSLevel: "6",
     PreTest: "checked",
     Pre_Post: "",
+    Personnel_PKID: "1359",
     Name: "Frown, Janice",
     Move: "",
     FY: "0"
@@ -565,6 +780,7 @@ const GetTests_BestLit = [
     NRSLevel: "6",
     PreTest: "",
     Pre_Post: "",
+    Personnel_PKID: "1359",
     Name: "Frown, Janice",
     Move: "",
     FY: "0"
@@ -578,6 +794,7 @@ const GetTests_BestLit = [
     NRSLevel: "2",
     PreTest: "checked",
     Pre_Post: "",
+    Personnel_PKID: "24386",
     Name: "Alisova, Muriana",
     Move: "",
     FY: "0"
@@ -591,6 +808,7 @@ const GetTests_BestLit = [
     NRSLevel: "6",
     PreTest: "checked",
     Pre_Post: "",
+    Personnel_PKID: "24234",
     Name: "Barnes, Julia",
     Move: "",
     FY: "0"
@@ -604,13 +822,121 @@ const GetTests_BestLit = [
     NRSLevel: "2",
     PreTest: "",
     Pre_Post: "",
+    Personnel_PKID: "28561",
     Name: "Woodhams, Mellissa",
     Move: "",
     FY: "0"
   }
 ];
-
 // ddl ???
+// const GetTests_BestPlus2 = [
+//   {
+//     ID: "1170",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TestDate: "07/01/2016",
+//     TestForm: "F",
+//     TestFormDesc: "F",
+//     Score: "500",
+//     NRSLevel: "5",
+//     PreTest: "checked",
+//     Pre_Post: "",
+//     Name: "Vause, Alex",
+//     Move: "",
+//     FY: "0"
+//   },
+//   {
+//     ID: "8089",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TestDate: "07/14/2016",
+//     TestForm: "E",
+//     TestFormDesc: "E",
+//     Score: "444",
+//     NRSLevel: "3",
+//     PreTest: "",
+//     Pre_Post: "",
+//     Name: "Donovan, Ray",
+//     Move: "",
+//     FY: "0"
+//   },
+//   {
+//     ID: "52540",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TestDate: "10/26/2016",
+//     TestForm: "CBT",
+//     TestFormDesc: "Computer Based",
+//     Score: "455",
+//     NRSLevel: "4",
+//     PreTest: "",
+//     Pre_Post: "",
+//     Name: "Porter, Samantha",
+//     Move: "",
+//     FY: "0"
+//   },
+//   {
+//     ID: "344487",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TestDate: "12/08/2017",
+//     TestForm: "CBT",
+//     TestFormDesc: "Computer Based",
+//     Score: "450",
+//     NRSLevel: "3",
+//     PreTest: "checked",
+//     Pre_Post: "",
+//     Name: "Barnes, Julia",
+//     Move: "",
+//     FY: "0"
+//   },
+//   {
+//     ID: "393125",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TestDate: "04/07/2018",
+//     TestForm: "D",
+//     TestFormDesc: "D",
+//     Score: "600",
+//     NRSLevel: "7",
+//     PreTest: "checked",
+//     Pre_Post: "",
+//     Name: "Alisova, Muriana",
+//     Move: "",
+//     FY: "0"
+//   },
+//   {
+//     ID: "433235",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TestDate: "07/24/2018",
+//     TestForm: "CBT",
+//     TestFormDesc: "Computer Based",
+//     Score: "88",
+//     NRSLevel: "1",
+//     PreTest: "",
+//     Pre_Post: "",
+//     Name: "Scott, Adam",
+//     Move: "",
+//     FY: "0"
+//   },
+//   {
+//     ID: "577302",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TestDate: "07/01/2019",
+//     TestForm: "D",
+//     TestFormDesc: "D",
+//     Score: "400",
+//     NRSLevel: "2",
+//     PreTest: "",
+//     Pre_Post: "",
+//     Name: "Barnes, Julia",
+//     Move: "",
+//     FY: "0"
+//   }
+// ];
+
 const GetTests_BestPlus2 = [
   {
     ID: "1170",
@@ -623,6 +949,7 @@ const GetTests_BestPlus2 = [
     NRSLevel: "5",
     PreTest: "checked",
     Pre_Post: "",
+    Personnel_PKID: "46765",
     Name: "Vause, Alex",
     Move: "",
     FY: "0"
@@ -638,6 +965,7 @@ const GetTests_BestPlus2 = [
     NRSLevel: "3",
     PreTest: "",
     Pre_Post: "",
+    Personnel_PKID: "46763",
     Name: "Donovan, Ray",
     Move: "",
     FY: "0"
@@ -653,6 +981,7 @@ const GetTests_BestPlus2 = [
     NRSLevel: "4",
     PreTest: "",
     Pre_Post: "",
+    Personnel_PKID: "2256",
     Name: "Porter, Samantha",
     Move: "",
     FY: "0"
@@ -668,6 +997,7 @@ const GetTests_BestPlus2 = [
     NRSLevel: "3",
     PreTest: "checked",
     Pre_Post: "",
+    Personnel_PKID: "24234",
     Name: "Barnes, Julia",
     Move: "",
     FY: "0"
@@ -683,6 +1013,7 @@ const GetTests_BestPlus2 = [
     NRSLevel: "7",
     PreTest: "checked",
     Pre_Post: "",
+    Personnel_PKID: "24386",
     Name: "Alisova, Muriana",
     Move: "",
     FY: "0"
@@ -698,6 +1029,7 @@ const GetTests_BestPlus2 = [
     NRSLevel: "1",
     PreTest: "",
     Pre_Post: "",
+    Personnel_PKID: "51033",
     Name: "Scott, Adam",
     Move: "",
     FY: "0"
@@ -713,12 +1045,12 @@ const GetTests_BestPlus2 = [
     NRSLevel: "2",
     PreTest: "",
     Pre_Post: "",
+    Personnel_PKID: "24234",
     Name: "Barnes, Julia",
     Move: "",
     FY: "0"
   }
 ];
-
 // ddlType
 const GetType_TABE11 = [
   { key: "TM", value: "TM|TABE Math" },
@@ -743,6 +1075,45 @@ const GetType_TASCPredAct = [
 ];
 
 // ddl ???
+// const GetTest_TASC = [
+//   {
+//     ID: "103596",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TestDate: "09/16/2014",
+//     TestType: "TASC2014",
+//     TestForm: "a",
+//     Writing: "200",
+//     Social: "100",
+//     Science: "100",
+//     Reading: "100",
+//     Math: "100",
+//     Score: "500",
+//     PredAct: "Readiness",
+//     PreTest: "checked",
+//     Name: "McConnell07, Grace",
+//     Move: ""
+//   },
+//   {
+//     ID: "75839",
+//     Student_PKID: "1048303",
+//     PostPre: "0",
+//     TestDate: "02/20/2013",
+//     TestType: "GED",
+//     TestForm: "aa",
+//     Writing: "200",
+//     Social: "200",
+//     Science: "0",
+//     Reading: "0",
+//     Math: "0",
+//     Score: "400",
+//     PredAct: "Actual",
+//     PreTest: "checked",
+//     Name: "Barnes, Julia",
+//     Move: ""
+//   }
+// ];
+
 const GetTest_TASC = [
   {
     ID: "103596",
@@ -759,6 +1130,7 @@ const GetTest_TASC = [
     Score: "500",
     PredAct: "Readiness",
     PreTest: "checked",
+    Personnel_PKID: "38951",
     Name: "McConnell07, Grace",
     Move: ""
   },
@@ -777,10 +1149,12 @@ const GetTest_TASC = [
     Score: "400",
     PredAct: "Actual",
     PreTest: "checked",
+    Personnel_PKID: "24234",
     Name: "Barnes, Julia",
     Move: ""
   }
 ];
+
 // ddl ???
 const GetStaff = [
   {
