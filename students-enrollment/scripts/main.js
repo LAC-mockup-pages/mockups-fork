@@ -88,9 +88,9 @@ $(document).ready(() => {
   };
 
   //! =============================================================
-  const { StudentName, StudentID } = studentInfo;
+  const { StudentName, BirthDate } = studentInfo;
   $(".student-info .name").text(StudentName);
-  $(".student-info .long-id").text(StudentID);
+  $(".student-info .long-id").text(`Date of birth: ${BirthDate}`);
 
   //* =====================================
 

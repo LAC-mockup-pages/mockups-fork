@@ -5,18 +5,32 @@ const GetCTEDEnrollmentStatusSource = [
   { key: "3", value: "Continuing" }
 ];
 
+// const GetStudentHeader = [
+//   {
+//     ID: "1048303",
+//     Student_PKID: "1048303",
+//     StudentID: "AA1_JacquesGregoryPRA22620101271987",
+//     StudentName: "AA1_Jacques, Gregory ",
+//     Pop_Order: "",
+//     POPHours: "",
+//     POP_Status: "",
+//     FY_Funding: "Not Enrolled",
+//     OtherCode: "",
+//     OtherCodetxt: ""
+//   }
+// ];
+
 const GetStudentHeader = [
   {
     ID: "1048303",
-    Student_PKID: "1048303",
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
     StudentName: "AA1_Jacques, Gregory ",
+    BirthDate: "07/12/1987",
     Pop_Order: "",
     POPHours: "",
     POP_Status: "",
     FY_Funding: "Not Enrolled",
-    OtherCode: "",
-    OtherCodetxt: ""
+    OtherCode: ""
   }
 ];
 
