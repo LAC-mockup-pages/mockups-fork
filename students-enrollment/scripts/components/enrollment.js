@@ -78,6 +78,7 @@ export const enrollValues = (
       <td>
         <div class="form-group input-field">
           <select class="modal-select" disabled name="InactiveReason">
+            <option value></option>
             ${optionListReason}
           </select>
         </div>
@@ -85,6 +86,7 @@ export const enrollValues = (
       <td>
         <div class="form-group input-field">
           <select class="modal-select" disabled name="Transfer_PKID" >
+            <option value></option>
             ${optionListTransfer}
           </select>
         </div>
@@ -101,3 +103,5 @@ export const enrollValues = (
   }
   $(formName).append(tableBodyContent.join(""));
 };
+
+export const editRow = (rowId, dataObj) => {};

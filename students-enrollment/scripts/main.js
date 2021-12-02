@@ -143,6 +143,9 @@ $(document).ready(() => {
     console.log("rowId :>> ", rowId);
     const $row = $(":input", this).clone().prop("disabled", false);
     console.log("row :>> ", $row.serializeArray());
+    // createObject() <== helpers/helperFunctions.js
+    const rowData = createObject($row.serializeArray());
+    console.log("rowData :>> ", rowData);
   });
   // $("form")
   //   .not("#edit-form")
