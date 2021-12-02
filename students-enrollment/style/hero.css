@@ -36,7 +36,8 @@ section:not(.student-info) {
 .student-info {
   height: 2.8em;
   padding-top: 0.4em;
-  border-radius: 5px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
 }
 .sub-header {
   line-height: 30px;
