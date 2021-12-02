@@ -107,7 +107,13 @@ $(document).ready(() => {
 
   //* Populating input and select elements for display.
   //* Elements are disabled.
-  enrollValues(enrollmentList, exitReasons, transferTo, ".classes-form tbody");
+  enrollValues(
+    enrollmentList,
+    courseList,
+    exitReasons,
+    transferTo,
+    ".classes-form tbody"
+  );
   enrollValues(caseList, exitReasons, transferTo, ".case-form tbody");
   hourMonthlyValues(
     hoursSummary,

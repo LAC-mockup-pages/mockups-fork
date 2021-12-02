@@ -11,7 +11,13 @@ import { createOptionList } from "../main.js";
 
 // Populating input element values
 // Data source: /data-server.js/GetEnroll
-export const enrollValues = (list, reasons, transferList, formName) => {
+export const enrollValues = (
+  list,
+  courses,
+  reasons,
+  transferList,
+  formName
+) => {
   // Sorting records in decreasing date of enrollment
   const orderedList = list.sort((record1, record2) =>
     // DT#fromFormat <== Luxon method, "D" token describes mm/dd/yyyy format
@@ -28,16 +34,17 @@ export const enrollValues = (list, reasons, transferList, formName) => {
   for (const record of orderedList) {
     const {
       ID,
-      Description,
+      DescriptionKey,
       EnrollDate,
       InactiveDate,
       InactiveReason,
-      TransferTo,
+      Transfer_PKID,
       ActiveStatus,
       FY
     } = record;
+    const optionListCourse = createOptionList(courses, DescriptionKey);
     const optionListReason = createOptionList(reasons, InactiveReason);
-    const optionListTransfer = createOptionList(transferList, TransferTo);
+    const optionListTransfer = createOptionList(transferList, Transfer_PKID);
     const optionListActive = createOptionList(
       [
         { key: "", value: "No" },
@@ -49,9 +56,9 @@ export const enrollValues = (list, reasons, transferList, formName) => {
     <tr id=${ID}>
       <td>
         <div class="form-group input-field">
-          <input type="text" disabled name="Description" value=${JSON.stringify(
-            Description
-          )} >
+        <select class="modal-select" disabled name="DescriptionKey">
+        ${optionListCourse}
+      </select>
         </div>
       </td>
       <td>
@@ -73,14 +80,14 @@ export const enrollValues = (list, reasons, transferList, formName) => {
       </td>
       <td>
         <div class="form-group input-field">
-          <select class="modal-select" disabled name="TransferTo" >
-            ${TransferTo ? optionListTransfer : ""}
+          <select class="modal-select" disabled name="Transfer_PKID" >
+            ${optionListTransfer}
           </select>
         </div>
       </td>
       <td>
         <div class="form-group input-field">
-          <select class="modal-select" name="ActiveStatus" disabled>
+          <select class="modal-select" disabled name="ActiveStatus" >
             ${optionListActive}
           </select>
         </div>
