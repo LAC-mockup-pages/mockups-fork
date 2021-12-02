@@ -43,12 +43,7 @@ export const enrollValues = (
       FY
     } = record;
     const optionListCourse = createOptionList(courses, DescriptionKey);
-    // const optionListReason = InactiveReason
-    //   ? createOptionList(reasons, InactiveReason)
-    //   : "";
-
     const optionListReason = createOptionList(reasons, InactiveReason);
-
     const optionListTransfer = createOptionList(transferList, Transfer_PKID);
     const optionListActive = createOptionList(
       [

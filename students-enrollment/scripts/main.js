@@ -164,27 +164,6 @@ $(document).ready(() => {
     });
   });
 
-  // $("form")
-  //   .not("#edit-form")
-  //   .click(function (evnt) {
-  //     evnt.stopPropagation();
-  //     const sectionTitle = $(this)
-  //       .parents()
-  //       .children(".sub-header")
-  //       .text()
-  //       .trim();
-  //     console.log("sectionTitle :>> ", sectionTitle);
-
-  //     const parentAttr = $(this).parent().attr("class");
-  //     console.log("parentAttr :>> ", parentAttr);
-  //     const editFormContent = $(this).children().clone();
-
-  //     $("#modalBloc").modal("toggle");
-  //     $("#edit-form").empty().append(editFormContent);
-  //     $(".modal-title").text(`${sectionTitle} editing`);
-  //     $("#edit-form :input").prop("disabled", false);
-  //   });
-
   //* Switches Contact hours summary and history tables
   $(".contact-hours .sub-header").click(function (evnt) {
     evnt.stopPropagation();
