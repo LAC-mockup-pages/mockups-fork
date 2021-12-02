@@ -14,6 +14,7 @@ const enrollmentList = GetEnroll.slice(0).filter(
 );
 const studentInfo = GetStudentHeader.slice(0)[0];
 const courseList = GetInstructionSource.slice(0);
+const caseCourseList = GetInstructionSource_CM.slice(0);
 const exitReasons = GetExitReasonSource.slice(0);
 const transferTo = GetTransferTo.slice(0);
 const caseList = GetEnroll.slice(0).filter((record) => record.ISCMP === "1");
@@ -114,7 +115,13 @@ $(document).ready(() => {
     transferTo,
     ".classes-form tbody"
   );
-  enrollValues(caseList, exitReasons, transferTo, ".case-form tbody");
+  enrollValues(
+    caseList,
+    caseCourseList,
+    exitReasons,
+    transferTo,
+    ".case-form tbody"
+  );
   hourMonthlyValues(
     hoursSummary,
     [...courseCodeList, ...GetInstructionSource_CM],

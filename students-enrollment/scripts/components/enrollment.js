@@ -43,8 +43,12 @@ export const enrollValues = (
       FY
     } = record;
     const optionListCourse = createOptionList(courses, DescriptionKey);
-    const optionListReason = createOptionList(reasons, InactiveReason);
-    const optionListTransfer = createOptionList(transferList, Transfer_PKID);
+    const optionListReason = InactiveReason
+      ? createOptionList(reasons, InactiveReason)
+      : "";
+    const optionListTransfer = Transfer_PKID
+      ? createOptionList(transferList, Transfer_PKID)
+      : "";
     const optionListActive = createOptionList(
       [
         { key: "", value: "No" },
