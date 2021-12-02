@@ -4,7 +4,8 @@
 
 import { enrollValues } from "./components/enrollment.js";
 import { hourMonthlyValues } from "./components/hours.js";
-
+// Initializing Luxon DateTime class for the module
+const DT = luxon.DateTime;
 //! =============================================================
 //! For Development only.
 //! Comment out for Production.
@@ -140,18 +141,29 @@ $(document).ready(() => {
   $("form table > tbody > tr").click(function (evnt) {
     evnt.stopPropagation();
     const rowId = $(this).attr("id");
-    console.log("rowId :>> ", rowId);
-    const $row = $(":input", this).clone(true).prop("disabled", false);
-
-    console.log("$row :>> ", $row);
-    console.log("row :>> ", $row.serializeArray());
-    // createObject() <== helpers/helperFunctions.js
-    const rowData = createObject($row.serializeArray());
-    console.log("rowData :>> ", rowData);
-
+    const $row = $(":input", this).clone().prop("disabled", false);
     $("#modalBloc").modal("toggle");
-    $("#edit-form").empty().append($row.wrap("<div class='red-text'></div>"));
+    $("#edit-form").empty().append($row).attr("data-id", rowId);
+    $("#edit-form :input").each(function (indx) {
+      const name = $(this).attr("name");
+      const labels = {
+        DescriptionKey: "Course",
+        EnrollDate: "Started",
+        InactiveDate: "Left",
+        InactiveReason: "Reason",
+        Transfer_PKID: "Transfer to",
+        ActiveStatus: "Active"
+      };
+      if (name.includes("Date")) {
+        const formattedDate = DT.fromFormat($(this).val(), "D").toISODate();
+        $(this).val(formattedDate).attr("type", "date");
+      }
+      $(this)
+        .wrap("<div class='form-group input-field'></div>")
+        .before(`<label for=${name}>${labels[name]}</label>`);
+    });
   });
+
   // $("form")
   //   .not("#edit-form")
   //   .click(function (evnt) {

@@ -53,12 +53,12 @@ section:not(.student-info) {
   margin-bottom: 1%;
 }
 
-.input-field > input {
+.form:not(#edit-form) .input-field > input {
   font-size: 0.9em;
   width: 100%;
   border-bottom: none;
 }
-.input-field > select {
+.form:not(#edit-form) .input-field > select {
   width: 100%;
   font-size: 0.9em;
   border-bottom: none;

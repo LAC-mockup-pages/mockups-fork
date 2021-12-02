@@ -43,12 +43,13 @@ export const enrollValues = (
       FY
     } = record;
     const optionListCourse = createOptionList(courses, DescriptionKey);
-    const optionListReason = InactiveReason
-      ? createOptionList(reasons, InactiveReason)
-      : "";
-    const optionListTransfer = Transfer_PKID
-      ? createOptionList(transferList, Transfer_PKID)
-      : "";
+    // const optionListReason = InactiveReason
+    //   ? createOptionList(reasons, InactiveReason)
+    //   : "";
+
+    const optionListReason = createOptionList(reasons, InactiveReason);
+
+    const optionListTransfer = createOptionList(transferList, Transfer_PKID);
     const optionListActive = createOptionList(
       [
         { key: "", value: "No" },
@@ -102,16 +103,4 @@ export const enrollValues = (
     tableBodyContent.push(row);
   }
   $(formName).append(tableBodyContent.join(""));
-};
-
-export const editRow = (rowId, dataObj) => {
-  const labels = {
-    DescriptionKey: "Course",
-    EnrollDate: "Started",
-    InactiveDate: "Left",
-    InactiveReason: "Reason",
-    Transfer_PKID: "Transfer to",
-    ActiveStatus: "Active"
-  };
-  const content = "";
 };
