@@ -7,6 +7,7 @@ const GetStudentHeader = [
     ID: "1048303",
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
     StudentName: "AA1_Jacques, Gregory ",
+    BirthDate: "07/12/1987",
     Pop_Order: "",
     POPHours: "",
     POP_Status: "",
@@ -14,6 +15,19 @@ const GetStudentHeader = [
     OtherCode: ""
   }
 ];
+
+// [
+//   {
+//     ID: "1048303",
+//     StudentID: "AA1_JacquesGregoryPRA22620101271987",
+//     StudentName: "AA1_Jacques, Gregory ",
+//     Pop_Order: "",
+//     POPHours: "",
+//     POP_Status: "",
+//     FY_Funding: "Not Enrolled",
+//     OtherCode: ""
+//   }
+// ];
 
 // ddlForm
 const GetForm_BestPlus2 = [
