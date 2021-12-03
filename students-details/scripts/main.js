@@ -152,7 +152,6 @@ $(document).ready(() => {
   ssnValues(studentInfo);
   genderValues(studentInfo);
   fundingValues(fundingInfo, fundingSources);
-
   populationValues(additionalInfo);
   barriersValues(studentInfo);
   assistanceValues(assistanceInfo, assistanceSource);
