@@ -367,6 +367,10 @@ $(document).ready(() => {
       editFormContent = addNewAssistance(assistanceSource);
       tableName = "GetPAStatusInfo";
       modalTitle = "assistance";
+    } else if ($(this).attr("id") === "add-population") {
+      editFormContent = "";
+      tableName = "";
+      modalTitle = "population";
     } else {
       editFormContent = addNewEmployment(employmentStatus, employmentIncome);
     }
