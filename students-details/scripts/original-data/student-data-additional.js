@@ -26,6 +26,34 @@ export const GetStudent_Additional = [
   }
 ];
 
+// For test only - all population fields have a value "2", no answer
+// export const GetStudent_Additional = [
+//   {
+//     ID: "1048303",
+//     StudentID: "AA1_JacquesGregoryPRA22620101271987",
+//     CountryID: "HA",
+//     Status: "Citizen",
+//     DateSettled: "05/02/2015",
+//     Languages: "English, French",
+//     Correctional: "2",
+//     Institutionalized: "2",
+//     HeadHouse: "2",
+//     OtherEd: "2",
+//     Veteran: "2",
+//     DislocatedWorker: "2",
+//     EmployedAt200P: "2",
+//     RuralResident: "2",
+//     FamilyLiteracy: "2",
+//     Parole: "2",
+//     CommCorrection: "2",
+//     OtherPopulation: "2",
+//     OtherDescription: "",
+//     Referral: "0",
+//     RefSource: "L",
+//     RefSourceName: ""
+//   }
+// ];
+
 // ddl ???
 // const GetPAStatusInfo = [
 //   {

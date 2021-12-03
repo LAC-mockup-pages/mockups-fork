@@ -36,12 +36,15 @@ export const populationValues = (obj) => {
     FamilyLiteracy,
     Parole,
     CommCorrection,
-    OtherPopulation,
-    OtherDescription
+    OtherPopulation
   };
   const fieldsWithAnswer = Object.keys(valuesObj).filter(
     (key) => valuesObj[key] !== "2"
   );
+  if (fieldsWithAnswer.length < 1) {
+    $("#add-population").toggleClass("hidden");
+    return;
+  }
   const formContent = [];
   for (const key of fieldsWithAnswer) {
     const optionList = createOptionList(ddlPopulation, key);
@@ -73,3 +76,5 @@ export const populationValues = (obj) => {
     </div>`
   );
 };
+
+export const addNewPopulation = () => {};
