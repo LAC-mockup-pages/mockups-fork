@@ -260,7 +260,7 @@ $(document).ready(() => {
       $("#modalBloc").modal("toggle");
       $("#edit-form").empty().append(editFormContent);
       $("#edit-form").removeAttr("data-table").attr("data-table", targetTable);
-      $(".modal-title").text(`${sectionTitle} editing`);
+      $(".modal-title").empty().text(`${sectionTitle} editing`);
       $("#edit-form :input").prop("disabled", false);
       for (const name of stayingDisabled) {
         $(`#edit-form [name=${name}]`).prop("disabled", true);
@@ -359,7 +359,7 @@ $(document).ready(() => {
   //* sections: Employment, Assistance
   $("#add-employment, #add-assistance").click(function (evnt) {
     evnt.stopPropagation();
-    let editFormContent = addNewEmployment(employmentStatus, employmentIncome);
+    let editFormContent = "";
     let tableName = "GetEmploymentInfo";
     let modalTitle = "employment";
     if ($(this).attr("id") === "add-assistance") {
@@ -367,6 +367,8 @@ $(document).ready(() => {
       editFormContent = addNewAssistance(assistanceSource);
       tableName = "GetPAStatusInfo";
       modalTitle = "assistance";
+    } else {
+      editFormContent = addNewEmployment(employmentStatus, employmentIncome);
     }
     $("#edit-form")
       .empty()
