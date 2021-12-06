@@ -54,27 +54,6 @@ export const GetStudent_Additional = [
 //   }
 // ];
 
-// ddl ???
-// const GetPAStatusInfo = [
-//   {
-//     ID: "1543327",
-//     StudentID: "AA1_JacquesGregoryPRA22620101271987",
-//     PACategory: "B | Food Stamps",
-//     PAFY: "2021",
-//     PACaseNum: "12345",
-//     PAExhaustTANF: "",
-//     Student_PKID: "1048303"
-//   },
-//   {
-//     ID: "1870535",
-//     StudentID: "AA1_JacquesGregoryPRA22620101271987",
-//     PACategory: "A | TANF",
-//     PAFY: "2020",
-//     PACaseNum: "124555",
-//     PAExhaustTANF: "1",
-//     Student_PKID: "1048303"
-//   }
-// ];
 export const GetPAStatusInfo = [
   {
     ID: "1543327",
