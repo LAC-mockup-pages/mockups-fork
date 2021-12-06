@@ -4,7 +4,7 @@
 //* Sections: Employment
 //* =======================================
 
-import { createOptionList } from "../main.js";
+import { createOptionList, dateFormat } from "../main.js";
 
 // Data sources: /original-data/student-data.js/GetEmploymentInfo
 //          /original-data/student-data.js/GetEmploymentStatus
@@ -125,13 +125,18 @@ export const addNewEmployment = (statusList, incomeList, valuesObj) => {
         optionText: ""
       });
     } else {
-      const value = valuesObj[key]
+      let value = valuesObj[key]
         ? valuesObj[key]
         : labelText === "FY"
         ? FiscalYear
         : "";
       const option = labelText === "FY" ? "disabled" : "";
       const type = labelText.includes("date") ? "date" : "text";
+      // Modifies dates format to allow display of mm//dd//yyyy dates
+      // with a type="date" attribute.
+      if (key.includes("Date")) {
+        value = valuesObj[key] ? dateFormat(valuesObj[key]) : "";
+      }
       // elementInput() <== helpers/helperFunctions.js
       field = elementInput({
         keyVal: key,
