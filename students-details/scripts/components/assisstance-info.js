@@ -60,7 +60,8 @@ export const assistanceValues = (list, source) => {
   $("[data-toggle='tooltip']").tooltip();
 };
 
-export const addNewAssistance = (source) => {
+//
+export const addNewAssistance = (source, record) => {
   const labels = {
     PACatID: "Type",
     PAFY: "FY",
@@ -84,19 +85,23 @@ export const addNewAssistance = (source) => {
             ];
       labelClassVal = "class='red-text'";
       option = "required";
+      const selectedValue = record[key];
       // elementSelectModal() <== helpers/helperFunctions.js
       field = elementSelectModal({
         hashTable,
         keyValue: key,
-        selectedValue: "",
+        selectedValue,
         labelVal: labelText,
         labelClassVal,
         option,
         optionText: ""
       });
     } else {
-      const value = labelText === "FY" ? FiscalYear : "";
-      const option = labelText === "FY" ? "disabled" : "";
+      let value = record[key];
+      if (labelText === "FY") {
+        value = FiscalYear;
+        option = "disabled";
+      }
       // elementInput() <== helpers/helperFunctions.js
       field = elementInput({
         keyVal: key,

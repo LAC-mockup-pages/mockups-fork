@@ -384,23 +384,39 @@ $(document).ready(() => {
 
   //* Editing a row in table
   //* Sections: Employment, Personal assistance
-  $(document).on("click", ".employment-table tbody tr", function (evnt) {
-    evnt.stopPropagation();
-    const rowId = $(this).attr("id");
-    const elements = $(":disabled", this).clone().prop("disabled", false);
-    const record = createObject($(elements).serializeArray());
-    let tableName = "GetEmploymentInfo";
-    let editFormContent = addNewEmployment(
-      employmentStatus,
-      employmentIncome,
-      record
-    );
-    let modalTitle = "employment";
-    $("#edit-form")
-      .empty()
-      .append(editFormContent)
-      .attr({ "data-table": tableName, "data-row-id": rowId });
-    $(".modal-title").empty().text(`Editing ${modalTitle} record ${rowId}`);
-    $("#modalBloc").modal("toggle");
-  });
+  $(document).on(
+    "click",
+    ".employment-table tbody tr, .assistance-table tbody tr",
+    function (evnt) {
+      evnt.stopPropagation();
+      const rowId = $(this).attr("id");
+      const elements = $(":disabled", this).clone().prop("disabled", false);
+      const record = createObject($(elements).serializeArray());
+      console.log("record :>> ", record);
+      console.log(
+        '$(this).parents("table").hasClass("assistance-table) :>> ',
+        $(this).parents("table").hasClass("assistance-table")
+      );
+      let tableName = "GetEmploymentInfo";
+      let editFormContent = addNewEmployment(
+        employmentStatus,
+        employmentIncome,
+        record
+      );
+      let modalTitle = "employment";
+
+      if ($(this).parents("table").hasClass("assistance-table")) {
+        tableName = "GetPAStatusInfo";
+        modalTitle = "public assistance";
+        editFormContent = addNewAssistance(assistanceSource, record);
+      }
+
+      $("#edit-form")
+        .empty()
+        .append(editFormContent)
+        .attr({ "data-table": tableName, "data-row-id": rowId });
+      $(".modal-title").empty().text(`Editing ${modalTitle} record ${rowId}`);
+      $("#modalBloc").modal("toggle");
+    }
+  );
 });
