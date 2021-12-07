@@ -270,7 +270,6 @@ $(document).ready(() => {
       const requiredList = $("#edit-form [required]")
         .serializeArray()
         .map((item) => item.name);
-      console.log("requiredList :>> ", requiredList);
       for (const name of requiredList) {
         $(`#edit-form label[for=${name}]`).addClass("red-text");
       }
@@ -291,35 +290,50 @@ $(document).ready(() => {
 
   //* Saving changes after editing in modal
   $("#save-btn").click(function (evnt) {
-    //TODO Remove disabled prop if used in edit-form
-    const saveList = $("#edit-form").serializeArray();
     //TODO Check for errors in inputs
-    //TODO Check for empty values
-    const targetTable = $("#edit-form").attr("data-table");
-    let saveObj = createObject(saveList);
-    const sectionName = $("#edit-form select:first-of-type").attr("name");
-    if (["barrier", "population"].includes(sectionName)) {
-      const sectionDdl =
-        sectionName === "barrier" ? ddlBarriers : ddlPopulation;
-      saveObj = sectionProcess(sectionDdl);
-    } else if (sectionName === "Sex") {
-      console.log("sectionName :>> ", sectionName);
-      saveObj.RaceID = saveList
-        .filter((record) => record.name === "RaceID" && record.value)
-        .map((record) => record.value)
-        .join(",");
+    const elements = $("#edit-form :input").prop("disabled", false);
+    const requiredObj = createObject(
+      $("#edit-form [required]").serializeArray()
+    );
+    const requiredWithoutValue = [];
+    for (const key in requiredObj) {
+      if (!requiredObj[key]) requiredWithoutValue.push(key);
     }
-    const credentials = createCredentials();
-    //! =================================================
-    //! For production, this is the end point for the Post request
-    //! to update the DB.
-    //! =================================================
-    const resultList = [
-      targetTable,
-      JSON.stringify({ ...credentials, Student_PKID, ...saveObj })
-    ];
-    console.log("result :", resultList);
-    //! =================================================
+    if (requiredWithoutValue.length > 0) {
+      // Yellow background for empty required fields
+      for (const field of requiredWithoutValue) {
+        $(`.modal-body [name=${field}]`).css("background-color", "#f7e095");
+      }
+      return;
+    } else {
+      const saveObj = createObject($(elements).serializeArray());
+      const targetTable = $("#edit-form").attr("data-table");
+
+      const sectionName = $("#edit-form select:first-of-type").attr("name");
+      if (["barrier", "population"].includes(sectionName)) {
+        const sectionDdl =
+          sectionName === "barrier" ? ddlBarriers : ddlPopulation;
+        saveObj = sectionProcess(sectionDdl);
+      } else if (sectionName === "Sex") {
+        console.log("sectionName :>> ", sectionName);
+        saveObj.RaceID = saveList
+          .filter((record) => record.name === "RaceID" && record.value)
+          .map((record) => record.value)
+          .join(",");
+      }
+      const credentials = createCredentials();
+      //! =================================================
+      //! For production, this is the end point for the Post request
+      //! to update the DB.
+      //! =================================================
+      const resultList = [
+        targetTable,
+        JSON.stringify({ ...credentials, Student_PKID, ...saveObj })
+      ];
+      console.log("result :", resultList);
+      //! =================================================
+      $("#modalBloc").modal("toggle");
+    }
   });
 
   //* Add new race select element in modal when needed, with updated
