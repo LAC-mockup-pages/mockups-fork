@@ -95,3 +95,41 @@ export const genderValues = (student) => {
   }
   $(".race").empty().append(raceElement);
 };
+
+export const editChildren = (dataObj) => {
+  const labels = {
+    PreChild: "PreSchool",
+    ElemChild: "Elementary",
+    JHSChild: "Junior HS",
+    HSChild: "High School"
+  };
+  const content = [];
+  for (const key in labels) {
+    const labelText = labels[key];
+    const optionHidden = "form-group";
+
+    const firstLine = elementInput({
+      keyVal: key,
+      labelVal: labelText,
+      value: dataObj[key],
+      labelClassVal: "",
+      classVal: "",
+      option: "",
+      optionHidden,
+      type: "text"
+    });
+
+    const secondLine = elementInput({
+      keyVal: `${key}School`,
+      labelVal: "",
+      value: dataObj[`${key}School`],
+      labelClassVal: "",
+      classVal: "",
+      option: "",
+      optionHidden,
+      type: "text"
+    });
+    content.push(`${firstLine}${secondLine}`);
+  }
+  return content.join("");
+};

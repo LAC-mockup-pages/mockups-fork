@@ -25,6 +25,7 @@ import {
 } from "./original-data/student-data-additional.js";
 import {
   addNewRaceSelect,
+  editChildren,
   genderValues,
   inputValues,
   ssnValues
@@ -404,13 +405,11 @@ $(document).ready(() => {
         record
       );
       let modalTitle = "employment";
-
       if ($(this).parents("table").hasClass("assistance-table")) {
         tableName = "GetPAStatusInfo";
         modalTitle = "public assistance";
         editFormContent = addNewAssistance(assistanceSource, record);
       }
-
       $("#edit-form")
         .empty()
         .append(editFormContent)
@@ -419,4 +418,19 @@ $(document).ready(() => {
       $("#modalBloc").modal("toggle");
     }
   );
+  $(".children-table tbody").click(function (evnt) {
+    evnt.stopPropagation();
+
+    const elements = $(":disabled", this).clone().prop("disabled", false);
+    const record = createObject($(elements).serializeArray());
+    console.log("record :>> ", record);
+    const editFormContent = editChildren(record);
+    $("#edit-form")
+      .empty()
+      .append(editFormContent)
+      .attr("data-table", "GetStudent");
+
+    $(".modal-title").empty().text(`Editing School aged children`);
+    $("#modalBloc").modal("toggle");
+  });
 });
