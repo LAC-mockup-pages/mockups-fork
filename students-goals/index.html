@@ -66,7 +66,7 @@
     <!-- ! File: /<YOUR_FILE>.aspx -->
     <!-- !============================= -->
 
-    <title>ASISTS STARTER</title>
+    <title>ASISTS Student Goals</title>
   </head>
   <body>
     <header>
@@ -327,7 +327,39 @@
     </div>
     <!-- End Side Nav bar -->
     <!-- Main display and card carousel -->
-    <main class="main-body container"></main>
+    <main class="main-body container-fluid">
+      <!-- Sub NavBar -->
+      <div class="container-fluid blue-bg blue-light-text sub-navbar">
+        <ul id="sub-nav" class="nav-justified">
+          <li>
+            <a
+              class="blue-light-text blue-bg"
+              href="../students-search/index.html"
+              type="text/html"
+              >Student search</a
+            >
+          </li>
+          <li data-target="profile">
+            <a class="blue-light-text blue-bg" type="text/html">Profile</a>
+          </li>
+          <li data-target="details">
+            <a class="blue-light-text blue-bg" type="text/html"
+              >Student details</a
+            >
+          </li>
+          <li data-target="assessments">
+            <a type="text/html" class="blue-light-text blue-bg">Assessments</a>
+          </li>
+          <li data-target="enrollments">
+            <a type="text/html">Enrollment</a>
+          </li>
+          <li data-target="goals" class="blue-light-bg blue-text">
+            <a type="text/html">Goals | Outcomes</a>
+          </li>
+        </ul>
+      </div>
+      <!-- End Sub NavBar -->
+    </main>
     <!-- End main display -->
 
     <!-- Modal start -->
