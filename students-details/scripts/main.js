@@ -375,6 +375,7 @@ $(document).ready(() => {
   //* sections: Employment, Assistance
   $("#add-employment, #add-assistance").click(function (evnt) {
     evnt.stopPropagation();
+    evnt.preventDefault();
     let editFormContent = "";
     let tableName = "GetEmploymentInfo";
     let modalTitle = "employment";
