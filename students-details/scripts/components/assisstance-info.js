@@ -61,7 +61,7 @@ export const assistanceValues = (list, source) => {
 };
 
 //
-export const addNewAssistance = (source, record) => {
+export const addNewAssistance = (source, record = {}) => {
   const labels = {
     PACatID: "Type",
     PAFY: "FY",

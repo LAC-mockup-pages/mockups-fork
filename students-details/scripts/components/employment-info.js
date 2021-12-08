@@ -90,7 +90,7 @@ export const employmentValues = (list, statusList, incomeList) => {
   $("[data-toggle='tooltip']").tooltip();
 };
 
-export const addNewEmployment = (statusList, incomeList, valuesObj) => {
+export const addNewEmployment = (statusList, incomeList, valuesObj = {}) => {
   const labels = {
     EmployStatID: "Status",
     EmployStatusFY: "FY",
