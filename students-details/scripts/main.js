@@ -307,7 +307,7 @@ $(document).ready(() => {
       return;
     } else {
       const saveList = $(elements).serializeArray();
-      const saveObj = createObject(saveList);
+      let saveObj = createObject(saveList);
       const targetTable = $("#edit-form").attr("data-table");
 
       const sectionName = $("#edit-form select:first-of-type").attr("name");

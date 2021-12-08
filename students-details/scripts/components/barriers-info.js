@@ -68,6 +68,7 @@ export const addNewSelect = (list, section) => {
     </div>
     <div class="input-field form-group col-sm-2">
       <select class="modal-select medium-input" name="yes-no">
+        <option value></option>
         <option value="0">No</option>
         <option value="1">Yes</option>
       </select>
@@ -83,8 +84,7 @@ export const sectionProcess = (list) => {
   const fieldsObj = {};
   const fieldsList = [];
   const filteredList = fields.filter((obj) => obj.value);
-  const filteredListLength = filteredList.length;
-  for (let i = 0; i < filteredListLength; i += 2) {
+  for (let i = 0; i < filteredList.length; i += 2) {
     const key = filteredList[i].value;
     const val = filteredList[i + 1].value;
     fieldsObj[key] = val;
