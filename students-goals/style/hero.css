@@ -60,13 +60,18 @@ section:not("student-info") {
   font-weight: 600;
   font-size: 0.9em;
 }
+.table > thead > tr {
+  position: sticky;
+  top: 0px;
+  z-index: 10;
+}
 .tablescroll {
   overflow-y: auto;
   overflow-x: hidden;
   transition: max-height 200ms;
 }
 .visible {
-  max-height: 30em;
+  max-height: 27em;
 }
 .invisible {
   max-height: 0em;
