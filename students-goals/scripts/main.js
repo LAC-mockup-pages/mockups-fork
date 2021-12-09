@@ -29,7 +29,6 @@ $(document).ready(() => {
   //! Navigation variables are defined here as well.
   //! =============================================================
   // const studentInfo =
-  // const currentTestInfo =
 
   // Navigation variables.
   // In Production, update with actual rootUrl and destinations
