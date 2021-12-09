@@ -60,4 +60,32 @@ $(document).ready(() => {
   $(".dob").text(BirthDate);
 
   //* =====================================
+
+  //* Expand underpinned table when section is clicked
+  $(".sub-header").click(function (evnt) {
+    evnt.stopPropagation();
+    $("section .visible").removeClass("visible").addClass("invisible");
+    $(this).siblings(".invisible").removeClass("invisible").addClass("visible");
+    const viewName = $(this).parent().attr("class");
+    console.log("viewName :>> ", viewName);
+    if (viewName === "wioa") return;
+    let tbodyContent = "";
+    // switch (viewName) {
+    //   case "other":
+    //     tbodyContent = createTabeContent(tabeInfo);
+    //     break;
+    //   case "literacy":
+    //     tbodyContent = createBest2Content(best2Info, viewName);
+    //     break;
+    //   default:
+    //     break;
+    // }
+    if (tbodyContent) {
+      // $(`.${viewName} tbody`).append(tbodyContent);
+    } else {
+      $(`.${viewName} .tablescroll table`).replaceWith(
+        `<h2 style="text-align:center">No goal / outcome on record for ${StudentName}`
+      );
+    }
+  });
 });

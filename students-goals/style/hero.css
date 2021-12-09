@@ -71,9 +71,6 @@ section:not("student-info") {
 .invisible {
   max-height: 0em;
 }
-.current table > tbody > tr:hover {
-  background-color: inherit;
-}
 .editable:hover {
   background-color: #d3e4f0;
   cursor: pointer;
