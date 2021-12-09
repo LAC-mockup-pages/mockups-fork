@@ -218,7 +218,9 @@ const GetOutcomeDesc_WIOA = [
   { key: "N5", value: "N5 Did Not Receive HSE/Secondary School Diploma" },
   { key: "N7", value: "N7 Did Not Enter Postsecondary instruction/Training" },
   { key: "N9", value: "N9 Did Not Attain a Postsecondary Credential" },
-  { key: "NS", value: "NS Did Not Survey" }
+  { key: "NS", value: "NS Did Not Survey" },
+  { key: "8", value: "8 Sample outcome, not listed" },
+  { key: "F2", value: "F2 Sample outcome, not listed" }
 ];
 const GetOutcomeinfo_EFF = [
   {
@@ -393,7 +395,7 @@ const GetOutcomeinfo_WIOA = [
     Description: "Got involved in children\u0027s education",
     OutcomeFY: "2018",
     Quarter: "1",
-    OutcomeID: "F1",
+    OutcomeID: "N5",
     OutcomeDate: "",
     SurveyDate: "",
     Employer: "lac",

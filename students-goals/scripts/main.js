@@ -2,12 +2,16 @@
 //* Actions and Logic for local page
 //*=================================================
 
+import { createWioaContent } from "./components/wioa.js";
+
 //! =============================================================
 //! For Development only.
 //! Comment out for Production.
 //! =============================================================
 const studentInfo = GetStudentHeader.slice(0)[0];
-
+const wioaOutcome = GetOutcomeinfo_WIOA.slice(0);
+const credentialList = GetCredentialSource.slice(0);
+const outcomeList = GetOutcomeDesc_WIOA.slice(0);
 //! =============================================================
 
 //*=================================================
@@ -29,6 +33,9 @@ $(document).ready(() => {
   //! Navigation variables are defined here as well.
   //! =============================================================
   // const studentInfo =
+  // const wioaOutcome =
+  // const credentialList =
+  // const outcomeList =
 
   // Navigation variables.
   // In Production, update with actual rootUrl and destinations
@@ -59,6 +66,11 @@ $(document).ready(() => {
   $(".name").text(StudentName);
   $(".dob").text(BirthDate);
 
+  // Populating WIOA table
+  $(".wioa table tbody").append(
+    createWioaContent(wioaOutcome, outcomeList, credentialList)
+  );
+
   //* =====================================
 
   //* Expand underpinned table when section is clicked
@@ -67,7 +79,6 @@ $(document).ready(() => {
     $("section .visible").removeClass("visible").addClass("invisible");
     $(this).siblings(".invisible").removeClass("invisible").addClass("visible");
     const viewName = $(this).parent().attr("class");
-    console.log("viewName :>> ", viewName);
     if (viewName === "wioa") return;
     let tbodyContent = "";
     // switch (viewName) {
