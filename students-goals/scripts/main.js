@@ -67,6 +67,7 @@ $(document).ready(() => {
   $(".dob").text(BirthDate);
 
   // Populating WIOA table
+  //TODO Add case if wioa table is empty for the selected student
   $(".wioa table tbody").append(
     createWioaContent(wioaOutcome, outcomeList, credentialList)
   );
@@ -95,7 +96,7 @@ $(document).ready(() => {
       // $(`.${viewName} tbody`).append(tbodyContent);
     } else {
       $(`.${viewName} .tablescroll table`).replaceWith(
-        `<h2 style="text-align:center">No goal / outcome on record for ${StudentName}`
+        `<h3 style="text-align:center">No goal / outcome on record for ${StudentName}</h3>`
       );
     }
   });
