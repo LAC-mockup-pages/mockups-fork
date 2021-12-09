@@ -24,10 +24,10 @@
   border-bottom-right-radius: 5px;
 }
 .name,
-.long-id {
+.dob {
   font-size: 1.3em;
 }
-.long-id {
+.dob {
   text-align: right;
 }
 section:not("student-info") {
