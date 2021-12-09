@@ -430,7 +430,7 @@ $(document).ready(() => {
         .empty()
         .append(editFormContent)
         .attr({ "data-table": tableName, "data-row-id": rowId });
-      $(".modal-title").empty().text(`Editing ${modalTitle} record ${rowId}`);
+      $(".modal-title").empty().text(`Editing ${modalTitle} record`);
       $("#modalBloc").modal("toggle");
     }
   );
