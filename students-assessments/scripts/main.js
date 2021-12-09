@@ -97,9 +97,9 @@ $(document).ready(() => {
   });
 
   // Populating student name and birthdate
-  const { StudentID, StudentName } = studentInfo;
+  const { BirthDate, StudentName } = studentInfo;
   $(".name").text(StudentName);
-  $(".long-id").text(StudentID);
+  $(".dob").text(`Birth date: ${BirthDate}`);
 
   // Populating current assessment table
   const currentContent = createCurrentContent(currentTestInfo, "current");

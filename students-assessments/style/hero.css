@@ -21,10 +21,10 @@
   margin-top: 1%;
 }
 .name,
-.long-id {
+.dob {
   font-size: 1.3em;
 }
-.long-id {
+.dob {
   text-align: right;
 }
 section:not("student-info") {
