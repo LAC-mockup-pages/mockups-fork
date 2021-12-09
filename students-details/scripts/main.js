@@ -296,11 +296,13 @@ $(document).ready(() => {
       $("#edit-form [required]").serializeArray()
     );
     const requiredWithoutValue = [];
+    // Checking if required fields have a valid value.
+    // Switching background color to yellow if not, and stopping
+    // the save process.
     for (const key in requiredObj) {
       if (!requiredObj[key]) requiredWithoutValue.push(key);
     }
     if (requiredWithoutValue.length > 0) {
-      // Yellow background for empty required fields
       for (const field of requiredWithoutValue) {
         $(`.modal-body [name=${field}]`).css("background-color", "#f7e095");
       }
@@ -309,7 +311,9 @@ $(document).ready(() => {
       const saveList = $(elements).serializeArray();
       let saveObj = createObject(saveList);
       const targetTable = $("#edit-form").attr("data-table");
-
+      // Adding ID of edited record if  it exists.
+      const rowId = $("#edit-form").attr("data-row-id");
+      if (rowId) saveObj = { ID: rowId, ...saveObj };
       const sectionName = $("#edit-form select:first-of-type").attr("name");
       if (["barrier", "population"].includes(sectionName)) {
         const sectionDdl =
