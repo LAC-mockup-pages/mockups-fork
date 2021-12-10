@@ -58,7 +58,7 @@ section:not(.student-info) {
   width: 100%;
   border-bottom: none;
 }
-.form:not(#edit-form) .input-field > select {
+.form:not(#edit-form) .modal-select {
   width: 100%;
   font-size: 0.9em;
   border-bottom: none;
