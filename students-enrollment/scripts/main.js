@@ -149,8 +149,17 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const rowId = $(this).attr("id");
     const $row = $(":input", this).clone().prop("disabled", false);
+    const sectionTitle = $(this)
+      .parents("section")
+      .find(".sub-header-title")
+      .text();
+    console.log("sectionTitle :>> ", sectionTitle);
     $("#modalBloc").modal("toggle");
-    $("#edit-form").empty().append($row).attr("data-id", rowId);
+    $("#edit-form")
+      .empty()
+      .append($row)
+      .attr({ "data-id": rowId, "data-table": "GetEnroll" });
+    $(".modal-title").empty().text(`Editing ${sectionTitle} record`);
     $("#edit-form :input").each(function (indx) {
       const name = $(this).attr("name");
       const labels = {
