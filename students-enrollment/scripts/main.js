@@ -10,24 +10,23 @@ const DT = luxon.DateTime;
 //! For Development only.
 //! Comment out for Production.
 //! =============================================================
-const enrollmentList = GetEnroll.slice(0).filter(
-  (record) => record.ISCMP === "0"
-);
+const enrollment = GetEnroll.slice(0);
 const studentInfo = GetStudentHeader.slice(0)[0];
 const courseList = GetInstructionSource.slice(0);
 const caseCourseList = GetInstructionSource_CM.slice(0);
 const exitReasons = GetExitReasonSource.slice(0);
 const transferTo = GetTransferTo.slice(0);
-const caseList = GetEnroll.slice(0).filter((record) => record.ISCMP === "1");
+const hoursSummary = GetHours.slice(0);
+const hoursHistory = GetHoursHistory.slice(0);
+
+//! =============================================================
 const courseCodeList = courseList.map((record) => {
   const { key, value } = record;
   const courseCode = value.split(" ")[0];
   return { key, value: courseCode };
 });
-const hoursSummary = GetHours.slice(0);
-const hoursHistory = GetHoursHistory.slice(0);
-
-//! =============================================================
+const enrollmentList = enrollment.filter((record) => record.ISCMP === "0");
+const caseList = enrollment.filter((record) => record.ISCMP === "1");
 
 export const dateFormat = (str) => {
   return `${str.slice(-4)}-${str.substr(0, 2)}-${str.substr(3, 2)}`;
@@ -77,6 +76,14 @@ $(document).ready(() => {
   //! Navigation variables are defined here as well.
   //! =============================================================
   // const studentInfo =
+  // const enrollment =
+  // const courseList =
+  // const caseCourseList =
+  // const exitReasons =
+  // const transferTo =
+  // const hoursSummary =
+  // const hoursHistory =
+
   // Navigation variables.
   // In Production, update with actual rootUrl and destinations
   // once they are known.

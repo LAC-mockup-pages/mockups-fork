@@ -68,9 +68,9 @@ section:not(.student-info) {
   background-color: inherit;
 }
 
-.form:not(#edit-form):hover {
+/* .form:not(#edit-form):hover {
   background-color: #d3e4f0;
-}
+} */
 
 .table tbody {
   background-color: inherit;
