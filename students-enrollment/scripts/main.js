@@ -170,6 +170,10 @@ $(document).ready(() => {
         Transfer_PKID: "Transfer to",
         ActiveStatus: "Active"
       };
+
+      const required = ["DescriptionKey", "EnrollDate", "ActiveStatus"];
+      for (const name of required)
+        $(`#edit-form [name=${name}]`).prop("required", true);
       if (name.includes("Date")) {
         const formattedDate = DT.fromFormat($(this).val(), "D").toISODate();
         $(this).val(formattedDate).attr("type", "date");
