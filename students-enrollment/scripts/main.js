@@ -187,4 +187,45 @@ $(document).ready(() => {
     $(".contact-hours .sub-header").toggleClass("active inactive");
     $(".contact-hours table").toggleClass("hidden");
   });
+
+  //* Saving changes after editing in modal
+  $("#save-btn").click(function (evnt) {
+    //TODO Check for errors in inputs
+    const elements = $("#edit-form :input").prop("disabled", false);
+    const requiredObj = createObject(
+      $("#edit-form [required]").serializeArray()
+    );
+    const requiredWithoutValue = [];
+    // Checking if required fields have a valid value.
+    // Switching background color to yellow if not, and stopping
+    // the save process.
+    for (const key in requiredObj) {
+      if (!requiredObj[key]) requiredWithoutValue.push(key);
+    }
+    if (requiredWithoutValue.length > 0) {
+      for (const field of requiredWithoutValue) {
+        $(`.modal-body [name=${field}]`).css("background-color", "#f7e095");
+      }
+      return;
+    } else {
+      const saveList = $(elements).serializeArray();
+      let saveObj = createObject(saveList);
+      const targetTable = $("#edit-form").attr("data-table");
+      // Adding ID of edited record if  it exists.
+      const rowId = $("#edit-form").attr("data-id");
+      if (rowId) saveObj = { ID: rowId, ...saveObj };
+      const credentials = createCredentials();
+      //! =================================================
+      //! For production, this is the end point for the Post request
+      //! to update the DB.
+      //! =================================================
+      const resultList = [
+        targetTable,
+        JSON.stringify({ ...credentials, Student_PKID, ...saveObj })
+      ];
+      console.log("result :", resultList);
+      //! =================================================
+      $("#modalBloc").modal("toggle");
+    }
+  });
 });
