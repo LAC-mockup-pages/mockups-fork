@@ -53,7 +53,8 @@ export const enrollValues = (
       ActiveStatus
     );
     const row = `
-    <tr id=${ID}>
+    <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip"
+    data-placement="left" >
       <td>
         <div class="form-group input-field">
         <select class="modal-select" disabled name="DescriptionKey">

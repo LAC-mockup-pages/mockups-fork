@@ -140,6 +140,8 @@ $(document).ready(() => {
     [...courseCodeList, ...GetInstructionSource_CM],
     ".hours-history"
   );
+  // Enables customized tooltips
+  $("[data-toggle='tooltip']").tooltip();
   // ctedValues(ctedList, ctedSource);
   //* =====================================
 
