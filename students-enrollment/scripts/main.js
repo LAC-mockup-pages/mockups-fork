@@ -160,6 +160,7 @@ $(document).ready(() => {
       .append($row)
       .attr({ "data-id": rowId, "data-table": "GetEnroll" });
     $(".modal-title").empty().text(`Editing ${sectionTitle} record`);
+    const requiredList = ["DescriptionKey", "EnrollDate", "ActiveStatus"];
     $("#edit-form :input").each(function (indx) {
       const name = $(this).attr("name");
       const labels = {
@@ -170,10 +171,6 @@ $(document).ready(() => {
         Transfer_PKID: "Transfer to",
         ActiveStatus: "Active"
       };
-
-      const required = ["DescriptionKey", "EnrollDate", "ActiveStatus"];
-      for (const name of required)
-        $(`#edit-form [name=${name}]`).prop("required", true);
       if (name.includes("Date")) {
         const formattedDate = DT.fromFormat($(this).val(), "D").toISODate();
         $(this).val(formattedDate).attr("type", "date");
@@ -182,6 +179,19 @@ $(document).ready(() => {
         .wrap("<div class='form-group input-field'></div>")
         .before(`<label for=${name}>${labels[name]}</label>`);
     });
+    for (const name of requiredList) {
+      $(`#edit-form [name=${name}]`)
+        .prop("required", true)
+        .attr({
+          "data-original-title": "Please fill in this field",
+          "data-toggle": "tooltip",
+          "data-placement": "right"
+        })
+        .siblings("label")
+        .addClass("red-text");
+    }
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
   });
 
   //* Switches Contact hours summary and history tables

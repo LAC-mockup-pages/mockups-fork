@@ -30,6 +30,9 @@
 .long-id {
   text-align: right;
 }
+.light-red-text {
+  color: rgb(246, 133, 133);
+}
 section:not(.student-info) {
   margin-top: 1%;
 }
