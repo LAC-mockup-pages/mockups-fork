@@ -90,7 +90,8 @@ section:not(.student-info) {
   font-weight: 400;
   line-height: 1.3em;
 }
-.table select:disabled {
+.table select:disabled,
+.table input:disabled {
   opacity: 1;
   background-color: inherit;
 }
