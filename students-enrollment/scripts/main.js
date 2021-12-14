@@ -18,7 +18,7 @@ const exitReasons = GetExitReasonSource.slice(0);
 const transferTo = GetTransferTo.slice(0);
 const hoursSummary = GetHours.slice(0);
 const hoursHistory = GetHoursHistory.slice(0);
-const noteContent = GetNote.slice(0)[0];
+const noteContent = GetStudentNotes.slice(0)[0];
 
 //! =============================================================
 const courseCodeList = courseList.map((record) => {
@@ -144,6 +144,7 @@ $(document).ready(() => {
     [...courseCodeList, ...GetInstructionSource_CM],
     ".hours-history"
   );
+  $(".note-display").text(`${noteContent.OtherCodeNote}`);
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
   // ctedValues(ctedList, ctedSource);
@@ -200,6 +201,19 @@ $(document).ready(() => {
     $("[data-toggle='tooltip']").tooltip();
   });
 
+  //* Trigger modal editing for notes
+  $(".notes").click(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+
+    const textElement = $(this).clone().prop("disabled", false);
+    $("#edit-form")
+      .empty()
+      .append(textElement)
+      .attr({ "data-table": "GetStudentNotes" });
+    $(".modal-title").empty().text(`Editing Notes`);
+    $("#modalBloc").modal("toggle");
+  });
   //* Switches Contact hours summary and history tables
   $(".contact-hours .sub-header").click(function (evnt) {
     evnt.stopPropagation();
