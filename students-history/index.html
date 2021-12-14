@@ -66,7 +66,7 @@
     <!-- ! File: /<YOUR_FILE>.aspx -->
     <!-- !============================= -->
 
-    <title>ASISTS STARTER</title>
+    <title>ASISTS Student history</title>
   </head>
   <body>
     <header>
@@ -326,8 +326,89 @@
       </div>
     </div>
     <!-- End Side Nav bar -->
-    <!-- Main display and card carousel -->
-    <main class="main-body container"></main>
+    <!-- Main display -->
+    <main class="main-body container-fluid">
+      <!-- Sub NavBar -->
+      <div class="container-fluid blue-bg blue-light-text sub-navbar">
+        <ul id="sub-nav" class="nav-justified">
+          <li>
+            <a
+              class="blue-light-text blue-bg"
+              href="../students-search/index.html"
+              type="text/html"
+              >Student search</a
+            >
+          </li>
+          <li data-target="profile">
+            <a class="blue-light-text blue-bg" type="text/html">Profile</a>
+          </li>
+          <li data-target="details">
+            <a class="blue-light-text blue-bg" type="text/html"
+              >Student details</a
+            >
+          </li>
+          <li data-target="assessments">
+            <a class="blue-light-text blue-bg" type="text/html">Assessments</a>
+          </li>
+          <li data-target="enrollments">
+            <a class="blue-light-text blue-bg" type="text/html">Enrollment</a>
+          </li>
+          <li data-target="goals">
+            <a class="blue-light-text blue-bg" type="text/html"
+              >Goals | Outcomes</a
+            >
+          </li>
+          <li data-target="history" class="blue-light-bg blue-text">
+            <a type="text/html">Status history</a>
+          </li>
+          <li data-target="case">
+            <a class="blue-light-text blue-bg" type="text/html">Case notes</a>
+          </li>
+        </ul>
+      </div>
+      <!-- End Sub NavBar -->
+      <!-- Student display start -->
+      <div class="container-fluid student-display">
+        <section
+          class="student-info row container-fluid blue-bg blue-light-text"
+        >
+          <div class="col-md-6 name">Student Name</div>
+          <div class="col-md-6 long-id">Birth date</div>
+        </section>
+
+        <section class="status">
+          <div class="sub-header blue-bg blue-light-text">
+            <div class="row">
+              <div class="col-md-2">
+                <button id="add-record" class="btn btn-default">
+                  Add a record
+                </button>
+              </div>
+              <div class="col-md-10">
+                <div class="sub-header-title">History</div>
+              </div>
+            </div>
+          </div>
+          <div class="tablescroll">
+            <!-- <form class="form classes-form"> -->
+            <table class="table table-bordered">
+              <thead>
+                <tr class="blue-light-bg">
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Reason</th>
+                  <th>Test Center</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+            <!-- </form> -->
+          </div>
+        </section>
+      </div>
+    </main>
+    <!-- Student display end -->
+
     <!-- End main display -->
 
     <!-- Modal start -->

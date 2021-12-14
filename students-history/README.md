@@ -1,8 +1,6 @@
-# Starter files
+# Students History page
 
-Page starter set-up with top section and collapsing side navigation bar.
-
-Includes JS and styling.
+Display for a selected student staus history.
 
 ## File structure
 
@@ -28,24 +26,18 @@ NB: Date is last modification date.
 
 ### Dev Notes
 
-To start a new page, create the folder in a new branch.
-
-Copy all the folders and files in `/starter` and paste them in the new folder.
-
-Edit `index.html` with the new page title and `.aspx` file name. Edit the `README.md` file.
-
-| Steps                   | Status | Date |
-| ----------------------- | ------ | ---- |
-| Screenshots             |        |      |
-| Trello card             |        |      |
-| Initial VSC set up      |        |      |
-| Mockup                  |        |      |
-| Roughing/static lay out |        |      |
-| Data objects            |        |      |
-| Main coding             |        |      |
-| Navigation to/from page |        |      |
-| Alpha build             |        |      |
-| Review                  |        |      |
-| Alterations             |        |      |
-| Final review            |        |      |
-| Golden                  |        |      |
+| Steps                   | Status | Date     |
+| ----------------------- | ------ | -------- |
+| Screenshots             | Done   | 12/13/21 |
+| Trello card             |        |          |
+| Initial VSC set up      | Done   | 12/14/21 |
+| Mockup                  |        |          |
+| Roughing/static lay out |        |          |
+| Data objects            |        |          |
+| Main coding             |        |          |
+| Navigation to/from page |        |          |
+| Alpha build             |        |          |
+| Review                  |        |          |
+| Alterations             |        |          |
+| Final review            |        |          |
+| Golden                  |        |          |
