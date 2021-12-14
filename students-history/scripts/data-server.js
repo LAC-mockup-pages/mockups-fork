@@ -1,6 +1,104 @@
 //* Data objects for Students History Page
 //*=================================
 
+const GetHistory = [
+  {
+    ID: "2665637",
+    Student_PKID: "1048303",
+    StatusDate: "10/31/2019",
+    StatusDesc: "Exit",
+    ExitReason: "Auto Exit Tool",
+    GEDCenter: ""
+  },
+  {
+    ID: "2516523",
+    Student_PKID: "1048303",
+    StatusDate: "07/31/2018",
+    StatusDesc: "Exit",
+    ExitReason: "Auto Exit Tool",
+    GEDCenter: ""
+  },
+  {
+    ID: "2182668",
+    Student_PKID: "1048303",
+    StatusDate: "05/01/2017",
+    StatusDesc: "Returned After Exit",
+    ExitReason: "",
+    GEDCenter: ""
+  },
+  {
+    ID: "2133655",
+    Student_PKID: "1048303",
+    StatusDate: "01/31/2017",
+    StatusDesc: "Exit",
+    ExitReason: "Auto Exit Tool",
+    GEDCenter: ""
+  },
+  {
+    ID: "1992479",
+    Student_PKID: "1048303",
+    StatusDate: "10/12/2016",
+    StatusDesc: "Returned After Exit",
+    ExitReason: "",
+    GEDCenter: ""
+  },
+  {
+    ID: "1966801",
+    Student_PKID: "1048303",
+    StatusDate: "07/28/2016",
+    StatusDesc: "Inactive",
+    ExitReason: "",
+    GEDCenter: ""
+  },
+  {
+    ID: "1961724",
+    Student_PKID: "1048303",
+    StatusDate: "07/01/2016",
+    StatusDesc: "Active",
+    ExitReason: "",
+    GEDCenter: ""
+  },
+  {
+    ID: "1951895",
+    Student_PKID: "1048303",
+    StatusDate: "06/20/2016",
+    StatusDesc: "Exit",
+    ExitReason: "Health problems",
+    GEDCenter: ""
+  },
+  {
+    ID: "1937684",
+    Student_PKID: "1048303",
+    StatusDate: "05/14/2016",
+    StatusDesc: "Active",
+    ExitReason: "",
+    GEDCenter: ""
+  },
+  {
+    ID: "1808208",
+    Student_PKID: "1048303",
+    StatusDate: "05/11/2015",
+    StatusDesc: "Referred to TASC",
+    ExitReason: "",
+    GEDCenter: "Alternative Learning Center - 003"
+  },
+  {
+    ID: "1725817",
+    Student_PKID: "1048303",
+    StatusDate: "09/16/2014",
+    StatusDesc: "Active",
+    ExitReason: "",
+    GEDCenter: ""
+  },
+  {
+    ID: "1684146",
+    Student_PKID: "1048303",
+    StatusDate: "06/19/2014",
+    StatusDesc: "Active",
+    ExitReason: "",
+    GEDCenter: ""
+  }
+];
 const GetStatusDescSource = [
   { key: "A", value: "Active" },
   { key: "G", value: "Assessed \u0026 Referred Elsewhere" },
