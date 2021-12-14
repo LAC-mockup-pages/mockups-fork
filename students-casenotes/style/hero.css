@@ -1,0 +1,154 @@
+/* =============================== */
+/* Specific CSS rules              */
+/* =============================== */
+
+/* Sub Nav Bar                     */
+/* =============================== */
+#sub-nav a {
+  font-size: 0.7em;
+  line-height: 2em;
+}
+
+/* Main display                     */
+/* =============================== */
+.student-display {
+  text-align: initial;
+  max-width: 83%;
+  background-color: #f0f0f5;
+  font-size: 0.8em;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1%;
+  border-bottom: 1.2em solid #2479b5;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.name,
+.long-id {
+  font-size: 1.3em;
+}
+.long-id {
+  text-align: right;
+}
+.light-red-text {
+  color: rgb(246, 133, 133);
+}
+section:not(.student-info) {
+  margin-top: 1%;
+}
+.student-info {
+  height: 2.8em;
+  padding-top: 0.4em;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+.sub-header {
+  line-height: 30px;
+  padding-left: 5px;
+  font-size: 1em;
+  font-weight: 600;
+}
+
+.sub-header-title {
+  text-align: right;
+  padding-right: 1%;
+  margin: 0.5% 0%;
+}
+
+.form:not(#edit-form) .input-field > input {
+  font-size: 0.9em;
+  width: 100%;
+  border-bottom: none;
+}
+.form:not(#edit-form) .modal-select {
+  width: 100%;
+  font-size: 0.9em;
+  border-bottom: none;
+}
+.form-group {
+  line-height: 1.7vh;
+  background-color: inherit;
+}
+#add-case,
+#add-enrollment {
+  font-weight: 600;
+  padding: 3px 4px;
+  margin-right: 0px;
+  margin-top: 0.5em;
+}
+.table tbody {
+  background-color: inherit;
+}
+
+/* Tables */
+.table > thead > tr > th {
+  color: #2479b5;
+  font-weight: 600;
+  font-size: 0.9em;
+}
+.table > tbody > tr > td {
+  font-weight: 400;
+  line-height: 1.3em;
+}
+.table select:disabled,
+.table input:disabled {
+  opacity: 1;
+  background-color: inherit;
+}
+
+/* Contact hours */
+.active,
+.inactive {
+  border-bottom: 2px solid #2479b5;
+  cursor: pointer;
+}
+
+.contact-hours table > tbody > tr {
+  background-color: inherit;
+  color: rgb(115, 115, 115);
+}
+.tablescroll {
+  max-height: 11.5em;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.contact-hours thead > tr,
+.classes thead > tr {
+  position: sticky;
+  top: 0px;
+  z-index: 10;
+}
+.inactive {
+  color: #2479b5;
+  background-color: #d3e4f0;
+}
+
+.active {
+  color: #d3e4f0;
+  background-color: #2479b5;
+}
+.active:hover,
+.inactive:hover {
+  font-style: italic;
+}
+.align-right {
+  text-align: right;
+}
+
+/* Enrollment */
+
+/* Notes */
+.notes {
+  margin-bottom: 1em;
+  /* max-height: 20vh; */
+}
+.note-display {
+  width: 45vw;
+  max-height: 15%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+.note-display:hover {
+  cursor: pointer;
+  box-shadow: 6px 6px #d3e4f0;
+}
