@@ -66,7 +66,9 @@ $(document).ready(() => {
     profile: "students-profile/index.html",
     assessments: "student-assessments/index.html",
     enrollment: "student-enrollment/index.html",
-    goals: "student-goals/index.html"
+    goals: "student-goals/index.html",
+    history: "student-history/index.html",
+    casenotes: "students-casenotes/index.html"
   };
 
   //! =============================================================
