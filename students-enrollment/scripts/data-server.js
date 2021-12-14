@@ -1037,3 +1037,10 @@ const GetHoursHistory = [
     JunHours: ""
   }
 ];
+const GetNote = [
+  {
+    Student_PKID: "1048303",
+    NoteContent:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ornare arcu dui vivamus arcu felis bibendum ut. Risus nec feugiat in fermentum posuere urna. In hac habitasse platea dictumst vestibulum rhoncus est. Elit scelerisque mauris pellentesque pulvinar pellentesque habitant. Ut ornare lectus sit amet est placerat in. Ullamcorper dignissim cras tincidunt lobortis feugiat vivamus at augue eget."
+  }
+];

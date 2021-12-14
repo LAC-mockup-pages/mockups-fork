@@ -18,6 +18,7 @@ const exitReasons = GetExitReasonSource.slice(0);
 const transferTo = GetTransferTo.slice(0);
 const hoursSummary = GetHours.slice(0);
 const hoursHistory = GetHoursHistory.slice(0);
+const noteContent = GetNote.slice(0)[0];
 
 //! =============================================================
 const courseCodeList = courseList.map((record) => {
@@ -83,6 +84,7 @@ $(document).ready(() => {
   // const transferTo =
   // const hoursSummary =
   // const hoursHistory =
+  // const noteContent =
 
   // Navigation variables.
   // In Production, update with actual rootUrl and destinations
