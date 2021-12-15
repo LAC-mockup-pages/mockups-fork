@@ -1037,6 +1037,13 @@ const GetHoursHistory = [
     JunHours: ""
   }
 ];
+// const GetStudentNotes = [
+//   { Student_PKID: "1048303", OtherCodeNote: "Other code \nhard return line 2" }
+// ];
 const GetStudentNotes = [
-  { Student_PKID: "1048303", OtherCodeNote: "Other code \nhard return line 2" }
+  {
+    Student_PKID: "1048303",
+    OtherCodeNote:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. \nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur."
+  }
 ];

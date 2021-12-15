@@ -205,15 +205,18 @@ $(document).ready(() => {
   $(".notes").click(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-
-    const textElement = $(this).clone().prop("disabled", false);
+    const $textElement = $(this).clone();
     $("#edit-form")
       .empty()
-      .append(textElement)
+      .append($textElement.children())
       .attr({ "data-table": "GetStudentNotes" });
-    $(".modal-title").empty().text(`Editing Notes`);
+    $("#edit-form textarea")
+      .prop("disabled", false)
+      .toggleClass("note-display note-edit");
+    $(".modal-title").empty().text("Editing Student Notes");
     $("#modalBloc").modal("toggle");
   });
+
   //* Switches Contact hours summary and history tables
   $(".contact-hours .sub-header").click(function (evnt) {
     evnt.stopPropagation();
@@ -242,9 +245,18 @@ $(document).ready(() => {
       }
       return;
     } else {
-      const saveList = $(elements).serializeArray();
-      let saveObj = createObject(saveList);
       const targetTable = $("#edit-form").attr("data-table");
+      const saveList =
+        targetTable === "GetStudentNotes"
+          ? [
+              {
+                name: "OtherCodeNote",
+                value: `${$("#edit-form textarea").val()}`
+              }
+            ]
+          : $(elements).serializeArray();
+      let saveObj = createObject(saveList);
+
       // Adding ID of edited record if  it exists.
       const rowId = $("#edit-form").attr("data-id");
       if (rowId) saveObj = { ID: rowId, ...saveObj };
