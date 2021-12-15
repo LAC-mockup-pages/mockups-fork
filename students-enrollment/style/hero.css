@@ -96,6 +96,14 @@ section:not(.student-info) {
   background-color: inherit;
 }
 
+.form tbody > tr > td:nth-child(2),
+.form tbody > tr > td:nth-child(3) {
+  width: 6em;
+}
+.form tbody > tr > td:nth-child(1) {
+  width: 20em;
+}
+
 /* Contact hours */
 .active,
 .inactive {
@@ -140,7 +148,6 @@ section:not(.student-info) {
 /* Notes */
 .notes {
   margin-bottom: 1em;
-  /* max-height: 20vh; */
 }
 .note-display,
 .note-edit {
@@ -159,4 +166,9 @@ section:not(.student-info) {
   font-size: 1.2em;
   margin-left: auto;
   margin-right: auto;
+}
+
+.note-display {
+  font-weight: 400;
+  font-size: 1.1em;
 }
