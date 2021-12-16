@@ -99,6 +99,9 @@ section:not(.student-info) {
 .history-table tbody tr td:nth-child(1) {
   width: 7em;
 }
+/* .history-table tbody tr td:nth-child(3) {
+  width: 12em;
+} */
 
 /* Contact hours */
 .active,

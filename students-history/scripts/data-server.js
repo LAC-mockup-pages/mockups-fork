@@ -32,8 +32,8 @@ const GetHistory = [
     StatusDesc: "Returned After Exit",
     ExitReasonID: "",
     ExitReason: "",
-    GEDCenterID: "",
-    GEDCenter: ""
+    GEDCenterID: "24",
+    GEDCenter: "Bronx Adult Learning Center - NYCDOE - 185"
   },
   {
     ID: "2133655",
@@ -63,8 +63,8 @@ const GetHistory = [
     StatusDate: "07/28/2016",
     StatusID: "L",
     StatusDesc: "Inactive",
-    ExitReasonID: "",
-    ExitReason: "",
+    ExitReasonID: "K",
+    ExitReason: "Entered other education program",
     GEDCenterID: "",
     GEDCenter: ""
   },
