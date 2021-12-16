@@ -55,7 +55,7 @@ section:not(.student-info) {
   margin: 0.5% 0%;
 }
 
-.form:not(#edit-form) .input-field > input {
+.history-table .input-field > input {
   font-size: 0.9em;
   width: 100%;
   border-bottom: none;
@@ -96,6 +96,10 @@ section:not(.student-info) {
   background-color: inherit;
 }
 
+.history-table tbody tr td:nth-child(1) {
+  width: 7em;
+}
+
 /* Contact hours */
 .active,
 .inactive {
@@ -108,11 +112,11 @@ section:not(.student-info) {
   color: rgb(115, 115, 115);
 }
 .tablescroll {
-  max-height: 11.5em;
+  max-height: 35em;
   overflow-y: auto;
   overflow-x: hidden;
 }
-.contact-hours thead > tr,
+.history-table thead > tr,
 .classes thead > tr {
   position: sticky;
   top: 0px;
