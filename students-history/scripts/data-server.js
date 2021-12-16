@@ -6,96 +6,132 @@ const GetHistory = [
     ID: "2665637",
     Student_PKID: "1048303",
     StatusDate: "10/31/2019",
+    StatusID: "J",
     StatusDesc: "Exit",
+    ExitReasonID: "O",
     ExitReason: "Auto Exit Tool",
+    GEDCenterID: "",
     GEDCenter: ""
   },
   {
     ID: "2516523",
     Student_PKID: "1048303",
     StatusDate: "07/31/2018",
+    StatusID: "J",
     StatusDesc: "Exit",
+    ExitReasonID: "O",
     ExitReason: "Auto Exit Tool",
+    GEDCenterID: "",
     GEDCenter: ""
   },
   {
     ID: "2182668",
     Student_PKID: "1048303",
     StatusDate: "05/01/2017",
+    StatusID: "Z",
     StatusDesc: "Returned After Exit",
+    ExitReasonID: "",
     ExitReason: "",
+    GEDCenterID: "",
     GEDCenter: ""
   },
   {
     ID: "2133655",
     Student_PKID: "1048303",
     StatusDate: "01/31/2017",
+    StatusID: "J",
     StatusDesc: "Exit",
+    ExitReasonID: "O",
     ExitReason: "Auto Exit Tool",
+    GEDCenterID: "",
     GEDCenter: ""
   },
   {
     ID: "1992479",
     Student_PKID: "1048303",
     StatusDate: "10/12/2016",
+    StatusID: "Z",
     StatusDesc: "Returned After Exit",
+    ExitReasonID: "",
     ExitReason: "",
+    GEDCenterID: "",
     GEDCenter: ""
   },
   {
     ID: "1966801",
     Student_PKID: "1048303",
     StatusDate: "07/28/2016",
+    StatusID: "L",
     StatusDesc: "Inactive",
+    ExitReasonID: "",
     ExitReason: "",
+    GEDCenterID: "",
     GEDCenter: ""
   },
   {
     ID: "1961724",
     Student_PKID: "1048303",
     StatusDate: "07/01/2016",
+    StatusID: "A",
     StatusDesc: "Active",
+    ExitReasonID: "",
     ExitReason: "",
+    GEDCenterID: "",
     GEDCenter: ""
   },
   {
     ID: "1951895",
     Student_PKID: "1048303",
     StatusDate: "06/20/2016",
+    StatusID: "J",
     StatusDesc: "Exit",
+    ExitReasonID: "A",
     ExitReason: "Health problems",
+    GEDCenterID: "",
     GEDCenter: ""
   },
   {
     ID: "1937684",
     Student_PKID: "1048303",
     StatusDate: "05/14/2016",
+    StatusID: "A",
     StatusDesc: "Active",
+    ExitReasonID: "",
     ExitReason: "",
+    GEDCenterID: "",
     GEDCenter: ""
   },
   {
     ID: "1808208",
     Student_PKID: "1048303",
     StatusDate: "05/11/2015",
+    StatusID: "N",
     StatusDesc: "Referred to TASC",
+    ExitReasonID: "",
     ExitReason: "",
+    GEDCenterID: "208",
     GEDCenter: "Alternative Learning Center - 003"
   },
   {
     ID: "1725817",
     Student_PKID: "1048303",
     StatusDate: "09/16/2014",
+    StatusID: "A",
     StatusDesc: "Active",
+    ExitReasonID: "",
     ExitReason: "",
+    GEDCenterID: "",
     GEDCenter: ""
   },
   {
     ID: "1684146",
     Student_PKID: "1048303",
     StatusDate: "06/19/2014",
+    StatusID: "A",
     StatusDesc: "Active",
+    ExitReasonID: "",
     ExitReason: "",
+    GEDCenterID: "",
     GEDCenter: ""
   }
 ];
