@@ -135,6 +135,19 @@ const GetHistory = [
     GEDCenter: ""
   }
 ];
+const GetStudentHeader = [
+  {
+    ID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    StudentName: "AA1_Jacques, Gregory ",
+    BirthDate: "07/12/1987",
+    Pop_Order: "",
+    POPHours: "",
+    POP_Status: "",
+    FY_Funding: "Not Enrolled",
+    OtherCode: ""
+  }
+];
 const GetStatusDescSource = [
   { key: "A", value: "Active" },
   { key: "G", value: "Assessed \u0026 Referred Elsewhere" },
