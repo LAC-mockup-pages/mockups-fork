@@ -112,7 +112,7 @@ section:not(.student-info) {
   color: rgb(115, 115, 115);
 }
 .tablescroll {
-  max-height: 35em;
+  max-height: 30em;
   overflow-y: auto;
   overflow-x: hidden;
 }
