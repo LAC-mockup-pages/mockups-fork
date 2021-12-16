@@ -64,5 +64,5 @@ $(document).ready(() => {
   // Populating student name and birthdate
   const { BirthDate, StudentName } = studentInfo;
   $(".name").text(StudentName);
-  $(".dob").text(BirthDate);
+  $(".long-id").text(`Date of birth: ${BirthDate}`);
 });
