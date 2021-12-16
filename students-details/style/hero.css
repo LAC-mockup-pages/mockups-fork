@@ -95,12 +95,9 @@
   line-height: 1.3em;
   background-color: inherit;
 }
-/* .table:not(.employment-table) > tbody > tr:hover {
-  background-color: inherit;
-} */
 .children-table input {
   text-align: right;
-  width: 40%;
+  width: 100%;
   border-bottom: none;
 }
 .assistance-table input,
@@ -114,6 +111,14 @@
 }
 .parent select {
   width: 9%;
+}
+/* Children section */
+.children-table .form-group {
+  margin-bottom: 0em;
+  line-height: 2em;
+}
+.children-table tbody tr:nth-child(2) input {
+  text-align: left;
 }
 
 /* Population section */

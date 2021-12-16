@@ -89,6 +89,7 @@ export const genderValues = (student) => {
     <div class="input-field form-group">
       ${labelElement}
       <select disabled required class="modal-select" name="RaceID" >
+      <option value></option>
         ${optionList}
       </select>
     </div>`;
