@@ -156,7 +156,18 @@ $(document).ready(() => {
   genderValues(studentInfo);
   fundingValues(fundingInfo, fundingSources);
   populationValues(additionalInfo);
-  barriersValues(studentInfo);
+  barriersValues({
+    Homeless: "2",
+    HSGrad: "2",
+    Displaced: "2",
+    Disabled: "2",
+    LowIncome: "2",
+    Migrant: "2",
+    LearningDisabled: "2",
+    Runaway: "2",
+    NonNativeEnglish: "2"
+  });
+  // barriersValues(studentInfo);
   assistanceValues(assistanceInfo, assistanceSource);
   employmentValues(employment, employmentStatus, employmentIncome);
 

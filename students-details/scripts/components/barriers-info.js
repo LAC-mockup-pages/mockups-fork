@@ -10,39 +10,45 @@ import { createOptionList } from "../main.js";
 //          /data-server.js/ddlBarriers
 
 export const barriersValues = (obj) => {
-  const valuesObj = {};
+  let barriersObj = {};
   const keyList = ddlBarriers.map((record) => record.key);
-  for (const key of keyList) {
-    valuesObj[key] = obj[key];
-  }
-  const fieldsWithAnswer = Object.keys(valuesObj).filter(
-    (key) => valuesObj[key] !== "2"
-  );
   const formContent = [];
-  for (const key of fieldsWithAnswer) {
-    const optionList = createOptionList(ddlBarriers, key);
-    const optionListYesNoNA = createOptionList(
-      [
-        { key: "0", value: "No" },
-        { key: "1", value: "Yes" },
-        { key: "2", value: "No answer" }
-      ],
-      valuesObj[key]
-    );
-    const row = `
+  for (const field in obj) {
+    if (keyList.includes(field) && obj[field] !== "2") {
+      barriersObj[field] = obj[field];
+    }
+  }
+  console.log("barriersObj :>> ", barriersObj);
+  if (Object.keys(barriersObj).length) {
+    for (const key in barriersObj) {
+      const keyValue = barriersObj[key];
+      const optionList = createOptionList(ddlBarriers, key);
+      const optionListYesNoNA = createOptionList(
+        [
+          { key: "0", value: "No" },
+          { key: "1", value: "Yes" },
+          { key: "2", value: "No answer" }
+        ],
+        keyValue
+      );
+      const row = `
     <div class="input-field form-group col-sm-8">
       <select class="modal-select" name="barrier" disabled>
+      <option value>Select a value</option>
         ${optionList}
       </select>
     </div>
     <div class="input-field form-group col-sm-2">
       <select class="modal-select" name="yes-no" disabled>
-        ${optionListYesNoNA}
+             ${optionListYesNoNA}
       </select>
     </div>
     <div class="col-sm-2"></div>`;
-    formContent.push(row);
+      formContent.push(row);
+    }
+  } else {
   }
+
   $(".barriers-form").append(
     `<div class="row">
       ${formContent.join("")}
