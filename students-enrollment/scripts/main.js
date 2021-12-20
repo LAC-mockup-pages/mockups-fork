@@ -45,20 +45,6 @@ export const createOptionList = (dataObj, defaultValue) => {
   return optionList.join("");
 };
 
-export const createStaffList = (list) => {
-  const orderedList = list.sort((item1, item2) =>
-    item1.InstructorName < item2.InstructorName
-      ? -1
-      : item1.InstructorName > item2.InstructorName
-      ? 1
-      : 0
-  );
-  return orderedList.map((staff) => {
-    const { ID, InstructorName } = staff;
-    return { objKey: ID, objValue: InstructorName };
-  });
-};
-
 //*=================================================
 //* jQuery section
 //*=================================================
