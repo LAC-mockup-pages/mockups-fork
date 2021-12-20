@@ -8,7 +8,6 @@ import { createOptionList } from "../main.js";
 
 // Data sources: /original-data/student-data.js/GetStudent
 //          /data-server.js/ddlBarriers
-
 export const barriersValues = (obj) => {
   let barriersObj = {};
   const keyList = ddlBarriers.map((record) => record.key);
@@ -21,7 +20,7 @@ export const barriersValues = (obj) => {
   const yesNoNAList = [
     { key: "0", value: "No" },
     { key: "1", value: "Yes" },
-    { key: "2", value: "No-answer" }
+    { key: "2", value: "No answer" }
   ];
   let optionList = createOptionList(ddlBarriers);
   let optionListYesNoNA = createOptionList(yesNoNAList, "2");

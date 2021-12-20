@@ -155,6 +155,12 @@ $(document).ready(() => {
   ssnValues(studentInfo);
   genderValues(studentInfo);
   fundingValues(fundingInfo, fundingSources);
+  // populationValues({
+  //   Correctional: "2",
+  //   Institutionalized: "2",
+  //   HeadHouse: "2",
+  //   OtherEd: "2"
+  // });
   populationValues(additionalInfo);
   // barriersValues({
   //   Homeless: "2",
@@ -384,7 +390,12 @@ $(document).ready(() => {
       // Allows to jump to buttons without generating a new Barrier select
       // element
       if (!$(this).val()) return;
-      addNewSelect(ddlBarriers, "barrier");
+
+      if ($("#edit-form").attr("data-table") === "GetStudent") {
+        addNewSelect(ddlBarriers, "barrier");
+      } else {
+        addNewSelect(ddlPopulation, "population");
+      }
     }
   );
 

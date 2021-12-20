@@ -9,65 +9,54 @@ import { createOptionList } from "../main.js";
 // Data sources: /original-data/student-data-additional.js/GetStudent_Additional
 //            /data-server.js/ddlPopulation
 export const populationValues = (obj) => {
-  const {
-    Correctional,
-    Institutionalized,
-    HeadHouse,
-    OtherEd,
-    Veteran,
-    DislocatedWorker,
-    EmployedAt200P,
-    RuralResident,
-    FamilyLiteracy,
-    Parole,
-    CommCorrection,
-    OtherPopulation,
-    OtherDescription
-  } = obj;
-  const valuesObj = {
-    Correctional,
-    Institutionalized,
-    HeadHouse,
-    OtherEd,
-    Veteran,
-    DislocatedWorker,
-    EmployedAt200P,
-    RuralResident,
-    FamilyLiteracy,
-    Parole,
-    CommCorrection,
-    OtherPopulation
-  };
-  const fieldsWithAnswer = Object.keys(valuesObj).filter(
-    (key) => valuesObj[key] !== "2"
-  );
-  if (fieldsWithAnswer.length < 1) {
-    $("#add-population").toggleClass("hidden");
-    return;
-  }
+  let populationObj = {};
+  const keyList = ddlPopulation.map((record) => record.key);
   const formContent = [];
-  for (const key of fieldsWithAnswer) {
-    const optionList = createOptionList(ddlPopulation, key);
-    const optionListYesNoNA = createOptionList(
-      [
-        { key: "0", value: "No" },
-        { key: "1", value: "Yes" },
-        { key: "2", value: "No answer" }
-      ],
-      valuesObj[key]
-    );
+  for (const field in obj) {
+    if (keyList.includes(field) && obj[field] !== "2") {
+      populationObj[field] = obj[field];
+    }
+  }
+  const yesNoNAList = [
+    { key: "0", value: "No" },
+    { key: "1", value: "Yes" },
+    { key: "2", value: "No-answer" }
+  ];
+  let optionList = createOptionList(ddlPopulation);
+  let optionListYesNoNA = createOptionList(yesNoNAList, "2");
+  if (Object.keys(populationObj).length) {
+    for (const key in populationObj) {
+      const keyValue = populationObj[key];
+      optionList = createOptionList(ddlPopulation, key);
+      optionListYesNoNA = createOptionList(yesNoNAList, keyValue);
+      const row = `
+      <div class="input-field form-group col-sm-8">
+        <select class="modal-select" name="population" disabled>
+        <option value>Select a value</option>
+          ${optionList}
+        </select>
+      </div>
+      <div class="input-field form-group col-sm-4">
+        <select class="modal-select" name="yes-no" disabled>
+              ${optionListYesNoNA}
+        </select>
+      </div>
+    `;
+      formContent.push(row);
+    }
+  } else {
     const row = `
     <div class="input-field form-group col-sm-8">
       <select class="modal-select" name="population" disabled>
+      <option value>Select a value</option>
         ${optionList}
       </select>
     </div>
-    <div class="input-field form-group col-sm-2">
+    <div class="input-field form-group col-sm-4">
       <select class="modal-select" name="yes-no" disabled>
-        ${optionListYesNoNA}
+            ${optionListYesNoNA}
       </select>
-    </div>
-    <div class="col-sm-2"></div>`;
+    </div>`;
     formContent.push(row);
   }
   $(".population-form").append(
@@ -76,5 +65,3 @@ export const populationValues = (obj) => {
     </div>`
   );
 };
-
-export const addNewPopulation = () => {};
