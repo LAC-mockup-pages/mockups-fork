@@ -47,7 +47,7 @@ export const enrollValues = (
     const optionListTransfer = createOptionList(transferList, Transfer_PKID);
     const optionListActive = createOptionList(
       [
-        { key: "", value: "No" },
+        { key: "0", value: "No" },
         { key: "checked", value: "Yes" }
       ],
       ActiveStatus

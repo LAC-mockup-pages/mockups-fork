@@ -172,6 +172,7 @@ $(document).ready(() => {
         .wrap("<div class='form-group input-field'></div>")
         .before(`<label for=${name}>${labels[name]}</label>`);
     });
+
     for (const name of requiredList) {
       $(`#edit-form [name=${name}]`)
         .prop("required", true)
@@ -183,6 +184,7 @@ $(document).ready(() => {
         .siblings("label")
         .addClass("red-text");
     }
+    $("#edit-form [name='DescriptionKey']").prop("disabled", true);
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
@@ -223,7 +225,7 @@ $(document).ready(() => {
     // Switching background color to yellow if not, and stopping
     // the save process.
     for (const key in requiredObj) {
-      if (!requiredObj[key]) requiredWithoutValue.push(key);
+      if (requiredObj[key].length < 1) requiredWithoutValue.push(key);
     }
     if (requiredWithoutValue.length > 0) {
       for (const field of requiredWithoutValue) {
@@ -247,6 +249,7 @@ $(document).ready(() => {
       const rowId = $("#edit-form").attr("data-id");
       if (rowId) saveObj = { ID: rowId, ...saveObj };
       const credentials = createCredentials();
+      if (saveObj.ActiveStatus === "0") saveObj.ActiveStatus = "";
       //! =================================================
       //! For production, this is the end point for the Post request
       //! to update the DB.
