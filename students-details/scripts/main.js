@@ -70,8 +70,8 @@ export const createOptionList = (dataObj, defaultValue) => {
     const keyData = record[key];
     const valueData = record[value];
     const defaultVal =
-      defaultValue && keyData === defaultValue ? " selected" : "";
-    return `<option${defaultVal} value=${keyData}>${valueData}</option>`;
+      defaultValue && keyData === defaultValue ? "selected" : "";
+    return `<option ${defaultVal} value=${keyData}>${valueData}</option>`;
   });
   return optionList.join("");
 };

@@ -19,34 +19,51 @@ export const barriersValues = (obj) => {
     }
   }
   console.log("barriersObj :>> ", barriersObj);
+  const yesNoNAList = [
+    { key: "0", value: "No" },
+    { key: "1", value: "Yes" },
+    { key: "2", value: "No-answer" }
+  ];
+  let optionList = createOptionList(ddlBarriers);
+  let optionListYesNoNA = createOptionList(yesNoNAList, "2");
+  console.log("optionListYesNoNA :>> ", optionListYesNoNA);
+
   if (Object.keys(barriersObj).length) {
     for (const key in barriersObj) {
       const keyValue = barriersObj[key];
-      const optionList = createOptionList(ddlBarriers, key);
-      const optionListYesNoNA = createOptionList(
-        [
-          { key: "0", value: "No" },
-          { key: "1", value: "Yes" },
-          { key: "2", value: "No answer" }
-        ],
-        keyValue
-      );
+      optionList = createOptionList(ddlBarriers, key);
+      optionListYesNoNA = createOptionList(yesNoNAList, keyValue);
       const row = `
+      <div class="input-field form-group col-sm-8">
+        <select class="modal-select" name="barrier" disabled>
+        <option value>Select a value</option>
+          ${optionList}
+        </select>
+      </div>
+      <div class="input-field form-group col-sm-4">
+        <select class="modal-select" name="yes-no" disabled>
+              ${optionListYesNoNA}
+        </select>
+      </div>
+    `;
+      formContent.push(row);
+    }
+  } else {
+    // optionList = createOptionList(ddlBarriers);
+    // optionListYesNoNA = createOptionList(yesNoNAList);
+    const row = `
     <div class="input-field form-group col-sm-8">
       <select class="modal-select" name="barrier" disabled>
       <option value>Select a value</option>
         ${optionList}
       </select>
     </div>
-    <div class="input-field form-group col-sm-2">
+    <div class="input-field form-group col-sm-4">
       <select class="modal-select" name="yes-no" disabled>
-             ${optionListYesNoNA}
+            ${optionListYesNoNA}
       </select>
-    </div>
-    <div class="col-sm-2"></div>`;
-      formContent.push(row);
-    }
-  } else {
+    </div>`;
+    formContent.push(row);
   }
 
   $(".barriers-form").append(
@@ -72,14 +89,14 @@ export const addNewSelect = (list, section) => {
         ${newOptionList}
       </select>
     </div>
-    <div class="input-field form-group col-sm-2">
+    <div class="input-field form-group col-sm-4">
       <select class="modal-select medium-input" name="yes-no">
         <option value></option>
         <option value="0">No</option>
         <option value="1">Yes</option>
       </select>
     </div>
-    <div class="col-sm-2"></div>`;
+    `;
   $("#edit-form .row").append(newSelectLine);
   $(`#edit-form select[name=${section}]:last-of-type`).focus();
 };
