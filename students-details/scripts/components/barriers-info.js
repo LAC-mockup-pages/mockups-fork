@@ -18,7 +18,6 @@ export const barriersValues = (obj) => {
       barriersObj[field] = obj[field];
     }
   }
-  console.log("barriersObj :>> ", barriersObj);
   const yesNoNAList = [
     { key: "0", value: "No" },
     { key: "1", value: "Yes" },
@@ -26,8 +25,6 @@ export const barriersValues = (obj) => {
   ];
   let optionList = createOptionList(ddlBarriers);
   let optionListYesNoNA = createOptionList(yesNoNAList, "2");
-  console.log("optionListYesNoNA :>> ", optionListYesNoNA);
-
   if (Object.keys(barriersObj).length) {
     for (const key in barriersObj) {
       const keyValue = barriersObj[key];
@@ -49,8 +46,6 @@ export const barriersValues = (obj) => {
       formContent.push(row);
     }
   } else {
-    // optionList = createOptionList(ddlBarriers);
-    // optionListYesNoNA = createOptionList(yesNoNAList);
     const row = `
     <div class="input-field form-group col-sm-8">
       <select class="modal-select" name="barrier" disabled>
@@ -65,7 +60,6 @@ export const barriersValues = (obj) => {
     </div>`;
     formContent.push(row);
   }
-
   $(".barriers-form").append(
     `<div class="row">
       ${formContent.join("")}
@@ -78,6 +72,9 @@ export const addNewSelect = (list, section) => {
   const selection = $(`#edit-form [name=${section}]`)
     .serializeArray()
     .map((item) => item.value);
+  // No barrier has a 0 or 1 value  present in the student data
+  // Preventing adding a empty select line in the editing modal.
+  if (!selection[0]) return;
   const updatedDdl = list.filter((record) => !selection.includes(record.key));
   // Checks if there is at least 1 value left in the list
   if (updatedDdl.length < 1) return;
@@ -91,7 +88,7 @@ export const addNewSelect = (list, section) => {
     </div>
     <div class="input-field form-group col-sm-4">
       <select class="modal-select medium-input" name="yes-no">
-        <option value></option>
+        <option value="2">No answer</option>
         <option value="0">No</option>
         <option value="1">Yes</option>
       </select>
@@ -106,7 +103,7 @@ export const sectionProcess = (list) => {
   const fields = $("#edit-form").serializeArray();
   const fieldsObj = {};
   const fieldsList = [];
-  const filteredList = fields.filter((obj) => obj.value);
+  const filteredList = fields.filter((obj) => obj.value || obj.value !== "2");
   for (let i = 0; i < filteredList.length; i += 2) {
     const key = filteredList[i].value;
     const val = filteredList[i + 1].value;
