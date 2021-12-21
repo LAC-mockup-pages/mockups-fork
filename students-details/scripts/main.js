@@ -484,7 +484,7 @@ $(document).ready(() => {
   $("#printing").click((evnt) => {
     evnt.stopPropagation();
     evnt.preventDefault();
-    const docURL = "test.html";
+    const docURL = `/reports/Attachment_R.aspx?st=${Student_PKID}`;
     window.open(docURL, "_blank");
   });
 
