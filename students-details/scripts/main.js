@@ -490,12 +490,16 @@ $(document).ready(() => {
 
   //* Phone numbers dynamic masking
   //* On entry, format the numbers as US phone number (XXX) XXX-XXXX
-  $(document).on("keyup", "#edit-form input[name='Phone2']", function (evnt) {
-    evnt.stopPropagation();
-    evnt.preventDefault();
-    const inputValue = $(this).val();
-    $(this).val(
-      inputValue.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, "($1) $2-$3")
-    );
-  });
+  $(document).on(
+    "keyup",
+    "#edit-form input[name='Phone'], #edit-form input[name='Phone2'], #edit-form input[name='EmergencyPhone']",
+    function (evnt) {
+      evnt.stopPropagation();
+      evnt.preventDefault();
+      const inputValue = $(this).val();
+      $(this).val(
+        inputValue.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, "($1) $2-$3")
+      );
+    }
+  );
 });
