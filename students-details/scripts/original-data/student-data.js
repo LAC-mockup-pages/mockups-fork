@@ -557,7 +557,7 @@ export const GetStudent = [
     State: "NY",
     Zip: "11234",
     Phone: "(212) 803-3000",
-    Phone2: "(212) 803-4000",
+    Phone2: "",
     ContactHome: "False",
     StudEmail: "staff@asists.com",
     EmergencyPhone: "",
