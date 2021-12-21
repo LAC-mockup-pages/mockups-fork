@@ -2,11 +2,14 @@
 //* Actions and Logic for local page
 //*=================================================
 
+import { caseValues } from "./components/case-notes.js";
+
 //! =============================================================
 //! For Development only.
 //! Comment out for Production.
 //! =============================================================
 const studentInfo = GetStudentHeader.slice(0)[0];
+const notesList = GetNotes.slice(0);
 // const wioaOutcome = GetOutcomeinfo_WIOA.slice(0);
 // const credentialList = GetCredentialSource.slice(0);
 // const outcomeList = GetOutcomeDesc_WIOA.slice(0);
@@ -31,6 +34,7 @@ $(document).ready(() => {
   //! Navigation variables are defined here as well.
   //! =============================================================
   // const studentInfo =
+  // const notesList =
   // const wioaOutcome =
   // const credentialList =
   // const outcomeList =
@@ -65,4 +69,11 @@ $(document).ready(() => {
   const { BirthDate, StudentName } = studentInfo;
   $(".name").text(StudentName);
   $(".long-id").text(`Date of birth: ${BirthDate}`);
+
+  // ROUGH-IN Only
+  // Populating table
+  const content = caseValues(notesList);
+  $(".case-table tbody").append(content);
+  // Enables customized tooltips
+  $("[data-toggle='tooltip']").tooltip();
 });
