@@ -462,9 +462,10 @@ $(document).ready(() => {
       $("#modalBloc").modal("toggle");
     }
   );
+
+  //* Editing children section tables
   $(".children-table tbody").click(function (evnt) {
     evnt.stopPropagation();
-
     const elements = $(":disabled", this).clone().prop("disabled", false);
     const record = createObject($(elements).serializeArray());
     console.log("record :>> ", record);
@@ -476,5 +477,14 @@ $(document).ready(() => {
 
     $(".modal-title").empty().text(`Editing School aged children`);
     $("#modalBloc").modal("toggle");
+  });
+
+  //* Printing the document in Educational background section
+  //* PDF doc opens in separate browser tab.
+  $("#printing").click((evnt) => {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const docURL = "test.html";
+    window.open(docURL, "_blank");
   });
 });

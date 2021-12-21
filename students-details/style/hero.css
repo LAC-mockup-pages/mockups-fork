@@ -177,7 +177,8 @@
 
 #add-assistance,
 #add-employment,
-#add-population {
+#add-population,
+#printing {
   font-weight: 600;
   padding: 3px 4px;
   margin-right: 0px;
