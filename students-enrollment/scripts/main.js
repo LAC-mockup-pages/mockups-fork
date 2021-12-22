@@ -2,7 +2,7 @@
 //* Actions and Logic for local page
 //*=================================================
 
-import { enrollValues } from "./components/enrollment.js";
+import { addNewRecord, enrollValues } from "./components/enrollment.js";
 import { hourMonthlyValues } from "./components/hours.js";
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
@@ -268,7 +268,7 @@ $(document).ready(() => {
   $("#add-case, #add-enrollment").click(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    let editFormContent = "";
+    let { editFormContent, ISCMP } = addNewRecord();
     const tableName = "GetEnroll";
     const modalTitle =
       $(this).attr("id") === "add-case" ? "Case" : "Enrollment";
