@@ -25,7 +25,7 @@ const GetNotes = [
     ContactName: "Melfi, Jennifer",
     ContactHours: "1.5",
     ContactNotes: "Test RS 12.5",
-    KeyCodeDescription: "",
+    KeyCodeDescription: "ST-2 Secondary Education/Training - Severity Medium",
     Attachment: "",
     AttachmentLink: ""
   },

@@ -33,8 +33,12 @@
 .light-red-text {
   color: rgb(246, 133, 133);
 }
-section:not(.student-info) {
+.current {
   margin-top: 1%;
+  margin-bottom: 1%;
+}
+textarea {
+  font-size: 0.8em;
 }
 .student-info {
   height: 2.8em;
@@ -69,13 +73,6 @@ section:not(.student-info) {
   line-height: 1.7vh;
   background-color: inherit;
 }
-#add-case,
-#add-enrollment {
-  font-weight: 600;
-  padding: 3px 4px;
-  margin-right: 0px;
-  margin-top: 0.5em;
-}
 .table tbody {
   background-color: inherit;
 }
@@ -96,24 +93,19 @@ section:not(.student-info) {
   background-color: inherit;
 }
 
-/* Contact hours */
+/* Case notes */
 .active,
 .inactive {
   border-bottom: 2px solid #2479b5;
   cursor: pointer;
 }
 
-.contact-hours table > tbody > tr {
-  background-color: inherit;
-  color: rgb(115, 115, 115);
-}
 .tablescroll {
-  max-height: 11.5em;
+  max-height: 30em;
   overflow-y: auto;
   overflow-x: hidden;
 }
-.contact-hours thead > tr,
-.classes thead > tr {
+.case-table thead > tr {
   position: sticky;
   top: 0px;
   z-index: 10;
@@ -135,20 +127,20 @@ section:not(.student-info) {
   text-align: right;
 }
 
-/* Enrollment */
+.case-table td:nth-child(1),
+.case-table td:nth-child(5) {
+  width: 5.5em;
+}
+.case-table td:nth-child(2) {
+  width: 6.5em;
+}
+.case-table td:nth-child(4) {
+  width: 9em;
+}
+.case-table td:nth-child(6) {
+  width: 11em;
+}
 
-/* Notes */
-.notes {
-  margin-bottom: 1em;
-  /* max-height: 20vh; */
-}
-.note-display {
-  width: 45vw;
-  max-height: 15%;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-.note-display:hover {
-  cursor: pointer;
-  box-shadow: 6px 6px #d3e4f0;
+.case-table td:last-child {
+  width: 4em;
 }

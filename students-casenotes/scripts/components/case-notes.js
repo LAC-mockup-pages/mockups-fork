@@ -19,46 +19,43 @@ export const caseValues = (list) => {
     } = record;
     const row = `
   <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left" >
-  <td>
-  <div class="form-field input-group">
-    <input type="text" disabled name="ContactDate" value=${ContactDate}>
-  </div>
-</td>
-<td>
-<div class="form-field input-group">
-  <input type="text" disabled name="ContactDesc" value=${ContactDesc}>
-</div>
-</td>
-<td>
-<div class="form-field input-group">
-  <input type="text" disabled name="KeyCodeDescription" value=${KeyCodeDescription}>
-</div>
-</td>
-<td>
-<div class="form-field input-group">
-  <input type="text" disabled name="ContactName" value=${ContactName}>
-</div>
-</td>
-<td>
-<div class="form-field input-group">
-  <input type="text" disabled name="ContactHours" value=${ContactHours}>
-</div>
-</td>
-<td>
-<div class="form-field input-group">
-  <input type="text" disabled name="ContactNotes" value=${ContactNotes}>
-</div>
-</td>
-<td>
-<div class="form-field input-group">
-  <input type="text" disabled name="Attachment" value='-'>
-</div>
-</td>
-<td>
-<div class="form-field input-group">
-  <input type="text" disabled name="AttachmentLink" value='-'>
-</div>
-</td>
+    <td>
+      <div class="form-group input-field">
+        <input type="text" disabled name="ContactDate" value=${ContactDate}>
+      </div>
+    </td>
+    <td>
+      <div class="form-group input-field">
+        <input type="text" disabled name="ContactDesc" value='${ContactDesc}'>
+      </div>
+    </td>
+    <td>
+      <div class="form-group input-field">
+        <input type="text" disabled name="KeyCodeDescription" value="${KeyCodeDescription.slice(
+          5
+        )}">
+      </div>
+    </td>
+    <td>
+      <div class="form-group input-field">
+        <input type="text" disabled name="ContactName" value="${ContactName}">
+      </div>
+    </td>
+    <td>
+      <div class="form-group input-field">
+        <input type="text" disabled name="ContactHours" value=${ContactHours}>
+      </div>
+    </td>
+    <td>
+      <div class="form-group input-field">
+        <textarea disabled name="ContactNotes" rows="3" cols="30" maxlength="255">${ContactNotes}</textarea>
+      </div>
+    </td>
+    <td>
+      <div class="form-group input-field">
+        <input type="text" disabled name="Attachment" value='Yes'>
+      </div>
+    </td>
   </tr>
 `;
     tableBodyContent.push(row);
