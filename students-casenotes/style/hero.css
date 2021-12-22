@@ -127,9 +127,16 @@ textarea {
   text-align: right;
 }
 
-.case-table td:nth-child(1),
-.case-table td:nth-child(5) {
+.case-table td:nth-child(1) {
   width: 5.5em;
+}
+
+.case-table td:nth-child(5) {
+  width: 5em;
+}
+
+.case-table td:nth-child(5) input {
+  text-align: right;
 }
 .case-table td:nth-child(2) {
   width: 6.5em;
