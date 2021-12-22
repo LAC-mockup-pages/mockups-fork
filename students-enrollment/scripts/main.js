@@ -263,4 +263,21 @@ $(document).ready(() => {
       $("#modalBloc").modal("toggle");
     }
   });
+
+  //* Adding a new record
+  $("#add-case, #add-enrollment").click(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    let editFormContent = "";
+    const tableName = "GetEnroll";
+    const modalTitle =
+      $(this).attr("id") === "add-case" ? "Case" : "Enrollment";
+    $("#edit-form")
+      .empty()
+      .append(editFormContent)
+      .attr("data-table", tableName);
+    $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
+    $("#modalBloc").modal("toggle");
+    //TODO Set color to red for required inputs
+  });
 });

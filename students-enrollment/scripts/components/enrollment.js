@@ -100,3 +100,21 @@ export const enrollValues = (
   }
   $(formName).append(tableBodyContent.join(""));
 };
+
+export const addNewRecord = (courses, reasons, transfers, caseFlag) => {
+  const labels = {
+    DescriptionKey: "Course",
+    EnrollDate: "Started",
+    InactiveDate: "Left",
+    InactiveReason: "Reason",
+    Transfer_PKID: "Transfer to",
+    ActiveStatus: "Active",
+    FY: "Fiscal year"
+  };
+  const content = [];
+  const ISCMP = caseFlag;
+  // createCredentials() ==> helpers/helperFunctions.js
+  const { FiscalYear } = createCredentials();
+  for (const key in labels) {
+  }
+};
