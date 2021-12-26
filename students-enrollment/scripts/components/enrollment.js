@@ -101,9 +101,10 @@ export const enrollValues = (
   $(formName).append(tableBodyContent.join(""));
 };
 
-export const addNewRecord = (courses, reasons, transfers, caseFlag) => {
+export const addNewRecord = (courses, reasons, transfers, caseFlag = "0") => {
   const labels = {
     DescriptionKey: "Course",
+    FY: "Fiscal Year",
     EnrollDate: "Started",
     InactiveDate: "Left",
     InactiveReason: "Reason",

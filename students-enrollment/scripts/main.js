@@ -269,38 +269,24 @@ $(document).ready(() => {
     evnt.stopPropagation();
     evnt.preventDefault();
     let editFormContent = "";
-    let ISCMP = "0";
-    const tableName = "GetEnroll";
     let modalTitle = "Enrollment";
     const buttonId = $(this).attr("id");
     if (buttonId === "add-enrollment") {
-      const studentEnrollment = enrollment.filter(
-        (record) => record.ISCMP === "0"
-      );
-      editFormContent = addNewRecord(
-        studentEnrollment,
-        courseList,
-        exitReasons,
-        transferTo
-      );
+      editFormContent = addNewRecord(courseList, exitReasons, transferTo);
     } else {
-      const studentEnrollment = enrollment.filter(
-        (record) => record.ISCMP === "1"
-      );
       editFormContent = addNewRecord(
-        studentEnrollment,
         caseCourseList,
         exitReasons,
-        transferTo
+        transferTo,
+        "1"
       );
-      ISCMP = "1";
       modalTitle = "Case Management";
     }
 
     $("#edit-form")
       .empty()
       .append(editFormContent)
-      .attr({ "data-table": tableName, "data-iscmp": ISCMP });
+      .attr("data-table", "GetEnroll");
     $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
     $("#modalBloc").modal("toggle");
     //TODO Set color to red for required inputs
