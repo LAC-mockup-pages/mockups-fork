@@ -171,5 +171,6 @@ export const addNewRecord = (courses, reasons, transfers, caseFlag) => {
     `;
     content.push(row);
   }
-  return { editFormContent: content.join(""), ISCMP };
+  const editFormContent = content.join("");
+  return { editFormContent, ISCMP };
 };
