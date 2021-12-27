@@ -290,5 +290,6 @@ $(document).ready(() => {
     $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
     $("#modalBloc").modal("toggle");
     //TODO Set color to red for required inputs
+    //TODO Add yellow coloring for required fields without valid value
   });
 });

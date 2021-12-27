@@ -115,6 +115,7 @@ export const addNewRecord = (courses, reasons, transfers, caseFlag = "0") => {
     ActiveStatus: "Active",
     ISCMP: "ISCMP"
   };
+  const requiredList = ["DescriptionKey", "EnrollDate", "ActiveStatus"];
   const content = [];
   // createCredentials() ==> helpers/helperFunctions.js
   const { FiscalYear } = createCredentials();
@@ -124,15 +125,20 @@ export const addNewRecord = (courses, reasons, transfers, caseFlag = "0") => {
     const labelVal = labels[keyValue];
     let row = "";
     let value = keyValue === "FY" ? FiscalYear : "";
-    const option = keyValue === "FY" ? "disabled" : "";
+    let option = keyValue === "FY" ? "disabled" : "";
 
     if (["FY", "EnrollDate", "InactiveDate", "ISCMP"].includes(keyValue)) {
       // Input fields
       let optionHidden = "form-group";
+
       const type = keyValue.includes("Date") ? "date" : "text";
       if (keyValue === "ISCMP") {
         optionHidden += " hidden";
         value = caseFlag;
+      }
+      if (requiredList.includes(keyValue)) {
+        labelClassVal = "class='red-text'";
+        classVal += `required data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left"`;
       }
       // elementInput() ==> helpers/helperFunctions.js
       row = elementInput({
@@ -172,7 +178,7 @@ export const addNewRecord = (courses, reasons, transfers, caseFlag = "0") => {
         keyValue,
         selectedValue: "",
         labelVal,
-        labelClassVal: "",
+        labelClassVal,
         option: "",
         optionText: ""
       });
