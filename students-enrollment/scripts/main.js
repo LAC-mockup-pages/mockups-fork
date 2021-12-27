@@ -245,7 +245,7 @@ $(document).ready(() => {
           : $(elements).serializeArray();
       let saveObj = createObject(saveList);
 
-      // Adding ID of edited record if  it exists.
+      // Adding ID of edited record if it exists.
       const rowId = $("#edit-form").attr("data-id");
       if (rowId) saveObj = { ID: rowId, ...saveObj };
       const credentials = createCredentials();
@@ -278,7 +278,7 @@ $(document).ready(() => {
         caseCourseList,
         exitReasons,
         transferTo,
-        "1"
+        "1" // Flag to define this is a Case Management record
       );
       modalTitle = "Case Management";
     }

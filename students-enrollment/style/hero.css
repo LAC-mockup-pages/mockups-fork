@@ -65,6 +65,7 @@ section:not(.student-info) {
   font-size: 0.9em;
   border-bottom: none;
 }
+
 .form-group {
   line-height: 1.7vh;
   background-color: inherit;

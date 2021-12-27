@@ -101,6 +101,9 @@ export const enrollValues = (
   $(formName).append(tableBodyContent.join(""));
 };
 
+// Used for Case Management as well as Enrollment
+// caseFlag = '0' sets default value to define the new record as
+// Enrollment
 export const addNewRecord = (courses, reasons, transfers, caseFlag = "0") => {
   const labels = {
     DescriptionKey: "Course",
@@ -113,27 +116,24 @@ export const addNewRecord = (courses, reasons, transfers, caseFlag = "0") => {
     ISCMP: "ISCMP"
   };
   const content = [];
-  const ISCMP = caseFlag;
   // createCredentials() ==> helpers/helperFunctions.js
   const { FiscalYear } = createCredentials();
-  const optionListActive = createOptionList([
-    { key: "0", value: "No" },
-    { key: "checked", value: "Yes" }
-  ]);
   let labelClassVal = "";
   let classVal = "";
-
   for (const keyValue in labels) {
     const labelVal = labels[keyValue];
     let row = "";
-    const value = keyValue === "FY" ? FiscalYear : "";
+    let value = keyValue === "FY" ? FiscalYear : "";
     const option = keyValue === "FY" ? "disabled" : "";
 
     if (["FY", "EnrollDate", "InactiveDate", "ISCMP"].includes(keyValue)) {
       // Input fields
-      const optionHidden =
-        keyValue === "ISCMP" ? "input-group hidden" : "input-group";
+      let optionHidden = "form-group";
       const type = keyValue.includes("Date") ? "date" : "text";
+      if (keyValue === "ISCMP") {
+        optionHidden += " hidden";
+        value = caseFlag;
+      }
       // elementInput() ==> helpers/helperFunctions.js
       row = elementInput({
         keyVal: keyValue,
@@ -149,7 +149,6 @@ export const addNewRecord = (courses, reasons, transfers, caseFlag = "0") => {
       // Select fields: DescriptionKey, InactiveReason, Transfer_PKID,
       // ActiveStatus
       let hashTable = [];
-
       switch (keyValue) {
         case "DescriptionKey":
           hashTable = courses;
@@ -178,9 +177,8 @@ export const addNewRecord = (courses, reasons, transfers, caseFlag = "0") => {
         optionText: ""
       });
     }
-
     content.push(row);
   }
   const editFormContent = content.join("");
-  return { editFormContent, ISCMP };
+  return editFormContent;
 };
