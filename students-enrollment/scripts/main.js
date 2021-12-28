@@ -271,6 +271,7 @@ $(document).ready(() => {
     let editFormContent = "";
     let modalTitle = "Enrollment";
     const buttonId = $(this).attr("id");
+    const requiredList = ["DescriptionKey", "EnrollDate", "ActiveStatus"];
     if (buttonId === "add-enrollment") {
       editFormContent = addNewRecord(courseList, exitReasons, transferTo);
     } else {
@@ -288,8 +289,20 @@ $(document).ready(() => {
       .append(editFormContent)
       .attr("data-table", "GetEnroll");
     $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
+    $("#edit-form :input").each(function (evnt, indx) {
+      if (requiredList.includes($(this).attr("name"))) {
+        $(this)
+          .attr({
+            "data-original-title": "Please fill this field",
+            "data-toggle": "tooltip",
+            "data-placement": "left"
+          })
+          .prop("required", true);
+        $(this).siblings("label").addClass("red-text");
+      }
+    });
     $("#modalBloc").modal("toggle");
-    //TODO Set color to red for required inputs
-    //TODO Add yellow coloring for required fields without valid value
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
   });
 });

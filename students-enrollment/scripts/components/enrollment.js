@@ -115,7 +115,6 @@ export const addNewRecord = (courses, reasons, transfers, caseFlag = "0") => {
     ActiveStatus: "Active",
     ISCMP: "ISCMP"
   };
-  const requiredList = ["DescriptionKey", "EnrollDate", "ActiveStatus"];
   const content = [];
   // createCredentials() ==> helpers/helperFunctions.js
   const { FiscalYear } = createCredentials();
@@ -136,10 +135,10 @@ export const addNewRecord = (courses, reasons, transfers, caseFlag = "0") => {
         optionHidden += " hidden";
         value = caseFlag;
       }
-      if (requiredList.includes(keyValue)) {
-        labelClassVal = "class='red-text'";
-        classVal += `required data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left"`;
-      }
+      // if (requiredList.includes(keyValue)) {
+      //   labelClassVal = "class='red-text'";
+      //   classVal += `required data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left"`;
+      // }
       // elementInput() ==> helpers/helperFunctions.js
       row = elementInput({
         keyVal: keyValue,
