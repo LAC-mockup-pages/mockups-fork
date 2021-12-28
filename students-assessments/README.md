@@ -30,18 +30,18 @@ NB: Date is last modification date.
 
 ### Dev Notes
 
-| Steps                   | Status | Date       |
-| ----------------------- | ------ | ---------- |
-| Screenshots             | Done   | 11/17/2021 |
-| Trello card             | Done   | 11/18/2021 |
-| Initial VSC set up      | Done   | 11/18/2021 |
-| Mockup                  | Done   | 11/23/21   |
-| Roughing/static lay out | Done   | 11/23/2021 |
-| Data objects            |        |            |
-| Main coding             |        |            |
-| Navigation to/from page |        |            |
-| Alpha build             |        |            |
-| Review                  |        |            |
-| Alterations             |        |            |
-| Final review            |        |            |
-| Golden                  |        |            |
+| Steps                   | Status  | Date       |
+| ----------------------- | ------- | ---------- |
+| Screenshots             | Done    | 11/17/2021 |
+| Trello card             | Done    | 11/18/2021 |
+| Initial VSC set up      | Done    | 11/18/2021 |
+| Mockup                  | Done    | 11/23/21   |
+| Roughing/static lay out | Done    | 11/23/2021 |
+| Data objects            | Done    | 12/02/2021 |
+| Main coding             | started | 12/28/2021 |
+| Navigation to/from page |         |            |
+| Alpha build             |         |            |
+| Review                  |         |            |
+| Alterations             |         |            |
+| Final review            |         |            |
+| Golden                  |         |            |
