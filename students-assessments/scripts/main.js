@@ -49,6 +49,9 @@ const createCurrentContent = (dataList, testName, tableName = "") => {
     const row = fieldList.map((key) => `<td>${record[key]}</td>`).join("");
     content += `<tr>${row}</tr>`;
   }
+
+  //TODO Add color for Pre and Post Tests of record
+
   return content;
 };
 //*=================================================
@@ -112,6 +115,8 @@ $(document).ready(() => {
       `<h2 style="text-align:center">No assessment on record for ${StudentName}`
     );
   }
+
+  //Populating the other tables
 
   //* =====================================
 
