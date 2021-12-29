@@ -16,19 +16,6 @@ const GetStudentHeader = [
   }
 ];
 
-// [
-//   {
-//     ID: "1048303",
-//     StudentID: "AA1_JacquesGregoryPRA22620101271987",
-//     StudentName: "AA1_Jacques, Gregory ",
-//     Pop_Order: "",
-//     POPHours: "",
-//     POP_Status: "",
-//     FY_Funding: "Not Enrolled",
-//     OtherCode: ""
-//   }
-// ];
-
 // ddlForm
 const GetForm_BestPlus2 = [
   { key: "D", value: "D" },

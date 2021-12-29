@@ -18,6 +18,11 @@ const tabeInfo = GetTestinfo_TABE11.slice(0);
 const best2Info = GetTests_BestPlus2.slice(0);
 const bestLitInfo = GetTests_BestLit.slice(0);
 const hseInfo = GetTest_TASC.slice(0);
+export const tabeForm = GetForm_TABE11.slice(0);
+export const tabeLevels = GetLevel_TABE11.slice(0);
+export const tabeMode = GetTestMode_TABE11.slice(0);
+export const tabeType = GetType_TABE11.slice(0);
+export const staffList = GetStaff.slice(0);
 //! =============================================================
 
 // Populating a table
@@ -74,6 +79,15 @@ $(document).ready(() => {
   //! =============================================================
   // const studentInfo =
   // const currentTestInfo =
+  // const tabeInfo =
+  // const best2Info =
+  // const bestLitInfo =
+  // const hseInfo =
+  // export const tabeForm =
+  // export const tabeLevels =
+  // export const tabeMode =
+  // export const tabeType =
+  // export const staffList =
 
   // Navigation variables.
   // In Production, update with actual rootUrl and destinations
