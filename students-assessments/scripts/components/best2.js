@@ -76,6 +76,7 @@ export const createBest2Content = (list, test) => {
         </div>
       </td>
     </tr>`;
+    tableBodyContent.push(row);
   }
 
   return tableBodyContent.join("");
