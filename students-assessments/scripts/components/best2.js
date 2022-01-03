@@ -4,12 +4,17 @@
 //* Sections: best-plus2
 //* =======================================
 
+import {
+  bestPlusForm,
+  createOptionList,
+  createStaffList,
+  staffList
+} from "../main.js";
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
 
 export const createBest2Content = (list, test) => {
-  let content = "";
-  const fieldList = [];
+  const tableBodyContent = [];
   const orderedList = list.sort((record1, record2) =>
     // DT#fromFormat <== Luxon method, "D" token describes mm/dd/yyyy format
     DT.fromFormat(record1.TestDate, "D") > DT.fromFormat(record2.TestDate, "D")
@@ -19,5 +24,59 @@ export const createBest2Content = (list, test) => {
       ? 1
       : 0
   );
-  return content;
+  for (const record of orderedList) {
+    const {
+      ID,
+      TestDate,
+      TestForm,
+      Score,
+      NRSLevel,
+      Pre_Post,
+      Personnel_PKID
+    } = record;
+    const optionListForm = createOptionList(bestPlusForm, TestForm);
+    const optionListStaff = createOptionList(
+      createStaffList(staffList),
+      Personnel_PKID
+    );
+    const row = `
+    <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left" >
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="TestDate" value=${TestDate}>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="TestForm">
+            ${optionListForm}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="Score" value=${Score}>
+        </div>
+      </td>
+      <td>
+      <div class="form-group input-field">
+        <input type="text" disabled name="NRSLevel" value=${NRSLevel}>
+      </div>
+    </td>
+    <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="Pre_Post" value=${Pre_Post}>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="Personnel_PKID">
+            ${optionListStaff}
+          </select>
+        </div>
+      </td>
+    </tr>`;
+  }
+
+  return tableBodyContent.join("");
 };
