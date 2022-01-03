@@ -8,18 +8,25 @@ ASISTS 2020 file:
 
 ## File structure
 
-```
-/starter
+```javascript
+/students-assessments
 .
-├── [07/08/21]  README.md
-├── [07/08/21]  index.html
-├── [07/08/21]  scripts
-│   ├── [07/02/21]  data-server.js
-│   ├── [07/08/21]  main.js
-│   └── [07/08/21]  nav-frame.js
-└── [07/08/21]  style
-    ├── [07/08/21]  index.css
-    └── [07/08/21]  nav-frame.css
+├── [12/28/21]  README.md
+├── [01/03/22]  index.html
+├── [12/28/21]  scripts
+│   ├── [12/28/21]  components
+│   │   ├── [01/03/22]  best2.js
+│   │   ├── [12/28/21]  hse.js
+│   │   └── [01/03/22]  tabe.js
+│   ├── [12/29/21]  data-server.js
+│   ├── [01/03/22]  main.js
+│   └── [12/28/21]  nav-frame.js
+└── [12/28/21]  style
+    ├── [12/28/21]  hero.css
+    ├── [12/28/21]  index.css
+    └── [12/28/21]  nav-frame.css
+
+3 directories, 11 files
 ```
 
 NB: Date is last modification date.
