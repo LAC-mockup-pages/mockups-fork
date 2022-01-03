@@ -9,7 +9,9 @@ import {
   tabeLevels,
   tabeMode,
   tabeType,
-  staffList
+  staffList,
+  createOptionList,
+  createStaffList
 } from "../main.js";
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
@@ -98,15 +100,26 @@ export const createTabeContent = (list) => {
         </div>
       </td>
       <td>
-      <div class="form-field input-group">
-      <select class="modal-select" disabled name="TestMode">
-        ${optionListMode}
-      </select>
-    </div>
-  </td>
-
-    `;
+        <div class="form-field input-group">
+        <input type="text" disabled name="ScaleScore" value=${ScaleScore}>
+        </div>
+      </td>
+      <td>
+        <div class="form-field input-group">
+          <input type="text" disabled name="NRSLevel" value=${NRSLevel}>
+        </div>
+      </td>
+      <td>
+        <div class="form-field input-group">
+          <select class="modal-select" disabled name="Personnel_PKID">
+            ${optionListStaff}
+          </select>
+        </div>
+      </td>
+    </tr>
+  `;
+    tableBodyContent.push(row);
   }
 
-  return content;
+  return tableBodyContent.join("");
 };
