@@ -160,8 +160,6 @@ $(document).ready(() => {
     );
   }
 
-  //Populating the other tables
-
   //* =====================================
 
   //* Expand underpinned table when section is clicked
@@ -196,6 +194,8 @@ $(document).ready(() => {
         `<h2 style="text-align:center">No assessment on record for ${StudentName}`
       );
     }
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
   });
 
   //* Triggers edit modal with selected row elements and values
