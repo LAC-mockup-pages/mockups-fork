@@ -6,7 +6,7 @@
 const DT = luxon.DateTime;
 
 import { createTabeContent } from "./components/tabe.js";
-import { createBest2Content } from "./components/best2.js";
+import { createBestContent } from "./components/best2.js";
 import { createHseContent } from "./components/hse.js";
 //! =============================================================
 //! For Development only.
@@ -178,10 +178,10 @@ $(document).ready(() => {
         tbodyContent = createTabeContent(tabeInfo);
         break;
       case "best-plus2":
-        tbodyContent = createBest2Content(best2Info);
+        tbodyContent = createBestContent(best2Info);
         break;
       case "best-lit":
-        tbodyContent = createBest2Content(bestLitInfo);
+        tbodyContent = createBestContent(bestLitInfo);
         break;
       case "hse":
         tbodyContent = createHseContent(hseInfo);

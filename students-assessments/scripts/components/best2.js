@@ -13,7 +13,7 @@ import {
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
 
-export const createBest2Content = (list, test) => {
+export const createBestContent = (list) => {
   const tableBodyContent = [];
   const orderedList = list.sort((record1, record2) =>
     // DT#fromFormat <== Luxon method, "D" token describes mm/dd/yyyy format
