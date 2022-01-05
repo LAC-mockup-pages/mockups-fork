@@ -207,8 +207,22 @@ $(document).ready(() => {
   //* Triggers edit modal with selected row elements and values
   $(document).on("click", ".table>tbody> tr", function (evnt) {
     evnt.stopPropagation();
-    const editFormContent = "<h2>Selected Row</h2>";
+    // const editFormContent = "<h2>Selected Row</h2>";
+    const rowId = $(this).attr("id");
+    const $row = $(":input", this).clone().prop("disabled", false);
+    const sectionTitle = $(this)
+      .parents("section")
+      .find(".sub-header-title")
+      .text();
+    console.log("sectionTitle :>> ", sectionTitle);
+    if (sectionTitle === "Current assessments") return;
     $("#modalBloc").modal("toggle");
-    $("#edit-form").empty().append(editFormContent);
+    const table = $(this).parents("table").attr("data-table");
+    console.log("table :>> ", table);
+    $("#edit-form")
+      .empty()
+      .append($row)
+      .attr({ "data-id": rowId, "data-table": table });
+    $(".modal-title").empty().text(`Editing ${sectionTitle} record`);
   });
 });
