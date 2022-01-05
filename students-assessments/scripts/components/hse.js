@@ -4,9 +4,10 @@
 //* Sections: hse
 //* =======================================
 import {
-  bestPlusForm,
+  hsePredAct,
   createOptionList,
   createStaffList,
+  hseType,
   staffList
 } from "../main.js";
 
@@ -43,7 +44,92 @@ export const createHseContent = (list) => {
       createStaffList(staffList),
       Personnel_PKID
     );
-    const optionListType = createOptionList();
+    const optionListType = createOptionList(hseType, TestType);
+    const optionListPredAct = createOptionList(hsePredAct, PredAct);
+    const optionListPreTest = createOptionList(
+      [
+        { key: "0", value: "No" },
+        { key: "checked", value: "Yes" }
+      ],
+      PreTest
+    );
+    const Score = [Writing, Social, Science, Reading, Math].reduce(
+      (result, item) => result + Number(item),
+      0
+    );
+    const row = `
+    <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left" >
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="TestDate" value=${TestDate}>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="TestType">
+            ${optionListType}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="TestForm" value=${TestForm}>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="Writing" value=${Writing}>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="Social" value=${Social}>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="Science" value=${Science}>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="Reading" value=${Reading}>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="Math" value=${Math}>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="Score" value=${Score}>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="PredAct">
+            ${optionListPredAct}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="PreTest">
+            ${optionListPreTest}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="Personnel_PKID">
+            ${optionListStaff}
+          </select>
+        </div>
+      </td>
+    </tr>
+  `;
+    tableBodyContent.push(row);
   }
   return tableBodyContent.join("");
 };
