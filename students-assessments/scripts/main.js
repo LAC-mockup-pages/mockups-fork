@@ -24,6 +24,8 @@ export const tabeMode = GetTestMode_TABE11.slice(0);
 export const tabeType = GetType_TABE11.slice(0);
 export const staffList = GetStaff.slice(0);
 export const bestPlusForm = GetForm_BestPlus2.slice(0);
+export const hseType = GetType_TASC.slice(0);
+export const hsePredAct = GetType_TASCPredAct.slice(0);
 //! =============================================================
 
 export const dateFormat = (str) => {
@@ -120,6 +122,8 @@ $(document).ready(() => {
   // export const tabeType =
   // export const staffList =
   // export const bestPlusForm =
+  // export const hseType =
+  // export const hsePredAct =
 
   // Navigation variables.
   // In Production, update with actual rootUrl and destinations
