@@ -34,7 +34,20 @@ export const createBest2Content = (list, test) => {
       Pre_Post,
       Personnel_PKID
     } = record;
-    const optionListForm = createOptionList(bestPlusForm, TestForm);
+
+    let elementTestForm = "";
+    if (TestForm) {
+      const optionListForm = createOptionList(bestPlusForm, TestForm);
+      elementTestForm = `
+        <td>
+          <div class="form-group input-field">
+            <select class="modal-select" disabled name="TestForm">
+              ${optionListForm}
+            </select>
+          </div>
+        </td>
+    `;
+    }
     const optionListStaff = createOptionList(
       createStaffList(staffList),
       Personnel_PKID
@@ -46,13 +59,7 @@ export const createBest2Content = (list, test) => {
           <input type="text" disabled name="TestDate" value=${TestDate}>
         </div>
       </td>
-      <td>
-        <div class="form-group input-field">
-          <select class="modal-select" disabled name="TestForm">
-            ${optionListForm}
-          </select>
-        </div>
-      </td>
+        ${elementTestForm}
       <td>
         <div class="form-group input-field">
           <input type="text" disabled name="Score" value=${Score}>
