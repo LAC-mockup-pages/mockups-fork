@@ -92,6 +92,60 @@ const createCurrentContent = (dataList, testName, tableName = "") => {
 
   return content;
 };
+
+const modalOptionTABE = {
+  requiredList: ["TABEDate", "Personnel_PKID"],
+  labels: {
+    TABEDate: "Date",
+    TestType: "Type",
+    TestForm: "Form",
+    TestLevel: "Level",
+    Pre_Post: "Pre/Post",
+    TestMode: "Mode",
+    SubScore1: "Score",
+    ScaleScore: "Scale score",
+    NRSLevel: "NRS/NYRS level",
+    Personnel_PKID: "Administrator"
+  }
+};
+const modalOptionBestPlus = {
+  requiredList: ["TestDate", "Personnel_PKID"],
+  labels: {
+    TestDate: "Date",
+    TestForm: "Form",
+    Score: "Score",
+    NRSLevel: "NRSLevel",
+    Pre_Post: "Pre/Post",
+    Personnel_PKID: "Administrator"
+  }
+};
+const modalOptionBestLit = {
+  requiredList: ["TestDate", "Personnel_PKID"],
+  labels: {
+    TestDate: "Date",
+    Score: "Score",
+    NRSLevel: "NRSLevel",
+    Pre_Post: "Pre/Post",
+    Personnel_PKID: "Administrator"
+  }
+};
+const modalOptionHSE = {
+  requiredList: ["TestDate", "Personnel_PKID"],
+  labels: {
+    TestDate: "Date",
+    TestType: "Type",
+    TestForm: "Form",
+    Writing: "Writing",
+    Social: "Social studies",
+    Science: "Science",
+    Reading: "Reading",
+    Math: "Math",
+    Score: "Total",
+    PredAct: "PredAct",
+    Personnel_PKID: "Administrator"
+  }
+};
+
 //*=================================================
 //* jQuery section
 //*=================================================
@@ -208,15 +262,35 @@ $(document).ready(() => {
   $(document).on("click", ".table>tbody> tr", function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    // const editFormContent = "<h2>Selected Row</h2>";
     const rowId = $(this).attr("id");
     const $row = $(":input", this).clone().prop("disabled", false);
     const sectionTitle = $(this)
       .parents("section")
       .find(".sub-header-title")
-      .text();
+      .text()
+      .trim();
     console.log("sectionTitle :>> ", sectionTitle);
-    if (sectionTitle === "Current assessments") return;
+    let modalOptionObj;
+    switch (sectionTitle) {
+      case "TABE 11/12":
+        modalOptionObj = modalOptionTABE;
+        break;
+      case "Best Plus 2":
+        modalOptionObj = modalOptionBestPlus;
+        break;
+      case "Best literacy":
+        modalOptionObj = modalOptionBestLit;
+        break;
+      case "HSE":
+        modalOptionObj = modalOptionHSE;
+        break;
+      default:
+        // Section title is "Current Assessments"
+        return;
+    }
+    const { requiredList, labels } = modalOptionObj;
+    console.log("requiredList :>> ", requiredList);
+
     $("#modalBloc").modal("toggle");
     const table = $(this).parents("table").attr("data-table");
     console.log("table :>> ", table);
@@ -225,25 +299,8 @@ $(document).ready(() => {
       .append($row)
       .attr({ "data-id": rowId, "data-table": table });
     $(".modal-title").empty().text(`Editing ${sectionTitle} record`);
-
-    //TODO Tailor requiredList to the target list fields for TestDate / TABEDate
-    const requiredList = ["TABEDate", "Personnel_PKID"];
-    const labels = {
-      TABEDate: "Date",
-      TestType: "Type",
-      TestForm: "Form",
-      TestLevel: "Level",
-      Pre_Post: "Pre/Post",
-      TestMode: "Mode",
-      SubScore1: "Score",
-      ScaleScore: "Scale score",
-      NRSLevel: "NRS/NYRS level",
-      Personnel_PKID: "Administrator"
-    };
-    //TODO ===========================================
     $("#edit-form :input").each(function (indx) {
       const name = $(this).attr("name");
-
       if (name.includes("Date")) {
         const formattedDate = DT.fromFormat($(this).val(), "D").toISODate();
         $(this).val(formattedDate).attr("type", "date");
@@ -252,7 +309,6 @@ $(document).ready(() => {
         .wrap("<div class='form-group input-field'></div>")
         .before(`<label for=${name}>${labels[name]}</label>`);
     });
-
     for (const name of requiredList) {
       $(`#edit-form [name=${name}]`)
         .prop("required", true)
@@ -264,7 +320,6 @@ $(document).ready(() => {
         .siblings("label")
         .addClass("red-text");
     }
-    // $("#edit-form [name='DescriptionKey']").prop("disabled", true);
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
