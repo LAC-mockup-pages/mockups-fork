@@ -289,8 +289,6 @@ $(document).ready(() => {
         return;
     }
     const { requiredList, labels } = modalOptionObj;
-    console.log("requiredList :>> ", requiredList);
-
     $("#modalBloc").modal("toggle");
     const table = $(this).parents("table").attr("data-table");
     console.log("table :>> ", table);
