@@ -207,6 +207,7 @@ $(document).ready(() => {
   //* Triggers edit modal with selected row elements and values
   $(document).on("click", ".table>tbody> tr", function (evnt) {
     evnt.stopPropagation();
+    evnt.preventDefault();
     // const editFormContent = "<h2>Selected Row</h2>";
     const rowId = $(this).attr("id");
     const $row = $(":input", this).clone().prop("disabled", false);
@@ -224,5 +225,47 @@ $(document).ready(() => {
       .append($row)
       .attr({ "data-id": rowId, "data-table": table });
     $(".modal-title").empty().text(`Editing ${sectionTitle} record`);
+
+    //TODO Tailor requiredList to the target list fields for TestDate / TABEDate
+    const requiredList = ["TABEDate", "Personnel_PKID"];
+    const labels = {
+      TABEDate: "Date",
+      TestType: "Type",
+      TestForm: "Form",
+      TestLevel: "Level",
+      Pre_Post: "Pre/Post",
+      TestMode: "Mode",
+      SubScore1: "Score",
+      ScaleScore: "Scale score",
+      NRSLevel: "NRS/NYRS level",
+      Personnel_PKID: "Administrator"
+    };
+    //TODO ===========================================
+    $("#edit-form :input").each(function (indx) {
+      const name = $(this).attr("name");
+
+      if (name.includes("Date")) {
+        const formattedDate = DT.fromFormat($(this).val(), "D").toISODate();
+        $(this).val(formattedDate).attr("type", "date");
+      }
+      $(this)
+        .wrap("<div class='form-group input-field'></div>")
+        .before(`<label for=${name}>${labels[name]}</label>`);
+    });
+
+    for (const name of requiredList) {
+      $(`#edit-form [name=${name}]`)
+        .prop("required", true)
+        .attr({
+          "data-original-title": "Please fill in this field",
+          "data-toggle": "tooltip",
+          "data-placement": "right"
+        })
+        .siblings("label")
+        .addClass("red-text");
+    }
+    // $("#edit-form [name='DescriptionKey']").prop("disabled", true);
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
   });
 });
