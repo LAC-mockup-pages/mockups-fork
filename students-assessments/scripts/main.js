@@ -364,4 +364,10 @@ $(document).ready(() => {
       $("#modalBloc").modal("toggle");
     }
   });
+
+  //* Adding a new record
+  $("#add-tabe, #add-bestplus, #add-bestlit, #add-hse").click(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+  });
 });
