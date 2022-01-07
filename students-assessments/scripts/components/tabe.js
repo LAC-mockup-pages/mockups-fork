@@ -121,7 +121,7 @@ export const createTabeContent = (list) => {
 
 export const addNewTabe = (obj) => {
   const content = [];
-  const { requiredList, labels } = obj;
+  const { labels } = obj;
 
   return content.join("");
 };

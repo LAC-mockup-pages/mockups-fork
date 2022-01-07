@@ -371,27 +371,32 @@ $(document).ready(() => {
     evnt.preventDefault();
     let editFormContent = "";
     let modalTitle = "TABE";
-    let dataTable = "GetTestInfo_TABE11";
+    let dataTableName = "GetTestInfo_TABE11";
     const buttonId = $(this).attr("id");
     switch (buttonId) {
       case "add-bestplus":
         editFormContent = "<h2>Best Plus 2 content here";
         modalTitle = "Best Plus 2";
-        dataTable = "GetTests_BestPlus2";
+        dataTableName = "GetTests_BestPlus2";
         break;
       case "add-bestlit":
         editFormContent = "<h2>Best Literacy content here";
         modalTitle = "Best Literacy";
-        dataTable = "GetTests_BestLit";
+        dataTableName = "GetTests_BestLit";
         break;
       case "add-hse":
         editFormContent = "<h2>HSE content here";
         modalTitle = "HSE";
-        dataTable = "GetTests_TASC";
+        dataTableName = "GetTests_TASC";
         break;
       default:
         editFormContent = addNewTabe(modalOptionTABE);
         break;
     }
+    $("#edit-form")
+      .empty()
+      .append(editFormContent)
+      .attr("data-table", dataTableName);
+    $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
   });
 });
