@@ -133,3 +133,80 @@ export const createHseContent = (list) => {
   }
   return tableBodyContent.join("");
 };
+
+export const addNewHSETest = (obj) => {
+  const content = [];
+  const { labels } = obj;
+
+  console.table("labels :>> ", labels);
+  let labelClassVal = "";
+  let classVal = "";
+
+  for (const keyValue in labels) {
+    const labelVal = labels[keyValue];
+    let row = "";
+    let option = "";
+    let value = "";
+
+    // <input> fields
+    if (
+      [
+        "TestDate",
+        "TestForm",
+        "Writing",
+        "Social",
+        "Science",
+        "Reading",
+        "Math",
+        "Score"
+      ].includes(keyValue)
+    ) {
+      let optionHidden = "form-group";
+      const type = keyValue.includes("Date") ? "date" : "text";
+      // elementInput() ==> helpers/helperFunctions.js
+      row = elementInput({
+        keyVal: keyValue,
+        labelVal,
+        value,
+        labelClassVal,
+        classVal,
+        option,
+        optionHidden,
+        type
+      });
+    } else {
+      // <select> fields
+      let hashTable;
+      switch (keyValue) {
+        case "TestType":
+          hashTable = hseType;
+          break;
+        case "PredAct":
+          hashTable = hsePredAct;
+          break;
+        case "PreTest":
+          hashTable = [
+            { key: "0", value: "No" },
+            { key: "checked", value: "Yes" }
+          ];
+          break;
+
+        default:
+          hashTable = createStaffList(staffList);
+          break;
+      }
+      // elementSelectModal() ==> helpers/helperFunction.js
+      row = elementSelectModal({
+        hashTable,
+        keyValue,
+        selectedValue: "",
+        labelVal,
+        labelClassVal,
+        option,
+        optionText: ""
+      });
+    }
+    content.push(row);
+  }
+  return content.join("");
+};

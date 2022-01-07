@@ -7,7 +7,7 @@ const DT = luxon.DateTime;
 
 import { createTabeContent, addNewTabeTest } from "./components/tabe.js";
 import { addNewBestPlusTest, createBestContent } from "./components/best2.js";
-import { createHseContent } from "./components/hse.js";
+import { addNewHSETest, createHseContent } from "./components/hse.js";
 //! =============================================================
 //! For Development only.
 //! Comment out for Production.
@@ -141,6 +141,7 @@ const modalOptionHSE = {
     Reading: "Reading",
     Math: "Math",
     Score: "Total",
+    PreTest: "Pre-Test",
     PredAct: "PredAct",
     Personnel_PKID: "Administrator"
   }
@@ -385,7 +386,7 @@ $(document).ready(() => {
         dataTableName = "GetTests_BestLit";
         break;
       case "add-hse":
-        editFormContent = "<h2>HSE content here";
+        editFormContent = addNewHSETest(modalOptionHSE);
         modalTitle = "HSE";
         dataTableName = "GetTests_TASC";
         break;
