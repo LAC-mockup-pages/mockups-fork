@@ -122,6 +122,8 @@ export const createTabeContent = (list) => {
 export const addNewTabeTest = (obj) => {
   const content = [];
   const { labels } = obj;
+
+  console.table("labels :>> ", labels);
   let labelClassVal = "";
   let classVal = "";
 
@@ -133,7 +135,7 @@ export const addNewTabeTest = (obj) => {
 
     // <input> fields
     if (
-      ["TABEDate", "Pre_Post", "Score", "ScaleScore", "NRSLevel"].includes(
+      ["TABEDate", "Pre_Post", "SubScore1", "ScaleScore", "NRSLevel"].includes(
         keyValue
       )
     ) {
@@ -157,14 +159,16 @@ export const addNewTabeTest = (obj) => {
         case "TestType":
           hashTable = tabeType;
           break;
+        case "TestForm":
+          hashTable = tabeForm;
+          break;
         case "TestLevel":
           hashTable = tabeLevels;
           break;
         case "TestMode":
           hashTable = tabeMode;
           break;
-        case "TestForm":
-          hashTable = tabeForm;
+
         default:
           hashTable = createStaffList(staffList);
           break;
