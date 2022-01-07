@@ -119,9 +119,35 @@ export const createTabeContent = (list) => {
   return tableBodyContent.join("");
 };
 
-export const addNewTabe = (obj) => {
+export const addNewTabeTest = (obj) => {
   const content = [];
   const { labels } = obj;
+  let labelClassVal = "";
+  let classVal = "";
 
+  for (const keyValue in labels) {
+    const labelVal = labels[keyValue];
+    let row = "";
+    let option = "";
+    let value = "";
+
+    // <input> fields
+    if (["TABEDate", "Pre_Post", "Score", "ScaleScore"].includes(keyValue)) {
+      let optionHidden = "form-group";
+      const type = keyValue.includes("Date") ? "date" : "text";
+      // elementInput() ==> helpers/helperFunctions.js
+      row = elementInput({
+        keyVal: keyValue,
+        labelVal,
+        value,
+        labelClassVal,
+        classVal,
+        option,
+        optionHidden,
+        type
+      });
+    }
+    content.push(row);
+  }
   return content.join("");
 };

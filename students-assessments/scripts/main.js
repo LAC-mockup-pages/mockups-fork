@@ -5,7 +5,7 @@
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
 
-import { createTabeContent } from "./components/tabe.js";
+import { createTabeContent, addNewTabeTest } from "./components/tabe.js";
 import { createBestContent } from "./components/best2.js";
 import { createHseContent } from "./components/hse.js";
 //! =============================================================
@@ -390,7 +390,7 @@ $(document).ready(() => {
         dataTableName = "GetTests_TASC";
         break;
       default:
-        editFormContent = addNewTabe(modalOptionTABE);
+        editFormContent = addNewTabeTest(modalOptionTABE);
         break;
     }
     $("#edit-form")
@@ -398,5 +398,11 @@ $(document).ready(() => {
       .append(editFormContent)
       .attr("data-table", dataTableName);
     $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
+
+    //TODO Process customized requiredList
+
+    $("#modalBloc").modal("toggle");
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
   });
 });
