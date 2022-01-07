@@ -6,7 +6,7 @@
 const DT = luxon.DateTime;
 
 import { createTabeContent, addNewTabeTest } from "./components/tabe.js";
-import { createBestContent } from "./components/best2.js";
+import { addNewBestPlusTest, createBestContent } from "./components/best2.js";
 import { createHseContent } from "./components/hse.js";
 //! =============================================================
 //! For Development only.
@@ -375,12 +375,12 @@ $(document).ready(() => {
     const buttonId = $(this).attr("id");
     switch (buttonId) {
       case "add-bestplus":
-        editFormContent = "<h2>Best Plus 2 content here";
+        editFormContent = addNewBestPlusTest(modalOptionBestPlus);
         modalTitle = "Best Plus 2";
         dataTableName = "GetTests_BestPlus2";
         break;
       case "add-bestlit":
-        editFormContent = "<h2>Best Literacy content here";
+        editFormContent = addNewBestPlusTest(modalOptionBestLit);
         modalTitle = "Best Literacy";
         dataTableName = "GetTests_BestLit";
         break;

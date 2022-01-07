@@ -85,6 +85,61 @@ export const createBestContent = (list) => {
     </tr>`;
     tableBodyContent.push(row);
   }
-
   return tableBodyContent.join("");
+};
+
+export const addNewBestPlusTest = (obj) => {
+  const content = [];
+  const { labels } = obj;
+
+  console.table("labels :>> ", labels);
+  let labelClassVal = "";
+  let classVal = "";
+
+  for (const keyValue in labels) {
+    const labelVal = labels[keyValue];
+    let row = "";
+    let option = "";
+    let value = "";
+
+    // <input> fields
+    if (["TestDate", "Pre_Post", "Score", "NRSLevel"].includes(keyValue)) {
+      let optionHidden = "form-group";
+      const type = keyValue.includes("Date") ? "date" : "text";
+      // elementInput() ==> helpers/helperFunctions.js
+      row = elementInput({
+        keyVal: keyValue,
+        labelVal,
+        value,
+        labelClassVal,
+        classVal,
+        option,
+        optionHidden,
+        type
+      });
+    } else {
+      // <select> fields
+      let hashTable;
+      switch (keyValue) {
+        case "TestForm":
+          hashTable = bestPlusForm;
+          break;
+        default:
+          hashTable = createStaffList(staffList);
+          break;
+      }
+      // elementSelectModal() ==> helpers/helperFunction.js
+      row = elementSelectModal({
+        hashTable,
+        keyValue,
+        selectedValue: "",
+        labelVal,
+        labelClassVal,
+        option,
+        optionText: ""
+      });
+    }
+    content.push(row);
+  }
+  return content.join("");
 };
