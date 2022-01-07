@@ -118,3 +118,10 @@ export const createTabeContent = (list) => {
   }
   return tableBodyContent.join("");
 };
+
+export const addNewTabe = (obj) => {
+  const content = [];
+  const { requiredList, labels } = obj;
+
+  return content.join("");
+};

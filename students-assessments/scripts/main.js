@@ -369,5 +369,29 @@ $(document).ready(() => {
   $("#add-tabe, #add-bestplus, #add-bestlit, #add-hse").click(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
+    let editFormContent = "";
+    let modalTitle = "TABE";
+    let dataTable = "GetTestInfo_TABE11";
+    const buttonId = $(this).attr("id");
+    switch (buttonId) {
+      case "add-bestplus":
+        editFormContent = "<h2>Best Plus 2 content here";
+        modalTitle = "Best Plus 2";
+        dataTable = "GetTests_BestPlus2";
+        break;
+      case "add-bestlit":
+        editFormContent = "<h2>Best Literacy content here";
+        modalTitle = "Best Literacy";
+        dataTable = "GetTests_BestLit";
+        break;
+      case "add-hse":
+        editFormContent = "<h2>HSE content here";
+        modalTitle = "HSE";
+        dataTable = "GetTests_TASC";
+        break;
+      default:
+        editFormContent = addNewTabe(modalOptionTABE);
+        break;
+    }
   });
 });
