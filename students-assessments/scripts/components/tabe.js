@@ -132,7 +132,11 @@ export const addNewTabeTest = (obj) => {
     let value = "";
 
     // <input> fields
-    if (["TABEDate", "Pre_Post", "Score", "ScaleScore"].includes(keyValue)) {
+    if (
+      ["TABEDate", "Pre_Post", "Score", "ScaleScore", "NRSLevel"].includes(
+        keyValue
+      )
+    ) {
       let optionHidden = "form-group";
       const type = keyValue.includes("Date") ? "date" : "text";
       // elementInput() ==> helpers/helperFunctions.js
@@ -145,6 +149,35 @@ export const addNewTabeTest = (obj) => {
         option,
         optionHidden,
         type
+      });
+    } else {
+      // <select> fields
+      let hashTable;
+      switch (keyValue) {
+        case "TestType":
+          hashTable = tabeType;
+          break;
+        case "TestLevel":
+          hashTable = tabeLevels;
+          break;
+        case "TestMode":
+          hashTable = tabeMode;
+          break;
+        case "TestForm":
+          hashTable = tabeForm;
+        default:
+          hashTable = createStaffList(staffList);
+          break;
+      }
+      // elementSelectModal() ==> helpers/helperFunction.js
+      row = elementSelectModal({
+        hashTable,
+        keyValue,
+        selectedValue: "",
+        labelVal,
+        labelClassVal,
+        option,
+        optionText: ""
       });
     }
     content.push(row);
