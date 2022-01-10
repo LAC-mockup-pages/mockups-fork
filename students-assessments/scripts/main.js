@@ -406,4 +406,24 @@ $(document).ready(() => {
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
+
+  //* Record designed for archiving
+  $("#archive-btn").click(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const targetTable = $("#edit-form").attr("data-table");
+    const rowId = $("#edit-form").attr("data-id");
+    const credentials = createCredentials();
+    //! =================================================
+    //! For production, this is the end point for the Post request
+    //! to update the DB.
+    //! =================================================
+    const result = [
+      targetTable,
+      JSON.stringify({ ...credentials, Student_PKID, ID: rowId, Move: "1" })
+    ];
+    console.log("result :", result);
+    //! =================================================
+    $("#modalBloc").modal("toggle");
+  });
 });
