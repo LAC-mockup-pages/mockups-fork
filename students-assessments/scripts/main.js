@@ -415,7 +415,7 @@ $(document).ready(() => {
     const rowId = $("#edit-form").attr("data-id");
     const credentials = createCredentials();
     //! =================================================
-    //! For production, this is the end point for the Post request
+    //! For production, this is the end point for the POST request
     //! to update the DB.
     //! =================================================
     const result = [
@@ -434,5 +434,24 @@ $(document).ready(() => {
     const targetTable = $("#edit-form").attr("data-table");
     const rowId = $("#edit-form").attr("data-id");
     const credentials = createCredentials();
+    const message = $(".modal-footer > h3").text();
+    if (!message) {
+      $(".modal-footer").prepend(
+        "<h3 class='delete-msg'>Confirm deletion by clicking the DELETE button again</h3>"
+      );
+    } else {
+      $(".modal-footer > h3").remove();
+      //! =================================================
+      //! For production, this is the end point for the DELETE request
+      //! to update the DB.
+      //! =================================================
+      const result = [
+        targetTable,
+        JSON.stringify({ ...credentials, Student_PKID, ID: rowId })
+      ];
+      console.log("result :", result);
+      //! =================================================
+      $("#modalBloc").modal("toggle");
+    }
   });
 });
