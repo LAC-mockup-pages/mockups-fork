@@ -92,7 +92,7 @@ export const createTabeContent = (list) => {
       </td>
       <td>
         <div class="form-group input-field">
-          <input type="text" disabled name="SubScore" value=${SubScore1}>
+          <input  type="text" disabled name="SubScore" value=${SubScore1}>
         </div>
       </td>
       <td>

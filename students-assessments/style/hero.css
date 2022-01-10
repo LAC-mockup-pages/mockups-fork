@@ -19,6 +19,9 @@
   margin-right: auto;
   margin-left: auto;
   margin-top: 1%;
+  border-bottom: 1.2em solid #2479b5;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 .name,
 .dob {
@@ -33,7 +36,8 @@ section:not("student-info") {
 .student-info {
   height: 2.8em;
   padding-top: 0.4em;
-  border-radius: 5px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
   margin-bottom: 1%;
 }
 .sub-header {
@@ -48,7 +52,7 @@ section:not("student-info") {
 .sub-header-title {
   text-align: right;
   padding-right: 1%;
-  margin-bottom: 1px;
+  margin: 0.5% 0%;
 }
 
 /* Tables */
@@ -77,4 +81,63 @@ section:not("student-info") {
 }
 .not-editable:hover {
   background-color: inherit;
+}
+
+/* Add buttons */
+#add-tabe,
+#add-bestplus,
+#add-bestlit,
+#add-hse {
+  font-weight: 600;
+  padding: 3px 4px;
+  margin-right: 0px;
+  margin-top: 0.5em;
+}
+
+/* Sections */
+section:not(.current) .input-field > input,
+section:not(.current) .modal-select {
+  font-size: 0.9em;
+  width: 100%;
+  border-bottom: none;
+}
+.form-group {
+  line-height: 1.7vh;
+  background-color: inherit;
+}
+.table select:disabled,
+.table input:disabled {
+  opacity: 1;
+  background-color: inherit;
+}
+.table thead > tr {
+  position: sticky;
+  top: 0px;
+  z-index: 10;
+}
+.tabe11 tbody > tr > td:nth-child(7),
+.hse tbody > tr > td:nth-child(4),
+.hse tbody > tr > td:nth-child(5),
+.hse tbody > tr > td:nth-child(6),
+.hse tbody > tr > td:nth-child(7),
+.hse tbody > tr > td:nth-child(8),
+.hse tbody > tr > td:nth-child(9),
+.tabe11 tbody > tr > td:nth-child(8),
+.tabe11 tbody > tr > td:nth-child(9) {
+  width: 4em;
+}
+input[name="SubScore"],
+input[name="Writing"],
+input[name="Social"],
+input[name="Science"],
+input[name="Reading"],
+input[name="Math"],
+input[name="Score"],
+input[name="ScaleScore"],
+input[name="NRSLevel"] {
+  text-align: right;
+}
+.hse tbody > tr > td:nth-child(1),
+.tabe11 tbody > tr > td:nth-child(4) {
+  width: 6em;
 }

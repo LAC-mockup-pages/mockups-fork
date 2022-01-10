@@ -19,9 +19,17 @@ const best2Info = GetTests_BestPlus2.slice(0);
 const bestLitInfo = GetTests_BestLit.slice(0);
 const hseInfo = GetTest_TASC.slice(0);
 export const tabeForm = GetForm_TABE11.slice(0);
-export const tabeLevels = GetLevel_TABE11.slice(0);
+export const tabeLevels = GetLevel_TABE11.map((obj) => {
+  const key = obj.key;
+  const value = obj.value.slice(2);
+  return { key, value };
+});
 export const tabeMode = GetTestMode_TABE11.slice(0);
-export const tabeType = GetType_TABE11.slice(0);
+export const tabeType = GetType_TABE11.map((obj) => {
+  const key = obj.key;
+  const value = obj.value.slice(3);
+  return { key, value };
+});
 export const staffList = GetStaff.slice(0);
 export const bestPlusForm = GetForm_BestPlus2.slice(0);
 export const hseType = GetType_TASC.slice(0);
