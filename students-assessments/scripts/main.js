@@ -426,4 +426,13 @@ $(document).ready(() => {
     //! =================================================
     $("#modalBloc").modal("toggle");
   });
+
+  //* Record designed for deletion
+  $("#delete-btn").click(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const targetTable = $("#edit-form").attr("data-table");
+    const rowId = $("#edit-form").attr("data-id");
+    const credentials = createCredentials();
+  });
 });
