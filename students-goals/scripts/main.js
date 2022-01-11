@@ -10,6 +10,7 @@ import { createWioaContent } from "./components/wioa.js";
 //! =============================================================
 const studentInfo = GetStudentHeader.slice(0)[0];
 const wioaOutcome = GetOutcomeinfo_WIOA.slice(0);
+// const wioaOutcome = [];
 const credentialList = GetCredentialSource.slice(0);
 const outcomeList = GetOutcomeDesc_WIOA.slice(0);
 //! =============================================================
@@ -69,10 +70,18 @@ $(document).ready(() => {
   $(".dob").text(`Date of Birth: ${BirthDate}`);
 
   // Populating WIOA table
-  //TODO Add case if wioa table is empty for the selected student
-  $(".wioa table tbody").append(
-    createWioaContent(wioaOutcome, outcomeList, credentialList)
+  const wioaContent = createWioaContent(
+    wioaOutcome,
+    outcomeList,
+    credentialList
   );
+  if (wioaContent) {
+    $(".wioa table tbody").append(wioaContent);
+  } else {
+    $(".wioa .tablescroll table").replaceWith(
+      `<h3 style="text-align:center">No goal / outcome on record for ${StudentName}</h3>`
+    );
+  }
 
   //* =====================================
 
