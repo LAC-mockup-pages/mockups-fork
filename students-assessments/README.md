@@ -46,7 +46,8 @@ NB: Date is last modification date.
 | Roughing/static lay out | Done    | 11/23/2021 |
 | Data objects            | Done    | 12/02/2021 |
 | Main coding             | started | 12/28/2021 |
-| Navigation to/from page |         |            |
+| Main coding             | Done    | 01/10/2022 |
+| Navigation to/from page | Done    | 01/10/2022 |
 | Alpha build             |         |            |
 | Review                  |         |            |
 | Alterations             |         |            |
