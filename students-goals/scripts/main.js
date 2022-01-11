@@ -66,7 +66,7 @@ $(document).ready(() => {
   // Populating student name and birthdate
   const { BirthDate, StudentName } = studentInfo;
   $(".name").text(StudentName);
-  $(".dob").text(BirthDate);
+  $(".dob").text(`Date of Birth: ${BirthDate}`);
 
   // Populating WIOA table
   //TODO Add case if wioa table is empty for the selected student
