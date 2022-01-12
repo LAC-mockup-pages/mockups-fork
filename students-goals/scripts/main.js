@@ -52,6 +52,15 @@ export const modalOptionWioa = {
     NYSED_CredentialID: "Credential"
   }
 };
+export const modalOptionOther = {
+  requiredList: ["GoalID"],
+  labels: {
+    GoalID: "Description",
+    SetGoal: "Set goal",
+    ShowProgress: "Show progress",
+    ShowProficiency: "Show Proficiency"
+  }
+};
 //*=================================================
 //* jQuery section
 //*=================================================
