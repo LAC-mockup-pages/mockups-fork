@@ -10,7 +10,6 @@ import { createWioaContent } from "./components/wioa.js";
 //! =============================================================
 const studentInfo = GetStudentHeader.slice(0)[0];
 const wioaOutcome = GetOutcomeinfo_WIOA.slice(0);
-// const wioaOutcome = [];
 export const credentialList = GetCredentialSource.slice(0);
 // const outcomeList = GetOutcomeDesc_WIOA.slice(0);
 // Removing the key from the value property
@@ -19,6 +18,13 @@ export const outcomeList = GetOutcomeDesc_WIOA.map((obj) => {
   const value = obj.value.replace(key, "").trim();
   return { key, value };
 });
+// Removing the key from the value property
+export const otherGoalsList = GetGoalsDesc_EFF.map((obj) => {
+  const key = obj.key;
+  const value = obj.value.replace(key, "").trim();
+  return { key, value };
+});
+const otherGoalsInfo = GetOutcomeinfo_EFF.slice(0);
 //! =============================================================
 
 export const createOptionList = (dataObj, defaultValue) => {
@@ -99,12 +105,8 @@ $(document).ready(() => {
   $(".name").text(StudentName);
   $(".dob").text(`Date of Birth: ${BirthDate}`);
 
-  // Populating WIOA table
-  const wioaContent = createWioaContent(
-    wioaOutcome,
-    outcomeList,
-    credentialList
-  );
+  // Populating WIOA, Other and Non-NRS tables
+  const wioaContent = createWioaContent(wioaOutcome);
   if (wioaContent) {
     $(".wioa table tbody").append(wioaContent);
   } else {
@@ -113,6 +115,14 @@ $(document).ready(() => {
     );
   }
 
+  const otherContent = "";
+  if (otherContent) {
+    $(".other table tbody").append(otherContent);
+  } else {
+    $(".other .tablescroll table").replaceWith(
+      `<h3 style="text-align:center">No goal / outcome on record for ${StudentName}</h3>`
+    );
+  }
   //* =====================================
 
   //* Expand underpinned table when section is clicked

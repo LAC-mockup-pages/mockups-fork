@@ -15,7 +15,6 @@ const DT = luxon.DateTime;
 
 export const createWioaContent = (list, outcomes, credentials) => {
   const tableBodyContent = [];
-  const { FiscalYear } = createCredentials();
   const orderedList = list.sort((record1, record2) =>
     // DT#fromFormat <== Luxon method, "D" token describes mm/dd/yyyy format
     DT.fromFormat(record1.SurveyDate, "D") >
