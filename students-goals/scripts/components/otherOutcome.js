@@ -11,7 +11,6 @@ export const createOtherContent = (list) => {
   const orderedList = list.sort((item1, item2) =>
     item1.GoalID < item2.GoalID ? -1 : item1.GoalID > item2.GoalID ? 1 : 0
   );
-  console.log("orderedList :>> ", orderedList);
   for (const record of orderedList) {
     const { ID, GoalID, SetGoal, ShowProgress, ShowProficiency } = record;
 

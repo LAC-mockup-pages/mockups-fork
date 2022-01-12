@@ -130,8 +130,8 @@ $(document).ready(() => {
       case "other":
         tbodyContent = createOtherContent(otherGoalsInfo);
         break;
-      // case "literacy":
-      //   tbodyContent = createBest2Content(best2Info, viewName);
+      // case "non-nrs":
+      //   tbodyContent = ;
       //   break;
       default:
         break;
