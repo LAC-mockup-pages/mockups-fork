@@ -92,28 +92,3 @@ export const createWioaContent = (list, outcomes, credentials) => {
   }
   return tableBodyContent.join("");
 };
-// const fieldList = Object.keys(labels);
-// for (const record of orderedList) {
-//   let { ID } = record;
-//   const row = fieldList
-//     .map((field) => {
-//       let val = "";
-//       switch (field) {
-//         case "OutcomeID":
-//           val = outcomes.find((item) => item.key === record[field]).value;
-//           break;
-//         case "NYSED_CredentialID":
-//           val = record[field]
-//             ? credentials.find((item) => item.key === record[field]).value
-//             : "";
-//           break;
-
-//         default:
-//           val = record[field];
-//           break;
-//       }
-//       return `<td>${val}</td>`;
-//     })
-//     .join("");
-//   content.push(`<tr id=${ID}>${row}</tr>`);
-// }
