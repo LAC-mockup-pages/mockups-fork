@@ -12,9 +12,26 @@ const studentInfo = GetStudentHeader.slice(0)[0];
 const wioaOutcome = GetOutcomeinfo_WIOA.slice(0);
 // const wioaOutcome = [];
 const credentialList = GetCredentialSource.slice(0);
-const outcomeList = GetOutcomeDesc_WIOA.slice(0);
+// const outcomeList = GetOutcomeDesc_WIOA.slice(0);
+// Removing the key from the value property
+const outcomeList = GetOutcomeDesc_WIOA.map((obj) => {
+  const key = obj.key;
+  const value = obj.value.replace(key, "").trim();
+  return { key, value };
+});
 //! =============================================================
 
+export const createOptionList = (dataObj, defaultValue) => {
+  const optionList = dataObj.map((record) => {
+    const [key, value] = Object.keys(record);
+    const keyData = record[key];
+    const valueData = record[value];
+    const defaultVal =
+      defaultValue && keyData === defaultValue ? "selected" : "";
+    return `<option ${defaultVal} value=${keyData}>${valueData}</option>`;
+  });
+  return optionList.join("");
+};
 //*=================================================
 //* jQuery section
 //*=================================================
