@@ -4,6 +4,8 @@
 
 import { createOtherContent } from "./components/otherOutcome.js";
 import { createWioaContent } from "./components/wioa.js";
+// Initializing Luxon DateTime class for the module
+const DT = luxon.DateTime;
 
 //! =============================================================
 //! For Development only.
@@ -83,6 +85,8 @@ $(document).ready(() => {
   // const wioaOutcome =
   // const credentialList =
   // const outcomeList =
+  // const otherGoalsList =
+  // const otherGoalsInfo =
 
   // Navigation variables.
   // In Production, update with actual rootUrl and destinations
@@ -152,5 +156,68 @@ $(document).ready(() => {
         `<h3 style="text-align:center">No goal / outcome on record for ${StudentName}</h3>`
       );
     }
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
+  });
+
+  //* Triggers edit modal with selected row elements and values
+  $(document).on("click", ".table>tbody> tr", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const rowId = $(this).attr("id");
+    const $row = $(":input", this).clone().prop("disabled", false);
+
+    const sectionTitle = $(this)
+      .parents("section")
+      .find(".sub-header-title")
+      .text()
+      .trim();
+    console.log("sectionTitle :>> ", sectionTitle);
+    let modalOptionObj;
+    switch (sectionTitle) {
+      case "WIOA / NRS outcomes":
+        modalOptionObj = modalOptionWioa;
+        break;
+      case "Other goals and outcomes":
+        modalOptionObj = modalOptionOther;
+        break;
+      case "non-nrs":
+        break;
+      default:
+        console.log("Default hit");
+        break;
+    }
+    const { requiredList, labels } = modalOptionObj;
+    $("#modalBloc").modal("toggle");
+    const table = $(this).parents("table").attr("data-table");
+    console.log("table :>> ", table);
+    $("#edit-form")
+      .empty()
+      .append($row)
+      .attr({ "data-id": rowId, "data-table": table });
+    $(".modal-title").empty().text(`Editing ${sectionTitle} record`);
+    $("#edit-form :input").each(function (indx) {
+      const name = $(this).attr("name");
+      if (name.includes("Date")) {
+        const formattedDate = DT.fromFormat($(this).val(), "D").toISODate();
+        $(this).val(formattedDate).attr("type", "date");
+      }
+      $(this)
+        .wrap("<div class='form-group input-field'></div>")
+        .before(`<label for=${name}>${labels[name]}</label>`);
+    });
+    for (const name of requiredList) {
+      $(`#edit-form [name=${name}]`)
+        .prop("required", true)
+        .attr({
+          "data-original-title": "Please fill in this field",
+          "data-toggle": "tooltip",
+          "data-placement": "right"
+        })
+        .siblings("label")
+        .addClass("red-text");
+    }
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
   });
 });
