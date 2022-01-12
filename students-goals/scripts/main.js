@@ -11,10 +11,10 @@ import { createWioaContent } from "./components/wioa.js";
 const studentInfo = GetStudentHeader.slice(0)[0];
 const wioaOutcome = GetOutcomeinfo_WIOA.slice(0);
 // const wioaOutcome = [];
-const credentialList = GetCredentialSource.slice(0);
+export const credentialList = GetCredentialSource.slice(0);
 // const outcomeList = GetOutcomeDesc_WIOA.slice(0);
 // Removing the key from the value property
-const outcomeList = GetOutcomeDesc_WIOA.map((obj) => {
+export const outcomeList = GetOutcomeDesc_WIOA.map((obj) => {
   const key = obj.key;
   const value = obj.value.replace(key, "").trim();
   return { key, value };
