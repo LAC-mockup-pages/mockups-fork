@@ -32,6 +32,19 @@ export const createOptionList = (dataObj, defaultValue) => {
   });
   return optionList.join("");
 };
+
+export const modalOptionWioa = {
+  requiredList: ["OutcomeFY", "Quarter", "SurveyDate"],
+  labels: {
+    OutcomeID: "Status",
+    OutcomeFY: "Fiscal year",
+    Quarter: "Quarter",
+    SurveyDate: "Survey date",
+    OutcomeDate: "Outcome date",
+    Income: "Quarterly income",
+    NYSED_CredentialID: "Credential"
+  }
+};
 //*=================================================
 //* jQuery section
 //*=================================================
