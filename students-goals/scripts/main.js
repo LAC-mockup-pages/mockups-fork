@@ -2,6 +2,7 @@
 //* Actions and Logic for local page
 //*=================================================
 
+import { createOtherContent } from "./components/otherOutcome.js";
 import { createWioaContent } from "./components/wioa.js";
 
 //! =============================================================
@@ -105,7 +106,7 @@ $(document).ready(() => {
   $(".name").text(StudentName);
   $(".dob").text(`Date of Birth: ${BirthDate}`);
 
-  // Populating WIOA, Other and Non-NRS tables
+  // Populating WIOA table
   const wioaContent = createWioaContent(wioaOutcome);
   if (wioaContent) {
     $(".wioa table tbody").append(wioaContent);
@@ -115,14 +116,6 @@ $(document).ready(() => {
     );
   }
 
-  const otherContent = "";
-  if (otherContent) {
-    $(".other table tbody").append(otherContent);
-  } else {
-    $(".other .tablescroll table").replaceWith(
-      `<h3 style="text-align:center">No goal / outcome on record for ${StudentName}</h3>`
-    );
-  }
   //* =====================================
 
   //* Expand underpinned table when section is clicked
@@ -133,18 +126,18 @@ $(document).ready(() => {
     const viewName = $(this).parent().attr("class");
     if (viewName === "wioa") return;
     let tbodyContent = "";
-    // switch (viewName) {
-    //   case "other":
-    //     tbodyContent = createTabeContent(tabeInfo);
-    //     break;
-    //   case "literacy":
-    //     tbodyContent = createBest2Content(best2Info, viewName);
-    //     break;
-    //   default:
-    //     break;
-    // }
+    switch (viewName) {
+      case "other":
+        tbodyContent = createOtherContent(otherGoalsInfo);
+        break;
+      // case "literacy":
+      //   tbodyContent = createBest2Content(best2Info, viewName);
+      //   break;
+      default:
+        break;
+    }
     if (tbodyContent) {
-      // $(`.${viewName} tbody`).append(tbodyContent);
+      $(`.${viewName} tbody`).append(tbodyContent);
     } else {
       $(`.${viewName} .tablescroll table`).replaceWith(
         `<h3 style="text-align:center">No goal / outcome on record for ${StudentName}</h3>`

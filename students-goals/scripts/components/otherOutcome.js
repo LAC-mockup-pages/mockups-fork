@@ -11,7 +11,7 @@ export const createOtherContent = (list) => {
   const orderedList = list.sort((item1, item2) =>
     item1.GoalID < item2.GoalID ? -1 : item1.GoalID > item2.GoalID ? 1 : 0
   );
-
+  console.log("orderedList :>> ", orderedList);
   for (const record of orderedList) {
     const { ID, GoalID, SetGoal, ShowProgress, ShowProficiency } = record;
 
@@ -23,19 +23,39 @@ export const createOtherContent = (list) => {
     const optionListSetGoal = createOptionList(yesNoList, SetGoal);
     const optionListProgress = createOptionList(yesNoList, ShowProgress);
     const optionListProficiency = createOptionList(yesNoList, ShowProficiency);
-
     const row = `
     <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left">
-    <td>
-      <div class="form-group input-field">
-        <select class="modal-select" disabled name="OutComeID">
-          ${optionListOutcome}
-        </select>
-      </div>
-    </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="GoalID">
+            ${optionListGoal}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="SetGoal">
+            ${optionListSetGoal}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="ShowProgress">
+            ${optionListProgress}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="ShowProficiency">
+            ${optionListProficiency}
+          </select>
+        </div>
+      </td>
     </tr>
-
     `;
+    tableBodyContent.push(row);
   }
   return tableBodyContent.join("");
 };
