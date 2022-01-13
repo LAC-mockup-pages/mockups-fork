@@ -31,6 +31,10 @@ export const otherGoalsList = GetGoalsDesc_EFF.map((obj) => {
   return { key, value };
 });
 const otherGoalsInfo = GetOutcomeinfo_EFF.slice(0);
+const nonNRSGoalsInfo = GetGoalCategoryDesc_LitZone.slice(0);
+export const nonNRSCategories = GetGoalCategoryDesc_LitZone.slice(0);
+export const nonNRSGoals = GetGoalsDesc_LitZone.slice(0);
+export const nonNRSSites = GetLitZoneReferralSite_LitZone.slice(0);
 //! =============================================================
 
 export const createOptionList = (dataObj, defaultValue) => {
@@ -66,6 +70,17 @@ export const modalOptionOther = {
     ShowProficiency: "Show Proficiency"
   }
 };
+export const modalOptionNonNRS = {
+  requiredList: [],
+  labels: {
+    Category_Key: "Category",
+    GoalID: "Goal",
+    FY: "Fiscal year",
+    MetGoal: "Goal met",
+    ReferralSiteID: "Referral partner"
+  }
+};
+
 //*=================================================
 //* jQuery section
 //*=================================================
