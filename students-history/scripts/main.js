@@ -3,7 +3,8 @@
 //*=================================================
 
 import { tableValues } from "./components/history.js";
-
+// Initializing Luxon DateTime class for the module
+const DT = luxon.DateTime;
 //! =============================================================
 //! For Development only.
 //! Comment out for Production.
@@ -11,7 +12,12 @@ import { tableValues } from "./components/history.js";
 const historyList = GetHistory.slice(0);
 const studentInfo = GetStudentHeader.slice(0)[0];
 const statusList = GetStatusDescSource.slice(0);
-const reasonsList = GetSepReasons.slice(0);
+// Removing the key from the value property
+const reasonsList = GetSepReasons.map((obj) => {
+  const key = obj.key;
+  const value = obj.value.replace(key, "").trim();
+  return { key, value };
+});
 const centersList = GetGEDCenter_TASC.slice(0);
 //! =============================================================
 export const createOptionList = (dataObj, defaultValue) => {

@@ -28,31 +28,41 @@ export const tableValues = (list, descriptions, reasons, centers) => {
   );
   const tableBodyContent = [];
   for (const record of orderedList) {
-    const { ID, StatusDate, StatusDesc, ExitReason, GEDCenter } = record;
+    const { ID, StatusDate, StatusID, ExitReasonID, GEDCenterID } = record;
+    const optionListStatus = createOptionList(descriptions, StatusID);
+    const optionListReasons = createOptionList(reasons, ExitReasonID);
+    const optionListCenters = createOptionList(centers, GEDCenterID);
+
     const row = `
-  <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip"
-  data-placement="left" >
-  <td>
-  <div class="form-group input-field">
-    <input type="text" disabled name="StatusDate" value=${StatusDate} >
-  </div>
-</td>
-<td>
-<div class="form-group input-field">
-  <input type="text" disabled name="StatusDesc" value="${StatusDesc}" >
-</div>
-</td>
-<td>
-<div class="form-group input-field">
-  <input type="text" disabled name="ExitReason" value="${ExitReason}" >
-</div>
-</td>
-<td>
-<div class="form-group input-field">
-  <input type="text" disabled name="GEDCenter" value="${GEDCenter}" >
-</div>
-</td>
-</tr>`;
+    <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip"
+    data-placement="left" >
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="StatusDate" value=${StatusDate} >
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="StatusID">
+            ${optionListStatus}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="ExitReasonID">
+            ${optionListReasons}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="GEDCenterID">
+            ${optionListCenters}
+          </select>
+        </div>
+      </td>
+    </tr>`;
 
     tableBodyContent.push(row);
   }
