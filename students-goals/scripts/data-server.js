@@ -25,6 +25,95 @@ const GetGoalCategoryDesc_LitZone = [
   { key: "14", value: "HSE Diploma Support (Other)" }
 ];
 
+const GetOutcomeinfo_LitZone = [
+  {
+    ID: "967226",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    Category_Key: "2",
+    Category: "Financial Literacy",
+    GoalID: "10",
+    Description: "Budget use of Earned Income Credit funds",
+    Cat_GoalDesc:
+      "Financial Literacy | Budget use of Earned Income Credit funds",
+    FY: "2020",
+    MetGoal: "False",
+    ReferralSiteID: "PRALZ2828",
+    ReferralSiteName: "ASISTS Data Services"
+  },
+  {
+    ID: "482423",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    Category_Key: "7",
+    Category: "Social Services",
+    GoalID: "46",
+    Description: "Applied for Food Stamps",
+    Cat_GoalDesc: "Social Services | Applied for Food Stamps",
+    FY: "2017",
+    MetGoal: "True",
+    ReferralSiteID: "PRALZ5768",
+    ReferralSiteName: "New Partner"
+  },
+  {
+    ID: "582780",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    Category_Key: "8",
+    Category: "Workforce Readiness",
+    GoalID: "49",
+    Description: "Participate in job interview",
+    Cat_GoalDesc: "Workforce Readiness | Participate in job interview",
+    FY: "2017",
+    MetGoal: "True",
+    ReferralSiteID: "PRALZ2736",
+    ReferralSiteName: ""
+  },
+  {
+    ID: "482422",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    Category_Key: "1",
+    Category: "Health Literacy",
+    GoalID: "2694",
+    Description: "Get Flu Vaccination *",
+    Cat_GoalDesc: "Health Literacy | Get Flu Vaccination *",
+    FY: "2016",
+    MetGoal: "True",
+    ReferralSiteID: "PRALZ1476",
+    ReferralSiteName: ""
+  },
+  {
+    ID: "27078",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    Category_Key: "1",
+    Category: "Health Literacy",
+    GoalID: "1",
+    Description: "Describe symptoms of an illness",
+    Cat_GoalDesc: "Health Literacy | Describe symptoms of an illness",
+    FY: "2012",
+    MetGoal: "False",
+    ReferralSiteID: "PRALZ2881",
+    ReferralSiteName: "Example Partner"
+  },
+  {
+    ID: "31366",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    Category_Key: "8",
+    Category: "Workforce Readiness",
+    GoalID: "23",
+    Description: "Read and understand work related documents (ie. Memos)",
+    Cat_GoalDesc:
+      "Workforce Readiness | Read and understand work related documents (ie. Memos)",
+    FY: "2012",
+    MetGoal: "False",
+    ReferralSiteID: "PRALZ521",
+    ReferralSiteName: ""
+  }
+];
+
 const GetGoalsDesc_EFF = [
   {
     key: "1",
