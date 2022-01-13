@@ -52,7 +52,7 @@ section:not("student-info") {
 .sub-header-title {
   text-align: right;
   padding-right: 1%;
-  margin-bottom: 1px;
+  margin: 0.1% 0%;
 }
 /* Tables */
 .table > thead > tr > th {
@@ -75,6 +75,7 @@ section:not("student-info") {
 }
 .invisible {
   max-height: 0em;
+  margin-bottom: 0.1%;
 }
 .editable:hover {
   background-color: #d3e4f0;
@@ -82,4 +83,51 @@ section:not("student-info") {
 }
 .not-editable:hover {
   background-color: inherit;
+}
+
+/* Add buttons */
+#add-wioa,
+#add-other,
+#add-nonnrs {
+  font-weight: 600;
+  padding: 3px 4px;
+  margin-right: 0px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+/* Sections */
+section:not(.current) .input-field > input,
+section:not(.current) .modal-select {
+  font-size: 0.9em;
+  width: 100%;
+  border-bottom: none;
+}
+.form-group {
+  line-height: 1.7vh;
+  background-color: inherit;
+}
+.table select:disabled,
+.table input:disabled {
+  opacity: 1;
+  background-color: inherit;
+}
+input[name="Quarter"],
+input[name="OutcomeFY"],
+input[name="Income"] {
+  text-align: right;
+}
+.wioa tbody > tr > td:nth-child(2),
+.wioa tbody > tr > td:nth-child(3),
+.wioa tbody > tr > td:nth-child(6) {
+  width: 5em;
+}
+.wioa tbody > tr > td:nth-child(4),
+.wioa tbody > tr > td:nth-child(5) {
+  width: 6em;
+}
+.other tbody > tr > td:nth-child(2),
+.other tbody > tr > td:nth-child(3),
+.other tbody > tr > td:nth-child(4) {
+  width: 7em;
 }
