@@ -174,7 +174,6 @@ $(document).ready(() => {
       .find(".sub-header-title")
       .text()
       .trim();
-    console.log("sectionTitle :>> ", sectionTitle);
     let modalOptionObj;
     switch (sectionTitle) {
       case "WIOA / NRS outcomes":
@@ -192,7 +191,6 @@ $(document).ready(() => {
     const { requiredList, labels } = modalOptionObj;
     $("#modalBloc").modal("toggle");
     const table = $(this).parents("table").attr("data-table");
-    console.log("table :>> ", table);
     $("#edit-form")
       .empty()
       .append($row)

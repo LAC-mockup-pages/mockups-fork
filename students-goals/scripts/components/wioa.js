@@ -49,7 +49,7 @@ export const createWioaContent = (list, outcomes, credentials) => {
     <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left">
       <td>
         <div class="form-group input-field">
-          <select class="modal-select" disabled name="OutComeID">
+          <select class="modal-select" disabled name="OutcomeID">
             ${optionListOutcome}
           </select>
         </div>
