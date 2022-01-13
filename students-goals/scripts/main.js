@@ -184,7 +184,7 @@ $(document).ready(() => {
       case "non-nrs":
         break;
       default:
-        console.log("Default hit");
+        console.log("Default hit - Not right");
         break;
     }
     const { requiredList, labels } = modalOptionObj;
