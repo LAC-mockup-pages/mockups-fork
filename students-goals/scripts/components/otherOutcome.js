@@ -58,3 +58,40 @@ export const createOtherContent = (list) => {
   }
   return tableBodyContent.join("");
 };
+
+export const addNewOutcomeOther = (obj) => {
+  const content = [];
+  const { labels } = obj;
+  let labelClassVal = "";
+
+  for (const keyValue in labels) {
+    const labelVal = labels[keyValue];
+    let row = "";
+    let option = "";
+
+    // <select> fields
+    let hashTable;
+    switch (keyValue) {
+      case "GoalID":
+        hashTable = otherGoalsList;
+        break;
+      default:
+        hashTable = [
+          { key: "", value: "No" },
+          { key: "checked", value: "Yes" }
+        ];
+    }
+    // elementSelectModal() ==> helpers/helperFunction.js
+    row = elementSelectModal({
+      hashTable,
+      keyValue,
+      selectedValue: "",
+      labelVal,
+      labelClassVal,
+      option,
+      optionText: ""
+    });
+    content.push(row);
+  }
+  return content.join("");
+};

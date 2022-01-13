@@ -2,8 +2,11 @@
 //* Actions and Logic for local page
 //*=================================================
 
-import { createOtherContent } from "./components/otherOutcome.js";
-import { createWioaContent } from "./components/wioa.js";
+import {
+  addNewOutcomeOther,
+  createOtherContent
+} from "./components/otherOutcome.js";
+import { addNewOutcomeWIOA, createWioaContent } from "./components/wioa.js";
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
 
@@ -244,12 +247,10 @@ $(document).ready(() => {
       const saveList = $(elements).serializeArray();
       // createObject() <== helpers/helperFunctions.js
       let saveObj = createObject(saveList);
-
       // Adding ID of edited record if it exists.
       const rowId = $("#edit-form").attr("data-id");
       if (rowId) saveObj = { ID: rowId, ...saveObj };
       const credentials = createCredentials();
-      if (saveObj.ActiveStatus === "0") saveObj.ActiveStatus = "";
       //! =================================================
       //! For production, this is the end point for the Post request
       //! to update the DB.
@@ -262,5 +263,41 @@ $(document).ready(() => {
       //! =================================================
       $("#modalBloc").modal("toggle");
     }
+  });
+
+  //* Adding a new record
+  $("#add-wioa, #add-other, #add-nonnrs").click(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    let editFormContent = "";
+    let modalTitle = "WIOA / NRS outcomes";
+    let dataTableName = "GetOutcomeinfo_WIOA";
+    const buttonId = $(this).attr("id");
+
+    switch (buttonId) {
+      case "add-other":
+        editFormContent = addNewOutcomeOther(modalOptionOther);
+        modalTitle = "Other goals";
+        dataTableName = "GetOutcomeinfo_EFF";
+        break;
+      case "add-nonnrs":
+        editFormContent = "";
+        modalTitle = "Non-NRS goals";
+        dataTableName = "Unknown";
+      default:
+        editFormContent = addNewOutcomeWIOA(modalOptionWioa);
+        break;
+    }
+    $("#edit-form")
+      .empty()
+      .append(editFormContent)
+      .attr("data-table", dataTableName);
+    $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
+
+    //TODO Process customized requiredList
+
+    $("#modalBloc").modal("toggle");
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
   });
 });
