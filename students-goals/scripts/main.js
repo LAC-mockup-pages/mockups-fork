@@ -72,9 +72,10 @@ export const modalOptionOther = {
   }
 };
 export const modalOptionNonNRS = {
-  requiredList: [],
+  requiredList: ["FY", "Category_Key", "GoalID"],
   labels: {
     Category_Key: "Category",
+
     GoalID: "Goal",
     FY: "Fiscal year",
     MetGoal: "Goal met",
@@ -198,7 +199,8 @@ $(document).ready(() => {
       case "Other goals and outcomes":
         modalOptionObj = modalOptionOther;
         break;
-      case "non-nrs":
+      case "Non-NRS goals and outcomes":
+        modalOptionObj = modalOptionNonNRS;
         break;
       default:
         console.log("Default hit - Not right");

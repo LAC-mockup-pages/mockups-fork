@@ -30,6 +30,9 @@
 .dob {
   text-align: right;
 }
+.light-red-text {
+  color: rgb(246, 133, 133);
+}
 section:not("student-info") {
   margin-top: 0.1%;
 }
@@ -112,9 +115,9 @@ section:not(.current) .modal-select {
   opacity: 1;
   background-color: inherit;
 }
-input[name="Quarter"],
-input[name="OutcomeFY"],
-input[name="Income"] {
+.table:not(#edit-form) input[name="Quarter"],
+.table:not(#edit-form) input[name="OutcomeFY"],
+.table:not(#edit-form) input[name="Income"] {
   text-align: right;
 }
 .wioa tbody > tr > td:nth-child(2),

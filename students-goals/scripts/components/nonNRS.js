@@ -53,7 +53,7 @@ export const createNonNRSContent = (list) => {
       </td>
       <td>
         <div class="form-group input-field">
-          <select class="modal-select" disabled name="GoalMet">
+          <select class="modal-select" disabled name="MetGoal">
             ${optionListGoalMet}
           </select>
         </div>
