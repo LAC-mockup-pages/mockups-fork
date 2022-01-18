@@ -2,6 +2,7 @@
 //* Actions and Logic for local page
 //*=================================================
 
+import { createNonNRSContent } from "./components/nonNRS.js";
 import {
   addNewOutcomeOther,
   createOtherContent
@@ -31,7 +32,7 @@ export const otherGoalsList = GetGoalsDesc_EFF.map((obj) => {
   return { key, value };
 });
 const otherGoalsInfo = GetOutcomeinfo_EFF.slice(0);
-const nonNRSGoalsInfo = GetGoalCategoryDesc_LitZone.slice(0);
+const nonNRSGoalsInfo = GetOutcomeinfo_LitZone.slice(0);
 export const nonNRSCategories = GetGoalCategoryDesc_LitZone.slice(0);
 export const nonNRSGoals = GetGoalsDesc_LitZone.slice(0);
 export const nonNRSSites = GetLitZoneReferralSite_LitZone.slice(0);
@@ -161,9 +162,10 @@ $(document).ready(() => {
       case "other":
         tbodyContent = createOtherContent(otherGoalsInfo);
         break;
-      // case "non-nrs":
-      //   tbodyContent = ;
-      //   break;
+      case "non-nrs":
+        // tbodyContent = ;
+        createNonNRSContent(nonNRSGoalsInfo);
+        break;
       default:
         break;
     }

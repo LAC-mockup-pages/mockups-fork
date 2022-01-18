@@ -30,6 +30,20 @@ const GetOutcomeinfo_LitZone = [
     ID: "967226",
     Student_PKID: "1048303",
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    Category_Key: "7",
+    Category: "Social Services",
+    GoalID: "10",
+    Description: "Budget use of Earned Income Credit funds",
+    Cat_GoalDesc: "Social Services | Budget use of Earned Income Credit funds",
+    FY: "2020",
+    MetGoal: "False",
+    ReferralSiteID: "PRALZ2828",
+    ReferralSiteName: "ASISTS Data Services"
+  },
+  {
+    ID: "967226",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
     Category_Key: "2",
     Category: "Financial Literacy",
     GoalID: "10",
@@ -84,20 +98,6 @@ const GetOutcomeinfo_LitZone = [
     ReferralSiteName: ""
   },
   {
-    ID: "27078",
-    Student_PKID: "1048303",
-    StudentID: "AA1_JacquesGregoryPRA22620101271987",
-    Category_Key: "1",
-    Category: "Health Literacy",
-    GoalID: "1",
-    Description: "Describe symptoms of an illness",
-    Cat_GoalDesc: "Health Literacy | Describe symptoms of an illness",
-    FY: "2012",
-    MetGoal: "False",
-    ReferralSiteID: "PRALZ2881",
-    ReferralSiteName: "Example Partner"
-  },
-  {
     ID: "31366",
     Student_PKID: "1048303",
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
@@ -111,6 +111,20 @@ const GetOutcomeinfo_LitZone = [
     MetGoal: "False",
     ReferralSiteID: "PRALZ521",
     ReferralSiteName: ""
+  },
+  {
+    ID: "27078",
+    Student_PKID: "1048303",
+    StudentID: "AA1_JacquesGregoryPRA22620101271987",
+    Category_Key: "1",
+    Category: "Health Literacy",
+    GoalID: "1",
+    Description: "Describe symptoms of an illness",
+    Cat_GoalDesc: "Health Literacy | Describe symptoms of an illness",
+    FY: "2012",
+    MetGoal: "False",
+    ReferralSiteID: "PRALZ2881",
+    ReferralSiteName: "Example Partner"
   }
 ];
 
