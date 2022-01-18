@@ -61,6 +61,7 @@ export const createNonNRSContent = (list) => {
       <td>
         <div class="form-group input-field">
           <select class="modal-select" disabled name="ReferralSiteID">
+            <option></option>
             ${optionListSites}
           </select>
         </div>

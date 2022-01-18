@@ -82,6 +82,7 @@ export const createWioaContent = (list, outcomes, credentials) => {
       <td>
         <div class="form-group input-field">
           <select class="modal-select" disabled name="NYSED_CredentialID">
+            <option></option>
             ${optionListCredential}
           </select>
         </div>
