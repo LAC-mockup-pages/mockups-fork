@@ -163,8 +163,7 @@ $(document).ready(() => {
         tbodyContent = createOtherContent(otherGoalsInfo);
         break;
       case "non-nrs":
-        // tbodyContent = ;
-        createNonNRSContent(nonNRSGoalsInfo);
+        tbodyContent = createNonNRSContent(nonNRSGoalsInfo);
         break;
       default:
         break;
