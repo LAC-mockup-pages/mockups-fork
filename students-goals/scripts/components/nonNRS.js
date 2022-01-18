@@ -31,16 +31,43 @@ export const createNonNRSContent = (list) => {
     const optionListGoalMet = createOptionList(yesNoList, MetGoal);
 
     const row = `
-  <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left">
-    <td>
-      <div class="form-group input-field">
-        <input type="text" disabled name="FY" value=${FY}>
-      </div>
-    </td>
-
-  </tr>
-  `;
+    <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left">
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="FY" value=${FY}>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="Category_Key">
+            ${optionListCategory}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="GoalID">
+            ${optionListGoal}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="GoalMet">
+            ${optionListGoalMet}
+          </select>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <select class="modal-select" disabled name="ReferralSiteID">
+            ${optionListSites}
+          </select>
+        </div>
+      </td>
+    </tr>
+    `;
+    tableBodyContent.push(row);
   }
-  // return
   return tableBodyContent.join("");
 };
