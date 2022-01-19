@@ -186,7 +186,22 @@ $(document).ready(() => {
       $("#modalBloc").modal("toggle");
     }
   });
-
+  //* Adding a new record
+  $("#add-wioa, #add-other, #add-nonnrs").click(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    let editFormContent = "";
+    let modalTitle = "History";
+    let dataTableName = "GetHistory";
+    $("#edit-form")
+      .empty()
+      .append(editFormContent)
+      .attr("data-table", dataTableName);
+    $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
+    $("#modalBloc").modal("toggle");
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
+  });
   //* Record designed for deletion
   $("#delete-btn").click(function (evnt) {
     evnt.stopPropagation();

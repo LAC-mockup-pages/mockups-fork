@@ -70,3 +70,5 @@ export const tableValues = (list, descriptions, reasons, centers) => {
   }
   $(".history-table tbody").append(tableBodyContent.join(""));
 };
+
+export const addNewRecord = (obj) => {};
