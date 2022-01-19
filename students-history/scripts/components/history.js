@@ -51,6 +51,7 @@ export const tableValues = (list, descriptions, reasons, centers) => {
       <td>
         <div class="form-group input-field">
           <select class="modal-select" disabled name="ExitReasonID">
+            <option></option>
             ${optionListReasons}
           </select>
         </div>
@@ -58,6 +59,7 @@ export const tableValues = (list, descriptions, reasons, centers) => {
       <td>
         <div class="form-group input-field">
           <select class="modal-select" disabled name="GEDCenterID">
+            <option></option>
             ${optionListCenters}
           </select>
         </div>

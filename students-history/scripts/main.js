@@ -32,6 +32,16 @@ export const createOptionList = (dataObj, defaultValue) => {
   return optionList.join("");
 };
 
+export const modalOptionHistory = {
+  requiredList: ["Date", "Status"],
+  labels: {
+    StatusDate: "Date",
+    StatusID: "Status",
+    ExitReasonID: "Reason",
+    GEDCenterID: "Test center"
+  }
+};
+
 //*=================================================
 //* jQuery section
 //*=================================================
@@ -89,5 +99,77 @@ $(document).ready(() => {
     const destination = $(this).attr("data-target");
     const targetUrl = `${rootUrl}${destinationsObj[destination]}${queryString}`;
     window.location.assign(targetUrl);
+  });
+
+  //* Triggers edit modal with selected row elements and values
+  $(document).on("click", ".table>tbody> tr", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const rowId = $(this).attr("id");
+    const $row = $(":input", this).clone().prop("disabled", false);
+    const sectionTitle = $(this)
+      .parents("section")
+      .find(".sub-header-title")
+      .text()
+      .trim();
+    const { requiredList, labels } = modalOptionHistory;
+    $("#modalBloc").modal("toggle");
+    const table = $(this).parents("table").attr("data-table");
+    $("#edit-form")
+      .empty()
+      .append($row)
+      .attr({ "data-id": rowId, "data-table": table });
+    $(".modal-title").empty().text(`Editing ${sectionTitle} record`);
+    $("#edit-form :input").each(function (indx) {
+      const name = $(this).attr("name");
+      if (name.includes("Date")) {
+        const formattedDate = DT.fromFormat($(this).val(), "D").toISODate();
+        $(this).val(formattedDate).attr("type", "date");
+      }
+      $(this)
+        .wrap("<div class='form-group input-field'></div>")
+        .before(`<label for=${name}>${labels[name]}</label>`);
+    });
+    for (const name of requiredList) {
+      $(`#edit-form [name=${name}]`)
+        .prop("required", true)
+        .attr({
+          "data-original-title": "Please fill in this field",
+          "data-toggle": "tooltip",
+          "data-placement": "right"
+        })
+        .siblings("label")
+        .addClass("red-text");
+    }
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
+  });
+
+  //* Record designed for deletion
+  $("#delete-btn").click(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const targetTable = $("#edit-form").attr("data-table");
+    const rowId = $("#edit-form").attr("data-id");
+    const credentials = createCredentials();
+    const message = $(".modal-footer > h3").text();
+    if (!message) {
+      $(".modal-footer").prepend(
+        "<h3 class='delete-msg'>Confirm deletion by clicking the DELETE button again</h3>"
+      );
+    } else {
+      $(".modal-footer > h3").remove();
+      //! =================================================
+      //! For production, this is the end point for the DELETE request
+      //! to update the DB.
+      //! =================================================
+      const result = [
+        targetTable,
+        JSON.stringify({ ...credentials, Student_PKID, ID: rowId })
+      ];
+      console.log("result :", result);
+      //! =================================================
+      $("#modalBloc").modal("toggle");
+    }
   });
 });
