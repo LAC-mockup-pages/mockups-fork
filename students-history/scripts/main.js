@@ -33,7 +33,7 @@ export const createOptionList = (dataObj, defaultValue) => {
 };
 
 export const modalOptionHistory = {
-  requiredList: ["Date", "Status"],
+  requiredList: ["StatusDate", "StatusID"],
   labels: {
     StatusDate: "Date",
     StatusID: "Status",
