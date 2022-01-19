@@ -54,7 +54,9 @@ section:not(.student-info) {
   padding-right: 1%;
   margin: 0.5% 0%;
 }
-
+.light-red-text {
+  color: rgb(246, 133, 133);
+}
 .history-table .input-field > input {
   font-size: 0.9em;
   width: 100%;

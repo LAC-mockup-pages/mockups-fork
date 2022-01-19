@@ -403,7 +403,10 @@
           </div>
           <div class="tablescroll">
             <!-- <form class="form classes-form"> -->
-            <table class="table table-bordered history-table">
+            <table
+              class="table table-bordered history-table"
+              data-table="GetHistory"
+            >
               <thead>
                 <tr class="blue-light-bg">
                   <th>Date</th>
@@ -433,6 +436,9 @@
               ><span class="sr-only">Close</span>
             </button>
             <h4 class="modal-title">Agency Selection</h4>
+            <div class="required-text light-red-text">
+              Elements in red are required
+            </div>
           </div>
           <div class="modal-body">
             <form role="form" id="edit-form"></form>
