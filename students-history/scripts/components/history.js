@@ -4,7 +4,12 @@
 //* Sections: History
 //* =======================================
 
-import { createOptionList } from "../main.js";
+import {
+  statusList,
+  reasonsList,
+  centersList,
+  createOptionList
+} from "../main.js";
 
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
@@ -14,7 +19,7 @@ const DT = luxon.DateTime;
 //                /data-server/GetStatusDescSource
 //                /data-server/GetGetSepReasons
 //                /data-server/GetGEDCenter_TASC
-export const tableValues = (list, descriptions, reasons, centers) => {
+export const tableValues = (list) => {
   // Sorting records in decreasing date of enrollment
   const orderedList = list.sort((record1, record2) =>
     // DT#fromFormat <== Luxon method, "D" token describes mm/dd/yyyy format
@@ -29,9 +34,9 @@ export const tableValues = (list, descriptions, reasons, centers) => {
   const tableBodyContent = [];
   for (const record of orderedList) {
     const { ID, StatusDate, StatusID, ExitReasonID, GEDCenterID } = record;
-    const optionListStatus = createOptionList(descriptions, StatusID);
-    const optionListReasons = createOptionList(reasons, ExitReasonID);
-    const optionListCenters = createOptionList(centers, GEDCenterID);
+    const optionListStatus = createOptionList(statusList, StatusID);
+    const optionListReasons = createOptionList(reasonsList, ExitReasonID);
+    const optionListCenters = createOptionList(centersList, GEDCenterID);
 
     const row = `
     <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip"
@@ -71,4 +76,61 @@ export const tableValues = (list, descriptions, reasons, centers) => {
   $(".history-table tbody").append(tableBodyContent.join(""));
 };
 
-export const addNewRecord = (obj) => {};
+export const addNewRecord = (obj) => {
+  const content = [];
+  const { labels } = obj;
+  let labelClassVal = "";
+  let classVal = "";
+  for (const keyValue in labels) {
+    const labelVal = labels[keyValue];
+    let row = "";
+    let option = "";
+    let value = "";
+    // <input> fields
+    if (keyValue === "StatusDate") {
+      let optionHidden = "form-group";
+      const type = keyValue.includes("Date") ? "date" : "text";
+      // elementInput() ==> helpers/helperFunctions.js
+      row = elementInput({
+        keyVal: keyValue,
+        labelVal,
+        value,
+        labelClassVal,
+        classVal,
+        option,
+        optionHidden,
+        type
+      });
+    } else {
+      // <select> fields
+      let hashTable;
+      switch (keyValue) {
+        case "StatusID":
+          hashTable = statusList;
+          break;
+        case "ExitReasonID":
+          hashTable = reasonsList;
+          break;
+        case "GEDCenterID":
+          hashTable = centersList;
+          break;
+        default:
+          console.log("Default hit - Not right");
+          return;
+      }
+      // elementSelectModal() ==> helpers/helperFunction.js
+      row = elementSelectModal({
+        hashTable,
+        keyValue,
+        selectedValue: "",
+        labelVal,
+        labelClassVal,
+        option,
+        optionText: ""
+      });
+    }
+    content.push(row);
+  }
+  console.log("content :>> ", content);
+  return content.join("");
+};

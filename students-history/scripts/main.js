@@ -2,7 +2,7 @@
 //* Actions and Logic for local page
 //*=================================================
 
-import { tableValues } from "./components/history.js";
+import { addNewRecord, tableValues } from "./components/history.js";
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
 //! =============================================================
@@ -11,14 +11,14 @@ const DT = luxon.DateTime;
 //! =============================================================
 const historyList = GetHistory.slice(0);
 const studentInfo = GetStudentHeader.slice(0)[0];
-const statusList = GetStatusDescSource.slice(0);
+export const statusList = GetStatusDescSource.slice(0);
 // Removing the key from the value property
-const reasonsList = GetSepReasons.map((obj) => {
+export const reasonsList = GetSepReasons.map((obj) => {
   const key = obj.key;
   const value = obj.value.replace(key, "").trim();
   return { key, value };
 });
-const centersList = GetGEDCenter_TASC.slice(0);
+export const centersList = GetGEDCenter_TASC.slice(0);
 //! =============================================================
 export const createOptionList = (dataObj, defaultValue) => {
   const optionList = dataObj.map((record) => {
@@ -85,7 +85,7 @@ $(document).ready(() => {
   $(".student-info .long-id").text(`Date of birth: ${BirthDate}`);
 
   // Populating history-table
-  tableValues(historyList, statusList, reasonsList, centersList);
+  tableValues(historyList);
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
   //* =====================================})
@@ -186,22 +186,36 @@ $(document).ready(() => {
       $("#modalBloc").modal("toggle");
     }
   });
+
   //* Adding a new record
-  $("#add-wioa, #add-other, #add-nonnrs").click(function (evnt) {
+  $("#add-record").click(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    let editFormContent = "";
-    let modalTitle = "History";
-    let dataTableName = "GetHistory";
+    const editFormContent = addNewRecord(modalOptionHistory);
+    const modalTitle = "History";
+    const dataTableName = "GetHistory";
+    const { requiredList } = modalOptionHistory;
     $("#edit-form")
       .empty()
       .append(editFormContent)
       .attr("data-table", dataTableName);
     $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
     $("#modalBloc").modal("toggle");
+    for (const name of requiredList) {
+      $(`#edit-form [name=${name}]`)
+        .prop("required", true)
+        .attr({
+          "data-original-title": "Please fill in this field",
+          "data-toggle": "tooltip",
+          "data-placement": "right"
+        })
+        .siblings("label")
+        .addClass("red-text");
+    }
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
+
   //* Record designed for deletion
   $("#delete-btn").click(function (evnt) {
     evnt.stopPropagation();
