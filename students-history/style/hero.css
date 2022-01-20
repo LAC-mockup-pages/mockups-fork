@@ -68,11 +68,10 @@ section:not(.student-info) {
   border-bottom: none;
 }
 .form-group {
-  line-height: 1.7vh;
+  line-height: 1.5vh;
   background-color: inherit;
 }
-#add-case,
-#add-enrollment {
+#add-record {
   font-weight: 600;
   padding: 3px 4px;
   margin-right: 0px;
@@ -90,74 +89,35 @@ section:not(.student-info) {
 }
 .table > tbody > tr > td {
   font-weight: 400;
-  line-height: 1.3em;
+  line-height: 1.1em;
 }
 .table select:disabled,
 .table input:disabled {
   opacity: 1;
   background-color: inherit;
 }
-
-.history-table tbody tr td:nth-child(1) {
-  width: 7em;
-}
-/* .history-table tbody tr td:nth-child(3) {
-  width: 12em;
-} */
-
-/* Contact hours */
-.active,
-.inactive {
-  border-bottom: 2px solid #2479b5;
-  cursor: pointer;
-}
-
-.contact-hours table > tbody > tr {
-  background-color: inherit;
-  color: rgb(115, 115, 115);
+section .input-field > input,
+section .modal-select {
+  font-size: 0.9em;
+  width: 100%;
+  border-bottom: none;
 }
 .tablescroll {
   max-height: 30em;
   overflow-y: auto;
   overflow-x: hidden;
 }
-.history-table thead > tr,
-.classes thead > tr {
+.table > thead > tr {
   position: sticky;
   top: 0px;
   z-index: 10;
 }
-.inactive {
-  color: #2479b5;
-  background-color: #d3e4f0;
+.table tbody > tr > td:first-child {
+  width: 6em;
 }
-
-.active {
-  color: #d3e4f0;
-  background-color: #2479b5;
+.table tbody > tr > td:nth-child(2) {
+  width: 11em;
 }
-.active:hover,
-.inactive:hover {
-  font-style: italic;
-}
-.align-right {
-  text-align: right;
-}
-
-/* Enrollment */
-
-/* Notes */
-.notes {
-  margin-bottom: 1em;
-  /* max-height: 20vh; */
-}
-.note-display {
-  width: 45vw;
-  max-height: 15%;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
-.note-display:hover {
-  cursor: pointer;
-  box-shadow: 6px 6px #d3e4f0;
+.table tbody > tr > td:nth-child(3) {
+  width: 15em;
 }
