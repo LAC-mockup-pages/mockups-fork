@@ -74,7 +74,7 @@ section:not("student-info") {
   transition: max-height 200ms;
 }
 .visible {
-  max-height: 27em;
+  max-height: 20em;
 }
 .invisible {
   max-height: 0em;
