@@ -195,11 +195,13 @@ $(document).ready(() => {
     const modalTitle = "History";
     const dataTableName = "GetHistory";
     const { requiredList } = modalOptionHistory;
+    $("#delete-btn").toggleClass("hidden");
     $("#edit-form")
       .empty()
       .append(editFormContent)
       .attr("data-table", dataTableName);
     $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
+    $("#delete-btn").addClass("hidden");
     $("#modalBloc").modal("toggle");
     for (const name of requiredList) {
       $(`#edit-form [name=${name}]`)
@@ -242,5 +244,21 @@ $(document).ready(() => {
       //! =================================================
       $("#modalBloc").modal("toggle");
     }
+  });
+  //* Cleaning up after modal closing
+  $("#modalBloc").focusout((evnt) => {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    if ($("#delete-btn").hasClass("hidden"))
+      $("#delete-btn").toggleClass("hidden");
+    $(".modal-footer h3").remove();
+  });
+  $("#close-btn").click((evnt) => {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    $("#modalBloc").modal("toggle");
+    if ($("#delete-btn").hasClass("hidden"))
+      $("#delete-btn").toggleClass("hidden");
+    $(".modal-footer h3").remove();
   });
 });
