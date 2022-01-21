@@ -293,7 +293,7 @@ $(document).ready(() => {
     let modalTitle = "WIOA / NRS outcomes";
     let dataTableName = "GetOutcomeinfo_WIOA";
     const buttonId = $(this).attr("id");
-
+    $("#delete-btn").toggleClass("hidden");
     switch (buttonId) {
       case "add-other":
         editFormContent = addNewOutcomeOther(modalOptionOther);
@@ -317,6 +317,8 @@ $(document).ready(() => {
     //TODO Process customized requiredList
 
     $("#modalBloc").modal("toggle");
+    $("#delete-btn").addClass("hidden");
+
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
@@ -334,7 +336,7 @@ $(document).ready(() => {
         "<h3 class='delete-msg'>Confirm deletion by clicking the DELETE button again</h3>"
       );
     } else {
-      $(".modal-footer > h3").remove();
+      $(".modal-footer h3").remove();
       //! =================================================
       //! For production, this is the end point for the DELETE request
       //! to update the DB.
@@ -347,5 +349,23 @@ $(document).ready(() => {
       //! =================================================
       $("#modalBloc").modal("toggle");
     }
+  });
+
+  //* Cleaning up after modal closing
+  $("#modalBloc").focusout((evnt) => {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    if ($("#delete-btn").hasClass("hidden"))
+      $("#delete-btn").toggleClass("hidden");
+    $(".modal-footer h3").remove();
+  });
+  $("#close-btn").click((evnt) => {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    $("#modalBloc").modal("toggle");
+    if ($("#delete-btn").hasClass("hidden"))
+      $("#delete-btn").toggleClass("hidden");
+
+    $(".modal-footer h3").remove();
   });
 });
