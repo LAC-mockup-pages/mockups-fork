@@ -10,9 +10,7 @@ import { caseValues } from "./components/case-notes.js";
 //! =============================================================
 const studentInfo = GetStudentHeader.slice(0)[0];
 const notesList = GetNotes.slice(0);
-// const wioaOutcome = GetOutcomeinfo_WIOA.slice(0);
-// const credentialList = GetCredentialSource.slice(0);
-// const outcomeList = GetOutcomeDesc_WIOA.slice(0);
+
 //! =============================================================
 
 //*=================================================
