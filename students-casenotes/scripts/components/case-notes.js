@@ -4,7 +4,10 @@
 //* Sections: case-notes
 //* =======================================
 
-export const caseValues = (list) => {
+// Initializing Luxon DateTime class for the module
+const DT = luxon.DateTime;
+
+const caseValues = (list) => {
   const tableBodyContent = [];
 
   for (const record of list) {
@@ -58,6 +61,37 @@ export const caseValues = (list) => {
     </td>
   </tr>
 `;
+    tableBodyContent.push(row);
+  }
+
+  return tableBodyContent.join("");
+};
+
+export const createCaseNotesContent = (list) => {
+  const tableBodyContent = [];
+
+  for (const record of list) {
+    const {
+      ID,
+      ContactDate,
+      ContactDescID,
+      KeyCodeID,
+      Personnel_PKID,
+      ContactHours,
+      ContactNotes,
+      Attachment,
+      AttachementLink
+    } = record;
+    const row = `
+  <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left" >
+    <td>
+      <div class="form-group input-field">
+        <input type="text" disabled name="ContactDate" value=${ContactDate}>
+      </div>
+    </td>
+  </tr>
+  `;
+
     tableBodyContent.push(row);
   }
 

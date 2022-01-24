@@ -101,10 +101,15 @@ $(document).ready(() => {
   $(".name").text(StudentName);
   $(".long-id").text(`Date of birth: ${BirthDate}`);
 
-  // ROUGH-IN Only
-  // Populating table
-  const content = caseValues(notesList);
-  $(".case-table tbody").append(content);
+  // Populating Case notes table
+  const content = createCaseNotesContent(notesList);
+  if (content) {
+    $(".case-table tbody").append(content);
+  } else {
+    $(".case-table").replaceWith(
+      `<h3 style="text-align:center">No goal / outcome on record for ${StudentName}</h3>`
+    );
+  }
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
 });
