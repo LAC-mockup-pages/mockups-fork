@@ -9,10 +9,43 @@ import { caseValues } from "./components/case-notes.js";
 //! Comment out for Production.
 //! =============================================================
 const studentInfo = GetStudentHeader.slice(0)[0];
-const notesList = GetNotes.slice(0);
-
+const notesList = GetNotes2.slice(0);
+export const contactTypes = GetContactTypeSource.slice(0);
+export const staff = GetInstructorSource.slice(0);
+export const keyCodes = GetKeyCodeSource.slice(0);
 //! =============================================================
-
+export const createOptionList = (dataObj, defaultValue) => {
+  const optionList = dataObj.map((record) => {
+    const [key, value] = Object.keys(record);
+    const keyData = record[key];
+    const valueData = record[value];
+    if (valueData) {
+      const defaultVal =
+        defaultValue && keyData === defaultValue ? " selected" : "";
+      return `<option${defaultVal} value=${keyData}>${valueData}</option>`;
+    } else {
+      return `<option selected value></option>`;
+    }
+  });
+  return optionList.join("");
+};
+export const modalOptionCaseNotes = {
+  requiredList: [
+    "ContactDate",
+    "ContactDescID",
+    "Personnel_PKID",
+    "ContactNotes"
+  ],
+  labels: {
+    ContactDate: "Date",
+    ContactDescID: "Type",
+    KeyCodeID: "Keyword",
+    Personnel_PKID: "Contact staff",
+    ContactHours: "Contact hrs",
+    ContactNotes: "Note",
+    Attachment: "Document"
+  }
+};
 //*=================================================
 //* jQuery section
 //*=================================================
@@ -33,9 +66,9 @@ $(document).ready(() => {
   //! =============================================================
   // const studentInfo =
   // const notesList =
-  // const wioaOutcome =
-  // const credentialList =
-  // const outcomeList =
+  // const constactTypes =
+  // const staff =
+  // const keyCodes =
 
   // Navigation variables.
   // In Production, update with actual rootUrl and destinations
