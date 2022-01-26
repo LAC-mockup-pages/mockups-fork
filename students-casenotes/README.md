@@ -33,7 +33,7 @@ NB: Date is last modification date.
 | Initial VSC set up      | Done    | 12/14/21 |
 | Mockup                  | Done    | 12/16/21 |
 | Roughing/static lay out | Done    | 12/16/21 |
-| Data objects            | Done    | 12/14/21 |
+| Data objects            | Done    | 12/25/21 |
 | Main coding             | Started | 01/21/22 |
 | Navigation to/from page |         |          |
 | Alpha build             |         |          |
