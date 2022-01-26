@@ -13,6 +13,9 @@ const notesList = GetNotes2.slice(0);
 export const contactTypes = GetContactTypeSource.slice(0);
 export const staff = GetInstructorSource.slice(0);
 export const keyCodes = GetKeyCodeSource.slice(0);
+const referrals = GetReferrals.slice(0);
+const needs = GetNeeds.slice(0);
+const outcome = GetNonNRSOutcome.slice(0);
 //! =============================================================
 export const createOptionList = (dataObj, defaultValue) => {
   const optionList = dataObj.map((record) => {
@@ -69,6 +72,9 @@ $(document).ready(() => {
   // const constactTypes =
   // const staff =
   // const keyCodes =
+  // const referrals =
+  // const needs =
+  // const outcome =
 
   // Navigation variables.
   // In Production, update with actual rootUrl and destinations
