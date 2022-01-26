@@ -2,7 +2,7 @@
 //* Actions and Logic for local page
 //*=================================================
 
-import { caseValues } from "./components/case-notes.js";
+import { createCaseNotesContent } from "./components/case-notes.js";
 
 //! =============================================================
 //! For Development only.

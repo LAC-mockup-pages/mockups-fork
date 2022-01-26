@@ -41,6 +41,20 @@
       defer
     ></script>
 
+    <!-- Luxon JS library from CDN - Dates and time management-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/luxon@2.1.1/build/global/luxon.min.js"
+      type="text/javascript"
+      defer
+    ></script>
+
+    <!-- Luxon JS polyfill for IE 10 or 11-->
+    <script
+      src="https://cdn.polyfill.io/v3/polyfill.js?features=default,String.prototype.repeat,Array.prototype.find,Array.prototype.findIndex,Math.trunc,Math.sign,Object.is"
+      type="text/javascript"
+      defer
+    ></script>
+
     <!-- Local links and scripts -->
     <link rel="stylesheet" href="./style/index.css" type="text/css" />
 
@@ -379,7 +393,9 @@
         </section>
         <section class="case">
           <div class="sub-header blue-bg blue-light-text">
-            <div class="sub-header-title">Case notes</div>
+            <div class="sub-header-title">
+              Case notes<span class="caret"></span>
+            </div>
           </div>
           <div class="visible tablescroll">
             <table class="table table-bordered case-table">
@@ -392,6 +408,71 @@
                   <th>Contact hrs</th>
                   <th>Note</th>
                   <th>Document</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="referrals">
+          <div class="sub-header blue-bg blue-light-text">
+            <div class="sub-header-title">
+              Referrals <span class="caret"></span>
+            </div>
+          </div>
+          <div class="invisible tablescroll">
+            <table class="table table-bordered">
+              <thead>
+                <tr class="blue-light-bg">
+                  <th>Date</th>
+                  <th>Location</th>
+                  <th>Note</th>
+                  <th>Keywords</th>
+                  <th>Document</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="needs">
+          <div class="sub-header blue-bg blue-light-text">
+            <div class="sub-header-title">
+              Needs <span class="caret"></span>
+            </div>
+          </div>
+          <div class="invisible tablescroll">
+            <table class="table table-bordered">
+              <thead>
+                <tr class="blue-light-bg">
+                  <th>Date</th>
+                  <th>Title</th>
+                  <th>Note</th>
+                  <th>Keywords</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="outcome">
+          <div class="sub-header blue-bg blue-light-text">
+            <div class="sub-header-title">
+              Non NRS outcome <span class="caret"></span>
+            </div>
+          </div>
+          <div class="invisible tablescroll">
+            <table class="table table-bordered">
+              <thead>
+                <tr class="blue-light-bg">
+                  <th>Need</th>
+                  <th>Date</th>
+                  <th>FY</th>
+                  <th>Description</th>
+                  <th>Comments</th>
                 </tr>
               </thead>
               <tbody></tbody>
