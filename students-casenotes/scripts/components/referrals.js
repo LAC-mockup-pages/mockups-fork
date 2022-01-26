@@ -6,3 +6,58 @@
 
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
+
+export const createReferralsContent = (list) => {
+  const tableBodyContent = [];
+  const orderedList = list.sort((record1, record2) =>
+    // DT#fromFormat <== Luxon method, "D" token describes mm/dd/yyyy format
+    DT.fromFormat(record1.TABEDate, "D") > DT.fromFormat(record2.TABEDate, "D")
+      ? -1
+      : DT.fromFormat(record1.TABEDate, "D") <
+        DT.fromFormat(record2.TABEDate, "D")
+      ? 1
+      : 0
+  );
+  for (const record of orderedList) {
+    const {
+      ReferralDate,
+      ReferralSiteName,
+      ReferralNotes,
+      KeyCodeDescription,
+      AttachmentLink
+    } = record;
+    const document = AttachmentLink ? "Yes" : "No";
+    const row = `
+    <tr>
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="ReferralDate" value=${ReferralDate}>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="ReferralSiteName" value=${ReferralSiteName}>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="ReferralNotes" value=${ReferralNotes}>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="KeyCodeDescription" value=${KeyCodeDescription}>
+        </div>
+      </td>
+      <td>
+        <div class="form-group input-field">
+          <input type="text" disabled name="document" value=${document}>
+        </div>
+      </td>
+
+    </tr>
+    `;
+    tableBodyContent.push(row);
+  }
+  return tableBodyContent.join("");
+};
