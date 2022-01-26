@@ -15,6 +15,117 @@ const GetStudentHeader = [
   }
 ];
 
+const GetReferrals = [
+  {
+    ID: "1",
+    StudentID: "WheelerMikePRA1720191581975",
+    Student_PKID: "1965704",
+    ReferralNotes: "&lt;p&gt;Testing for email responses&lt;/p&gt;",
+    ReferralDate: "07/18/2019",
+    KeyCodeDescription: "Financial Literacy",
+    ReferralSiteID: "",
+    ReferralSiteName: "",
+    Attachment: "agree disagree.docx",
+    AttachmentLink: "https://cmp.asists.com/uploads/PRA/agree disagree.docx"
+  },
+  {
+    ID: "2",
+    StudentID: "WheelerMikePRA1720191581975",
+    Student_PKID: "1965704",
+    ReferralNotes: "&lt;p&gt;testing referral&lt;/p&gt;",
+    ReferralDate: "07/20/2019",
+    KeyCodeDescription: "Financial Literacy",
+    ReferralSiteID: "",
+    ReferralSiteName: "",
+    Attachment: "",
+    AttachmentLink: ""
+  },
+  {
+    ID: "3",
+    StudentID: "WheelerMikePRA1720191581975",
+    Student_PKID: "1965704",
+    ReferralNotes:
+      "&lt;p&gt;Mike Wheeler is a client of the Literacy Assistance Center. He wishes to recieve additional information about the workforce development programs at the ASISTS 12.1 Test Office.&amp;nbsp;&lt;/p&gt;  &lt;p&gt;&amp;nbsp;&lt;/p&gt;  &lt;p&gt;Please Note: Mike Wheeler has not held a previous employment.&amp;nbsp;&lt;/p&gt;",
+    ReferralDate: "07/19/2019",
+    KeyCodeDescription: "Workforce /Employment/Job Zone",
+    ReferralSiteID: "",
+    ReferralSiteName: "",
+    Attachment: "",
+    AttachmentLink: ""
+  }
+];
+const GetNeeds = [
+  {
+    ID: "16",
+    StudentID: "AcostaAnnaPRA172011111988",
+    Student_PKID: "1152325",
+    AssessmentDate: "09/20/2020",
+    AssessmentTitle: "GJ Test 09282020",
+    AssessmentNotes:
+      "<p>CM Needs reports display<br />Fomatted data&nbsp;<br />with<br /><span style=",
+    KeyCodeDescription:
+      "Health Literacy;Social Services;HSE Diploma Support (Attachment R)"
+  },
+  {
+    ID: "13",
+    StudentID: "AcostaAnnaPRA172011111988",
+    Student_PKID: "1152325",
+    AssessmentDate: "12/12/2019",
+    AssessmentTitle: "Test 2",
+    AssessmentNotes: "<p>Needs Test Assessment 3</p>",
+    KeyCodeDescription: "Financial Literacy;Financial Literacy"
+  }
+];
+const GetNonNRSOutcome = [
+  {
+    ID: "16",
+    StudentID: "AcostaAnnaPRA172011111988",
+    Student_PKID: "1152325",
+    Assessment_PKID: "16",
+    AssessmentTitle: "GJ Test 09282020",
+    OutcomeDate: "09/28/2020",
+    FY: "2021",
+    GoalID: 4,
+    OutcomeDescription: "Implement a daily exercise routine",
+    COMMENTS: ""
+  },
+  {
+    ID: "13",
+    StudentID: "AcostaAnnaPRA172011111988",
+    Student_PKID: "1152325",
+    Assessment_PKID: "13",
+    AssessmentTitle: "Test 2",
+    OutcomeDate: "01/01/1900",
+    FY: "2020",
+    GoalID: "3458",
+    OutcomeDescription: "Budget Management  *",
+    COMMENTS: ""
+  },
+  {
+    ID: "13",
+    StudentID: "AcostaAnnaPRA172011111988",
+    Student_PKID: "1152325",
+    Assessment_PKID: "13",
+    AssessmentTitle: "Test 2",
+    OutcomeDate: "01/01/1900",
+    FY: "2020",
+    GoalID: "34",
+    OutcomeDescription: "Open a savings account ",
+    COMMENTS: ""
+  },
+  {
+    ID: "13",
+    StudentID: "AcostaAnnaPRA172011111988",
+    Student_PKID: "1152325",
+    Assessment_PKID: "13",
+    AssessmentTitle: "Test 2",
+    OutcomeDate: "01/01/1900",
+    FY: "2020",
+    GoalID: "7",
+    OutcomeDescription: "Developed personal and/or family budget",
+    COMMENTS: ""
+  }
+];
 const GetNotes2 = [
   {
     ID: "450375",
