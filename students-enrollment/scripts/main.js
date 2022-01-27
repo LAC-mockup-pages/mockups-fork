@@ -285,8 +285,8 @@ $(document).ready(() => {
       );
       modalTitle = "Case Management";
     }
-
     $("#edit-form")
+      .removeAttr("data-table data-id")
       .empty()
       .append(editFormContent)
       .attr("data-table", "GetEnroll");
@@ -301,6 +301,7 @@ $(document).ready(() => {
           })
           .prop("required", true);
         $(this).siblings("label").addClass("red-text");
+        $("#edit-form select[name*='ActiveStatus']").prop("selectedIndex", 2); //Set to Yes
       }
     });
     $("#modalBloc").modal("toggle");
