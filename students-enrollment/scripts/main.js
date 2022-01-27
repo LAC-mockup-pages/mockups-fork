@@ -21,7 +21,7 @@ const hoursHistory = GetHoursHistory.slice(0);
 const noteContent = GetStudentNotes.slice(0)[0];
 
 //! =============================================================
-const courseCodeList = courseList.map((record) => {
+export const courseCodeList = courseList.map((record) => {
   const { key, value } = record;
   const courseCode = value.split(" ")[0];
   return { key, value: courseCode };
@@ -208,13 +208,15 @@ $(document).ready(() => {
   //* Switches Contact hours summary and history tables
   $(".contact-hours .sub-header").click(function (evnt) {
     evnt.stopPropagation();
+    evnt.preventDefault();
     if ($(this).hasClass("active")) return;
     $(".contact-hours .sub-header").toggleClass("active inactive");
     $(".contact-hours table").toggleClass("hidden");
   });
 
   //* Saving changes after editing in modal
-  $("#save-btn").click(function (evnt) {
+  $("#save-btn").click(async function (evnt) {
+    evnt.preventDefault();
     //TODO Check for errors in inputs
     const elements = $("#edit-form :input").prop("disabled", false);
     const requiredObj = createObject(
