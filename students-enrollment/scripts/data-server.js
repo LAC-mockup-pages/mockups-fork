@@ -30,7 +30,7 @@ const GetEnroll = [
     InactiveReason: "",
     Transfer_PKID: "",
     TransferTo: "",
-    ActiveStatus: "checked",
+    ActiveStatus: "1",
     Description: "BE2CLAC_06 Katie, LaBonte",
     FY: "2022",
     ISCMP: "0"
@@ -45,7 +45,7 @@ const GetEnroll = [
     InactiveReason: "",
     Transfer_PKID: "",
     TransferTo: "",
-    ActiveStatus: "checked",
+    ActiveStatus: "1",
     Description: "BE4CCASE_1 Scott, Adam",
     FY: "2022",
     ISCMP: "0"
@@ -60,7 +60,7 @@ const GetEnroll = [
     InactiveReason: "",
     Transfer_PKID: "",
     TransferTo: "",
-    ActiveStatus: "checked",
+    ActiveStatus: "1",
     Description: "Kenobi, General (CM_!)",
     FY: "2022",
     ISCMP: "1"
@@ -75,7 +75,7 @@ const GetEnroll = [
     InactiveReason: "",
     Transfer_PKID: "",
     TransferTo: "",
-    ActiveStatus: "checked",
+    ActiveStatus: "1",
     Description: "ES3CEnglish101-Urdu Porter, Samantha",
     FY: "2021",
     ISCMP: "0"
@@ -90,7 +90,7 @@ const GetEnroll = [
     InactiveReason: "",
     Transfer_PKID: "",
     TransferTo: "",
-    ActiveStatus: "checked",
+    ActiveStatus: "1",
     Description: "ES3CEnglish101-Uighur Porter, Samantha",
     FY: "2021",
     ISCMP: "0"
@@ -105,7 +105,7 @@ const GetEnroll = [
     InactiveReason: "T",
     Transfer_PKID: "202360",
     TransferTo: "BE6C1 Alisova, Muriana",
-    ActiveStatus: "checked",
+    ActiveStatus: "1",
     Description: "BE1CTutoring_2021 Porter, Jane",
     FY: "2021",
     ISCMP: "0"
@@ -120,7 +120,7 @@ const GetEnroll = [
     InactiveReason: "T",
     Transfer_PKID: "236450",
     TransferTo: "ES3CEnglish101-Uighur Porter, Samantha",
-    ActiveStatus: "",
+    ActiveStatus: "0",
     Description: "BE4CASTS_21 Porter, Samantha",
     FY: "2021",
     ISCMP: "0"
@@ -135,7 +135,7 @@ const GetEnroll = [
     InactiveReason: "",
     Transfer_PKID: "",
     TransferTo: "",
-    ActiveStatus: "",
+    ActiveStatus: "0",
     Description: "BE6C1 Alisova, Muriana",
     FY: "2021",
     ISCMP: "0"
@@ -150,7 +150,7 @@ const GetEnroll = [
     InactiveReason: "",
     Transfer_PKID: "",
     TransferTo: "",
-    ActiveStatus: "checked",
+    ActiveStatus: "1",
     Description: "Porter, Jane (CaseMgmt-Summer)",
     FY: "2021",
     ISCMP: "1"

@@ -48,7 +48,7 @@ export const enrollValues = (
     const optionListActive = createOptionList(
       [
         { key: "0", value: "No" },
-        { key: "checked", value: "Yes" }
+        { key: "1", value: "Yes" }
       ],
       ActiveStatus
     );
@@ -167,7 +167,7 @@ export const addNewRecord = (courses, reasons, transfers, caseFlag = "0") => {
         default:
           hashTable = [
             { key: "0", value: "No" },
-            { key: "checked", value: "Yes" }
+            { key: "1", value: "Yes" }
           ];
           break;
       }
