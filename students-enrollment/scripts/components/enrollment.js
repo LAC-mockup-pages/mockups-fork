@@ -7,7 +7,7 @@
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
 
-import { createOptionList } from "../main.js";
+import { createOptionList, dateFormat } from "../main.js";
 
 // Populating input element values
 // Data source: /data-server.js/GetEnroll
@@ -69,7 +69,9 @@ export const enrollValues = (
       </td>
       <td>
         <div class="form-group input-field">
-          <input type="text" disabled data-enddate=${EndDate} name="InactiveDate" value=${InactiveDate} >
+          <input type="text" disabled data-enddate=${dateFormat(
+            EndDate
+          )} name="InactiveDate" value=${InactiveDate} >
         </div>
       </td>
       <td>

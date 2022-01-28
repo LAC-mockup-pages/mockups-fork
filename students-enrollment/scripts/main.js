@@ -311,23 +311,28 @@ $(document).ready(() => {
 
   //* Rule 1 - When inactive date is not valid, set flag and return
   //* focus to inactive date
-  $("#edit-form ").on("blur", 'input[name*="InactiveDate"]', function (evnt) {
+  $("#edit-form ").on("blur", 'input[name="InactiveDate"]', function (evnt) {
     evnt.stopPropagation();
+    // createObject() <== helpers/helperFunctions.js
     const { EnrollDate, InactiveDate } = createObject(
       $("#edit-form input[name$='Date']").serializeArray()
     );
     const courseEndDate = $(this).attr("data-enddate");
-    console.log("object :>> ", [EnrollDate, InactiveDate, courseEndDate]);
     const inputDateIndex = [EnrollDate, InactiveDate, courseEndDate]
       .sort((date1, date2) =>
-        // DT#fromFormat <== Luxon method, "D" token describes mm/dd/yyyy format
-        DT.fromFormat(date1, "D") > DT.fromFormat(date2, "D")
+        // DT#fromISO <== Luxon method
+        DT.fromISO(date1) < DT.fromISO(date2)
           ? -1
-          : DT.fromFormat(date1, "D") < DT.fromFormat(date2, "D")
+          : DT.fromISO(date1) > DT.fromISO(date2)
           ? 1
           : 0
       )
-      .indexOf(courseEndDate);
-    console.log("inputDateIndex :>> ", inputDateIndex);
+      .indexOf(InactiveDate);
+    if (inputDateIndex !== 1) {
+      $(this).css("background-color", "#f7e095").focus();
+      return;
+    } else {
+      $(this).css("background-color", "");
+    }
   });
 });
