@@ -308,4 +308,26 @@ $(document).ready(() => {
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
+
+  //* Rule 1 - When inactive date is not valid, set flag and return
+  //* focus to inactive date
+  $("#edit-form ").on("blur", 'input[name*="InactiveDate"]', function (evnt) {
+    evnt.stopPropagation();
+    const { EnrollDate, InactiveDate } = createObject(
+      $("#edit-form input[name$='Date']").serializeArray()
+    );
+    const courseEndDate = $(this).attr("data-enddate");
+    console.log("object :>> ", [EnrollDate, InactiveDate, courseEndDate]);
+    const inputDateIndex = [EnrollDate, InactiveDate, courseEndDate]
+      .sort((date1, date2) =>
+        // DT#fromFormat <== Luxon method, "D" token describes mm/dd/yyyy format
+        DT.fromFormat(date1, "D") > DT.fromFormat(date2, "D")
+          ? -1
+          : DT.fromFormat(date1, "D") < DT.fromFormat(date2, "D")
+          ? 1
+          : 0
+      )
+      .indexOf(courseEndDate);
+    console.log("inputDateIndex :>> ", inputDateIndex);
+  });
 });

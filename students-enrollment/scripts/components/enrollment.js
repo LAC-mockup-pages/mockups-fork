@@ -40,7 +40,7 @@ export const enrollValues = (
       InactiveReason,
       Transfer_PKID,
       ActiveStatus,
-      FY
+      EndDate
     } = record;
     const optionListCourse = createOptionList(courses, DescriptionKey);
     const optionListReason = createOptionList(reasons, InactiveReason);
@@ -69,7 +69,7 @@ export const enrollValues = (
       </td>
       <td>
         <div class="form-group input-field">
-          <input type="text" disabled name="InactiveDate" value=${InactiveDate} >
+          <input type="text" disabled data-enddate=${EndDate} name="InactiveDate" value=${InactiveDate} >
         </div>
       </td>
       <td>
