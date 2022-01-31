@@ -309,15 +309,23 @@ $(document).ready(() => {
     $("[data-toggle='tooltip']").tooltip();
   });
 
-  //* Rule 1 - When inactive date is not valid, set flag and return
-  //* focus to inactive date
+  //* Rule 1 - When entered inactive date is not valid, highlight background and
+  //* return focus to inactive date
   $("#edit-form ").on("blur", 'input[name="InactiveDate"]', function (evnt) {
     evnt.stopPropagation();
     // createObject() <== helpers/helperFunctions.js
-    const { EnrollDate, InactiveDate } = createObject(
-      $("#edit-form input[name$='Date']").serializeArray()
+    const { EnrollDate, InactiveDate, ActiveStatus } = createObject(
+      $(
+        "#edit-form input[name$='Date'], #edit-form select[name='ActiveStatus'"
+      ).serializeArray()
     );
+    // console.log(
+    //   $(
+    //     "#edit-form input[name$='Date'], select[name='ActiveStatus'"
+    //   ).serializeArray()
+    // );
     const courseEndDate = $(this).attr("data-enddate");
+    // const studentStatus=$("#edit-form )
     const inputDateIndex = [EnrollDate, InactiveDate, courseEndDate]
       .sort((date1, date2) =>
         // DT#fromISO <== Luxon method
@@ -333,6 +341,8 @@ $(document).ready(() => {
       return;
     } else {
       $(this).css("background-color", "");
+      // Student is already inactive
+      if (ActiveStatus === "0") return;
     }
   });
 });

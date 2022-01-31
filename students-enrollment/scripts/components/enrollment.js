@@ -40,7 +40,7 @@ export const enrollValues = (
       InactiveReason,
       Transfer_PKID,
       ActiveStatus,
-      EndDate
+      ClassEndDate
     } = record;
     const optionListCourse = createOptionList(courses, DescriptionKey);
     const optionListReason = createOptionList(reasons, InactiveReason);
@@ -70,7 +70,7 @@ export const enrollValues = (
       <td>
         <div class="form-group input-field">
           <input type="text" disabled data-enddate=${dateFormat(
-            EndDate
+            ClassEndDate
           )} name="InactiveDate" value=${InactiveDate} >
         </div>
       </td>
@@ -162,9 +162,11 @@ export const addNewRecord = (courses, reasons, transfers, caseFlag = "0") => {
           break;
         case "InactiveReason":
           hashTable = reasons;
+          option = "disabled";
           break;
         case "Transfer_PKID":
           hashTable = transfers;
+          option = "disabled";
           break;
         default:
           hashTable = [
@@ -180,7 +182,7 @@ export const addNewRecord = (courses, reasons, transfers, caseFlag = "0") => {
         selectedValue: "",
         labelVal,
         labelClassVal,
-        option: "",
+        option,
         optionText: ""
       });
     }
