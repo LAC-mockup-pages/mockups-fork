@@ -150,7 +150,6 @@ $(document).ready(() => {
       .parents("section")
       .find(".sub-header-title")
       .text();
-    console.log("sectionTitle :>> ", sectionTitle);
     $("#modalBloc").modal("toggle");
     $("#edit-form")
       .empty()
@@ -345,6 +344,24 @@ $(document).ready(() => {
       if (ActiveStatus === "0") return;
       // Rule 2, Student was active
       inactiveStatusProcess();
+    }
+  });
+
+  //* Rule 3 - If student is inactive modified to active, disable and clear
+  //* inactive-related fields on form: InactiveDate, InactiveReason,
+  //* TransferTo
+
+  $("#edit-form").on("change", "select[name='ActiveStatus']", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    if ($(this).val() === "1") {
+      $(
+        "#edit-form [name='InactiveReason'], #edit-form [name='Transfer_PKID']"
+      ).prop({ selectedIndex: 0, disabled: true });
+      $("#edit-form [name='InactiveDate']").val("");
+    } else {
+      $(this).prop("selectedIndex", 1);
+      return;
     }
   });
 });
