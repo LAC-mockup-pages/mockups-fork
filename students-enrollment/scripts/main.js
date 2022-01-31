@@ -2,7 +2,11 @@
 //* Actions and Logic for local page
 //*=================================================
 
-import { addNewRecord, enrollValues } from "./components/enrollment.js";
+import {
+  addNewRecord,
+  enrollValues,
+  inactiveStatusProcess
+} from "./components/enrollment.js";
 import { hourMonthlyValues } from "./components/hours.js";
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
@@ -309,7 +313,8 @@ $(document).ready(() => {
     $("[data-toggle='tooltip']").tooltip();
   });
 
-  //* Rule 1 - When entered inactive date is not valid, highlight background and
+  //* Rule 1 - While editing a student's info,
+  //* when entered inactive date is not valid, highlight background and
   //* return focus to inactive date
   $("#edit-form ").on("blur", 'input[name="InactiveDate"]', function (evnt) {
     evnt.stopPropagation();
@@ -319,11 +324,6 @@ $(document).ready(() => {
         "#edit-form input[name$='Date'], #edit-form select[name='ActiveStatus'"
       ).serializeArray()
     );
-    // console.log(
-    //   $(
-    //     "#edit-form input[name$='Date'], select[name='ActiveStatus'"
-    //   ).serializeArray()
-    // );
     const courseEndDate = $(this).attr("data-enddate");
     // const studentStatus=$("#edit-form )
     const inputDateIndex = [EnrollDate, InactiveDate, courseEndDate]
@@ -343,6 +343,8 @@ $(document).ready(() => {
       $(this).css("background-color", "");
       // Student is already inactive
       if (ActiveStatus === "0") return;
+      // Rule 2, Student was active
+      inactiveStatusProcess();
     }
   });
 });
