@@ -257,7 +257,7 @@ $(document).ready(() => {
         break;
     }
     if (tbodyContent) {
-      $(`.${testName} tbody`).append(tbodyContent);
+      $(`.${testName} tbody`).empty().append(tbodyContent);
     } else {
       $(`.${testName} .tablescroll table`).replaceWith(
         `<h2 style="text-align:center">No assessment on record for ${StudentName}`
@@ -332,7 +332,7 @@ $(document).ready(() => {
   });
 
   //* Saving changes after editing in modal
-  $("#save-btn").click(function (evnt) {
+  $("#save-btn").click(async function (evnt) {
     //TODO Check for errors in inputs
     const elements = $("#edit-form :input").prop("disabled", false);
     const requiredObj = createObject(
