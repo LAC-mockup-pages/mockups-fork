@@ -26,8 +26,9 @@ const GetForm_BestPlus2 = [
 
 // ddlForm
 const GetForm_TABE11 = [
-  { key: "9", value: "9" },
-  { key: "10", value: "10" }
+  { key: "11", value: "11" },
+  { key: "12", value: "12" },
+  { key: "99", value: "Loc" }
 ];
 
 // ddlLevel
