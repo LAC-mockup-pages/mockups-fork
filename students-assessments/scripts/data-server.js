@@ -1,6 +1,40 @@
 //* Data objects for Student Assessments Page
 //*=================================
 
+//! =================================
+//! Uncomment for Production
+//! =================================
+
+// async function GetSub_ScaleScore(tbTABEKey, tbMode) {
+//   const urlsource = window.location.pathname.substring(
+//     window.location.pathname.lastIndexOf("/") + 1
+//   );
+//   const body = JSON.stringify({ testscore: tbTABEKey, testmode: tbMode });
+//   const response = await fetch(urlsource + "/GetTABE11_ScaleScore", {
+//     method: "POST",
+//     credentials: "same-origin", // 'include'
+//     headers: {
+//       Accept: "application/json",
+//       "Content-type": "application/json"
+//     },
+//     body
+//   });
+//   const result = await response.json();
+//   //console.log(JSON.stringify(result.d));
+//   return JSON.parse(result.d);
+// }
+//! =================================
+
+//! =================================
+//! For Development ONLY!
+//! Comment out for Production
+//! =================================
+
+const GetSub_ScaleScore = [
+  { TABEKEYScore: "497.2", ScaleScore: "497", PerfLevel: "2" }
+];
+//! =================================
+
 // ddl ???
 const GetStudentHeader = [
   {
