@@ -150,6 +150,6 @@ export const setNRSLevel = async (num, table) => {
       ? [87, 361, 427, 452, 484, 524, 564]
       : [0, 20, 52, 63, 67, 75, 78];
   if (num > levelList.slice(-1)) return levelList.length;
-  const indx = levelList.findIndex((item) => num <= item).toString();
+  const indx = levelList.findIndex((item) => num <= item);
   return indx;
 };

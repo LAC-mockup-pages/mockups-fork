@@ -6,7 +6,11 @@
 const DT = luxon.DateTime;
 
 import { createTabeContent, addNewTabeTest } from "./components/tabe.js";
-import { addNewBestPlusTest, createBestContent } from "./components/best2.js";
+import {
+  addNewBestPlusTest,
+  createBestContent,
+  setNRSLevel
+} from "./components/best2.js";
 import { addNewHSETest, createHseContent } from "./components/hse.js";
 //! =============================================================
 //! For Development only.
@@ -460,6 +464,24 @@ $(document).ready(() => {
       console.log("result :", result);
       //! =================================================
       $("#modalBloc").modal("toggle");
+    }
+  });
+
+  //* When Score is entered for Best+2 and BestLit, NRS level is updated
+  //* depending on Score value.
+  $("#edit-form ").on("change", 'input[name="Score"]', async function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    $("#edit-form input[name='Score']").css("background-color", "");
+    $("#edit-form input[name='NRSLevel']").val("0");
+    const targetTable = $("#edit-form").attr("data-table");
+    const score = Number($(this).val());
+    const nrsLevel = setNRSLevel(score, targetTable);
+    if (nrsLevel) {
+      $("#edit-form input[name='NRSLevel']").val((await nrsLevel).toString());
+    } else {
+      $("#edit-form input[name='Score']").css("background-color", "#f7e095");
+      $("#edit-form input[name='Score']").focus();
     }
   });
 });
