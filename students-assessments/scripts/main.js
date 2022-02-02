@@ -484,4 +484,16 @@ $(document).ready(() => {
       $("#edit-form input[name='Score']").focus();
     }
   });
+
+  //*Rule 3 When TestForm is selected, clear form controls below
+  $("#edit-form ").on("change", 'select[name="TestForm"]', function () {
+    $("#edit-form input[name='ScaleScore']").val("0");
+    $("#edit-form input[name='SubScore1']").val("0");
+  });
+
+  //* Rule 4 When TestForm is selected, clear form controls below
+  $("#edit-form ").on("change", 'select[name="TestLevel"]', function () {
+    $("#edit-form input[name='ScaleScore']").val("0");
+    $("#edit-form input[name='SubScore1']").val("0");
+  });
 });
