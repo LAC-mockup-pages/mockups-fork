@@ -143,3 +143,13 @@ export const addNewBestPlusTest = (obj) => {
   }
   return content.join("");
 };
+
+export const setNRSLevel = async (num, table) => {
+  const levelList =
+    table === "GetTests_BestPlus2"
+      ? [87, 361, 427, 452, 484, 524, 564]
+      : [0, 20, 52, 63, 67, 75, 78];
+  if (num > levelList.slice(-1)) return levelList.length;
+  const indx = levelList.findIndex((item) => num <= item).toString();
+  return indx;
+};
