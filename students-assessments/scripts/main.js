@@ -496,4 +496,29 @@ $(document).ready(() => {
     $("#edit-form input[name='ScaleScore']").val("0");
     $("#edit-form input[name='SubScore1']").val("0");
   });
+
+  //* Rule 2 TestType is selected
+  $("#edit-form").on("change", "select[name='TestType']", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+
+    $(
+      "#edit-form input[name='ScaleScore'], #edit-form input[name='SubScore1']"
+    ).val("0");
+    $(
+      "#edit-form select[name='TestForm'], #edit-form select[name='TestLevel']"
+    ).prop("selectedIndex", 0);
+
+    if (["TR", "TM"].includes($(this).val())) {
+      $("#edit-form select[name='TestLevel'] > option[value='X']").prop(
+        "disabled",
+        true
+      ); //X Locator
+      $("#edit-form select[name='TestForm'] option[value='99'] ").prop(
+        "disabled",
+        true
+      ); //99 Locator
+    } else {
+    }
+  });
 });

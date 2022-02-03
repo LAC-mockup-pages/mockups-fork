@@ -67,6 +67,7 @@ export const createTabeContent = (list) => {
       <td>
         <div class="form-group input-field">
           <select class="modal-select" disabled name="TestForm">
+          <option></option>
             ${optionListForm}
           </select>
         </div>
@@ -74,6 +75,7 @@ export const createTabeContent = (list) => {
       <td>
         <div class="form-group input-field">
           <select class="modal-select" disabled name="TestLevel">
+          <option></option>
             ${optionListLevel}
           </select>
         </div>
