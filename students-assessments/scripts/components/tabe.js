@@ -88,6 +88,7 @@ export const createTabeContent = (list) => {
       <td>
         <div class="form-group input-field">
           <select class="modal-select" disabled name="TestMode">
+          <option></option>
             ${optionListMode}
           </select>
         </div>
@@ -191,4 +192,49 @@ export const addNewTabeTest = (obj) => {
   return content.join("");
 };
 
-export const updateTABEScore = ({ type, form, level, mode, score }) => {};
+export const updateTABEScore = (type, form, level, mode, score) => {
+  const evalTR = (testLevel, testScore) => {
+    const reference = {
+      L: [0, 40],
+      E: [0, 44],
+      M: [8, 47],
+      D: [14, 50],
+      A: [15, 56]
+    };
+    const list = [...reference[testLevel], Number(testScore)];
+    const indx = list.sort(num1, num2).lastIndexOf(testScore);
+    return indx === 1 ? indx : 0;
+  };
+  const evalTM = (testLevel, testScore, testForm) => {
+    const reference =
+      testForm === "11"
+        ? { L: [0, 35], E: [0, 35], M: [11, 39], D: [10, 37], A: [11, 39] }
+        : { L: [0, 35], E: [0, 35], M: [10, 39], D: [10, 37], A: [11, 39] };
+    const list = [...reference[testLevel], Number(testScore)];
+    const indx = list.sort(num1, num2).lastIndexOf(testScore);
+    return indx === 1 ? indx : 0;
+  };
+  let flag = 1;
+  switch (type) {
+    case "ML":
+    case "RL":
+      if (score > 50) flag = 0;
+      break;
+    case "TR":
+      flag = evalTR(level, score);
+      break;
+    case "TM":
+      flag = evalTM(level, score, form);
+      break;
+    default:
+      flag = 0;
+      break;
+  }
+  if (!flag) {
+    $("#edit-form input[name='SubScore1']")
+      .css("background-color", "#f7e095")
+      .focus();
+  } else {
+  }
+  // return flag;
+};
