@@ -190,3 +190,5 @@ export const addNewTabeTest = (obj) => {
   }
   return content.join("");
 };
+
+export const updateTABEScore = ({ type, form, level, mode, score }) => {};

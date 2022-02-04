@@ -510,7 +510,8 @@ $(document).ready(() => {
       "#edit-form input[name='ScaleScore'], #edit-form input[name='SubScore1']"
     ).val("0");
     $levelSelect.prop("selectedIndex", 0);
-    $formSelect.prop("selectedIndex", 0);
+    // $formSelect.prop("selectedIndex", 0);
+    $("#edit-form input[name='TestMode']").prop("selectedIndex", 0);
     if (["TR", "TM"].includes($(this).val())) {
       const optionListLevel = `<option></option>${createOptionList(
         tabeLevels.slice(0, tabeLevels.length - 1)
