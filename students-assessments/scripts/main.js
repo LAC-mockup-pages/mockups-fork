@@ -506,14 +506,11 @@ $(document).ready(() => {
     // ? What about TestMode ??????
     const $levelSelect = $("#edit-form select[name='TestLevel']");
     const $formSelect = $("#edit-form select[name='TestForm']");
-
     $(
       "#edit-form input[name='ScaleScore'], #edit-form input[name='SubScore1']"
     ).val("0");
-
     $levelSelect.prop("selectedIndex", 0);
     $formSelect.prop("selectedIndex", 0);
-
     if (["TR", "TM"].includes($(this).val())) {
       const optionListLevel = `<option></option>${createOptionList(
         tabeLevels.slice(0, tabeLevels.length - 1)
