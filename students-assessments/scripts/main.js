@@ -504,13 +504,15 @@ $(document).ready(() => {
 
     // ????????????????????????????
     // ? What about TestMode ??????
+    const $levelSelect = $("#edit-form select[name='TestLevel']");
+    const $formSelect = $("#edit-form select[name='TestForm']");
 
     $(
       "#edit-form input[name='ScaleScore'], #edit-form input[name='SubScore1']"
     ).val("0");
-    $(
-      "#edit-form select[name='TestForm'], #edit-form select[name='TestLevel']"
-    ).prop("selectedIndex", 0);
+
+    $levelSelect.prop("selectedIndex", 0);
+    $formSelect.prop("selectedIndex", 0);
 
     if (["TR", "TM"].includes($(this).val())) {
       const optionListLevel = `<option></option>${createOptionList(
@@ -519,13 +521,13 @@ $(document).ready(() => {
       const optionListForm = `<option></option>${createOptionList(
         tabeForm.slice(0, tabeForm.length - 1)
       )}`;
-      $("#edit-form select[name='TestLevel']").empty().append(optionListLevel);
-      $("#edit-form select[name='TestForm']").empty().append(optionListForm);
+      $levelSelect.empty().append(optionListLevel);
+      $formSelect.empty().append(optionListForm);
     } else {
       const optionListLevel = `${createOptionList(tabeLevels.slice(-1))}`;
       const optionListForm = `${createOptionList(tabeForm.slice(-1))}`;
-      $("#edit-form select[name='TestLevel']").empty().append(optionListLevel);
-      $("#edit-form select[name='TestForm']").empty().append(optionListForm);
+      $levelSelect.empty().append(optionListLevel);
+      $formSelect.empty().append(optionListForm);
     }
   });
 });
