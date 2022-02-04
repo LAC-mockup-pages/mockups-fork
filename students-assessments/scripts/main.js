@@ -502,6 +502,9 @@ $(document).ready(() => {
     evnt.stopPropagation();
     evnt.preventDefault();
 
+    // ????????????????????????????
+    // ? What about TestMode ??????
+
     $(
       "#edit-form input[name='ScaleScore'], #edit-form input[name='SubScore1']"
     ).val("0");
@@ -510,15 +513,19 @@ $(document).ready(() => {
     ).prop("selectedIndex", 0);
 
     if (["TR", "TM"].includes($(this).val())) {
-      $("#edit-form select[name='TestLevel'] > option[value='X']").prop(
-        "disabled",
-        true
-      ); //X Locator
-      $("#edit-form select[name='TestForm'] option[value='99'] ").prop(
-        "disabled",
-        true
-      ); //99 Locator
+      const optionListLevel = `<option></option>${createOptionList(
+        tabeLevels.slice(0, tabeLevels.length - 1)
+      )}`;
+      const optionListForm = `<option></option>${createOptionList(
+        tabeForm.slice(0, tabeForm.length - 1)
+      )}`;
+      $("#edit-form select[name='TestLevel']").empty().append(optionListLevel);
+      $("#edit-form select[name='TestForm']").empty().append(optionListForm);
     } else {
+      const optionListLevel = `${createOptionList(tabeLevels.slice(-1))}`;
+      const optionListForm = `${createOptionList(tabeForm.slice(-1))}`;
+      $("#edit-form select[name='TestLevel']").empty().append(optionListLevel);
+      $("#edit-form select[name='TestForm']").empty().append(optionListForm);
     }
   });
 });
