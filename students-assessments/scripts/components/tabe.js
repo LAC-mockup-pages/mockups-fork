@@ -193,6 +193,9 @@ export const addNewTabeTest = (obj) => {
 };
 
 export const updateTABEScore = (type, form, level, mode, score) => {
+  // Test score is evaluated depending on test level (GetLevel_TABE11).
+  // Each level has a range Min/Max for the score value to be valid.
+  // Different test types have different test score ranges
   const evalTR = (testLevel, testScore) => {
     const reference = {
       L: [0, 40],
@@ -214,7 +217,7 @@ export const updateTABEScore = (type, form, level, mode, score) => {
     const indx = list.sort(num1, num2).lastIndexOf(testScore);
     return indx === 1 ? indx : 0;
   };
-  let flag = 1;
+  let flag = 1; // Changed flag value to 1 if in range and 0 if out of range
   switch (type) {
     case "ML":
     case "RL":
