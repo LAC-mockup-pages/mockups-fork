@@ -316,6 +316,10 @@ $(document).ready(() => {
       .append($row)
       .attr({ "data-id": rowId, "data-table": table });
     $(".modal-title").empty().text(`Editing ${sectionTitle} record`);
+    // $("#edit-form input[name='NRSLevel']").prop("disabled", true);
+    // $("#edit-form input[name='ScaleScore']").prop("disabled", true);
+    // $("#edit-form input[name='Pre_Post']").prop("disabled", true);
+
     $("#edit-form :input").each(function (indx) {
       const name = $(this).attr("name");
       if (name.includes("Date")) {
@@ -325,6 +329,19 @@ $(document).ready(() => {
       $(this)
         .wrap("<div class='form-group input-field'></div>")
         .before(`<label for=${name}>${labels[name]}</label>`);
+      // Disable sensitive fields
+      if (
+        [
+          "NRSLevel",
+          "ScaleScore",
+          "Pre_Post",
+          "TestLevel",
+          "TestForm",
+          "TestMode"
+        ].includes(name)
+      ) {
+        $(this).prop("disabled", true);
+      }
     });
     for (const name of requiredList) {
       $(`#edit-form [name=${name}]`)
@@ -509,12 +526,18 @@ $(document).ready(() => {
     evnt.preventDefault();
     const $levelSelect = $("#edit-form select[name='TestLevel']");
     const $formSelect = $("#edit-form select[name='TestForm']");
+    const $modeSelect = $("#edit-form select[name='TestMode']");
+
+    // Enabling fields and emptying the values
     $(
       "#edit-form input[name='ScaleScore'], #edit-form input[name='SubScore1']"
     ).val("0");
-    $levelSelect.prop("selectedIndex", 0);
-    $formSelect.prop("selectedIndex", 0);
-    $("#edit-form select[name='TestMode']").prop("selectedIndex", 0);
+    $levelSelect.prop({ selectedIndex: 0, disabled: false });
+    $formSelect.prop({ selectedIndex: 0, disabled: false });
+    $modeSelect.prop({ selectedIndex: 0, disabled: false });
+
+    // Customizing list of options for the select elements
+    // depending on test type
     if (["TR", "TM"].includes($(this).val())) {
       const optionListLevel = `<option></option>${createOptionList(
         tabeLevels.slice(0, tabeLevels.length - 1)
