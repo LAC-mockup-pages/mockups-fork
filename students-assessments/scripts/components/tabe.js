@@ -193,7 +193,7 @@ export const addNewTabeTest = (obj) => {
   return content.join("");
 };
 
-export const updateTABEScore = (type, form, level, mode, score) => {
+export const updateTABEScore = ([type, form, level, mode, score]) => {
   // Test score is evaluated depending on test level (GetLevel_TABE11).
   // Each level has a range Min/Max for the score value to be valid.
   // Different test types have different test score ranges
@@ -206,7 +206,7 @@ export const updateTABEScore = (type, form, level, mode, score) => {
       A: [15, 56]
     };
     const list = [...reference[testLevel], Number(testScore)];
-    const indx = list.sort(num1, num2).lastIndexOf(testScore);
+    const indx = list.sort((num1, num2) => num1 - num2).lastIndexOf(testScore);
     return indx === 1 ? indx : 0;
   };
   const evalTM = (testLevel, testScore, testForm) => {
@@ -215,20 +215,21 @@ export const updateTABEScore = (type, form, level, mode, score) => {
         ? { L: [0, 35], E: [0, 35], M: [11, 39], D: [10, 37], A: [11, 39] }
         : { L: [0, 35], E: [0, 35], M: [10, 39], D: [10, 37], A: [11, 39] };
     const list = [...reference[testLevel], Number(testScore)];
-    const indx = list.sort(num1, num2).lastIndexOf(testScore);
+    const indx = list.sort((num1, num2) => num1 - num2).lastIndexOf(testScore);
     return indx === 1 ? indx : 0;
   };
+  const numScore = Number(score);
   let flag = 1; // Changed flag value to 1 if in range and 0 if out of range
   switch (type) {
     case "ML":
     case "RL":
-      if (score > 50) flag = 0;
+      if (numScore > 50) flag = 0;
       break;
     case "TR":
-      flag = evalTR(level, score);
+      flag = evalTR(level, numScore);
       break;
     case "TM":
-      flag = evalTM(level, score, form);
+      flag = evalTM(level, numScore, form);
       break;
     default:
       flag = 0;
@@ -238,11 +239,22 @@ export const updateTABEScore = (type, form, level, mode, score) => {
     $("#edit-form input[name='SubScore1']")
       .css("background-color", "#f7e095")
       .focus();
-    return;
+    return false;
   } else {
     const key = type + form + level + score;
-    const dbScore = await scaleScore(key, mode);
+    //! =========================================
+    //! For Production
+    //! =========================================
+    // const dbScore = await scaleScore(key, mode);
+    //! =========================================
+
+    //! =========================================
+    //! For Development ONLY
+    //! Comment out for production
+    //! =========================================
+    const dbScore = scaleScore;
+    //! =========================================
+
     return dbScore;
   }
-  // return flag;
 };

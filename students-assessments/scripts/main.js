@@ -5,7 +5,11 @@
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
 
-import { createTabeContent, addNewTabeTest } from "./components/tabe.js";
+import {
+  createTabeContent,
+  addNewTabeTest,
+  updateTABEScore
+} from "./components/tabe.js";
 import {
   addNewBestPlusTest,
   createBestContent,
@@ -527,4 +531,41 @@ $(document).ready(() => {
       $formSelect.empty().append(optionListForm);
     }
   });
+
+  //* Rule 1 When SubScore1 is entered, update ScaleScore and NRSLevel
+  $("#edit-form").on(
+    "change",
+    "input[name='SubScore1']",
+    async function (evnt) {
+      evnt.stopPropagation();
+      evnt.preventDefault();
+      $(this).css("background-color", "");
+      $("#edit-form input[name='ScaleScore']").val("");
+      $("#edit-form input[name='NRSLevel']").val("");
+      const valList = $("#edit-form :input")
+        .map(function () {
+          if (
+            [
+              "TestType",
+              "TestForm",
+              "TestLevel",
+              "SubScore1",
+              "TestMode"
+            ].includes($(this).attr("name"))
+          )
+            return $(this).val();
+        })
+        .get();
+      const { ScaleScore, PerfLevel } = updateTABEScore(valList)[0];
+      if (ScaleScore && PerfLevel) {
+        $("#edit-form input[name='ScaleScore']").val(ScaleScore);
+        $("#edit-form input[name='NRSLevel']").val(PerfLevel);
+      } else {
+        $("#edit-form input[name='SubScore1']")
+          .css("background-color", "#f7e095")
+          .focus();
+        return;
+      }
+    }
+  );
 });
