@@ -11,7 +11,8 @@ import {
   tabeType,
   staffList,
   createOptionList,
-  createStaffList
+  createStaffList,
+  scaleScore
 } from "../main.js";
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
@@ -239,6 +240,9 @@ export const updateTABEScore = (type, form, level, mode, score) => {
       .focus();
     return;
   } else {
+    const key = type + form + level + score;
+    const dbScore = await scaleScore(key, mode);
+    return dbScore;
   }
   // return flag;
 };
