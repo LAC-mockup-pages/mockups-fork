@@ -38,6 +38,7 @@ export const staffList = GetStaff.slice(0);
 export const bestPlusForm = GetForm_BestPlus2.slice(0);
 export const hseType = GetType_TASC.slice(0);
 export const hsePredAct = GetType_TASCPredAct.slice(0);
+export const scaleScore = GetSub_ScaleScore.slice(0);
 //! =============================================================
 
 export const dateFormat = (str) => {
@@ -191,6 +192,7 @@ $(document).ready(() => {
   // export const bestPlusForm =
   // export const hseType =
   // export const hsePredAct =
+  // export const scaleScore =
 
   // Navigation variables.
   // In Production, update with actual rootUrl and destinations

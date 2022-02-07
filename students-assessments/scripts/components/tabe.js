@@ -237,6 +237,7 @@ export const updateTABEScore = (type, form, level, mode, score) => {
     $("#edit-form input[name='SubScore1']")
       .css("background-color", "#f7e095")
       .focus();
+    return;
   } else {
   }
   // return flag;
