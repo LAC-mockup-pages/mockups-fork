@@ -85,7 +85,12 @@ export const addNewAssistance = (source, record = {}) => {
             ];
       labelClassVal = "class='red-text'";
       option = "required";
-      const selectedValue = record[key];
+      let selectedValue =
+        !record[key] && labelText === "Exhaust TANF" ? "0" : record[key];
+      console.log(
+        "🚀 / file: assisstance-info.js / line 89 / addNewAssistance / selectedValue",
+        selectedValue
+      );
       // elementSelectModal() <== helpers/helperFunctions.js
       field = elementSelectModal({
         hashTable,
@@ -97,7 +102,7 @@ export const addNewAssistance = (source, record = {}) => {
         optionText: ""
       });
     } else {
-      let value = record[key];
+      let value = record[key] ? record[key] : "";
       if (labelText === "FY") {
         value = FiscalYear;
         option = "disabled";
