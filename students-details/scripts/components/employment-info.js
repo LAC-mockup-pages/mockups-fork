@@ -10,14 +10,22 @@ import { createOptionList, dateFormat } from "../main.js";
 //          /original-data/student-data.js/GetEmploymentStatus
 //          /original-data/student-data.js/GetIncome
 export const employmentValues = (list, statusList, incomeList) => {
-  // Sorting records from most recent FY to oldest FY
-  const orderedList = list.sort((record1, record2) =>
-    record1.EmployStatusFY < record2.EmployStatusFY
-      ? -1
-      : record1.EmployStatusFY > record2.EmployStatusFY
-      ? 1
-      : 0
-  );
+  // Sorting records from most recent FY to oldest FY, going
+  // back 5 years from present FY.
+  const { FiscalYear } = createCredentials();
+  const fiscalYearRange = 5;
+  const orderedList = list
+    .filter(
+      (record) =>
+        Number(record.EmployStatusFY) > Number(FiscalYear) - fiscalYearRange
+    )
+    .sort((record1, record2) =>
+      record1.EmployStatusFY > record2.EmployStatusFY
+        ? -1
+        : record1.EmployStatusFY < record2.EmployStatusFY
+        ? 1
+        : 0
+    );
   const tableBodyContent = [];
   for (const record of orderedList) {
     const {
@@ -32,9 +40,8 @@ export const employmentValues = (list, statusList, incomeList) => {
     } = record;
     const optionListStatus = createOptionList(statusList, EmployStatID);
     const optionListIncome = createOptionList(incomeList, IncomeFY);
-    const { FiscalYear } = createCredentials();
     const FYList = [];
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < fiscalYearRange; i++) {
       const key = `${Number(FiscalYear) - i}`;
       FYList.push({ key, value: key });
     }
@@ -85,6 +92,7 @@ export const employmentValues = (list, statusList, incomeList) => {
     </tr>`;
     tableBodyContent.push(row);
   }
+
   $(".employment-form tbody").append(tableBodyContent.join(""));
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
