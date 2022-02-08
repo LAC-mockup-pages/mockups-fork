@@ -87,10 +87,6 @@ export const addNewAssistance = (source, record = {}) => {
       option = "required";
       let selectedValue =
         !record[key] && labelText === "Exhaust TANF" ? "0" : record[key];
-      console.log(
-        "🚀 / file: assisstance-info.js / line 89 / addNewAssistance / selectedValue",
-        selectedValue
-      );
       // elementSelectModal() <== helpers/helperFunctions.js
       field = elementSelectModal({
         hashTable,
