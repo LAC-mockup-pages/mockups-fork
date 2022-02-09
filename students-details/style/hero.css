@@ -151,6 +151,9 @@ view only. Still shows in modal for Editing/Adding a record */
   overflow-y: auto;
   overflow-x: hidden;
 }
+.funding-source .sub-header {
+  margin-bottom: 1%;
+}
 
 /* Employment section */
 .tablescroll {
@@ -192,6 +195,7 @@ view only. Still shows in modal for Editing/Adding a record */
 #add-assistance,
 #add-employment,
 #add-population,
+#add-funding,
 #printing {
   font-weight: 600;
   padding: 3px 4px;
