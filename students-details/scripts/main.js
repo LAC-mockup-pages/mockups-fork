@@ -12,6 +12,7 @@ import {
   GetHighestGradeCompletedUS,
   GetYearsSchooling,
   GetFundingSource,
+  GetFundingSource2,
   GetEmploymentInfo,
   GetEmploymentStatus,
   GetIncome
@@ -48,6 +49,7 @@ import {
 const studentInfo = GetStudent.slice(0)[0];
 const fundingInfo = GetFundingInfo.slice(0);
 const fundingSources = GetFundingSource.slice(0);
+const fundingSources2 = GetFundingSource2.slice(0);
 const highestGrade = GetHighestGradeCompletedUS.slice(0);
 const yearsSchool = GetYearsSchooling.slice(0);
 const additionalInfo = GetStudent_Additional.slice(0)[0];
@@ -154,7 +156,7 @@ $(document).ready(() => {
   inputValues(studentInfo);
   ssnValues(studentInfo);
   genderValues(studentInfo);
-  fundingValues(fundingInfo, fundingSources);
+  fundingValues(fundingInfo, fundingSources, fundingSources2);
   populationValues(additionalInfo);
   barriersValues(studentInfo);
   assistanceValues(assistanceInfo, assistanceSource);

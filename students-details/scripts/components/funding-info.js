@@ -7,7 +7,15 @@
 import { createOptionList } from "../main.js";
 
 // Data source: original-data/student-data.js/GetFundingInfo
-export const fundingValues = (list, sources) => {
+export const fundingValues = (list, sources, sources2) => {
+  const orderedSources = sources2.sort((record1, record2) =>
+    record1.FY < record2.FY ? -1 : record1.FY > record2.FY ? 1 : 0
+  );
+  console.log(
+    "🚀 / file: funding-info.js / line 14 / fundingValues / orderedSources",
+    orderedSources
+  );
+
   for (const obj of list) {
     const { ID, FSID, FY } = obj;
     const optionList = createOptionList(sources, FSID);
