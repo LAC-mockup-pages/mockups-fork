@@ -331,9 +331,14 @@ $(document).ready(() => {
         .before(`<label for=${name}>${labels[name]}</label>`);
       // Disable sensitive and calculated fields
       if (
-        ["NRSLevel", "ScaleScore", "Pre_Post", "TABEDate", "TestType"].includes(
-          name
-        )
+        [
+          "NRSLevel",
+          "ScaleScore",
+          "Pre_Post",
+          "TABEDate",
+          "TestType",
+          "TestDate"
+        ].includes(name)
       ) {
         $(this).prop("disabled", true);
       }

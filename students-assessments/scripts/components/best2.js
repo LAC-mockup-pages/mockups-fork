@@ -105,6 +105,9 @@ export const addNewBestPlusTest = (obj) => {
     // <input> fields
     if (["TestDate", "Pre_Post", "Score", "NRSLevel"].includes(keyValue)) {
       let optionHidden = "form-group";
+      if (["Pre_Post", "NRSLevel"].includes(keyValue)) {
+        option = "disabled";
+      }
       const type = keyValue.includes("Date") ? "date" : "text";
       // elementInput() ==> helpers/helperFunctions.js
       row = elementInput({
