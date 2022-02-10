@@ -329,16 +329,11 @@ $(document).ready(() => {
       $(this)
         .wrap("<div class='form-group input-field'></div>")
         .before(`<label for=${name}>${labels[name]}</label>`);
-      // Disable sensitive fields
+      // Disable sensitive and calculated fields
       if (
-        [
-          "NRSLevel",
-          "ScaleScore",
-          "Pre_Post",
-          "TestLevel",
-          "TestForm",
-          "TestMode"
-        ].includes(name)
+        ["NRSLevel", "ScaleScore", "Pre_Post", "TABEDate", "TestType"].includes(
+          name
+        )
       ) {
         $(this).prop("disabled", true);
       }
@@ -518,41 +513,6 @@ $(document).ready(() => {
   $("#edit-form ").on("change", 'select[name="TestLevel"]', function () {
     $("#edit-form input[name='ScaleScore']").val("0");
     $("#edit-form input[name='SubScore1']").val("0");
-  });
-
-  //* Rule 2 TestType is selected
-  $("#edit-form").on("change", "select[name='TestType']", function (evnt) {
-    evnt.stopPropagation();
-    evnt.preventDefault();
-    const $levelSelect = $("#edit-form select[name='TestLevel']");
-    const $formSelect = $("#edit-form select[name='TestForm']");
-    const $modeSelect = $("#edit-form select[name='TestMode']");
-
-    // Enabling fields and emptying the values
-    $(
-      "#edit-form input[name='ScaleScore'], #edit-form input[name='SubScore1']"
-    ).val("0");
-    $levelSelect.prop({ selectedIndex: 0, disabled: false });
-    $formSelect.prop({ selectedIndex: 0, disabled: false });
-    $modeSelect.prop({ selectedIndex: 0, disabled: false });
-
-    // Customizing list of options for the select elements
-    // depending on test type
-    if (["TR", "TM"].includes($(this).val())) {
-      const optionListLevel = `<option></option>${createOptionList(
-        tabeLevels.slice(0, tabeLevels.length - 1)
-      )}`;
-      const optionListForm = `<option></option>${createOptionList(
-        tabeForm.slice(0, tabeForm.length - 1)
-      )}`;
-      $levelSelect.empty().append(optionListLevel);
-      $formSelect.empty().append(optionListForm);
-    } else {
-      const optionListLevel = `${createOptionList(tabeLevels.slice(-1))}`;
-      const optionListForm = `${createOptionList(tabeForm.slice(-1))}`;
-      $levelSelect.empty().append(optionListLevel);
-      $formSelect.empty().append(optionListForm);
-    }
   });
 
   //* Rule 1 When SubScore1 is entered, update ScaleScore and NRSLevel

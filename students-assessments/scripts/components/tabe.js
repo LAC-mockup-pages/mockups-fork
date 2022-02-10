@@ -126,24 +126,23 @@ export const createTabeContent = (list) => {
 export const addNewTabeTest = (obj) => {
   const content = [];
   const { labels } = obj;
-
-  console.table("labels :>> ", labels);
   let labelClassVal = "";
   let classVal = "";
-
   for (const keyValue in labels) {
     const labelVal = labels[keyValue];
     let row = "";
     let option = "";
     let value = "";
-
-    // <input> fields
+    // <input> fields process
     if (
       ["TABEDate", "Pre_Post", "SubScore1", "ScaleScore", "NRSLevel"].includes(
         keyValue
       )
     ) {
       let optionHidden = "form-group";
+      if (["Pre_Post", "ScaleScore", "NRSLevel"].includes(keyValue)) {
+        option = "disabled";
+      }
       const type = keyValue.includes("Date") ? "date" : "text";
       // elementInput() ==> helpers/helperFunctions.js
       row = elementInput({
@@ -157,7 +156,7 @@ export const addNewTabeTest = (obj) => {
         type
       });
     } else {
-      // <select> fields
+      // <select> fields process
       let hashTable;
       switch (keyValue) {
         case "TestType":
