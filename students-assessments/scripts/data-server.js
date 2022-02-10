@@ -1184,3 +1184,23 @@ const GetStaff = [
     AgencyID: "PRA"
   }
 ];
+
+// Score ranges for TABE Reading test depending on level.
+// Valid for TABE Reading 11 and 12.
+const referenceTR = [
+  {
+    L: [0, 40],
+    E: [0, 44],
+    M: [8, 47],
+    D: [14, 50],
+    A: [15, 56]
+  }
+];
+// Score ranges for TABE Math 11 test depending on level.
+const referenceTM11 = [
+  { L: [0, 35], E: [0, 35], M: [11, 39], D: [10, 37], A: [11, 39] }
+];
+// Score ranges for TABE Math 12 test depending on level.
+const referenceTM12 = [
+  { L: [0, 35], E: [0, 35], M: [10, 39], D: [10, 37], A: [11, 39] }
+];

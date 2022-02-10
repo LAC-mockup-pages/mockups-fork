@@ -196,23 +196,12 @@ export const updateTABEScore = ([type, form, level, mode, score]) => {
   // Test score is evaluated depending on test level (GetLevel_TABE11).
   // Each level has a range Min/Max for the score value to be valid.
   // Different test types have different test score ranges
-  const evalTR = (testLevel, testScore) => {
-    const reference = {
-      L: [0, 40],
-      E: [0, 44],
-      M: [8, 47],
-      D: [14, 50],
-      A: [15, 56]
-    };
+  const evalTR = (testLevel, testScore, reference) => {
     const list = [...reference[testLevel], Number(testScore)];
     const indx = list.sort((num1, num2) => num1 - num2).lastIndexOf(testScore);
     return indx === 1 ? indx : 0;
   };
-  const evalTM = (testLevel, testScore, testForm) => {
-    const reference =
-      testForm === "11"
-        ? { L: [0, 35], E: [0, 35], M: [11, 39], D: [10, 37], A: [11, 39] }
-        : { L: [0, 35], E: [0, 35], M: [10, 39], D: [10, 37], A: [11, 39] };
+  const evalTM = (testLevel, testScore, reference) => {
     const list = [...reference[testLevel], Number(testScore)];
     const indx = list.sort((num1, num2) => num1 - num2).lastIndexOf(testScore);
     return indx === 1 ? indx : 0;
@@ -225,10 +214,11 @@ export const updateTABEScore = ([type, form, level, mode, score]) => {
       if (numScore > 50) flag = 0;
       break;
     case "TR":
-      flag = evalTR(level, numScore);
+      flag = evalTR(level, numScore, referenceTR[0]);
       break;
     case "TM":
-      flag = evalTM(level, numScore, form);
+      const referenceObj = form === "11" ? referenceTM11[0] : referenceTM12[0];
+      flag = evalTM(level, numScore, referenceObj);
       break;
     default:
       flag = 0;
