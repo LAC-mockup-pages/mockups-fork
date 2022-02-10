@@ -1184,7 +1184,11 @@ const GetStaff = [
     AgencyID: "PRA"
   }
 ];
-
+//! ===============================================
+//! IMPORTANT
+//! ===============================================
+// referenceTR, referenceTM11 and referenceTM12 must be modified when StateEd
+// communicates adjusted ranges.
 // Score ranges for TABE Reading test depending on level.
 // Valid for TABE Reading 11 and 12.
 const referenceTR = [
@@ -1204,3 +1208,4 @@ const referenceTM11 = [
 const referenceTM12 = [
   { L: [0, 35], E: [0, 35], M: [10, 39], D: [10, 37], A: [11, 39] }
 ];
+//! ===============================================
