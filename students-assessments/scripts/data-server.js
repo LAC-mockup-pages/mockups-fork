@@ -1187,8 +1187,9 @@ const GetStaff = [
 //! ===============================================
 //! IMPORTANT
 //! ===============================================
-// referenceTR, referenceTM11 and referenceTM12 must be modified when StateEd
-// communicates adjusted ranges.
+//! referenceTR, referenceTM11 and referenceTM12 must be modified when StateEd
+//! communicates adjusted ranges.
+
 // Score ranges for TABE Reading test depending on level.
 // Valid for TABE Reading 11 and 12.
 const referenceTR = [
