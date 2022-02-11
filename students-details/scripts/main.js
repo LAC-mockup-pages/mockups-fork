@@ -31,7 +31,10 @@ import {
   inputValues,
   ssnValues
 } from "./components/student-info.js";
-import { fundingValues } from "./components/funding-info.js";
+import {
+  addNewFundingSource,
+  fundingValues
+} from "./components/funding-info.js";
 import { populationValues } from "./components/population-info.js";
 import {
   addNewSelect,
@@ -259,7 +262,6 @@ $(document).ready(() => {
       console.log("sectionTitle :>> ", sectionTitle);
       // Add field names which must stay disabled in edit-form
       const stayingDisabled = ["LengthOfStay"];
-      // const parentAttr = $(this).parent().attr("class");
       const editFormContent = $(this).children().clone();
       const targetTable = $(this).attr("data-table");
       $("#modalBloc").modal("toggle");
@@ -385,25 +387,37 @@ $(document).ready(() => {
   );
 
   //* Adding a new record
-  //* sections: Employment, Assistance
-  $("#add-employment, #add-assistance").click(function (evnt) {
+  //* sections: Employment, Assistance, Funding Sources
+  $("#add-employment, #add-assistance, #add-funding").click(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
     let editFormContent = "";
-    let tableName = "GetEmploymentInfo";
-    let modalTitle = "employment";
-    if ($(this).attr("id") === "add-assistance") {
-      // editFormContent = "<h2>New record Assistance</h2>";
-      editFormContent = addNewAssistance(assistanceSource);
-      tableName = "GetPAStatusInfo";
-      modalTitle = "assistance";
-    } else if ($(this).attr("id") === "add-population") {
-      editFormContent = "";
-      tableName = "";
-      modalTitle = "population";
-    } else {
-      editFormContent = addNewEmployment(employmentStatus, employmentIncome);
+    let tableName = "";
+    let modalTitle = "";
+
+    switch ($(this).attr("id")) {
+      case "add-assistance":
+        editFormContent = addNewAssistance(assistanceSource);
+        tableName = "GetPAStatusInfo";
+        modalTitle = "assistance";
+        break;
+      case "add-population":
+        editFormContent = "";
+        tableName = "";
+        modalTitle = "population";
+        break;
+      case "add-funding":
+        editFormContent = addNewFundingSource();
+        tableName = "";
+        modalTitle = "funding source";
+        break;
+      default:
+        editFormContent = addNewEmployment(employmentStatus, employmentIncome);
+        tableName = "GetEmploymentInfo";
+        modalTitle = "employment";
+        break;
     }
+
     $("#edit-form")
       .empty()
       .append(editFormContent)
