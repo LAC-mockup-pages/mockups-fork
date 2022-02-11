@@ -156,7 +156,7 @@ $(document).ready(() => {
   inputValues(studentInfo);
   ssnValues(studentInfo);
   genderValues(studentInfo);
-  fundingValues(fundingInfo, fundingSources, fundingSources2);
+  fundingValues(fundingInfo);
   populationValues(additionalInfo);
   barriersValues(studentInfo);
   assistanceValues(assistanceInfo, assistanceSource);

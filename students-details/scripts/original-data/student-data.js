@@ -672,14 +672,14 @@ export const GetFundingInfo = [
     ID: "2689104",
     FSID: "Y",
     FundAbbrev: "Y | WIA/WIOA",
-    FY: "2022",
+    FY: "2021",
     Student_PKID: "1048303"
   },
   {
     ID: "2212200",
     FSID: "E",
     FundAbbrev: "E | EPE",
-    FY: "2017",
+    FY: "2020",
     Student_PKID: "1048303"
   }
 ];

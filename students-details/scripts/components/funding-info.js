@@ -4,36 +4,41 @@
 //* Section: Funding sources
 //* =======================================
 
-import { createOptionList } from "../main.js";
-
 // Data source: original-data/student-data.js/GetFundingInfo
-export const fundingValues = (list, sources, sources2) => {
-  const orderedSources = sources2.sort((record1, record2) =>
-    record1.FY < record2.FY ? -1 : record1.FY > record2.FY ? 1 : 0
-  );
-  console.log(
-    "🚀 / file: funding-info.js / line 14 / fundingValues / orderedSources",
-    orderedSources
-  );
-
-  for (const obj of list) {
-    const { ID, FSID, FY } = obj;
-    const optionList = createOptionList(sources, FSID);
-    const FYMinus1 = (Number(FY) - 1).toString();
-    const selectFiscalYear = `<div class="input-field form-group col-sm-4"><select class="modal-select" disabled name="FY"><option value=${FY} selected>${FY}</option><option value=${FYMinus1}>${FYMinus1}</option></select></div>`;
-
-    const selectSource = `
-    <div class="input-field form-group col-sm-8">
-      <select class="modal-select" disabled name=${FSID}>
-        ${optionList}
-      </select>
-    </div>`;
-
-    $(".funding-form").append(
-      `<div class="row" id=${ID}>
-        ${selectSource}
-        ${selectFiscalYear}
-      </div>`
+export const fundingValues = (list) => {
+  const formContent = [];
+  // createCredentials() <== helpers/helperFunctions.jsl
+  const { FiscalYear } = createCredentials();
+  const FiscalYearRange = [
+    FiscalYear,
+    `${Number(FiscalYear) + 1}`,
+    `${Number(FiscalYear) - 1}`
+  ];
+  const orderedList = list
+    .filter((record) => FiscalYearRange.includes(record.FY))
+    .sort((record1, record2) =>
+      record1.FY > record2.FY ? -1 : record1.FY < record2.FY ? 1 : 0
     );
+  for (const record of orderedList) {
+    const { ID, FundAbbrev, FY } = record;
+    // Removes the starting characters up to "|" and
+    // whitespace immediately after
+    const truncateString = (str) => {
+      const indx = str.indexOf("|") + 2;
+      return str.substr(indx).trim();
+    };
+    const description = truncateString(FundAbbrev);
+    const row = `
+  <div class="row" id=${ID}>
+    <div class="input-field form-group col-sm-8">
+      <input type="text" disabled name="FundAbbrev" value=${description}>
+    </div>
+    <div class="input-field form-group col-sm-4">
+      <input type="text" disabled name="FY" value=${FY}>
+    </div>
+  </div>
+  `;
+    formContent.push(row);
   }
+  $(".funding-form").append(formContent.join(""));
 };
