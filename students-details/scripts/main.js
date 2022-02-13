@@ -407,8 +407,8 @@ $(document).ready(() => {
         modalTitle = "population";
         break;
       case "add-funding":
-        editFormContent = addNewFundingSource();
-        tableName = "";
+        editFormContent = addNewFundingSource(fundingInfo, fundingSources2);
+        tableName = "GetFundingInfo";
         modalTitle = "funding source";
         break;
       default:

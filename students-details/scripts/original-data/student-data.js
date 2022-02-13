@@ -160,45 +160,6 @@ export const GetFundingSource = [
   { key: "Y", value: "Y | WIA/WIOA (2021)" }
 ];
 
-export const GetFundingSource2 = [
-  {
-    FSID: "E",
-    FY: "2022",
-    FundAbbrev_FY: "E | EPE (2022)",
-    FundAbbrev: "E | EPE"
-  },
-  {
-    FSID: "E",
-    FY: "2023",
-    FundAbbrev_FY: "E | EPE (2023)",
-    FundAbbrev: "E | EPE"
-  },
-  {
-    FSID: "L",
-    FY: "2022",
-    FundAbbrev_FY: "L | ALE - Adult Literacy Edu (2022)",
-    FundAbbrev: "L | ALE - Adult Literacy Edu"
-  },
-  {
-    FSID: "W",
-    FY: "2022",
-    FundAbbrev_FY: "W | WEP (2022)",
-    FundAbbrev: "W | WEP"
-  },
-  {
-    FSID: "Y",
-    FY: "2022",
-    FundAbbrev_FY: "Y | WIA/WIOA (2022)",
-    FundAbbrev: "Y | WIA/WIOA"
-  },
-  {
-    FSID: "Y",
-    FY: "2023",
-    FundAbbrev_FY: "Y | WIA/WIOA (2023)",
-    FundAbbrev: "Y | WIA/WIOA"
-  }
-];
-
 // ddlGender
 const GetGender = [
   { key: "F", value: "Female" },
@@ -681,5 +642,43 @@ export const GetFundingInfo = [
     FundAbbrev: "E | EPE",
     FY: "2020",
     Student_PKID: "1048303"
+  }
+];
+export const GetFundingSource2 = [
+  {
+    FSID: "E",
+    FY: "2022",
+    FundAbbrev_FY: "E | EPE (2022)",
+    FundAbbrev: "E | EPE"
+  },
+  {
+    FSID: "E",
+    FY: "2023",
+    FundAbbrev_FY: "E | EPE (2023)",
+    FundAbbrev: "E | EPE"
+  },
+  {
+    FSID: "L",
+    FY: "2022",
+    FundAbbrev_FY: "L | ALE - Adult Literacy Edu (2022)",
+    FundAbbrev: "L | ALE - Adult Literacy Edu"
+  },
+  {
+    FSID: "W",
+    FY: "2022",
+    FundAbbrev_FY: "W | WEP (2022)",
+    FundAbbrev: "W | WEP"
+  },
+  {
+    FSID: "Y",
+    FY: "2022",
+    FundAbbrev_FY: "Y | WIA/WIOA (2022)",
+    FundAbbrev: "Y | WIA/WIOA"
+  },
+  {
+    FSID: "Y",
+    FY: "2023",
+    FundAbbrev_FY: "Y | WIA/WIOA (2023)",
+    FundAbbrev: "Y | WIA/WIOA"
   }
 ];
