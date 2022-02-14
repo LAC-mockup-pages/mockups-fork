@@ -331,7 +331,11 @@ $(document).ready(() => {
           .filter((record) => record.name === "RaceID" && record.value)
           .map((record) => record.value)
           .join(",");
+      } else if (sectionName === "FYplusFSID") {
+        const { FYplusFSID } = saveObj;
+        saveObj = { FY: FYplusFSID.slice(0, 4), FSID: FYplusFSID.slice(4) };
       }
+
       const credentials = createCredentials();
       //! =================================================
       //! For production, this is the end point for the Post request
