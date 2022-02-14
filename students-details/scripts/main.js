@@ -259,7 +259,6 @@ $(document).ready(() => {
         .children(".sub-header")
         .text()
         .trim();
-      console.log("sectionTitle :>> ", sectionTitle);
       // Add field names which must stay disabled in edit-form
       const stayingDisabled = ["LengthOfStay"];
       const editFormContent = $(this).children().clone();
@@ -296,6 +295,7 @@ $(document).ready(() => {
 
   //* Saving changes after editing in modal
   $("#save-btn").click(function (evnt) {
+    evnt.preventDefault();
     //TODO Check for errors in inputs
     const elements = $("#edit-form :input").prop("disabled", false);
     const requiredObj = createObject(
@@ -314,10 +314,11 @@ $(document).ready(() => {
       }
       return;
     } else {
+      // All required fields have a value
       const saveList = $(elements).serializeArray();
       let saveObj = createObject(saveList);
       const targetTable = $("#edit-form").attr("data-table");
-      // Adding ID of edited record if  it exists.
+      // Adding ID of edited record if it exists.
       const rowId = $("#edit-form").attr("data-row-id");
       if (rowId) saveObj = { ID: rowId, ...saveObj };
       const sectionName = $("#edit-form select:first-of-type").attr("name");
@@ -326,7 +327,6 @@ $(document).ready(() => {
           sectionName === "barrier" ? ddlBarriers : ddlPopulation;
         saveObj = sectionProcess(sectionDdl);
       } else if (sectionName === "Sex") {
-        console.log("sectionName :>> ", sectionName);
         saveObj.RaceID = saveList
           .filter((record) => record.name === "RaceID" && record.value)
           .map((record) => record.value)
@@ -400,11 +400,6 @@ $(document).ready(() => {
         editFormContent = addNewAssistance(assistanceSource);
         tableName = "GetPAStatusInfo";
         modalTitle = "assistance";
-        break;
-      case "add-population":
-        editFormContent = "";
-        tableName = "";
-        modalTitle = "population";
         break;
       case "add-funding":
         editFormContent = addNewFundingSource(fundingInfo, fundingSources2);
