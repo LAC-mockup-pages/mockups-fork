@@ -28,7 +28,7 @@ export const fundingValues = (list) => {
       record1.FY > record2.FY ? -1 : record1.FY < record2.FY ? 1 : 0
     );
   for (const record of orderedList) {
-    const { ID, FundAbbrev, FY } = record;
+    const { ID, FundAbbrev, FY, FSID } = record;
 
     const description = truncateString(FundAbbrev);
     const row = `
@@ -68,4 +68,9 @@ export const addNewFundingSource = (studentData, fundingList) => {
   </div>
   `;
   return content;
+};
+
+// Editing Funding sources section
+export const editFunding = (sourceList) => {
+  const fundingStudent = $(".funding-form").serializeArray();
 };

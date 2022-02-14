@@ -51,8 +51,8 @@ import {
 } from "./components/employment-info.js";
 const studentInfo = GetStudent.slice(0)[0];
 const fundingInfo = GetFundingInfo.slice(0);
-const fundingSources = GetFundingSource.slice(0);
-const fundingSources2 = GetFundingSource2.slice(0);
+// const fundingSources = GetFundingSource.slice(0);
+const fundingSources = GetFundingSource2.slice(0);
 const highestGrade = GetHighestGradeCompletedUS.slice(0);
 const yearsSchool = GetYearsSchooling.slice(0);
 const additionalInfo = GetStudent_Additional.slice(0)[0];
@@ -255,13 +255,17 @@ $(document).ready(() => {
     .click(function (evnt) {
       evnt.stopPropagation();
       const sectionTitle = $(this)
-        .parent()
-        .children(".sub-header")
+        .parent("section")
+        .find(".sub-header-title")
         .text()
         .trim();
+
       // Add field names which must stay disabled in edit-form
       const stayingDisabled = ["LengthOfStay"];
-      const editFormContent = $(this).children().clone();
+      const editFormContent =
+        sectionTitle === "Funding sources"
+          ? "<h3>Something happens</h3>"
+          : $(this).children().clone();
       const targetTable = $(this).attr("data-table");
       $("#modalBloc").modal("toggle");
       $("#edit-form").empty().append(editFormContent);
@@ -406,7 +410,7 @@ $(document).ready(() => {
         modalTitle = "assistance";
         break;
       case "add-funding":
-        editFormContent = addNewFundingSource(fundingInfo, fundingSources2);
+        editFormContent = addNewFundingSource(fundingInfo, fundingSources);
         tableName = "GetFundingInfo";
         modalTitle = "funding source";
         break;
