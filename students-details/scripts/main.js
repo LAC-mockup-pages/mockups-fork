@@ -327,6 +327,7 @@ $(document).ready(() => {
       const rowId = $("#edit-form").attr("data-row-id");
       if (rowId) saveObj = { ID: rowId, ...saveObj };
       const sectionName = $("#edit-form select:first-of-type").attr("name");
+      // Modifying saveObj depending on the section
       if (["barrier", "population"].includes(sectionName)) {
         const sectionDdl =
           sectionName === "barrier" ? ddlBarriers : ddlPopulation;
@@ -336,7 +337,7 @@ $(document).ready(() => {
           .filter((record) => record.name === "RaceID" && record.value)
           .map((record) => record.value)
           .join(",");
-      } else if (sectionName === "FYplusFSID") {
+      } else if (targetTable === "GetFundingInfo") {
         const { FYplusFSID } = saveObj;
         saveObj = { FY: FYplusFSID.slice(0, 4), FSID: FYplusFSID.slice(4) };
       }
