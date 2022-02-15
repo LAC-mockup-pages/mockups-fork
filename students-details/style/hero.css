@@ -90,8 +90,9 @@ view only. Still shows in modal for Editing/Adding a record */
 }
 
 /* Multiple select sections */
-.funding-form .input-field > .modal-select {
+.funding-form .input-field > input {
   width: fit-content;
+  font-size: 1em;
 }
 .modal-select[name="yes-no"] {
   width: 70%;

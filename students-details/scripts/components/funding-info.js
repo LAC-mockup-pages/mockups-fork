@@ -30,14 +30,11 @@ export const fundingValues = (list) => {
   for (const record of orderedList) {
     const { ID, FundAbbrev, FY, FSID } = record;
 
-    const description = truncateString(FundAbbrev);
+    const description = `${truncateString(FundAbbrev)} (${FY})`;
     const row = `
-  <div class="row" id=${ID}>
-    <div class="input-field form-group col-sm-8">
-      <input type="text" disabled name="FundAbbrev" value=${description}>
-    </div>
-    <div class="input-field form-group col-sm-4">
-      <input type="text" disabled name="FY" value=${FY}>
+  <div id=${ID}>
+    <div class="input-field form-group">
+      <input type="text" disabled name="FundAbbrev" value="${description}">
     </div>
   </div>
   `;
@@ -71,6 +68,18 @@ export const addNewFundingSource = (studentData, fundingList) => {
 };
 
 // Editing Funding sources section
-export const editFunding = (sourceList) => {
-  const fundingStudent = $(".funding-form").serializeArray();
+export const editFunding = (studentData, fundingList) => {
+  const filteredList = fundingList
+    .filter((record) => {
+      const { FSID, FY } = record;
+      return !studentData.find((item) => item.FSID === FSID && item.FY === FY);
+    })
+    .map((item) => {
+      const { FSID, FY, FundAbbrev_FY } = item;
+      return { key: `${FY}${FSID}`, value: truncateString(FundAbbrev_FY) };
+    })
+    .sort((record1, record2) =>
+      record1.value < record2.value ? -1 : record1.value > record2.value ? 1 : 0
+    );
+  const optionList = createOptionList(filteredList);
 };
