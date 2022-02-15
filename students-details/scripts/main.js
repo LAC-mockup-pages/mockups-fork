@@ -33,6 +33,7 @@ import {
 } from "./components/student-info.js";
 import {
   addNewFundingSource,
+  editFunding,
   fundingValues
 } from "./components/funding-info.js";
 import { populationValues } from "./components/population-info.js";
@@ -264,7 +265,7 @@ $(document).ready(() => {
       const stayingDisabled = ["LengthOfStay"];
       const editFormContent =
         sectionTitle === "Funding sources"
-          ? "<h3>Something happens</h3>"
+          ? editFunding(fundingInfo, fundingSources)
           : $(this).children().clone();
       const targetTable = $(this).attr("data-table");
       $("#modalBloc").modal("toggle");

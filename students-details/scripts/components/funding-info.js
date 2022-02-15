@@ -34,7 +34,7 @@ export const fundingValues = (list) => {
     const row = `
   <div id=${ID}>
     <div class="input-field form-group">
-      <input type="text" disabled name="FundAbbrev" value="${description}">
+      <input type="text" disabled name="FundAbbrev_FY" value="${description}">
     </div>
   </div>
   `;
@@ -82,4 +82,21 @@ export const editFunding = (studentData, fundingList) => {
       record1.value < record2.value ? -1 : record1.value > record2.value ? 1 : 0
     );
   const optionList = createOptionList(filteredList);
+  const formContent = [];
+  for (const record of studentData) {
+    const { ID, FSID, FundAbbrev, FY } = record;
+    const description = `${truncateString(FundAbbrev)} (${FY})`;
+
+    const row = `
+    <div class="input-field form-group">
+    <input type="text" hidden name="ID" value="${ID}">
+    <select class="modal-select" name="description">
+    <option selected value=${FY + FSID}>${description}</option>
+    ${optionList}
+    </select>
+  </div>
+    `;
+    formContent.push(row);
+  }
+  return formContent.join("");
 };
