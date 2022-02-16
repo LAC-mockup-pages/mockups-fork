@@ -68,7 +68,17 @@ export const addNewFundingSource = (studentData, fundingList) => {
 };
 
 // Editing Funding sources section
-export const editFunding = (studentData, fundingList) => {
+export const editFunding = (studentFunding, fundingList) => {
+  // createCredentials() <== helpers/helperFunctions.jsl
+  const { FiscalYear } = createCredentials();
+  const FiscalYearRange = [
+    FiscalYear,
+    `${Number(FiscalYear) + 1}`,
+    `${Number(FiscalYear) - 1}`
+  ];
+  const studentData = studentFunding.filter((record) =>
+    FiscalYearRange.includes(record.FY)
+  );
   const filteredList = fundingList
     .filter((record) => {
       const { FSID, FY } = record;
@@ -89,12 +99,12 @@ export const editFunding = (studentData, fundingList) => {
 
     const row = `
     <div class="input-field form-group">
-    <input type="text" hidden name="ID" value="${ID}">
-    <select class="modal-select" name="description">
-    <option selected value=${FY + FSID}>${description}</option>
-    ${optionList}
-    </select>
-  </div>
+      <input type="text" hidden name="ID" value="${ID}">
+      <select class="modal-select" name="description">
+        <option selected value=${FY + FSID}>${description}</option>
+        ${optionList}
+      </select>
+    </div>
     `;
     formContent.push(row);
   }
