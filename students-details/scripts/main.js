@@ -341,14 +341,14 @@ $(document).ready(() => {
         console.log($(".modal-title").text());
 
         if ($(".modal-title").text().startsWith("Funding")) {
+          // saveObj for Editing the student's funding sources
           console.log("Editing, NOT Adding");
 
           return;
         } else {
-          console.log("Adding");
-          return;
-          // const { FYplusFSID } = saveObj;
-          // saveObj = { FY: FYplusFSID.slice(0, 4), FSID: FYplusFSID.slice(4) };
+          // saveObj for Adding a new funding source
+          const { FYplusFSID } = saveObj;
+          saveObj = { FY: FYplusFSID.slice(0, 4), FSID: FYplusFSID.slice(4) };
         }
       }
 
