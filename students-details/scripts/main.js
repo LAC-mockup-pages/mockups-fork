@@ -338,8 +338,18 @@ $(document).ready(() => {
           .map((record) => record.value)
           .join(",");
       } else if (targetTable === "GetFundingInfo") {
-        const { FYplusFSID } = saveObj;
-        saveObj = { FY: FYplusFSID.slice(0, 4), FSID: FYplusFSID.slice(4) };
+        console.log($(".modal-title").text());
+
+        if ($(".modal-title").text().startsWith("Funding")) {
+          console.log("Editing, NOT Adding");
+
+          return;
+        } else {
+          console.log("Adding");
+          return;
+          // const { FYplusFSID } = saveObj;
+          // saveObj = { FY: FYplusFSID.slice(0, 4), FSID: FYplusFSID.slice(4) };
+        }
       }
 
       const credentials = createCredentials();
