@@ -97,7 +97,6 @@ export const editFormFunding = (studentFunding, fundingList) => {
   for (const record of studentData) {
     const { ID, FSID, FundAbbrev, FY } = record;
     const description = `${truncateString(FundAbbrev)} (${FY})`;
-
     const row = `
     <div class="input-field form-group">
       <input type="text" hidden name="ID" value="${ID}">
@@ -110,4 +109,16 @@ export const editFormFunding = (studentFunding, fundingList) => {
     formContent.push(row);
   }
   return formContent.join("");
+};
+
+export const saveEditing = (list) => {
+  const resultList = [];
+  const length = list.length;
+  for (let i = 0; i < length - 1; i += 2) {
+    const ID = list[i].value,
+      FY = list[i + 1].value.substr(0, 4),
+      FSID = list[i + 1].value.substr(4);
+    resultList.push({ ID, FY, FSID });
+  }
+  return resultList;
 };

@@ -34,7 +34,8 @@ import {
 import {
   addNewFundingSource,
   editFormFunding,
-  fundingValues
+  fundingValues,
+  saveEditing
 } from "./components/funding-info.js";
 import { populationValues } from "./components/population-info.js";
 import {
@@ -338,25 +339,23 @@ $(document).ready(() => {
           .map((record) => record.value)
           .join(",");
       } else if (targetTable === "GetFundingInfo") {
-        console.log($(".modal-title").text());
-
         if ($(".modal-title").text().startsWith("Funding")) {
           // saveObj for Editing the student's funding sources
-          console.log("Editing, NOT Adding");
-
-          return;
+          saveObj = { values: saveEditing(saveList) };
         } else {
           // saveObj for Adding a new funding source
           const { FYplusFSID } = saveObj;
           saveObj = { FY: FYplusFSID.slice(0, 4), FSID: FYplusFSID.slice(4) };
         }
       }
-
       const credentials = createCredentials();
       //! =================================================
       //! For production, this is the end point for the Post request
       //! to update the DB.
       //! =================================================
+
+      // NB: for Funding sources editing saveObj is an array of records
+      // under the property "values"
       const resultList = [
         targetTable,
         JSON.stringify({ ...credentials, Student_PKID, ...saveObj })
