@@ -65,8 +65,16 @@ view only. Still shows in modal for Editing/Adding a record */
   font-size: 0.85em;
 }
 
+.input-field > input,
+.modal-select {
+  font-size: 1.1em;
+}
+
+.modal-select {
+  padding-bottom: 5px;
+}
 .form-group {
-  line-height: 1.7vh;
+  line-height: 1.6vh;
 }
 .student-info:hover,
 .gender-ethnicity:hover,
@@ -91,8 +99,7 @@ view only. Still shows in modal for Editing/Adding a record */
 
 /* Multiple select sections */
 .funding-form .input-field > input {
-  width: fit-content;
-  font-size: 1em;
+  font-size: 1.1em;
 }
 .modal-select[name="yes-no"] {
   width: 70%;
