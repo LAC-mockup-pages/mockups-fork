@@ -118,4 +118,36 @@ $(document).ready(() => {
   }
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
+
+  //* Expand underpinned table when section is clicked
+  $(".sub-header").click(function (evnt) {
+    evnt.stopPropagation();
+    $("section .visible").removeClass("visible").addClass("invisible");
+    $(this).siblings(".invisible").removeClass("invisible").addClass("visible");
+    const sectionName = $(this).parent().attr("class");
+    console.log("sectionName :>> ", sectionName);
+    if (sectionName === "case") return;
+    let tbodyContent = "";
+    switch (sectionName) {
+      case "referrals":
+        tbodyContent = "";
+      case "needs":
+        tbodyContent = "";
+        break;
+      case "outcome":
+        tbodyContent = "";
+        break;
+      default:
+        break;
+    }
+    if (tbodyContent) {
+      $(`.${sectionName} tbody`).empty().append(tbodyContent);
+    } else {
+      $(`.${sectionName} .tablescroll table`).replaceWith(
+        `<h2 style="text-align:center">No assessment on record for ${StudentName}`
+      );
+    }
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
+  });
 });

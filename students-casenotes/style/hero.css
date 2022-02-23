@@ -105,6 +105,15 @@ textarea {
   overflow-y: auto;
   overflow-x: hidden;
 }
+.visible {
+  max-height: 25em;
+  transition: max-height 1s;
+}
+.invisible {
+  max-height: 0em;
+  margin-bottom: 0.1%;
+}
+
 .case-table thead > tr {
   position: sticky;
   top: 0px;
