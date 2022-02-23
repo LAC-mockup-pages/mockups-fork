@@ -85,7 +85,7 @@ const GetNonNRSOutcome = [
     AssessmentTitle: "GJ Test 09282020",
     OutcomeDate: "09/28/2020",
     FY: "2021",
-    GoalID: 4,
+    GoalID: "4",
     OutcomeDescription: "Implement a daily exercise routine",
     COMMENTS: ""
   },
@@ -332,6 +332,129 @@ const GetNotes = [
   }
 ];
 
+const GetNotes3 = [
+  {
+    ID: "530337",
+    Student_PKID: "1048303",
+    ContactDate: "12/14/2021",
+    KeyCodeID: "9",
+    KeyCodeDescription: "AP-3 Analytical Problem Solving - Very Good",
+    ContactTypeID: "7",
+    ContactTypeDesc: "CMP",
+    Personnel_PKID: "24234",
+    ContactName: "Barnes, Julia",
+    ContactHours: "10",
+    ContactNotes: "",
+    Attachment: "",
+    AttachmentLink: ""
+  },
+  {
+    ID: "444133",
+    Student_PKID: "1048303",
+    ContactDate: "06/09/2019",
+    KeyCodeID: "0",
+    KeyCodeDescription: "",
+    ContactTypeID: "1",
+    ContactTypeDesc: "Telephone",
+    Personnel_PKID: "50202",
+    ContactName: "Melfi, Jennifer",
+    ContactHours: "1.5",
+    ContactNotes: "Test RS 12.5",
+    Attachment: "",
+    AttachmentLink: ""
+  },
+  {
+    ID: "385441",
+    Student_PKID: "1048303",
+    ContactDate: "06/02/2018",
+    KeyCodeID: "0",
+    KeyCodeDescription: "",
+    ContactTypeID: "1",
+    ContactTypeDesc: "Telephone",
+    Personnel_PKID: "46763",
+    ContactName: "Donovan, Ray",
+    ContactHours: "0.5",
+    ContactNotes: "RS Test 11.4",
+    Attachment: "",
+    AttachmentLink: ""
+  },
+  {
+    ID: "376501",
+    Student_PKID: "1048303",
+    ContactDate: "04/07/2018",
+    KeyCodeID: "0",
+    KeyCodeDescription: "",
+    ContactTypeID: "1",
+    ContactTypeDesc: "Telephone",
+    Personnel_PKID: "51442",
+    ContactName: "Silvers, Rayleigh",
+    ContactHours: "0.5",
+    ContactNotes: "Test RS 11.3",
+    Attachment: "",
+    AttachmentLink: ""
+  },
+  {
+    ID: "282027",
+    Student_PKID: "1048303",
+    ContactDate: "08/23/2016",
+    KeyCodeID: "30",
+    KeyCodeDescription: "DA-1 Discipline - Severity Low",
+    ContactTypeID: "4",
+    ContactTypeDesc: "Case Manager",
+    Personnel_PKID: "23853",
+    ContactName: "Dains, Michille",
+    ContactHours: "6",
+    ContactNotes:
+      "NI-2 Fathi has an excellent resume, reference list, and a letter of rec. from his new supervisor at Wegmans stating his work ethic is excellent as he always arrives to his job early.",
+    Attachment: "",
+    AttachmentLink: ""
+  },
+  {
+    ID: "277915",
+    Student_PKID: "1048303",
+    ContactDate: "07/15/2016",
+    KeyCodeID: "0",
+    KeyCodeDescription: "",
+    ContactTypeID: "1",
+    ContactTypeDesc: "Telephone",
+    Personnel_PKID: "2256",
+    ContactName: "Porter, Samantha",
+    ContactHours: "",
+    ContactNotes: "test ASISTS 9.5",
+    Attachment: "",
+    AttachmentLink: ""
+  },
+  {
+    ID: "198694",
+    Student_PKID: "1048303",
+    ContactDate: "03/06/2015",
+    KeyCodeID: "0",
+    KeyCodeDescription: "",
+    ContactTypeID: "2",
+    ContactTypeDesc: "Message",
+    Personnel_PKID: "28555",
+    ContactName: "Alfieri, Shelley",
+    ContactHours: "",
+    ContactNotes: "test",
+    Attachment: "",
+    AttachmentLink: ""
+  },
+  {
+    ID: "198268",
+    Student_PKID: "1048303",
+    ContactDate: "03/05/2015",
+    KeyCodeID: "2",
+    KeyCodeDescription: "AD-2 Addiction - Severity Medium",
+    ContactTypeID: "1",
+    ContactTypeDesc: "Telephone",
+    Personnel_PKID: "24233",
+    ContactName: "Buran, David",
+    ContactHours: "2.5",
+    ContactNotes: "test",
+    Attachment: "",
+    AttachmentLink: ""
+  }
+];
 const GetContactTypeSource = [
   { key: "1", value: "Telephone" },
   { key: "2", value: "Message" },
