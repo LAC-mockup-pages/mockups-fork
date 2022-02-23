@@ -11,10 +11,11 @@ export const createReferralsContent = (list) => {
   const tableBodyContent = [];
   const orderedList = list.sort((record1, record2) =>
     // DT#fromFormat <== Luxon method, "D" token describes mm/dd/yyyy format
-    DT.fromFormat(record1.TABEDate, "D") > DT.fromFormat(record2.TABEDate, "D")
+    DT.fromFormat(record1.ReferralDate, "D") >
+    DT.fromFormat(record2.ReferralDate, "D")
       ? -1
-      : DT.fromFormat(record1.TABEDate, "D") <
-        DT.fromFormat(record2.TABEDate, "D")
+      : DT.fromFormat(record1.ReferralDate, "D") <
+        DT.fromFormat(record2.ReferralDate, "D")
       ? 1
       : 0
   );
@@ -54,7 +55,6 @@ export const createReferralsContent = (list) => {
           <input type="text" disabled name="document" value=${document}>
         </div>
       </td>
-
     </tr>
     `;
     tableBodyContent.push(row);

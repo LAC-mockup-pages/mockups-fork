@@ -3,6 +3,7 @@
 //*=================================================
 
 import { createCaseNotesContent } from "./components/case-notes.js";
+import { createReferralsContent } from "./components/referrals.js";
 
 //! =============================================================
 //! For Development only.
@@ -127,10 +128,12 @@ $(document).ready(() => {
     const sectionName = $(this).parent().attr("class");
     console.log("sectionName :>> ", sectionName);
     if (sectionName === "case") return;
+    debugger;
     let tbodyContent = "";
     switch (sectionName) {
       case "referrals":
-        tbodyContent = "";
+        tbodyContent = createReferralsContent(referrals);
+        break;
       case "needs":
         tbodyContent = "";
         break;
@@ -138,10 +141,12 @@ $(document).ready(() => {
         tbodyContent = "";
         break;
       default:
+        tbodyContent = "<h2>Default hit</h2>";
         break;
     }
+
     if (tbodyContent) {
-      $(`.${sectionName} tbody`).empty().append(tbodyContent);
+      $(`.${sectionName} table tbody`).empty().append(tbodyContent);
     } else {
       $(`.${sectionName} .tablescroll table`).replaceWith(
         `<h2 style="text-align:center">No assessment on record for ${StudentName}`
