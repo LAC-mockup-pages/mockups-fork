@@ -3,6 +3,7 @@
 //*=================================================
 
 import { createCaseNotesContent } from "./components/case-notes.js";
+import { createNeedsContent } from "./components/needs.js";
 import { createReferralsContent } from "./components/referrals.js";
 
 //! =============================================================
@@ -135,7 +136,7 @@ $(document).ready(() => {
         tbodyContent = createReferralsContent(referrals);
         break;
       case "needs":
-        tbodyContent = "";
+        tbodyContent = createNeedsContent(needs);
         break;
       case "outcome":
         tbodyContent = "";

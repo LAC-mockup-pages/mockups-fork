@@ -27,32 +27,26 @@ export const createNeedsContent = (list) => {
       AssessmentNotes,
       KeyCodeDescription
     } = record;
-    const document = AttachmentLink ? "Yes" : "No";
     const row = `
     <tr>
       <td>
         <div class="form-group input-field">
-          <input type="text" disabled name="ReferralDate" value=${ReferralDate}>
+          <input type="text" disabled name="AssessmentDate" value=${AssessmentDate}>
         </div>
       </td>
       <td>
         <div class="form-group input-field">
-          <input type="text" disabled name="ReferralSiteName" value=${ReferralSiteName}>
+          <input type="text" disabled name="AssessmentTitle" value=${AssessmentTitle}>
         </div>
       </td>
       <td>
         <div class="form-group input-field">
-          <input type="text" disabled name="ReferralNotes" value=${ReferralNotes}>
+          <input type="text" disabled name="AssessmentNotes" value=${AssessmentNotes}>
         </div>
       </td>
       <td>
         <div class="form-group input-field">
           <input type="text" disabled name="KeyCodeDescription" value=${KeyCodeDescription}>
-        </div>
-      </td>
-      <td>
-        <div class="form-group input-field">
-          <input type="text" disabled name="document" value=${document}>
         </div>
       </td>
     </tr>
