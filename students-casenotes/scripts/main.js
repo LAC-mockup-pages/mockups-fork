@@ -4,6 +4,7 @@
 
 import { createCaseNotesContent } from "./components/case-notes.js";
 import { createNeedsContent } from "./components/needs.js";
+import { createOutcomeContent } from "./components/outcome.js";
 import { createReferralsContent } from "./components/referrals.js";
 
 //! =============================================================
@@ -17,7 +18,7 @@ export const staff = GetInstructorSource.slice(0);
 export const keyCodes = GetKeyCodeSource.slice(0);
 const referrals = GetReferrals.slice(0);
 const needs = GetNeeds.slice(0);
-const outcome = GetNonNRSOutcome.slice(0);
+const outcomes = GetNonNRSOutcome.slice(0);
 //! =============================================================
 export const createOptionList = (dataObj, defaultValue) => {
   const optionList = dataObj.map((record) => {
@@ -76,7 +77,7 @@ $(document).ready(() => {
   // const keyCodes =
   // const referrals =
   // const needs =
-  // const outcome =
+  // const outcomes =
 
   // Navigation variables.
   // In Production, update with actual rootUrl and destinations
@@ -139,7 +140,7 @@ $(document).ready(() => {
         tbodyContent = createNeedsContent(needs);
         break;
       case "outcome":
-        tbodyContent = "";
+        tbodyContent = createOutcomeContent(outcomes);
         break;
       default:
         tbodyContent = "<h2>Default hit</h2>";
