@@ -4,6 +4,7 @@
 //* Sections: case-notes
 //* =======================================
 
+import { contactTypes, staff, keyCodes, createOptionList } from "../main.js";
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
 
@@ -69,12 +70,22 @@ const caseValues = (list) => {
 
 export const createCaseNotesContent = (list) => {
   const tableBodyContent = [];
+  const orderedList = list.sort((record1, record2) =>
+    // DT#fromFormat <== Luxon method, "D" token describes mm/dd/yyyy format
+    DT.fromFormat(record1.ContactDate, "D") >
+    DT.fromFormat(record2.ContactDate, "D")
+      ? -1
+      : DT.fromFormat(record1.ContactDate, "D") <
+        DT.fromFormat(record2.ContactDate, "D")
+      ? 1
+      : 0
+  );
 
-  for (const record of list) {
+  for (const record of orderedList) {
     const {
       ID,
       ContactDate,
-      ContactDescID,
+      ContactTypeID,
       KeyCodeID,
       Personnel_PKID,
       ContactHours,
@@ -82,6 +93,10 @@ export const createCaseNotesContent = (list) => {
       Attachment,
       AttachementLink
     } = record;
+    const typeOptionList = createOptionList(contactTypes, ContactTypeID);
+    const keywordOptionList = createOptionList(keyCodes, KeyCodeID);
+    const staffOptionList = createOptionList(staff, Personnel_PKID);
+
     const row = `
   <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left" >
     <td>
@@ -89,7 +104,37 @@ export const createCaseNotesContent = (list) => {
         <input type="text" disabled name="ContactDate" value=${ContactDate}>
       </div>
     </td>
-  </tr>
+    <td>
+      <div class="form-group input-field">
+        <select class="modal-select disabled name="ContactTypeID">
+        <option></option>
+          ${typeOptionList}
+        </select>
+      </div>
+    </td>
+    <td>
+      <div class="form-group input-field">
+        <select class="modal-select disabled name="KeyCodeID">
+        <option></option>
+          ${keywordOptionList}
+        </select>
+      </div>
+    </td>
+    <td>
+      <div class="form-group input-field">
+        <select class="modal-select disabled name="Personnel_PKID">
+        <option></option>
+          ${staffOptionList}
+        </select>
+      </div>
+    </td>
+    <td>
+      <div class="form-group input-field">
+        <input type="text" disabled name="ContactHours" value=${ContactHours}>
+      </div>
+    </td>
+
+    </tr>
   `;
 
     tableBodyContent.push(row);

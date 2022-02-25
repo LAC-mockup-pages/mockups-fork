@@ -12,7 +12,7 @@ import { createReferralsContent } from "./components/referrals.js";
 //! Comment out for Production.
 //! =============================================================
 const studentInfo = GetStudentHeader.slice(0)[0];
-const notesList = GetNotes2.slice(0);
+const notesList = GetNotes3.slice(0);
 export const contactTypes = GetContactTypeSource.slice(0);
 export const staff = GetInstructorSource.slice(0);
 export const keyCodes = GetKeyCodeSource.slice(0);
@@ -130,7 +130,6 @@ $(document).ready(() => {
     const sectionName = $(this).parent().attr("class");
     console.log("sectionName :>> ", sectionName);
     if (sectionName === "case") return;
-    debugger;
     let tbodyContent = "";
     switch (sectionName) {
       case "referrals":
@@ -146,7 +145,6 @@ $(document).ready(() => {
         tbodyContent = "<h2>Default hit</h2>";
         break;
     }
-
     if (tbodyContent) {
       $(`.${sectionName} table tbody`).empty().append(tbodyContent);
     } else {
