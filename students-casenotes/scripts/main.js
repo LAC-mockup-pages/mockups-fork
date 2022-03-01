@@ -155,4 +155,18 @@ $(document).ready(() => {
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
+
+  //* Triggers edit modal with selected row elements and values
+  $(document).on("click", ".case-table>tbody> tr", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const rowId = $(this).attr("id");
+    const $row = $(":input", this).clone().prop("disabled", false);
+    const sectionTitle = $(this)
+      .parents("section")
+      .find(".sub-header-title")
+      .text()
+      .trim();
+    console.log("sectionTitle :>> ", sectionTitle);
+  });
 });

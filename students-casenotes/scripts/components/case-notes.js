@@ -106,7 +106,7 @@ export const createCaseNotesContent = (list) => {
     </td>
     <td>
       <div class="form-group input-field">
-        <select class="modal-select disabled name="ContactTypeID">
+        <select class="modal-select" disabled name="ContactTypeID">
         <option></option>
           ${typeOptionList}
         </select>
@@ -114,7 +114,7 @@ export const createCaseNotesContent = (list) => {
     </td>
     <td>
       <div class="form-group input-field">
-        <select class="modal-select disabled name="KeyCodeID">
+        <select class="modal-select" disabled name="KeyCodeID">
         <option></option>
           ${keywordOptionList}
         </select>
@@ -122,7 +122,7 @@ export const createCaseNotesContent = (list) => {
     </td>
     <td>
       <div class="form-group input-field">
-        <select class="modal-select disabled name="Personnel_PKID">
+        <select class="modal-select" disabled name="Personnel_PKID">
         <option></option>
           ${staffOptionList}
         </select>
@@ -143,7 +143,6 @@ export const createCaseNotesContent = (list) => {
         <input type="text" disabled name="attachment" value=${attachment}>
       </div>
     </td>
-
     </tr>
   `;
 
