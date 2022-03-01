@@ -96,7 +96,7 @@ export const createCaseNotesContent = (list) => {
     const typeOptionList = createOptionList(contactTypes, ContactTypeID);
     const keywordOptionList = createOptionList(keyCodes, KeyCodeID);
     const staffOptionList = createOptionList(staff, Personnel_PKID);
-
+    const attachment = AttachementLink ? "Yes" : "No";
     const row = `
   <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left" >
     <td>
@@ -131,6 +131,16 @@ export const createCaseNotesContent = (list) => {
     <td>
       <div class="form-group input-field">
         <input type="text" disabled name="ContactHours" value=${ContactHours}>
+      </div>
+    </td>
+    <td>
+      <div class="form-group input-field">
+        <textarea disabled name="ContactNotes" rows="3" cols="25">${ContactNotes}</textarea>
+      </div>
+    </td>
+    <td>
+      <div class="form-group input-field">
+        <input type="text" disabled name="attachment" value=${attachment}>
       </div>
     </td>
 
