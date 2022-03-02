@@ -245,7 +245,9 @@ $(document).ready(() => {
   //* Saving changes after editing in modal
   $("#save-btn").click(function (evnt) {
     //TODO Check for errors in inputs
-    const elements = $("#edit-form :input").prop("disabled", false);
+    const elements = $("#edit-form :input")
+      .prop("disabled", false)
+      .css("background-color", "inherit");
     const requiredObj = createObject(
       $("#edit-form [required]").serializeArray()
     );
