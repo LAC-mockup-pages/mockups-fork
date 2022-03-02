@@ -16,8 +16,8 @@ export const createOtherContent = (list) => {
 
     const optionListGoal = createOptionList(otherGoalsList, GoalID);
     const yesNoList = [
-      { key: "", value: "No" },
-      { key: "checked", value: "Yes" }
+      { key: "0", value: "No" },
+      { key: "1", value: "Yes" }
     ];
     const optionListSetGoal = createOptionList(yesNoList, SetGoal);
     const optionListProgress = createOptionList(yesNoList, ShowProgress);
@@ -77,8 +77,8 @@ export const addNewOutcomeOther = (obj) => {
         break;
       default:
         hashTable = [
-          { key: "", value: "No" },
-          { key: "checked", value: "Yes" }
+          { key: "0", value: "No" },
+          { key: "1", value: "Yes" }
         ];
     }
     // elementSelectModal() ==> helpers/helperFunction.js

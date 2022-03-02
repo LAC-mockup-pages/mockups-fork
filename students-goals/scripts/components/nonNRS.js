@@ -22,8 +22,8 @@ export const createNonNRSContent = (list) => {
   for (const record of orderedList) {
     const { ID, Category_Key, GoalID, FY, MetGoal, ReferralSiteID } = record;
     const yesNoList = [
-      { key: "False", value: "No" },
-      { key: "True", value: "Yes" }
+      { key: "0", value: "No" },
+      { key: "1", value: "Yes" }
     ];
     const optionListCategory = createOptionList(nonNRSCategories, Category_Key);
     const optionListGoal = createOptionList(nonNRSGoals, GoalID);
@@ -109,8 +109,8 @@ export const addNewNonNRSGoals = (obj) => {
           break;
         case "MetGoal":
           hashTable = [
-            { key: "False", value: "No" },
-            { key: "True", value: "Yes" }
+            { key: "0", value: "No" },
+            { key: "1", value: "Yes" }
           ];
           break;
         case "ReferralSiteID":

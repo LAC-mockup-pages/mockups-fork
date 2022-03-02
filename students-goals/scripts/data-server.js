@@ -36,7 +36,7 @@ const GetOutcomeinfo_LitZone = [
     Description: "Budget use of Earned Income Credit funds",
     Cat_GoalDesc: "Social Services | Budget use of Earned Income Credit funds",
     FY: "2020",
-    MetGoal: "False",
+    MetGoal: "0",
     ReferralSiteID: "PRALZ2828",
     ReferralSiteName: "ASISTS Data Services"
   },
@@ -51,7 +51,7 @@ const GetOutcomeinfo_LitZone = [
     Cat_GoalDesc:
       "Financial Literacy | Budget use of Earned Income Credit funds",
     FY: "2020",
-    MetGoal: "False",
+    MetGoal: "0",
     ReferralSiteID: "PRALZ2828",
     ReferralSiteName: "ASISTS Data Services"
   },
@@ -65,7 +65,7 @@ const GetOutcomeinfo_LitZone = [
     Description: "Applied for Food Stamps",
     Cat_GoalDesc: "Social Services | Applied for Food Stamps",
     FY: "2017",
-    MetGoal: "True",
+    MetGoal: "1",
     ReferralSiteID: "PRALZ5768",
     ReferralSiteName: "New Partner"
   },
@@ -79,7 +79,7 @@ const GetOutcomeinfo_LitZone = [
     Description: "Participate in job interview",
     Cat_GoalDesc: "Workforce Readiness | Participate in job interview",
     FY: "2017",
-    MetGoal: "True",
+    MetGoal: "1",
     ReferralSiteID: "PRALZ2736",
     ReferralSiteName: ""
   },
@@ -93,7 +93,7 @@ const GetOutcomeinfo_LitZone = [
     Description: "Get Flu Vaccination *",
     Cat_GoalDesc: "Health Literacy | Get Flu Vaccination *",
     FY: "2016",
-    MetGoal: "True",
+    MetGoal: "1",
     ReferralSiteID: "PRALZ1476",
     ReferralSiteName: ""
   },
@@ -108,7 +108,7 @@ const GetOutcomeinfo_LitZone = [
     Cat_GoalDesc:
       "Workforce Readiness | Read and understand work related documents (ie. Memos)",
     FY: "2012",
-    MetGoal: "False",
+    MetGoal: "0",
     ReferralSiteID: "PRALZ521",
     ReferralSiteName: ""
   },
@@ -122,7 +122,7 @@ const GetOutcomeinfo_LitZone = [
     Description: "Describe symptoms of an illness",
     Cat_GoalDesc: "Health Literacy | Describe symptoms of an illness",
     FY: "2012",
-    MetGoal: "False",
+    MetGoal: "0",
     ReferralSiteID: "PRALZ2881",
     ReferralSiteName: "Example Partner"
   }
@@ -331,9 +331,9 @@ const GetOutcomeinfo_EFF = [
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
     GoalID: "1",
     FY: null,
-    SetGoal: "checked",
-    ShowProgress: "checked",
-    ShowProficiency: "checked",
+    SetGoal: "1",
+    ShowProgress: "1",
+    ShowProficiency: "1",
     Description:
       "1 Read to children regularly/increased literacy practices in the home *",
     Student_PKID: "1048303"
@@ -343,9 +343,9 @@ const GetOutcomeinfo_EFF = [
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
     GoalID: "15",
     FY: null,
-    SetGoal: "checked",
-    ShowProgress: "checked",
-    ShowProficiency: "",
+    SetGoal: "1",
+    ShowProgress: "1",
+    ShowProficiency: "0",
     Description: "15 Used postal services",
     Student_PKID: "1048303"
   },
@@ -354,9 +354,9 @@ const GetOutcomeinfo_EFF = [
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
     GoalID: "20",
     FY: null,
-    SetGoal: "checked",
-    ShowProgress: "checked",
-    ShowProficiency: "",
+    SetGoal: "1",
+    ShowProgress: "0",
+    ShowProficiency: "0",
     Description: "20 Complete loan/credit application",
     Student_PKID: "1048303"
   },
@@ -365,9 +365,9 @@ const GetOutcomeinfo_EFF = [
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
     GoalID: "6",
     FY: null,
-    SetGoal: "",
-    ShowProgress: "checked",
-    ShowProficiency: "",
+    SetGoal: "0",
+    ShowProgress: "1",
+    ShowProficiency: "0",
     Description: "6 Read a medication bottle",
     Student_PKID: "1048303"
   }
