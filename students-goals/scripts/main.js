@@ -67,7 +67,7 @@ export const modalOptionWioa = {
   }
 };
 export const modalOptionOther = {
-  requiredList: ["GoalID"],
+  requiredList: ["GoalID", "SetGoal"],
   labels: {
     GoalID: "Description",
     SetGoal: "Set goal",
@@ -291,6 +291,7 @@ $(document).ready(() => {
     let editFormContent = "";
     let modalTitle = "WIOA / NRS outcomes";
     let dataTableName = "GetOutcomeinfo_WIOA";
+    let requiredFields = "";
     const buttonId = $(this).attr("id");
     $("#delete-btn").toggleClass("hidden");
     switch (buttonId) {
@@ -298,14 +299,17 @@ $(document).ready(() => {
         editFormContent = addNewOutcomeOther(modalOptionOther);
         modalTitle = "Other goals";
         dataTableName = "GetOutcomeinfo_EFF";
+        requiredFields = modalOptionOther.requiredList;
         break;
       case "add-nonnrs":
         editFormContent = addNewNonNRSGoals(modalOptionNonNRS);
         modalTitle = "Non-NRS goals";
         dataTableName = "GetOutcomeinfo_LitZone";
+        requiredFields = modalOptionNonNRS.requiredList;
         break;
       default:
         editFormContent = addNewOutcomeWIOA(modalOptionWioa);
+        requiredFields = modalOptionWioa.requiredList;
         console.log("Default hit!");
         break;
     }
@@ -315,7 +319,19 @@ $(document).ready(() => {
       .attr("data-table", dataTableName);
     $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
 
-    //TODO Process customized requiredList
+    // Process customized requiredList, colors labels in red, add the attribute
+    // required to the field.
+    for (const name of requiredFields) {
+      $(`#edit-form [name=${name}]`)
+        .prop("required", true)
+        .attr({
+          "data-original-title": "Please fill in this field",
+          "data-toggle": "tooltip",
+          "data-placement": "right"
+        })
+        .siblings("label")
+        .addClass("red-text");
+    }
 
     $("#modalBloc").modal("toggle");
     $("#delete-btn").addClass("hidden");
