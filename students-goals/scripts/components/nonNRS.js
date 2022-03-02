@@ -18,7 +18,7 @@ export const createNonNRSContent = (list) => {
       Number(item2.FY) - Number(item1.FY) ||
       Number(item1.Category_Key) - Number(item2.Category_Key)
   );
-  console.log("orderedList :>> ", orderedList);
+  console.log("orderedList Non NRS:>> ", orderedList);
   for (const record of orderedList) {
     const { ID, Category_Key, GoalID, FY, MetGoal, ReferralSiteID } = record;
     const yesNoList = [
@@ -71,4 +71,67 @@ export const createNonNRSContent = (list) => {
     tableBodyContent.push(row);
   }
   return tableBodyContent.join("");
+};
+
+export const addNewNonNRSGoals = (obj) => {
+  const content = [];
+  const { labels } = obj;
+  let labelClassVal = "";
+  let classVal = "";
+  for (const keyValue in labels) {
+    const labelVal = labels[keyValue];
+    let row = "";
+    let option = "";
+    let value = "";
+    // <input> fields
+    if (["FY"].includes(keyValue)) {
+      let optionHidden = "form-group";
+      // elementInput() ==> helpers/helperFunctions.js
+      row = elementInput({
+        keyVal: keyValue,
+        labelVal,
+        value,
+        labelClassVal,
+        classVal,
+        option,
+        optionHidden,
+        type: "text"
+      });
+    } else {
+      // <select> fields
+      let hashTable;
+      switch (keyValue) {
+        case "Category_Key":
+          hashTable = nonNRSCategories;
+          break;
+        case "GoalID":
+          hashTable = nonNRSGoals;
+          break;
+        case "MetGoal":
+          hashTable = [
+            { key: "False", value: "No" },
+            { key: "True", value: "Yes" }
+          ];
+          break;
+        case "ReferralSiteID":
+          hashTable = nonNRSSites;
+          break;
+        default:
+          console.log("Default hit - Not right");
+          return;
+      }
+      // elementSelectModal() ==> helpers/helperFunction.js
+      row = elementSelectModal({
+        hashTable,
+        keyValue,
+        selectedValue: "",
+        labelVal,
+        labelClassVal,
+        option,
+        optionText: ""
+      });
+    }
+    content.push(row);
+  }
+  return content.join("");
 };

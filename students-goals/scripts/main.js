@@ -2,7 +2,7 @@
 //* Actions and Logic for local page
 //*=================================================
 
-import { createNonNRSContent } from "./components/nonNRS.js";
+import { addNewNonNRSGoals, createNonNRSContent } from "./components/nonNRS.js";
 import {
   addNewOutcomeOther,
   createOtherContent
@@ -78,10 +78,9 @@ export const modalOptionOther = {
 export const modalOptionNonNRS = {
   requiredList: ["FY", "Category_Key", "GoalID"],
   labels: {
-    Category_Key: "Category",
-
-    GoalID: "Goal",
     FY: "Fiscal year",
+    Category_Key: "Category",
+    GoalID: "Goal",
     MetGoal: "Goal met",
     ReferralSiteID: "Referral partner"
   }
@@ -301,11 +300,13 @@ $(document).ready(() => {
         dataTableName = "GetOutcomeinfo_EFF";
         break;
       case "add-nonnrs":
-        editFormContent = "";
+        editFormContent = addNewNonNRSGoals(modalOptionNonNRS);
         modalTitle = "Non-NRS goals";
-        dataTableName = "Unknown";
+        dataTableName = "GetOutcomeinfo_LitZone";
+        break;
       default:
         editFormContent = addNewOutcomeWIOA(modalOptionWioa);
+        console.log("Default hit!");
         break;
     }
     $("#edit-form")
