@@ -18,7 +18,6 @@ const DT = luxon.DateTime;
 const studentInfo = GetStudentHeader.slice(0)[0];
 const wioaOutcome = GetOutcomeinfo_WIOA.slice(0);
 export const credentialList = GetCredentialSource.slice(0);
-// const outcomeList = GetOutcomeDesc_WIOA.slice(0);
 // Removing the key from the value property
 export const outcomeList = GetOutcomeDesc_WIOA.map((obj) => {
   const key = obj.key;
@@ -227,6 +226,7 @@ $(document).ready(() => {
         .wrap("<div class='form-group input-field'></div>")
         .before(`<label for=${name}>${labels[name]}</label>`);
     });
+    // Dressing up required fields
     for (const name of requiredList) {
       $(`#edit-form [name=${name}]`)
         .prop("required", true)
