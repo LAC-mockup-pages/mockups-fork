@@ -19,8 +19,10 @@ const caseValues = (list) => {
       KeyCodeDescription,
       ContactName,
       ContactHours,
-      ContactNotes
+      ContactNotes,
+      AttachmentLink
     } = record;
+    const document = AttachmentLink ? "Yes" : "No";
     const row = `
   <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left" >
     <td>
@@ -57,7 +59,7 @@ const caseValues = (list) => {
     </td>
     <td>
       <div class="form-group input-field">
-        <input type="text" disabled name="Attachment" value='Yes'>
+        <input type="text" disabled name="document" value=${document}>
       </div>
     </td>
   </tr>

@@ -149,7 +149,7 @@ $(document).ready(() => {
       $(`.${sectionName} table tbody`).empty().append(tbodyContent);
     } else {
       $(`.${sectionName} .tablescroll table`).replaceWith(
-        `<h2 style="text-align:center">No assessment on record for ${StudentName}`
+        `<h2 style="text-align:center">No action on record for ${StudentName}`
       );
     }
     // Enables customized tooltips
@@ -168,5 +168,6 @@ $(document).ready(() => {
       .text()
       .trim();
     console.log("sectionTitle :>> ", sectionTitle);
+    const { requiredList, labels } = modalOptionCaseNotes;
   });
 });
