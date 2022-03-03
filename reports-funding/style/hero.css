@@ -57,6 +57,9 @@
   font-size: 1.3em;
   width: 20%;
 }
+select {
+  background-color: inherit;
+}
 
 /* Temporary styling               */
 /* =============================== */
