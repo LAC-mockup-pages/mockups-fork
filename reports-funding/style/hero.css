@@ -1,0 +1,75 @@
+/* =============================== */
+/* Specific CSS rules              */
+/* =============================== */
+
+/* Main display                     */
+/* =============================== */
+.main-body {
+  text-align: initial;
+  max-width: 83%;
+  background-color: #f0f0f5;
+  font-size: 0.8em;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 1%;
+  border-bottom: 1.2em solid #2479b5;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.report-info {
+  height: 4em;
+  padding-top: 0.4em;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+}
+.report-title {
+  font-size: 2em;
+  text-align: right;
+  padding-bottom: 0.4em;
+}
+.sub-header {
+  line-height: 30px;
+  padding-left: 5px;
+  font-size: 1em;
+  font-weight: 600;
+}
+.sub-header-title {
+  text-align: right;
+  padding-right: 1%;
+  margin: 0.5% 0%;
+}
+.container {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+/* Selectors section */
+/* =============================== */
+.selectors {
+  height: 40vh;
+  padding-left: 3%;
+  padding-top: 3%;
+}
+.input-field {
+  line-height: 3em;
+}
+.input-field > label {
+  font-size: 1.3em;
+  width: 20%;
+}
+.modal-select {
+  font-size: 1.6em;
+  width: 50%;
+}
+.marg1 {
+  margin-left: 4em;
+}
+.marg2 {
+  margin-left: 8em;
+}
+.marg3 {
+  margin-left: 12em;
+}
+.marg4 {
+  margin-left: 16em;
+}
