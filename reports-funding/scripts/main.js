@@ -7,6 +7,7 @@
 //*=================================================
 
 $(document).ready(() => {
+  // Temporary event
   $("#report-category").change(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
