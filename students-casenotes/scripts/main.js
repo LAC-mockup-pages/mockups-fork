@@ -2,11 +2,15 @@
 //* Actions and Logic for local page
 //*=================================================
 
-import { createCaseNotesContent } from "./components/case-notes.js";
+import {
+  createCaseNotesContent,
+  modalStyling
+} from "./components/case-notes.js";
 import { createNeedsContent } from "./components/needs.js";
 import { createOutcomeContent } from "./components/outcome.js";
 import { createReferralsContent } from "./components/referrals.js";
-
+// Initializing Luxon DateTime class for the module
+const DT = luxon.DateTime;
 //! =============================================================
 //! For Development only.
 //! Comment out for Production.
@@ -38,18 +42,18 @@ export const createOptionList = (dataObj, defaultValue) => {
 export const modalOptionCaseNotes = {
   requiredList: [
     "ContactDate",
-    "ContactDescID",
+    "ContactTypeID",
     "Personnel_PKID",
     "ContactNotes"
   ],
   labels: {
     ContactDate: "Date",
-    ContactDescID: "Type",
+    ContactTypeID: "Type",
     KeyCodeID: "Keyword",
     Personnel_PKID: "Contact staff",
     ContactHours: "Contact hrs",
     ContactNotes: "Note",
-    Attachment: "Document"
+    attachment: "Document"
   }
 };
 //*=================================================
@@ -169,5 +173,26 @@ $(document).ready(() => {
       .trim();
     console.log("sectionTitle :>> ", sectionTitle);
     const { requiredList, labels } = modalOptionCaseNotes;
+    $("#modalBloc").modal("toggle");
+    const table = $(this).parents("table").attr("data-table");
+    $("#edit-form")
+      .empty()
+      .append($row)
+      .attr({ "data-id": rowId, "data-table": table });
+    $(".modal-title").empty().text(`Editing Case record`);
+    $("#edit-form :input").each(function (indx) {
+      const name = $(this).attr("name");
+      if (name.includes("Date")) {
+        const formattedDate = DT.fromFormat($(this).val(), "D").toISODate();
+        $(this).val(formattedDate).attr("type", "date");
+      }
+      $(this)
+        .wrap("<div class='form-group input-field'></div>")
+        .before(`<label for=${name}>${labels[name]}</label>`);
+    });
+    // Applying styling cues to modal
+    modalStyling(requiredList);
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
   });
 });

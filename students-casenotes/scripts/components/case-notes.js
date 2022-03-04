@@ -8,68 +8,6 @@ import { contactTypes, staff, keyCodes, createOptionList } from "../main.js";
 // Initializing Luxon DateTime class for the module
 const DT = luxon.DateTime;
 
-const caseValues = (list) => {
-  const tableBodyContent = [];
-
-  for (const record of list) {
-    const {
-      ID,
-      ContactDate,
-      ContactDesc,
-      KeyCodeDescription,
-      ContactName,
-      ContactHours,
-      ContactNotes,
-      AttachmentLink
-    } = record;
-    const document = AttachmentLink ? "Yes" : "No";
-    const row = `
-  <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left" >
-    <td>
-      <div class="form-group input-field">
-        <input type="text" disabled name="ContactDate" value=${ContactDate}>
-      </div>
-    </td>
-    <td>
-      <div class="form-group input-field">
-        <input type="text" disabled name="ContactDesc" value='${ContactDesc}'>
-      </div>
-    </td>
-    <td>
-      <div class="form-group input-field">
-        <input type="text" disabled name="KeyCodeDescription" value="${KeyCodeDescription.slice(
-          5
-        )}">
-      </div>
-    </td>
-    <td>
-      <div class="form-group input-field">
-        <input type="text" disabled name="ContactName" value="${ContactName}">
-      </div>
-    </td>
-    <td>
-      <div class="form-group input-field">
-        <input type="text" disabled name="ContactHours" value=${ContactHours}>
-      </div>
-    </td>
-    <td>
-      <div class="form-group input-field">
-        <textarea disabled name="ContactNotes" rows="3" cols="30" maxlength="255">${ContactNotes}</textarea>
-      </div>
-    </td>
-    <td>
-      <div class="form-group input-field">
-        <input type="text" disabled name="document" value=${document}>
-      </div>
-    </td>
-  </tr>
-`;
-    tableBodyContent.push(row);
-  }
-
-  return tableBodyContent.join("");
-};
-
 export const createCaseNotesContent = (list) => {
   const tableBodyContent = [];
   const orderedList = list.sort((record1, record2) =>
@@ -92,7 +30,6 @@ export const createCaseNotesContent = (list) => {
       Personnel_PKID,
       ContactHours,
       ContactNotes,
-      Attachment,
       AttachementLink
     } = record;
     const typeOptionList = createOptionList(contactTypes, ContactTypeID);
@@ -100,56 +37,79 @@ export const createCaseNotesContent = (list) => {
     const staffOptionList = createOptionList(staff, Personnel_PKID);
     const attachment = AttachementLink ? "Yes" : "No";
     const row = `
-  <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left" >
-    <td>
-      <div class="form-group input-field">
-        <input type="text" disabled name="ContactDate" value=${ContactDate}>
-      </div>
-    </td>
-    <td>
-      <div class="form-group input-field">
-        <select class="modal-select" disabled name="ContactTypeID">
-        <option></option>
-          ${typeOptionList}
-        </select>
-      </div>
-    </td>
-    <td>
-      <div class="form-group input-field">
-        <select class="modal-select" disabled name="KeyCodeID">
-        <option></option>
-          ${keywordOptionList}
-        </select>
-      </div>
-    </td>
-    <td>
-      <div class="form-group input-field">
-        <select class="modal-select" disabled name="Personnel_PKID">
-        <option></option>
-          ${staffOptionList}
-        </select>
-      </div>
-    </td>
-    <td>
-      <div class="form-group input-field">
-        <input type="text" disabled name="ContactHours" value=${ContactHours}>
-      </div>
-    </td>
-    <td>
-      <div class="form-group input-field">
-        <textarea disabled name="ContactNotes" rows="3" cols="25">${ContactNotes}</textarea>
-      </div>
-    </td>
-    <td>
-      <div class="form-group input-field">
-        <input type="text" disabled name="attachment" value=${attachment}>
-      </div>
-    </td>
-    </tr>
-  `;
-
+      <tr id=${ID} data-original-title="Click to Edit" data-toggle="tooltip" data-placement="left" >
+        <td>
+          <div class="form-group input-field">
+            <input type="text" disabled name="ContactDate" value=${ContactDate}>
+          </div>
+        </td>
+        <td>
+          <div class="form-group input-field">
+            <select class="modal-select" disabled name="ContactTypeID">
+              <option></option>
+              ${typeOptionList}
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="form-group input-field">
+            <select class="modal-select" disabled name="KeyCodeID">
+              <option></option>
+              ${keywordOptionList}
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="form-group input-field">
+            <select class="modal-select" disabled name="Personnel_PKID">
+              <option></option>
+              ${staffOptionList}
+            </select>
+          </div>
+        </td>
+        <td>
+          <div class="form-group input-field">
+            <input type="text" disabled name="ContactHours" value=${ContactHours}>
+          </div>
+        </td>
+        <td>
+          <div class="form-group input-field">
+            <textarea disabled name="ContactNotes" rows="3" cols="25">${ContactNotes}</textarea>
+          </div>
+        </td>
+        <td>
+          <div class="form-group input-field">
+            <input type="text" disabled name="attachment" value=${attachment}>
+          </div>
+        </td>
+      </tr>
+    `;
     tableBodyContent.push(row);
   }
-
   return tableBodyContent.join("");
+};
+
+export const modalStyling = (list) => {
+  // Dressing up required fields
+  for (const name of list) {
+    $(`#edit-form [name=${name}]`)
+      .prop("required", true)
+      .attr({
+        "data-original-title": "Please fill in this field",
+        "data-toggle": "tooltip",
+        "data-placement": "right"
+      })
+      .siblings("label")
+      .addClass("red-text");
+  }
+  // Formatting <textarea> for notes display
+  $("#edit-form textarea")
+    .attr({
+      rows: "2",
+      cols: "70"
+    })
+    .css("font-size", "1.2em");
+  // Disabling the attachement field
+  $("#edit-form [name='attachment']").prop("disabled", true);
+  return;
 };
