@@ -39,6 +39,8 @@
 }
 textarea {
   font-size: 0.8em;
+  background-color: inherit;
+  border: none;
 }
 .student-info {
   height: 2.8em;
@@ -59,16 +61,6 @@ textarea {
   margin: 0.5% 0%;
 }
 
-.case-table .input-field > input {
-  font-size: 0.9em;
-  width: 100%;
-  border-bottom: none;
-}
-.case-table .modal-select {
-  width: 100%;
-  font-size: 0.9em;
-  border-bottom: none;
-}
 .form-group {
   line-height: 1.7vh;
   background-color: inherit;
@@ -91,6 +83,16 @@ textarea {
 .table input:disabled {
   opacity: 1;
   background-color: inherit;
+}
+.case-table .input-field > input {
+  font-size: 0.9em;
+  width: 100%;
+  border-bottom: none;
+}
+.case-table .modal-select {
+  width: 100%;
+  font-size: 0.9em;
+  border-bottom: none;
 }
 
 /* Case notes */
@@ -141,22 +143,28 @@ textarea {
 }
 
 .case-table td:nth-child(5) {
-  width: 5em;
+  width: 3em;
 }
 
 .case-table td:nth-child(5) input {
   text-align: right;
 }
 .case-table td:nth-child(2) {
-  width: 6.5em;
+  width: 7em;
 }
 .case-table td:nth-child(4) {
   width: 9em;
 }
 .case-table td:nth-child(6) {
-  width: 11em;
+  width: 14em;
 }
-
+.case-table td:nth-child(6) .form-group {
+  margin-bottom: 0em;
+}
 .case-table td:last-child {
   width: 4em;
+}
+.case-table textarea {
+  width: 100%;
+  height: 100%;
 }
