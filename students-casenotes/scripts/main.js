@@ -240,4 +240,25 @@ $(document).ready(() => {
       $("#modalBloc").modal("toggle");
     }
   });
+
+  //* Adding a new record
+  $("#add-case").click(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const editFormContent = "";
+    const modalTitle = "Case note";
+    const dataTableName = "GetNotes";
+
+    $("#edit-form")
+      .empty()
+      .append(editFormContent)
+      .attr("data-table", dataTableName);
+    $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
+
+    //TODO Process customized requiredList
+
+    $("#modalBloc").modal("toggle");
+    // Enables customized tooltips
+    $("[data-toggle='tooltip']").tooltip();
+  });
 });
