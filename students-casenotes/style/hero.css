@@ -41,12 +41,14 @@ textarea {
   font-size: 0.8em;
   background-color: inherit;
   border: none;
+  border-bottom: 1px #2479b5;
 }
 .student-info {
   height: 2.8em;
   padding-top: 0.4em;
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
+  margin-bottom: 2px;
 }
 .sub-header {
   line-height: 30px;
@@ -58,7 +60,7 @@ textarea {
 .sub-header-title {
   text-align: right;
   padding-right: 1%;
-  margin: 0.5% 0%;
+  margin: 0.1% 0%;
 }
 
 .form-group {
@@ -84,24 +86,30 @@ textarea {
   opacity: 1;
   background-color: inherit;
 }
-.case-table .input-field > input {
-  font-size: 0.9em;
-  width: 100%;
-  border-bottom: none;
-}
-.case-table .modal-select {
-  width: 100%;
-  font-size: 0.9em;
-  border-bottom: none;
-}
 
+tbody > tr:hover {
+  background-color: inherit;
+}
+.table:not(#edit-form) .input-field > input,
+.table:not(#edit-form) .modal-select {
+  border-bottom: none;
+}
 /* Case notes */
 .active,
 .inactive {
   border-bottom: 2px solid #2479b5;
   cursor: pointer;
 }
-
+#add-case {
+  font-weight: 600;
+  padding: 3px 4px;
+  margin-right: 0px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+.case-table tbody > tr:hover {
+  background-color: #d3e4f0;
+}
 .tablescroll {
   max-height: 30em;
   overflow-y: auto;
@@ -137,6 +145,16 @@ textarea {
 .align-right {
   text-align: right;
 }
+.case-table .input-field > input {
+  font-size: 0.9em;
+  width: 100%;
+  border-bottom: none;
+}
+.case-table .modal-select {
+  width: 100%;
+  font-size: 0.9em;
+  border-bottom: none;
+}
 
 .case-table td:nth-child(1) {
   width: 5.5em;
@@ -167,4 +185,10 @@ textarea {
 .case-table textarea {
   width: 100%;
   height: 100%;
+}
+#edit-form label[for="ContactNotes"] {
+  margin-bottom: 3%;
+}
+#edit-form textarea {
+  margin-bottom: -2%;
 }
