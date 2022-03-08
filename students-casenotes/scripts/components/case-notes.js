@@ -113,3 +113,74 @@ export const modalStyling = (list) => {
   $("#edit-form [name='attachment']").prop("disabled", true);
   return;
 };
+
+export const addNewCase = (obj) => {
+  const { labels } = obj;
+  const content = [];
+  let labelClassVal = "";
+  let classVal = "";
+  for (const keyValue in labels) {
+    const labelVal = labels[keyValue];
+    let row = "";
+    let value = "";
+    let option = "";
+
+    if (["ContactDate", "ContactHours"].includes(keyValue)) {
+      // Input fields
+      let optionHidden = "form-group";
+      const type = keyValue.includes("Date") ? "date" : "text";
+      // elementInput() ==> helpers/helperFunctions.js
+      row = elementInput({
+        keyVal: keyValue,
+        labelVal,
+        value,
+        labelClassVal,
+        classVal,
+        option,
+        optionHidden,
+        type
+      });
+    } else if (keyValue === "ContactNotes") {
+      row = `
+        <div class="form-group input-field">
+          <label for=${keyValue}>${labelVal}</label>
+          <textarea name=${keyValue} rows="2" cols="70"></textarea>
+        </div>
+        `;
+    } else if (keyValue === "attachment") {
+      continue;
+    } else {
+      // Select fields: ContactTypeID, KeyCodeID, Personnel_PKID
+      let hashTable = [];
+      switch (keyValue) {
+        case "ContactTypeID":
+          hashTable = contactTypes;
+          break;
+        case "KeyCodeID":
+          hashTable = keyCodes;
+          break;
+        case "Personnel_PKID":
+          hashTable = staff;
+          break;
+        default:
+          hashTable = [
+            { key: "0", value: "No" },
+            { key: "1", value: "Yes" }
+          ];
+          break;
+      }
+      // elementSelectModal() ==> helpers/helperFunction.js
+      row = elementSelectModal({
+        hashTable,
+        keyValue,
+        selectedValue: "",
+        labelVal,
+        labelClassVal,
+        option,
+        optionText: ""
+      });
+    }
+    content.push(row);
+  }
+  return content.join("");
+};

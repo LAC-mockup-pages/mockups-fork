@@ -3,6 +3,7 @@
 //*=================================================
 
 import {
+  addNewCase,
   createCaseNotesContent,
   modalStyling
 } from "./components/case-notes.js";
@@ -245,7 +246,7 @@ $(document).ready(() => {
   $("#add-case").click(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    const editFormContent = "";
+    const editFormContent = addNewCase(modalOptionCaseNotes);
     const modalTitle = "Case note";
     const dataTableName = "GetNotes";
 
@@ -256,7 +257,7 @@ $(document).ready(() => {
     $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
 
     //TODO Process customized requiredList
-
+    modalStyling(modalOptionCaseNotes.requiredList);
     $("#modalBloc").modal("toggle");
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
