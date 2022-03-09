@@ -1,0 +1,565 @@
+/* Specific CSS rules */
+/* ================================== */
+
+.record-entry {
+  margin: 1% 0 1% 0;
+  padding: 0 0 2% 0;
+  width: 100%;
+  border-radius: 5px;
+}
+
+#filter-bloc {
+  padding: 1.5% 0 0.5% 0;
+  margin-bottom: 0.5%;
+  border-radius: 5px;
+}
+
+#primary-select select,
+#secondary-select select,
+#fiscal-year-select select,
+#daily-hours select {
+  margin-top: 0.3%;
+  font-size: 1.1em;
+  font-weight: 600;
+  width: 13em;
+  height: 2.5em;
+  border-radius: 4px;
+  background-color: #f5f5f5;
+  color: #1d6294;
+}
+
+#secondary-select {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.filter-select {
+  text-align: right;
+  padding-right: 1%;
+}
+
+.table-scroll {
+  overflow-y: auto;
+  max-height: 34em;
+}
+
+.table-scroll thead th {
+  position: sticky;
+  top: 0;
+  background-color: #2479b5;
+}
+
+.main-table,
+.student-table {
+  border-radius: 5px;
+  border-bottom: 1em solid #2479b5;
+}
+
+#filter-cancel-btn,
+#filter-apply-btn,
+#add-student-btn,
+#student-hours-btn,
+#daily-btn,
+#daily-hours-btn,
+#instructor-hours-btn {
+  margin: 0 0.5% 0 2%;
+  width: 7em;
+  font-size: 1.2em;
+  font-weight: 500;
+}
+
+.course-details {
+  background-color: #f5f5f5;
+  border-bottom: 1.5em solid #2479b5;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.selected-tab {
+  background-color: #d3e4f0;
+  color: #2479b5;
+  font-weight: 700;
+}
+
+.unselected-tab,
+.btn-link {
+  background-color: inherit;
+  color: inherit;
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+#sub-nav .btn-link {
+  border: none;
+  text-decoration: none;
+  height: 100%;
+  width: 100%;
+}
+
+.input-field input:disabled,
+.input-field select:disabled {
+  background-color: inherit;
+}
+
+/* Modal */
+/* =========================================== */
+
+#edit-form .input-field input:disabled,
+#edit-form .input-field select:disabled {
+  background-color: #eaeaea;
+}
+
+/* Enrollment View */
+/* =========================================== */
+
+#enrollment-bloc,
+#main-banner {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+#main-banner {
+  margin: 1.5% 0%;
+  padding: 1% 0%;
+  border-radius: 5px;
+}
+
+.label-text {
+  font-size: 1.3em;
+}
+
+#PeriodID-view {
+  background-color: #f5f5f5;
+  border-radius: 3px;
+}
+
+.student-table {
+  max-height: 40em;
+}
+
+.student-label {
+  margin-top: 2%;
+}
+
+/* Hours bloc */
+/* =========================================== */
+
+#hours-bloc {
+  border-radius: 5px;
+  padding-right: 5px;
+  padding-left: 5px;
+  padding-bottom: 5px;
+}
+
+#instructor-hours {
+  padding-top: 1.5%;
+  padding-bottom: 1%;
+  border-top: solid 2px #d3e4f0;
+}
+
+#student-hours,
+#daily-hours {
+  padding-left: 0px;
+  padding-right: 0px;
+  padding: 0.5% 1% 0% 1%;
+  border-bottom: solid 2px #d3e4f0;
+}
+
+.scrolling {
+  max-height: 400px;
+  position: relative;
+  overflow-y: auto;
+  margin-bottom: 0.5%;
+}
+
+.instr-scrolling {
+  max-height: 100px;
+  position: relative;
+  overflow-y: auto;
+  margin-bottom: 0.5%;
+}
+
+#view-bloc .scrolling th {
+  position: sticky;
+  top: 0;
+  background-color: #2479b5;
+}
+
+.classDayNoTime {
+  background-color: #d3e4f0;
+}
+
+.student-name,
+.instructor-name {
+  font-weight: 500;
+}
+
+.large-number {
+  font-size: 1.2em;
+}
+
+#course-total {
+  padding-left: -10px;
+  padding-right: 0px;
+  padding: 0.5% 1% 1% 1%;
+}
+
+.dob,
+.assign-date {
+  width: 7em;
+}
+
+.assign-date {
+  color: #f5f5f5;
+}
+
+.student-total,
+.instructor-total,
+.daily-total {
+  width: 5em;
+  font-weight: 500;
+  text-align: right;
+}
+
+.border-blue {
+  border-bottom: 1px solid #2479b5;
+}
+
+.month-value {
+  width: 3.1em;
+}
+
+.daily-value {
+  width: 3.9em;
+}
+
+#student-hours-btn,
+#daily-hours-btn,
+#daily-btn {
+  margin-bottom: 0.4em;
+}
+
+.week-schedule {
+  padding: 1%;
+  border-bottom: solid 2px #d3e4f0;
+}
+
+.schedule-daily {
+  width: 5em;
+  padding: 0px;
+  padding-left: 0.3em;
+}
+
+.weekday {
+  text-align: center;
+}
+
+.schedule-daily:first-of-type {
+  font-weight: 600;
+  font-size: 0.8em;
+  padding: 0.6em 0.3em;
+}
+
+.month-value input,
+.daily-value input {
+  width: 100%;
+  height: 100%;
+  border: none;
+  text-align: right;
+  background-color: #f5f5f5;
+}
+
+#hours-table th:first-of-type,
+#daily-hours-table th:first-of-type,
+#hours-table th:nth-of-type(2) {
+  text-align: left;
+}
+
+#hours-table th,
+#daily-hours-table th {
+  text-align: right;
+}
+
+#hours-bloc .scrolling td,
+#hours-bloc .scrolling th,
+#hours-bloc .instr-scrolling td {
+  padding-right: 1%;
+}
+.student-hours-body > tr:hover,
+.week-schedule-body > tr:hover,
+.daily-hours-body > tr:hover,
+.instr-hours-body > tr:hover {
+  background-color: #f5f5f5;
+}
+
+.warning-text > p {
+  font-size: 1.4em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.epe-tip {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-top: 5%;
+}
+
+.epe-tip > ul {
+  padding-left: 5%;
+}
+
+#confirm-btn,
+#daily-cancel-btn {
+  width: 40%;
+  font-size: 1.2em;
+  font-weight: 600;
+  margin: 0% 3%;
+}
+
+#modalConfirm .modal-footer {
+  text-align: center;
+}
+
+/* MainInfo bloc */
+/* =========================================== */
+.sub-header {
+  line-height: 30px;
+  padding-left: 5px;
+  font-size: 1.1em;
+  font-weight: 700;
+  border-top: 2px solid #fff;
+}
+
+.sub-header-title {
+  text-align: right;
+  line-height: 34px;
+  padding-right: 1%;
+  font-size: 1.1em;
+  color: #fff;
+}
+
+.main-info {
+  margin: 0% 0% 2% 0%;
+  background-color: #f5f5f5;
+}
+
+.field-bloc {
+  padding-top: 3%;
+}
+
+.field-bloc:hover,
+.sub-blocs:hover {
+  background-color: #d3e4f0;
+}
+
+.add-record-btn,
+.save-record-btn,
+.edit-record-btn,
+#event-view-cancel-btn,
+#event-view-submit-btn {
+  height: 28px;
+  margin-top: 2px;
+  line-height: 16px;
+  width: fit-content;
+  font-size: 1.1em;
+  font-weight: 700;
+}
+
+#event-view-submit-btn {
+  margin-left: 3%;
+}
+
+.input-field input,
+.input-field select {
+  background-color: inherit;
+}
+
+.buttons-bloc-new {
+  margin: 0 0 0 0;
+  padding: 0.5% 0;
+  max-height: 3em;
+  border-radius: 0 0 5px 5px;
+}
+
+/* Funding bloc */
+/* =========================================== */
+.funding-bloc {
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-bottom: 5%;
+}
+.funding-checkboxes {
+  padding-left: 3%;
+  line-height: 1.8em;
+  font-size: 1.2em;
+}
+
+.sub-blocs {
+  margin-right: 0px;
+  margin-left: 0px;
+  max-height: 11em;
+  overflow-y: scroll;
+}
+.checkbox label {
+  padding-left: 1.5em;
+}
+.checkbox input[type="checkbox"] {
+  width: 1em;
+  height: 1em;
+  margin-left: -2em;
+  margin-bottom: -1em;
+}
+
+.left-bloc,
+.right-bloc {
+  padding-left: 1%;
+}
+
+/* Schedule bloc */
+/* =========================================== */
+
+.schedule-body:hover {
+  background-color: #d3e4f0;
+}
+
+#edit-form > table > tbody > tr:hover,
+#edit-form > table > tbody:hover {
+  background-color: #f5f5f5;
+}
+
+.schedule-body input:disabled {
+  background-color: inherit;
+}
+
+#schedule > table > tbody > tr > td {
+  padding: 0px;
+}
+
+.blank-bloc,
+.weekday {
+  background-color: #d3e4f0;
+  color: #1d6294;
+  font-size: 1em;
+}
+
+.schedule-cell {
+  font-size: 0.8em;
+  font-weight: 600;
+  padding: 0px;
+  padding-left: 0.3em;
+}
+
+.schedule-input {
+  font-size: 1em;
+  padding-left: 0.3em;
+  line-height: 20px;
+  max-width: 4.5em;
+  border: 0;
+  background-color: #f5f5f5;
+}
+
+.schedule-table tr,
+.instructors-table tr {
+  line-height: 1em;
+  font-size: 1em;
+  padding: 0px;
+}
+
+/* Recommended */
+/* =========================================== */
+
+.recommended-fields {
+  padding-left: 0px;
+}
+
+.recommended-title {
+  text-align: center;
+  padding: 0.3%;
+  font-size: 1.3em;
+  font-weight: 600;
+  margin: 1.5% 0;
+}
+
+.separation {
+  line-height: 0.5em;
+  /* border: 3px solid #d3e4f0; */
+  border: 3px solid #2479b5;
+  margin: 3% 0;
+}
+
+.sub-header-bloc,
+.special-prog-bloc {
+  padding-right: 0px;
+  margin-right: 0px;
+}
+
+.bloc-special-program-program {
+  padding-right: 0px;
+  padding-left: 1.8%;
+}
+
+.bloc-special-program-description {
+  padding-right: 0px;
+  padding-left: 6.5%;
+}
+
+.sub-header-labels {
+  padding: 0px;
+  margin-left: -5px;
+  margin-right: 0px;
+}
+
+#special-program {
+  padding-right: 0px;
+  padding-left: 1.2%;
+}
+
+.special-program-table {
+  height: 13em;
+  overflow-y: scroll;
+}
+
+/* Instructors */
+/* =========================================== */
+.AssignDate {
+  width: 25%;
+}
+
+.instructors-table {
+  height: 11em;
+  overflow-y: scroll;
+}
+
+.bloc-instructors-date-assigned {
+  padding-left: 0.6em;
+}
+
+.bloc-instructors-instructors {
+  padding-left: 0px;
+}
+
+/* Additional Info */
+/* =========================================== */
+
+.additional-bloc {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.instructors-table {
+  margin-bottom: 3em;
+}
+
+.AssignDate {
+  width: 24%;
+}
+
+/* Projected Sces */
+/* =========================================== */
+
+.projected-bloc {
+  padding-bottom: 2%;
+}
+
+/* Last Mod */
+/* 5/6/21 */
