@@ -238,6 +238,14 @@ $(document).ready(() => {
         .siblings("label")
         .addClass("red-text");
     }
+    // Disabling Income and Credential fields
+    $(
+      "#edit-form [name='Income'], #edit-form [name='NYSED_CredentialID']"
+    ).each(function (indx) {
+      if (!$(this).val()) {
+        $(this).prop("disabled", true);
+      }
+    });
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
@@ -334,6 +342,12 @@ $(document).ready(() => {
         .siblings("label")
         .addClass("red-text");
     }
+    // Disabling Income and Credential fields
+    $(
+      "#edit-form [name='Income'], #edit-form [name='NYSED_CredentialID']"
+    ).each(function (indx) {
+      $(this).prop("disabled", true);
+    });
 
     $("#modalBloc").modal("toggle");
     $("#delete-btn").addClass("hidden");
@@ -386,5 +400,18 @@ $(document).ready(() => {
       $("#delete-btn").toggleClass("hidden");
 
     $(".modal-footer h3").remove();
+  });
+
+  //* Business rule for OutcomeID in WIOA Outcome modal
+  $(document).on("change", "#edit-form [name='OutcomeID']", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    if ($(this).val() === "2") {
+      $("#edit-form [name='Income']").prop("disabled", false).val("");
+    } else if ($(this).val() === "9") {
+      $("#edit-form [name='NYSED_CredentialID']")
+        .prop("disabled", false)
+        .val("");
+    }
   });
 });
