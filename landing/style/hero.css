@@ -26,7 +26,9 @@
 .icons {
   margin-top: 1%;
 }
-
+.top-band .row {
+  margin-right: 0px;
+}
 .user-bloc {
   margin-top: 4%;
 }
