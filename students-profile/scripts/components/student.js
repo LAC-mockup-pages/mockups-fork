@@ -98,7 +98,7 @@ export const populationSection = (dataStr) => {
         .split(",")
         .map((item) => `<div class="value">${item}</div>`)
         .join("")
-    : `<div class="no-data">No population categories selected</div>`;
+    : `<div class="no-data">No population categories or barriers to employment selected</div>`;
   const sectionContent = `
   <div class="box-title">Population categories</div>
     ${populationElement}
