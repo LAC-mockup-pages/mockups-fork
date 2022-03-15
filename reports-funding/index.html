@@ -329,7 +329,7 @@
     <!-- Main display -->
     <main class="main-body container">
       <section class="report-info container-fluid blue-bg blue-light-text">
-        <div class="report-title">WIOA/NRS tables</div>
+        <div class="report-title">Funding Reports</div>
       </section>
       <section class="selectors">
         <div class="form-group input-field">
@@ -342,11 +342,20 @@
           ></select>
         </div>
         <div class="form-group input-field marg1">
-          <label for="table-num">Report name: </label>
-          <select class="modal-select" name="table-num" id="table-num">
-            <option value="Table 1">Table 1</option>
-            <option value="Table 2">Table 2</option>
-          </select>
+          <label for="group-selector">Report group: </label>
+          <select
+            class="modal-select"
+            name="group-selector"
+            id="group-selector"
+          ></select>
+        </div>
+        <div class="form-group input-field marg2">
+          <label for="title-selector">Report title: </label>
+          <select
+            class="modal-select"
+            name="title-selector"
+            id="title-selector"
+          ></select>
         </div>
         <div class="form-group input-field marg2">
           <label for="class-funding">Class funding: </label>
@@ -389,7 +398,12 @@
           <button type="button" id="generate-btn" class="btn btn-primary">
             Generate report
           </button>
-          <button type="button" id="export-btn" class="btn btn-default">
+          <button
+            type="button"
+            disabled
+            id="export-btn"
+            class="btn btn-default"
+          >
             Export to Excel
           </button>
         </div>

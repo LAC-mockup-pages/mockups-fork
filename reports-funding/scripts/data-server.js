@@ -88,7 +88,7 @@ const GetSpecialProgramSource = [
 
 const GetReportCategory = [
   { key: "16", value: "WIOA Program Evaluation Reports" },
-  { key: "196", value: " WIOA Reports" },
+  { key: "196", value: "WIOA Reports" },
   { key: "197", value: "NYRS Program Evaluation Reports" },
   { key: "198", value: "NYRS Reports" },
   { key: "202", value: "WIOA Tables Data Check" },

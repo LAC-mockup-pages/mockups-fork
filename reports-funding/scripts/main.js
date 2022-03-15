@@ -1,6 +1,19 @@
 //*=================================================
 //* Actions and Logic for local page
 //*=================================================
+//! =============================================================
+//! For Development only.
+//! Comment out for Production.
+//! =============================================================
+const reportCategories = GetReportCategory.slice(0);
+const titleSummaryList = GetReport.map((record) => {
+  const key = record.ID;
+  const value = record.Report_Name;
+  return { key, value };
+});
+
+//! =============================================================
+
 export const createOptionList = (dataObj, defaultValue) => {
   const optionList = dataObj.map((record) => {
     const [key, value] = Object.keys(record);
@@ -24,8 +37,17 @@ $(document).ready(() => {
   //* =====================================
   //* At first rendering
   //* =====================================
+  //! =============================================================
+  //! For Production, this section regroups the end points
+  //! for the different requests to the back-end, using requestObj.
+  //! Navigation variables are defined here as well.
+  //! =============================================================
+  // const reportCategories =
 
-  //* Setting up options for Fiscal Year selection
+  //! =============================================================
+  //* Setting up options for main selectors
+
+  // Fiscal Year
   // createCredentials() <= helpers/helperFunctions.js
   const { FiscalYear } = createCredentials();
   const numFiscalYear = Number(FiscalYear);
@@ -48,6 +70,11 @@ $(document).ready(() => {
     previousFY
   );
   $("#fiscal-year").append(optionListFY);
+  // Report groups
+  $("#group-selector").append(createOptionList(reportCategories));
+  // Report titles
+  $("#title-selector").append(createOptionList(titleSummaryList));
+
   //* =====================================
 
   // Temporary event
