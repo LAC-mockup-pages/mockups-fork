@@ -103,17 +103,32 @@ $(document).ready(() => {
   // Report Categories
   $("#report-category").empty().append(createOptionList(categories));
   // Optional criteria
-
-  //* =====================================
-
-  // Temporary event
   $("#report-category").change(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    $(".selectors .input-field").last().toggleClass("hidden");
-    // if ($(this).val() !== "all") {
-    //   $(".selectors .input-field").last().toggleClass("hidden");
-    // } else {
-    // }
+    const selectedCategory = $(this).val();
+    // Safeguard for user manually selecting All Categories after selecting a
+    // specific category
+    if (selectedCategory === "0") {
+      if ($("#report-criteria").parent().hasClass("hidden")) {
+        return;
+      } else {
+        $("#report-criteria").parent().addClass("hidden");
+      }
+    } else {
+      $("#report-criteria").parent().removeClass("hidden");
+    }
   });
+  //* =====================================
+
+  // Temporary event
+  // $("#report-category").change(function (evnt) {
+  //   evnt.stopPropagation();
+  //   evnt.preventDefault();
+  //   $(".selectors .input-field").last().toggleClass("hidden");
+  // if ($(this).val() !== "all") {
+  //   $(".selectors .input-field").last().toggleClass("hidden");
+  // } else {
+  // }
+  // });
 });
