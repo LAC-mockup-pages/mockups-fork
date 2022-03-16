@@ -69,7 +69,6 @@ $(document).ready(() => {
   // Report groups
   $("#group-selector").append(createOptionList(reportCategories));
   // Report titles
-  //TODO Add category filter + reate module for Report titles
   $("#title-selector").focus(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
