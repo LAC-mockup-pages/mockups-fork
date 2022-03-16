@@ -100,7 +100,7 @@ const GetReportCategory = [
 const GetReport = [
   {
     ID: "208",
-    Report_Name:
+    ReportName:
       "Table 1 Participants by Entering Educational Functioning Level, Ethnicity and Sex",
     CategoryID: "196",
     CategoryDesc: "WIOA Reports",
@@ -114,7 +114,7 @@ const GetReport = [
   },
   {
     ID: "209",
-    Report_Name: "Table 2 Participants by Age, Ethnicity and Sex",
+    ReportName: "Table 2 Participants by Age, Ethnicity and Sex",
     CategoryID: "196",
     CategoryDesc: "WIOA Reports",
     FileName: "POP_Reports/table2_wioa.aspx",
@@ -127,7 +127,7 @@ const GetReport = [
   },
   {
     ID: "237",
-    Report_Name: "Table 2A Reportable Individuals by Age, Ethnicity and Sex",
+    ReportName: "Table 2A Reportable Individuals by Age, Ethnicity and Sex",
     CategoryID: "196",
     CategoryDesc: "WIOA Reports",
     FileName: "POP_Reports/table2A_wioa.aspx",
@@ -140,7 +140,7 @@ const GetReport = [
   },
   {
     ID: "210",
-    Report_Name: "Table 3 Participants by Program Type and Age",
+    ReportName: "Table 3 Participants by Program Type and Age",
     CategoryID: "196",
     CategoryDesc: "WIOA Reports",
     FileName: "POP_Reports/table3_wioa.aspx",
@@ -153,7 +153,7 @@ const GetReport = [
   },
   {
     ID: "196",
-    Report_Name: "Table 4 Measurable Skill Gains by Entry Level",
+    ReportName: "Table 4 Measurable Skill Gains by Entry Level",
     CategoryID: "196",
     CategoryDesc: "WIOA Reports",
     FileName: "POP_Reports/table4_wioa.aspx",
@@ -166,7 +166,7 @@ const GetReport = [
   },
   {
     ID: "239",
-    Report_Name: "Table 4A - Educational Functioning Level Gain",
+    ReportName: "Table 4A - Educational Functioning Level Gain",
     CategoryID: "196",
     CategoryDesc: "WIOA Reports",
     FileName: "POP_Reports/table4A_wioa.aspx",
@@ -179,7 +179,7 @@ const GetReport = [
   },
   {
     ID: "219",
-    Report_Name: "Table 4B - Post-tested Participants",
+    ReportName: "Table 4B - Post-tested Participants",
     CategoryID: "196",
     CategoryDesc: "WIOA Reports",
     FileName: "POP_Reports/table4B_wioa.aspx",
@@ -192,7 +192,7 @@ const GetReport = [
   },
   {
     ID: "220",
-    Report_Name: "Table 4C - Distance Education",
+    ReportName: "Table 4C - Distance Education",
     CategoryID: "196",
     CategoryDesc: "WIOA Reports",
     FileName: "POP_Reports/table4C_wioa.aspx",
@@ -205,7 +205,7 @@ const GetReport = [
   },
   {
     ID: "201",
-    Report_Name: "Table 5 Core Outcome Achievement (Previous FY Exiters)",
+    ReportName: "Table 5 Core Outcome Achievement (Previous FY Exiters)",
     CategoryID: "196",
     CategoryDesc: "WIOA Reports",
     FileName: "POP_Reports/table5_wioa.aspx",
@@ -218,7 +218,7 @@ const GetReport = [
   },
   {
     ID: "221",
-    Report_Name: "Table  5A - Distance Education",
+    ReportName: "Table  5A - Distance Education",
     CategoryID: "196",
     CategoryDesc: "WIOA Reports",
     FileName: "POP_Reports/table5A_wioa.aspx",
@@ -231,7 +231,7 @@ const GetReport = [
   },
   {
     ID: "215",
-    Report_Name: "Table 6 Participant Status and Program Enrollment",
+    ReportName: "Table 6 Participant Status and Program Enrollment",
     CategoryID: "196",
     CategoryDesc: "WIOA Reports",
     FileName: "POP_Reports/table6_wioa.aspx",
@@ -244,7 +244,7 @@ const GetReport = [
   },
   {
     ID: "216",
-    Report_Name: "Table 7 Adult Education Personnel by Function and Job Status",
+    ReportName: "Table 7 Adult Education Personnel by Function and Job Status",
     CategoryID: "196",
     CategoryDesc: "WIOA Reports",
     FileName: "POP_Reports/table7_wioa.aspx",
@@ -257,7 +257,7 @@ const GetReport = [
   },
   {
     ID: "240",
-    Report_Name: "Table 9 Outcome Achievement for Participants in IELCE",
+    ReportName: "Table 9 Outcome Achievement for Participants in IELCE",
     CategoryID: "196",
     CategoryDesc: "WIOA Reports",
     FileName: "POP_Reports/table9_wioa.aspx",
@@ -270,7 +270,7 @@ const GetReport = [
   },
   {
     ID: "227",
-    Report_Name:
+    ReportName:
       "Table 10 Outcome Achievements for Adults in Correctional Education Programs",
     CategoryID: "196",
     CategoryDesc: "WIOA Reports",
@@ -284,7 +284,7 @@ const GetReport = [
   },
   {
     ID: "241",
-    Report_Name:
+    ReportName:
       "Table 11 Outcome Achievement for Adults in Integrated Education and Training Programs",
     CategoryID: "196",
     CategoryDesc: "WIOA Reports",
@@ -298,7 +298,7 @@ const GetReport = [
   },
   {
     ID: "211",
-    Report_Name:
+    ReportName:
       "1 Participants by Entering Educational Functioning Level, Ethnicity and Sex",
     CategoryID: "202",
     CategoryDesc: "WIOA Tables Data Check",
@@ -312,7 +312,7 @@ const GetReport = [
   },
   {
     ID: "212",
-    Report_Name: "2 Participants by Age, Ethnicity and Sex",
+    ReportName: "2 Participants by Age, Ethnicity and Sex",
     CategoryID: "202",
     CategoryDesc: "WIOA Tables Data Check",
     FileName: "POP_Reports/WIOA_tablesDataCheck2.aspx",
@@ -325,7 +325,7 @@ const GetReport = [
   },
   {
     ID: "213",
-    Report_Name: "3 Participants by Program Type and Age",
+    ReportName: "3 Participants by Program Type and Age",
     CategoryID: "202",
     CategoryDesc: "WIOA Tables Data Check",
     FileName: "POP_Reports/WIOA_tablesDataCheck3.aspx",
@@ -338,7 +338,7 @@ const GetReport = [
   },
   {
     ID: "235",
-    Report_Name: "4 Measurable Skill Gains by Entry Level",
+    ReportName: "4 Measurable Skill Gains by Entry Level",
     CategoryID: "202",
     CategoryDesc: "WIOA Tables Data Check",
     FileName: "POP_Reports/POPtablesDataCheck4_EFL.aspx",
@@ -351,7 +351,7 @@ const GetReport = [
   },
   {
     ID: "222",
-    Report_Name: "4B - Post-tested Participants",
+    ReportName: "4B - Post-tested Participants",
     CategoryID: "202",
     CategoryDesc: "WIOA Tables Data Check",
     FileName: "POP_Reports/POPtablesDataCheck4B.aspx",
@@ -364,7 +364,7 @@ const GetReport = [
   },
   {
     ID: "223",
-    Report_Name: "4C - Distance Education",
+    ReportName: "4C - Distance Education",
     CategoryID: "202",
     CategoryDesc: "WIOA Tables Data Check",
     FileName: "POP_Reports/POPtablesDataCheck4C.aspx",
@@ -377,7 +377,7 @@ const GetReport = [
   },
   {
     ID: "202",
-    Report_Name: "5 Core Outcome Achievement (Previous FY Exiters)",
+    ReportName: "5 Core Outcome Achievement (Previous FY Exiters)",
     CategoryID: "202",
     CategoryDesc: "WIOA Tables Data Check",
     FileName: "POP_Reports/WIOA_tablesDataCheck5.aspx",
@@ -390,7 +390,7 @@ const GetReport = [
   },
   {
     ID: "224",
-    Report_Name: "5A - Distance Education",
+    ReportName: "5A - Distance Education",
     CategoryID: "202",
     CategoryDesc: "WIOA Tables Data Check",
     FileName: "POP_Reports/WIOA_tablesDataCheck5A.aspx",
@@ -403,7 +403,7 @@ const GetReport = [
   },
   {
     ID: "217",
-    Report_Name: "6 Participant Status and Program Enrollment",
+    ReportName: "6 Participant Status and Program Enrollment",
     CategoryID: "202",
     CategoryDesc: "WIOA Tables Data Check",
     FileName: "POP_Reports/WIOA_tablesDataCheck6.aspx",
@@ -416,7 +416,7 @@ const GetReport = [
   },
   {
     ID: "218",
-    Report_Name: "7 Adult Education Personnel by Function and Job Status",
+    ReportName: "7 Adult Education Personnel by Function and Job Status",
     CategoryID: "202",
     CategoryDesc: "WIOA Tables Data Check",
     FileName: "POP_Reports/WIOA_tablesDataCheck7.aspx",
@@ -429,7 +429,7 @@ const GetReport = [
   },
   {
     ID: "228",
-    Report_Name:
+    ReportName:
       "10 Education Achievements for Adults in Correctional Education Programs",
     CategoryID: "202",
     CategoryDesc: "WIOA Tables Data Check",
@@ -443,7 +443,7 @@ const GetReport = [
   },
   {
     ID: "229",
-    Report_Name:
+    ReportName:
       "10 Outcome Achievements for Adults in Correctional Education Programs",
     CategoryID: "202",
     CategoryDesc: "WIOA Tables Data Check",
@@ -457,7 +457,7 @@ const GetReport = [
   },
   {
     ID: "12",
-    Report_Name: "Students Missing Key Demographics",
+    ReportName: "Students Missing Key Demographics",
     CategoryID: "203",
     CategoryDesc: "NRS Data Check Reports",
     FileName: "missingKeydemo.aspx",
@@ -470,7 +470,7 @@ const GetReport = [
   },
   {
     ID: "190",
-    Report_Name: "Students with Invalid Enrollment",
+    ReportName: "Students with Invalid Enrollment",
     CategoryID: "203",
     CategoryDesc: "NRS Data Check Reports",
     FileName: "NRSInvalidStudentEnrollment.aspx",
@@ -483,7 +483,7 @@ const GetReport = [
   },
   {
     ID: "9",
-    Report_Name: "Students with Invalid Test Scores",
+    ReportName: "Students with Invalid Test Scores",
     CategoryID: "203",
     CategoryDesc: "NRS Data Check Reports",
     FileName: "InvalidTestScores.aspx",
@@ -496,7 +496,7 @@ const GetReport = [
   },
   {
     ID: "63",
-    Report_Name:
+    ReportName:
       "Students with Funding Source Not Matching Instruction Funding Source",
     CategoryID: "203",
     CategoryDesc: "NRS Data Check Reports",
@@ -510,7 +510,7 @@ const GetReport = [
   },
   {
     ID: "13",
-    Report_Name: "Student Enrolled Not Counted In NRS",
+    ReportName: "Student Enrolled Not Counted In NRS",
     CategoryID: "203",
     CategoryDesc: "NRS Data Check Reports",
     FileName: "NRSInvalidStudentEnrolledNotCounted.aspx",
@@ -523,7 +523,7 @@ const GetReport = [
   },
   {
     ID: "173",
-    Report_Name: "Student Assessment and Attendance",
+    ReportName: "Student Assessment and Attendance",
     CategoryID: "203",
     CategoryDesc: "NRS Data Check Reports",
     FileName: "POP_DataCheckReports/WIOA_ParticipantsAssessmentAttendace.aspx",
@@ -536,7 +536,7 @@ const GetReport = [
   },
   {
     ID: "174",
-    Report_Name:
+    ReportName:
       "(Download Only) Student Assessment and Attendance w/Instruction Description",
     CategoryID: "203",
     CategoryDesc: "NRS Data Check Reports",
@@ -550,7 +550,7 @@ const GetReport = [
   },
   {
     ID: "203",
-    Report_Name: "Students without Pre-Test",
+    ReportName: "Students without Pre-Test",
     CategoryID: "203",
     CategoryDesc: "WIOA Data Check Reports",
     FileName: "POP_DataCheckReports/WIOA_NoPreTest.aspx",
@@ -563,7 +563,7 @@ const GetReport = [
   },
   {
     ID: "204",
-    Report_Name: "Students without Post Test",
+    ReportName: "Students without Post Test",
     CategoryID: "203",
     CategoryDesc: "WIOA Data Check Reports",
     FileName: "POP_DataCheckReports/WIOA_NoPostTest.aspx",
@@ -576,7 +576,7 @@ const GetReport = [
   },
   {
     ID: "205",
-    Report_Name: "Students Not Moving to Higher Level",
+    ReportName: "Students Not Moving to Higher Level",
     CategoryID: "203",
     CategoryDesc: "WIOA Data Check Reports",
     FileName: "POP_DataCheckReports/WIOA_NotMovingtoHigher.aspx",
@@ -589,7 +589,7 @@ const GetReport = [
   },
   {
     ID: "206",
-    Report_Name: "Students Moving to Higher Level",
+    ReportName: "Students Moving to Higher Level",
     CategoryID: "203",
     CategoryDesc: "WIOA Data Check Reports",
     FileName: "POP_DataCheckReports/WIOA_MovingtoHigher.aspx",
@@ -602,7 +602,7 @@ const GetReport = [
   },
   {
     ID: "214",
-    Report_Name: "Students Missing Social Security Numbers",
+    ReportName: "Students Missing Social Security Numbers",
     CategoryID: "203",
     CategoryDesc: "WIOA Data Check Reports",
     FileName: "POP_DataCheckReports/WIOA_StudentsMissingSSN.aspx",
@@ -615,7 +615,7 @@ const GetReport = [
   },
   {
     ID: "225",
-    Report_Name: "Students with Invalid Social Security Numbers",
+    ReportName: "Students with Invalid Social Security Numbers",
     CategoryID: "203",
     CategoryDesc: "WIOA Data Check Reports",
     FileName: "POP_DataCheckReports/WIOA_StudentsInvalidSSN.aspx",
@@ -628,7 +628,7 @@ const GetReport = [
   },
   {
     ID: "238",
-    Report_Name: "Students with Carry Over Hours",
+    ReportName: "Students with Carry Over Hours",
     CategoryID: "203",
     CategoryDesc: "WIOA Data Check Reports",
     FileName: "POP_DataCheckReports/WIOA_Students_PFY_HoursLT12.aspx",
@@ -641,7 +641,7 @@ const GetReport = [
   },
   {
     ID: "246",
-    Report_Name: "Barriers to Employment",
+    ReportName: "Barriers to Employment",
     CategoryID: "203",
     CategoryDesc: "WIOA Data Check Reports",
     FileName: "POP_Reports/WIOA_BarriersEmploy.aspx",
@@ -654,7 +654,7 @@ const GetReport = [
   },
   {
     ID: "247",
-    Report_Name: "Barriers to Employment Performance Report",
+    ReportName: "Barriers to Employment Performance Report",
     CategoryID: "203",
     CategoryDesc: "WIOA Data Check Reports",
     FileName: "POP_DataCheckReports/WIOA_BarrierEmp_Performance.aspx",
@@ -667,7 +667,7 @@ const GetReport = [
   },
   {
     ID: "230",
-    Report_Name: "WIOA Outcome Survey Tool",
+    ReportName: "WIOA Outcome Survey Tool",
     CategoryID: "203",
     CategoryDesc: "WIOA Data Check Reports",
     FileName: "POP_Reports/WIOA_OutcomeSurveyTool.aspx",
@@ -680,7 +680,7 @@ const GetReport = [
   },
   {
     ID: "193",
-    Report_Name: "POP Participants Details and Demographics",
+    ReportName: "POP Participants Details and Demographics",
     CategoryID: "203",
     CategoryDesc: "WIOA Data Check Reports",
     FileName: "POP_Reports/POPtablesDataCheck.aspx",
@@ -693,7 +693,7 @@ const GetReport = [
   },
   {
     ID: "194",
-    Report_Name: "POP MSG Achievement by Name",
+    ReportName: "POP MSG Achievement by Name",
     CategoryID: "203",
     CategoryDesc: "WIOA Data Check Reports",
     FileName: "POP_Reports/POPtablesDataCheck4.aspx",
@@ -706,7 +706,7 @@ const GetReport = [
   },
   {
     ID: "195",
-    Report_Name: "POP MSG Achievement by EFL",
+    ReportName: "POP MSG Achievement by EFL",
     CategoryID: "203",
     CategoryDesc: "WIOA Data Check Reports",
     FileName: "POP_Reports/POPtablesDataCheck4_EFL.aspx",
@@ -719,7 +719,7 @@ const GetReport = [
   },
   {
     ID: "16",
-    Report_Name: "Program Evaluation Report (NEW)",
+    ReportName: "Program Evaluation Report (NEW)",
     CategoryID: "16",
     CategoryDesc: "WIOA Program Evaluation Reports",
     FileName: "POP_Reports/POPProgramEval.aspx",
@@ -732,7 +732,7 @@ const GetReport = [
   },
   {
     ID: "188",
-    Report_Name: "(Download Only) Program Evaluation Report by Class",
+    ReportName: "(Download Only) Program Evaluation Report by Class",
     CategoryID: "16",
     CategoryDesc: "WIOA Program Evaluation Reports",
     FileName: "NULL",
@@ -745,7 +745,7 @@ const GetReport = [
   },
   {
     ID: "189",
-    Report_Name: "(Download Only) Program Evaluation Report by Teacher",
+    ReportName: "(Download Only) Program Evaluation Report by Teacher",
     CategoryID: "16",
     CategoryDesc: "WIOA Program Evaluation Reports",
     FileName: "NULL",
@@ -758,7 +758,7 @@ const GetReport = [
   },
   {
     ID: "12",
-    Report_Name: "Students Missing Key Demographics",
+    ReportName: "Students Missing Key Demographics",
     CategoryID: "198",
     CategoryDesc: "NRS Data Check Reports",
     FileName: "missingKeydemo.aspx",
@@ -771,7 +771,7 @@ const GetReport = [
   },
   {
     ID: "190",
-    Report_Name: "Students with Invalid Enrollment",
+    ReportName: "Students with Invalid Enrollment",
     CategoryID: "198",
     CategoryDesc: "NRS Data Check Reports",
     FileName: "NRSInvalidStudentEnrollment.aspx",
@@ -784,7 +784,7 @@ const GetReport = [
   },
   {
     ID: "9",
-    Report_Name: "Students with Invalid Test Scores",
+    ReportName: "Students with Invalid Test Scores",
     CategoryID: "198",
     CategoryDesc: "NRS Data Check Reports",
     FileName: "InvalidTestScores.aspx",
@@ -797,7 +797,7 @@ const GetReport = [
   },
   {
     ID: "11",
-    Report_Name: "Students without Pre-Test",
+    ReportName: "Students without Pre-Test",
     CategoryID: "198",
     CategoryDesc: "NRS Data Check Reports",
     FileName: "NoPreTest.aspx",
@@ -810,7 +810,7 @@ const GetReport = [
   },
   {
     ID: "63",
-    Report_Name:
+    ReportName:
       "Students with Funding Source Not Matching Instruction Funding Source",
     CategoryID: "198",
     CategoryDesc: "NRS Data Check Reports",
@@ -824,7 +824,7 @@ const GetReport = [
   },
   {
     ID: "14",
-    Report_Name: "Students Without Post Test",
+    ReportName: "Students Without Post Test",
     CategoryID: "198",
     CategoryDesc: "NRS Data Check Reports",
     FileName: "NoPostTest.aspx",
@@ -837,7 +837,7 @@ const GetReport = [
   },
   {
     ID: "13",
-    Report_Name: "Student Enrolled Not Counted In NRS",
+    ReportName: "Student Enrolled Not Counted In NRS",
     CategoryID: "198",
     CategoryDesc: "NRS Data Check Reports",
     FileName: "NRSInvalidStudentEnrolledNotCounted.aspx",
@@ -850,7 +850,7 @@ const GetReport = [
   },
   {
     ID: "173",
-    Report_Name: "Student Assessment and Attendance",
+    ReportName: "Student Assessment and Attendance",
     CategoryID: "198",
     CategoryDesc: "NRS Data Check Reports",
     FileName: "POP_DataCheckReports/WIOA_ParticipantsAssessmentAttendace.aspx",
@@ -863,7 +863,7 @@ const GetReport = [
   },
   {
     ID: "174",
-    Report_Name:
+    ReportName:
       "(Download Only) Student Assessment and Attendance w/Instruction Description",
     CategoryID: "198",
     CategoryDesc: "NRS Data Check Reports",
@@ -877,7 +877,7 @@ const GetReport = [
   },
   {
     ID: "231",
-    Report_Name: "ALE Outcome Survey Tool",
+    ReportName: "ALE Outcome Survey Tool",
     CategoryID: "198",
     CategoryDesc: "NYRS Reports",
     FileName: "POP_Reports/WIOA_OutcomeSurveyTool.aspx",
@@ -890,7 +890,7 @@ const GetReport = [
   },
   {
     ID: "232",
-    Report_Name: "Students Not Moving to Higher Level ",
+    ReportName: "Students Not Moving to Higher Level ",
     CategoryID: "198",
     CategoryDesc: "NYRS Reports",
     FileName: "NYRS_Reports/NYRSNotMovingtoHigher.aspx",
@@ -903,7 +903,7 @@ const GetReport = [
   },
   {
     ID: "233",
-    Report_Name: "Students Moving to Higher Level",
+    ReportName: "Students Moving to Higher Level",
     CategoryID: "198",
     CategoryDesc: "NYRS Reports",
     FileName: "NYRS_Reports/NYRSMovingtoHigher.aspx",
@@ -916,7 +916,7 @@ const GetReport = [
   },
   {
     ID: "198",
-    Report_Name: "NYRS Participants Details and Demographics",
+    ReportName: "NYRS Participants Details and Demographics",
     CategoryID: "198",
     CategoryDesc: "NYRS Reports",
     FileName: "NYRS_Reports/NYRStablesDataCheck.aspx",
@@ -929,7 +929,7 @@ const GetReport = [
   },
   {
     ID: "199",
-    Report_Name: "NYRS MSG Achievement by Name",
+    ReportName: "NYRS MSG Achievement by Name",
     CategoryID: "198",
     CategoryDesc: "NYRS Reports",
     FileName: "NYRS_Reports/NYRStablesDataCheck4.aspx",
@@ -942,7 +942,7 @@ const GetReport = [
   },
   {
     ID: "200",
-    Report_Name: "NYRS MSG Achievement by EFL",
+    ReportName: "NYRS MSG Achievement by EFL",
     CategoryID: "198",
     CategoryDesc: "NYRS Reports",
     FileName: "NYRS_Reports/NYRStablesDataCheck4_EFL.aspx",
@@ -955,7 +955,7 @@ const GetReport = [
   },
   {
     ID: "197",
-    Report_Name: "NYRS Program Evaluation Report",
+    ReportName: "NYRS Program Evaluation Report",
     CategoryID: "197",
     CategoryDesc: "NYRS Program Evaluation Reports",
     FileName: "NYRS_Reports/NYRSProgramEval.aspx",
@@ -968,7 +968,7 @@ const GetReport = [
   },
   {
     ID: "95",
-    Report_Name: "EPE Claim Part 2 160.1 (Jul 01 - Dec 31)",
+    ReportName: "EPE Claim Part 2 160.1 (Jul 01 - Dec 31)",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/epeClaimPart2_1601.aspx",
@@ -981,7 +981,7 @@ const GetReport = [
   },
   {
     ID: "96",
-    Report_Name: "EPE Claim Part3 160.1 (Jul 01 - Dec 31)",
+    ReportName: "EPE Claim Part3 160.1 (Jul 01 - Dec 31)",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/epeClaimPart3_1601.aspx",
@@ -994,7 +994,7 @@ const GetReport = [
   },
   {
     ID: "97",
-    Report_Name: "Students Included in EPE Reports (Jul 01 - Dec 31)",
+    ReportName: "Students Included in EPE Reports (Jul 01 - Dec 31)",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/epedatacheck_1601.aspx",
@@ -1007,7 +1007,7 @@ const GetReport = [
   },
   {
     ID: "98",
-    Report_Name: "Students Included in EPE Reports by Class (Jul 01 - Dec 31)",
+    ReportName: "Students Included in EPE Reports by Class (Jul 01 - Dec 31)",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/epeStudentsIncludedinReports_1601.aspx",
@@ -1020,7 +1020,7 @@ const GetReport = [
   },
   {
     ID: "100",
-    Report_Name: "Students Under 21 (Jul 01 - Dec 31)",
+    ReportName: "Students Under 21 (Jul 01 - Dec 31)",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/epeStudentsUnder21_1601.aspx",
@@ -1033,7 +1033,7 @@ const GetReport = [
   },
   {
     ID: "101",
-    Report_Name: "EPE Class Analysis by Age & Hours (Jul 01 - Dec 31)",
+    ReportName: "EPE Class Analysis by Age & Hours (Jul 01 - Dec 31)",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/epeClassAnalysis_1601.aspx",
@@ -1046,7 +1046,7 @@ const GetReport = [
   },
   {
     ID: "165",
-    Report_Name: "Students Enrolled not Counted (Jul 01 - Dec 31)",
+    ReportName: "Students Enrolled not Counted (Jul 01 - Dec 31)",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/epeEnrolledNotCounted_1601.aspx",
@@ -1059,7 +1059,7 @@ const GetReport = [
   },
   {
     ID: "135",
-    Report_Name: "EPE Claim Part 1 160.2 (Jan 01 - Jun 30) ",
+    ReportName: "EPE Claim Part 1 160.2 (Jan 01 - Jun 30) ",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/EPE_1602_Part1.aspx",
@@ -1072,7 +1072,7 @@ const GetReport = [
   },
   {
     ID: "102",
-    Report_Name: "EPE Claim Part 2 160.2 (Jan 01 - Jun 30)",
+    ReportName: "EPE Claim Part 2 160.2 (Jan 01 - Jun 30)",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/epeClaimPart2_1602.aspx",
@@ -1085,7 +1085,7 @@ const GetReport = [
   },
   {
     ID: "103",
-    Report_Name: "EPE Claim Part3 160.2 (Jan 01 - Jun 30)",
+    ReportName: "EPE Claim Part3 160.2 (Jan 01 - Jun 30)",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/epeClaimPart3_1602.aspx",
@@ -1098,7 +1098,7 @@ const GetReport = [
   },
   {
     ID: "104",
-    Report_Name: "Students Included in EPE Reports (Jan 01 - Jun 30)",
+    ReportName: "Students Included in EPE Reports (Jan 01 - Jun 30)",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/epedatacheck_1602.aspx",
@@ -1111,7 +1111,7 @@ const GetReport = [
   },
   {
     ID: "105",
-    Report_Name: "Students Included in EPE Reports by Class (Jan 01 - Jun 30)",
+    ReportName: "Students Included in EPE Reports by Class (Jan 01 - Jun 30)",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/epeStudentsIncludedinReports_1602.aspx",
@@ -1124,7 +1124,7 @@ const GetReport = [
   },
   {
     ID: "107",
-    Report_Name: "Students Under 21 (Jan 01 - Jun 30)",
+    ReportName: "Students Under 21 (Jan 01 - Jun 30)",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/epeStudentsUnder21_1602.aspx",
@@ -1137,7 +1137,7 @@ const GetReport = [
   },
   {
     ID: "108",
-    Report_Name: "EPE Class Analysis by Age & Hours (Jan 01 - Jun 30)",
+    ReportName: "EPE Class Analysis by Age & Hours (Jan 01 - Jun 30)",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/epeClassAnalysis_1602.aspx",
@@ -1150,7 +1150,7 @@ const GetReport = [
   },
   {
     ID: "136",
-    Report_Name: "EPE Amendment Log",
+    ReportName: "EPE Amendment Log",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/EPEAmendmentLog.aspx",
@@ -1163,7 +1163,7 @@ const GetReport = [
   },
   {
     ID: "144",
-    Report_Name: "EPE Student Amendment Summary",
+    ReportName: "EPE Student Amendment Summary",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/EPEStudentAmendment.aspx",
@@ -1176,7 +1176,7 @@ const GetReport = [
   },
   {
     ID: "166",
-    Report_Name: "Students Enrolled not Counted (Jan 01 - Jun 30)",
+    ReportName: "Students Enrolled not Counted (Jan 01 - Jun 30)",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/epeEnrolledNotCounted_1602.aspx",
@@ -1189,7 +1189,7 @@ const GetReport = [
   },
   {
     ID: "134",
-    Report_Name: "EPE Students Missing Pre or Post Tests ",
+    ReportName: "EPE Students Missing Pre or Post Tests ",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/EPEStudentsNoPrePostTest.aspx",
@@ -1202,7 +1202,7 @@ const GetReport = [
   },
   {
     ID: "109",
-    Report_Name: "EPE Monthly Report Part 2",
+    ReportName: "EPE Monthly Report Part 2",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/EPEClaimMonthlyNoGrad.aspx",
@@ -1215,7 +1215,7 @@ const GetReport = [
   },
   {
     ID: "110",
-    Report_Name: "EPE Monthly Report Part 3",
+    ReportName: "EPE Monthly Report Part 3",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/EPEClaimMonthlyHSGrad.aspx",
@@ -1228,7 +1228,7 @@ const GetReport = [
   },
   {
     ID: "141",
-    Report_Name: "EPE Students not in NRS",
+    ReportName: "EPE Students not in NRS",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/EPEStudentsNotInNRS.aspx",
@@ -1241,7 +1241,7 @@ const GetReport = [
   },
   {
     ID: "248",
-    Report_Name: "EPE 2 Percentage Data Check",
+    ReportName: "EPE 2 Percentage Data Check",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/EPEProgramSummary_EPE2.aspx",
@@ -1254,7 +1254,7 @@ const GetReport = [
   },
   {
     ID: "119",
-    Report_Name: "EPE HSE Outcome",
+    ReportName: "EPE HSE Outcome",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/EPEStudentGEDOutcome_1601.aspx",
@@ -1267,7 +1267,7 @@ const GetReport = [
   },
   {
     ID: "120",
-    Report_Name: "EPE Non Matching Funding Source",
+    ReportName: "EPE Non Matching Funding Source",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/EPEStudentNotMatchingClassFundingSource_1601.aspx",
@@ -1280,7 +1280,7 @@ const GetReport = [
   },
   {
     ID: "121",
-    Report_Name: "EPE Students Turning 21",
+    ReportName: "EPE Students Turning 21",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/EPEStudentAge21_1601.aspx",
@@ -1293,7 +1293,7 @@ const GetReport = [
   },
   {
     ID: "234",
-    Report_Name: "EPE Fast Track Performance",
+    ReportName: "EPE Fast Track Performance",
     CategoryID: "39",
     CategoryDesc: "EPE Reports",
     FileName: "EPE Reports/EPEFastTrackPerformance.aspx",

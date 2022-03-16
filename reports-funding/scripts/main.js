@@ -6,12 +6,7 @@
 //! Comment out for Production.
 //! =============================================================
 const reportCategories = GetReportCategory.slice(0);
-const titleSummaryList = GetReport.map((record) => {
-  const key = record.ID;
-  const value = record.Report_Name;
-  return { key, value };
-});
-
+const reports = GetReport.slice(0);
 //! =============================================================
 
 export const createOptionList = (dataObj, defaultValue) => {
@@ -75,12 +70,26 @@ $(document).ready(() => {
   $("#group-selector").append(createOptionList(reportCategories));
   // Report titles
   //TODO Add category filter + reate module for Report titles
-  const category = $("#group-selector").val();
-  const filteredList = titleSummaryList.filter(
-    (record) => record.CategoryID === category
-  );
-  const optionListTitles = createOptionList(filteredList);
-  $("#title-selector").append(optionListTitles);
+  $("#title-selector").focus(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    $(this).empty();
+    const category = $("#group-selector").val();
+    console.log("🚀 / file: main.js / line 83 / category", category);
+    const filteredList = reports
+      .filter((record) => record.CategoryID === category)
+      .map((record) => {
+        const { ID, ReportName } = record;
+        return { key: ID, value: ReportName };
+      });
+    console.log("🚀 / file: main.js / line 85 / filteredList", filteredList);
+    const optionListTitles = createOptionList(filteredList);
+    console.log(
+      "🚀 / file: main.js / line 88 / optionListTitles",
+      optionListTitles
+    );
+    $(this).append(optionListTitles);
+  });
 
   //* =====================================
 
