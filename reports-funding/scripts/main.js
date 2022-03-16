@@ -83,27 +83,17 @@ $(document).ready(() => {
     evnt.preventDefault();
     $(this).empty();
     const category = $("#group-selector").val();
-    console.log("🚀 / file: main.js / line 83 / category", category);
     const filteredList = reports
       .filter((record) => record.CategoryID === category)
       .map((record) => {
         const { ID, ReportName } = record;
         return { key: ID, value: ReportName };
       });
-    console.log("🚀 / file: main.js / line 85 / filteredList", filteredList);
     const optionListTitles = createOptionList(filteredList);
-    console.log(
-      "🚀 / file: main.js / line 88 / optionListTitles",
-      optionListTitles
-    );
     $(this).append(optionListTitles);
   });
   // Funding Sources
   const sourceSummaryList = createSummaryList(sources, "FSID", "FundAbbrev");
-  console.log(
-    "🚀 / file: main.js / line 103 / $ / sourceSummaryList",
-    sourceSummaryList
-  );
   const optionListSources = createOptionList([
     { key: "ALL", value: "Select all sources" },
     ...sourceSummaryList
