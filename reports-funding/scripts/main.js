@@ -7,6 +7,7 @@
 //! =============================================================
 const reportCategories = GetReportCategory.slice(0);
 const reports = GetReport.slice(0);
+const sources = GetFundingSource.slice(0);
 //! =============================================================
 
 export const createOptionList = (dataObj, defaultValue) => {
@@ -23,6 +24,14 @@ export const createOptionList = (dataObj, defaultValue) => {
     }
   });
   return optionList.join("");
+};
+
+// Shorten a list of records to a list of obj with key/value properties
+// list = [{...},{...}], keyParam, valueParam = field names as string
+const createSummaryList = (list, keyParam, valueParam) => {
+  return list.map((record) => {
+    return { key: record[keyParam], value: record[valueParam] };
+  });
 };
 //*=================================================
 //* jQuery section
@@ -89,7 +98,17 @@ $(document).ready(() => {
     );
     $(this).append(optionListTitles);
   });
-
+  // Funding Sources
+  const sourceSummaryList = createSummaryList(sources, "FSID", "FundAbbrev");
+  console.log(
+    "🚀 / file: main.js / line 103 / $ / sourceSummaryList",
+    sourceSummaryList
+  );
+  const optionListSources = createOptionList([
+    { key: "ALL", value: "Select all sources" },
+    ...sourceSummaryList
+  ]);
+  $("#class-funding").empty().append(optionListSources);
   //* =====================================
 
   // Temporary event
