@@ -74,7 +74,13 @@ $(document).ready(() => {
   // Report groups
   $("#group-selector").append(createOptionList(reportCategories));
   // Report titles
-  $("#title-selector").append(createOptionList(titleSummaryList));
+  //TODO Add category filter + reate module for Report titles
+  const category = $("#group-selector").val();
+  const filteredList = titleSummaryList.filter(
+    (record) => record.CategoryID === category
+  );
+  const optionListTitles = createOptionList(filteredList);
+  $("#title-selector").append(optionListTitles);
 
   //* =====================================
 
