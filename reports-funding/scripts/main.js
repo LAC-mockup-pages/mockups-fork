@@ -43,6 +43,7 @@ $(document).ready(() => {
   //! Navigation variables are defined here as well.
   //! =============================================================
   // const reportCategories =
+  // const titleSummaryList =
 
   //! =============================================================
   //* Setting up options for main selectors
