@@ -5,9 +5,10 @@
 //! For Development only.
 //! Comment out for Production.
 //! =============================================================
-const reportCategories = GetReportCategory.slice(0);
+const reportGroups = GetReportCategory.slice(0);
 const reports = GetReport.slice(0);
 const sources = GetFundingSource.slice(0);
+const categories = GetPrepareBy.slice(0);
 //! =============================================================
 
 export const createOptionList = (dataObj, defaultValue) => {
@@ -46,7 +47,7 @@ $(document).ready(() => {
   //! for the different requests to the back-end, using requestObj.
   //! Navigation variables are defined here as well.
   //! =============================================================
-  // const reportCategories =
+  // const reportGroups =
   // const titleSummaryList =
 
   //! =============================================================
@@ -76,7 +77,7 @@ $(document).ready(() => {
   );
   $("#fiscal-year").append(optionListFY);
   // Report groups
-  $("#group-selector").append(createOptionList(reportCategories));
+  $("#group-selector").append(createOptionList(reportGroups));
   // Report titles
   $("#title-selector").focus(function (evnt) {
     evnt.stopPropagation();
@@ -99,6 +100,10 @@ $(document).ready(() => {
     ...sourceSummaryList
   ]);
   $("#class-funding").empty().append(optionListSources);
+  // Report Categories
+  $("#report-category").empty().append(createOptionList(categories));
+  // Optional criteria
+
   //* =====================================
 
   // Temporary event
