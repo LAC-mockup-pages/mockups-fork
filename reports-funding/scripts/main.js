@@ -102,7 +102,8 @@ $(document).ready(() => {
   $("#class-funding").empty().append(optionListSources);
   // Report Categories
   $("#report-category").empty().append(createOptionList(categories));
-  // Optional criteria
+  // Optional criteria - Element appears when a specific category different
+  // than Select All is chosen.
   $("#report-category").change(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
