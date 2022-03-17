@@ -9,6 +9,7 @@ const reportGroups = GetReportCategory.slice(0);
 const reports = GetReport.slice(0);
 const sources = GetFundingSource.slice(0);
 const categories = GetPrepareBy.slice(0);
+const criteria = GetInstructionType.slice(0);
 //! =============================================================
 
 export const createOptionList = (dataObj, defaultValue) => {
@@ -51,7 +52,7 @@ $(document).ready(() => {
   // const reports =
   // const sources =
   // const categories =
-
+  // const criteria =
   //! =============================================================
   //* Setting up options for main selectors
 
@@ -119,6 +120,8 @@ $(document).ready(() => {
         $("#report-criteria").parent().addClass("hidden");
       }
     } else {
+      const optionListCriteria = createOptionList(criteria);
+      $("#report-criteria").empty().append(optionListCriteria);
       $("#report-criteria").parent().removeClass("hidden");
     }
   });
