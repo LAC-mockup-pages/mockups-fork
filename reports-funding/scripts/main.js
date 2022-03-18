@@ -127,6 +127,18 @@ $(document).ready(() => {
   });
   //* =====================================
 
+  //* Adding a new funding source select element when a specific one is selected.
+  //* If All is selected, it does not generate a new select element.
+  $(".funding").change(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    if ($(this).children("select").val() === "ALL") {
+      //TODO Removing eventual additional select blocs
+      console.log("Removing additional select elements");
+      return;
+    }
+  });
+
   // Temporary event
   // $("#report-category").change(function (evnt) {
   //   evnt.stopPropagation();
