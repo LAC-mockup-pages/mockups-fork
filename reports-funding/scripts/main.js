@@ -162,12 +162,25 @@ $(document).ready(() => {
     evnt.stopPropagation();
     evnt.preventDefault();
     if ($("select:first-of-type", this).val() === "ALL") {
-      //TODO Removing eventual additional select blocs
       console.log("Removing additional select elements");
       $(".funding .added-source").remove();
       return;
     } else {
       addNewSelect(sources, "funding", "marg2");
+    }
+  });
+  //* Adding a new criteria select element when a specific one is selected.
+  //* If All is selected, it does not generate a new select element, and
+  //* additional <select> are removed.
+  $(".criteria").change(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    if ($("select:first-of-type", this).val() === "ALL") {
+      console.log("Removing additional select elements");
+      $(".criteria .added-criteria").remove();
+      return;
+    } else {
+      addNewSelect(criteria, "criteria", "marg3");
     }
   });
 
