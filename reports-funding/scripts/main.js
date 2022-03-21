@@ -37,7 +37,7 @@ const createSummaryList = (list, keyParam, valueParam) => {
 };
 
 const addNewSelect = (list, sectionName, styleClass) => {
-  const selection = $(`section .${sectionName}`)
+  const selection = $(`section .${sectionName} select`)
     .serializeArray()
     .map((item) => item.value);
   console.log(
@@ -52,9 +52,9 @@ const addNewSelect = (list, sectionName, styleClass) => {
   if (updatedList.length < 1) return;
   const updatedOptionList = createOptionList(updatedList);
   const newSelectLine = `
-    <div class="input-field form-group ${styleClass}">
+    <div class="input-field form-group ${styleClass} added-source">
     <label></label>
-      <select class="modal-select" name=${sectionName}>
+      <select class="modal-select" name=${sectionName}plus${selection.length}>
         <option value>Select a value</option>
         ${updatedOptionList}
       </select>
@@ -161,9 +161,10 @@ $(document).ready(() => {
   $(".funding").change(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    if ($(this).children("select").val() === "ALL") {
+    if ($("select:first-of-type", this).val() === "ALL") {
       //TODO Removing eventual additional select blocs
       console.log("Removing additional select elements");
+      $(".funding .added-source").remove();
       return;
     } else {
       addNewSelect(sources, "funding", "marg2");
