@@ -35,6 +35,34 @@ const createSummaryList = (list, keyParam, valueParam) => {
     return { key: record[keyParam], value: record[valueParam] };
   });
 };
+
+const addNewSelect = (list, sectionName, styleClass) => {
+  const selection = $(`section .${sectionName}`)
+    .serializeArray()
+    .map((item) => item.value);
+  console.log(
+    "🚀 / file: main.js / line 41 / addNewSelect / selection",
+    selection
+  );
+  const summaryList = createSummaryList(list, "FSID", "FundAbbrev");
+  const updatedList = summaryList.filter(
+    (record) => !selection.includes(record.key)
+  );
+  // Checks if there is at least 1 value left in the list
+  if (updatedList.length < 1) return;
+  const updatedOptionList = createOptionList(updatedList);
+  const newSelectLine = `
+    <div class="input-field form-group ${styleClass}">
+    <label></label>
+      <select class="modal-select" name=${sectionName}>
+        <option value>Select a value</option>
+        ${updatedOptionList}
+      </select>
+    </div>
+  `;
+  $(`.${sectionName}`).append(newSelectLine);
+  $(`.sectionName select:last-of-type`).focus();
+};
 //*=================================================
 //* jQuery section
 //*=================================================
@@ -128,7 +156,8 @@ $(document).ready(() => {
   //* =====================================
 
   //* Adding a new funding source select element when a specific one is selected.
-  //* If All is selected, it does not generate a new select element.
+  //* If All is selected, it does not generate a new select element, and
+  //* additional <select> are removed.
   $(".funding").change(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
@@ -136,6 +165,8 @@ $(document).ready(() => {
       //TODO Removing eventual additional select blocs
       console.log("Removing additional select elements");
       return;
+    } else {
+      addNewSelect(sources, "funding", "marg2");
     }
   });
 
