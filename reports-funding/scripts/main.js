@@ -162,7 +162,6 @@ $(document).ready(() => {
     evnt.stopPropagation();
     evnt.preventDefault();
     if ($("#class-funding").val() === "ALL") {
-      console.log("Removing additional select elements");
       $(".funding .added-select").remove();
       return;
     } else {
@@ -176,11 +175,25 @@ $(document).ready(() => {
     evnt.stopPropagation();
     evnt.preventDefault();
     if ($("select:first-of-type", this).val() === "ALL") {
-      console.log("Removing additional select elements");
       $(".criteria .added-select").remove();
       return;
     } else {
       addNewSelect(criteria, "criteria", "marg3");
+    }
+  });
+
+  //* Business rules
+  // Download only reports (ID 174,188, 189) => Generate Report
+  // button is disabled, Export to Excel button is enabled
+  $("#title-selector").change(function (evnt) {
+    if (["174", "188", "189"].includes($("#title-selector").val())) {
+      $("#generate-btn").prop("disabled", true);
+      $("#export-btn").prop("disabled", false);
+      $(".funding, .category").addClass("hidden");
+    } else {
+      $("#generate-btn").prop("disabled", false);
+      $("#export-btn").prop("disabled", true);
+      $(".funding, .category").removeClass("hidden");
     }
   });
 
