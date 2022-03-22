@@ -52,7 +52,7 @@ const addNewSelect = (list, sectionName, styleClass) => {
   if (updatedList.length < 1) return;
   const updatedOptionList = createOptionList(updatedList);
   const newSelectLine = `
-    <div class="input-field form-group ${styleClass} added-source">
+    <div class="input-field form-group ${styleClass} added-select">
     <label></label>
       <select class="modal-select" name=${sectionName}plus${selection.length}>
         <option value>Select a value</option>
@@ -158,12 +158,12 @@ $(document).ready(() => {
   //* Adding a new funding source select element when a specific one is selected.
   //* If All is selected, it does not generate a new select element, and
   //* additional <select> are removed.
-  $(".funding").change(function (evnt) {
+  $(".funding select").change(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    if ($("select:first-of-type", this).val() === "ALL") {
+    if ($("#class-funding").val() === "ALL") {
       console.log("Removing additional select elements");
-      $(".funding .added-source").remove();
+      $(".funding .added-select").remove();
       return;
     } else {
       addNewSelect(sources, "funding", "marg2");
@@ -172,12 +172,12 @@ $(document).ready(() => {
   //* Adding a new criteria select element when a specific one is selected.
   //* If All is selected, it does not generate a new select element, and
   //* additional <select> are removed.
-  $(".criteria").change(function (evnt) {
+  $(".criteria select").change(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
     if ($("select:first-of-type", this).val() === "ALL") {
       console.log("Removing additional select elements");
-      $(".criteria .added-criteria").remove();
+      $(".criteria .added-select").remove();
       return;
     } else {
       addNewSelect(criteria, "criteria", "marg3");
