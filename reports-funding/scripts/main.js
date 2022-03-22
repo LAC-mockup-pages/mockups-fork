@@ -148,7 +148,8 @@ $(document).ready(() => {
         $("#report-criteria").parent().addClass("hidden");
       }
     } else {
-      const optionListCriteria = createOptionList(criteria);
+      const criteriaList = createCriteriaList();
+      const optionListCriteria = createOptionList(criteriaList);
       $("#report-criteria").empty().append(optionListCriteria);
       $("#report-criteria").parent().removeClass("hidden");
     }
@@ -200,6 +201,20 @@ $(document).ready(() => {
       $(".funding, .category").removeClass("hidden");
     }
   });
+
+  // EPE Reports group (ID 39) => short list in criteria section
+  // instead of complete list of values (GetPreparedBy procedure)
+  const createCriteriaList = () => {
+    return $("#group-selector").val() === "39"
+      ? [
+          { key: "0", value: "All " },
+          { key: "1", value: "Instructional Offering" },
+          { key: "5", value: "Teacher/Tutor" },
+          { key: "6", value: "Site" }
+        ]
+      : criteria;
+  };
+
   //* =====================================
 
   // Temporary event
