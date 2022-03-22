@@ -181,11 +181,15 @@ $(document).ready(() => {
       addNewSelect(criteria, "criteria", "marg3");
     }
   });
-
+  //* =====================================
   //* Business rules
+  //* =====================================
   // Download only reports (ID 174,188, 189) => Generate Report
-  // button is disabled, Export to Excel button is enabled
+  // button is disabled, Export to Excel button is enabled,
+  // Category and Funding sections are hidden.
   $("#title-selector").change(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
     if (["174", "188", "189"].includes($("#title-selector").val())) {
       $("#generate-btn").prop("disabled", true);
       $("#export-btn").prop("disabled", false);
@@ -196,6 +200,7 @@ $(document).ready(() => {
       $(".funding, .category").removeClass("hidden");
     }
   });
+  //* =====================================
 
   // Temporary event
   // $("#report-category").change(function (evnt) {
