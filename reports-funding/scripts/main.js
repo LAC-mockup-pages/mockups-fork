@@ -206,7 +206,6 @@ $(document).ready(() => {
   $("#group-selector").change(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    console.log("$(this).val() :>> ", $(this).val());
     const categoryList =
       $(this).val() === "39"
         ? [
@@ -216,9 +215,7 @@ $(document).ready(() => {
             { key: "6", value: "Site" }
           ]
         : categories;
-    console.log("categoryList :>> ", categoryList);
     const optionList = createOptionList(categoryList);
-    console.log("optionList :>> ", optionList);
     $("#report-category option").remove();
     $("#report-category").append(optionList);
   });
