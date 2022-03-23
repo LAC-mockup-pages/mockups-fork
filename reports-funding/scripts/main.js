@@ -148,8 +148,7 @@ $(document).ready(() => {
         $("#report-criteria").parent().addClass("hidden");
       }
     } else {
-      const criteriaList = createCriteriaList();
-      const optionListCriteria = createOptionList(criteriaList);
+      const optionListCriteria = createOptionList(criteria);
       $("#report-criteria").empty().append(optionListCriteria);
       $("#report-criteria").parent().removeClass("hidden");
     }
@@ -202,18 +201,27 @@ $(document).ready(() => {
     }
   });
 
-  // EPE Reports group (ID 39) => short list in criteria section
+  // EPE Reports group (ID 39) => short list in category section
   // instead of complete list of values (GetPreparedBy procedure)
-  const createCriteriaList = () => {
-    return $("#group-selector").val() === "39"
-      ? [
-          { key: "0", value: "All " },
-          { key: "1", value: "Instructional Offering" },
-          { key: "5", value: "Teacher/Tutor" },
-          { key: "6", value: "Site" }
-        ]
-      : criteria;
-  };
+  $("#group-selector").change(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    console.log("$(this).val() :>> ", $(this).val());
+    const categoryList =
+      $(this).val() === "39"
+        ? [
+            { key: "0", value: "All" },
+            { key: "1", value: "Instructional Offering" },
+            { key: "5", value: "Teacher/Tutor" },
+            { key: "6", value: "Site" }
+          ]
+        : categories;
+    console.log("categoryList :>> ", categoryList);
+    const optionList = createOptionList(categoryList);
+    console.log("optionList :>> ", optionList);
+    $("#report-category option").remove();
+    $("#report-category").append(optionList);
+  });
 
   //* =====================================
 
