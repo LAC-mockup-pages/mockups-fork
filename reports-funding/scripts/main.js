@@ -4,6 +4,10 @@
 //! =============================================================
 //! For Development only.
 //! Comment out for Production.
+
+import { createExport } from "./button-events/export-event.js";
+import { createReport } from "./button-events/generate-event.js";
+
 //! =============================================================
 const reportGroups = GetReportCategory.slice(0);
 const reports = GetReport.slice(0);
@@ -181,6 +185,18 @@ $(document).ready(() => {
       addNewSelect(criteria, "criteria", "marg3");
     }
   });
+
+  //* Button actions on click
+  $("#generate-btn, #export-btn").click(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    if ($(this).attr("id") === "generate-btn") {
+      createReport();
+    } else {
+      createExport();
+    }
+  });
+
   //* =====================================
   //* Business rules
   //* =====================================
@@ -201,7 +217,7 @@ $(document).ready(() => {
     }
   });
 
-  // EPE Reports group (ID 39) => short list in category section
+  // EPE Reports group (ID 39) => shortened list in category section
   // instead of complete list of values (GetPreparedBy procedure)
   $("#group-selector").change(function (evnt) {
     evnt.stopPropagation();
