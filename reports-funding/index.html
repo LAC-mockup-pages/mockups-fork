@@ -331,48 +331,48 @@
       <section class="report-info container-fluid blue-bg blue-light-text">
         <div class="report-title">Funding Reports</div>
       </section>
-      <section class="selectors">
+      <form class="form selectors" role="form">
         <div class="form-group input-field">
-          <label for="fiscal-year">Fiscal year: </label>
+          <label for="fiscalYear">Fiscal year: </label>
           <select
             class="modal-select"
             autofocus
-            name="fiscal-year"
+            name="fiscalYear"
             id="fiscal-year"
           ></select>
         </div>
         <div class="form-group input-field marg1">
-          <label for="group-selector">Report group: </label>
+          <label for="groupSelector">Report group: </label>
           <select
             class="modal-select"
-            name="group-selector"
+            name="groupSelector"
             id="group-selector"
           ></select>
         </div>
         <div class="form-group input-field marg2">
-          <label for="title-selector">Report title: </label>
+          <label for="titleSelector">Report title: </label>
           <select
             class="modal-select"
-            name="title-selector"
+            name="titleSelector"
             id="title-selector"
           ></select>
         </div>
         <section class="funding">
           <div class="form-group input-field marg2">
-            <label for="class-funding">Class funding: </label>
+            <label for="classFunding">Class funding: </label>
             <select
               class="modal-select"
-              name="class-funding"
+              name="funding"
               id="class-funding"
             ></select>
           </div>
         </section>
         <section class="category">
           <div class="form-group input-field marg3">
-            <label for="report-category">Report category: </label>
+            <label for="reportCategory">Report category: </label>
             <select
               class="modal-select"
-              name="report-category"
+              name="reportCategory"
               id="report-category"
             >
               <option value="all">Select all</option>
@@ -381,15 +381,15 @@
         </section>
         <section class="criteria">
           <div class="form-group input-field marg3 hidden">
-            <label for="report-criteria">Report criteria: </label>
+            <label for="reportCriteria">Report criteria: </label>
             <select
               class="modal-select"
-              name="report-criteria"
+              name="reportCriteria"
               id="report-criteria"
             ></select>
           </div>
         </section>
-      </section>
+      </form>
       <section class="buttons">
         <div class="modal-footer">
           <button type="button" id="generate-btn" class="btn btn-primary">
