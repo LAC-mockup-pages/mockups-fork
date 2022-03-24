@@ -190,11 +190,18 @@ $(document).ready(() => {
   $("#generate-btn, #export-btn").click(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    if ($(this).attr("id") === "generate-btn") {
-      createReport();
-    } else {
-      createExport();
-    }
+    const selectedReport = reports.find(
+      (record) => record.ID === $("#title-selector").val()
+    );
+    //TODO Check all necessary select elements have a value
+    console.log('$("#title-selector").val() :>> ', $("#title-selector").val());
+
+    const stURI =
+      $(this).attr("id") === "generate-btn"
+        ? createReportURI(selectedReport)
+        : createExportURI(selectedReport);
+
+    window.open(stURI, "_blank");
   });
 
   //* =====================================
