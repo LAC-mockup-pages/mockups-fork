@@ -201,7 +201,7 @@ $(document).ready(() => {
         ? createReportURI(selectedReport)
         : createExportURI(selectedReport);
 
-    // window.open(stURI, "_blank");
+    //! window.open(stURI, "_blank");
   });
 
   //* =====================================

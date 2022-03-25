@@ -8,6 +8,9 @@
 // "../reports/" + GetReport[index]['FileName']  + "?st=" + startdate + "&en=" +
 // enddate + "&ag=" + agencyid + "&cf=" + fundingselectedvalues +  "&nfc=" +
 // criteriakey + "&tfc=" + criteriaselectedvalues + "&nfy=1";
+//
+// /reports/POP_Reports/WIOA_tablesDataCheck5A.aspx?st=07/01/2020&en=06/30/2021
+// &ag=PRA&nfc=5&tfc=AllenJoshPRA7,PorterJanePRA9&cf=1ALL,E,L,W4,Y&nfy=0
 
 const fundingSources = (selection, sourceObj) => {
   let sources = [];
@@ -46,6 +49,3 @@ export const createReportURI = (reportObj) => {
   `;
   return reportURI;
 };
-
-// /reports/POP_Reports/WIOA_tablesDataCheck5A.aspx?st=07/01/2020&en=06/30/2021
-// &ag=PRA&nfc=5&tfc=AllenJoshPRA7,PorterJanePRA9&cf=1ALL,E,L,W4,Y&nfy=0
