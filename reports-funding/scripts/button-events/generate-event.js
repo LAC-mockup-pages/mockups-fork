@@ -9,27 +9,51 @@
 // enddate + "&ag=" + agencyid + "&cf=" + fundingselectedvalues +  "&nfc=" +
 // criteriakey + "&tfc=" + criteriaselectedvalues + "&nfy=1";
 
+const fundingSources = (selection, sourceObj) => {
+  let sources = [];
+  if (selection === "0") {
+    $("#class-funding option").each(function (indx) {
+      const source = $(this).val();
+      sources.push(source);
+    });
+  } else {
+    for (const prop in sourceObj) {
+      sources.push(sourceObj[prop]);
+    }
+  }
+  return sources.join(",");
+};
+
 export const createReportURI = (reportObj) => {
   console.log("Report created in new browser tab");
   // createObject() <= helpers/helperFunctions.js
   const selectedValues = createObject($(".selectors").serializeArray());
+
   const selectedFunding = Object.keys(selectedValues).filter((key) =>
     key.startsWith("funding")
   );
+
+  const sourceObj = {};
+  for (const source of selectedFunding) {
+    sourceObj[source] = selectedValues[source];
+  }
   console.log(
     "🚀 / file: generate-event.js / line 7 / createReport / selectedValues",
     selectedValues
   );
+
   // createCredentials <= helpers/helperFunctions.js
   const { AgencyID } = createCredentials();
-
-  const { fiscalYear, reportCategory } = selectedValues;
+  const { fiscalYear, funding, reportCategory } = selectedValues;
   const { FileName } = reportObj;
+  const fundingStr = fundingSources(funding, sourceObj);
   const startDate = `07/01/${fiscalYear}`;
   const endDate = `06/30/${fiscalYear}`;
 
+  //TODO Creating list of criteria selected
   const reportURI = `../reports/${FileName}?st=${startDate}&en=${endDate}
-    %ag=${AgencyID}&nfc=${reportCategory}
+    %ag=${AgencyID}&fc${fundingStr}&nfc=${reportCategory}
+    &tfc&nfy=1
   `;
 
   return reportURI;
