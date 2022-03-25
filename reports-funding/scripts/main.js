@@ -6,7 +6,7 @@
 //! Comment out for Production.
 
 import { createExport } from "./button-events/export-event.js";
-import { createReport } from "./button-events/generate-event.js";
+import { createReportURI } from "./button-events/generate-event.js";
 
 //! =============================================================
 const reportGroups = GetReportCategory.slice(0);
@@ -201,7 +201,7 @@ $(document).ready(() => {
         ? createReportURI(selectedReport)
         : createExportURI(selectedReport);
 
-    window.open(stURI, "_blank");
+    // window.open(stURI, "_blank");
   });
 
   //* =====================================
