@@ -85,7 +85,27 @@ const GetSpecialProgramSource = [
   { key: "Q", value: "Learn to Read" },
   { key: "Z", value: "Workplace Essential Skills" }
 ];
-
+// Student Age
+const GetAgeGroup = [
+  { key: "Group1", value: "16-18" },
+  { key: "Group2", value: "19-24" },
+  { key: "Group3", value: "25-44" },
+  { key: "Group4", value: "45-59" },
+  { key: "Group5", value: "60 and Older" }
+];
+// Student Employment
+const GetEmploymentStatus = [
+  { key: "A", value: "Employed full-time" },
+  { key: "B", value: "Employed part-time" },
+  { key: "C", value: "Unemployed > yr available" },
+  { key: "D", value: "Unemployed < yr available" },
+  { key: "E", value: "Not available for employment" },
+  { key: "F", value: "Retired" },
+  { key: "G", value: "Inmate" },
+  { key: "U", value: "Unknown" },
+  { key: "H", value: "Empl - Received Term. Notice" },
+  { key: "I", value: "Empl - Military Sep. Pending" }
+];
 const GetReportCategory = [
   { key: "16", value: "WIOA Program Evaluation Reports" },
   { key: "196", value: "WIOA Reports" },

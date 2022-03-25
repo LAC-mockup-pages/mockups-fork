@@ -13,7 +13,18 @@ const reportGroups = GetReportCategory.slice(0);
 const reports = GetReport.slice(0);
 const sources = GetFundingSource.slice(0);
 const categories = GetPrepareBy.slice(0);
-const criteria = GetInstructionType.slice(0);
+// const criteria = GetInstructionType.slice(0);
+const criteriaList = [
+  null,
+  null,
+  GetInstructionType.slice(0),
+  GetFormat.slice(0),
+  GetSpecialProgramSource.slice(0),
+  null,
+  null,
+  GetAgeGroup.slice(0),
+  GetEmploymentStatus.slice(0)
+];
 //! =============================================================
 
 export const createOptionList = (dataObj, defaultValue) => {
@@ -40,18 +51,27 @@ const createSummaryList = (list, keyParam, valueParam) => {
   });
 };
 
+// Inputs: list = hashtable of options, sectionName = name of
+// section where the option list is appended, styleClass =
+// CSS class for indentation on display
 const addNewSelect = (list, sectionName, styleClass) => {
-  const selection = $(`section .${sectionName} select`)
+  const selection = $(`.${sectionName} select`)
     .serializeArray()
     .map((item) => item.value);
   console.log(
     "🚀 / file: main.js / line 41 / addNewSelect / selection",
     selection
   );
-  const summaryList = createSummaryList(list, "FSID", "FundAbbrev");
+  const summaryList =
+    sectionName === "funding"
+      ? createSummaryList(list, "FSID", "FundAbbrev")
+      : list;
   const updatedList = summaryList.filter(
     (record) => !selection.includes(record.key)
   );
+
+  // Testing option list retrieval from DOM
+
   // Checks if there is at least 1 value left in the list
   if (updatedList.length < 1) return;
   const updatedOptionList = createOptionList(updatedList);
@@ -152,7 +172,9 @@ $(document).ready(() => {
         $("#report-criteria").parent().addClass("hidden");
       }
     } else {
-      const optionListCriteria = createOptionList(criteria);
+      const optionListCriteria = createOptionList(
+        criteriaList[selectedCategory]
+      );
       $("#report-criteria").empty().append(optionListCriteria);
       $("#report-criteria").parent().removeClass("hidden");
     }
@@ -175,14 +197,16 @@ $(document).ready(() => {
   //* Adding a new criteria select element when a specific one is selected.
   //* If All is selected, it does not generate a new select element, and
   //* additional <select> are removed.
-  $(".criteria select").change(function (evnt) {
+  // $(".criteria select").change(function (evnt) {
+  $(document).on("change", ".criteria select", function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    if ($("select:first-of-type", this).val() === "ALL") {
+    if ($("#report-criteria").val() === "0") {
       $(".criteria .added-select").remove();
       return;
     } else {
-      addNewSelect(criteria, "criteria", "marg3");
+      const selectedCategory = $("#report-category").val();
+      addNewSelect(criteriaList[selectedCategory], "criteria", "marg3");
     }
   });
 
@@ -200,6 +224,8 @@ $(document).ready(() => {
       $(this).attr("id") === "generate-btn"
         ? createReportURI(selectedReport)
         : createExportURI(selectedReport);
+
+    console.log("🚀 / file: main.js / line 200 / stURI", stURI);
 
     //! window.open(stURI, "_blank");
   });
