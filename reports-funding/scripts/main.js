@@ -85,7 +85,7 @@ const addNewSelect = (list, sectionName, styleClass) => {
     </div>
   `;
   $(`.${sectionName}`).append(newSelectLine);
-  $(`.sectionName select:last-of-type`).focus();
+  $(`.${sectionName} select:last-of-type`).focus();
 };
 //*=================================================
 //* jQuery section
@@ -184,20 +184,25 @@ $(document).ready(() => {
   //* Adding a new funding source select element when a specific one is selected.
   //* If All is selected, it does not generate a new select element, and
   //* additional <select> are removed.
-  $(".funding select").change(function (evnt) {
+  $(document).on("change", ".funding select", function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
     if ($("#class-funding").val() === "ALL") {
       $(".funding .added-select").remove();
       return;
     } else {
+      const lastSelectValue = $(".funding select").last().val();
+      if (!lastSelectValue) {
+        $(".funding .added-select").last().remove();
+        addNewSelect(sources, "funding", "marg2");
+        return;
+      }
       addNewSelect(sources, "funding", "marg2");
     }
   });
   //* Adding a new criteria select element when a specific one is selected.
   //* If All is selected, it does not generate a new select element, and
   //* additional <select> are removed.
-  // $(".criteria select").change(function (evnt) {
   $(document).on("change", ".criteria select", function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
@@ -206,6 +211,12 @@ $(document).ready(() => {
       return;
     } else {
       const selectedCategory = $("#report-category").val();
+      const lastSelectValue = $(".criteria select").last().val();
+      if (!lastSelectValue) {
+        $(".criteria .added-select").last().remove();
+        addNewSelect(criteriaList[selectedCategory], "criteria", "marg3");
+        return;
+      }
       addNewSelect(criteriaList[selectedCategory], "criteria", "marg3");
     }
   });
