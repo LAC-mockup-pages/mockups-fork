@@ -58,10 +58,6 @@ const addNewSelect = (list, sectionName, styleClass) => {
   const selection = $(`.${sectionName} select`)
     .serializeArray()
     .map((item) => item.value);
-  console.log(
-    "🚀 / file: main.js / line 41 / addNewSelect / selection",
-    selection
-  );
   const summaryList =
     sectionName === "funding"
       ? createSummaryList(list, "FSID", "FundAbbrev")
@@ -235,8 +231,6 @@ $(document).ready(() => {
       $(this).attr("id") === "generate-btn"
         ? createReportURI(selectedReport)
         : createExportURI(selectedReport);
-
-    console.log("🚀 / file: main.js / line 200 / stURI", stURI);
 
     //! window.open(stURI, "_blank");
   });
