@@ -12,24 +12,23 @@
 // /reports/POP_Reports/WIOA_tablesDataCheck5A.aspx?st=07/01/2020&en=06/30/2021
 // &ag=PRA&nfc=5&tfc=AllenJoshPRA7,PorterJanePRA9&cf=1ALL,E,L,W4,Y&nfy=0
 
-const fundingSources = (selection, sourceObj) => {
-  let sources = [];
-  if (selection === "ALL") {
-    $("#class-funding > option").each(function (indx) {
-      const source = $(this).val();
-      sources.push(source);
-    });
-  } else {
-    for (const prop in sourceObj) {
-      sources.push(sourceObj[prop]);
-    }
-  }
-  return sources.join(",");
-};
-
 export const createReportURI = (reportObj) => {
   // createObject() <= helpers/helperFunctions.js
   const selectedValues = createObject($(".selectors").serializeArray());
+  const fundingSources = (selection, sourceObj) => {
+    let sources = [];
+    if (selection === "ALL") {
+      $("#class-funding > option").each(function (indx) {
+        const source = $(this).val();
+        sources.push(source);
+      });
+    } else {
+      for (const prop in sourceObj) {
+        sources.push(sourceObj[prop]);
+      }
+    }
+    return sources.join(",");
+  };
   const selectedFunding = Object.keys(selectedValues).filter((key) =>
     key.startsWith("funding")
   );
@@ -44,8 +43,8 @@ export const createReportURI = (reportObj) => {
   const fundingStr = fundingSources(funding, sourceObj);
   const startDate = `07/01/${fiscalYear}`;
   const endDate = `06/30/${fiscalYear}`;
-
-  const reportURI = `../reports/${FileName}?st=${startDate}&en=${endDate}%ag=${AgencyID}&fc=${fundingStr}&nfc=${reportCategory}&tfc&nfy=1
+  const numFiscalYear = $("#fiscal-year").prop("selectedIndex");
+  const reportURI = `../reports/${FileName}?st=${startDate}&en=${endDate}%ag=${AgencyID}&fc=${fundingStr}&nfc=${reportCategory}&tfc=&nfy=${numFiscalYear}
   `;
   return reportURI;
 };
