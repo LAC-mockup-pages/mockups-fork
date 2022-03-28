@@ -7,24 +7,31 @@
 
 import { createExport } from "./button-events/export-event.js";
 import { createReportURI } from "./button-events/generate-event.js";
+// Shorten a list of records to a list of obj with key/value properties
+// list = [{...},{...}], keyParam, valueParam = field names as string
+const createSummaryList = (list, keyParam, valueParam) => {
+  return list.map((record) => {
+    return { key: record[keyParam], value: record[valueParam] };
+  });
+};
 
 //! =============================================================
 const reportGroups = GetReportCategory.slice(0);
 const reports = GetReport.slice(0);
 const sources = GetFundingSource.slice(0);
 const categories = GetPrepareBy.slice(0);
+//! =============================================================
 const criteriaList = [
   null,
-  null,
+  GetInstructionSource.slice(0),
   GetInstructionType.slice(0),
   GetFormat.slice(0),
   GetSpecialProgramSource.slice(0),
-  null,
-  null,
+  createSummaryList(GetInstructor, "ID", "InstructorName"),
+  createSummaryList(GetSite, "ID", "SiteName"),
   GetAgeGroup.slice(0),
   GetEmploymentStatus.slice(0)
 ];
-//! =============================================================
 
 export const createOptionList = (dataObj, defaultValue) => {
   const optionList = dataObj.map((record) => {
@@ -40,14 +47,6 @@ export const createOptionList = (dataObj, defaultValue) => {
     }
   });
   return optionList.join("");
-};
-
-// Shorten a list of records to a list of obj with key/value properties
-// list = [{...},{...}], keyParam, valueParam = field names as string
-const createSummaryList = (list, keyParam, valueParam) => {
-  return list.map((record) => {
-    return { key: record[keyParam], value: record[valueParam] };
-  });
 };
 
 // Inputs: list = hashtable of options, sectionName = name of
@@ -164,12 +163,14 @@ $(document).ready(() => {
       if ($("#report-criteria").parent().hasClass("hidden")) {
         return;
       } else {
+        $(".criteria .added-select").remove();
         $("#report-criteria").parent().addClass("hidden");
       }
     } else {
       const optionListCriteria = createOptionList(
         criteriaList[selectedCategory]
       );
+      $(".criteria .added-select").remove();
       $("#report-criteria").empty().append(optionListCriteria);
       $("#report-criteria").parent().removeClass("hidden");
     }
@@ -224,14 +225,12 @@ $(document).ready(() => {
       (record) => record.ID === $("#title-selector").val()
     );
     //TODO Check all necessary select elements have a value
-    console.log('$("#title-selector").val() :>> ', $("#title-selector").val());
-
-    const stURI =
+    const stReportURI =
       $(this).attr("id") === "generate-btn"
         ? createReportURI(selectedReport)
         : createExportURI(selectedReport);
-
-    //! window.open(stURI, "_blank");
+    console.log("stReportURI :>> ", stReportURI);
+    //! window.open(stReportURI, "_blank");
   });
 
   //* =====================================
