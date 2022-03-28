@@ -42,7 +42,10 @@
   padding-left: 0px;
   padding-right: 0px;
 }
-
+.light-red-text {
+  color: rgb(246, 133, 133);
+  font-size: 1.2em;
+}
 /* Selectors section */
 /* =============================== */
 .selectors {

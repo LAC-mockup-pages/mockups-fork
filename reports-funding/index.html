@@ -330,30 +330,36 @@
     <main class="main-body container">
       <section class="report-info container-fluid blue-bg blue-light-text">
         <div class="report-title">Funding Reports</div>
+        <div class="required-text light-red-text">
+          Elements in red are required
+        </div>
       </section>
       <form class="form selectors" role="form">
         <div class="form-group input-field">
-          <label for="fiscalYear">Fiscal year: </label>
+          <label class="red-text" for="fiscalYear">Fiscal year: </label>
           <select
             class="modal-select"
             autofocus
+            required
             name="fiscalYear"
             id="fiscal-year"
           ></select>
         </div>
         <div class="form-group input-field marg1">
-          <label for="groupSelector">Report group: </label>
+          <label class="red-text" for="groupSelector">Report group: </label>
           <select
             class="modal-select"
+            required
             name="groupSelector"
             id="group-selector"
           ></select>
         </div>
         <div class="form-group input-field marg2">
-          <label for="titleSelector">Report title: </label>
+          <label class="red-text" for="titleSelector">Report title: </label>
           <select
             class="modal-select"
             name="titleSelector"
+            required
             id="title-selector"
           ></select>
         </div>
