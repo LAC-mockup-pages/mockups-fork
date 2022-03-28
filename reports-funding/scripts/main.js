@@ -13,7 +13,6 @@ const reportGroups = GetReportCategory.slice(0);
 const reports = GetReport.slice(0);
 const sources = GetFundingSource.slice(0);
 const categories = GetPrepareBy.slice(0);
-// const criteria = GetInstructionType.slice(0);
 const criteriaList = [
   null,
   null,

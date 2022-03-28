@@ -116,6 +116,71 @@ const GetReportCategory = [
   { key: "39", value: "EPE Reports" }
 ];
 
+const GetInstructionSource = [
+  { ID: "232270", InstructionDescription: "BE4CASTS_21  Porter, Samantha" },
+  { ID: "202360", InstructionDescription: "BE6C1  Alisova, Muriana" },
+  {
+    ID: "232271",
+    InstructionDescription: "BE6CIntake_Summer2021  Porter, Samantha"
+  },
+  {
+    ID: "236450",
+    InstructionDescription: "ES3CEnglish101-Uighur    Porter, Samantha"
+  },
+  {
+    ID: "236431",
+    InstructionDescription: "ES3CEnglish101-Urdu    Porter, Samantha"
+  }
+];
+const GetSite = [
+  { ID: "2976", SiteName: "Practice Agency Main Office", SiteID: "MainOffice" },
+  { ID: "5665", SiteName: "Syracuse Training Site", SiteID: "SYL" },
+  { ID: "4439", SiteName: "Manhatten Learning Ctr27", SiteID: "MANH27" },
+  { ID: "4441", SiteName: "Brooklyn25", SiteID: "BKLY" },
+  { ID: "4444", SiteName: "Manhattan Learning Ctr21", SiteID: "MANH21" },
+  { ID: "4446", SiteName: "Manhattan Learning Ctr30", SiteID: "MANH30" },
+  { ID: "4447", SiteName: "Manhattan Learning Ctr31", SiteID: "MANH31" },
+  { ID: "4448", SiteName: "Manhattan Learning Center28", SiteID: "MANH28" },
+  { ID: "4449", SiteName: "Manhattan Learning32", SiteID: "Manh32" },
+  { ID: "5679", SiteName: "BooBooVille", SiteID: "BooBooVille" },
+  { ID: "5723", SiteName: "WeWorkFidi1 ", SiteID: "27102" },
+  { ID: "5764", SiteName: "Long Island Raen", SiteID: "Li-RAEN" },
+  { ID: "5785", SiteName: "Long Island LAC ", SiteID: "LILAC" },
+  { ID: "5822", SiteName: "Testing Center ", SiteID: "Test_11.4RS" },
+  { ID: "5459", SiteName: "SUNY Farmingdale", SiteID: "SUNYF" },
+  { ID: "5475", SiteName: "Courtyard Mariott Buffalo", SiteID: "Mariott" },
+  { ID: "5461", SiteName: "Literacy Assistance Center", SiteID: "LAC" },
+  { ID: "5671", SiteName: "LACFiDi 27", SiteID: "85Broad" },
+  { ID: "5316", SiteName: "Orange Ulster BOCES", SiteID: "OULB" },
+  { ID: "5317", SiteName: "WSWH BOCES", SiteID: "WSWH" }
+];
+const GetInstructor = [
+  {
+    ID: "24386",
+    InstructorName: "Alisova, Muriana",
+    PersonnelID: "AlisovaMurianaPRA9",
+    Agency: "PRA"
+  },
+  {
+    ID: "28083",
+    InstructorName: "Porter, Jane",
+    PersonnelID: "PorterJanePRA9",
+    Agency: "PRA"
+  },
+  {
+    ID: "2256",
+    InstructorName: "Porter, Samantha",
+    PersonnelID: "PorterSamanthaPRA9",
+    Agency: "PRA"
+  },
+  {
+    ID: "2257",
+    InstructorName: "Alfiery, Shelley",
+    PersonnelID: "AlfieriShelleyPRA1",
+    Agency: "PRA"
+  }
+];
+
 //For Select Report Element
 const GetReport = [
   {
