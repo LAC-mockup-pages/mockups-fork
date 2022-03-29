@@ -5,7 +5,6 @@
 //! For Development only.
 //! Comment out for Production.
 
-import { createExportURI } from "./button-events/export-event.js";
 import { createReportURI } from "./button-events/generate-event.js";
 // Shorten a list of records to a list of obj with key/value properties
 // list = [{...},{...}], keyParam, valueParam = field names as string
@@ -221,19 +220,35 @@ $(document).ready(() => {
   $("#generate-btn, #export-btn").click(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    const selectedReport = reports.find(
-      (record) => record.ID === $("#title-selector").val()
+    // createObjet() <== helpers/helperFunctions.js
+    const requiredObj = createObject(
+      $(".selectors select[required]").serializeArray()
     );
-    //TODO Check all necessary select elements have a value
-    const queryString = createReportURI(
-      selectedReport,
-      $(this).attr("id") === "export-btn"
-    );
-    console.log("queryString :>> ", queryString);
-    //   $(this).attr("id") === "generate-btn"
-    //     ? createReportURI(selectedReport)
-    //     : createExportURI(selectedReport);
-    // window.open(queryString, "_blank");
+    const requiredWithoutValue = [];
+    // Checking if required fields have a valid value.
+    // Switching background color to yellow if not, and stopping
+    // the report generation process.
+    for (const key in requiredObj) {
+      if (requiredObj[key].length < 1) requiredWithoutValue.push(key);
+    }
+
+    if (requiredWithoutValue.length > 0) {
+      for (const field of requiredWithoutValue) {
+        $(`.selectors [name=${field}]`).css("background-color", "#f7e095");
+      }
+      return;
+    } else {
+      const selectedReport = reports.find(
+        (record) => record.ID === $("#title-selector").val()
+      );
+
+      const queryString = createReportURI(
+        selectedReport,
+        $(this).attr("id") === "export-btn"
+      );
+      console.log("queryString :>> ", queryString);
+      window.open(queryString, "_blank");
+    }
   });
 
   //* =====================================
