@@ -229,8 +229,7 @@ $(document).ready(() => {
       $(this).attr("id") === "generate-btn"
         ? createReportURI(selectedReport)
         : createExportURI(selectedReport);
-    console.log("stReportURI :>> ", stReportURI);
-    //! window.open(stReportURI, "_blank");
+    window.open(stReportURI, "_blank");
   });
 
   //* =====================================

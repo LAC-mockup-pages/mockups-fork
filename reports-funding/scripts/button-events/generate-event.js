@@ -15,7 +15,7 @@
 export const createReportURI = (reportObj) => {
   // createObject() <= helpers/helperFunctions.js
   const selectedValues = createObject($(".selectors").serializeArray());
-  const fundingSources = (selection, sourceObj) => {
+  const getFundingSources = (selection, sourceObj) => {
     let sources = [];
     if (selection === "ALL") {
       $("#class-funding > option").each(function (indx) {
@@ -29,6 +29,12 @@ export const createReportURI = (reportObj) => {
     }
     return sources.join(",");
   };
+  const getSelectedCriteria = () => {
+    let list = $(".criteria select").serializeArray();
+    list = list.filter((record) => record.value).map((record) => record.value);
+    console.log("list :>> ", list);
+    return list.join(",");
+  };
   const selectedFunding = Object.keys(selectedValues).filter((key) =>
     key.startsWith("funding")
   );
@@ -40,11 +46,12 @@ export const createReportURI = (reportObj) => {
   const { AgencyID } = createCredentials();
   const { fiscalYear, funding, reportCategory } = selectedValues;
   const { FileName } = reportObj;
-  const fundingStr = fundingSources(funding, sourceObj);
+  const fundingStr = getFundingSources(funding, sourceObj);
   const startDate = `07/01/${fiscalYear}`;
   const endDate = `06/30/${fiscalYear}`;
+  const criteriaStr = getSelectedCriteria();
   const numFiscalYear = $("#fiscal-year").prop("selectedIndex");
-  const reportURI = `../reports/${FileName}?st=${startDate}&en=${endDate}%ag=${AgencyID}&fc=${fundingStr}&nfc=${reportCategory}&tfc=&nfy=${numFiscalYear}
+  const reportURI = `../reports/${FileName}?st=${startDate}&en=${endDate}%ag=${AgencyID}&fc=${fundingStr}&nfc=${reportCategory}&tfc=${criteriaStr}&nfy=${numFiscalYear}
   `;
   return reportURI;
 };
