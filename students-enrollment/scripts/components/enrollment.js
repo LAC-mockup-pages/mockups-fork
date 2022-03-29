@@ -195,7 +195,10 @@ export const addNewRecord = (courses, reasons, transfers, caseFlag = "0") => {
 // Student was active and a valid InactiveDate has been entered
 export const inactiveStatusProcess = () => {
   $("#edit-form :disabled").prop("disabled", false);
-  $("#edit-form [name='ActiveStatus'").prop("selectedIndex", 0);
+  $("#edit-form [name='ActiveStatus'").prop({
+    selectedIndex: 1,
+    disabled: true
+  });
   $("#edit-form [name='InactiveReason'")
     .prop("required", true)
     .siblings("label")

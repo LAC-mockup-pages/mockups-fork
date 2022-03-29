@@ -156,7 +156,7 @@ $(document).ready(() => {
       .append($row)
       .attr({ "data-id": rowId, "data-table": "GetEnroll" });
     $(".modal-title").empty().text(`Editing ${sectionTitle} record`);
-    const requiredList = ["DescriptionKey", "EnrollDate", "ActiveStatus"];
+    const requiredList = ["DescriptionKey", "EnrollDate"];
     $("#edit-form :input").each(function (indx) {
       const name = $(this).attr("name");
       const labels = {
@@ -276,7 +276,7 @@ $(document).ready(() => {
     let editFormContent = "";
     let modalTitle = "Enrollment";
     const buttonId = $(this).attr("id");
-    const requiredList = ["DescriptionKey", "EnrollDate", "ActiveStatus"];
+    const requiredList = ["DescriptionKey", "EnrollDate"];
     if (buttonId === "add-enrollment") {
       editFormContent = addNewRecord(courseList, exitReasons, transferTo);
     } else {
@@ -304,7 +304,10 @@ $(document).ready(() => {
           })
           .prop("required", true);
         $(this).siblings("label").addClass("red-text");
-        $("#edit-form select[name*='ActiveStatus']").prop("selectedIndex", 2); //Set to Yes
+        $("#edit-form select[name*='ActiveStatus']").prop({
+          selectedIndex: 2,
+          disabled: true
+        }); //Set to Yes and disabled
       }
     });
     $("#modalBloc").modal("toggle");
