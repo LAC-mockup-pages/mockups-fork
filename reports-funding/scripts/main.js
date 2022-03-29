@@ -5,7 +5,7 @@
 //! For Development only.
 //! Comment out for Production.
 
-import { createExport } from "./button-events/export-event.js";
+import { createExportURI } from "./button-events/export-event.js";
 import { createReportURI } from "./button-events/generate-event.js";
 // Shorten a list of records to a list of obj with key/value properties
 // list = [{...},{...}], keyParam, valueParam = field names as string
@@ -225,11 +225,15 @@ $(document).ready(() => {
       (record) => record.ID === $("#title-selector").val()
     );
     //TODO Check all necessary select elements have a value
-    const stReportURI =
-      $(this).attr("id") === "generate-btn"
-        ? createReportURI(selectedReport)
-        : createExportURI(selectedReport);
-    window.open(stReportURI, "_blank");
+    const queryString = createReportURI(
+      selectedReport,
+      $(this).attr("id") === "export-btn"
+    );
+    console.log("queryString :>> ", queryString);
+    //   $(this).attr("id") === "generate-btn"
+    //     ? createReportURI(selectedReport)
+    //     : createExportURI(selectedReport);
+    // window.open(queryString, "_blank");
   });
 
   //* =====================================
