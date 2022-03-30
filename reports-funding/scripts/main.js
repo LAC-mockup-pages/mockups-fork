@@ -249,16 +249,22 @@ $(document).ready(() => {
   //* =====================================
   //* Business rules
   //* =====================================
+  // Reports with a Procedure_Name value enable the Export button.
   // Download only reports (ID 174,188, 189) => Generate Report
   // button is disabled, Export to Excel button is enabled,
   // Category and Funding sections are hidden.
   $("#title-selector").change(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    if (["174", "188", "189"].includes($("#title-selector").val())) {
-      $("#generate-btn").prop("disabled", true);
+    const exportList = reports
+      .filter((record) => record.Procedure_Name)
+      .map((record) => record.ID);
+    if (exportList.includes($(this).val())) {
       $("#export-btn").prop("disabled", false);
-      $(".funding, .category").addClass("hidden");
+      if (["174", "188", "189"].includes($(this).val())) {
+        $("#generate-btn").prop("disabled", true);
+        $(".funding, .category").addClass("hidden");
+      }
     } else {
       $("#generate-btn").prop("disabled", false);
       $("#export-btn").prop("disabled", true);
