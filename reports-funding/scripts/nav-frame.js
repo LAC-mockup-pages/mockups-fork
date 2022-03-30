@@ -70,6 +70,15 @@ $(document).ready(() => {
     AgencyName = "Practice Agency";
   }
   //! =========================================
+
+  //! =========================================
+  //! For Production.
+  //! =========================================
+
+  //! Replace the URI in #funding-anchor href by the aspx link.
+
+  //! =========================================
+
   const welcomeLine = `
     <div class="row">
       <div class="col-sm-1"></div>
