@@ -127,7 +127,6 @@ $(document).ready(() => {
   // Report groups
   $("#group-selector").append(createOptionList(reportGroups));
   // Report titles
-
   const category = $("#group-selector").val();
   const filteredListTitle = reports
     .filter((record) => record.CategoryID === category)
@@ -137,21 +136,6 @@ $(document).ready(() => {
     });
   const optionListTitles = createOptionList(filteredListTitle);
   $("#title-selector").empty().append(optionListTitles);
-
-  // $("#title-selector").focus(function (evnt) {
-  //   evnt.stopPropagation();
-  //   evnt.preventDefault();
-  //   $(this).empty();
-  //   const category = $("#group-selector").val();
-  //   const filteredList = reports
-  //     .filter((record) => record.CategoryID === category)
-  //     .map((record) => {
-  //       const { ID, ReportName } = record;
-  //       return { key: ID, value: ReportName };
-  //     });
-  //   const optionListTitles = createOptionList(filteredList);
-  //   $(this).append(optionListTitles);
-  // });
   // Funding Sources
   const sourceSummaryList = createSummaryList(sources, "FSID", "FundAbbrev");
   const optionListSources = createOptionList([
