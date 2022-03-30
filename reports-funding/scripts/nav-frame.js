@@ -102,6 +102,9 @@ $(document).ready(() => {
     $(".main-tab .dropdown-btn").removeClass("active");
     $(this).siblings(".dropdown-container").css("display", "block");
     $(this).toggleClass("active");
+    if ($(this).attr("id") === "funding-anchor") {
+      $("span", this).toggleClass("caret glyphicon glyphicon-chevron-right");
+    }
   });
 
   //* Selecting a submenu item
