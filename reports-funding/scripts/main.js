@@ -127,20 +127,31 @@ $(document).ready(() => {
   // Report groups
   $("#group-selector").append(createOptionList(reportGroups));
   // Report titles
-  $("#title-selector").focus(function (evnt) {
-    evnt.stopPropagation();
-    evnt.preventDefault();
-    $(this).empty();
-    const category = $("#group-selector").val();
-    const filteredList = reports
-      .filter((record) => record.CategoryID === category)
-      .map((record) => {
-        const { ID, ReportName } = record;
-        return { key: ID, value: ReportName };
-      });
-    const optionListTitles = createOptionList(filteredList);
-    $(this).append(optionListTitles);
-  });
+
+  const category = $("#group-selector").val();
+  const filteredListTitle = reports
+    .filter((record) => record.CategoryID === category)
+    .map((record) => {
+      const { ID, ReportName } = record;
+      return { key: ID, value: ReportName };
+    });
+  const optionListTitles = createOptionList(filteredListTitle);
+  $("#title-selector").empty().append(optionListTitles);
+
+  // $("#title-selector").focus(function (evnt) {
+  //   evnt.stopPropagation();
+  //   evnt.preventDefault();
+  //   $(this).empty();
+  //   const category = $("#group-selector").val();
+  //   const filteredList = reports
+  //     .filter((record) => record.CategoryID === category)
+  //     .map((record) => {
+  //       const { ID, ReportName } = record;
+  //       return { key: ID, value: ReportName };
+  //     });
+  //   const optionListTitles = createOptionList(filteredList);
+  //   $(this).append(optionListTitles);
+  // });
   // Funding Sources
   const sourceSummaryList = createSummaryList(sources, "FSID", "FundAbbrev");
   const optionListSources = createOptionList([
@@ -276,6 +287,7 @@ $(document).ready(() => {
   $("#group-selector").change(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
+
     const categoryList =
       $(this).val() === "39"
         ? [
@@ -288,18 +300,17 @@ $(document).ready(() => {
     const optionList = createOptionList(categoryList);
     $("#report-category option").remove();
     $("#report-category").append(optionList);
+
+    // Updating report titles according selected group.
+    const titleList = reports
+      .filter((record) => record.CategoryID === $(this).val())
+      .map((record) => {
+        const { ID, ReportName } = record;
+        return { key: ID, value: ReportName };
+      });
+    const optionTitles = createOptionList(titleList);
+    $("#title-selector").empty().append(optionTitles);
   });
 
   //* =====================================
-
-  // Temporary event
-  // $("#report-category").change(function (evnt) {
-  //   evnt.stopPropagation();
-  //   evnt.preventDefault();
-  //   $(".selectors .input-field").last().toggleClass("hidden");
-  // if ($(this).val() !== "all") {
-  //   $(".selectors .input-field").last().toggleClass("hidden");
-  // } else {
-  // }
-  // });
 });
