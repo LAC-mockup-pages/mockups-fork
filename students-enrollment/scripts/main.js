@@ -175,7 +175,6 @@ $(document).ready(() => {
         .wrap("<div class='form-group input-field'></div>")
         .before(`<label for=${name}>${labels[name]}</label>`);
     });
-
     for (const name of requiredList) {
       $(`#edit-form [name=${name}]`)
         .prop("required", true)
@@ -187,7 +186,13 @@ $(document).ready(() => {
         .siblings("label")
         .addClass("red-text");
     }
+    //Disabling fields
     $("#edit-form [name='DescriptionKey']").prop("disabled", true);
+    $("#edit-form [name='ActiveStatus']").prop("disabled", true);
+    if (!$("#edit-form [name='InactiveDate']").val()) {
+      $("#edit-form [name='InactiveReason']").prop("disabled", true);
+      $("#edit-form [name='Transfer_PKID']").prop("disabled", true);
+    }
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
@@ -314,6 +319,10 @@ $(document).ready(() => {
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
+
+  //* =====================================
+  //* Business rules
+  //* =====================================
 
   //* Rule 1 - While editing a student's info,
   //* when entered inactive date is not valid, highlight background and

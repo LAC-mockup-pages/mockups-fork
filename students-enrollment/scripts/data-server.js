@@ -107,7 +107,7 @@ const GetEnroll = [
     DescriptionKey: "236531",
     EnrollDate: "07/01/2020",
     ClassEndDate: "06/30/2021",
-    InactiveDate: "",
+    InactiveDate: "08/01/2020",
     InactiveReason: "T",
     Transfer_PKID: "202360",
     TransferTo: "BE6C1 Alisova, Muriana",
