@@ -408,25 +408,30 @@ $(document).ready(() => {
     let editFormContent = "";
     let modalTitle = "TABE";
     let dataTableName = "GetTestInfo_TABE11";
+    let requiredList = [];
     const buttonId = $(this).attr("id");
     switch (buttonId) {
       case "add-bestplus":
         editFormContent = addNewBestPlusTest(modalOptionBestPlus);
         modalTitle = "Best Plus 2";
         dataTableName = "GetTests_BestPlus2";
+        requiredList = modalOptionBestPlus.requiredList;
         break;
       case "add-bestlit":
         editFormContent = addNewBestPlusTest(modalOptionBestLit);
         modalTitle = "Best Literacy";
         dataTableName = "GetTests_BestLit";
+        requiredList = modalOptionBestLit.requiredList;
         break;
       case "add-hse":
         editFormContent = addNewHSETest(modalOptionHSE);
         modalTitle = "HSE";
         dataTableName = "GetTests_TASC";
+        requiredList = modalOptionHSE.requiredList;
         break;
       default:
         editFormContent = addNewTabeTest(modalOptionTABE);
+        requiredList = modalOptionTABE.requiredList;
         break;
     }
     $("#edit-form")
@@ -434,9 +439,18 @@ $(document).ready(() => {
       .append(editFormContent)
       .attr("data-table", dataTableName);
     $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
-
-    //TODO Process customized requiredList
-
+    // Process customized requiredList
+    for (const name of requiredList) {
+      $(`#edit-form [name=${name}]`)
+        .prop("required", true)
+        .attr({
+          "data-original-title": "Please fill in this field",
+          "data-toggle": "tooltip",
+          "data-placement": "right"
+        })
+        .siblings("label")
+        .addClass("red-text");
+    }
     $("#modalBloc").modal("toggle");
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
