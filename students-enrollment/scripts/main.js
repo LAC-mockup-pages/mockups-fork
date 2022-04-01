@@ -191,7 +191,13 @@ $(document).ready(() => {
     $("#edit-form [name='ActiveStatus']").prop("disabled", true);
     if (!$("#edit-form [name='InactiveDate']").val()) {
       $("#edit-form [name='InactiveReason']").prop("disabled", true);
+      const reason = $("#edit-form [name='InactiveReason']").val();
+
       $("#edit-form [name='Transfer_PKID']").prop("disabled", true);
+    } else {
+      $("#edit-form [name='InactiveReason']").prop("disabled", false);
+      const reasonBool = $("#edit-form [name='InactiveReason']").val() !== "T";
+      $("#edit-form [name='Transfer_PKID']").prop("disabled", reasonBool);
     }
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
@@ -376,4 +382,18 @@ $(document).ready(() => {
       return;
     }
   });
+
+  //* When Inactive reason is T | Transfer, the TransferTo field is enabled
+  $("#edit-form").on(
+    "change",
+    "select[name='InactiveReason']",
+    function (evnt) {
+      evnt.stopPropagation();
+      evnt.preventDefault();
+      const reasonBool = $(this).val() !== "T";
+      $("#edit-form select[name='Transfer_PKID']")
+        .prop("disabled", reasonBool)
+        .prop("selectedIndex", 0);
+    }
+  );
 });
