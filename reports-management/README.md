@@ -3,7 +3,7 @@
 ## File structure
 
 ```
-/starter
+/reports-management
 .
 ├── [07/08/21]  README.md
 ├── [07/08/21]  index.html
@@ -37,7 +37,7 @@ Edit `index.html` with the new page title and `.aspx` file name. Edit the `READM
 | Initial VSC set up      | Done   | 04/06/2022 |
 | Mockup                  |        |            |
 | Roughing/static lay out |        |            |
-| Data objects            |        |            |
+| Data objects            | Done   | 04/06/2022 |
 | Main coding             |        |            |
 | Navigation to/from page |        |            |
 | Alpha build             |        |            |
