@@ -14,6 +14,8 @@ const createSummaryList = (list, keyParam, valueParam) => {
   });
 };
 //! =============================================================
+const reportGroups = GetReportCategory.slice(0);
+const reports = GetReport.slice(0);
 
 //! =============================================================
 export const createOptionList = (dataObj, defaultValue) => {
@@ -75,4 +77,37 @@ $(document).ready(() => {
     previousFY
   );
   $("#fiscal-year").append(optionListFY);
+  // Report groups
+  $("#group-selector").append(createOptionList(reportGroups));
+  // Report titles
+  const category = $("#group-selector").val();
+  const filteredListTitle = reports
+    .filter((record) => record.CategoryID === category)
+    .map((record) => {
+      const { ID, ReportName } = record;
+      return { key: ID, value: ReportName };
+    });
+  const optionListTitles = createOptionList(filteredListTitle);
+  $("#title-selector").empty().append(optionListTitles);
+
+  //* =====================================
+
+  //* =====================================
+  //* Business rules
+  //* =====================================
+  $("#group-selector").change(function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    // Updating report titles according selected group.
+    const titleList = reports
+      .filter((record) => record.CategoryID === $(this).val())
+      .map((record) => {
+        const { ID, ReportName } = record;
+        return { key: ID, value: ReportName };
+      });
+    const optionTitles = createOptionList(titleList);
+    $("#title-selector").empty().append(optionTitles);
+  });
+
+  //* =====================================
 });
