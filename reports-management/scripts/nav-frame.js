@@ -75,7 +75,8 @@ $(document).ready(() => {
   //! For Production.
   //! =========================================
 
-  //! Replace the URI in #funding-anchor href by the aspx link.
+  //! Insert the proper URI/aspx link in #managementReportsLink and
+  //! #dashboardLink <a href='ASPX.LINK'></a>.
 
   //! =========================================
 
