@@ -35,11 +35,11 @@ Edit `index.html` with the new page title and `.aspx` file name. Edit the `READM
 | Screenshots             | Done   | 04/05/2022 |
 | Trello card             | Done   | 04/06/2022 |
 | Initial VSC set up      | Done   | 04/06/2022 |
-| Mockup                  |        |            |
-| Roughing/static lay out |        |            |
+| Mockup                  | Done   | 04/07/2022 |
+| Roughing/static lay out | Done   | 04/07/2022 |
 | Data objects            | Done   | 04/06/2022 |
 | Main coding             |        |            |
-| Navigation to/from page |        |            |
+| Navigation to/from page | Done   | 04/07/2022 |
 | Alpha build             |        |            |
 | Review                  |        |            |
 | Alterations             |        |            |
