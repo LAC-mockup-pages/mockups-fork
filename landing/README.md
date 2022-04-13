@@ -5,15 +5,16 @@
 ```
 /landing
 .
-├── [07/08/21]  README.md
-├── [07/08/21]  index.html
-├── [07/08/21]  scripts
-│   ├── [07/02/21]  data-server.js
-│   ├── [07/08/21]  main.js
-│   └── [07/08/21]  nav-frame.js
-└── [07/08/21]  style
-    ├── [07/08/21]  index.css
-    └── [07/08/21]  nav-frame.css
+├── [04/13/22]  README.md
+├── [04/13/22]  index.html
+├── [03/10/22]  scripts
+│   ├── [02/05/22]  data-server.js
+│   └── [03/10/22]  main.js
+└── [04/06/22]  style
+    ├── [04/06/22]  hero.css
+    └── [02/05/22]  index.css
+
+2 directories, 6 files
 ```
 
 NB: Date is last modification date.
