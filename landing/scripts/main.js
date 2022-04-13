@@ -88,39 +88,35 @@ const getRoleName = (userLevelStr) => {
   const indx = Number(userLevelStr) - 1;
   return roleList[indx];
 };
-
-const createAgencySelect = (list) => {
-  const hashTable = list
-    .map((obj) => {
-      const { AgencyID, AgencyName } = obj;
-      return { AgencyID, AgencyName };
-    })
-    .sort(
-      // Sorting alphabetically on AgencyName
-      (obj1, obj2) =>
-        obj1.AgencyName < obj2.AgencyName
-          ? -1
-          : obj1.AgencyName > obj2.AgencyName
-          ? 1
-          : 0
-    );
-
-  // elementSelectModal <= helperFunctions.js
-  return elementSelectModal({
-    hashTable,
-    keyValue: "AgencyID",
-    selectedValue: "",
-    labelVal: "",
-    labelClassVal: "",
-    option: "",
-    optionText: "an agency"
+// Shorten a list of records to a list of obj with key/value properties
+// list = [{...},{...}], keyParam, valueParam = field names as string
+const createSummaryList = (list, keyParam, valueParam) => {
+  return list.map((record) => {
+    return { key: record[keyParam], value: record[valueParam] };
   });
+};
+// Creates <option></option> elements with an optional selected
+// value. This list can be added to a <select> element
+const createOptionList = (dataObj, defaultValue) => {
+  const firstOption = "<option value>Select an agency</option>";
+  const optionList = dataObj.map((record) => {
+    const [key, value] = Object.keys(record);
+    const keyData = record[key];
+    const valueData = record[value];
+    if (valueData) {
+      const defaultVal =
+        defaultValue && keyData === defaultValue ? " selected" : "";
+      return `<option${defaultVal} value=${keyData}>${valueData}</option>`;
+    } else {
+      return `<option selected value></option>`;
+    }
+  });
+  return firstOption + optionList.join("");
 };
 
 //*=================================================
 //* jQuery section
 //*=================================================
-
 $(document).ready(() => {
   //* ===================================
   //* First rendering actions
@@ -142,7 +138,8 @@ $(document).ready(() => {
   $("[data-toggle='tooltip']").tooltip();
 
   //* Add user info.
-  let { fullname, rolename, UserLevel, AgencyName } = SESSION_VARIABLE[0];
+  let { fullname, rolename, UserLevel, AgencyName, PrevAgency } =
+    SESSION_VARIABLE[0];
 
   //! =========================================
   //! For Dev Env only. Can stay for Production.
@@ -151,7 +148,7 @@ $(document).ready(() => {
   if (!AgencyName || AgencyName.startsWith("<%=")) {
     fullname = "Kate Tornese (default)";
     UserLevel = "1";
-    // rolename = "Program Data Editor";
+    // rolename = "Program Data Editor Program Data Editor ";
     rolename = "LAC TECH Support";
     AgencyName = "Practice Agency";
   }
@@ -169,13 +166,10 @@ $(document).ready(() => {
   //* Update card content with custom values and links.
   //TODO add requested parameters to GetAgencyCArdValues when shared by GJ.
   addCustomContent(GetAgencyCardValues);
-
   //* Display the first card.
   showSlides(slideIndex);
-
   //* Open Agency selection modal depending on the user role and
   //* if an agency as already been selected.
-
   if (
     [
       "LAC TECH Support", //! Those roles can select multiple agencies
@@ -184,16 +178,16 @@ $(document).ready(() => {
       "LPA Editor",
       "LPA Reviewer"
     ].includes(rolename) &&
-    SESSION_VARIABLE[0].PrevAgency === "False"
+    PrevAgency === "False"
   ) {
-    const agencySelection = createAgencySelect(GetAgencyIndex.slice(0));
-    $("#edit-form").append(agencySelection);
-    $(".dropdown-menu").prepend(`
-      <li>
-        <a href="#" id="select-agency">Change Agency</a>
-      </li>`);
-    SESSION_VARIABLE[0].PrevAgency = "True";
+    const optionListAgency = createOptionList(
+      createSummaryList(GetAgencyIndex.slice(0), "AgencyID", "AgencyName")
+    );
+    $("#agency-selector").append(optionListAgency);
+    $("#select-agency").toggleClass("hidden");
+    PrevAgency = "True";
     $("#modalBloc").modal("toggle");
+    $("#edit-form select").focus();
   }
 
   //* ===================================
@@ -205,10 +199,8 @@ $(document).ready(() => {
     $(".sidenav").width("3%");
     $(".card-btn").css("padding-left", "15%");
     $(".btn-numbers").css("margin-left", "-17%");
-
     toggleSideNav();
   });
-
   //* Selecting a menu item and displaying the sub-menu
   $(document).on("click", ".dropdown-btn", function (evnt) {
     $(".dropdown-container").css("display", "none");
@@ -216,7 +208,6 @@ $(document).ready(() => {
     $(this).siblings(".dropdown-container").css("display", "block");
     $(this).toggleClass("active");
   });
-
   //* Selecting a submenu item
   $(document).on("click", ".dropdown-container a", function (evnt) {
     $(".dropdown-container").css("display", "none");
@@ -224,35 +215,29 @@ $(document).ready(() => {
     $(".sidenav").width("3%");
     toggleSideNav();
   });
-
   //* Selecting another page in subnav bar
   $("#sub-nav li").on("click", function (evnt) {
     evnt.stopPropagation();
     $("#sub-nav li").removeClass("blue-light-bg blue-text");
     $(this).toggleClass("blue-light-bg blue-text");
   });
-
   //* Display next or previous card when a chevron is clicked on
   $(document).on("click", ".prev, .next", function (evnt) {
     evnt.stopPropagation();
     const num = $(this).hasClass("next") ? 1 : -1;
     showSlides((slideIndex += num));
   });
-
   //* Display selected card when a number is clicked on
   $(document).on("click", ".dot", function (evnt) {
     evnt.stopPropagation();
     const selectedCardIndex = Number($(this).text());
     showSlides((slideIndex = selectedCardIndex));
   });
-
   //* Select Agency in dropdown list
-  $(document).on("change", "#AgencyID-view", function (evnt) {
+  $(document).on("change", "#agency-selector", function (evnt) {
     evnt.stopPropagation();
     const selectedId = $(this).val();
-    const selectedAgencyName = $("#AgencyID-view option:selected").text();
-    console.log("selectedId :>> ", selectedId);
-    console.log("selectedAgencyName :>> ", selectedAgencyName);
+    const selectedAgencyName = $("#agency-selector option:selected").text();
     SESSION_VARIABLE[0].AgencyID = selectedId;
     SESSION_VARIABLE[0].AgencyName = selectedAgencyName
       .replace("\n", "")
@@ -264,11 +249,8 @@ $(document).ready(() => {
       `Hello ${userFullName} (${SESSION_VARIABLE[0].AgencyName})`
     );
     $("#modalBloc").modal("toggle");
-    const agencySelection = createAgencySelect(GetAgencyIndex.slice(0));
-    $("#edit-form").empty().append(agencySelection);
-    console.table(SESSION_VARIABLE[0]);
+    SESSION_VARIABLE[0].PrevAgency = "True";
   });
-
   //* Change agency => new agency selection
   $(document).on("click", "#select-agency", function (evnt) {
     evnt.stopPropagation();

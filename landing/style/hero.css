@@ -13,7 +13,7 @@
 /* ================================== */
 
 .top-band {
-  max-height: 15vh;
+  max-height: fit-content;
   padding-right: 0px;
 }
 
@@ -67,6 +67,10 @@
   color: #333;
   text-align: inherit;
   margin-top: -0.6%;
+}
+
+.row {
+  margin-right: 0px;
 }
 
 /* Side Nav bar */
