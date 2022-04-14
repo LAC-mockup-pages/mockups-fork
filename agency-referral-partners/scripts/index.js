@@ -2,7 +2,12 @@
 
 // Isolate work objects and arrays from data source.
 const dataPartners = partnersData.slice(0);
-const countyList = countyData.slice(0);
+const countyList = countyData.slice(0).map((record) => {
+  let { FIPS, CountyDesc } = record;
+
+  CountyDesc = `${CountyDesc.slice(6)} ${CountyDesc.slice(0, 6)}`;
+  return { FIPS, CountyDesc };
+});
 const stateList = DDL_STATES.slice(0);
 
 const rowLabels = [
