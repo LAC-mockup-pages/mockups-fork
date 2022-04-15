@@ -240,6 +240,17 @@ $(document).ready(() => {
     evnt.stopPropagation();
     location.reload();
   });
+  //* Turns date input fields to date type
+  $(document).on("focusin", "#FundStart, #FundEnd", function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    $(this).attr("type", "date");
+  });
+  $(document).on("blur", "#FundStart, #FundEnd", function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    if (!$(this).val()) $(this).attr("type", "text");
+  });
 
   //* Select funding source
   $(document).on("click", ".table tbody tr", function (evnt) {
