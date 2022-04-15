@@ -99,8 +99,12 @@ const createViewBloc = () => {
   const tableHeader = createTableHeader(rowLabels[0]);
 
   // Sorting list of records by descending ID
-  const list = dataSource.sort(
-    (record1, record2) => record1.FacilityName - record2.FacilityName
+  const list = dataSource.sort((record1, record2) =>
+    record1.FacilityName < record2.FacilityName
+      ? -1
+      : record1.FacilityName > record2.FacilityName
+      ? 1
+      : 0
   );
   const tableBody = createTableBody(list, rowLabels[0]);
   const viewBloc = tableHeader + tableBody;
