@@ -164,8 +164,15 @@ $(document).ready(() => {
   $(".user-info").append(welcomeLine);
 
   //* Update card content with custom values and links.
-  //TODO add requested parameters to GetAgencyCArdValues when shared by GJ.
-  addCustomContent(GetAgencyCardValues);
+  const cardList = GetAgencyCardValues.map((record) => {
+    const { CardID, CardValue, CardValue2, CardReport, CardReport2 } = record;
+    return {
+      ID: CardID,
+      values: [CardValue, CardValue2],
+      report: [CardReport, CardReport2]
+    };
+  });
+  addCustomContent(cardList);
   //* Display the first card.
   showSlides(slideIndex);
   //* Open Agency selection modal depending on the user role and

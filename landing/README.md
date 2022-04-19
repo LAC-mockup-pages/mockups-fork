@@ -45,7 +45,7 @@ NB: Date is last modification date.
 
 ### TO DO
 
-- Add dynamic card content
+- ~~Add dynamic card content~~
 
 - Modify box limits right side
 

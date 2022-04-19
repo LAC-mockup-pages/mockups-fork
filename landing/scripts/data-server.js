@@ -22,39 +22,39 @@ const GetAgencyIndex = [
   }
 ];
 
-const GetAgencyCardValues = [
-  { ID: "card0", values: ["20"], report: ["../404-page/index-test.html"] },
-  { ID: "card1", values: ["125"], report: [""] },
-  { ID: "card2", values: ["120"], report: ["../404-page/index-test.html"] },
-  { ID: "card3", values: ["24"], report: ["../404-page/index-test.html"] },
-  {
-    ID: "card4",
-    values: ["100", "101"],
-    report: ["../404-page/index-test.html", "../404-page/index-test.html"]
-  },
-  {
-    ID: "card5",
-    values: ["121", "16"],
-    report: ["../404-page/index-test.html", "../404-page/index-test.html"]
-  },
-  {
-    ID: "card6",
-    values: ["21%", "25%"],
-    report: ["../404-page/index-test.html"]
-  },
-  {
-    ID: "card7",
-    values: ["15%", "14%"],
-    report: ["../404-page/index-test.html"]
-  },
-  {
-    ID: "card8",
-    values: ["1240", "45"],
-    report: ["../404-page/index-test.html"]
-  }
-];
+// const GetAgencyCardValues = [
+//   { ID: "card0", values: ["20"], report: ["../404-page/index-test.html"] },
+//   { ID: "card1", values: ["125"], report: [""] },
+//   { ID: "card2", values: ["120"], report: ["../404-page/index-test.html"] },
+//   { ID: "card3", values: ["24"], report: ["../404-page/index-test.html"] },
+//   {
+//     ID: "card4",
+//     values: ["100", "101"],
+//     report: ["../404-page/index-test.html", "../404-page/index-test.html"]
+//   },
+//   {
+//     ID: "card5",
+//     values: ["121", "16"],
+//     report: ["../404-page/index-test.html", "../404-page/index-test.html"]
+//   },
+//   {
+//     ID: "card6",
+//     values: ["21%", "25%"],
+//     report: ["../404-page/index-test.html"]
+//   },
+//   {
+//     ID: "card7",
+//     values: ["15%", "14%"],
+//     report: ["../404-page/index-test.html"]
+//   },
+//   {
+//     ID: "card8",
+//     values: ["1240", "45"],
+//     report: ["../404-page/index-test.html"]
+//   }
+// ];
 
-const GetAgencyCardValues2 = [
+const GetAgencyCardValues = [
   {
     AgencyID: "SESD",
     CardID: "card0",
