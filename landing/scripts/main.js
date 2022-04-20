@@ -165,7 +165,11 @@ $(document).ready(() => {
 
   //* Update card content with custom values and links.
   const cardList = GetAgencyCardValues.map((record) => {
-    const { CardID, CardValue, CardValue2, CardReport, CardReport2 } = record;
+    let { CardID, CardValue, CardValue2, CardReport, CardReport2 } = record;
+    CardValue = CardValue === "NULL" ? "" : CardValue;
+    CardValue2 = CardValue2 === "NULL" ? "" : CardValue2;
+    CardReport = CardReport === "NULL" ? "" : CardReport;
+    CardReport2 = CardReport2 === "NULL" ? "" : CardReport2;
     return {
       ID: CardID,
       values: [CardValue, CardValue2],
