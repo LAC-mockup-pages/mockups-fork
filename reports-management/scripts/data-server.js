@@ -103,15 +103,15 @@ const GetSpecialProgramSource = [
 //   { key: "H", value: "Empl - Received Term. Notice" },
 //   { key: "I", value: "Empl - Military Sep. Pending" }
 // ];
+// const GetReportCategory = [
+//   { key: "181", value: "TASC Reports" },
+//   { key: "242", value: "Case Manager Reports" },
+//   { key: "46", value: "Turnaround Reports" },
+//   { key: "55", value: "Instructional Offering Roster Reports" },
+//   { key: "58", value: "Data Management Reports" },
+//   { key: "79", value: "Staff Reports" }
+// ];
 const GetReportCategory = [
-  { key: "181", value: "TASC Reports" },
-  { key: "242", value: "Case Manager Reports" },
-  { key: "46", value: "Turnaround Reports" },
-  { key: "55", value: "Instructional Offering Roster Reports" },
-  { key: "58", value: "Data Management Reports" },
-  { key: "79", value: "Staff Reports" }
-];
-const GetReportCategory2 = [
   { key: "182", value: "Assessment" },
   { key: "242", value: "Case Management" },
   { key: "133", value: "Contact hours" },

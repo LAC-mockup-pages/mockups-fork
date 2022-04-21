@@ -100,7 +100,7 @@ $(document).ready(() => {
     evnt.preventDefault();
     // Updating report titles according selected group.
     const titleList = reports
-      .filter((record) => record.CategoryID === $(this).val())
+      .filter((record) => record.CategoryID.includes($(this).val()))
       .map((record) => {
         const { ID, ReportName } = record;
         return { key: ID, value: ReportName };
