@@ -312,16 +312,20 @@
           ></select>
         </div>
         <!-- Start optional section -->
-        <section class="agency-selector">
+        <section class="agency hidden">
           <div class="form-group input-field marg3">
-            <label for="agency-select">Select an agency: </label>
-            <select class="modal-select" name="agency-select" id="agencySelect">
+            <label for="agency-selector">Select an agency: </label>
+            <select
+              class="modal-select"
+              name="agencySelector"
+              id="agency-selector"
+            >
               <option value="all">Select all</option>
             </select>
           </div>
         </section>
 
-        <section class="category">
+        <section class="category hidden">
           <div class="form-group input-field marg3">
             <label for="reportCategory">Report category: </label>
             <select
@@ -334,7 +338,7 @@
           </div>
         </section>
 
-        <section class="criteria">
+        <section class="criteria hidden">
           <div class="form-group input-field marg3">
             <label for="reportCriteria">Report criteria: </label>
             <select

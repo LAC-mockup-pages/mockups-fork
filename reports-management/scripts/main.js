@@ -33,6 +33,20 @@ export const createOptionList = (dataObj, defaultValue) => {
   });
   return optionList.join("");
 };
+const selectionHandler = (titleID, groupID) => {
+  if (["182"].includes(groupID)) {
+    switch (titleID) {
+      case "47":
+      case "86":
+        $(".category, .criteria").toggleClass("hidden");
+        break;
+      case "236":
+        $(".agency").toggleClass("hidden");
+      default:
+        break;
+    }
+  }
+};
 //*=================================================
 //* jQuery section
 //*=================================================
@@ -109,5 +123,21 @@ $(document).ready(() => {
     $("#title-selector").empty().append(optionTitles);
   });
 
+  //* Displaying optional selectors according to selected group
+  //* and selected report title
+
+  $("#title-selector").on(
+    {
+      blur: function () {
+        selectionHandler($(this).val(), $("#group-selector").val());
+      }
+    },
+    {
+      change: function () {
+        $(".agency, .category, .criteria").addClass("hidden");
+        selectionHandler($(this).val(), $("#group-selector").val());
+      }
+    }
+  );
   //* =====================================
 });
