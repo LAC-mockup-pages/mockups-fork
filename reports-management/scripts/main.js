@@ -95,10 +95,10 @@ $(document).ready(() => {
   //* =====================================
   //* Business rules
   //* =====================================
+  //* Modifying the title selector list according to selected group
   $("#group-selector").change(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    // Updating report titles according to selected group.
     const titleList = reports
       .filter((record) => record.CategoryID.includes($(this).val()))
       .map((record) => {
