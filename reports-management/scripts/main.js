@@ -116,15 +116,19 @@ $(document).ready(() => {
   //* Business rules
   //* =====================================
   //* Modifying the title selector list according to selected group
-  $("#group-selector").change(function (evnt) {
+  $("#title-selector").focusin(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
+
     const titleList = reports
-      .filter((record) => record.CategoryID.includes($(this).val()))
+      .filter((record) =>
+        record.CategoryID.includes($("#group-selector").val())
+      )
       .map((record) => {
         const { ID, ReportName } = record;
         return { key: ID, value: ReportName };
       });
+
     const optionTitles = createOptionList(titleList);
     $("#title-selector").empty().append(optionTitles);
   });
@@ -134,14 +138,9 @@ $(document).ready(() => {
 
   $("#title-selector").on({
     change: function (evnt) {
-      // evnt.stopPropagation();
-      // evnt.preventDefault();
-      // console.log("Step 1 hit");
       $("#optional-selectors section").each(function (indx) {
-        // console.log($(this).attr("class"));
         if (!$(this).hasClass("hidden")) $(this).addClass("hidden");
       });
-      // $(".agency, .category, .criteria").addClass("hidden");
       selectionHandler($(this).val(), $("#group-selector").val());
     },
     blur: function () {
@@ -154,7 +153,7 @@ $(document).ready(() => {
   $("#generate-btn").click((evnt) => {
     evnt.stopPropagation();
     evnt.preventDefault();
-
+    // Temporary - Dev only
     console.log("Report generated now!");
   });
 });

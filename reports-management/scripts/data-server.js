@@ -853,7 +853,7 @@ const GetReport = [
   },
   {
     ID: "226",
-    ReportName: "HSE referral",
+    ReportName: "HSE candidate readiness",
     CategoryID: "182",
     CategoryDesc: "Assessment",
     FileName: "DMR/HSEReadiness.aspx",
