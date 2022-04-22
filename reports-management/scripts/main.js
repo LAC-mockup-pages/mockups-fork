@@ -39,6 +39,12 @@ const selectionHandler = (titleID, groupID) => {
       case "47":
       case "86":
         $(".category, .criteria").toggleClass("hidden");
+        $("#optional-selectors section").each(function (indx) {
+          if (!$(this).hasClass("hidden")) {
+            $("select", this).first().focus();
+            return;
+          }
+        });
         break;
       case "236":
         $(".agency").toggleClass("hidden");
@@ -126,18 +132,29 @@ $(document).ready(() => {
   //* Displaying optional selectors according to selected group
   //* and selected report title
 
-  $("#title-selector").on(
-    {
-      blur: function () {
-        selectionHandler($(this).val(), $("#group-selector").val());
-      }
+  $("#title-selector").on({
+    change: function (evnt) {
+      // evnt.stopPropagation();
+      // evnt.preventDefault();
+      // console.log("Step 1 hit");
+      $("#optional-selectors section").each(function (indx) {
+        // console.log($(this).attr("class"));
+        if (!$(this).hasClass("hidden")) $(this).addClass("hidden");
+      });
+      // $(".agency, .category, .criteria").addClass("hidden");
+      selectionHandler($(this).val(), $("#group-selector").val());
     },
-    {
-      change: function () {
-        $(".agency, .category, .criteria").addClass("hidden");
-        selectionHandler($(this).val(), $("#group-selector").val());
-      }
+    blur: function () {
+      selectionHandler($(this).val(), $("#group-selector").val());
     }
-  );
+  });
   //* =====================================
+
+  //* Generate report button event
+  $("#generate-btn").click((evnt) => {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+
+    console.log("Report generated now!");
+  });
 });
