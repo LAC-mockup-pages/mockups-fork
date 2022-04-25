@@ -38,16 +38,16 @@ const selectionHandler = (titleID, groupID) => {
     switch (titleID) {
       case "47":
       case "86":
-        $(".category, .criteria").toggleClass("hidden");
-        $("#optional-selectors section").each(function (indx) {
-          if (!$(this).hasClass("hidden")) {
-            $("select", this).first().focus();
-            return;
-          }
-        });
+        $(".category, .criteria").removeClass("hidden");
+        // $("#optional-selectors section").each(function (indx) {
+        //   if (!$(this).hasClass("hidden")) {
+        //     $("select", this).first().focus();
+        //     return;
+        //   }
+        // });
         break;
       case "236":
-        $(".agency").toggleClass("hidden");
+        $(".agency").removeClass("hidden");
       default:
         break;
     }
@@ -142,9 +142,11 @@ $(document).ready(() => {
         if (!$(this).hasClass("hidden")) $(this).addClass("hidden");
       });
       selectionHandler($(this).val(), $("#group-selector").val());
+      $("#optional-selectors section:not('.hidden')").focus();
     },
     blur: function () {
       selectionHandler($(this).val(), $("#group-selector").val());
+      $("#optional-selectors section:not('.hidden')").focus();
     }
   });
   //* =====================================
