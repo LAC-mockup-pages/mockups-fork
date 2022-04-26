@@ -39,12 +39,6 @@ const selectionHandler = (titleID, groupID) => {
       case "47":
       case "86":
         $(".category, .criteria").removeClass("hidden");
-        // $("#optional-selectors section").each(function (indx) {
-        //   if (!$(this).hasClass("hidden")) {
-        //     $("select", this).first().focus();
-        //     return;
-        //   }
-        // });
         break;
       case "236":
         $(".agency").removeClass("hidden");
