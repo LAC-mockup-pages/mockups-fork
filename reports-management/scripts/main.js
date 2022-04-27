@@ -71,10 +71,8 @@ const criteriaHandler = (selectedCategory) => {
       selectedList = [{ key: "ALL", value: "All" }, ...classes];
       break;
   }
-  $("#report-criteria")
-    .empty()
-    .append(createOptionList(selectedList))
-    .removeClass("hidden");
+  $("#report-criteria").empty().append(createOptionList(selectedList));
+  $(".criteria").removeClass("hidden");
 };
 //*=================================================
 //* jQuery section
@@ -164,11 +162,11 @@ $(document).ready(() => {
         if (!$(this).hasClass("hidden")) $(this).addClass("hidden");
       });
       categoryHandler($(this).val(), $("#group-selector").val());
-      $("#optional-selectors section:not('.hidden')").focus();
+      $("#report-category").focus();
     },
     blur: function () {
       categoryHandler($(this).val(), $("#group-selector").val());
-      $("#optional-selectors section:not('.hidden')").focus();
+      $("#report-category").focus();
     }
   });
 
@@ -176,10 +174,15 @@ $(document).ready(() => {
   //* category.
   $("#report-category").on({
     change: function (evnt) {
+      console.log("Change event triggered");
       criteriaHandler($(this).val());
+      $("#report-criteria").focus();
     },
     blur: function (evnt) {
+      console.log("Blur event triggered");
+
       criteriaHandler($(this).val());
+      $("#report-criteria").focus();
     }
   });
 
