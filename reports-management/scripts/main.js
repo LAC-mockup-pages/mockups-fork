@@ -174,13 +174,10 @@ $(document).ready(() => {
   //* category.
   $("#report-category").on({
     change: function (evnt) {
-      console.log("Change event triggered");
       criteriaHandler($(this).val());
       $("#report-criteria").focus();
     },
     blur: function (evnt) {
-      console.log("Blur event triggered");
-
       criteriaHandler($(this).val());
       $("#report-criteria").focus();
     }
