@@ -16,6 +16,9 @@ const createSummaryList = (list, keyParam, valueParam) => {
 //! =============================================================
 const reportGroups = GetReportCategory.slice(0);
 const reports = GetReport.slice(0);
+const prepByList = GetPrepareBy.slice(0).filter((record) => record.key !== "0");
+const classes = GetInstructionSource.slice(0);
+const instructors = GetInstructor.slice(0);
 
 //! =============================================================
 export const createOptionList = (dataObj, defaultValue) => {
@@ -33,19 +36,45 @@ export const createOptionList = (dataObj, defaultValue) => {
   });
   return optionList.join("");
 };
-const selectionHandler = (titleID, groupID) => {
+
+const categoryHandler = (titleID, groupID) => {
+  let selectedList = [];
   if (["182"].includes(groupID)) {
     switch (titleID) {
       case "47":
       case "86":
-        $(".category, .criteria").removeClass("hidden");
+        $(".category").removeClass("hidden");
+        selectedList = prepByList.filter((record) =>
+          ["1", "5"].includes(record.key)
+        );
         break;
       case "236":
-        $(".agency").removeClass("hidden");
+        $(".category").removeClass("hidden");
+        selectedList = prepByList;
+        break;
+
       default:
         break;
     }
+    $("#report-category").empty().append(createOptionList(selectedList));
   }
+};
+
+const criteriaHandler = (selectedCategory) => {
+  let selectedList = [];
+  switch (selectedCategory) {
+    case "5":
+      selectedList = [{ key: "ALL", value: "All" }, ...instructors];
+      break;
+
+    default:
+      selectedList = [{ key: "ALL", value: "All" }, ...classes];
+      break;
+  }
+  $("#report-criteria")
+    .empty()
+    .append(createOptionList(selectedList))
+    .removeClass("hidden");
 };
 //*=================================================
 //* jQuery section
@@ -127,22 +156,33 @@ $(document).ready(() => {
     $("#title-selector").empty().append(optionTitles);
   });
 
-  //* Displaying optional selectors according to selected group
-  //* and selected report title
-
+  //* Displaying optional category selectors according to selected group
+  //* and selected report title.
   $("#title-selector").on({
     change: function (evnt) {
       $("#optional-selectors section").each(function (indx) {
         if (!$(this).hasClass("hidden")) $(this).addClass("hidden");
       });
-      selectionHandler($(this).val(), $("#group-selector").val());
+      categoryHandler($(this).val(), $("#group-selector").val());
       $("#optional-selectors section:not('.hidden')").focus();
     },
     blur: function () {
-      selectionHandler($(this).val(), $("#group-selector").val());
+      categoryHandler($(this).val(), $("#group-selector").val());
       $("#optional-selectors section:not('.hidden')").focus();
     }
   });
+
+  //* Displaying the criteria selector depending on the selected
+  //* category.
+  $("#report-category").on({
+    change: function (evnt) {
+      criteriaHandler($(this).val());
+    },
+    blur: function (evnt) {
+      criteriaHandler($(this).val());
+    }
+  });
+
   //* =====================================
 
   //* Generate report button event

@@ -120,22 +120,22 @@ const GetReportCategory = [
   { key: "55", value: "Rosters" },
   { key: "79", value: "Staff development" }
 ];
-// const GetInstructionSource = [
-//   { ID: "232270", InstructionDescription: "BE4CASTS_21  Porter, Samantha" },
-//   { ID: "202360", InstructionDescription: "BE6C1  Alisova, Muriana" },
-//   {
-//     ID: "232271",
-//     InstructionDescription: "BE6CIntake_Summer2021  Porter, Samantha"
-//   },
-//   {
-//     ID: "236450",
-//     InstructionDescription: "ES3CEnglish101-Uighur    Porter, Samantha"
-//   },
-//   {
-//     ID: "236431",
-//     InstructionDescription: "ES3CEnglish101-Urdu    Porter, Samantha"
-//   }
-// ];
+const GetInstructionSource = [
+  { ID: "232270", InstructionDescription: "BE4CASTS_21  Porter, Samantha" },
+  { ID: "202360", InstructionDescription: "BE6C1  Alisova, Muriana" },
+  {
+    ID: "232271",
+    InstructionDescription: "BE6CIntake_Summer2021  Porter, Samantha"
+  },
+  {
+    ID: "236450",
+    InstructionDescription: "ES3CEnglish101-Uighur    Porter, Samantha"
+  },
+  {
+    ID: "236431",
+    InstructionDescription: "ES3CEnglish101-Urdu    Porter, Samantha"
+  }
+];
 // const GetSite = [
 //   { ID: "2976", SiteName: "Practice Agency Main Office", SiteID: "MainOffice" },
 //   { ID: "5665", SiteName: "Syracuse Training Site", SiteID: "SYL" },
@@ -158,32 +158,32 @@ const GetReportCategory = [
 //   { ID: "5316", SiteName: "Orange Ulster BOCES", SiteID: "OULB" },
 //   { ID: "5317", SiteName: "WSWH BOCES", SiteID: "WSWH" }
 // ];
-// const GetInstructor = [
-//   {
-//     ID: "24386",
-//     InstructorName: "Alisova, Muriana",
-//     PersonnelID: "AlisovaMurianaPRA9",
-//     Agency: "PRA"
-//   },
-//   {
-//     ID: "28083",
-//     InstructorName: "Porter, Jane",
-//     PersonnelID: "PorterJanePRA9",
-//     Agency: "PRA"
-//   },
-//   {
-//     ID: "2256",
-//     InstructorName: "Porter, Samantha",
-//     PersonnelID: "PorterSamanthaPRA9",
-//     Agency: "PRA"
-//   },
-//   {
-//     ID: "2257",
-//     InstructorName: "Alfiery, Shelley",
-//     PersonnelID: "AlfieriShelleyPRA1",
-//     Agency: "PRA"
-//   }
-// ];
+const GetInstructor = [
+  {
+    ID: "24386",
+    InstructorName: "Alisova, Muriana",
+    PersonnelID: "AlisovaMurianaPRA9",
+    Agency: "PRA"
+  },
+  {
+    ID: "28083",
+    InstructorName: "Porter, Jane",
+    PersonnelID: "PorterJanePRA9",
+    Agency: "PRA"
+  },
+  {
+    ID: "2256",
+    InstructorName: "Porter, Samantha",
+    PersonnelID: "PorterSamanthaPRA9",
+    Agency: "PRA"
+  },
+  {
+    ID: "2257",
+    InstructorName: "Alfiery, Shelley",
+    PersonnelID: "AlfieriShelleyPRA1",
+    Agency: "PRA"
+  }
+];
 //For Prepare Report by Element (Case Management)
 
 const GetExport = [
