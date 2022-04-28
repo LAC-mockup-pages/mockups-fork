@@ -19,7 +19,11 @@ const reports = GetReport.slice(0);
 const prepByList = GetPrepareBy.slice(0).filter((record) => record.key !== "0");
 const classes = GetInstructionSource.slice(0);
 const instructors = GetInstructor.slice(0);
-
+const funding = createSummaryList(
+  GetFundingSource.slice(0),
+  "FSID",
+  "FundAbbrev"
+);
 //! =============================================================
 export const createOptionList = (dataObj, defaultValue) => {
   const optionList = dataObj.map((record) => {
@@ -65,16 +69,17 @@ const criteriaHandler = (selectedCategory) => {
   const all = [{ key: "ALL", value: "All" }];
   let selectedList = [];
   switch (selectedCategory) {
+    case "2":
+      selectedList = funding;
+      break;
     case "5":
       selectedList = instructors;
       break;
     default:
-      selectedList = classes;
+      selectedList = [all, ...classes];
       break;
   }
-  $("#report-criteria")
-    .empty()
-    .append(createOptionList([all, ...selectedList]));
+  $("#report-criteria").empty().append(createOptionList(selectedList));
   $(".criteria").removeClass("hidden");
 };
 //*=================================================
