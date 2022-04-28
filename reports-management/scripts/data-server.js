@@ -117,7 +117,7 @@ const GetReportCategory = [
   { key: "133", value: "Contact hours" },
   { key: "85", value: "Exiting and outcome" },
   { key: "46", value: "Program management" },
-  { key: "55", value: "Rosters" },
+  { key: "57", value: "Rosters" },
   { key: "79", value: "Staff development" }
 ];
 const GetInstructionSource = [
@@ -434,7 +434,7 @@ const GetReport = [
   {
     ID: "57",
     ReportName: "Sign In Sheet",
-    CategoryID: "55",
+    CategoryID: "57",
     CategoryDesc: "Instructional Offering Roster Reports",
     FileName: "DMR/Instructional Offering Reports/IOR/signInSheet.aspx",
     Procedure_Name: "",
@@ -447,7 +447,7 @@ const GetReport = [
   {
     ID: "55",
     ReportName: "Instructional Offering Roster",
-    CategoryID: "55",
+    CategoryID: "57",
     CategoryDesc: "Instructional Offering Roster Reports",
     FileName: "DMR/Instructional Offering Reports/IOR/roster.aspx",
     Procedure_Name: "Roster_dwnld",
@@ -460,7 +460,7 @@ const GetReport = [
   {
     ID: "56",
     ReportName: "Daily Attendance Class Roster",
-    CategoryID: "55",
+    CategoryID: "57",
     CategoryDesc: "Instructional Offering Roster Reports",
     FileName: "DMR/Instructional Offering Reports/IOR/DailyAttendance.aspx",
     Procedure_Name: "",
@@ -473,7 +473,7 @@ const GetReport = [
   {
     ID: "186",
     ReportName: "Daily Attendance Class Roster - Week",
-    CategoryID: "55",
+    CategoryID: "57",
     CategoryDesc: "Instructional Offering Roster Reports",
     FileName: "DMR/Instructional Offering Reports/IOR/WeeklyDayAttendance.aspx",
     Procedure_Name: "",
@@ -486,7 +486,7 @@ const GetReport = [
   {
     ID: "87",
     ReportName: "Monthly Combined Class Roster",
-    CategoryID: "55",
+    CategoryID: "57",
     CategoryDesc: "Instructional Offering Roster Reports",
     FileName: "DMR/Instructional Offering Reports/IOR/MonthlyClassRoster.aspx",
     Procedure_Name: "",
@@ -499,7 +499,7 @@ const GetReport = [
   {
     ID: "187",
     ReportName: "Weekly Attendance Class Roster",
-    CategoryID: "55",
+    CategoryID: "57",
     CategoryDesc: "Instructional Offering Roster Reports",
     FileName: "DMR/Instructional Offering Reports/IOR/WeeklyAttendance.aspx",
     Procedure_Name: "",

@@ -52,7 +52,6 @@ const categoryHandler = (titleID, groupID) => {
         $(".category").removeClass("hidden");
         selectedList = prepByList;
         break;
-
       default:
         break;
     }
@@ -61,17 +60,19 @@ const categoryHandler = (titleID, groupID) => {
 };
 
 const criteriaHandler = (selectedCategory) => {
+  const all = [{ key: "ALL", value: "All" }];
   let selectedList = [];
   switch (selectedCategory) {
     case "5":
-      selectedList = [{ key: "ALL", value: "All" }, ...instructors];
+      selectedList = instructors;
       break;
-
     default:
-      selectedList = [{ key: "ALL", value: "All" }, ...classes];
+      selectedList = classes;
       break;
   }
-  $("#report-criteria").empty().append(createOptionList(selectedList));
+  $("#report-criteria")
+    .empty()
+    .append(createOptionList([all, ...selectedList]));
   $(".criteria").removeClass("hidden");
 };
 //*=================================================
