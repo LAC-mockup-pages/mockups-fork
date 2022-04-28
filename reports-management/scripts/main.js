@@ -39,21 +39,23 @@ export const createOptionList = (dataObj, defaultValue) => {
 
 const categoryHandler = (titleID, groupID) => {
   let selectedList = [];
-  if (["182"].includes(groupID)) {
-    switch (titleID) {
-      case "47":
-      case "86":
-        $(".category").removeClass("hidden");
-        selectedList = prepByList.filter((record) =>
-          ["1", "5"].includes(record.key)
-        );
-        break;
-      case "236":
-        $(".category").removeClass("hidden");
-        selectedList = prepByList;
-        break;
-      default:
-        break;
+  if (["182", "57"].includes(groupID)) {
+    // Category options: Instructional offering, Funding sources
+    if (["47", "86"].includes(titleID)) {
+      $(".category").removeClass("hidden");
+      selectedList = prepByList.filter((record) =>
+        ["1", "5"].includes(record.key)
+      );
+    }
+    // Category options: Instructional offering, Funding sources,
+    // Site, Ref partner, Teacher/Tutor
+    else if (["236"].includes(titleID)) {
+      $(".category").removeClass("hidden");
+      selectedList = prepByList;
+    }
+    // Report tile with no additional selectors
+    else {
+      return;
     }
     $("#report-category").empty().append(createOptionList(selectedList));
   }
@@ -165,7 +167,7 @@ $(document).ready(() => {
       categoryHandler($(this).val(), $("#group-selector").val());
       $("#report-category").focus();
     },
-    blur: function () {
+    blur: function (evnt) {
       categoryHandler($(this).val(), $("#group-selector").val());
       $("#report-category").focus();
     }
