@@ -43,9 +43,9 @@ export const createOptionList = (dataObj, defaultValue) => {
 
 const categoryHandler = (titleID, groupID) => {
   let selectedList = [];
-  if (["182", "57"].includes(groupID)) {
+  if (["182", "57", "46"].includes(groupID)) {
     // Category options: Instructional offering, Funding sources
-    if (["47", "86"].includes(titleID)) {
+    if (["47", "86", "46"].includes(titleID)) {
       $(".category").removeClass("hidden");
       selectedList = prepByList.filter((record) =>
         ["1", "2"].includes(record.key)
@@ -137,13 +137,13 @@ $(document).ready(() => {
   $("#group-selector").append(createOptionList(reportGroups));
   // Report titles
   const category = $("#group-selector").val();
-  const filteredListTitle = reports
+  const filteredTitleList = reports
     .filter((record) => record.CategoryID === category)
     .map((record) => {
       const { ID, ReportName } = record;
       return { key: ID, value: ReportName };
     });
-  const optionListTitles = createOptionList(filteredListTitle);
+  const optionListTitles = createOptionList(filteredTitleList);
   $("#title-selector").empty().append(optionListTitles);
 
   //* =====================================
