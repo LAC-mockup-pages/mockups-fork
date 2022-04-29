@@ -46,7 +46,7 @@
   color: rgb(246, 133, 133);
   font-size: 1.2em;
 }
-/* Selectors section */
+/* Selectors */
 /* =============================== */
 .selectors {
   min-height: 40vh;
@@ -63,6 +63,12 @@
 }
 select {
   background-color: inherit;
+}
+
+/* Optional selectors */
+/* =============================== */
+.date-range label:first-child {
+  width: 100%;
 }
 
 /* Temporary styling               */
