@@ -48,7 +48,7 @@ const categoryHandler = (titleID, groupID) => {
     if (["47", "86"].includes(titleID)) {
       $(".category").removeClass("hidden");
       selectedList = prepByList.filter((record) =>
-        ["1", "5"].includes(record.key)
+        ["1", "2"].includes(record.key)
       );
     }
     // Category options: Instructional offering, Funding sources,
@@ -56,6 +56,13 @@ const categoryHandler = (titleID, groupID) => {
     else if (["236"].includes(titleID)) {
       $(".category").removeClass("hidden");
       selectedList = prepByList;
+    }
+    // Category options: Instructional offering, Teacher/Tutor
+    else if (["57", "55", "56", "186", "87", "187"].includes(titleID)) {
+      $(".category").removeClass("hidden");
+      selectedList = prepByList.filter((record) =>
+        ["1", "5"].includes(record.key)
+      );
     }
     // Report tile with no additional selectors
     else {
