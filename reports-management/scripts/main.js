@@ -16,14 +16,11 @@ const createSummaryList = (list, keyParam, valueParam) => {
 //! =============================================================
 const reportGroups = GetReportCategory.slice(0);
 const reports = GetReport.slice(0);
-const prepByList = GetPrepareBy.slice(0).filter((record) => record.key !== "0");
+const prepByList = GetPrepareBy.filter((record) => record.key !== "0");
+const prepByListCM = GetPreparedByCM.filter((record) => record.key !== "0");
 const classes = GetInstructionSource.slice(0);
 const instructors = GetInstructor.slice(0);
-const funding = createSummaryList(
-  GetFundingSource.slice(0),
-  "FSID",
-  "FundAbbrev"
-);
+const funding = createSummaryList(GetFundingSource, "FSID", "FundAbbrev");
 //! =============================================================
 export const createOptionList = (dataObj, defaultValue) => {
   const optionList = dataObj.map((record) => {
@@ -46,7 +43,7 @@ const categoryHandler = (titleID, groupID) => {
   //! NOTE: Category IDs are pointing to the newly defined categories.
   // Categories: 182 = Assessment reports, 57 = Rosters, 46 = Program management
   //       85 = Exiting and outcome
-  if (["182", "57", "46", "85"].includes(groupID)) {
+  if (["182", "57", "46", "85", "242"].includes(groupID)) {
     // Category options: Instructional offering, Funding sources
     if (["47", "86", "46", "85", "207"].includes(titleID)) {
       $(".category").removeClass("hidden");
@@ -67,11 +64,18 @@ const categoryHandler = (titleID, groupID) => {
         ["1", "5"].includes(record.key)
       );
     }
+
     // Report tile with no additional selectors
     else {
       return;
     }
     $("#report-category").empty().append(createOptionList(selectedList));
+  }
+  // Categories: 242 = Case management reports
+  // Reports ID: 242, 243, 244, 245
+  else if (groupID === "242") {
+    // Category options: Students, Keywords, Date range
+    //TODO Add optional selectors and date range selectors
   }
 };
 
