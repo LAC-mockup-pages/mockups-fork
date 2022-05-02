@@ -43,9 +43,12 @@ export const createOptionList = (dataObj, defaultValue) => {
 
 const categoryHandler = (titleID, groupID) => {
   let selectedList = [];
-  if (["182", "57", "46"].includes(groupID)) {
+  //! NOTE: Category IDs are pointing to the newly defined categories.
+  // Categories: 182 = Assessment reports, 57 = Rosters, 46 = Program management
+  //       85 = Exiting and outcome
+  if (["182", "57", "46", "85"].includes(groupID)) {
     // Category options: Instructional offering, Funding sources
-    if (["47", "86", "46"].includes(titleID)) {
+    if (["47", "86", "46", "85", "207"].includes(titleID)) {
       $(".category").removeClass("hidden");
       selectedList = prepByList.filter((record) =>
         ["1", "2"].includes(record.key)
@@ -53,7 +56,7 @@ const categoryHandler = (titleID, groupID) => {
     }
     // Category options: Instructional offering, Funding sources,
     // Site, Ref partner, Teacher/Tutor
-    else if (["236"].includes(titleID)) {
+    else if (["236", "162", "138", "176", "163", "164"].includes(titleID)) {
       $(".category").removeClass("hidden");
       selectedList = prepByList;
     }
