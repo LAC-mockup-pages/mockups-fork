@@ -84,21 +84,30 @@ const categoryHandler = (titleID, groupID) => {
   }
 };
 
-const criteriaHandler = (selectedCategory) => {
+const criteriaHandler = (selectedCategory, selectedGroup) => {
   const all = [{ key: "ALL", value: "All" }];
-  let selectedList = [];
-  switch (selectedCategory) {
-    case "2":
-      selectedList = funding;
-      break;
-    case "5":
-      selectedList = instructors;
-      break;
-    default:
-      selectedList = [all, ...classes];
-      break;
+  let selectedCriteriaList = [];
+  // Categories: 242 Case management reports
+  // Reports ID: 242, 243, 244, 245
+  if (selectedGroup === "242") {
   }
-  $("#report-criteria").empty().append(createOptionList(selectedList));
+  // Categories: 182 Assessments, 57 Rosters, 46 Program management,
+  // 85 Exit and Outcomes
+  //TODO Add second optional selector when needed
+  else {
+    switch (selectedCategory) {
+      case "2":
+        selectedCriteriaList = funding;
+        break;
+      case "5":
+        selectedCriteriaList = instructors;
+        break;
+      default:
+        selectedCriteriaList = [all, ...classes];
+        break;
+    }
+  }
+  $("#report-criteria").empty().append(createOptionList(selectedCriteriaList));
   $(".criteria").removeClass("hidden");
 };
 //*=================================================
@@ -198,14 +207,14 @@ $(document).ready(() => {
   });
 
   //* Displaying the criteria selector depending on the selected
-  //* category.
+  //* category and group.
   $("#report-category").on({
     change: function (evnt) {
-      criteriaHandler($(this).val());
+      criteriaHandler($(this).val(), $("#group-selector").val());
       $("#report-criteria").focus();
     },
     blur: function (evnt) {
-      criteriaHandler($(this).val());
+      criteriaHandler($(this).val(), $("#group-selector").val());
       $("#report-criteria").focus();
     }
   });
