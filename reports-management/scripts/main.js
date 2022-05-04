@@ -17,7 +17,7 @@ const createSummaryList = (list, keyParam, valueParam) => {
 const reportGroups = GetReportCategory.slice(0);
 const reports = GetReport.slice(0);
 const prepByList = GetPrepareBy.filter((record) => record.key !== "0");
-const prepByListCM = GetPreparedByCM.slice(0);
+const prepByListCM = GetPrepareByCM.slice(0);
 const classes = GetInstructionSource.slice(0);
 const instructors = GetInstructor.slice(0);
 const funding = createSummaryList(GetFundingSource, "FSID", "FundAbbrev");
@@ -95,8 +95,9 @@ const criteriaHandler = (selectedCategory, selectedGroup) => {
     if (selectedCategory === "0") {
       return;
     } else if (selectedCategory === "3") {
+      $("#optional-selectors .criteria").addClass("hidden");
       $("#optional-selectors .date-range").removeClass("hidden");
-      $("#optional-selectors .date-range input").focus();
+      $("#optional-selectors .date-range input[name='fromDate']").focus();
       return;
     } else {
       criteriaList = selectedCategory === "1" ? keywords : referralPartners;
