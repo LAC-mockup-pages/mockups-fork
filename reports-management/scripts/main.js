@@ -101,9 +101,12 @@ const categoryHandler = (titleID, groupID) => {
     // Contact hours testing summary in group 133
     // Category options: Instructional offering, Funding sources,
     // Site, Ref partner, Teacher/Tutor
-    else if (titleID === "236") {
+    else if (["236", "140"].includes(titleID)) {
       $(".category").removeClass("hidden");
-      selectedList = prepByList;
+      selectedList =
+        titleID === "236"
+          ? prepByList
+          : prepByList.filter((record) => record.key === "1");
       $(".category").removeClass("hidden");
       $("#report-category").empty().append(createOptionList(selectedList));
     } else {
