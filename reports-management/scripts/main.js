@@ -21,6 +21,8 @@ const prepByListCM = GetPreparedByCM.slice(0);
 const classes = GetInstructionSource.slice(0);
 const instructors = GetInstructor.slice(0);
 const funding = createSummaryList(GetFundingSource, "FSID", "FundAbbrev");
+const keywords = GetCMPKeyword.slice(0);
+const referralPartners = GetReferralSite.slice(0);
 //! =============================================================
 export const createOptionList = (dataObj, defaultValue) => {
   const optionList = dataObj.map((record) => {
@@ -86,29 +88,39 @@ const categoryHandler = (titleID, groupID) => {
 
 const criteriaHandler = (selectedCategory, selectedGroup) => {
   const all = [{ key: "ALL", value: "All" }];
-  let selectedCriteriaList = [];
+  let criteriaList = [];
   // Categories: 242 Case management reports
   // Reports ID: 242, 243, 244, 245
   if (selectedGroup === "242") {
+    if (selectedCategory === "0") {
+      return;
+    } else if (selectedCategory === "3") {
+      $("#optional-selectors .date-range").removeClass("hidden");
+      $("#optional-selectors .date-range input").focus();
+      return;
+    } else {
+      criteriaList = selectedCategory === "1" ? keywords : referralPartners;
+      $("#report-criteria").empty().append(createOptionList(criteriaList));
+      $(".criteria").removeClass("hidden");
+    }
   }
   // Categories: 182 Assessments, 57 Rosters, 46 Program management,
   // 85 Exit and Outcomes
-  //TODO Add second optional selector when needed
   else {
     switch (selectedCategory) {
       case "2":
-        selectedCriteriaList = funding;
+        criteriaList = funding;
         break;
       case "5":
-        selectedCriteriaList = instructors;
+        criteriaList = instructors;
         break;
       default:
-        selectedCriteriaList = [all, ...classes];
+        criteriaList = [all, ...classes];
         break;
     }
+    $("#report-criteria").empty().append(createOptionList(criteriaList));
+    $(".criteria").removeClass("hidden");
   }
-  $("#report-criteria").empty().append(createOptionList(selectedCriteriaList));
-  $(".criteria").removeClass("hidden");
 };
 //*=================================================
 //* jQuery section
