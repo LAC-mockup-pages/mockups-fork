@@ -84,6 +84,32 @@ const categoryHandler = (titleID, groupID) => {
     $(".category").removeClass("hidden");
     $("#report-category").empty().append(createOptionList(selectedList));
   }
+  // Category: 133 = Contact hours reports
+  // Reports ID: 133, 185, 140, 169, 170, 236
+  else if (groupID === "133") {
+    // Displays month selector
+    if (["169", "185"].includes(titleID)) {
+      $("#optional-selectors .months").removeClass("hidden");
+      $("#report-months").focus();
+    }
+    // Displays month and week selectors
+    else if (titleID === "170") {
+      $("#optional-selectors .months").removeClass("hidden");
+      $("#optional-selectors .weeks").removeClass("hidden");
+      $("#report-months").focus();
+    }
+    // Contact hours testing summary in group 133
+    // Category options: Instructional offering, Funding sources,
+    // Site, Ref partner, Teacher/Tutor
+    else if (titleID === "236") {
+      $(".category").removeClass("hidden");
+      selectedList = prepByList;
+      $(".category").removeClass("hidden");
+      $("#report-category").empty().append(createOptionList(selectedList));
+    } else {
+      return;
+    }
+  }
 };
 
 const criteriaHandler = (selectedCategory, selectedGroup) => {
