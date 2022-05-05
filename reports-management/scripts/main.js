@@ -4,7 +4,13 @@
 import { createReportURI } from "./event-handlers/generate-event.js";
 import { categoryHandler } from "./event-handlers/category-handler.js";
 import { criteriaHandler } from "./event-handlers/criteria-handler.js";
-
+// Shorten a list of records to a list of obj with key/value properties
+// list = [{...},{...}], keyParam, valueParam = field names as string
+export const createSummaryList = (list, keyParam, valueParam) => {
+  return list.map((record) => {
+    return { key: record[keyParam], value: record[valueParam] };
+  });
+};
 //! =============================================================
 //! For Development only.
 //! Comment out for Production.
@@ -23,13 +29,6 @@ export const funding = createSummaryList(
 export const keywords = GetCMPKeyword.slice(0);
 export const referralPartners = GetReferralSite.slice(0);
 //! =============================================================
-// Shorten a list of records to a list of obj with key/value properties
-// list = [{...},{...}], keyParam, valueParam = field names as string
-export const createSummaryList = (list, keyParam, valueParam) => {
-  return list.map((record) => {
-    return { key: record[keyParam], value: record[valueParam] };
-  });
-};
 
 // Creates the <option></option> list to append to a <select></select>
 // from an object list with 2 props, and an optional selected value
@@ -86,13 +85,15 @@ $(document).ready(() => {
   } else {
     previousFY = numFiscalYear - 1;
   }
+  // With most recent year displayed first as default
   const optionListFY = createOptionList(
     Array.from({ length: 2 }, (_, indx) => {
       const key = previousFY + indx;
       const value = key;
       return { key, value };
-    }),
-    previousFY
+    }).sort((record1, record2) =>
+      record1.key > record2.key ? -1 : record1.key < record2.key ? 1 : 0
+    )
   );
   $("#fiscal-year").append(optionListFY);
   // Report groups
