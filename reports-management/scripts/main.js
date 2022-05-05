@@ -1,12 +1,28 @@
 //*=================================================
 //* Actions and Logic for local page
 //*=================================================
+import { createReportURI } from "./event-handlers/generate-event.js";
+import { categoryHandler } from "./event-handlers/category-handler.js";
+import { criteriaHandler } from "./event-handlers/criteria-handler.js";
+
 //! =============================================================
 //! For Development only.
 //! Comment out for Production.
-
-import { createReportURI } from "./event-handlers/generate-event.js";
-import { categoryHandler } from "./event-handlers/category-handler.js";
+//! =============================================================
+const reportGroups = GetReportCategory.slice(0);
+const reports = GetReport.slice(0);
+export const prepByList = GetPrepareBy.filter((record) => record.key !== "0");
+export const prepByListCM = GetPrepareByCM.slice(0);
+export const classes = GetInstructionSource.slice(0);
+export const instructors = GetInstructor.slice(0);
+export const funding = createSummaryList(
+  GetFundingSource,
+  "FSID",
+  "FundAbbrev"
+);
+export const keywords = GetCMPKeyword.slice(0);
+export const referralPartners = GetReferralSite.slice(0);
+//! =============================================================
 // Shorten a list of records to a list of obj with key/value properties
 // list = [{...},{...}], keyParam, valueParam = field names as string
 export const createSummaryList = (list, keyParam, valueParam) => {
@@ -14,17 +30,11 @@ export const createSummaryList = (list, keyParam, valueParam) => {
     return { key: record[keyParam], value: record[valueParam] };
   });
 };
-//! =============================================================
-const reportGroups = GetReportCategory.slice(0);
-const reports = GetReport.slice(0);
-export const prepByList = GetPrepareBy.filter((record) => record.key !== "0");
-export const prepByListCM = GetPrepareByCM.slice(0);
-const classes = GetInstructionSource.slice(0);
-const instructors = GetInstructor.slice(0);
-const funding = createSummaryList(GetFundingSource, "FSID", "FundAbbrev");
-const keywords = GetCMPKeyword.slice(0);
-const referralPartners = GetReferralSite.slice(0);
-//! =============================================================
+
+// Creates the <option></option> list to append to a <select></select>
+// from an object list with 2 props, and an optional selected value
+// Input: [{key: ..., value: ...},...], "default value"
+// Output: "<option value:"[INPUT_OBJECT_KEY]">[INPUT_OBJECT_VALUE]</option>..."
 export const createOptionList = (dataObj, defaultValue) => {
   const optionList = dataObj.map((record) => {
     const [key, value] = Object.keys(record);
@@ -41,43 +51,6 @@ export const createOptionList = (dataObj, defaultValue) => {
   return optionList.join("");
 };
 
-const criteriaHandler = (selectedCategory, selectedGroup) => {
-  const all = [{ key: "ALL", value: "All" }];
-  let criteriaList = [];
-  // Categories: 242 Case management reports
-  // Reports ID: 242, 243, 244, 245
-  if (selectedGroup === "242") {
-    if (selectedCategory === "0") {
-      return;
-    } else if (selectedCategory === "3") {
-      $("#optional-selectors .criteria").addClass("hidden");
-      $("#optional-selectors .date-range").removeClass("hidden");
-      $("#optional-selectors .date-range input[name='fromDate']").focus();
-      return;
-    } else {
-      criteriaList = selectedCategory === "1" ? keywords : referralPartners;
-      $("#report-criteria").empty().append(createOptionList(criteriaList));
-      $(".criteria").removeClass("hidden");
-    }
-  }
-  // Categories: 182 Assessments, 57 Rosters, 46 Program management,
-  // 85 Exit and Outcomes
-  else {
-    switch (selectedCategory) {
-      case "2":
-        criteriaList = funding;
-        break;
-      case "5":
-        criteriaList = instructors;
-        break;
-      default:
-        criteriaList = [all, ...classes];
-        break;
-    }
-    $("#report-criteria").empty().append(createOptionList(criteriaList));
-    $(".criteria").removeClass("hidden");
-  }
-};
 //*=================================================
 //* jQuery section
 //*=================================================
