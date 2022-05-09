@@ -137,3 +137,247 @@ const GetAgencyCardValues = [
     CardReport2: "NULL"
   }
 ];
+
+const GetAgencyCardValues2 = [
+  {
+    AgencyID: "AGU",
+    CardID: "card0",
+    CardValue: "17",
+    CardValue2: "",
+    CardReport:
+      "../DMR/Instructional Offering Reports/programIF.aspx?ag=AGU&cid=&fy=2022&fsid=& nfy=1",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "AGU",
+    CardID: "card1",
+    CardValue: "270",
+    CardValue2: "",
+    CardReport: "",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "AGU",
+    CardID: "card2",
+    CardValue: "250",
+    CardValue2: "",
+    CardReport:
+      "../DMR/Instructional Offering Reports/IOR/roster.aspx?ag=AGU&cid=&fy=2022&fsid=& nfy=1",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "AGU",
+    CardID: "card3",
+    CardValue: "18",
+    CardValue2: "",
+    CardReport:
+      "../DMR/Instructional Offering Reports/IOH/ContactHoursSummary.aspx?ag=AGU&cid=&fy=2022&fsid=& nfy=1",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "AGU",
+    CardID: "card4",
+    CardValue: "1",
+    CardValue2: "1",
+    CardReport:
+      "../POP_DataCheckReports/WIOA_NoPreTest.aspx?st=07/01/2021&en=06/30/2022&ag=AGU&nfc=0&cf=2NYS&nfy=1",
+    CardReport2:
+      "../POP_DataCheckReports/WIOA_NoPreTest.aspx?st=07/01/2021&en=06/30/2022&ag=AGU&nfc=0&cf=L&nfy=1"
+  },
+  {
+    AgencyID: "AGU",
+    CardID: "card5",
+    CardValue: "207",
+    CardValue2: "207",
+    CardReport:
+      "../POP_DataCheckReports/WIOA_NoPostTest.aspx?st=07/01/2021&en=06/30/2022&ag=AGU&nfc=0&cf=2NYS&nfy=1",
+    CardReport2:
+      "../POP_DataCheckReports/WIOA_NoPostTest.aspx?st=07/01/2021&en=06/30/2022&ag=AGU&nfc=0&cf=L&nfy=1"
+  },
+  {
+    AgencyID: "AGU",
+    CardID: "card6",
+    CardValue: "13.0",
+    CardValue2: "38.0",
+    CardReport:
+      "../POP_Reports/POPProgramEval.aspx?st=07/01/2021&en=06/30/2022&ag=AGU&nfc=0&cf=2NYS&nfy=1",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "AGU",
+    CardID: "card7",
+    CardValue: "25.8",
+    CardValue2: "39.0",
+    CardReport:
+      "../NYRS_Reports/NYRSProgramEval.aspx?st=07/01/2021&en=06/30/2022&ag=AGU&nfc=0&cf=2NYS&nfy=1",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "AGU",
+    CardID: "card8",
+    CardValue: "",
+    CardValue2: "",
+    CardReport: "",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "PNWB",
+    CardID: "card0",
+    CardValue: "75",
+    CardValue2: "",
+    CardReport:
+      "../DMR/Instructional Offering Reports/programIF.aspx?ag=PNWB&cid=&fy=2022&fsid=& nfy=1",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "PNWB",
+    CardID: "card1",
+    CardValue: "747",
+    CardValue2: "",
+    CardReport: "",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "PNWB",
+    CardID: "card2",
+    CardValue: "747",
+    CardValue2: "",
+    CardReport:
+      "../DMR/Instructional Offering Reports/IOR/roster.aspx?ag=PNWB&cid=&fy=2022&fsid=& nfy=1",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "PNWB",
+    CardID: "card3",
+    CardValue: "138",
+    CardValue2: "",
+    CardReport:
+      "../DMR/Instructional Offering Reports/IOH/ContactHoursSummary.aspx?ag=PNWB&cid=&fy=2022&fsid=& nfy=1",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "PNWB",
+    CardID: "card4",
+    CardValue: "7",
+    CardValue2: "7",
+    CardReport:
+      "../POP_DataCheckReports/WIOA_NoPreTest.aspx?st=07/01/2021&en=06/30/2022&ag=PNWB&nfc=0&cf=2NYS&nfy=1",
+    CardReport2:
+      "../POP_DataCheckReports/WIOA_NoPreTest.aspx?st=07/01/2021&en=06/30/2022&ag=PNWB&nfc=0&cf=L&nfy=1"
+  },
+  {
+    AgencyID: "PNWB",
+    CardID: "card5",
+    CardValue: "300",
+    CardValue2: "291",
+    CardReport:
+      "../POP_DataCheckReports/WIOA_NoPostTest.aspx?st=07/01/2021&en=06/30/2022&ag=PNWB&nfc=0&cf=2NYS&nfy=1",
+    CardReport2:
+      "../POP_DataCheckReports/WIOA_NoPostTest.aspx?st=07/01/2021&en=06/30/2022&ag=PNWB&nfc=0&cf=L&nfy=1"
+  },
+  {
+    AgencyID: "PNWB",
+    CardID: "card6",
+    CardValue: "38.0",
+    CardValue2: "38.0",
+    CardReport:
+      "../POP_Reports/POPProgramEval.aspx?st=07/01/2021&en=06/30/2022&ag=PNWB&nfc=0&cf=2NYS&nfy=1",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "PNWB",
+    CardID: "card7",
+    CardValue: "",
+    CardValue2: "",
+    CardReport: "",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "PNWB",
+    CardID: "card8",
+    CardValue: "32898",
+    CardValue2: "639",
+    CardReport: "",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "PRA",
+    CardID: "card0",
+    CardValue: "16",
+    CardValue2: "",
+    CardReport:
+      "../DMR/Instructional Offering Reports/programIF.aspx?ag=PRA&cid=&fy=2022&fsid=& nfy=1",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "PRA",
+    CardID: "card1",
+    CardValue: "34",
+    CardValue2: "",
+    CardReport: "",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "PRA",
+    CardID: "card2",
+    CardValue: "26",
+    CardValue2: "",
+    CardReport:
+      "../DMR/Instructional Offering Reports/IOR/roster.aspx?ag=PRA&cid=&fy=2022&fsid=& nfy=1",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "PRA",
+    CardID: "card3",
+    CardValue: "17",
+    CardValue2: "",
+    CardReport:
+      "../DMR/Instructional Offering Reports/IOH/ContactHoursSummary.aspx?ag=PRA&cid=&fy=2022&fsid=& nfy=1",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "PRA",
+    CardID: "card4",
+    CardValue: "7",
+    CardValue2: "7",
+    CardReport:
+      "../POP_DataCheckReports/WIOA_NoPreTest.aspx?st=07/01/2021&en=06/30/2022&ag=PRA&nfc=0&cf=2NYS&nfy=1",
+    CardReport2:
+      "../POP_DataCheckReports/WIOA_NoPreTest.aspx?st=07/01/2021&en=06/30/2022&ag=PRA&nfc=0&cf=L&nfy=1"
+  },
+  {
+    AgencyID: "PRA",
+    CardID: "card5",
+    CardValue: "6",
+    CardValue2: "6",
+    CardReport:
+      "../POP_DataCheckReports/WIOA_NoPostTest.aspx?st=07/01/2021&en=06/30/2022&ag=PRA&nfc=0&cf=2NYS&nfy=1",
+    CardReport2:
+      "../POP_DataCheckReports/WIOA_NoPostTest.aspx?st=07/01/2021&en=06/30/2022&ag=PRA&nfc=0&cf=L&nfy=1"
+  },
+  {
+    AgencyID: "PRA",
+    CardID: "card6",
+    CardValue: "25.0",
+    CardValue2: "38.0",
+    CardReport:
+      "../POP_Reports/POPProgramEval.aspx?st=07/01/2021&en=06/30/2022&ag=PRA&nfc=0&cf=2NYS&nfy=1",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "PRA",
+    CardID: "card7",
+    CardValue: "",
+    CardValue2: "",
+    CardReport: "",
+    CardReport2: ""
+  },
+  {
+    AgencyID: "PRA",
+    CardID: "card8",
+    CardValue: "229.25",
+    CardValue2: "9",
+    CardReport: "",
+    CardReport2: ""
+  }
+];
