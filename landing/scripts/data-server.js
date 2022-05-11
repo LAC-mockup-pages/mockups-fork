@@ -22,6 +22,81 @@ const GetAgencyIndex = [
   }
 ];
 
+const GetAgencyIndex2 = [
+  {
+    ID: "259",
+    AgencyID: "BALC",
+    AgencyName: "Buffalo/Adult Learning Center",
+    Division: "Buffalo Public Schools Adult Education Division"
+  },
+  {
+    ID: "131",
+    AgencyID: "MCC",
+    AgencyName: "CUNY Borough of Manhattan Community College",
+    Division: "CENTER FOR CONTINUING EDUCATION"
+  },
+  {
+    ID: "126",
+    AgencyID: "CTY",
+    AgencyName: "CUNY City College",
+    Division: "ADULT EDUCATION CENTER at The City College of New "
+  },
+  {
+    ID: "247",
+    AgencyID: "PHIP",
+    AgencyName: "Phipps Community Development Corporation",
+    Division: ""
+  },
+  {
+    ID: "212",
+    AgencyID: "PWSD",
+    AgencyName: "Port Washington UFSD",
+    Division: ""
+  },
+  {
+    ID: "14",
+    AgencyID: "PRA",
+    AgencyName: "Practice Agency",
+    Division: "AAA Division"
+  },
+  {
+    ID: "283",
+    AgencyID: "PRA1",
+    AgencyName: "Practice Agency 1",
+    Division: ""
+  },
+  {
+    ID: "80",
+    AgencyID: "PRY",
+    AgencyName: "Project Reach Youth",
+    Division: ""
+  },
+  {
+    ID: "251",
+    AgencyID: "PNWB",
+    AgencyName: "Putnam/Northern Westchester BOCES",
+    Division: ""
+  },
+  {
+    ID: "161",
+    AgencyID: "QFL",
+    AgencyName: "QBPL Flushing Branch",
+    Division: "Flushing Adult Learning Center"
+  },
+  { ID: "1", AgencyID: "R01", AgencyName: "Region 1", Division: "" },
+  {
+    ID: "10",
+    AgencyID: "RCSD",
+    AgencyName: "Rochester City School District",
+    Division: "Office of Adult Career & Education Services"
+  },
+  {
+    ID: "11",
+    AgencyID: "SESD",
+    AgencyName: "Syracuse City School District",
+    Division: "Adult & Continuing Education"
+  }
+];
 // const GetAgencyCardValues = [
 //   { ID: "card0", values: ["20"], report: ["../404-page/index-test.html"] },
 //   { ID: "card1", values: ["125"], report: [""] },
