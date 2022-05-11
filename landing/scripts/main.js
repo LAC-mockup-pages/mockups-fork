@@ -194,11 +194,11 @@ $(document).ready(() => {
     const optionListAgency = createOptionList(
       createSummaryList(GetAgencyIndex.slice(0), "AgencyID", "AgencyName")
     );
-    $("#agency-selector").append(optionListAgency);
+    $("#agency-selector").append(optionListAgency).focus();
     $("#select-agency").toggleClass("hidden");
     PrevAgency = "True";
     $("#modalBloc").modal("toggle");
-    $("#edit-form select").focus();
+    $("#agency-selector").focus();
   }
 
   //* ===================================
