@@ -2,6 +2,14 @@
 //* Actions and Logic
 //*=================================================
 
+//! =============================================================
+//! For Development only.
+//! Comment out for Production.
+//! =============================================================
+const agencies = GetAgencyIndex2.slice(0);
+
+//! =============================================================
+
 const cardColors = [
   "rgb(70,152,170)",
   "rgb(105,78,119)",
@@ -122,6 +130,14 @@ $(document).ready(() => {
   //* First rendering actions
   //* ===================================
 
+  //! =============================================================
+  //! For Production, this section regroups the end points
+  //! for the different requests to the back-end, using requestObj.
+  //! =============================================================
+  // const agencies =
+
+  //! =============================================================
+
   //* Side nav open at home page loading
   $(".sidenav").width("20%");
   toggleSideNav();
@@ -181,6 +197,25 @@ $(document).ready(() => {
   showSlides(slideIndex);
   //* Open Agency selection modal depending on the user role and
   //* if an agency as already been selected.
+  // if (
+  //   [
+  //     "LAC TECH Support", //! Those roles can select multiple agencies
+  //     "NYSED Staff",
+  //     "RAEN Director",
+  //     "LPA Editor",
+  //     "LPA Reviewer"
+  //   ].includes(rolename) &&
+  //   PrevAgency === "False"
+  // ) {
+  //   const optionListAgency = createOptionList(
+  //     createSummaryList(GetAgencyIndex.slice(0), "AgencyID", "AgencyName")
+  //   );
+  //   $("#agency-selector").append(optionListAgency).focus();
+  //   $("#select-agency").toggleClass("hidden");
+  //   PrevAgency = "True";
+  //   $("#modalBloc").modal("toggle");
+  //   $("#agency-selector").focus();
+  // }
   if (
     [
       "LAC TECH Support", //! Those roles can select multiple agencies
@@ -188,17 +223,20 @@ $(document).ready(() => {
       "RAEN Director",
       "LPA Editor",
       "LPA Reviewer"
-    ].includes(rolename) &&
-    PrevAgency === "False"
+    ].includes(rolename)
   ) {
-    const optionListAgency = createOptionList(
-      createSummaryList(GetAgencyIndex.slice(0), "AgencyID", "AgencyName")
-    );
-    $("#agency-selector").append(optionListAgency).focus();
     $("#select-agency").toggleClass("hidden");
-    PrevAgency = "True";
-    $("#modalBloc").modal("toggle");
-    $("#agency-selector").focus();
+    const sortedAgencyList = agencies.sort((record1, record2) =>
+      record1.AgencyName < record2.AgencyName
+        ? -1
+        : record1.AgencyName > record2.AgencyName
+        ? 1
+        : 0
+    );
+    const optionListAgency = createOptionList(
+      createSummaryList(sortedAgencyList, "ID", "AgencyName")
+    );
+    $("#agency-selector").append(optionListAgency);
   }
 
   //* ===================================
@@ -265,6 +303,7 @@ $(document).ready(() => {
   //* Change agency => new agency selection
   $(document).on("click", "#select-agency", function (evnt) {
     evnt.stopPropagation();
+    evnt.preventDefault();
     $("#modalBloc").modal("toggle");
   });
 });
