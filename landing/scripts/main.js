@@ -7,6 +7,7 @@
 //! Comment out for Production.
 //! =============================================================
 const agencies = GetAgencyIndex2.slice(0);
+const cardValues = GetAgencyCardValues2.slice(0);
 
 //! =============================================================
 
@@ -287,10 +288,15 @@ $(document).ready(() => {
     evnt.stopPropagation();
     const selectedId = $(this).val();
     const selectedAgencyName = $("#agency-selector option:selected").text();
-    SESSION_VARIABLE[0].AgencyID = selectedId;
+    const selectedAgency = agencies.find(
+      (record) => record.AgencyPKID === selectedId
+    );
+    SESSION_VARIABLE[0].AgencyPKID = selectedId;
     SESSION_VARIABLE[0].AgencyName = selectedAgencyName
       .replace("\n", "")
       .trim();
+    SESSION_VARIABLE[0].AgencyID = selectedAgency.ID;
+
     const userFullName = SESSION_VARIABLE[0].fullname.startsWith("<%=")
       ? "Kate Tornese (default)"
       : SESSION_VARIABLE[0].fullname;
@@ -298,7 +304,11 @@ $(document).ready(() => {
       `Hello ${userFullName} (${SESSION_VARIABLE[0].AgencyName})`
     );
     $("#modalBloc").modal("toggle");
-    SESSION_VARIABLE[0].PrevAgency = "True";
+
+    const newCardValues = cardValues.filter(
+      (record) => (record.AgencyPKID = selectedId)
+    );
+    const newCardContent = addCustomContent(newCardValues);
   });
   //* Change agency => new agency selection
   $(document).on("click", "#select-agency", function (evnt) {
