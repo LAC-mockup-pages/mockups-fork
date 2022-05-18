@@ -161,6 +161,13 @@ $(document).ready(() => {
     }
   });
 
+  //TODO ========================================================
+  //TODO Add a process to check if optional criteria are needed when default selectors
+  // are set, after one of the buttons is clicked.
+  // May happen when user skips some of the selector (tab or click) to click
+  // the generate/export buttons
+  //TODO ========================================================
+
   //* =====================================
 
   //* Generate report button event
