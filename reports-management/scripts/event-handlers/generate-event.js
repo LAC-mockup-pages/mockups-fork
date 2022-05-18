@@ -62,3 +62,5 @@ export const createReportURI = (reportObj, exportFlag = false) => {
   `;
   return reportURI;
 };
+
+export const createReportFilter = () => {};
