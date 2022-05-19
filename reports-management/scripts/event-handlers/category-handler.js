@@ -77,4 +77,8 @@ export const categoryHandler = (titleID, groupID) => {
       return;
     }
   }
+
+  $("#optional-selectors section").each(function (indx) {
+    if (!$(this).hasClass("hidden")) $(":input", this).prop("disabled", false);
+  });
 };

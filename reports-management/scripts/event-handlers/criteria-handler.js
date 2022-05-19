@@ -46,5 +46,9 @@ export const criteriaHandler = (selectedCategory, selectedGroup) => {
     }
     $("#report-criteria").empty().append(createOptionList(criteriaList));
     $(".criteria").removeClass("hidden");
+    $("#optional-selectors section").each(function (indx) {
+      if (!$(this).hasClass("hidden"))
+        $(":input", this).prop("disabled", false);
+    });
   }
 };

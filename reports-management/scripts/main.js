@@ -175,6 +175,12 @@ $(document).ready(() => {
     evnt.stopPropagation();
     evnt.preventDefault();
     // Temporary - Dev only
-    console.log("Report generated now!");
+    // console.log("Report generated now!");
+
+    const selectedValues = $(".selectors").serializeArray();
+    console.log(
+      "🚀 / file: main.js / line 181 / $ / selectedValues",
+      selectedValues
+    );
   });
 });

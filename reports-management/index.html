@@ -330,6 +330,7 @@
               <label for="reportAgency">Select an agency: </label>
               <select
                 class="modal-select"
+                disabled
                 name="reportAgency"
                 id="report-agency"
               >
@@ -342,6 +343,7 @@
               <label for="reportCategory">Report filter: </label>
               <select
                 class="modal-select"
+                disabled
                 name="reportCategory"
                 id="report-category"
               >
@@ -355,6 +357,7 @@
               <label for="reportCriteria">Report criteria: </label>
               <select
                 class="modal-select"
+                disabled
                 name="reportCriteria"
                 id="report-criteria"
               >
@@ -368,6 +371,7 @@
               <label for="reportMonths">Select a month: </label>
               <select
                 class="modal-select"
+                disabled
                 name="reportMonths"
                 id="report-months"
               >
@@ -389,7 +393,12 @@
           <section class="weeks hidden">
             <div class="form-group input-field marg3">
               <label for="reportWeeks">Select a month: </label>
-              <select class="modal-select" name="reportWeeks" id="report-weeks">
+              <select
+                class="modal-select"
+                disabled
+                name="reportWeeks"
+                id="report-weeks"
+              >
                 <option value="01">Week 1</option>
                 <option value="02">Week 2</option>
                 <option value="03">Week 3</option>
@@ -406,12 +415,12 @@
                 </div>
                 <div class="col-md-5 form-group input-field">
                   <label for="fromDate">From </label>
-                  <input type="date" name="fromDate" />
+                  <input type="date" disabled name="fromDate" />
                 </div>
 
                 <div class="col-md-5 form-group input-field">
                   <label for="endDate">To </label>
-                  <input type="date" name="endDate" />
+                  <input type="date" disabled name="endDate" />
                 </div>
               </div>
             </div>
