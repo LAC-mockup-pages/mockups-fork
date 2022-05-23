@@ -177,7 +177,7 @@ $(document).ready(() => {
     // Temporary - Dev only
     // console.log("Report generated now!");
 
-    const selectedValues = $(".selectors").serializeArray();
+    const selectedValues = createObject($(".selectors").serializeArray());
     console.log(
       "🚀 / file: main.js / line 181 / $ / selectedValues",
       selectedValues
