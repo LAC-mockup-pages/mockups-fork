@@ -182,5 +182,15 @@ $(document).ready(() => {
       "🚀 / file: main.js / line 181 / $ / selectedValues",
       selectedValues
     );
+
+    const { AgencyPKID } = SESSION_VARIABLE[0];
+    const { FileName } = reports.find(
+      (record) => record.ID === selectedValues.titleSelector
+    );
+    // Generating the URI
+
+    const createdURI = createReportURI(selectedValues, AgencyPKID, FileName);
+
+    console.log("createdURI :>> ", createdURI);
   });
 });
