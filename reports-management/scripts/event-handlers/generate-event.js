@@ -65,5 +65,71 @@
 
 // Needs selectedValues
 
+// Initializing Luxon DateTime class for the module
+const DT = luxon.DateTime;
+const setNFYvalue = (selectedFY) => {
+  // createCredentials() <== helpers/helperFunctions.js
+  const { FiscalYear } = createCredentials();
+  const numFiscalYear = Number(FiscalYear);
+  const today = DT.now();
+  const currentYear = today.year;
+  const currentMonth = today.month;
+  let previousFY = 0;
+  if (currentMonth < 6) {
+    previousFY = Math.min(currentYear, numFiscalYear - 1);
+  } else if (currentYear === numFiscalYear) {
+    previousFY = Math.max(currentYear, numFiscalYear - 1);
+  } else {
+    previousFY = numFiscalYear - 1;
+  }
+  const nfy = previousFY <= Number(selectedFY) ? 0 : 1;
+  return `&nfy=${nfy}`;
+};
+
+// Creates a Map for reports query string elements
+const setReportsMap = () => {
+  const newMap = new Map();
+  newMap
+    .set(
+      [
+        "55",
+        "57",
+        "60",
+        "61",
+        "87",
+        "133",
+        "137",
+        "140",
+        "152",
+        "162",
+        "182",
+        "183",
+        "187",
+        "226",
+        "236"
+      ],
+      { AgencyPKID: "ag", fiscalYear: "fy" }
+    )
+    .set(["47", "86"], {
+      AgencyPKID: "ag",
+      fiscalYear: "fy",
+      studentStatus: "stustat"
+    })
+    .set(["169", "185"], {
+      AgencyPKID: "ag",
+      fiscalYear: "fy",
+      reportMonths: "ca"
+    })
+    .set(["170"], {
+      AgencyPKID: "ag",
+      fiscalYear: "fy",
+      reportMonths: "ca",
+      reportWeeks: "fsid"
+    });
+
+  return newMap;
+};
+
 const reportParts = { 182: { AgencyPKID: "ag", fiscalYear: "fy" } };
-export const createReportURI = (values, agency, fileLink) => {};
+
+export const createReportURI = (values, fileLink) => {};
