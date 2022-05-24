@@ -296,13 +296,13 @@
       </section>
       <form class="form selectors" role="form">
         <div class="form-group input-field">
-          <label class="red-text" for="fiscalYear">Fiscal year: </label>
+          <label class="red-text" for="selectedYear">Fiscal year: </label>
           <select
             class="modal-select"
             autofocus
             required
-            name="fiscalYear"
-            id="fiscal-year"
+            name="selectedYear"
+            id="selected-year"
           ></select>
         </div>
         <div class="form-group input-field marg1">
@@ -423,6 +423,20 @@
                   <input type="date" disabled name="endDate" />
                 </div>
               </div>
+            </div>
+          </section>
+          <section class="students hidden">
+            <div class="form-group input-field marg3">
+              <label for="studentStatus">Filter students: </label>
+              <select
+                class="modal-select"
+                disabled
+                name="studentStatus"
+                id="report-stustat"
+              >
+                <option value="1">Active students only</option>
+                <option value="0">All students</option>
+              </select>
             </div>
           </section>
         </div>
