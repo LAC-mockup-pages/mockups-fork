@@ -130,6 +130,19 @@ const setReportsMap = () => {
   return newMap;
 };
 
-const reportParts = { 182: { AgencyPKID: "ag", fiscalYear: "fy" } };
+// const reportParts = { 182: { AgencyPKID: "ag", fiscalYear: "fy" } };
 
-export const createReportURI = (values, fileLink) => {};
+export const createReportURI = (values, fileLink) => {
+  const { ID } = values;
+  let stringURI = `../reports/${fileLink}?`;
+  const reportMap = setReportsMap();
+  let labelObj = {};
+  for (const [key, value] of reportMap) {
+    if (key.includes(ID)) labelObj = value;
+  }
+  for (const [label, value] in labelObj) {
+    const ampersand = label === "ag" ? "" : "&";
+    stringURI += `${ampersand}${value}=${values[label]}`;
+  }
+  return stringURI;
+};

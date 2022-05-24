@@ -95,7 +95,7 @@ $(document).ready(() => {
       record1.key > record2.key ? -1 : record1.key < record2.key ? 1 : 0
     )
   );
-  $("#fiscal-year").append(optionListFY);
+  $("#selected-year").append(optionListFY);
   // Report groups
   $("#group-selector").append(createOptionList(reportGroups));
   // Report titles
@@ -161,13 +161,6 @@ $(document).ready(() => {
     }
   });
 
-  //TODO ========================================================
-  //TODO Add a process to check if optional criteria are needed when default selectors
-  // are set, after one of the buttons is clicked.
-  // May happen when user skips some of the selector (tab or click) to click
-  // the generate/export buttons
-  //TODO ========================================================
-
   //* =====================================
 
   //* Generate report button event
@@ -176,6 +169,13 @@ $(document).ready(() => {
     evnt.preventDefault();
     // Temporary - Dev only
     // console.log("Report generated now!");
+
+    //TODO ========================================================
+    //TODO Add a process to check if optional criteria are needed when default selectors
+    // are set, after one of the buttons is clicked.
+    // May happen when user skips some of the selector (tab or click) to click
+    // the generate/export buttons
+    //TODO ========================================================
 
     const selectedValues = createObject($(".selectors").serializeArray());
     console.log(
@@ -189,7 +189,10 @@ $(document).ready(() => {
     );
     // Generating the URI
 
-    const createdURI = createReportURI(selectedValues, AgencyPKID, FileName);
+    const createdURI = createReportURI(
+      { AgencyPKID, ...selectedValues },
+      FileName
+    );
 
     console.log("createdURI :>> ", createdURI);
   });
