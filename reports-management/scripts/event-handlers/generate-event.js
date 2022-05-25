@@ -130,10 +130,8 @@ const setReportsMap = () => {
   return newMap;
 };
 
-// const reportParts = { 182: { AgencyPKID: "ag", fiscalYear: "fy" } };
-
-export const createReportURI = (values, fileLink) => {
-  const { ID } = values;
+export const createReportURI = (valuesObj, fileLink) => {
+  const { ID, fiscalYear } = valuesObj;
   let stringURI = `../reports/${fileLink}?`;
   const reportMap = setReportsMap();
   let labelObj = {};
@@ -142,7 +140,7 @@ export const createReportURI = (values, fileLink) => {
   }
   for (const [label, value] in labelObj) {
     const ampersand = label === "ag" ? "" : "&";
-    stringURI += `${ampersand}${value}=${values[label]}`;
+    stringURI += `${ampersand}${value}=${valuesObj[label]}`;
   }
-  return stringURI;
+  return `${stringURI}${setNFYvalue(fiscalYear)}`;
 };
