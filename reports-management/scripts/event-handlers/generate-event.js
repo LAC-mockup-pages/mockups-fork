@@ -135,11 +135,11 @@ export const createReportURI = (valuesObj, fileLink) => {
   let stringURI = `../reports/${fileLink}?`;
   const reportMap = setReportsMap();
   let labelObj = {};
-  for (const [key, value] of reportMap) {
-    if (key.includes(ID)) labelObj = value;
+  for (const [key, obj] of reportMap) {
+    if (key.includes(ID)) labelObj = obj;
   }
   for (const [label, value] in labelObj) {
-    const ampersand = label === "ag" ? "" : "&";
+    const ampersand = value === "ag" ? "" : "&";
     stringURI += `${ampersand}${value}=${valuesObj[label]}`;
   }
   return `${stringURI}${setNFYvalue(fiscalYear)}`;
