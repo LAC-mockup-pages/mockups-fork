@@ -143,6 +143,9 @@ $(document).ready(() => {
       $("#report-category").focus();
     },
     blur: function (evnt) {
+      $("#optional-selectors section").each(function (indx) {
+        if (!$(this).hasClass("hidden")) $(this).addClass("hidden");
+      });
       categoryHandler($(this).val(), $("#group-selector").val());
       $("#report-category").focus();
     }

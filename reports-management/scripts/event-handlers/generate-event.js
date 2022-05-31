@@ -132,31 +132,15 @@ const setReportsMap = () => {
 };
 
 export const createReportURI = (valuesObj, fileLink) => {
-  console.log(
-    "🚀 / file: generate-event.js / line 135 / createReportURI / valuesObj",
-    valuesObj
-  );
   const { titleSelector, selectedYear } = valuesObj;
-
   let stringURI = `../reports/${fileLink}?`;
   const reportMap = setReportsMap();
   let labelObj = {};
-
   for (const [key, obj] of reportMap) {
     if (key.includes(titleSelector)) {
-      console.log(
-        "🚀 / file: generate-event.js / line 144 / createReportURI / obj",
-        obj
-      );
       labelObj = obj;
     }
   }
-
-  console.log(
-    "🚀 / file: generate-event.js / line 145 / createReportURI / labelObj",
-    labelObj
-  );
-
   for (const label in labelObj) {
     const labelValue = labelObj[label];
     const selectedValue = valuesObj[label];
