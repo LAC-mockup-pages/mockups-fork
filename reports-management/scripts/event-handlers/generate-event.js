@@ -82,7 +82,7 @@ const setNFYvalue = (selectedFY) => {
   } else {
     previousFY = numFiscalYear - 1;
   }
-  const nfy = previousFY <= Number(selectedFY) ? 0 : 1;
+  const nfy = selectedFY > previousFY ? 1 : 0;
   return `&nfy=${nfy}`;
 };
 
@@ -108,39 +108,63 @@ const setReportsMap = () => {
         "226",
         "236"
       ],
-      { AgencyPKID: "ag", fiscalYear: "fy" }
+      { AgencyPKID: "ag", selectedYear: "fy" }
     )
     .set(["47", "86"], {
       AgencyPKID: "ag",
-      fiscalYear: "fy",
+      selectedYear: "fy",
       studentStatus: "stustat"
     })
     .set(["169", "185"], {
       AgencyPKID: "ag",
-      fiscalYear: "fy",
+      selectedYear: "fy",
       reportMonths: "ca"
-    })
-    .set(["170"], {
+    }) // Case Management
+    .set(["242", "243", "244", "245"], {
       AgencyPKID: "ag",
-      fiscalYear: "fy",
-      reportMonths: "ca",
-      reportWeeks: "fsid"
+      reportCategory: "fid",
+      reportCriteria: "cid",
+      fromDate: "st",
+      endDate: "en"
     });
 
   return newMap;
 };
 
 export const createReportURI = (valuesObj, fileLink) => {
-  const { ID, fiscalYear } = valuesObj;
+  console.log(
+    "🚀 / file: generate-event.js / line 135 / createReportURI / valuesObj",
+    valuesObj
+  );
+  const { titleSelector, selectedYear } = valuesObj;
+
   let stringURI = `../reports/${fileLink}?`;
   const reportMap = setReportsMap();
   let labelObj = {};
+
   for (const [key, obj] of reportMap) {
-    if (key.includes(ID)) labelObj = obj;
+    if (key.includes(titleSelector)) {
+      console.log(
+        "🚀 / file: generate-event.js / line 144 / createReportURI / obj",
+        obj
+      );
+      labelObj = obj;
+    }
   }
-  for (const [label, value] in labelObj) {
-    const ampersand = value === "ag" ? "" : "&";
-    stringURI += `${ampersand}${value}=${valuesObj[label]}`;
+
+  console.log(
+    "🚀 / file: generate-event.js / line 145 / createReportURI / labelObj",
+    labelObj
+  );
+
+  for (const label in labelObj) {
+    const labelValue = labelObj[label];
+    const selectedValue = valuesObj[label];
+    const ampersand = labelValue === "ag" ? "" : "&";
+    const queryElement = selectedValue
+      ? `${ampersand}${labelValue}=${selectedValue}`
+      : "";
+    stringURI += queryElement;
   }
-  return `${stringURI}${setNFYvalue(fiscalYear)}`;
+  return `${stringURI}${setNFYvalue(Number(selectedYear))}`;
 };
