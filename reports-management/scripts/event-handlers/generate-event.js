@@ -131,9 +131,13 @@ const setReportsMap = () => {
   return newMap;
 };
 
-export const createReportURI = (valuesObj, fileLink) => {
+export const createReportURI = (valuesObj, fileLink, validExport) => {
   const { titleSelector, selectedYear } = valuesObj;
-  let stringURI = `../reports/${fileLink}?`;
+  // validExport only has a truesy value when Procedure_Name exists.
+  // It modifies the pageName and add the report ID (qid) to the query string.
+  const pageName = validExport ? "ReportExport.aspx" : fileLink;
+  const reportID = validExport ? `&qid=${titleSelector}` : "";
+  let stringURI = `../reports/${pageName}?`;
   const reportMap = setReportsMap();
   let labelObj = {};
   for (const [key, obj] of reportMap) {
@@ -150,5 +154,5 @@ export const createReportURI = (valuesObj, fileLink) => {
       : "";
     stringURI += queryElement;
   }
-  return `${stringURI}${setNFYvalue(Number(selectedYear))}`;
+  return `${stringURI}${reportID}${setNFYvalue(Number(selectedYear))}`;
 };

@@ -185,13 +185,14 @@ $(document).ready(() => {
       selectedValues
     );
     const { AgencyPKID } = SESSION_VARIABLE[0];
-    const { FileName } = reports.find(
+    const { FileName, Procedure_Name } = reports.find(
       (record) => record.ID === selectedValues.titleSelector
     );
     // Generating the URI
     const createdURI = createReportURI(
       { AgencyPKID, ...selectedValues },
-      FileName
+      FileName,
+      Procedure_Name
     );
     console.log("createdURI :>> ", createdURI);
   });
