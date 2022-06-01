@@ -2,7 +2,10 @@
 //* Actions and Logic for local page
 //*=================================================
 import { createReportURI } from "./event-handlers/generate-event.js";
-import { categoryHandler } from "./event-handlers/category-handler.js";
+import {
+  categoryHandler,
+  handleGroupChange
+} from "./event-handlers/category-handler.js";
 import { criteriaHandler } from "./event-handlers/criteria-handler.js";
 // Shorten a list of records to a list of obj with key/value properties
 // list = [{...},{...}], keyParam, valueParam = field names as string
@@ -16,7 +19,7 @@ export const createSummaryList = (list, keyParam, valueParam) => {
 //! Comment out for Production.
 //! =============================================================
 const reportGroups = GetReportCategory.slice(0);
-const reports = GetReport.slice(0);
+export const reports = GetReport.slice(0);
 export const prepByList = GetPrepareBy.filter((record) => record.key !== "0");
 export const prepByListCM = GetPrepareByCM.slice(0);
 export const classes = GetInstructionSource.slice(0);
@@ -115,22 +118,38 @@ $(document).ready(() => {
   //* Business rules
   //* =====================================
   //* Modifying the title selector list according to selected group
-  $("#title-selector").focusin(function (evnt) {
-    evnt.stopPropagation();
-    evnt.preventDefault();
 
-    const titleList = reports
-      .filter((record) =>
-        record.CategoryID.includes($("#group-selector").val())
-      )
-      .map((record) => {
-        const { ID, ReportName } = record;
-        return { key: ID, value: ReportName };
-      });
+  $("#group-selector").on(
+    {
+      change: function (evnt) {
+        const optionTitles = handleGroupChange($("#group-selector").val());
+        $("#title-selector").empty().append(optionTitles);
+      }
+    },
+    {
+      blur: function (evnt) {
+        const optionTitles = handleGroupChange($("#group-selector").val());
+        $("#title-selector").empty().append(optionTitles);
+      }
+    }
+  );
 
-    const optionTitles = createOptionList(titleList);
-    $("#title-selector").empty().append(optionTitles);
-  });
+  // $("#title-selector").focusin(function (evnt) {
+  //   evnt.stopPropagation();
+  //   evnt.preventDefault();
+
+  //   const titleList = reports
+  //     .filter((record) =>
+  //       record.CategoryID.includes($("#group-selector").val())
+  //     )
+  //     .map((record) => {
+  //       const { ID, ReportName } = record;
+  //       return { key: ID, value: ReportName };
+  //     });
+
+  //   const optionTitles = createOptionList(titleList);
+  //   $("#title-selector").empty().append(optionTitles);
+  // });
 
   //* Displaying optional category selectors according to selected group
   //* and selected report title.

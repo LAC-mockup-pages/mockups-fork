@@ -2,7 +2,12 @@
 //* title is selected
 //* =====================================
 
-import { prepByList, prepByListCM, createOptionList } from "../main.js";
+import {
+  reports,
+  prepByList,
+  prepByListCM,
+  createOptionList
+} from "../main.js";
 
 export const categoryHandler = (titleID, groupID) => {
   let selectedList = [];
@@ -81,4 +86,17 @@ export const categoryHandler = (titleID, groupID) => {
   $("#optional-selectors section").each(function (indx) {
     if (!$(this).hasClass("hidden")) $(":input", this).prop("disabled", false);
   });
+};
+
+// Creates the title list for #title-selector once the group
+// is selected.
+// Output a string of <option> </option> elements.
+export const handleGroupChange = (groupID) => {
+  const titleList = reports
+    .filter((record) => record.CategoryID.includes(groupID))
+    .map((record) => {
+      const { ID, ReportName } = record;
+      return { key: ID, value: ReportName };
+    });
+  return createOptionList(titleList);
 };
