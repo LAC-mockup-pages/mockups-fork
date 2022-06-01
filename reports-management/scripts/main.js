@@ -117,8 +117,8 @@ $(document).ready(() => {
   //* =====================================
   //* Business rules
   //* =====================================
-  //* Modifying the title selector list according to selected group
 
+  //* Modifying the title selector list according to selected group
   $("#group-selector").on(
     {
       change: function (evnt) {
@@ -172,9 +172,6 @@ $(document).ready(() => {
   $("#generate-btn").click((evnt) => {
     evnt.stopPropagation();
     evnt.preventDefault();
-    // Temporary - Dev only
-    // console.log("Report generated now!");
-
     //TODO ========================================================
     //TODO Add a process to check if optional criteria are needed when default selectors
     // are set, after one of the buttons is clicked.
@@ -187,18 +184,15 @@ $(document).ready(() => {
       "🚀 / file: main.js / line 181 / $ / selectedValues",
       selectedValues
     );
-
     const { AgencyPKID } = SESSION_VARIABLE[0];
     const { FileName } = reports.find(
       (record) => record.ID === selectedValues.titleSelector
     );
     // Generating the URI
-
     const createdURI = createReportURI(
       { AgencyPKID, ...selectedValues },
       FileName
     );
-
     console.log("createdURI :>> ", createdURI);
   });
 });
