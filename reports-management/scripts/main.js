@@ -134,23 +134,6 @@ $(document).ready(() => {
     }
   );
 
-  // $("#title-selector").focusin(function (evnt) {
-  //   evnt.stopPropagation();
-  //   evnt.preventDefault();
-
-  //   const titleList = reports
-  //     .filter((record) =>
-  //       record.CategoryID.includes($("#group-selector").val())
-  //     )
-  //     .map((record) => {
-  //       const { ID, ReportName } = record;
-  //       return { key: ID, value: ReportName };
-  //     });
-
-  //   const optionTitles = createOptionList(titleList);
-  //   $("#title-selector").empty().append(optionTitles);
-  // });
-
   //* Displaying optional category selectors according to selected group
   //* and selected report title.
   $("#title-selector").on({
