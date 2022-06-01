@@ -169,7 +169,7 @@ $(document).ready(() => {
   //* =====================================
 
   //* Generate report button event
-  $("#generate-btn").click((evnt) => {
+  $("#generate-btn, #export-btn").click((evnt) => {
     evnt.stopPropagation();
     evnt.preventDefault();
     //TODO ========================================================

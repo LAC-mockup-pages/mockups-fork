@@ -9,8 +9,19 @@ import {
   createOptionList
 } from "../main.js";
 
+export const exportButtonToggle = (report) => {
+  const { Procedure_Name } = reports.find((record) => record.ID === report);
+  if (Procedure_Name) {
+    $("#export-btn").prop("disabled", false);
+  }
+  return;
+};
+
 export const categoryHandler = (titleID, groupID) => {
   let selectedList = [];
+  // Enable the Export button if the selected report has a valid
+  // Procedure_Name value.
+  exportButtonToggle(titleID);
   //! NOTE: Category IDs are pointing to the newly defined categories.
   // Categories: 182 = Assessment reports, 57 = Rosters, 46 = Program management
   //       85 = Exiting and outcome
