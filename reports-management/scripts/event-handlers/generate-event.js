@@ -120,8 +120,8 @@ const setReportsMap = () => {
       AgencyPKID: "ag",
       selectedYear: "fy",
       reportMonths: "ca"
-    }) // Case Management
-    .set(["242", "243", "244", "245"], {
+    }) //
+    .set(["138", "163", "164", "176", "242", "243", "244", "245"], {
       AgencyPKID: "ag",
       reportCategory: "fid",
       reportCriteria: "cid",
