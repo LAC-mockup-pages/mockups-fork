@@ -169,7 +169,7 @@ $(document).ready(() => {
   //* =====================================
 
   //* Generate report button event
-  $("#generate-btn, #export-btn").click((evnt) => {
+  $("#generate-btn, #export-btn").click(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
     //TODO ========================================================
@@ -192,7 +192,7 @@ $(document).ready(() => {
     const createdURI = createReportURI(
       { AgencyPKID, ...selectedValues },
       FileName,
-      Procedure_Name
+      $(this).attr("id") === "export-btn"
     );
     console.log("createdURI :>> ", createdURI);
   });

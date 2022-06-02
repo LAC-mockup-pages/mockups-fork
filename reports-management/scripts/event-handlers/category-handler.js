@@ -28,7 +28,7 @@ export const categoryHandler = (titleID, groupID) => {
   if (["182", "57", "46", "85"].includes(groupID)) {
     // Category options: Instructional offering, Funding sources
     if (["47", "86", "46", "85", "207"].includes(titleID)) {
-      $(".category").removeClass("hidden");
+      $(".category, .students").removeClass("hidden");
       selectedList = prepByList.filter((record) =>
         ["1", "2"].includes(record.key)
       );

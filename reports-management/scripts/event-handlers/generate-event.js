@@ -75,7 +75,7 @@ const setNFYvalue = (selectedFY) => {
   const currentYear = today.year;
   const currentMonth = today.month;
   let previousFY = 0;
-  if (currentMonth < 6) {
+  if (currentMonth < 7) {
     previousFY = Math.min(currentYear, numFiscalYear - 1);
   } else if (currentYear === numFiscalYear) {
     previousFY = Math.max(currentYear, numFiscalYear - 1);
