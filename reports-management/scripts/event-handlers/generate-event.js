@@ -134,7 +134,7 @@ const setReportsMap = () => {
 
 export const createReportURI = (valuesObj, fileLink, validExport) => {
   const { titleSelector, selectedYear } = valuesObj;
-  // validExport only has a truesy value when Procedure_Name exists.
+  // validExport only has a truesy value when Export button is clicked.
   // It modifies the pageName and add the report ID (qid) to the query string.
   const pageName = validExport ? "ReportExport.aspx" : fileLink;
   const reportID = validExport ? `&qid=${titleSelector}` : "";
