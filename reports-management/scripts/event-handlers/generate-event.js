@@ -110,9 +110,10 @@ const setReportsMap = () => {
       ],
       { AgencyPKID: "ag", selectedYear: "fy" }
     )
-    .set(["47", "86"], {
+    .set(["47", "85", "86", "207"], {
       AgencyPKID: "ag",
       selectedYear: "fy",
+      reportCriteria: "cid",
       studentStatus: "stustat"
     })
     .set(["169", "185"], {
