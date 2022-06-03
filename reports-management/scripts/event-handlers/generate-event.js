@@ -61,7 +61,7 @@ const setReportsMap = () => {
       ],
       { AgencyPKID: "ag", selectedYear: "fy" }
     )
-    .set(["47", "85", "86", "207"], {
+    .set(["47", "56", "85", "86", "186", "207"], {
       AgencyPKID: "ag",
       selectedYear: "fy",
       reportCriteria: "cid",
