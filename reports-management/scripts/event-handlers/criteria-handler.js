@@ -22,6 +22,7 @@ export const criteriaHandler = (selectedCategory, selectedGroup) => {
     } else if (selectedCategory === "3") {
       $("#optional-selectors .criteria").addClass("hidden");
       $("#optional-selectors .date-range").removeClass("hidden");
+      $("#optional-selectors .date-range input").prop("disabled", false);
       $("#optional-selectors .date-range input[name='fromDate']").focus();
       return;
     } else {
