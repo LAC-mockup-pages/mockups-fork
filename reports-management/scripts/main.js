@@ -111,6 +111,10 @@ $(document).ready(() => {
     });
   const optionListTitles = createOptionList(filteredTitleList);
   $("#title-selector").empty().append(optionListTitles);
+  // Optional selectors display
+  const title = $("#title-selector").val();
+  categoryHandler(title, category);
+  criteriaHandler($("#report-category").val(), category);
 
   //* =====================================
 
@@ -122,6 +126,9 @@ $(document).ready(() => {
   $("#group-selector").on(
     {
       change: function (evnt) {
+        $("#optional-selectors section").each(function (indx) {
+          if (!$(this).hasClass("hidden")) $(this).addClass("hidden");
+        });
         const optionTitles = handleGroupChange($("#group-selector").val());
         $("#title-selector").empty().append(optionTitles);
       }
@@ -137,6 +144,12 @@ $(document).ready(() => {
   //* Displaying optional category selectors according to selected group
   //* and selected report title.
   $("#title-selector").on({
+    focusin: function (evnt) {
+      $("#optional-selectors section").each(function (indx) {
+        if (!$(this).hasClass("hidden")) $(this).addClass("hidden");
+      });
+      categoryHandler($(this).val(), $("#group-selector").val());
+    },
     change: function (evnt) {
       $("#optional-selectors section").each(function (indx) {
         if (!$(this).hasClass("hidden")) $(this).addClass("hidden");
@@ -172,20 +185,9 @@ $(document).ready(() => {
   $("#generate-btn, #export-btn").click(function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
-    //TODO ========================================================
-    //TODO Add a process to check if optional criteria are needed when default selectors
-    // are set, after one of the buttons is clicked.
-    // May happen when user skips some of the selector (tab or click) to click
-    // the generate/export buttons
-    //TODO ========================================================
-
     const selectedValues = createObject($(".selectors").serializeArray());
-    console.log(
-      "🚀 / file: main.js / line 181 / $ / selectedValues",
-      selectedValues
-    );
     const { AgencyPKID } = SESSION_VARIABLE[0];
-    const { FileName, Procedure_Name } = reports.find(
+    const { FileName } = reports.find(
       (record) => record.ID === selectedValues.titleSelector
     );
     // Generating the URI
@@ -195,5 +197,6 @@ $(document).ready(() => {
       $(this).attr("id") === "export-btn"
     );
     console.log("createdURI :>> ", createdURI);
+    window.open(createdURI, "_blank");
   });
 });
