@@ -31,6 +31,8 @@ export const funding = createSummaryList(
 );
 export const keywords = GetCMPKeyword.slice(0);
 export const referralPartners = GetReferralSite.slice(0);
+export const staffDevFilter = GetFilterBy.slice(0);
+export const staffDevAgency = GetPrepareByAgency.slice(0);
 //! =============================================================
 
 // Creates the <option></option> list to append to a <select></select>
@@ -115,6 +117,8 @@ $(document).ready(() => {
   const title = $("#title-selector").val();
   categoryHandler(title, category);
   criteriaHandler($("#report-category").val(), category);
+  // Agency list
+  $("#report-agency").append(createOptionList(staffDevAgency));
 
   //* =====================================
 

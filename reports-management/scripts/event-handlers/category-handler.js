@@ -6,6 +6,7 @@ import {
   reports,
   prepByList,
   prepByListCM,
+  staffDevFilter,
   createOptionList
 } from "../main.js";
 
@@ -92,6 +93,11 @@ export const categoryHandler = (titleID, groupID) => {
     } else {
       return;
     }
+  } else if (groupID === "79") {
+    $("#optional-selectors")
+      .children(".agency, .category")
+      .removeClass("hidden");
+    $("#report-category").empty().append(createOptionList(staffDevFilter));
   }
 
   $("#optional-selectors section").each(function (indx) {
