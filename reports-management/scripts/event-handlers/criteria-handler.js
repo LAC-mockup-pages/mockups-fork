@@ -8,7 +8,11 @@ import {
   keywords,
   referralPartners,
   instructors,
-  classes
+  classes,
+  staffDevCategory,
+  staffDevPersonnel,
+  staffDevFacilitator,
+  staffDevSector
 } from "../main.js";
 
 export const criteriaHandler = (selectedCategory, selectedGroup) => {
@@ -30,6 +34,26 @@ export const criteriaHandler = (selectedCategory, selectedGroup) => {
       $("#report-criteria").empty().append(createOptionList(criteriaList));
       $(".criteria").removeClass("hidden");
     }
+  }
+  // Categories: 79 Staff Development
+  // Reports ID: 79, 177, 184, 191, 192
+  else if (selectedGroup === "79") {
+    switch (selectedCategory) {
+      case "1":
+        criteriaList = staffDevPersonnel;
+        break;
+      case "2":
+        criteriaList = staffDevFacilitator;
+        break;
+      case "3":
+        criteriaList = staffDevSector;
+        break;
+      default:
+        criteriaList = staffDevCategory;
+        break;
+    }
+    $("#report-criteria").empty().append(createOptionList(criteriaList));
+    $(".criteria").removeClass("hidden");
   }
   // Categories: 182 Assessments, 57 Rosters, 46 Program management,
   // 85 Exit and Outcomes

@@ -25,7 +25,7 @@ export const prepByListCM = GetPrepareByCM.slice(0);
 export const classes = GetInstructionSource.slice(0);
 export const instructors = GetInstructor.slice(0);
 export const funding = createSummaryList(
-  GetFundingSource,
+  GetFundingSource.slice(0),
   "FSID",
   "FundAbbrev"
 );
@@ -33,6 +33,19 @@ export const keywords = GetCMPKeyword.slice(0);
 export const referralPartners = GetReferralSite.slice(0);
 export const staffDevFilter = GetFilterBy.slice(0);
 export const staffDevAgency = GetPrepareByAgency.slice(0);
+export const staffDevCategory = GetCategory.slice(0);
+export const staffDevPersonnel = createSummaryList(
+  GetPersonnel.slice(0),
+  "ID",
+  "Name"
+);
+export const staffDevFacilitator = createSummaryList(
+  GetFacilitator.slice(0),
+  "ID",
+  "Name"
+);
+export const staffDevSector = GetSector.slice(0);
+
 //! =============================================================
 
 // Creates the <option></option> list to append to a <select></select>
