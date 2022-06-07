@@ -214,6 +214,8 @@ $(document).ready(() => {
     const { FileName } = reports.find(
       (record) => record.ID === selectedValues.titleSelector
     );
+
+    console.log("selectedValues :>> ", selectedValues);
     // Generating the URI
     const createdURI = createReportURI(
       { AgencyPKID, ...selectedValues },

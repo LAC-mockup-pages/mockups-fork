@@ -78,17 +78,25 @@ const setReportsMap = () => {
       reportCriteria: "cid",
       fromDate: "st",
       endDate: "en"
+    })
+    .set(["79", "177", "184", "191", "192"], {
+      reportAgency: "ag",
+      selectedYear: "fy",
+      reportCategory: "sdcadsc",
+      reportCriteria: "ca"
     });
 
   return newMap;
 };
 
 export const createReportURI = (valuesObj, fileLink, validExport) => {
-  const { titleSelector, selectedYear } = valuesObj;
+  const { groupSelector, reportCategory, titleSelector, selectedYear } =
+    valuesObj;
   // validExport only has a truesy value when Export button is clicked.
   // It modifies the pageName and add the report ID (qid) to the query string.
   const pageName = validExport ? "ReportExport.aspx" : fileLink;
   const reportID = validExport ? `&qid=${titleSelector}` : "";
+  let additionalQueryElement = "";
   let stringURI = `../reports/${pageName}?`;
   const reportMap = setReportsMap();
   let labelObj = {};
@@ -98,13 +106,41 @@ export const createReportURI = (valuesObj, fileLink, validExport) => {
     }
   }
   for (const label in labelObj) {
-    const labelValue = labelObj[label];
-    const selectedValue = valuesObj[label];
+    let selectedValue = valuesObj[label];
+    let labelValue = "";
+
+    // Staff Development reports needs separate conditional statement
+
+    if (groupSelector === "79" && label === "reportCriteria") {
+      switch (reportCategory) {
+        case "1":
+          labelValue = "ca";
+          selectedValue = "0";
+          break;
+        case "2":
+          labelValue = "pid";
+          additionalQueryElement = "&ca=0";
+          break;
+        case "3":
+          labelValue = "sdca";
+          additionalQueryElement = "&ca=0";
+          break;
+        default:
+          labelValue = "ca";
+          break;
+      }
+    } else {
+      labelValue = labelObj[label];
+    }
+
     const ampersand = labelValue === "ag" ? "" : "&";
+
     const queryElement = selectedValue
       ? `${ampersand}${labelValue}=${selectedValue}`
       : "";
     stringURI += queryElement;
   }
-  return `${stringURI}${reportID}${setNFYvalue(Number(selectedYear))}`;
+  return `${stringURI}${reportID}${additionalQueryElement}${setNFYvalue(
+    Number(selectedYear)
+  )}`;
 };

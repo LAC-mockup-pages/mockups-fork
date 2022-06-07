@@ -103,6 +103,7 @@ export const categoryHandler = (titleID, groupID) => {
 
   $("#optional-selectors section").each(function (indx) {
     if (!$(this).hasClass("hidden")) $(":input", this).prop("disabled", false);
+    if ($(this).hasClass("hidden")) $(":input", this).prop("disabled", true);
   });
 };
 
