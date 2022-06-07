@@ -33,12 +33,10 @@ export const keywords = GetCMPKeyword.slice(0);
 export const referralPartners = GetReferralSite.slice(0);
 export const staffDevFilter = GetFilterBy.slice(0);
 export const staffDevAgency = GetPrepareByAgency.slice(0);
-export const staffDevCategory = GetCategory.slice(0);
-export const staffDevPersonnel = createSummaryList(
-  GetPersonnel.slice(0),
-  "ID",
-  "Name"
-);
+export const staffDevCategory = [
+  { ID: "0", Category: "All categories" },
+  ...GetCategory.slice(0)
+];
 export const staffDevFacilitator = createSummaryList(
   GetFacilitator.slice(0),
   "ID",
