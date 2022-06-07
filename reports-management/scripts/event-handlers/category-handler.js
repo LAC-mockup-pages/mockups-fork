@@ -98,6 +98,7 @@ export const categoryHandler = (titleID, groupID) => {
       .children(".agency, .category")
       .removeClass("hidden");
     $("#report-category").empty().append(createOptionList(staffDevFilter));
+    $("#report-agency").focus();
   }
 
   $("#optional-selectors section").each(function (indx) {
