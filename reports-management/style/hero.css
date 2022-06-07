@@ -61,7 +61,7 @@
   font-size: 1.3em;
   width: 20%;
 }
-select {
+.input-field select {
   background-color: inherit;
 }
 
