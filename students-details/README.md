@@ -56,10 +56,10 @@ NB: Date is last modification date.
 | Roughing/static lay out | Done, accepted |            |
 | Data objects            | Done           | 09/16/2021 |
 | Main coding             | Started        | 10/04/2021 |
-| Navigation to/from page |                |            |
-| Ready for Alpha         |                |            |
-| Alpha build             |                |            |
-| Review                  |                |            |
-| Alterations             |                |            |
+| Navigation to/from page | Done           |            |
+| Ready for Alpha         | Done           |            |
+| Alpha build             | Done           |            |
+| Review                  | Done           |            |
+| Alterations             | WIP            | 06/08/2022 |
 | Final review            |                |            |
 | Golden                  |                |            |
