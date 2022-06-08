@@ -47,8 +47,8 @@ NB: Date is last modification date.
 | Main coding             | Done           | 09/20/2021 |
 | Navigation to/from page | Done           | 09/20/2021 |
 | Ready for Alpha         | Done           | 09/20/2021 |
-| Alpha build             |                |            |
-| Review                  |                |            |
+| Alpha build             | Done           |            |
+| Review                  | Done           |            |
 | Alterations             |                |            |
 | Final review            |                |            |
 | Golden                  |                |            |
