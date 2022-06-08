@@ -337,7 +337,7 @@ const ddlBarriers = [
   { key: "Displaced", value: "Displaced homemaker" },
   { key: "Disabled", value: "Disabled" },
   { key: "LowIncome", value: "Low income" },
-  { key: "Migrant", value: "Migrant / Seasonnal worker" },
+  { key: "Migrant", value: "Migrant / Seasonal worker" },
   { key: "LearningDisabled", value: "Learning disabled" },
   { key: "Runaway", value: "Runaway youth" },
   { key: "WalkInTest", value: "Walk-in from TASC test" },
