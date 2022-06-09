@@ -41,7 +41,7 @@ section:not("student-info") {
   margin-bottom: 1%;
 }
 .sub-header {
-  line-height: 30px;
+  line-height: 2.1em;
   padding-left: 5px;
   font-size: 1em;
   font-weight: 600;
@@ -52,6 +52,11 @@ section:not("student-info") {
 .sub-header-title {
   text-align: right;
   padding-right: 1%;
+  margin: 0.1% 0%;
+}
+.sub-header button {
+  font-weight: 600;
+  padding: 3px 4px;
   margin: 0.1% 0%;
 }
 
@@ -82,17 +87,6 @@ section:not("student-info") {
 }
 .not-editable:hover {
   background-color: inherit;
-}
-
-/* Add buttons */
-#add-tabe,
-#add-bestplus,
-#add-bestlit,
-#add-hse {
-  font-weight: 600;
-  padding: 3px 4px;
-  margin-right: 0px;
-  margin-top: 0.5em;
 }
 
 /* Sections */
