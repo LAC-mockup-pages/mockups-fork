@@ -5,7 +5,7 @@ export const GetStudent_Additional = [
     StudentID: "AA1_JacquesGregoryPRA22620101271987",
     CountryID: "HA",
     Status: "Citizen",
-    DateSettled: "05/02/2015",
+    DateSettled: "06/19/2015",
     Languages: "English, French",
     Correctional: "2",
     Institutionalized: "2",

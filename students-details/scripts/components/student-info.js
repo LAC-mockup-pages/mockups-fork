@@ -12,7 +12,8 @@ export const inputValues = (student) => {
   $("form input").each(function () {
     const name = $(this).attr("name");
     const value =
-      $(this).attr("type") === "date" && name !== "DateSettled"
+      // $(this).attr("type") === "date" && name !== "DateSettled"
+      $(this).attr("type") === "date"
         ? dateFormat(student[name])
         : student[name];
     $(this).val(value);

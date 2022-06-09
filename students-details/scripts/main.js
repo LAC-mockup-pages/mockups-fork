@@ -68,7 +68,7 @@ const employmentIncome = GetIncome.slice(0);
 //! =============================================================
 
 export const dateFormat = (str) => {
-  return `${str.slice(-4)}-${str.substr(0, 2)}-${str.substr(3, 2)}`;
+  return str ? `${str.slice(-4)}-${str.substr(0, 2)}-${str.substr(3, 2)}` : "";
 };
 
 export const createOptionList = (dataObj, defaultValue) => {
@@ -209,6 +209,7 @@ $(document).ready(() => {
       additionalInfo.Status
     )
   );
+
   $(".nationality-form input[name='DateSettled']").val(
     dateFormat(additionalInfo.DateSettled)
   );
