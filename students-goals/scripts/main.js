@@ -45,7 +45,11 @@ export const createOptionList = (dataObj, defaultValue) => {
     if (valueData) {
       const defaultVal =
         defaultValue && keyData === defaultValue ? " selected" : "";
-      return `<option${defaultVal} value=${keyData}>${valueData}</option>`;
+      // Disabling options related to HSE
+      const disabledOption = ["5", "5DP", "5RG"].includes(keyData)
+        ? " disabled"
+        : "";
+      return `<option${defaultVal}${disabledOption} value=${keyData}>${valueData}</option>`;
     } else {
       return `<option selected value></option>`;
     }
