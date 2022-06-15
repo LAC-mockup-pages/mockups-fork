@@ -438,6 +438,9 @@ $(document).ready(() => {
       .empty()
       .append(editFormContent)
       .attr("data-table", dataTableName);
+
+    $("#Pre_Post-view").parent().addClass("hidden");
+
     $(".modal-title").empty().text(`Adding new ${modalTitle} record`);
     // Process customized requiredList
     for (const name of requiredList) {
