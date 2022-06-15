@@ -1,9 +1,12 @@
-.personView {
-  background-color: #fff;
-  padding-bottom: 0.5%;
-  border-bottom: 5px solid #1d6294;
-}
+/* Specific CSS rules for PersonView and sub components*/
+/* ================================== */
 
+.personView {
+  background-color: #f5f5f5;
+  margin: 1% 0% 1% 0%;
+  border-bottom: 20px solid #1d6294;
+  border-radius: 4px;
+}
 .sub-header {
   line-height: 30px;
   padding-left: 5px;
@@ -15,42 +18,92 @@
 .bloc-adrs .input-field {
   padding-left: 10px;
 }
-
+.table {
+  margin: 0;
+}
 .history-table,
-.proDev-table,
-.instructional-hours-table {
-  height: 205px;
+.proDev-table {
+  height: 230px;
   overflow-y: scroll;
 }
-.contact-history-table {
-  height: 195px;
-  overflow-y: scroll;
-}
-.bloc-hours {
-  padding: 0;
-}
+
+.instructional-hours-table,
+.progress-contact-table,
 .non-instructional-hours-table {
-  height: 190px;
+  height: 180px;
   overflow-y: scroll;
-  text-align: center;
+}
+.bloc-additionalInfo .row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
+.bloc-history-proDev,
+.person-main {
+  margin: 0% 0% 2% 0%;
+}
+
+.bloc-perso {
+  margin-top: 1.7%;
+}
+
+.color-select:hover {
+  background-color: #d3e4f0;
+}
+
+.bloc-perso label {
+  width: 30%;
+}
+.bloc-perso input,
+.bloc-perso select {
+  width: 68%;
+}
+
+.bloc-proDev {
+  margin-top: 15%;
+}
+.bloc-history-proDev,
+.bloc-nonInstrHours {
+  padding-left: 4%;
+}
+
+.bloc-hours,
+.bloc-address,
+.bloc-additionalInfo,
+.bloc-comments-contacts {
+  padding: 4% 0 4% 0;
+  margin-top: 1%;
+  border-top: 4px solid #d3e4f0;
+}
+
+.color-select input,
+.color-select select,
+.color-select textarea {
+  background-color: inherit;
+}
+#comments {
+  height: 14em;
+  overflow-y: scroll;
+  padding-left: 2%;
+}
+.comment-line {
+  color: #333;
+  font-size: 1.2em;
+  font-weight: 400;
+  line-height: 2.2em;
+}
+
+.non-instructional-hours-table {
+  line-height: 30px;
 }
 
 .total-hours {
   border: 1px solid #d3e4f0;
 }
 
-.history-cell,
-.proDev-cell {
-  font-size: 0.9em;
-  line-height: 20px;
-}
-
 .bloc-proDev-workshop,
 .bloc-proDev-category,
 .bloc-proDev-hrs,
-.bloc-proDev-attended,
-.bloc-additionalInfo,
-.bloc-comments-contacts {
+.bloc-proDev-attended {
   padding: 0;
 }
 
@@ -68,7 +121,8 @@
   border-bottom: 1px solid #d3e4f0;
 }
 
-.add-record-btn {
+.add-record-btn,
+.save-record-btn {
   height: 28px;
   margin-top: 2px;
   line-height: 16px;
@@ -81,30 +135,48 @@
   line-height: 2em;
   padding: 0 5px 0 5px;
 }
-.proDev-hours {
+.proDev-hours,
+.instr-hours {
   font-size: 1em;
   font-weight: 700;
   text-align: center;
 }
 
-.bloc-address {
-  padding: 0;
-  margin-top: 1%;
-}
-
 .home-address,
 .work-address {
-  line-height: 2em;
-  margin-left: 5%;
+  padding-left: 2%;
 }
 
-.mail-call-checkboxes > input {
-  width: 15px;
-  height: 15px;
+.mail-call-checkboxes > label,
+#comments textarea {
+  font-size: 1.2em;
+  font-weight: 400;
+}
+
+.mail-call-checkboxes > label {
+  margin-bottom: 1em;
+  padding-bottom: 3%;
+  line-height: 2.5em;
+}
+
+.mail-call-checkboxes > input[type="checkbox"] {
+  width: 1.5em;
+  height: 1.5em;
+  margin-left: 2em;
+
+  margin-bottom: -1em;
+}
+
+.mail-call-checkboxes input[type="checkbox"]:checked {
+  background: #1d6294;
+}
+
+.additional-right-bloc {
+  padding-left: 3%;
 }
 
 .notes-and-comments {
-  background-color: #fff;
+  background-color: #f5f5f5;
   margin: 1% 0 1% 0;
   border: 1px solid #d3e4f0;
   height: 10em;
@@ -113,4 +185,33 @@
 
 .total-banner {
   font-size: 1.2em;
+}
+
+.proDev-cell-hrs {
+  text-align: center;
+}
+
+.sub-header-labels {
+  padding: 0;
+  margin-left: -5px;
+  margin-right: 0;
+  text-align: center;
+}
+#comments textarea {
+  width: 575px;
+  height: 200px;
+  font-size: 1.4em;
+  font-weight: 400;
+  padding-left: 2%;
+  background-color: #f5f5f5;
+}
+
+.comments-modal-area {
+  width: 575px;
+  height: 200px;
+  font-size: 1.4em;
+  font-weight: 400;
+  padding-left: 2%;
+  background-color: #f5f5f5;
+  overflow-y: scroll;
 }
