@@ -265,6 +265,15 @@ $(document).ready(() => {
     $(this).toggleClass("dark-text").prop("required", false);
   });
 
+  //* Modal title handling
+  $("#modalBloc").on("hidden.bs.modal", function () {
+    const modalTitleText = $(".modal-title").text();
+    if (modalTitleText.startsWith("Adding")) {
+    } else {
+      $(".modal-title").text("Adding a record");
+    }
+  });
+
   //* Adding a new team member
   $(document).on("click", "#add-new-member", function (evnt) {
     evnt.stopPropagation();
@@ -381,6 +390,7 @@ $(document).ready(() => {
       }
 
       $("#modalBloc").modal("toggle");
+      $(".modal-title").text("Editing a record");
       $("#modal-form")
         .empty()
         .append(editForm[1])
@@ -471,7 +481,7 @@ $(document).ready(() => {
       });
     }
     $("#modalBloc").modal("toggle");
-    $(".modal-title").text("Editing");
+    $(".modal-title").text("Editing a record");
     $("#modal-form")
       .empty()
       .append(editFormContent)

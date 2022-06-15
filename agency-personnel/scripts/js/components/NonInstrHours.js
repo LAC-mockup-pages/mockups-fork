@@ -50,8 +50,8 @@ const createFormAddNonIntructionalHours = (formName, rowId = null) => {
         keyValue: keyVal,
         selectedValue,
         labelVal,
-        labelClassVal: "",
-        option
+        labelClassVal: "class='red-text'",
+        option: "required"
       };
 
       // elementSelectModal() <== helperFunctions.js
