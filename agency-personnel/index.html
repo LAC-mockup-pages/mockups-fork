@@ -33,21 +33,33 @@
       src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
       defer
     ></script>
+
+    <!-- Local Styling -->
+    <link rel="stylesheet" href="style/index.css" type="text/css" />
+
+    <!-- Data Source -->
     <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
+      src="./scripts/js/data-server.js"
+      type="text/javascript"
       defer
     ></script>
 
-    <link rel="stylesheet" href="style/index.css" type="text/css" />
+    <!-- JS Files -->
     <script
       src="../navbar/scripts/index.js"
       type="text/javascript"
       defer
     ></script>
-    <script src="scripts/data.js" type="text/javascript" defer></script>
-    <script src="scripts/index.js" type="text/javascript" defer></script>
-    <script src="scripts/personView.js" type="text/javascript" defer></script>
-    <script src="scripts/addEdit.js" type="text/javascript" defer></script>
+
+    <script
+      src="../helpers/helperFunctions.js"
+      type="text/javascript"
+      defer
+    ></script>
+
+    <script src="../helpers/constants.js" type="text/javascript" defer></script>
+
+    <script type="module" src="./scripts/js/main.js" defer></script>
 
     <!-- !======================================= -->
     <!-- ! File: /Personnel/prs_contactinfo.aspx -->
@@ -246,18 +258,27 @@
           </div>
         </div>
       </div>
+      <!-- Sub NavBar -->
+      <div class="container-fluid blue-bg blue-light-text sub-navbar">
+        <ul id="sub-nav" class="nav-justified">
+          <li class="selected">
+            <a href="./index.html" type="text/html">Personnel Information</a>
+          </li>
+          <li class="not-selected">Personnel Details</li>
+        </ul>
+      </div>
     </header>
     <!-- Hero -->
-    <div class="container hero">
+    <div class="container-fluid hero">
       <!-- New Personnel entry-->
       <div class="container-fluid personnel-entry blue-bg">
         <div class="label-text blue-light-text" id="add-new-member">
-          Click to add a New Personnel (Elements in red are required):
+          Click HERE to add a New Personnel (Elements in red are required):
         </div>
         <form
           class="form-inline blue-bg hidden"
           role="form"
-          id="new-personnel"
+          id="new-entry"
         ></form>
       </div>
       <!-- Personnel Search -->
@@ -268,11 +289,13 @@
             id="search-input"
             class="form-control blue-text"
             autocomplete="off"
-            placeholder="Type the 3 first letters of the last or first name"
+            placeholder="Type the first letters of the last or first name"
+            title="Only alphanumerical characters"
           />
           <button
             type="button"
             id="search-btn"
+            form="search-form"
             class="btn btn-default blue-text"
             aria-label="Search"
           >
@@ -282,27 +305,11 @@
         </form>
       </div>
       <!-- Data viewing -->
-      <div class="data-view blue-bg">
-        <table class="table" id="search-result">
-          <thead></thead>
-          <tbody></tbody>
-        </table>
-      </div>
+      <div class="data-view blue-bg" id="view-bloc"></div>
     </div>
-    <a id="btn-cancel"
-      ><span
-        class="glyphicon glyphicon-remove-circle"
-        aria-hidden="false"
-      ></span>
-      Cancel</a
-    >
-    <a id="btn-save" class="blue-bg"
-      ><span class="glyphicon glyphicon-save" aria-hidden="false"></span>
-      Save</a
-    >
     <a id="btn-top"
-      ><span class="glyphicon glyphicon-eject" aria-hidden="false"></span> Back
-      to Top</a
+      ><span class="glyphicon glyphicon-eject" aria-hidden="false"></span>
+      Top</a
     >
 
     <!-- Modal for Adding/Editing Bloc data -->
@@ -314,12 +321,14 @@
               <span aria-hidden="true">&times;</span
               ><span class="sr-only">Close</span>
             </button>
-            <h4 class="modal-title">Editing an Outcome</h4>
+            <h4 class="modal-title">Adding</h4>
           </div>
-          <div class="modal-body container"></div>
+          <div class="modal-body">
+            <form id="modal-form" role="form"></form>
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">
-              Close
+              Close without saving
             </button>
             <button
               type="button"
