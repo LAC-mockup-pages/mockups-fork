@@ -38,19 +38,19 @@
     <link rel="stylesheet" href="style/index.css" type="text/css" />
 
     <!-- Data Source -->
+    <script src="scripts/data-server.js" type="text/javascript" defer></script>
+
+    <!-- Luxon JS library from CDN - Dates and time management-->
     <script
-      src="./scripts/js/data-server.js"
+      src="https://cdn.jsdelivr.net/npm/luxon@1.26.0/build/global/luxon.min.js"
       type="text/javascript"
       defer
     ></script>
 
-    <!-- JS Files -->
-    <script
-      src="../navbar/scripts/index.js"
-      type="text/javascript"
-      defer
-    ></script>
+    <!-- Luxon JS polyfill for IE 10 or 11-->
+    <script src="https://cdn.polyfill.io/v3/polyfill.js?features=default,String.prototype.repeat,Array.prototype.find,Array.prototype.findIndex,Math.trunc,Math.sign,Object.is"></script>
 
+    <!-- JS files -->
     <script
       src="../helpers/helperFunctions.js"
       type="text/javascript"
@@ -59,13 +59,23 @@
 
     <script src="../helpers/constants.js" type="text/javascript" defer></script>
 
-    <script type="module" src="./scripts/js/main.js" defer></script>
+    <script
+      src="../navbar/scripts/index.js"
+      type="text/javascript"
+      defer
+    ></script>
 
-    <!-- !======================================= -->
-    <!-- ! File: /Personnel/prs_contactinfo.aspx -->
-    <!-- !======================================= -->
+    <script src="scripts/data-check.js" type="text/javascript" defer></script>
 
-    <title>Mock-up Agency Personnel Info</title>
+    <script type="module" src="./scripts/main.js" defer></script>
+
+    <!-- !=================================================== -->
+    <!-- ! File: /Instructional_Offerings/io_courseinfo.aspx  -->
+    <!-- ! File: /InstructionalActivity/selectinfo.aspx       -->
+    <!-- ! File: /InstructionalActivity/iaenrollmentinfo.aspx -->
+    <!-- !=================================================== -->
+
+    <title>Mock-up Instructional Activity</title>
   </head>
   <body>
     <header>
@@ -149,10 +159,7 @@
                       </a>
                       <ul class="dropdown-menu">
                         <li>
-                          <a>Add New Course Offering </a>
-                        </li>
-                        <li>
-                          <a>Edit Instructional Activity </a>
+                          <a>Course Offering </a>
                         </li>
                       </ul>
                     </li>
@@ -260,59 +267,73 @@
       </div>
       <!-- Sub NavBar -->
       <div class="container-fluid blue-bg blue-light-text sub-navbar">
-        <ul id="sub-nav" class="nav-justified">
-          <li class="selected">
-            <a href="./index.html" type="text/html">Personnel Information</a>
-          </li>
-          <li class="not-selected">Personnel Details</li>
-        </ul>
+        <div class="col-md-11">
+          <!-- <div role="tabpanel" class="col-md-11"> -->
+          <ul id="sub-nav" class="nav nav-tabs nav-justified uc-true">
+            <li class="selected-tab" id="offering">
+              <button type="button" class="btn btn-link" id="offering-tab">
+                Select new course / Add course
+              </button>
+            </li>
+            <li id="enrollment">
+              <button
+                type="button"
+                class="btn btn-link unselected-tab disabled"
+                id="enrollment-tab"
+              >
+                Enrollment
+              </button>
+            </li>
+            <li id="hours">
+              <button
+                type="button"
+                class="btn btn-link unselected-tab disabled"
+                id="hours-tab"
+              >
+                Hours
+              </button>
+            </li>
+            <li id="details">
+              <button
+                type="button"
+                class="btn btn-link unselected-tab disabled"
+                id="details-tab"
+              >
+                Details
+              </button>
+            </li>
+          </ul>
+        </div>
       </div>
     </header>
     <!-- Hero -->
     <div class="container-fluid hero">
-      <!-- New Personnel entry-->
-      <div class="container-fluid personnel-entry blue-bg">
-        <div class="label-text blue-light-text" id="add-new-member">
-          Click HERE to add a New Personnel (Elements in red are required):
+      <!-- New record entry-->
+      <div class="container-fluid record-entry blue-bg">
+        <div class="label-text blue-light-text" id="add-new-record">
+          Click to add a New Course (Elements in red are required):
         </div>
         <form
           class="form-inline blue-bg hidden"
           role="form"
           id="new-entry"
+          aria-autocomplete="none"
         ></form>
       </div>
-      <!-- Personnel Search -->
-      <div class="container personnel-search blue-bg">
-        <form class="form-inline" role="form" id="search-form">
-          <input
-            type="text"
-            id="search-input"
-            class="form-control blue-text"
-            autocomplete="off"
-            placeholder="Type the first letters of the last or first name"
-            title="Only alphanumerical characters"
-          />
-          <button
-            type="button"
-            id="search-btn"
-            form="search-form"
-            class="btn btn-default blue-text"
-            aria-label="Search"
-          >
-            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-            Search
-          </button>
-        </form>
-      </div>
+      <!-- Sorting Block-->
+      <div class="blue-bg container-fluid" id="filter-bloc"></div>
       <!-- Data viewing -->
-      <div class="data-view blue-bg" id="view-bloc"></div>
+      <div class="container-fluid" id="view-bloc">
+        <div class="main-table"></div>
+      </div>
+      <!-- End data viewing -->
     </div>
     <a id="btn-top"
       ><span class="glyphicon glyphicon-eject" aria-hidden="false"></span>
       Top</a
     >
 
-    <!-- Modal for Adding/Editing Bloc data -->
+    <!-- Modal for editing  data -->
     <div class="modal fade" id="modalBloc">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -321,22 +342,93 @@
               <span aria-hidden="true">&times;</span
               ><span class="sr-only">Close</span>
             </button>
-            <h4 class="modal-title">Adding</h4>
+            <h4 class="modal-title">Editing</h4>
           </div>
           <div class="modal-body">
-            <form id="modal-form" role="form"></form>
+            <form id="edit-form" role="form"></form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">
+            <button
+              type="button"
+              class="btn btn-default"
+              id="close-btn"
+              data-dismiss="modal"
+            >
               Close without saving
             </button>
             <button
               type="button"
               class="btn btn-primary"
-              data-dismiss="modal"
+              form="edit-form"
               id="save-btn"
             >
               Save changes
+            </button>
+
+            <!-- UNUSED?? -->
+            <!-- <button
+              type="button"
+              class="btn btn-primary hidden"
+              form="edit-form"
+              id="edit-save-btn"
+            >
+              Save changes
+            </button> -->
+            <button
+              type="button"
+              class="btn btn-danger hidden"
+              form="edit-form"
+              id="delete-btn"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal for confirming daily contact hours input -->
+    <div class="modal fade" id="modalConfirm">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span
+              ><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title">Please confirm</h4>
+          </div>
+          <div class="modal-body">
+            <div class="warning-bloc">
+              <div class="warning-text container-fluid">
+                <p>
+                  Are you sure you want to update this course for entering
+                  contact hours on a daily basis?
+                </p>
+
+                <div class="epe-tip">
+                  <p>EPE Tip</p>
+                  <p>Daily Contact hours must be entered:</p>
+                  <ul>
+                    <li>
+                      For any student who is turning 21 for the month of his/her
+                      birthday
+                    </li>
+                    <li>
+                      For any student who has received a GED for the month that
+                      he/she was surveyed
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn yellow-bg" id="daily-cancel-btn">
+              NO, I do not want to input Daily Hours
+            </button>
+            <button type="button" class="btn btn-success" id="confirm-btn">
+              YES, I want to input Daily Hours
             </button>
           </div>
         </div>

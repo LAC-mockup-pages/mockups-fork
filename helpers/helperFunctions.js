@@ -218,7 +218,7 @@ const createTableRow = (idValue, recordObj) => {
   for (const property in recordObj) {
     dataElement += `<td class="cell-data" data-name=${property}>${recordObj[property]}</td>`;
   }
-  return `<tr class="row-data" id=${idValue} title="Click to edit" data-toggle='tooltip' data-placement='left'>${dataElement}</tr>`;
+  return `<tr class="row-data"  id=${idValue} data-toggle='tooltip' title="Click to edit" data-placement='left'>${dataElement}</tr>`;
 };
 
 // argsObj = {record, labelList, labelObj, hiddenList}
@@ -236,6 +236,20 @@ const createRow = (argsObj) => {
   } title="Click to edit" data-toggle='tooltip' data-placement='left'>${tdList.join(
     ""
   )}</tr>`;
+};
+
+// Date formatting from US to ISO and reversed.
+// Input: string of date in either format.
+// Output: string of date in the other format.
+// Example: "MM/DD/YYYY" ==> "YYYY-MM-DD"
+//          "YYYY-MM-DD" ==> "MM/DD/YYYY"
+const dateISOToUS = (strDate) => {
+  // Boolean flag checking the 4 first characters are digits
+  const startIsISO = /\d{4}/.test(strDate.substr(0, 4));
+  const formattedDate = startIsISO
+    ? strDate.replace(/(\d{4})-(\d{2})-(\d{2})/, "$2/$3/$1")
+    : strDate.replace(/(\d{2})\/(\d{2})\/(\d{4})/, "$3-$1-$2");
+  return formattedDate;
 };
 
 // Date validation for MM/DD/YYYY.
@@ -261,4 +275,40 @@ const dateValid = (date) => {
   );
 
   return dateEval;
+};
+
+// Creates data object starter with AgencyID, UserID, Fiscal Year from
+// SESSION_VARIABLE object with default values if Dev environment.
+const createCredentials = () => {
+  const str = "<%= Session";
+  const { AgencyID, AuditUserID, FiscalYear } = SESSION_VARIABLE[0];
+  const agency = AgencyID.startsWith(str) ? "PRA" : AgencyID;
+  const user = AuditUserID.startsWith(str) ? "999999" : AuditUserID;
+  const FY = FiscalYear.startsWith(str) ? "2022" : FiscalYear;
+
+  return { AgencyID: agency, AuditUserID: user, FiscalYear: FY };
+};
+
+// Add dashes to phone number while typing.
+// The trigger event is attached to the <input> like so:
+// (jQuery) $("#phone-number").keyup(function(evnt){
+//            evnt.stopPropagation()
+//            $(this).val(formatPhoneWithDashes($(this).val()));
+//          })
+const formatPhoneWithDashes = (phone) => {
+  // remove all non-dash and non-numerals
+  let val = phone.replace(/[^\d-]/g, "");
+  // add the first dash if number from the second group appear
+  val = val.replace(/^(\d{3})-?(\d{1,2})/, "$1-$2");
+  // add the second dash if numbers from the third group appear
+  val = val.replace(/^(\d{3})-?(\d{3})-?(\d{1,4})/, "$1-$2-$3");
+  // remove misplaced dashes
+  val = val
+    .split("")
+    .filter((val, idx) => {
+      return val !== "-" || idx === 3 || idx === 7;
+    })
+    .join("");
+  // enforce max length
+  return val.substring(0, 12);
 };
