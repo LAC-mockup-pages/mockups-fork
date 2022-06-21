@@ -129,7 +129,7 @@ const phoneFormat = (str) => {
     str = str.replace(/\D/gi, "");
   }
   return str.length === 10
-    ? `${str.slice(0, 3)}-${str.slice(3, 6)}-${str.slice(6)}`
+    ? `(${str.slice(0, 3)})-${str.slice(3, 6)}-${str.slice(6)}`
     : str;
 };
 
@@ -236,6 +236,20 @@ const createRow = (argsObj) => {
   } title="Click to edit" data-toggle='tooltip' data-placement='left'>${tdList.join(
     ""
   )}</tr>`;
+};
+
+// Date formatting from US to ISO and reversed.
+// Input: string of date in either format.
+// Output: string of date in the other format.
+// Example: "MM/DD/YYYY" ==> "YYYY-MM-DD"
+//          "YYYY-MM-DD" ==> "MM/DD/YYYY"
+const dateISOToUS = (strDate) => {
+  // Boolean flag checking the 4 first characters are digits
+  const startIsISO = /\d{4}/.test(strDate.substr(0, 4));
+  const formattedDate = startIsISO
+    ? strDate.replace(/(\d{4})-(\d{2})-(\d{2})/, "$2/$3/$1")
+    : strDate.replace(/(\d{2})\/(\d{2})\/(\d{4})/, "$3-$1-$2");
+  return formattedDate;
 };
 
 // Date validation for MM/DD/YYYY.
