@@ -16,6 +16,9 @@ const validateRecord = (dataList) => {
       case "SiteName":
         obj.correct = value ? alphaNumCheck(value) : false;
         break;
+      case "Telephone":
+        obj.correct = true;
+        break;
       default:
         obj.correct = value ? alphaNumCheck(value) : true;
         break;

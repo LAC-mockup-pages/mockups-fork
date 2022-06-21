@@ -76,12 +76,14 @@ const createNewRecord = (labelsList) => {
         option =
           " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
       }
+      const type = key === "Telephone" ? "tel" : "";
       // inputNoLabel() <== helperFunctions()
       element = inputNoLabel({
         key,
         placehold,
         classOption,
-        option
+        option,
+        type
       });
     }
     result.push(element);
@@ -238,6 +240,7 @@ const createForm = (list) => {
         optionText: " a state"
       });
     } else {
+      const type = keyVal === "Telephone" ? "tel" : "";
       // elementInput() <== helperFunctions.js
       formContent += elementInput({
         keyVal,
@@ -246,7 +249,8 @@ const createForm = (list) => {
         labelClassVal,
         classVal,
         option,
-        optionHidden
+        optionHidden,
+        type
       });
     }
   }
@@ -374,5 +378,16 @@ $(document).ready(() => {
     const formId = `#${$(this).attr("form")}`;
     const modifiedRecord = $(formId).serializeArray();
     saveMods(modifiedRecord, formId, "sitesDataServer");
+  });
+  //* Phone numbers dynamic masking
+  //* On entry, format the numbers as US phone number (XXX)-XXX-XXXX
+  $(document).on("keyup", "#edit-form input[type='tel']", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const inputValue = $(this).val();
+    $(this).val(
+      inputValue.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, "($1)-$2-$3")
+    );
+    // console.log("Phone event hit ", $(this).val());
   });
 });
