@@ -227,6 +227,11 @@ $(document).ready(() => {
     }
     $("#edit-form").append(modalBloc);
     $("#AgencyEmail-view").attr("type", "email");
+    $("#Telephone-view").attr({
+      type: "tel",
+      pattern: "[(]d{3}[)-]d{3}[-]d{4}",
+      placeholder: "(XXX)-XXX-XXXX"
+    });
   });
 
   // Save button in modal form
@@ -242,5 +247,16 @@ $(document).ready(() => {
     evnt.preventDefault();
     evnt.stopPropagation();
     $("#modal-bloc").modal("toggle");
+  });
+
+  //* Phone numbers dynamic masking
+  //* On entry, format the numbers as US phone number (XXX)-XXX-XXXX
+  $(document).on("keyup", "#edit-form input[type='tel']", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const inputValue = $(this).val();
+    $(this).val(
+      inputValue.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, "($1)-$2-$3")
+    );
   });
 });
