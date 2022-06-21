@@ -129,7 +129,7 @@ const phoneFormat = (str) => {
     str = str.replace(/\D/gi, "");
   }
   return str.length === 10
-    ? `${str.slice(0, 3)}-${str.slice(3, 6)}-${str.slice(6)}`
+    ? `(${str.slice(0, 3)})-${str.slice(3, 6)}-${str.slice(6)}`
     : str;
 };
 
