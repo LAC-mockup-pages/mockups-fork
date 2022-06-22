@@ -7,6 +7,8 @@
 import {
   createOptionList,
   modalOptionWioa,
+  createFYValues,
+  createFYList,
   outcomeList,
   credentialList
 } from "../main.js";
@@ -116,11 +118,7 @@ export const addNewOutcomeWIOA = (obj) => {
     let option = "";
     let value = "";
     // <input> fields
-    if (
-      ["OutcomeFY", "Quarter", "SurveyDate", "OutcomeDate", "Income"].includes(
-        keyValue
-      )
-    ) {
+    if (["Quarter", "SurveyDate", "OutcomeDate", "Income"].includes(keyValue)) {
       let optionHidden = "form-group";
       const type = keyValue.includes("Date") ? "date" : "text";
       // elementInput() ==> helpers/helperFunctions.js
@@ -136,13 +134,18 @@ export const addNewOutcomeWIOA = (obj) => {
       });
     } else {
       // <select> fields
-      let hashTable;
+      let hashTable = [];
+      let selectedValue = "";
       switch (keyValue) {
         case "OutcomeID":
           hashTable = outcomeList;
           break;
         case "NYSED_CredentialID":
           hashTable = credentialList;
+          break;
+        case "OutcomeFY":
+          hashTable = createFYValues();
+          selectedValue = hashTable[0].value;
           break;
         default:
           console.log("Default hit - Not right");
@@ -152,7 +155,7 @@ export const addNewOutcomeWIOA = (obj) => {
       row = elementSelectModal({
         hashTable,
         keyValue,
-        selectedValue: "",
+        selectedValue,
         labelVal,
         labelClassVal,
         option,

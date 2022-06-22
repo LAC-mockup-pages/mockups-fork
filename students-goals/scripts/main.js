@@ -57,6 +57,27 @@ export const createOptionList = (dataObj, defaultValue) => {
   return optionList.join("");
 };
 
+// Creates array of fiscla year values
+export const createFYValues = (dateISO = Date.now()) => {
+  // createCredentials() <= helpers/helperFunctions.js
+  const { FiscalYear } = createCredentials();
+  const numFiscalYear = Number(FiscalYear);
+  const currentYear = new Date(dateISO).getFullYear();
+  const currentMonth = new Date(dateISO).getMonth();
+  let previousFY = 0;
+  if (currentMonth < 6) {
+    previousFY = Math.min(currentYear, numFiscalYear - 1);
+  } else if (currentYear === numFiscalYear) {
+    previousFY = Math.max(currentYear, numFiscalYear - 1);
+  } else {
+    previousFY = numFiscalYear - 1;
+  }
+  return [
+    { key: `${previousFY + 1}`, value: `${previousFY + 1}` },
+    { key: `${previousFY}`, value: `${previousFY}` }
+  ];
+};
+
 // Creates option list for Fiscal year dropdown.
 export const createFYList = (dateISO = Date.now()) => {
   // createCredentials() <= helpers/helperFunctions.js
