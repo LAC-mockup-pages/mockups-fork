@@ -391,30 +391,4 @@ $(document).ready(() => {
     const selectedId = $(".hero").attr("data-studentpkid");
     redirectToProfile(selectedId);
   });
-
-  //* TEST BUTTON ACTION
-  // Toggling disabled prop in forms
-  // let flag = true;
-  // $("#test-button").click(function (evnt) {
-  //   evnt.stopPropagation();
-  //   console.log("first flag :>> ", flag);
-  //   const formSelector = "form:not(.id-form)";
-  //   $(".id-form input").prop("disabled", flag);
-  //   $(`${formSelector} input, select`).prop("disabled", !flag);
-
-  //   flag = flag ? false : true;
-  //   console.log("end flag :>> ", flag);
-  //   console.log("Required list: >>", getRequired(formSelector));
-  // });
-
-  // For test purposes.
-  const formSelector = "form:not(.id-form)";
-  $(`${formSelector} :input`).prop("disabled", false);
-  $(".barrier-group select[name='Barriers']").focus();
-
-  // $("#test-button").click(function (evnt) {
-  //   evnt.stopPropagation();
-
-  //   finalCheck();
-  // });
 });
