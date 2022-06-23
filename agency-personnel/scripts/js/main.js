@@ -273,7 +273,10 @@ $(document).ready(() => {
       $(".modal-title").text("Adding a record");
     }
   });
-
+  $(document).on("focusin", "#PersStartDate", function (evnt) {
+    evnt.stopPropagation();
+    $(this).attr("type", "date");
+  });
   //* Adding a new team member
   $(document).on("click", "#add-new-member", function (evnt) {
     evnt.stopPropagation();
@@ -368,7 +371,6 @@ $(document).ready(() => {
       evnt.stopPropagation();
       const selectedRecordId = $(this).attr("id");
       const blockName = selectedRecordId.split("-").slice(0, -1).join("-");
-
       let editForm = "";
       switch (blockName) {
         case "history":
@@ -383,12 +385,10 @@ $(document).ready(() => {
         case "progress-contact":
           editForm = createFormAddContact(blockName, selectedRecordId);
           break;
-
         default:
           editForm = defaultModal("no-table-defined-yet");
           break;
       }
-
       $("#modalBloc").modal("toggle");
       $(".modal-title").text("Editing a record");
       $("#modal-form")
@@ -396,7 +396,14 @@ $(document).ready(() => {
         .append(editForm[1])
         .attr("data-table", editForm[0])
         .attr("data-block", blockName);
-
+      // Add dynamic masking for date fields in modal
+      // Modifies the date to ISO format required by input type "date"
+      $("#modal-form input[name$='Date']")
+        .val(function (indx, value) {
+          // dateISOToUS() <== helpers/helperFunctions.js
+          return dateISOToUS(value);
+        })
+        .attr("type", "date");
       // Binding event trigger for real time updating total hours
       if (blockName === "non-instructional-hours") handleChangeNonInstHours();
     }
@@ -493,6 +500,14 @@ $(document).ready(() => {
         .prop("disabled", false)
         .removeAttr("disabled");
     }
+    // Add dynamic masking for date fields in modal
+    // Modifies the date to ISO format required by input type "date"
+    $("#modal-form input[name$='Date']")
+      .val(function (indx, value) {
+        // dateISOToUS() <== helpers/helperFunctions.js
+        return dateISOToUS(value);
+      })
+      .attr("type", "date");
   });
 
   //* Save button in block top banner

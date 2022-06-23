@@ -31,7 +31,7 @@ const validateRecord = (dataList) => {
       case "PersStartDate":
       case "PersStatusDate":
       case "ContactDate":
-        obj.correct = dateValid(value);
+        obj.correct = dateValid(dateISOToUS(value));
         break;
 
       case "PersEmail":
