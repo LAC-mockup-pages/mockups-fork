@@ -20,8 +20,8 @@ export const createModalRosterEdit = (tdList) => {
     Name: "Full Name",
     Date: "Date",
     RAENID: "Region",
-    Attended: "Attended",
-    FeesPaid: "Fees Paid",
+    Attended: "Attended"
+    // FeesPaid: "Fees Paid",
   };
 
   const hiddenList = [
@@ -30,7 +30,7 @@ export const createModalRosterEdit = (tdList) => {
     "PersonnelID",
     "PDActivity_PKID",
     "Date",
-    "Personnel_PKID",
+    "Personnel_PKID"
   ];
 
   const fieldList = Object.keys(labelList);
@@ -44,7 +44,7 @@ export const createModalRosterEdit = (tdList) => {
     let optionHidden = "form-group";
     let classVal = "";
     let option = "disabled";
-    if (["Attended", "FeesPaid"].includes(keyVal)) {
+    if (["Attended"].includes(keyVal)) {
       const valueBool = value === "Yes" ? "True" : "False";
       bloc += `<div class="input-field form-group">
     <label for=${keyVal}>${labelVal}</label>
@@ -63,7 +63,7 @@ export const createModalRosterEdit = (tdList) => {
         labelClassVal: "",
         classVal,
         option,
-        optionHidden,
+        optionHidden
       });
     }
   }
@@ -80,19 +80,19 @@ export const createModalRoster = (selectedRegion, selectedAgency) => {
     Name: "Full Name",
     Date: "Date",
     RAENID: "Region",
-    Attended: "Attended",
-    FeesPaid: "Fees Paid",
+    Attended: "Attended"
+    // FeesPaid: "Fees Paid",
   };
   const selectElementObj = {
     RAENID: { hashTable: regionList, optionText: "a region" },
     AgencyID: {
       hashTable: [{ key: "AgencyID", val: "" }],
-      optionText: "an agency",
+      optionText: "an agency"
     },
     Personnel_PKID: {
       hashTable: [{ key: "Personnel_PKID", val: "" }],
-      optionText: "a participant",
-    },
+      optionText: "a participant"
+    }
   };
   if (selectedRegion) {
     const filteredAgencyList = agencyList
@@ -133,7 +133,7 @@ export const createModalRoster = (selectedRegion, selectedAgency) => {
       labelVal,
       labelClassVal: 'class="red-text"',
       option: "required",
-      optionText,
+      optionText
     });
   }
 
@@ -148,13 +148,14 @@ export const createModalRoster = (selectedRegion, selectedAgency) => {
   <input type="checkbox" id="attended-box" name="Attended"/>
   </div>
   `;
-  const feesCheckbox = `<div class="input-field form-group">
-  <label for="FeesPaid">${labelList.FeesPaid}</label>
-  <input type="checkbox" name="FeesPaid" id="fees-box"/>
-  </div>
-  `;
+  // const feesCheckbox = `<div class="input-field form-group">
+  // <label for="FeesPaid">${labelList.FeesPaid}</label>
+  // <input type="checkbox" name="FeesPaid" id="fees-box"/>
+  // </div>
+  // `;
 
-  return bloc + attendedCheckbox + feesCheckbox;
+  return bloc + attendedCheckbox;
+  // return bloc + attendedCheckbox + feesCheckbox;
 };
 
 export const rosterView = (eventID) => {
@@ -163,9 +164,7 @@ export const rosterView = (eventID) => {
   const rosterData = rosterList
     .filter((record) => record.PDActivity_PKID === eventID)
     .sort((record1, record2) => {
-      const name1 = record1.Name,
-        name2 = record2.Name;
-      return name1.localeCompare(name2);
+      record1.Name < record2.Name ? -1 : record1.Name > record2.Name ? 1 : 0;
     })
     .map((record) => {
       const agency = agencyList.filter(
@@ -175,18 +174,18 @@ export const rosterView = (eventID) => {
       return {
         ...record,
         AgencyName: agency.AgencyName,
-        RAENID: agency.RAENID,
+        RAENID: agency.RAENID
       };
     });
 
   // topBanner() <== sub-table-elements.js
   const header = topBanner(blockName, [
-    ["Personnal ID", "col-sm-2"],
-    ["Name", "col-sm-2"],
+    ["Personnal ID", "col-sm-3"],
+    ["Name", "col-sm-3"],
     ["Region", "col-sm-2"],
     ["Agency", "col-sm-2"],
-    ["Attended", "col-sm-2"],
-    ["Fees Paid", "col-sm-2"],
+    ["Attended", "col-sm-2"]
+    // ["Fees Paid", "col-sm-2"]
   ]);
 
   // subTableBody() <== sub-table-elements.js
@@ -199,8 +198,8 @@ export const rosterView = (eventID) => {
       Name: "Name",
       RAENID: "Region",
       AgencyName: "Agency",
-      Attended: "Attended",
-      FeesPaid: "Fees Paid",
+      Attended: "Attended"
+      // FeesPaid: "Fees Paid"
     },
     "ProfDevRoster"
   );
