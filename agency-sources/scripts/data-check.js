@@ -19,7 +19,7 @@ const validateRecord = (list) => {
         break;
       case "FundStart":
       case "FundEnd":
-        obj.correct = dateValid(value);
+        obj.correct = dateValid(dateISOToUS(value));
         break;
 
       default:

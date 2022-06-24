@@ -20,8 +20,8 @@ const rowLabels = [
     AgencyID: "Agency ID",
     FSID: "Source ID",
     FundAbbrev: "Source Name",
-    FundStart: "Begin Date (MM/DD/YYYY)",
-    FundEnd: "End Date (MM/DD/YYYY)",
+    FundStart: "Begin Date",
+    FundEnd: "End Date",
     FY: "Fiscal Year",
     FundNumber: "Contract / Grant #",
     Amount: "Amount",
@@ -64,7 +64,7 @@ const createNewRecord = (labelsList) => {
       let placehold = labelObj[key];
       if (["FundStart", "FundEnd"].includes(key)) {
         option =
-          " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field\n(MM/DD/YYYY)'";
+          " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
       }
       if (key === "FY") {
         classOption += " hidden";
@@ -142,6 +142,7 @@ const saveMods = (fields, formName, tableName = "") => {
       const fieldId =
         formName === "#new-entry" ? `#${field.name}` : `#${field.name}-view`;
       $(fieldId).addClass("yellow-bg");
+      console.log("Not correct list: ", list);
     }
     return;
   } else {
@@ -305,6 +306,15 @@ $(document).ready(() => {
       .join("");
 
     $("#edit-form").append(result).attr("data-bloc-id", sourceId);
+
+    // Add dynamic masking for date fields in modal
+    // Modifies the date to ISO format required by input type "date"
+    $("#edit-form #FundStart-view, #edit-form #FundEnd-view")
+      .val(function (indx, value) {
+        // dateISOToUS() <== helpers/helperFunctions.js
+        return dateISOToUS(value);
+      })
+      .attr("type", "date");
   });
 
   //* Modal form Save button
