@@ -151,8 +151,7 @@ const saveMods = (fields, formId, tableName = "") => {
       if (field.name === "AgencyID") field.value = SESSION_VARIABLE[0].AgencyID;
 
       // dateISOToUS() <== helperFunction.js
-      if (["PersStartDate", "PersBirthDate"].includes(field.name))
-        field.value = dateISOToUS(field.value);
+      if (field.name.includes("Date")) field.value = dateISOToUS(field.value);
 
       if (field.name === "lengthstay") {
         const startDate = fieldList.filter(
