@@ -151,7 +151,8 @@ const saveMods = (fields, formId, tableName = "") => {
       if (field.name === "AgencyID") field.value = SESSION_VARIABLE[0].AgencyID;
 
       // dateFormat() <== helperFunction.js
-      if (field.name === "PersStartDate") field.value = dateFormat(field.value);
+      if (["PersStartDate", "PersBirthDate"].includes(field.name))
+        field.value = dateISOToUS(field.value);
 
       if (field.name === "lengthstay") {
         const startDate = fieldList.filter(
@@ -161,17 +162,13 @@ const saveMods = (fields, formId, tableName = "") => {
       }
       result[field.name] = field.value;
     }
-
     const target = tableName ? tableName : formId;
-
     const resultList = [target, JSON.stringify(result)];
     console.table(result);
     //! =================================================
     //! JSON Object to send back to database
     console.log("result :", resultList);
     //! =================================================
-
-    //ToDO Reloading/resetting with new data
     if (formId === "#new-entry") {
       $(formId)[0].reset();
       $(`${formId} input, select`)
