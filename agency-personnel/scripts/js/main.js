@@ -150,7 +150,7 @@ const saveMods = (fields, formId, tableName = "") => {
     for (let field of fieldList) {
       if (field.name === "AgencyID") field.value = SESSION_VARIABLE[0].AgencyID;
 
-      // dateFormat() <== helperFunction.js
+      // dateISOToUS() <== helperFunction.js
       if (["PersStartDate", "PersBirthDate"].includes(field.name))
         field.value = dateISOToUS(field.value);
 
