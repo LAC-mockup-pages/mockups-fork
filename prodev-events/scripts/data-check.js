@@ -14,7 +14,7 @@ const validateRecord = (dataList, requiredList) => {
       case "ProfDevDate":
       case "Date":
         // Match the date format through regular expression
-        obj.correct = dateValid(value);
+        obj.correct = dateValid(dateISOToUS(value));
         break;
 
       default:
