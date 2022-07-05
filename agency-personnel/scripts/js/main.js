@@ -533,7 +533,6 @@ $(document).ready(() => {
     const tableName = $("#modal-form").attr("data-table");
     const blockName = $("#modal-form").attr("data-block");
     let submittedData = $("#modal-form").serializeArray();
-
     if (blockName === "work-address") {
       const checkboxesValues = checkCanMailOrCall();
       submittedData = submittedData.filter(
@@ -541,10 +540,10 @@ $(document).ready(() => {
       );
       submittedData = [...submittedData, ...checkboxesValues];
     }
-    const ID = $(".personView").attr("id");
-    submittedData.unshift({ name: "ID", value: ID });
+    const PersPKID = $(".personView").attr("id");
+    submittedData.unshift({ name: "Personnel_PKID", value: PersPKID });
 
-    // console.log("submittedData :>> ", submittedData);
+    console.log("submittedData :>> ", submittedData);
 
     if (tableName === "NonInstHours")
       submittedData.push(addTotalHours(submittedData));
