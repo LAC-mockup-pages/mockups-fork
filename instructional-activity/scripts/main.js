@@ -728,19 +728,45 @@ $(document).ready(() => {
   });
 
   //* Selecting an enrolled student to edit
-  $(document).on("click", ".student-table tbody tr", function () {
-    const rowId = $(this).attr("id");
-    const modalContent = editStudent(rowId);
+  $(document).on(
+    "click",
+    ".student-table tbody tr td[data-name!='StudentName']",
+    function () {
+      const rowId = $(this).parent().attr("id");
+      const modalContent = editStudent(rowId);
 
-    $("#modalBloc").modal("toggle");
-    $("#edit-form")
-      .empty()
-      .append(modalContent)
-      .attr("data-bloc", "edit-student");
-    $(".modal-title").replaceWith(
-      "<h4 class='modal-title'>Editing a student</h4>"
-    );
-  });
+      $("#modalBloc").modal("toggle");
+      $("#edit-form")
+        .empty()
+        .append(modalContent)
+        .attr("data-bloc", "edit-student");
+      $(".modal-title").replaceWith(
+        "<h4 class='modal-title'>Editing a student</h4>"
+      );
+    }
+  );
+
+  //* Selecting a student name to display the student's profile in a diffferent tab
+  $(document).on(
+    "click",
+    ".student-table tbody tr td[data-name='StudentName']",
+    function (evnt) {
+      evnt.stopPropagation();
+      evnt.preventDefault();
+      const studentPKID = $(this)
+        .siblings("td[data-name='Student_PKID']")
+        .text();
+      //! =================================================
+      //! For development only
+      //! Modify the studentProfileURI value with production URI
+      //! =================================================
+      const studentProfileURI =
+        "http://alpha.asists.com/students-profile/stu_profile.aspx?stid=";
+      //! =================================================
+
+      window.open(`${studentProfileURI}${studentPKID}`, "_blank");
+    }
+  );
 
   //* Event handler for end date input in modal form
   //* when editing a student.

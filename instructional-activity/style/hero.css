@@ -55,6 +55,11 @@
   border-bottom: 1em solid #2479b5;
 }
 
+.main-table tbody tr:hover,
+.student-table tbody tr:hover {
+  background-color: #d3e4f0;
+}
+
 #filter-cancel-btn,
 #filter-apply-btn,
 #add-student-btn,
