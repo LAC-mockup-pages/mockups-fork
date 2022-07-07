@@ -17,7 +17,7 @@ const validateNewRecord = (dataList) => {
         correct = field.value.length < 11 && field.value.length > 0;
         break;
       case "Telephone":
-        correct = field.value.length < 13 && field.value.length > 0;
+        correct = /\(\d{3}\)\-\d{3}\-\d{4}/.test(field.value);
         break;
       case "AgencyEmail":
         correct = true;

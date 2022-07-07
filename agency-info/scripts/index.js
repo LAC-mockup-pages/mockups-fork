@@ -117,6 +117,10 @@ const saveMods = (form) => {
   $(`${form} input, select`).removeClass("yellow-bg");
 
   const validatedList = validateNewRecord(submittedData);
+  console.log(
+    "🚀 / file: index.js / line 120 / saveMods / validatedList",
+    validatedList
+  );
   const checkFlag = validatedList.some((item) => !item.correct);
   if (checkFlag) {
     const list = validatedList.filter((obj) => !obj.correct);
