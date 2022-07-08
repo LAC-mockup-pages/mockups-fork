@@ -319,17 +319,6 @@ $(document).ready(() => {
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
 
-  // Add default date to date fields in #new-entry after focus out
-  // Field Begin value: "07/01/<CurrentFiscalYear>"
-  // Field End value: "06/30/<CurrentFiscalYear>"
-  $(document).on("focusout", "#StartDate, #EndDate", function (evnt) {
-    evnt.stopPropagation();
-    if (!$(this).val()) {
-      const [firstDay, lastDay] = setDefaultDate();
-      $(this).val($(this).attr("id") === "StartDate" ? firstDay : lastDay);
-    }
-  });
-
   // Change text color from red (required) to black
   // when a value is entered
   $(document).on("focusin", getRequired(), function (evnt) {
@@ -413,6 +402,21 @@ $(document).ready(() => {
     $(this).toggleClass("dark-text").prop("required", false);
   });
 
+  //* Turns date input fields to date type
+  $(document).on("focusin", "#StartDate, #EndDate", function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    $(this).attr("type", "date");
+  });
+  $(document).on("blur", "#StartDate, #EndDate", function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    if (!$(this).val()) $(this).attr("type", "text");
+    if (!$(this).val()) {
+      const [firstDay, lastDay] = setDefaultDate();
+      $(this).val($(this).attr("id") === "StartDate" ? firstDay : lastDay);
+    }
+  });
   //* Adding a new record
   $(document).on("click", "#submit-btn", function (evnt) {
     evnt.stopPropagation();
