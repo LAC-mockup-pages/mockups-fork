@@ -685,7 +685,6 @@ $(document).ready(() => {
     $("#enrollment").addClass("selected-tab");
     $("#sub-nav .unselected-tab").removeClass("unselected-tab");
     $("#sub-nav .btn-link").prop("disabled", false).removeClass("disabled");
-
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
@@ -747,6 +746,12 @@ $(document).ready(() => {
   );
 
   //* Selecting a student name to display the student's profile in a diffferent tab
+  // $(document).on("hover",".student-table tbody tr td[data-name='StudentName']",function(evnt){
+  //   evnt.stopPropagation();
+  //   evnt.preventDefault();
+
+  // })
+
   $(document).on(
     "click",
     ".student-table tbody tr td[data-name='StudentName']",

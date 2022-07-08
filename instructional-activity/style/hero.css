@@ -60,6 +60,13 @@
   background-color: #d3e4f0;
 }
 
+.student-table tbody td[data-name="StudentName"]:hover {
+  text-align: center;
+  font-style: italic;
+  color: #2479b5;
+  cursor: pointer;
+}
+
 #filter-cancel-btn,
 #filter-apply-btn,
 #add-student-btn,
