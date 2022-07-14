@@ -177,6 +177,7 @@ const saveMods = (fields, formId, tableName = "") => {
     } else {
       // location.reload();
     }
+    $("#modalBloc").modal("toggle");
   }
 };
 
