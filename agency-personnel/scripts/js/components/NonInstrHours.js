@@ -97,9 +97,11 @@ const addMonth = (recordList) => {
     "Nov",
     "Dec"
   ];
-
+  console.log("recordList :>> ", recordList);
   for (const record of list) {
-    const Month = monthList[Number(record.PeriodID.substr(7, 2))];
+    const Month = `${
+      monthList[Number(record.PeriodID.substr(7, 2))]
+    } ${record.PeriodID.substr(3, 4)}`;
     resultList.push({ Month, ...record });
   }
 
@@ -129,9 +131,9 @@ const nonInstrHoursView = (PersonnelID) => {
     ["Prep", "col-sm-2"],
     ["Travel", "col-sm-1"],
     ["Training", "col-sm-2"],
-    ["Meeting", "col-sm-1"],
-    ["Extra", "col-sm-2"],
-    ["Total", "col-sm-1"]
+    ["Meeting", "col-sm-2"],
+    ["Extra", "col-sm-1"],
+    ["Total", "col-sm-2"]
   ]);
 
   const body = tableBody(
