@@ -7,7 +7,6 @@ const handleChangeNonInstHours = () => {
     $(this).bind("change", function (evnt) {
       evnt.stopPropagation();
       const valueList = $("#modal-form").serializeArray().slice(3, 8);
-      console.log("valueList :>> ", valueList);
       const totalHours = valueList.reduce((total, field) => {
         const valNum = field.value ? Number(field.value) : 0;
         return total + valNum;
@@ -97,14 +96,12 @@ const addMonth = (recordList) => {
     "Nov",
     "Dec"
   ];
-  console.log("recordList :>> ", recordList);
   for (const record of list) {
     const Month = `${
       monthList[Number(record.PeriodID.substr(7, 2))]
     } ${record.PeriodID.substr(3, 4)}`;
     resultList.push({ Month, ...record });
   }
-
   return resultList;
 };
 
