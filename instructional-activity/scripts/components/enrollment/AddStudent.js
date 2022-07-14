@@ -14,7 +14,7 @@ export const createStudentDataList = (list) => {
 
 export const addStudentModalForm = (coursePKId, classID, classStart) => {
   const studentName = `
-  <div class="input-field form-group" id="Student_PKID_AC"></div>
+  <div class="input-field form-group" id="Student_PKID_AC">
     <label for="Student_PKID" class="red-text student-label">Student Name
     </label>
     <input type="text" id="Student_PKID-view" name="Student_PKID" placeholder="Type the first 3 letters of first or last name">
@@ -24,17 +24,17 @@ export const addStudentModalForm = (coursePKId, classID, classStart) => {
   <input class="hidden" name="ClassID" value=${classID}>
   `;
   const startDate = classStart
-    ? classStart
-    : dateFormat(new Date().toLocaleDateString());
+    ? dateISOToUS(classStart)
+    : dateISOToUS(new Date().toLocaleDateString());
   const inputEnrollDate = elementInput({
     keyVal: "EnrollDate",
     labelVal: "Start",
     value: startDate,
     labelClassVal: "class='red-text'",
     classVal: "",
-    option: 'placeholder="MM/DD/YYYY"',
+    option: "",
     optionHidden: "form-group",
-    type: "text"
+    type: "date"
   });
   return `
   ${hiddenFields}
