@@ -750,12 +750,6 @@ $(document).ready(() => {
   );
 
   //* Selecting a student name to display the student's profile in a diffferent tab
-  // $(document).on("hover",".student-table tbody tr td[data-name='StudentName']",function(evnt){
-  //   evnt.stopPropagation();
-  //   evnt.preventDefault();
-
-  // })
-
   $(document).on(
     "click",
     ".student-table tbody tr td[data-name='StudentName']",
