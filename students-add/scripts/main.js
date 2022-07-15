@@ -274,7 +274,7 @@ $(document).ready(() => {
       if (!$(this).val()) return;
 
       // Activate save-button
-      $("#save-button").removeAttr("disabled");
+      $("#save-button").prop("disabled", false);
 
       // Checks if there is at least 1 value left in the barriers list
       if (updatedDdlBarriers.length < 1) return;
