@@ -20,7 +20,7 @@ const totalProDevHrs = (dataList) => {
 };
 
 const proDevView = () => {
-  const blockName = "Professional Development";
+  const blockName = "Professional Development (display only)";
 
   // Sorting data by date, most recent first
   const profDevData = GetProfDevRoster.sort(

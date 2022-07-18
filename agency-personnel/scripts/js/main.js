@@ -195,7 +195,7 @@ const viewPersonnelList = (listObj) => {
   $("#view-bloc")
     .empty()
     .append(
-      `<table class="table">${headerLine}
+      `<table class="table personel">${headerLine}
         <tbody class="table-body">${rows}</tbody>
     </table>)`
     );
@@ -310,8 +310,8 @@ $(document).ready(() => {
     const value = $(this).val();
     const listPers = searchPersonnel(value);
     viewPersonnelList(listPers);
+    $(".personnel tbody tr:first-child").focus();
   });
-
   $(document).on("keypress", "#search-input", function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
@@ -323,7 +323,6 @@ $(document).ready(() => {
       $(this).val((value += String.fromCharCode(evnt.which)));
     }
   });
-
   $(document).on("click", "#search-btn", function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
@@ -410,7 +409,6 @@ $(document).ready(() => {
   $(document).on("click", ".add-record-btn", function (evnt) {
     evnt.stopPropagation();
     const formName = $(this).attr("form");
-
     // Modify form depending on the block name
     let addForm = "";
     switch (formName) {
@@ -424,23 +422,19 @@ $(document).ready(() => {
       case "work-address":
         addForm = createModalFormAddress(formName);
         break;
-
       case "progress-contact":
         addForm = createFormAddContact(formName);
         break;
-
       default:
         addForm = defaultModal("no-table-defined-yet");
         break;
     }
-
     $("#modalBloc").modal("toggle");
     $("#modal-form")
       .empty()
       .append(addForm[1])
       .attr("data-table", addForm[0])
       .attr("data-block", formName);
-
     // Binding event triggers to blocks as needed
     if (formName === "non-instructional-hours") handleChangeNonInstHours();
     if (formName === "work-address") {
@@ -449,9 +443,8 @@ $(document).ready(() => {
   });
 
   //* Editing a block.
-  //* Applies to: Personnel Information, Home Address, Work Address,
-  //* Additional Info and Comments.
-
+  // Applies to: Personnel Information, Home Address, Work Address,
+  // Additional Info and Comments.
   $(document).on("click", ".color-select", function (evnt) {
     evnt.stopPropagation();
     const formId = $(this).attr("id");
