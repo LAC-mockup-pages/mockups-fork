@@ -435,6 +435,9 @@ $(document).ready(() => {
       .append(addForm[1])
       .attr("data-table", addForm[0])
       .attr("data-block", formName);
+    // Add dynamic masking for date fields in modal
+    // Modifies the date to ISO format required by input type "date"
+    $("#modal-form input[name$='Date']").attr("type", "date");
     // Binding event triggers to blocks as needed
     if (formName === "non-instructional-hours") handleChangeNonInstHours();
     if (formName === "work-address") {
