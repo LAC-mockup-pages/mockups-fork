@@ -16,7 +16,7 @@ body {
 
 header,
 .top-section {
-  padding: 3% 0% 2% 0%;
+  padding: 1% 0% 2% 0%;
 }
 
 #loginform {
@@ -26,11 +26,6 @@ header,
 tbody > tr:hover {
   background-color: inherit;
 }
-
-.form-group:not(.submit-btn) {
-  padding-right: 12%;
-}
-
 .form-group:first-of-type {
   padding-left: 3%;
   font-size: 1.2em;
