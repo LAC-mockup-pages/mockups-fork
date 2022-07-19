@@ -5,8 +5,10 @@ const validateRecord = (list) => {
   // Returns true if input is only alphanumerical + underscore, dash,
   // dot, whitespace, not empty string
   const alphaNumCheck = (str) => {
-    return !/[^\s\w-.]/g.test(str);
+    // return !/[^\s\w-.]/g.test(str);
+    return true;
   };
+
   const resultList = [];
   for (const field of list) {
     let { name, value } = field;
