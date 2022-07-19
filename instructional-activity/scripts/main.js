@@ -258,7 +258,7 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
     for (const field of fieldList) {
       let val = field.value;
       let name = field.name;
-      result[name] = ["AssignDate"].includes(name) ? dateISOToUS(val) : val;
+      result[name] = name.includes("Date") ? dateISOToUS(val) : val;
     }
     const target = tableName ? tableName : "No table name";
     const resultList = [formName, target, JSON.stringify(result)];
