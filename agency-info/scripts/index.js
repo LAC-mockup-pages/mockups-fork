@@ -87,7 +87,7 @@ const renderViewBloc = (dataObj) => {
     SEDID,
     Division,
     ProgramManager,
-    EPERate: Number(EPERate).toPrecision(5),
+    EPERate: Number(EPERate).toFixed(2).toString(),
     PrepCode
   });
   const topRight = createBloc("topRight", {
