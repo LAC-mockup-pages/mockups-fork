@@ -69,7 +69,10 @@ export const createCourseMain = (dataObj) => {
       : ` disabled data-key=${dataObj[key]}`;
     let optionHidden = "form-group";
     let type = "";
-
+    if (key.includes("Date")) {
+      type = "date";
+      value = dateISOToUS(dataObj[key].trim());
+    }
     const field = elementInput({
       keyVal,
       labelVal,
