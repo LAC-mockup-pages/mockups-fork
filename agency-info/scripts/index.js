@@ -87,7 +87,7 @@ const renderViewBloc = (dataObj) => {
     SEDID,
     Division,
     ProgramManager,
-    EPERate,
+    EPERate: Number(EPERate).toString(),
     PrepCode
   });
   const topRight = createBloc("topRight", {
@@ -236,6 +236,7 @@ $(document).ready(() => {
       pattern: "[(]d{3}[)-]d{3}[-]d{4}",
       placeholder: "(XXX)-XXX-XXXX"
     });
+    $("#AgencyName-view").prop("disabled", true);
   });
 
   // Save button in modal form

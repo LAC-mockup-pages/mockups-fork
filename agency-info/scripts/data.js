@@ -12,7 +12,7 @@ const ag = [
     Zip: "10004",
     Telephone: "2128033355",
     CSD: "3",
-    EPERate: "",
+    EPERate: "500.000",
     CPD: "13",
     CD: "5",
     AD: "4",
