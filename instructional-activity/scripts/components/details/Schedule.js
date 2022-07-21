@@ -32,11 +32,28 @@ const classDays = (dataObj) => {
 };
 
 // Creates an array of objects {key,value} for AM/PM hours with 15minutes
-// increments (00, 15, 30, 45)
+// increments (00, 15, 30, 45). Hours: 6am to 11pm included.
 const timeRange = () => {
-  const range = {};
-
-  return range;
+  const hourLoop = (start, end, period) => {
+    const range = [];
+    for (let i = start; i < end; i++) {
+      for (const minutes of ["00", "15", "30", "45"]) {
+        const hour = i < 10 ? `0${i}` : `${i}`;
+        const key = `${hour}:${minutes} ${period}`;
+        range.push({ key, value: key });
+      }
+    }
+    return range;
+  };
+  const morningRange = hourLoop(6, 12, "AM");
+  const noonRange = hourLoop(12, 13, "PM");
+  const afternoonRange = hourLoop(1, 11, "PM");
+  return [
+    ...morningRange,
+    ...noonRange,
+    ...afternoonRange,
+    { key: "11:00 PM", value: "11:00 PM" }
+  ];
 };
 
 export const createSchedule = (dataObj) => {
