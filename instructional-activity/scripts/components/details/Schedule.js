@@ -31,6 +31,14 @@ const classDays = (dataObj) => {
   return filteredList;
 };
 
+// Creates an array of objects {key,value} for AM/PM hours with 15minutes
+// increments (00, 15, 30, 45)
+const timeRange = () => {
+  const range = {};
+
+  return range;
+};
+
 export const createSchedule = (dataObj) => {
   const weekDaysList = classDays(dataObj);
   let bodyTopRow = "";
