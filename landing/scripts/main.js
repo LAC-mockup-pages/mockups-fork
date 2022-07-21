@@ -44,7 +44,7 @@ const addCustomContent = (list) => {
     }
     for (const link of report) {
       const indxLink = report.indexOf(link);
-      $(`#${cardId}-link${indxLink}`).attr("href", link);
+      $(`#${cardId}-link${indxLink}`).attr({ href: link, target: "_blank" });
     }
   }
 };
