@@ -5,6 +5,7 @@
 // be displayed on a monthly basis.
 
 import { topBanner } from "../../main.js";
+import { createOptionList } from "../../utilities.js";
 
 const classDays = (dataObj) => {
   const weekDays = [
@@ -58,6 +59,10 @@ const timeRange = () => {
 
 export const createSchedule = (dataObj) => {
   const weekDaysList = classDays(dataObj);
+  console.log(
+    "🚀 / file: Schedule.js / line 62 / createSchedule / weekDaysList",
+    weekDaysList
+  );
   let bodyTopRow = "";
   let bodyBottomRow = "";
   let bloc = topBanner("Schedule");
@@ -76,20 +81,41 @@ export const createSchedule = (dataObj) => {
   <th class="weekday">Sun.</th>
  </thead>
  `;
-
   for (const record of weekDaysList) {
     const keyList = Object.keys(record);
-    bodyTopRow += `
-      <td>
-        <input class="schedule-input" disabled name=${keyList[0]}
-          value="${record[keyList[0]]}">
-      </td>`;
+    console.log(
+      "🚀 / file: Schedule.js / line 86 / createSchedule / keyList",
+      keyList
+    );
+    // bodyTopRow += `
+    //   <td>
+    //     <input class="schedule-input" disabled name=${keyList[0]}
+    //       value="${record[keyList[0]]}">
+    //   </td>`;
 
+    // bodyBottomRow += `
+    //   <td>
+    //     <input class="schedule-input" disabled name=${keyList[1]}
+    //       value="${record[keyList[1]]}">
+    //   </td>`;
+    const topOptions = createOptionList(timeRange(), record[keyList[0]]);
+    console.log(
+      "🚀 / file: Schedule.js / line 102 / createSchedule / topOptions",
+      topOptions
+    );
+    const bottomOptions = createOptionList(timeRange(), record[keyList[1]]);
+    bodyTopRow += `
+<td>
+<select class="schedule-input" name=${keyList[0]} value="${record[keyList[0]]}">
+${topOptions}
+</select>
+</td>`;
     bodyBottomRow += `
-      <td>
-        <input class="schedule-input" disabled name=${keyList[1]}
-          value="${record[keyList[1]]}">
-      </td>`;
+<td>
+<select class="schedule-input" name=${keyList[1]} value="${record[keyList[1]]}">
+${bottomOptions}
+</select>
+</td>`;
   }
 
   const scheduleBody = `

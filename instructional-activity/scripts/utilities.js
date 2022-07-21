@@ -16,3 +16,23 @@ export const setFiscalYear = (datePD) => {
     return currentYear.toString();
   }
 };
+
+// Creates the <option></option> list to append to a <select></select>
+// from an object list with 2 props, and an optional selected value
+// Input: [{key: ..., value: ...},...], "default value"
+// Output: "<option value:"[INPUT_OBJECT_KEY]">[INPUT_OBJECT_VALUE]</option>..."
+export const createOptionList = (dataObj, selectedVal = "") => {
+  const optionList = dataObj.map((record) => {
+    // const [key, value] = Object.keys(record);
+    // const keyData = record[key];
+    // const valueData = record[value];
+    const { key, value } = record;
+    if (selectedVal) {
+      const defaultVal = key === selectedVal ? " selected" : "";
+      return `<option${defaultVal} value="${key}">${value}</option>`;
+    } else {
+      return `<option selected value></option>`;
+    }
+  });
+  return optionList.join("");
+};
