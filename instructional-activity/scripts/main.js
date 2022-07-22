@@ -965,6 +965,21 @@ $(document).ready(() => {
     $("#hours-bloc").append(dailyHoursView);
   });
 
+  //* Handling change in Schedule start time.
+  // The value selected in start time is set in end time.
+  $(document).on(
+    "change",
+    "#edit-form select[name$='StartTime']",
+    function (evnt) {
+      evnt.stopPropagation();
+      evnt.preventDefault();
+      const selectedTime = $(this).val();
+      const shortDay = $(this).attr("name").substr(0, 3);
+      console.log(`Day and Selected Time ==> ${shortDay} - ${selectedTime}`);
+      $(`#edit-form select[name=${shortDay}EndTime]`).val(selectedTime).focus();
+    }
+  );
+
   //* Saving Daily hours for students
   $(document).on("click", "#daily-hours-btn", function (evnt) {
     evnt.stopPropagation();
