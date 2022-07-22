@@ -27,7 +27,9 @@ export const createOptionList = (dataObj, selectedVal = "") => {
     // const keyData = record[key];
     // const valueData = record[value];
     const { key, value } = record;
-    if (selectedVal) {
+
+    // ===============================
+    if (key) {
       const defaultVal = key === selectedVal ? " selected" : "";
       return `<option${defaultVal} value="${key}">${value}</option>`;
     } else {
