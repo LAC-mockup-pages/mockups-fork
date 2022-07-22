@@ -23,12 +23,7 @@ export const setFiscalYear = (datePD) => {
 // Output: "<option value:"[INPUT_OBJECT_KEY]">[INPUT_OBJECT_VALUE]</option>..."
 export const createOptionList = (dataObj, selectedVal = "") => {
   const optionList = dataObj.map((record) => {
-    // const [key, value] = Object.keys(record);
-    // const keyData = record[key];
-    // const valueData = record[value];
     const { key, value } = record;
-
-    // ===============================
     if (key) {
       const defaultVal = key === selectedVal ? " selected" : "";
       return `<option${defaultVal} value="${key}">${value}</option>`;

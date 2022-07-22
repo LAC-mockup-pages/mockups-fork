@@ -80,17 +80,6 @@ export const createSchedule = (dataObj) => {
  `;
   for (const record of weekDaysList) {
     const keyList = Object.keys(record);
-    // bodyTopRow += `
-    //   <td>
-    //     <input class="schedule-input" disabled name=${keyList[0]}
-    //       value="${record[keyList[0]]}">
-    //   </td>`;
-
-    // bodyBottomRow += `
-    //   <td>
-    //     <input class="schedule-input" disabled name=${keyList[1]}
-    //       value="${record[keyList[1]]}">
-    //   </td>`;
     const topOptions = createOptionList(timeRange(), record[keyList[0]]);
     const bottomOptions = createOptionList(timeRange(), record[keyList[1]]);
     bodyTopRow += `
