@@ -188,8 +188,7 @@ export const addNewRecord = (courses, reasons, transfers, caseFlag = "0") => {
     }
     content.push(row);
   }
-  const editFormContent = content.join("");
-  return editFormContent;
+  return content.join("");
 };
 
 // Student was active and a valid InactiveDate has been entered

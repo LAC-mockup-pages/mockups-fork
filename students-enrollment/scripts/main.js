@@ -232,6 +232,8 @@ $(document).ready(() => {
   $("#save-btn").click(async function (evnt) {
     evnt.preventDefault();
     //TODO Check for errors in inputs
+    // let elements = [];
+
     const elements = $("#edit-form :input").prop("disabled", false);
     const requiredObj = createObject(
       $("#edit-form [required]").serializeArray()
@@ -260,10 +262,16 @@ $(document).ready(() => {
             ]
           : $(elements).serializeArray();
       let saveObj = createObject(saveList);
+      console.log("🚀 / file: main.js / line 265 / saveObj", saveObj);
 
       // Adding ID of edited record if it exists.
       const rowId = $("#edit-form").attr("data-id");
       if (rowId) saveObj = { ID: rowId, ...saveObj };
+      for (let key in saveObj) {
+        let value = saveObj[key];
+        if (value && key.includes("Date")) saveObj[key] = dateISOToUS(value);
+      }
+
       const credentials = createCredentials();
       if (saveObj.ActiveStatus === "0") saveObj.ActiveStatus = "";
       //! =================================================
@@ -315,10 +323,11 @@ $(document).ready(() => {
           })
           .prop("required", true);
         $(this).siblings("label").addClass("red-text");
+        // ActiveStatus set to Yes and disabled
         $("#edit-form select[name*='ActiveStatus']").prop({
           selectedIndex: 2,
           disabled: true
-        }); //Set to Yes and disabled
+        });
       }
     });
     $("#modalBloc").modal("toggle");
@@ -333,67 +342,67 @@ $(document).ready(() => {
   //* Rule 1 - While editing a student's info,
   //* when entered inactive date is not valid, highlight background and
   //* return focus to inactive date
-  $("#edit-form ").on("blur", 'input[name="InactiveDate"]', function (evnt) {
-    evnt.stopPropagation();
-    // createObject() <== helpers/helperFunctions.js
-    const { EnrollDate, InactiveDate, ActiveStatus } = createObject(
-      $(
-        "#edit-form input[name$='Date'], #edit-form select[name='ActiveStatus'"
-      ).serializeArray()
-    );
-    const courseEndDate = $(this).attr("data-enddate");
-    // const studentStatus=$("#edit-form )
-    const inputDateIndex = [EnrollDate, InactiveDate, courseEndDate]
-      .sort((date1, date2) =>
-        // DT#fromISO <== Luxon method
-        DT.fromISO(date1) < DT.fromISO(date2)
-          ? -1
-          : DT.fromISO(date1) > DT.fromISO(date2)
-          ? 1
-          : 0
-      )
-      .indexOf(InactiveDate);
-    if (inputDateIndex !== 1) {
-      $(this).css("background-color", "#f7e095").focus();
-      return;
-    } else {
-      $(this).css("background-color", "");
-      // Student is already inactive
-      if (ActiveStatus === "0") return;
-      // Rule 2, Student was active
-      inactiveStatusProcess();
-    }
-  });
+  // $("#edit-form ").on("blur", 'input[name="InactiveDate"]', function (evnt) {
+  //   evnt.stopPropagation();
+  //   // createObject() <== helpers/helperFunctions.js
+  //   const { EnrollDate, InactiveDate, ActiveStatus } = createObject(
+  //     $(
+  //       "#edit-form input[name$='Date'], #edit-form select[name='ActiveStatus'"
+  //     ).serializeArray()
+  //   );
+  //   const courseEndDate = $(this).attr("data-enddate");
+  //   // const studentStatus=$("#edit-form )
+  //   const inputDateIndex = [EnrollDate, InactiveDate, courseEndDate]
+  //     .sort((date1, date2) =>
+  //       // DT#fromISO <== Luxon method
+  //       DT.fromISO(date1) < DT.fromISO(date2)
+  //         ? -1
+  //         : DT.fromISO(date1) > DT.fromISO(date2)
+  //         ? 1
+  //         : 0
+  //     )
+  //     .indexOf(InactiveDate);
+  //   if (inputDateIndex !== 1) {
+  //     $(this).css("background-color", "#f7e095").focus();
+  //     return;
+  //   } else {
+  //     $(this).css("background-color", "");
+  //     // Student is already inactive
+  //     if (ActiveStatus === "0") return;
+  //     // Rule 2, Student was active
+  //     inactiveStatusProcess();
+  //   }
+  // });
 
   //* Rule 3 - If student is inactive modified to active, disable and clear
   //* inactive-related fields on form: InactiveDate, InactiveReason,
   //* TransferTo
 
-  $("#edit-form").on("change", "select[name='ActiveStatus']", function (evnt) {
-    evnt.stopPropagation();
-    evnt.preventDefault();
-    if ($(this).val() === "1") {
-      $(
-        "#edit-form [name='InactiveReason'], #edit-form [name='Transfer_PKID']"
-      ).prop({ selectedIndex: 0, disabled: true });
-      $("#edit-form [name='InactiveDate']").val("");
-    } else {
-      $(this).prop("selectedIndex", 1);
-      return;
-    }
-  });
+  // $("#edit-form").on("change", "select[name='ActiveStatus']", function (evnt) {
+  //   evnt.stopPropagation();
+  //   evnt.preventDefault();
+  //   if ($(this).val() === "1") {
+  //     $(
+  //       "#edit-form [name='InactiveReason'], #edit-form [name='Transfer_PKID']"
+  //     ).prop({ selectedIndex: 0, disabled: true });
+  //     $("#edit-form [name='InactiveDate']").val("");
+  //   } else {
+  //     $(this).prop("selectedIndex", 1);
+  //     return;
+  //   }
+  // });
 
   //* When Inactive reason is T | Transfer, the TransferTo field is enabled
-  $("#edit-form").on(
-    "change",
-    "select[name='InactiveReason']",
-    function (evnt) {
-      evnt.stopPropagation();
-      evnt.preventDefault();
-      const reasonBool = $(this).val() !== "T";
-      $("#edit-form select[name='Transfer_PKID']")
-        .prop("disabled", reasonBool)
-        .prop("selectedIndex", 0);
-    }
-  );
+  // $("#edit-form").on(
+  //   "change",
+  //   "select[name='InactiveReason']",
+  //   function (evnt) {
+  //     evnt.stopPropagation();
+  //     evnt.preventDefault();
+  //     const reasonBool = $(this).val() !== "T";
+  //     $("#edit-form select[name='Transfer_PKID']")
+  //       .prop("disabled", reasonBool)
+  //       .prop("selectedIndex", 0);
+  //   }
+  // );
 });
