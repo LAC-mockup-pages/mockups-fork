@@ -324,11 +324,11 @@ $(document).ready(() => {
           .prop("required", true);
         $(this).siblings("label").addClass("red-text");
         // ActiveStatus set to Yes and disabled
-        $("#edit-form select[name*='ActiveStatus']").prop({
-          selectedIndex: 2,
-          disabled: true
-        });
       }
+    });
+    $("#edit-form select[name*='ActiveStatus']").prop({
+      selectedIndex: 2,
+      disabled: true
     });
     $("#modalBloc").modal("toggle");
     // Enables customized tooltips
@@ -342,55 +342,56 @@ $(document).ready(() => {
   //* Rule 1 - While editing a student's info,
   //* when entered inactive date is not valid, highlight background and
   //* return focus to inactive date
-  // $("#edit-form ").on("blur", 'input[name="InactiveDate"]', function (evnt) {
-  //   evnt.stopPropagation();
-  //   // createObject() <== helpers/helperFunctions.js
-  //   const { EnrollDate, InactiveDate, ActiveStatus } = createObject(
-  //     $(
-  //       "#edit-form input[name$='Date'], #edit-form select[name='ActiveStatus'"
-  //     ).serializeArray()
-  //   );
-  //   const courseEndDate = $(this).attr("data-enddate");
-  //   // const studentStatus=$("#edit-form )
-  //   const inputDateIndex = [EnrollDate, InactiveDate, courseEndDate]
-  //     .sort((date1, date2) =>
-  //       // DT#fromISO <== Luxon method
-  //       DT.fromISO(date1) < DT.fromISO(date2)
-  //         ? -1
-  //         : DT.fromISO(date1) > DT.fromISO(date2)
-  //         ? 1
-  //         : 0
-  //     )
-  //     .indexOf(InactiveDate);
-  //   if (inputDateIndex !== 1) {
-  //     $(this).css("background-color", "#f7e095").focus();
-  //     return;
-  //   } else {
-  //     $(this).css("background-color", "");
-  //     // Student is already inactive
-  //     if (ActiveStatus === "0") return;
-  //     // Rule 2, Student was active
-  //     inactiveStatusProcess();
-  //   }
-  // });
+  $("#edit-form ").on("blur", 'input[name="InactiveDate"]', function (evnt) {
+    evnt.stopPropagation();
+    if (!$(this).val()) return;
+    // createObject() <== helpers/helperFunctions.js
+    const { EnrollDate, InactiveDate, ActiveStatus } = createObject(
+      $(
+        "#edit-form input[name$='Date'], #edit-form select[name='ActiveStatus'"
+      ).serializeArray()
+    );
+    const courseEndDate = $(this).attr("data-enddate");
+    const inputDateIndex = [EnrollDate, InactiveDate, courseEndDate]
+      .sort((date1, date2) =>
+        // DT#fromISO <== Luxon method
+        DT.fromISO(date1) < DT.fromISO(date2)
+          ? -1
+          : DT.fromISO(date1) > DT.fromISO(date2)
+          ? 1
+          : 0
+      )
+      .indexOf(InactiveDate);
+    if (inputDateIndex !== 1) {
+      $(this).css("background-color", "#f7e095").focus();
+      return;
+    } else {
+      $(this).css("background-color", "");
+      // Student is already inactive
+      if (ActiveStatus === "0") return;
+      // Rule 2, Student was active
+      inactiveStatusProcess();
+      $("#edit-form [name='InactiveReason']").focus();
+    }
+  });
 
   //* Rule 3 - If student is inactive modified to active, disable and clear
   //* inactive-related fields on form: InactiveDate, InactiveReason,
   //* TransferTo
 
-  // $("#edit-form").on("change", "select[name='ActiveStatus']", function (evnt) {
-  //   evnt.stopPropagation();
-  //   evnt.preventDefault();
-  //   if ($(this).val() === "1") {
-  //     $(
-  //       "#edit-form [name='InactiveReason'], #edit-form [name='Transfer_PKID']"
-  //     ).prop({ selectedIndex: 0, disabled: true });
-  //     $("#edit-form [name='InactiveDate']").val("");
-  //   } else {
-  //     $(this).prop("selectedIndex", 1);
-  //     return;
-  //   }
-  // });
+  $("#edit-form").on("change", "select[name='ActiveStatus']", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    if ($(this).val() === "1") {
+      $(
+        "#edit-form [name='InactiveReason'], #edit-form [name='Transfer_PKID']"
+      ).prop({ selectedIndex: 0, disabled: true });
+      $("#edit-form [name='InactiveDate']").val("");
+    } else {
+      $(this).prop("selectedIndex", 1);
+      return;
+    }
+  });
 
   //* When Inactive reason is T | Transfer, the TransferTo field is enabled
   // $("#edit-form").on(
