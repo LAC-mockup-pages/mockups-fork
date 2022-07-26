@@ -262,16 +262,15 @@ $(document).ready(() => {
             ]
           : $(elements).serializeArray();
       let saveObj = createObject(saveList);
-      console.log("🚀 / file: main.js / line 265 / saveObj", saveObj);
 
       // Adding ID of edited record if it exists.
       const rowId = $("#edit-form").attr("data-id");
       if (rowId) saveObj = { ID: rowId, ...saveObj };
+      // Modifying date values to US format
       for (let key in saveObj) {
         let value = saveObj[key];
         if (value && key.includes("Date")) saveObj[key] = dateISOToUS(value);
       }
-
       const credentials = createCredentials();
       if (saveObj.ActiveStatus === "0") saveObj.ActiveStatus = "";
       //! =================================================
@@ -283,6 +282,7 @@ $(document).ready(() => {
         JSON.stringify({ ...credentials, Student_PKID, ...saveObj })
       ];
       console.log("result :", resultList);
+      console.log("\x1b[44m\x1b[33m%s\x1b[0m", " Data Object: ", resultList[1]);
       //! =================================================
       $("#modalBloc").modal("toggle");
     }
