@@ -13,39 +13,32 @@
 /* ================================== */
 
 .top-band {
-  max-height: 15vh;
+  max-height: fit-content;
   padding-right: 0px;
 }
-
 #menu-btn {
   font-size: 25px;
   cursor: pointer;
   font-weight: 500;
 }
-
 .icons {
   margin-top: 1%;
 }
-
 .user-bloc {
   margin-top: 4%;
 }
-
 .dropdown-user {
   margin-top: 1%;
 }
-
 .help-mark {
   font-size: 1.5em;
   font-weight: 800;
   padding-right: 9%;
 }
-
 .menu-open {
   padding-left: 5%;
   padding-top: 2%;
 }
-
 .dropdown-menu > li > a {
   color: #333;
   text-decoration: none;
@@ -54,19 +47,19 @@
 .dropdown-menu > li > a:hover {
   font-size: 1.1em;
 }
-
 .glyphicon-log-out {
   padding-right: 7%;
 }
-
 .welcome-text {
   font-weight: 600;
 }
-
 .user-info {
   color: #333;
   text-align: inherit;
   margin-top: -0.6%;
+}
+.quick-link {
+  font-size: 1.7em;
 }
 
 /* Side Nav bar */
@@ -75,7 +68,6 @@
 .sidenav {
   transition: width 0.4s ease;
 }
-
 .menu-top {
   padding-bottom: 8%;
 }
@@ -88,14 +80,12 @@
   text-align: center;
   display: block;
 }
-
 .main-tab a {
   font-size: 1.3em;
 }
 .main-tab .dropdown-btn {
   font-size: 1.5em;
 }
-
 /* Main text */
 /* ================================== */
 
@@ -104,8 +94,4 @@
   font-size: 1.7em;
   font-weight: 600;
   text-align: center;
-}
-
-.quick-link {
-  font-size: 1.7em;
 }
