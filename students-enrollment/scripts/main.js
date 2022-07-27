@@ -188,14 +188,15 @@ $(document).ready(() => {
     }
     //Disabling fields
     $("#edit-form [name='DescriptionKey']").prop("disabled", true);
-    $("#edit-form [name='ActiveStatus']").prop("disabled", true);
+
     if (!$("#edit-form [name='InactiveDate']").val()) {
       $("#edit-form [name='InactiveReason']").prop("disabled", true);
-      const reason = $("#edit-form [name='InactiveReason']").val();
-
+      $("#edit-form [name='ActiveStatus']").prop("disabled", true);
+      // const reason = $("#edit-form [name='InactiveReason']").val();
       $("#edit-form [name='Transfer_PKID']").prop("disabled", true);
     } else {
       $("#edit-form [name='InactiveReason']").prop("disabled", false);
+      $("#edit-form [name='ActiveStatus']").prop("disabled", false);
       const reasonBool = $("#edit-form [name='InactiveReason']").val() !== "T";
       $("#edit-form [name='Transfer_PKID']").prop("disabled", reasonBool);
     }
