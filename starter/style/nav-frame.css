@@ -25,17 +25,11 @@
   text-align: center;
   padding-right: 0px;
   padding-left: 0px;
-  margin-top: 0.5%;
+  margin-top: 1%;
 }
 .icons a {
   padding-right: 0px;
   padding-left: 0px;
-}
-/* .user-bloc {
-  margin-top: 4%;
-} */
-.dropdown-user {
-  /* margin-top: 1%; */
 }
 .help-mark {
   font-size: 1.5em;
@@ -66,7 +60,7 @@
   margin-top: -0.6%;
 }
 .quick-link {
-  font-size: 1.7em;
+  font-size: 1.5em;
 }
 
 /* Side Nav bar */
