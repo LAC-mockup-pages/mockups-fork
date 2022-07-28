@@ -27,6 +27,11 @@
   padding-left: 0px;
   margin-top: 1%;
 }
+.icons .row,
+.top-band .row {
+  margin-right: 0px;
+  margin-left: 0px;
+}
 .icons a {
   padding-right: 0px;
   padding-left: 0px;
