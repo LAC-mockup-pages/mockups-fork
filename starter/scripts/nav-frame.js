@@ -71,13 +71,8 @@ $(document).ready(() => {
   }
   //! =========================================
   const welcomeLine = `
-    <div class="row">
-      <div class="col-sm-1"></div>
-      <div class="welcome-text col-sm-7">Hello ${fullname} (${AgencyName})
-      </div>
-      <div class="role-text col-sm-4" data-level=${UserLevel}>User Role: ${rolename}
-      </div>
-    </div>`;
+    <div class="welcome-text">Hello ${fullname} (${AgencyName})</div>
+    <div class="role-text" data-level=${UserLevel}>${rolename}</div>`;
   $(".user-info").append(welcomeLine);
 
   //* Open Agency selection modal depending on the user role and

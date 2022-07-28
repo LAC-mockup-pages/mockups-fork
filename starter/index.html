@@ -78,22 +78,25 @@
             </span>
           </div>
           <div class="top-logo col-md-3">
-            <div>
-              <a
-                href="../landing/index.html"
-                data-toggle="tooltip"
-                data-placement="right"
-                title="Home page"
-              >
-                <img src="../assets/Main-Logo.png" class="main-logo" />
-              </a>
-            </div>
+            <!-- <div> -->
+            <a
+              href="../landing/index.html"
+              data-toggle="tooltip"
+              data-placement="right"
+              title="Home page"
+            >
+              <img src="../assets/Main-Logo.png" class="main-logo" />
+            </a>
+            <!-- </div> -->
           </div>
-          <div class="col-md-7">
-            <section class="icons row">
-              <div class="col-sm-8"></div>
+          <section class="user-bloc col-md-5">
+            <div class="user-info"></div>
+          </section>
+
+          <section class="col-md-2 icons">
+            <div class="row">
               <a
-                class="col-sm-1"
+                class="col-sm-3"
                 href="../404-page/index.html"
                 role="button"
                 data-toggle="tooltip"
@@ -107,7 +110,7 @@
                 </span></a
               >
               <a
-                class="col-sm-1"
+                class="col-sm=2"
                 href="../404-page/index.html"
                 role="button"
                 data-toggle="tooltip"
@@ -120,33 +123,72 @@
               >
 
               <a
-                class="col-sm-1"
+                class="col-sm-2"
                 href="../404-page/index.html"
                 role="button"
                 data-toggle="tooltip"
                 data-placement="bottom"
-                title="NRS Program Evaluation Report"
+                title="NRS Program Eval. Report"
                 aria-haspopup="true"
                 aria-expanded="true"
               >
                 <span class="material-icons quick-link"> summarize </span></a
               >
               <a
-                class="col-sm-1"
+                class="col-sm-2"
                 href="../404-page/index.html"
                 role="button"
                 data-toggle="tooltip"
                 data-placement="bottom"
-                title="NYRS Program Evaluation Report"
+                title="NYRS Program Eval. Report"
                 aria-haspopup="true"
                 aria-expanded="true"
               >
                 <span class="material-icons quick-link"> summarize </span></a
               >
-            </section>
-            <section class="user-bloc row">
-              <div class="col-sm-10 user-info"></div>
-              <div class="col-sm-2 dropdown-user">
+              <div class="dropdown col-sm-2">
+                <a
+                  href="#"
+                  class="dropdown-toggle"
+                  data-toggle="dropdown"
+                  role="button"
+                  aria-haspopup="true"
+                  aria-expanded="true"
+                  ><span
+                    class="glyphicon glyphicon-user quick-link"
+                    aria-hidden="true"
+                  ></span>
+                  <span class="caret"></span
+                ></a>
+                <ul class="dropdown-menu dropdown-menu-right">
+                  <li>
+                    <a href="../404-page/index.html" id="change-password">
+                      Change Password</a
+                    >
+                  </li>
+                  <li>
+                    <a href="../404-page/index.html" id="help-link"
+                      ><span class="help-mark">? </span> Help</a
+                    >
+                  </li>
+                  <li>
+                    <a href="/logout.aspx" id="logout-text"
+                      ><span
+                        class="glyphicon glyphicon-log-out"
+                        aria-hidden="true"
+                      ></span>
+                      Logout</a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div class="col-sm-2"></div>
+            </div>
+          </section>
+          <!-- <div class="col-md-1"></div> -->
+          <!-- <section class="user-bloc row"> -->
+          <!-- <div class="col-sm-10 user-info"></div> -->
+          <!-- <div class="col-sm-2 dropdown-user">
                 <div class="dropdown">
                   <a
                     href="#"
@@ -184,8 +226,7 @@
                   </ul>
                 </div>
               </div>
-            </section>
-          </div>
+            </section> -->
         </div>
       </div>
     </header>
