@@ -63,15 +63,16 @@ $(document).ready(() => {
   //! =========================================
 
   if (!AgencyName || AgencyName.startsWith("<%=")) {
-    fullname = "Kate Tornese (default)";
+    fullname = "Kate Tornese";
     UserLevel = "1";
     // rolename = "Program Data Editor";
     rolename = "LAC TECH Support";
-    AgencyName = "Practice Agency";
+    // AgencyName = "Practice Agency";
+    AgencyName = "Very long agency name with a lot of characters";
   }
   //! =========================================
   const welcomeLine = `
-    <div class="welcome-text">Hello ${fullname} (${AgencyName})</div>
+    <div class="welcome-text">Hello ${fullname} (${AgencyName} ${AgencyName.length})</div>
     <div class="role-text" data-level=${UserLevel}>${rolename}</div>`;
   $(".user-info").append(welcomeLine);
 
