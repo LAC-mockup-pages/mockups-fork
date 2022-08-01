@@ -29,6 +29,8 @@ $(document).ready(function () {
   //* At 1st rendering, add News Bulletin items from request
   const news = createNews(GetNewsBulletin);
   $("#news-panel").append(news);
+  console.log("Window width:", window.innerWidth);
+  console.log("Pixel density:", window.devicePixelRatio);
 
   //* Selected news article displayed in modal
   $(document).on("click", "a.modalButton", function (evnt) {
