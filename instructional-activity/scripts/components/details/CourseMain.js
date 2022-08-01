@@ -48,7 +48,6 @@ export const createCourseMain = (dataObj) => {
     if (keyStr === "Format") {
       foundObj = formatList.find((item) => item.key === valueStr);
     }
-
     return keyStr === "InstructorID" ? foundObj.InstructorName : foundObj.value;
   };
 
@@ -71,7 +70,7 @@ export const createCourseMain = (dataObj) => {
     let type = "";
     if (key.includes("Date")) {
       type = "date";
-      value = dateISOToUS(dataObj[key].trim());
+      value = dataObj[key] ? dateISOToUS(dataObj[key].trim()) : dataObj[key];
     }
     const field = elementInput({
       keyVal,
