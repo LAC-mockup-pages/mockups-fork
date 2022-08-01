@@ -329,7 +329,7 @@ $(document).ready(() => {
   //* Displaying #new-entry
   $(document).on("click", ".record-entry", function (evnt) {
     evnt.stopPropagation();
-    $("#new-entry").toggleClass("hidden");
+    $("#new-entry").removeClass("hidden");
     $("#CourseID").focus();
   });
 
@@ -369,7 +369,7 @@ $(document).ready(() => {
   $(document).on("click", "#filter-apply-btn", function (evnt) {
     evnt.stopPropagation();
     courseList = GetCourse.slice(0);
-
+    $("#new-entry").addClass("hidden");
     const formId = "#" + $(this).attr("form");
     const filterList = $(formId).serializeArray();
     const [selectedYear, selectedCategory, selectedValue] = filterList;
