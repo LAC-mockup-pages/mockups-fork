@@ -3,10 +3,8 @@
 
 const createNews = (newsList) => {
   let newsItems = "";
-
   // newsList is an empty array
   if (newsList.length < 1) return "<li>No News</li>";
-
   for (const obj of newsList) {
     const { ID, newsTitle, newsArticle } = obj;
     const elementNews = `
@@ -42,7 +40,6 @@ $(document).ready(function () {
     const title = $(this).text();
     $("#myModal .modal-title").text(title);
     const newsArticle = $(this).data("news");
-
     $("#myModal .modal-body #myModalTextBox").text(newsArticle);
     $("body").on("hidden.bs.modal", "#myModal", function () {
       $(this).removeData("bs.modal");
