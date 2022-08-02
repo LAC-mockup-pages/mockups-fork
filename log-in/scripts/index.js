@@ -29,11 +29,11 @@ $(document).ready(function () {
   //* At 1st rendering, add News Bulletin items from request
   const news = createNews(GetNewsBulletin);
   $("#news-panel").append(news);
-  alert(
-    `Window width: ${window.innerWidth}\n
-    Window height: ${window.innerHeight}\n
-    Pixel density: ${window.devicePixelRatio}`
-  );
+  // alert(
+  //   `Window width: ${window.innerWidth}\n
+  //   Window height: ${window.innerHeight}\n
+  //   Pixel density: ${window.devicePixelRatio}`
+  // );
 
   //* Selected news article displayed in modal
   $(document).on("click", "a.modalButton", function (evnt) {
@@ -47,5 +47,10 @@ $(document).ready(function () {
     $("body").on("hidden.bs.modal", "#myModal", function () {
       $(this).removeData("bs.modal");
     });
+  });
+
+  //* Modifying line-height depending on inner text length
+  $(".quick-links li").each(function (indx) {
+    if (Number($(this).height()) > 60) $(this).addClass("long-text");
   });
 });
