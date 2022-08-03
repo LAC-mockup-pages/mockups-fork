@@ -120,8 +120,9 @@ $(document).ready(() => {
       const key = previousFY + indx;
       const value = key;
       return { key, value };
-    }),
-    previousFY
+    }).sort((record1, record2) =>
+      record1.key > record2.key ? -1 : record1.key < record2.key ? 1 : 0
+    )
   );
   $("#fiscal-year").append(optionListFY);
   // Report groups
