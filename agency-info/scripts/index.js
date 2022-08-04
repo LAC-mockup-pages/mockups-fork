@@ -1,5 +1,6 @@
 //* Actions and logic
 //! Add a <script> element in index.js pointing to data.js, then:
+//! In production comment out
 const agencyData = ag.slice(0); //! That is all that's needed
 
 // Labels used when DataObject keys need modifying
@@ -141,6 +142,34 @@ const saveMods = (form) => {
   const resultList = ["ag", JSON.stringify(result)];
   //! =================================================
   //! JSON Object to send back to database
+
+    //! In production uncomment
+    //const formId = result.ProgramManager
+    //    ? 'Info_Upper' : 'Info_Lower';
+
+    //// createCredentials <== /helpers/helperFunctions.js
+    //const credentials = createCredentials();
+
+    //const saveObj = {
+    //    ...credentials,
+    //    ...result
+    //};
+
+    //import('./data_refresh.js')
+    //.then((module) => {
+    //    (async () => {
+    //        const saveflag = await module.SaveRefresh(formId, saveObj);
+
+    //        if (saveflag) {
+    //            $(".hero").empty().append(renderViewBloc(agencyData[0]));
+    //            $("#modal-bloc").modal("toggle");
+    //        }
+    //    })(); //async end
+
+    //});//data_refresh.js
+
+    //return;
+
   console.log(message, resultList);
   //! =================================================
 
