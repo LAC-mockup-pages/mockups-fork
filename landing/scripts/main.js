@@ -128,6 +128,8 @@ $(document).ready(() => {
   // const agencies =
 
   //! =============================================================
+  //* Disable menu closing
+  $("#mySideNav .close-btn").prop("disabled", true);
 
   //* Update card content with custom values and links.
   const cardList = GetAgencyCardValues.map((record) => {
