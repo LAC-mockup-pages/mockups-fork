@@ -40,48 +40,42 @@ $(document).ready(() => {
   //* First rendering actions
   //* ===================================
 
-  //* Side nav closed at page loading
+  //! Side nav is closed
+  //! =========================================
+  //! Uncomment to open the side nav at 1st rendering
+  //! =========================================
   // $(".sidenav").width("20%");
   // toggleSideNav();
+  //! =========================================
 
   //* Opening side Nav
   $(document).on("click", "#menu-btn", function (evnt) {
     $(".sidenav").width("20%");
     $(".card-btn").css("padding-left", "31%");
     $(".btn-numbers").css("margin-left", "10%");
-
     toggleSideNav();
   });
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
-
   //* Add user info.
   let { fullname, rolename, UserLevel, AgencyName } = SESSION_VARIABLE[0];
-
   //! =========================================
   //! For Dev Env only. Can stay for Production.
   //! =========================================
 
   if (!AgencyName || AgencyName.startsWith("<%=")) {
-    fullname = "Kate Tornese (default)";
+    fullname = "Kate Tornese";
     UserLevel = "1";
     // rolename = "Program Data Editor";
     rolename = "LAC TECH Support";
-    AgencyName = "Practice Agency";
+    // AgencyName = "Practice Agency";
+    AgencyName = "Very long agency name with a lot of characters";
   }
   //! =========================================
   const welcomeLine = `
-    <div class="row">
-      <div class="col-sm-1"></div>
-      <div class="welcome-text col-sm-7">Hello ${fullname} (${AgencyName})
-      </div>
-      <div class="role-text col-sm-4" data-level=${UserLevel}>User Role: ${rolename}
-      </div>
-    </div>`;
+    <div class="welcome-text">Hello ${fullname} (${AgencyName} ${AgencyName.length})</div>
+    <div class="role-text" data-level=${UserLevel}>${rolename}</div>`;
   $(".user-info").append(welcomeLine);
-
-  //* Open Agency selection modal depending on the user role and
-  //* if an agency as already been selected.
 
   //* ===================================
 
@@ -92,10 +86,8 @@ $(document).ready(() => {
     $(".sidenav").width("3%");
     $(".card-btn").css("padding-left", "15%");
     $(".btn-numbers").css("margin-left", "-17%");
-
     toggleSideNav();
   });
-
   //* Selecting a menu item and displaying the sub-menu
   $(document).on("click", ".dropdown-btn", function (evnt) {
     $(".dropdown-container").css("display", "none");
@@ -103,7 +95,6 @@ $(document).ready(() => {
     $(this).siblings(".dropdown-container").css("display", "block");
     $(this).toggleClass("active");
   });
-
   //* Selecting a submenu item
   $(document).on("click", ".dropdown-container a", function (evnt) {
     $(".dropdown-container").css("display", "none");
@@ -111,7 +102,6 @@ $(document).ready(() => {
     $(".sidenav").width("3%");
     toggleSideNav();
   });
-
   //* Selecting another page in subnav bar
   $("#sub-nav li").on("click", function (evnt) {
     evnt.stopPropagation();

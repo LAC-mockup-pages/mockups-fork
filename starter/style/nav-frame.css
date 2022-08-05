@@ -22,13 +22,19 @@
   font-weight: 500;
 }
 .icons {
+  text-align: center;
+  padding-right: 0px;
+  padding-left: 0px;
   margin-top: 1%;
 }
-.user-bloc {
-  margin-top: 4%;
+.icons .row,
+.top-band .row {
+  margin-right: 0px;
+  margin-left: 0px;
 }
-.dropdown-user {
-  margin-top: 1%;
+.icons a {
+  padding-right: 0px;
+  padding-left: 0px;
 }
 .help-mark {
   font-size: 1.5em;
@@ -53,13 +59,16 @@
 .welcome-text {
   font-weight: 600;
 }
+.role-text {
+  font-size: 0.9em;
+}
 .user-info {
   color: #333;
   text-align: inherit;
   margin-top: -0.6%;
 }
 .quick-link {
-  font-size: 1.7em;
+  font-size: 1.4em;
 }
 
 /* Side Nav bar */
