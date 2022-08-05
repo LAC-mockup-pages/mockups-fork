@@ -36,16 +36,16 @@ Edit `index.html` with the new page title and `.aspx` file name. Edit the `READM
 
 | Steps                   | Status | Date |
 | ----------------------- | ------ | ---- |
-| Screenshots             | Done   |      |
-| Trello card             | Done   |      |
-| Initial VSC set up      | Done   |      |
-| Mockup                  | Done   |      |
-| Roughing/static lay out | Done   |      |
-| Data objects            | Done   |      |
-| Main coding             | Done   |      |
-| Navigation to/from page | Done   |      |
-| Alpha build             | Done   |      |
-| Review                  | Done   |      |
-| Alterations             | Done   |      |
+| Screenshots             |        |      |
+| Trello card             |        |      |
+| Initial VSC set up      |        |      |
+| Mockup                  |        |      |
+| Roughing/static lay out |        |      |
+| Data objects            |        |      |
+| Main coding             |        |      |
+| Navigation to/from page |        |      |
+| Alpha build             |        |      |
+| Review                  |        |      |
+| Alterations             |        |      |
 | Final review            |        |      |
 | Golden                  |        |      |
