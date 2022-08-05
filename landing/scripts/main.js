@@ -173,7 +173,7 @@ $(document).ready(() => {
       "RAEN Director",
       "LPA Editor",
       "LPA Reviewer"
-    ].includes(rolename)
+    ].includes($(".role-text").text())
   ) {
     $("#select-agency").toggleClass("hidden");
     const sortedAgencyList = agencies.sort((record1, record2) =>
