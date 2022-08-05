@@ -151,6 +151,11 @@
                   >
                   <ul class="dropdown-menu dropdown-menu-right">
                     <li>
+                      <a class="hidden" href="#" id="select-agency"
+                        >Select Agency</a
+                      >
+                    </li>
+                    <li>
                       <a href="../404-page/index.html" id="change-password">
                         Change Password</a
                       >
@@ -240,78 +245,27 @@
           >Management Reports <span class="caret"></span
         ></a>
         <div class="dropdown-container">
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span>
-            Instructional Offering Roster</a
+          <a href="#" id="managementReportsLink"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Reports</a
           >
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> Data
-            Management</a
+          <a href="#" id="dashboardLink"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> PM
+            Dashboards</a
           >
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> Turnaround
-            Reports</a
-          >
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> TASC
-            Reports</a
-          >
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> Staff
-            Development Reports</a
-          >
-          <a href="#"
+          <a href="#" id="dataExportsLink"
             ><span class="glyphicon glyphicon-chevron-right"> </span> Data
             Exports</a
           >
         </div>
       </div>
       <div class="hidden main-tab">
-        <a class="dropdown-btn" href="#"
+        <a class="dropdown-btn" id="funding-anchor" href="#"
           >Funding Reports<span class="caret"></span
         ></a>
-        <div class="dropdown-container">
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
-            Tables</a
-          >
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
-            Tables Data Check</a
-          >
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> WIO / NRS
-            Data Checks</a
-          >
-          <a role="separator" class="divider"></a>
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
-            Program Evaluation</a
-          >
-          <a role="separator" class="divider"></a>
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> NRS Data
-            Checks</a
-          >
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> NRS
-            Program Evaluation</a
-          >
-          <a role="separator" class="divider"></a>
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> EPE
-            Reports</a
-          >
-          <a role="separator" class="divider"></a>
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> Funding
-            Reports Prev. FY</a
-          >
-        </div>
       </div>
     </div>
     <!-- End Side Nav bar -->
-    <!-- Main display and card carousel -->
+    <!-- Main display -->
     <main class="main-body container"></main>
     <!-- End main display -->
 
@@ -324,19 +278,52 @@
               <span aria-hidden="true">&times;</span
               ><span class="sr-only">Close</span>
             </button>
-            <h4 class="modal-title">Agency Selection</h4>
+            <!-- Update with custom title -->
+            <h4 class="modal-title">Modal title</h4>
           </div>
           <div class="modal-body">
             <form role="form" id="edit-form"></form>
           </div>
           <div class="modal-footer">
+            <!-- Customize button set -->
             <button
               type="button"
-              id="close-btn"
-              class="btn btn-default"
+              id="simple-close-btn"
+              class="hidden btn btn-default"
               data-dismiss="modal"
             >
               Close
+            </button>
+            <button
+              type="button"
+              class="hidden btn btn-primary"
+              form="edit-form"
+              id="save-btn"
+            >
+              Save changes
+            </button>
+            <button
+              type="button"
+              class="hidden btn btn-primary"
+              form="edit-form"
+              id="edit-save-btn"
+            >
+              Save changes</button
+            ><button
+              type="button"
+              class="hidden btn btn-default"
+              id="close-btn"
+              data-dismiss="modal"
+            >
+              Close without saving
+            </button>
+            <button
+              type="button"
+              class="hidden btn btn-danger"
+              form="edit-form"
+              id="delete-btn"
+            >
+              Delete record
             </button>
           </div>
         </div>
