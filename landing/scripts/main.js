@@ -126,10 +126,10 @@ $(document).ready(() => {
   //! for the different requests to the back-end, using requestObj.
   //! =============================================================
   // const agencies =
-
+  // const cardValues =
   //! =============================================================
-  //* Disable menu closing
-  $("#mySideNav .close-btn").prop("disabled", true);
+  //* Hide menu closing hamburger button
+  $("#mySidenav .close-btn").addClass("hidden");
 
   //* Update card content with custom values and links.
   const cardList = GetAgencyCardValues.map((record) => {
@@ -147,27 +147,9 @@ $(document).ready(() => {
   addCustomContent(cardList);
   //* Display the first card.
   showSlides(slideIndex);
-  //* Open Agency selection modal depending on the user role and
-  //* if an agency as already been selected.
-  // if (
-  //   [
-  //     "LAC TECH Support", //! Those roles can select multiple agencies
-  //     "NYSED Staff",
-  //     "RAEN Director",
-  //     "LPA Editor",
-  //     "LPA Reviewer"
-  //   ].includes(rolename) &&
-  //   PrevAgency === "False"
-  // ) {
-  //   const optionListAgency = createOptionList(
-  //     createSummaryList(GetAgencyIndex.slice(0), "AgencyID", "AgencyName")
-  //   );
-  //   $("#agency-selector").append(optionListAgency).focus();
-  //   $("#select-agency").toggleClass("hidden");
-  //   PrevAgency = "True";
-  //   $("#modalBloc").modal("toggle");
-  //   $("#agency-selector").focus();
-  // }
+
+  //* Enable the Select Agency choice in user dropdown for authorized
+  //* users. Add the list of agencies to modal selection
   if (
     [
       "LAC TECH Support", //! Those roles can select multiple agencies
