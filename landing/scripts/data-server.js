@@ -48,50 +48,50 @@ const GetAgencyIndex2 = [
     Division: ""
   },
   {
-    AgencyPKID: "251",
+    ID: "251",
     AgencyID: "PWSD",
     AgencyName: "Port Washington UFSD",
     Division: ""
   },
   {
-    AgencyPKID: "14",
+    ID: "14",
     AgencyID: "PRA",
     AgencyName: "Practice Agency",
     Division: "AAA Division"
   },
   {
-    AgencyPKID: "283",
+    ID: "283",
     AgencyID: "PRA1",
     AgencyName: "Practice Agency 1",
     Division: ""
   },
   {
-    AgencyPKID: "80",
+    ID: "80",
     AgencyID: "PRY",
     AgencyName: "Project Reach Youth",
     Division: ""
   },
   {
-    AgencyPKID: "251",
+    ID: "251",
     AgencyID: "PNWB",
     AgencyName: "Putnam/Northern Westchester BOCES",
     Division: ""
   },
   {
-    AgencyPKID: "161",
+    ID: "161",
     AgencyID: "QFL",
     AgencyName: "QBPL Flushing Branch",
     Division: "Flushing Adult Learning Center"
   },
-  { AgencyPKID: "1", AgencyID: "R01", AgencyName: "Region 1", Division: "" },
+  { ID: "1", AgencyID: "R01", AgencyName: "Region 1", Division: "" },
   {
-    AgencyPKID: "10",
+    ID: "10",
     AgencyID: "RCSD",
     AgencyName: "Rochester City School District",
     Division: "Office of Adult Career & Education Services"
   },
   {
-    AgencyPKID: "11",
+    ID: "11",
     AgencyID: "SESD",
     AgencyName: "Syracuse City School District",
     Division: "Adult & Continuing Education"

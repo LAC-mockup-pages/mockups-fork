@@ -43,6 +43,7 @@ const addCustomContent = (agency) => {
         report: [CardReport, CardReport2]
       };
     });
+  console.log("cardList :>> ", cardList);
   for (const obj of cardList) {
     const { ID: cardId, values, report } = obj;
     for (const val of values) {
@@ -193,19 +194,13 @@ $(document).ready(() => {
     showSlides((slideIndex = selectedCardIndex));
   });
   //* Select Agency in dropdown list
-  $(document).on("change", "#agency-selector", function (evnt) {
-    evnt.stopPropagation();
+  $("#edit-form select").change(function (evnt) {
+    // evnt.stopPropagation();
     const selectedId = $(this).val();
-    const selectedAgencyName = $("#agency-selector option:selected").text();
-    const selectedAgency = agencies.find(
-      (record) => record.AgencyPKID === selectedId
-    );
-    SESSION_VARIABLE[0].AgencyPKID = selectedId;
-    SESSION_VARIABLE[0].AgencyName = selectedAgencyName
-      .replace("\n", "")
-      .trim();
-    SESSION_VARIABLE[0].AgencyID = selectedAgency.ID;
-
+    const selectedAgency = agencies.find((record) => record.ID === selectedId);
+    const { ID, AgencyID, AgencyName } = selectedAgency;
+    const sessionVar = SESSION_VARIABLE[0];
+    SESSION_VARIABLE[0] = { ID, AgencyID, AgencyName, ...sessionVar };
     const userFullName = SESSION_VARIABLE[0].fullname.startsWith("<%=")
       ? "Kate Tornese (default)"
       : SESSION_VARIABLE[0].fullname;
@@ -213,11 +208,9 @@ $(document).ready(() => {
       `Hello ${userFullName} (${SESSION_VARIABLE[0].AgencyName})`
     );
     $("#modalBloc").modal("toggle");
-
-    const newCardValues = cardValues.filter(
-      (record) => (record.AgencyPKID = selectedId)
-    );
-    const newCardContent = addCustomContent(newCardValues);
+    // Re-rendering cards with values from new agency
+    addCustomContent(selectedId);
+    showSlides(slideIndex);
   });
   //* Change agency => new agency selection
   $(document).on("click", "#select-agency", function (evnt) {
