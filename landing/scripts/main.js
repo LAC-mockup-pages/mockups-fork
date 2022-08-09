@@ -28,8 +28,23 @@ const applyColor = (colorStr) => {
   $(".card-block").css("border-color", colorStr);
 };
 // Customizing the card content
-const addCustomContent = (list) => {
-  for (const obj of list) {
+const addCustomContent = (agency) => {
+  const cardList = cardValues
+    .filter((record) => record.AgencyPKID === agency)
+    .map((record) => {
+      let { CardID, CardValue, CardValue2, CardReport, CardReport2 } = record;
+      CardValue = CardValue === "NULL" ? "" : CardValue;
+      CardValue2 = CardValue2 === "NULL" ? "" : CardValue2;
+      CardReport = CardReport === "NULL" ? "" : CardReport;
+      CardReport2 = CardReport2 === "NULL" ? "" : CardReport2;
+      return {
+        ID: CardID,
+        values: [CardValue, CardValue2],
+        report: [CardReport, CardReport2]
+      };
+    });
+  console.log("cardList :>> ", cardList);
+  for (const obj of cardList) {
     const { ID: cardId, values, report } = obj;
     for (const val of values) {
       const indxVal = values.indexOf(val);
@@ -128,26 +143,16 @@ $(document).ready(() => {
   // const agencies =
   // const cardValues =
   //! =============================================================
+
   //* Hide menu closing hamburger button
   $("#mySidenav .close-btn").addClass("hidden");
-
   //* Update card content with custom values and links.
-  const cardList = GetAgencyCardValues.map((record) => {
-    let { CardID, CardValue, CardValue2, CardReport, CardReport2 } = record;
-    CardValue = CardValue === "NULL" ? "" : CardValue;
-    CardValue2 = CardValue2 === "NULL" ? "" : CardValue2;
-    CardReport = CardReport === "NULL" ? "" : CardReport;
-    CardReport2 = CardReport2 === "NULL" ? "" : CardReport2;
-    return {
-      ID: CardID,
-      values: [CardValue, CardValue2],
-      report: [CardReport, CardReport2]
-    };
-  });
-  addCustomContent(cardList);
   //* Display the first card.
+  const agencyId = SESSION_VARIABLE[0].ID.startsWith("<%=")
+    ? "14"
+    : SESSION_VARIABLE[0].ID;
+  addCustomContent(agencyId);
   showSlides(slideIndex);
-
   //* Enable the Select Agency choice in user dropdown for authorized
   //* users. Add the list of agencies to modal selection
   if (
