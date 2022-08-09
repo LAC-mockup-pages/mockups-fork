@@ -43,7 +43,6 @@ const addCustomContent = (agency) => {
         report: [CardReport, CardReport2]
       };
     });
-  console.log("cardList :>> ", cardList);
   for (const obj of cardList) {
     const { ID: cardId, values, report } = obj;
     for (const val of values) {
@@ -173,7 +172,8 @@ $(document).ready(() => {
         : 0
     );
     const optionListAgency = createOptionList(
-      createSummaryList(sortedAgencyList, "ID", "AgencyName")
+      createSummaryList(sortedAgencyList, "ID", "AgencyName"),
+      agencyId
     );
     $("#agency-selector").append(optionListAgency);
   }
@@ -224,5 +224,8 @@ $(document).ready(() => {
     evnt.stopPropagation();
     evnt.preventDefault();
     $("#modalBloc").modal("toggle");
+    $("#modalBloc").on("shown.bs.modal", function () {
+      $(this).find(".input-field:first-of-type :input").focus();
+    });
   });
 });
