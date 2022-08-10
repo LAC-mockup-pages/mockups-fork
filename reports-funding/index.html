@@ -17,49 +17,39 @@
       src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"
       defer
     ></script>
-
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-
     <!-- Latest compiled and minified CSS -->
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
     />
-
     <!-- Optional theme -->
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"
     />
-
     <!-- Latest compiled and minified JavaScript -->
     <script
       src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
       defer
     ></script>
-
     <!-- Local links and scripts -->
     <link rel="stylesheet" href="./style/index.css" type="text/css" />
-
     <script src="../helpers/constants.js" type="text/javascript" defer></script>
-
     <script
       src="../helpers/helperFunctions.js"
       type="text/javascript"
       defer
     ></script>
-
     <script
       type="text/javascript"
       src="./scripts/data-server.js"
       defer
     ></script>
-
     <script type="text/javascript" src="./scripts/nav-frame.js" defer></script>
-
     <script type="module" src="./scripts/main.js" defer></script>
 
     <!-- !============================= -->
@@ -78,75 +68,75 @@
             </span>
           </div>
           <div class="top-logo col-md-3">
-            <div>
-              <a
-                href="../landing/index.html"
-                data-toggle="tooltip"
-                data-placement="right"
-                title="Home page"
-              >
-                <img src="../assets/Main-Logo.png" class="main-logo" />
-              </a>
-            </div>
+            <a
+              href="../landing/index.html"
+              data-toggle="tooltip"
+              data-placement="right"
+              title="Home page"
+            >
+              <img src="../assets/Main-Logo.png" class="main-logo" />
+            </a>
           </div>
-          <div class="col-md-7">
-            <section class="icons row">
-              <div class="col-sm-8"></div>
-              <a
-                class="col-sm-1"
-                href="../404-page/index.html"
-                role="button"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Add Students"
-                aria-haspopup="true"
-                aria-expanded="true"
-              >
-                <span class="material-icons quick-link">
-                  person_add_alt
-                </span></a
-              >
-              <a
-                class="col-sm-1"
-                href="../404-page/index.html"
-                role="button"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Attendance"
-                aria-haspopup="true"
-                aria-expanded="true"
-              >
-                <span class="material-icons quick-link"> rule </span></a
-              >
-
-              <a
-                class="col-sm-1"
-                href="../404-page/index.html"
-                role="button"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="NRS Program Evaluation Report"
-                aria-haspopup="true"
-                aria-expanded="true"
-              >
-                <span class="material-icons quick-link"> summarize </span></a
-              >
-              <a
-                class="col-sm-1"
-                href="../404-page/index.html"
-                role="button"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="NYRS Program Evaluation Report"
-                aria-haspopup="true"
-                aria-expanded="true"
-              >
-                <span class="material-icons quick-link"> summarize </span></a
-              >
-            </section>
-            <section class="user-bloc row">
-              <div class="col-sm-10 user-info"></div>
-              <div class="col-sm-2 dropdown-user">
+          <section class="user-bloc col-md-5">
+            <div class="user-info"></div>
+          </section>
+          <section class="col-md-2 icons container-fluid">
+            <div class="row">
+              <div class="col-sm-2">
+                <a
+                  href="../404-page/index.html"
+                  role="button"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Add Students"
+                  aria-haspopup="true"
+                  aria-expanded="true"
+                >
+                  <span class="material-icons quick-link">
+                    person_add_alt
+                  </span></a
+                >
+              </div>
+              <div class="col-sm-2">
+                <a
+                  href="../404-page/index.html"
+                  role="button"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Attendance"
+                  aria-haspopup="true"
+                  aria-expanded="true"
+                >
+                  <span class="material-icons quick-link"> rule </span></a
+                >
+              </div>
+              <div class="col-sm-2">
+                <a
+                  href="../404-page/index.html"
+                  role="button"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="NRS Program Eval. Report"
+                  aria-haspopup="true"
+                  aria-expanded="true"
+                >
+                  <span class="material-icons quick-link"> summarize </span></a
+                >
+              </div>
+              <div class="col-sm-2">
+                <a
+                  href="../404-page/index.html"
+                  role="button"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="NYRS Program Eval. Report"
+                  aria-haspopup="true"
+                  aria-expanded="true"
+                >
+                  <span class="material-icons quick-link"> summarize </span></a
+                >
+              </div>
+              <div class="col-sm-2">
                 <div class="dropdown">
                   <a
                     href="#"
@@ -155,13 +145,16 @@
                     role="button"
                     aria-haspopup="true"
                     aria-expanded="true"
-                    ><span
-                      class="glyphicon glyphicon-user"
-                      aria-hidden="true"
-                    ></span>
-                    <span class="caret"></span
-                  ></a>
+                    ><span class="material-icons quick-link" aria-hidden="true"
+                      >person</span
+                    ></a
+                  >
                   <ul class="dropdown-menu dropdown-menu-right">
+                    <li>
+                      <a class="hidden" href="#" id="select-agency"
+                        >Select Agency</a
+                      >
+                    </li>
                     <li>
                       <a href="../404-page/index.html" id="change-password">
                         Change Password</a
@@ -184,8 +177,9 @@
                   </ul>
                 </div>
               </div>
-            </section>
-          </div>
+              <div class="col-sm-2"></div>
+            </div>
+          </section>
         </div>
       </div>
     </header>
@@ -220,7 +214,6 @@
           >
         </div>
       </div>
-
       <div class="hidden main-tab">
         <a class="dropdown-btn" href="#"
           >Students <span class="caret"></span
@@ -236,7 +229,6 @@
           >
         </div>
       </div>
-
       <div class="hidden main-tab">
         <a class="dropdown-btn" href="#"
           >Instructional Activity <span class="caret"></span
@@ -248,137 +240,71 @@
           >
         </div>
       </div>
-
       <div class="hidden main-tab">
         <a class="dropdown-btn" href="#"
           >Management Reports <span class="caret"></span
         ></a>
         <div class="dropdown-container">
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span>
-            Instructional Offering Roster</a
+          <a href="#" id="managementReportsLink"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Reports</a
           >
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> Data
-            Management</a
+          <a href="#" id="dashboardLink"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> PM
+            Dashboards</a
           >
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> Turnaround
-            Reports</a
-          >
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> TASC
-            Reports</a
-          >
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> Staff
-            Development Reports</a
-          >
-          <a href="#"
+          <a href="#" id="dataExportsLink"
             ><span class="glyphicon glyphicon-chevron-right"> </span> Data
             Exports</a
           >
         </div>
       </div>
-
       <div class="hidden main-tab">
-        <a
-          class="dropdown-btn"
-          id="funding-anchor"
-          href="http://localhost:5500/reports-funding/index.html"
+        <a class="dropdown-btn" href="#"
           >Funding Reports<span class="caret"></span
         ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
+            Tables</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
+            Tables Data Check</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIO / NRS
+            Data Checks</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
+            Program Evaluation</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> NRS Data
+            Checks</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> NRS
+            Program Evaluation</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> EPE
+            Reports</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Funding
+            Reports Prev. FY</a
+          >
+        </div>
       </div>
     </div>
     <!-- End Side Nav bar -->
-    <!-- Main display -->
-    <main class="main-body container">
-      <section class="report-info container-fluid blue-bg blue-light-text">
-        <div class="report-title">Funding Reports</div>
-        <div class="required-text light-red-text">
-          Elements in red are required
-        </div>
-      </section>
-      <form class="form selectors" role="form">
-        <div class="form-group input-field">
-          <label class="red-text" for="fiscalYear">Fiscal year: </label>
-          <select
-            class="modal-select"
-            autofocus
-            required
-            name="fiscalYear"
-            id="fiscal-year"
-          ></select>
-        </div>
-        <div class="form-group input-field marg1">
-          <label class="red-text" for="groupSelector">Report group: </label>
-          <select
-            class="modal-select"
-            required
-            name="groupSelector"
-            id="group-selector"
-          ></select>
-        </div>
-        <div class="form-group input-field marg2">
-          <label class="red-text" for="titleSelector">Report title: </label>
-          <select
-            class="modal-select"
-            name="titleSelector"
-            required
-            id="title-selector"
-          ></select>
-        </div>
-        <section class="funding">
-          <div class="form-group input-field marg2">
-            <label for="classFunding">Class funding: </label>
-            <select
-              class="modal-select"
-              name="funding"
-              id="class-funding"
-            ></select>
-          </div>
-        </section>
-        <section class="category">
-          <div class="form-group input-field marg3">
-            <label for="reportCategory">Report category: </label>
-            <select
-              class="modal-select"
-              name="reportCategory"
-              id="report-category"
-            >
-              <option value="all">Select all</option>
-            </select>
-          </div>
-        </section>
-        <section class="criteria">
-          <div class="form-group input-field marg3 hidden">
-            <label for="reportCriteria">Report criteria: </label>
-            <select
-              class="modal-select"
-              name="reportCriteria"
-              id="report-criteria"
-            >
-              <option value>Select a criteria</option>
-            </select>
-          </div>
-        </section>
-      </form>
-      <section class="buttons">
-        <div class="modal-footer">
-          <button type="button" id="generate-btn" class="btn btn-primary">
-            Generate report
-          </button>
-          <button
-            type="button"
-            disabled
-            id="export-btn"
-            class="btn btn-default"
-          >
-            Export to Excel
-          </button>
-        </div>
-      </section>
-    </main>
+    <!-- Main display and card carousel -->
+    <main class="main-body container"></main>
     <!-- End main display -->
 
     <!-- Modal start -->
@@ -390,19 +316,52 @@
               <span aria-hidden="true">&times;</span
               ><span class="sr-only">Close</span>
             </button>
-            <h4 class="modal-title">Agency Selection</h4>
+            <!-- Update with custom title -->
+            <h4 class="modal-title">Modal title</h4>
           </div>
           <div class="modal-body">
             <form role="form" id="edit-form"></form>
           </div>
           <div class="modal-footer">
+            <!-- Customize button set -->
             <button
               type="button"
-              id="close-btn"
-              class="btn btn-default"
+              id="simple-close-btn"
+              class="hidden btn btn-default"
               data-dismiss="modal"
             >
               Close
+            </button>
+            <button
+              type="button"
+              class="hidden btn btn-primary"
+              form="edit-form"
+              id="save-btn"
+            >
+              Save changes
+            </button>
+            <button
+              type="button"
+              class="hidden btn btn-primary"
+              form="edit-form"
+              id="edit-save-btn"
+            >
+              Save changes</button
+            ><button
+              type="button"
+              class="hidden btn btn-default"
+              id="close-btn"
+              data-dismiss="modal"
+            >
+              Close without saving
+            </button>
+            <button
+              type="button"
+              class="hidden btn btn-danger"
+              form="edit-form"
+              id="delete-btn"
+            >
+              Delete record
             </button>
           </div>
         </div>

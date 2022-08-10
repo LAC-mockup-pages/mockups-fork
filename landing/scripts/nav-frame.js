@@ -44,8 +44,8 @@ $(document).ready(() => {
   //! =========================================
   //! Uncomment to open the side nav at 1st rendering
   //! =========================================
-  // $(".sidenav").width("20%");
-  // toggleSideNav();
+  $(".sidenav").width("20%");
+  toggleSideNav();
   //! =========================================
 
   //* Opening side Nav
@@ -72,15 +72,6 @@ $(document).ready(() => {
     AgencyName = "Very long agency name with a lot of characters";
   }
   //! =========================================
-
-  //! =========================================
-  //! For Production.
-  //! =========================================
-
-  //! Replace the URI in #funding-anchor href by the aspx link.
-
-  //! =========================================
-
   const welcomeLine = `
     <div class="welcome-text">Hello ${fullname} (${AgencyName} ${AgencyName.length})</div>
     <div class="role-text" data-level=${UserLevel}>${rolename}</div>`;
@@ -103,9 +94,6 @@ $(document).ready(() => {
     $(".main-tab .dropdown-btn").removeClass("active");
     $(this).siblings(".dropdown-container").css("display", "block");
     $(this).toggleClass("active");
-    if ($(this).attr("id") === "funding-anchor") {
-      $("span", this).toggleClass("caret glyphicon glyphicon-chevron-right");
-    }
   });
   //* Selecting a submenu item
   $(document).on("click", ".dropdown-container a", function (evnt) {
