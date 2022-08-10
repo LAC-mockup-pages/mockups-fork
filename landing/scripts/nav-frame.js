@@ -44,8 +44,8 @@ $(document).ready(() => {
   //! =========================================
   //! Uncomment to open the side nav at 1st rendering
   //! =========================================
-  // $(".sidenav").width("20%");
-  // toggleSideNav();
+  $(".sidenav").width("20%");
+  toggleSideNav();
   //! =========================================
 
   //* Opening side Nav
