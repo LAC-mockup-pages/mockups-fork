@@ -1,47 +1,45 @@
-/*  Local CSS rules for the page */
+/*  Local CSS rules for the page
+==================================*/
 
 body {
   background-color: #f5f5f5;
   height: 100vh;
 }
-
 .hero {
   margin: 0%;
   border-radius: 0px;
-  height: 63%;
+  height: 70%;
+  /* height: auto; */
 }
-
 /* Header | Login box
 =========================== */
 
 header,
 .top-section {
-  padding: 3% 0% 2% 0%;
+  padding: 0.4% 0%;
 }
-
 #loginform {
-  padding: 7% 0% 0% 10%;
+  padding: 3% 0% 0% 2%;
 }
-
 tbody > tr:hover {
   background-color: inherit;
 }
-
-.form-group:not(.submit-btn) {
-  padding-right: 12%;
+.input-group,
+.controls {
+  height: 3vh;
 }
-
-.form-group:first-of-type {
-  padding-left: 3%;
-  font-size: 1.2em;
+.input-group input,
+.controls input {
+  height: 100%;
+  font-size: 0.8em;
 }
-
+.controls input {
+  padding: 1% 2%;
+}
 .forgot {
   padding-left: 28%;
   padding-top: 2%;
-  font-size: 1em;
 }
-
 .top-section,
 .top-section .col-md-4,
 .top-section .col-md-8 {
@@ -51,11 +49,12 @@ tbody > tr:hover {
 .submit-btn {
   float: right;
 }
+
 /* LAC ASISTS info
 =========================== */
 
 .welcome-info {
-  padding: 1% 0%;
+  padding: 0.5% 0%;
   color: white;
   background-color: #a6a6a6;
   background-image: url(../../assets/SUNY-Seal.png);
@@ -64,18 +63,15 @@ tbody > tr:hover {
   font-weight: 600;
   font-size: 1.3em;
 }
-
 .glyphicon-registration-mark {
   font-weight: 200;
   font-size: 0.7em;
   vertical-align: text-top;
 }
-
 .small-text,
 .regular {
   padding-left: 10%;
 }
-
 .regular {
   font-weight: 300;
   font-size: 0.9em;
@@ -84,32 +80,29 @@ tbody > tr:hover {
 
 /* Link panels
 =========================== */
+
 .link-panel {
   background-color: #f5f5f5;
-  padding: 1.5% 1%;
+  padding: 1% 1%;
   height: 100%;
 }
-
 .heading-bar {
   color: #fff;
   background: #694e77;
-  /* background: #2479b5; */
-  font-size: 1.3em;
+  font-size: 1.2em;
   font-weight: bold;
   padding: 8px;
-  padding-bottom: 0.75em;
-  padding-top: 0.75em;
+  padding-bottom: 0.5em;
+  padding-top: 0.5em;
   margin-top: 0;
   margin-bottom: 0;
 }
-
 .float-right {
   float: right;
 }
-
 .quick-links {
   display: block;
-  font-size: 1.2em;
+  font-size: 1.05em;
   list-style-type: none;
   margin-block-start: 1em;
   margin-block-end: 1em;
@@ -117,15 +110,18 @@ tbody > tr:hover {
   margin-inline-end: 0px;
   padding-inline-start: 30px;
   padding-inline-end: 30px;
-  line-height: 2em;
+  line-height: 2.1em;
 }
-
+.long-text {
+  line-height: 1.2;
+  padding-top: 1%;
+}
 .quick-links a {
   display: block;
   width: 100%;
   height: 100%;
+  border-bottom: 1px solid rgb(205, 205, 205);
 }
-
 .quick-links a:link,
 .quick-links a:visited,
 .quick-links a:hover,
@@ -133,12 +129,10 @@ tbody > tr:hover {
   text-decoration: none;
   color: #1d6294;
 }
-
 #myModalTextBox {
   font-size: 1.2em;
   padding-left: 2%;
 }
-
 .quick-links li:hover,
 .quick-links a:active {
   background-color: #d3e4f0;
@@ -146,18 +140,59 @@ tbody > tr:hover {
 
 /* Footer
  =========================== */
-.footer-logos {
+
+footer {
   border-top: 2px solid #a6a6a6;
-  padding: 0.5% 0% 0.5% 7%;
+}
+.footer-logos {
+  /* border-top: 2px solid #a6a6a6; */
+  padding: 0.5% 0%;
   background-color: #f5f5f5;
-}
-.logo {
-  height: inherit;
-}
-.logo img {
-  margin: 0% 5%;
+  height: fit-content;
 }
 .row {
   margin-right: 0;
   margin-left: 0;
+}
+footer .row .col-md-2 {
+  padding-left: 0px;
+}
+
+/* Media queries
+ =========================== */
+
+@media screen and (width>=2200px) {
+  body {
+    font-size: 22px;
+  }
+  .link-panel {
+    width: 65%;
+  }
+  .welcome-info {
+    height: 12%;
+    font-size: 1.4em;
+  }
+  .top-section {
+    height: 13%;
+    font-size: 1.2em;
+  }
+  .footer-logos,
+  .top-section {
+    width: 65%;
+  }
+}
+
+@media screen and (1590px<width<2200px) {
+  body {
+    font-size: 18px;
+  }
+  .link-panel {
+    width: 61%;
+  }
+}
+
+@media screen and (width<1590px) {
+  .hero {
+    height: 62%;
+  }
 }

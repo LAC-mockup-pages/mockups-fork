@@ -17,63 +17,40 @@
       src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"
       defer
     ></script>
-
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-
     <!-- Latest compiled and minified CSS -->
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
     />
-
     <!-- Optional theme -->
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"
     />
-
     <!-- Latest compiled and minified JavaScript -->
     <script
       src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
       defer
     ></script>
 
-    <!-- Luxon JS library from CDN - Dates and time management-->
-    <script
-      src="https://cdn.jsdelivr.net/npm/luxon@2.1.1/build/global/luxon.min.js"
-      type="text/javascript"
-      defer
-    ></script>
-
-    <!-- Luxon JS polyfill for IE 10 or 11-->
-    <script
-      src="https://cdn.polyfill.io/v3/polyfill.js?features=default,String.prototype.repeat,Array.prototype.find,Array.prototype.findIndex,Math.trunc,Math.sign,Object.is"
-      type="text/javascript"
-      defer
-    ></script>
-
     <!-- Local links and scripts -->
     <link rel="stylesheet" href="./style/index.css" type="text/css" />
-
     <script src="../helpers/constants.js" type="text/javascript" defer></script>
-
     <script
       src="../helpers/helperFunctions.js"
       type="text/javascript"
       defer
     ></script>
-
     <script
       type="text/javascript"
       src="./scripts/data-server.js"
       defer
     ></script>
-
     <script type="text/javascript" src="./scripts/nav-frame.js" defer></script>
-
     <script type="module" src="./scripts/main.js" defer></script>
 
     <!-- !============================= -->
@@ -92,75 +69,75 @@
             </span>
           </div>
           <div class="top-logo col-md-3">
-            <div>
-              <a
-                href="../landing/index.html"
-                data-toggle="tooltip"
-                data-placement="right"
-                title="Home page"
-              >
-                <img src="../assets/Main-Logo.png" class="main-logo" />
-              </a>
-            </div>
+            <a
+              href="../landing/index.html"
+              data-toggle="tooltip"
+              data-placement="right"
+              title="Home page"
+            >
+              <img src="../assets/Main-Logo.png" class="main-logo" />
+            </a>
           </div>
-          <div class="col-md-7">
-            <section class="icons row">
-              <div class="col-sm-8"></div>
-              <a
-                class="col-sm-1"
-                href="../404-page/index.html"
-                role="button"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Add Students"
-                aria-haspopup="true"
-                aria-expanded="true"
-              >
-                <span class="material-icons quick-link">
-                  person_add_alt
-                </span></a
-              >
-              <a
-                class="col-sm-1"
-                href="../404-page/index.html"
-                role="button"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Attendance"
-                aria-haspopup="true"
-                aria-expanded="true"
-              >
-                <span class="material-icons quick-link"> rule </span></a
-              >
-
-              <a
-                class="col-sm-1"
-                href="../404-page/index.html"
-                role="button"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="NRS Program Evaluation Report"
-                aria-haspopup="true"
-                aria-expanded="true"
-              >
-                <span class="material-icons quick-link"> summarize </span></a
-              >
-              <a
-                class="col-sm-1"
-                href="../404-page/index.html"
-                role="button"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="NYRS Program Evaluation Report"
-                aria-haspopup="true"
-                aria-expanded="true"
-              >
-                <span class="material-icons quick-link"> summarize </span></a
-              >
-            </section>
-            <section class="user-bloc row">
-              <div class="col-sm-10 user-info"></div>
-              <div class="col-sm-2 dropdown-user">
+          <section class="user-bloc col-md-5">
+            <div class="user-info"></div>
+          </section>
+          <section class="col-md-2 icons container-fluid">
+            <div class="row">
+              <div class="col-sm-2">
+                <a
+                  href="../404-page/index.html"
+                  role="button"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Add Students"
+                  aria-haspopup="true"
+                  aria-expanded="true"
+                >
+                  <span class="material-icons quick-link">
+                    person_add_alt
+                  </span></a
+                >
+              </div>
+              <div class="col-sm-2">
+                <a
+                  href="../404-page/index.html"
+                  role="button"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Attendance"
+                  aria-haspopup="true"
+                  aria-expanded="true"
+                >
+                  <span class="material-icons quick-link"> rule </span></a
+                >
+              </div>
+              <div class="col-sm-2">
+                <a
+                  href="../404-page/index.html"
+                  role="button"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="NRS Program Eval. Report"
+                  aria-haspopup="true"
+                  aria-expanded="true"
+                >
+                  <span class="material-icons quick-link"> summarize </span></a
+                >
+              </div>
+              <div class="col-sm-2">
+                <a
+                  href="../404-page/index.html"
+                  role="button"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="NYRS Program Eval. Report"
+                  aria-haspopup="true"
+                  aria-expanded="true"
+                >
+                  <span class="material-icons quick-link"> summarize </span></a
+                >
+              </div>
+              <div class="col-sm-2">
                 <div class="dropdown">
                   <a
                     href="#"
@@ -169,13 +146,16 @@
                     role="button"
                     aria-haspopup="true"
                     aria-expanded="true"
-                    ><span
-                      class="glyphicon glyphicon-user"
-                      aria-hidden="true"
-                    ></span>
-                    <span class="caret"></span
-                  ></a>
+                    ><span class="material-icons quick-link" aria-hidden="true"
+                      >person</span
+                    ></a
+                  >
                   <ul class="dropdown-menu dropdown-menu-right">
+                    <li>
+                      <a class="hidden" href="#" id="select-agency"
+                        >Select Agency</a
+                      >
+                    </li>
                     <li>
                       <a href="../404-page/index.html" id="change-password">
                         Change Password</a
@@ -198,8 +178,9 @@
                   </ul>
                 </div>
               </div>
-            </section>
-          </div>
+              <div class="col-sm-2"></div>
+            </div>
+          </section>
         </div>
       </div>
     </header>
@@ -234,7 +215,6 @@
           >
         </div>
       </div>
-
       <div class="hidden main-tab">
         <a class="dropdown-btn" href="#"
           >Students <span class="caret"></span
@@ -250,7 +230,6 @@
           >
         </div>
       </div>
-
       <div class="hidden main-tab">
         <a class="dropdown-btn" href="#"
           >Instructional Activity <span class="caret"></span
@@ -262,41 +241,26 @@
           >
         </div>
       </div>
-
       <div class="hidden main-tab">
         <a class="dropdown-btn" href="#"
           >Management Reports <span class="caret"></span
         ></a>
         <div class="dropdown-container">
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span>
-            Instructional Offering Roster</a
+          <a href="#" id="managementReportsLink"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Reports</a
           >
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> Data
-            Management</a
+          <a href="#" id="dashboardLink"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> PM
+            Dashboards</a
           >
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> Turnaround
-            Reports</a
-          >
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> TASC
-            Reports</a
-          >
-          <a href="#"
-            ><span class="glyphicon glyphicon-chevron-right"> </span> Staff
-            Development Reports</a
-          >
-          <a href="#"
+          <a href="#" id="dataExportsLink"
             ><span class="glyphicon glyphicon-chevron-right"> </span> Data
             Exports</a
           >
         </div>
       </div>
-
       <div class="hidden main-tab">
-        <a class="dropdown-btn" href="#"
+        <a class="dropdown-btn" id="funding-anchor" href="#"
           >Funding Reports<span class="caret"></span
         ></a>
         <div class="dropdown-container">
@@ -338,160 +302,11 @@
           >
         </div>
       </div>
-    </div>
+        </section>
+      </div>
     <!-- End Side Nav bar -->
-    <!-- Main display start -->
-    <main class="main-body container-fluid">
-      <!-- Sub NavBar -->
-      <div class="container-fluid blue-bg blue-light-text sub-navbar">
-        <ul id="sub-nav" class="nav-justified">
-          <li>
-            <a
-              class="blue-light-text blue-bg"
-              href="../students-search/index.html"
-              type="text/html"
-              >Student search</a
-            >
-          </li>
-          <li data-target="profile">
-            <a class="blue-light-text blue-bg" type="text/html">Profile</a>
-          </li>
-          <li data-target="details">
-            <a class="blue-light-text blue-bg" type="text/html"
-              >Student details</a
-            >
-          </li>
-          <li data-target="assessments">
-            <a class="blue-light-text blue-bg" type="text/html">Assessments</a>
-          </li>
-          <li data-target="enrollments">
-            <a class="blue-light-text blue-bg" type="text/html">Enrollment</a>
-          </li>
-          <li data-target="goals">
-            <a class="blue-light-text blue-bg" type="text/html">Outcomes</a>
-          </li>
-          <li data-target="history">
-            <a type="text/html" class="blue-light-text blue-bg"
-              >Status history</a
-            >
-          </li>
-          <li data-target="casenotes" class="blue-light-bg blue-text">
-            <a type="text/html">Case notes</a>
-          </li>
-        </ul>
-      </div>
-      <!-- End Sub NavBar -->
-      <!-- Student display start -->
-      <div class="container-fluid student-display">
-        <section
-          class="student-info row container-fluid blue-bg blue-light-text"
-        >
-          <div class="col-md-6 name">Student Name</div>
-          <div class="col-md-6 long-id">Birth date</div>
-        </section>
-        <section class="case">
-          <div class="sub-header blue-bg blue-light-text">
-            <div class="row">
-              <div class="col-md-2">
-                <button id="add-case" class="btn btn-default">
-                  Add a record
-                </button>
-              </div>
-              <div class="col-md-10">
-                <div class="sub-header-title">
-                  Case notes<span class="caret"></span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="visible tablescroll">
-            <table
-              class="table table-bordered case-table"
-              data-table="GetNotes"
-            >
-              <thead>
-                <tr class="blue-light-bg">
-                  <th>Date</th>
-                  <th>Type</th>
-                  <th>Keyword</th>
-                  <th>Contact staff</th>
-                  <th>Contact hrs</th>
-                  <th>Note</th>
-                  <th>Document</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="referrals">
-          <div class="sub-header blue-bg blue-light-text">
-            <div class="sub-header-title">
-              Referrals <span class="caret"></span>
-            </div>
-          </div>
-          <div class="invisible tablescroll">
-            <table class="table table-bordered">
-              <thead>
-                <tr class="blue-light-bg">
-                  <th>Date</th>
-                  <th>Location</th>
-                  <th>Note</th>
-                  <th>Keywords</th>
-                  <th>Document</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="needs">
-          <div class="sub-header blue-bg blue-light-text">
-            <div class="sub-header-title">
-              Needs <span class="caret"></span>
-            </div>
-          </div>
-          <div class="invisible tablescroll">
-            <table class="table table-bordered">
-              <thead>
-                <tr class="blue-light-bg">
-                  <th>Date</th>
-                  <th>Title</th>
-                  <th>Note</th>
-                  <th>Keywords</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-        </section>
-
-        <section class="outcome">
-          <div class="sub-header blue-bg blue-light-text">
-            <div class="sub-header-title">
-              Non NRS outcome <span class="caret"></span>
-            </div>
-          </div>
-          <div class="invisible tablescroll">
-            <table class="table table-bordered">
-              <thead>
-                <tr class="blue-light-bg">
-                  <th>Date</th>
-                  <th>FY</th>
-                  <th>Need</th>
-                  <th>Description</th>
-                  <th>Comments</th>
-                </tr>
-              </thead>
-              <tbody></tbody>
-            </table>
-          </div>
-        </section>
-      </div>
-      <!-- Student display end -->
-    </main>
+    <!-- Main display and card carousel -->
+    <main class="main-body container"></main>
     <!-- End main display -->
 
     <!-- Modal start -->
@@ -504,9 +319,6 @@
               ><span class="sr-only">Close</span>
             </button>
             <h4 class="modal-title">Agency Selection</h4>
-            <div class="required-text light-red-text">
-              Elements in red are required
-            </div>
           </div>
           <div class="modal-body">
             <form role="form" id="edit-form"></form>
@@ -514,14 +326,26 @@
           <div class="modal-footer">
             <button
               type="button"
+              class="hidden btn btn-primary"
+              form="edit-form"
+              id="edit-save-btn"
+            >
+              Save changes</button
+            ><button
+              type="button"
+              class="hidden btn btn-default"
               id="close-btn"
-              class="btn btn-default"
               data-dismiss="modal"
             >
               Close without saving
             </button>
-            <button type="button" id="save-btn" class="btn btn-primary">
-              Save changes
+            <button
+              type="button"
+              class="hidden btn btn-danger"
+              form="edit-form"
+              id="delete-btn"
+            >
+              Delete record
             </button>
           </div>
         </div>
