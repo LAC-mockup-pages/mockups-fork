@@ -8,6 +8,7 @@
   border: solid #2479b5;
   border-width: 2em 0;
 }
+
 /* Top section */
 /* ================================== */
 
@@ -15,32 +16,36 @@
   max-height: 15vh;
   padding-right: 0px;
 }
+
 #menu-btn {
   font-size: 25px;
   cursor: pointer;
   font-weight: 500;
 }
+
 .icons {
   margin-top: 1%;
 }
-.top-band .row {
-  margin-right: 0px;
-}
+
 .user-bloc {
   margin-top: 4%;
 }
+
 .dropdown-user {
   margin-top: 1%;
 }
+
 .help-mark {
   font-size: 1.5em;
   font-weight: 800;
   padding-right: 9%;
 }
+
 .menu-open {
   padding-left: 5%;
   padding-top: 2%;
 }
+
 .dropdown-menu > li > a {
   color: #333;
   text-decoration: none;
@@ -49,12 +54,15 @@
 .dropdown-menu > li > a:hover {
   font-size: 1.1em;
 }
+
 .glyphicon-log-out {
   padding-right: 7%;
 }
+
 .welcome-text {
   font-weight: 600;
 }
+
 .user-info {
   color: #333;
   text-align: inherit;
@@ -63,9 +71,11 @@
 
 /* Side Nav bar */
 /* ================================== */
+
 .sidenav {
   transition: width 0.4s ease;
 }
+
 .menu-top {
   padding-bottom: 8%;
 }
@@ -78,6 +88,7 @@
   text-align: center;
   display: block;
 }
+
 .main-tab a {
   font-size: 1.3em;
 }
@@ -87,6 +98,7 @@
 
 /* Main text */
 /* ================================== */
+
 .main-body {
   box-sizing: border-box;
   font-size: 1.7em;
