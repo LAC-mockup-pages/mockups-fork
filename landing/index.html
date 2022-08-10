@@ -17,48 +17,40 @@
       src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"
       defer
     ></script>
-
     <link
       href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet"
     />
-
     <!-- Latest compiled and minified CSS -->
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
     />
-
     <!-- Optional theme -->
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"
     />
-
     <!-- Latest compiled and minified JavaScript -->
     <script
       src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
       defer
     ></script>
-
     <!-- Local links and scripts -->
     <link rel="stylesheet" href="./style/index.css" type="text/css" />
-
     <script src="../helpers/constants.js" type="text/javascript" defer></script>
-
     <script
       src="../helpers/helperFunctions.js"
       type="text/javascript"
       defer
     ></script>
-
     <script
       type="text/javascript"
       src="./scripts/data-server.js"
       defer
     ></script>
-
-    <script type="text/javascript" src="./scripts/main.js" defer></script>
+    <script type="text/javascript" src="./scripts/nav-frame.js" defer></script>
+    <script type="module" src="./scripts/main.js" defer></script>
 
     <!-- !============================= -->
     <!-- ! File: /homeinfo.aspx -->
@@ -76,40 +68,39 @@
             </span>
           </div>
           <div class="top-logo col-md-3">
-            <div>
-              <a
-                href="../landing/index.html"
-                data-toggle="tooltip"
-                data-placement="right"
-                title="Home page"
-              >
-                <img src="../assets/Main-Logo.png" class="main-logo" />
-              </a>
-            </div>
+            <a
+              href="../landing/index.html"
+              data-toggle="tooltip"
+              data-placement="right"
+              title="Home page"
+            >
+              <img src="../assets/Main-Logo.png" class="main-logo" />
+            </a>
           </div>
-          <div class="col-md-7">
-            <section class="icons row">
-              <div class="col-sm-8"></div>
 
-              <!-- Comment out for production Alpha -->
-              <a
-                class="col-sm-1"
-                href="../404-page/index.html"
-                role="button"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Add Students"
-                aria-haspopup="true"
-                aria-expanded="true"
-              >
-                <span class="material-icons quick-link">
-                  person_add_alt
-                </span></a
-              >
+          <section class="user-bloc col-md-5">
+            <div class="user-info"></div>
+          </section>
 
-              <!-- Uncomment for production Alpha -->
-              <!-- <a
-              class="col-sm-1"
+          <section class="col-md-2 icons container-fluid">
+            <div class="row">
+              <div class="col-sm-2">
+                <!-- Comment out for production Alpha -->
+                <a
+                  href="../404-page/index.html"
+                  role="button"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Add Students"
+                  aria-haspopup="true"
+                  aria-expanded="true"
+                >
+                  <span class="material-icons quick-link">
+                    person_add_alt
+                  </span></a
+                >
+                <!-- Uncomment for production Alpha -->
+                <!-- <a
               href="http://alpha.asists.com/students-add/stu_info.aspx"
               role="button"
               data-toggle="tooltip"
@@ -122,51 +113,78 @@
                 person_add_alt
               </span></a
             > -->
+              </div>
 
-              <!-- Comment out for production Alpha -->
-              <a
-                class="col-sm-1"
-                href="../404-page/index.html"
-                role="button"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Attendance"
-                aria-haspopup="true"
-                aria-expanded="true"
-              >
-                <span class="material-icons quick-link"> rule </span></a
-              >
-              <!-- Comment out for production Alpha -->
-              <a
-                class="col-sm-1"
-                href="../404-page/index.html"
-                role="button"
-                data-toggle="tooltip"
-                data-placement="bottom"
-                title="Program evaluation reports"
-                aria-haspopup="true"
-                aria-expanded="true"
-              >
-                <span class="material-icons quick-link"> summarize </span></a
-              >
-              <!-- Uncomment for production Alpha -->
-              <!-- <a
-                class="col-sm-1"
+              <div class="col-sm-2">
+                <!-- Comment out for production Alpha -->
+                <a
+                  href="../404-page/index.html"
+                  role="button"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Attendance"
+                  aria-haspopup="true"
+                  aria-expanded="true"
+                >
+                  <span class="material-icons quick-link"> rule </span></a
+                >
+              </div>
+
+              <div class="col-sm-2">
+                <!-- Comment out for production Alpha -->
+                <a
+                  href="../404-page/index.html"
+                  role="button"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="NRS program eval. report"
+                  aria-haspopup="true"
+                  aria-expanded="true"
+                >
+                  <span class="material-icons quick-link"> summarize </span></a
+                >
+                <!-- Uncomment for production Alpha -->
+                <!-- <a
                 href="http://alpha.asists.com/reports-funding/reports-funding.aspx"
                 role="button"
                 data-toggle="tooltip"
                 data-placement="bottom"
-                title="Program evaluation reports"
+                title="NRS program eval. report"
                 aria-haspopup="true"
                 aria-expanded="true"
               >
                 <span class="material-icons quick-link"> summarize </span></a
               > -->
-              <a class="col-sm-1" href=""></a>
-            </section>
-            <section class="user-bloc row">
-              <div class="col-sm-10 user-info"></div>
-              <div class="col-sm-2 dropdown-user">
+              </div>
+
+              <div class="col-sm-2">
+                <!-- Comment out for production Alpha -->
+                <a
+                  href="../404-page/index.html"
+                  role="button"
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="NYRS program eval. report"
+                  aria-haspopup="true"
+                  aria-expanded="true"
+                >
+                  <span class="material-icons quick-link"> summarize </span></a
+                >
+                <!-- Uncomment for production Alpha -->
+                <!-- <a
+                 href="http://alpha.asists.com/reports-funding/reports-funding.aspx"
+                 role="button"
+                 data-toggle="tooltip"
+                 data-placement="bottom"
+                 title="NYRS program eval. report"
+                 aria-haspopup="true"
+                 aria-expanded="true"
+               >
+                 <span class="material-icons quick-link"> summarize </span></a
+               > -->
+              </div>
+
+              <div class="col-sm-2">
                 <div class="dropdown">
                   <a
                     href="#"
@@ -175,12 +193,10 @@
                     role="button"
                     aria-haspopup="true"
                     aria-expanded="true"
-                    ><span
-                      class="glyphicon glyphicon-user"
-                      aria-hidden="true"
-                    ></span>
-                    <span class="caret"></span
-                  ></a>
+                    ><span class="material-icons quick-link" aria-hidden="true"
+                      >person</span
+                    ></a
+                  >
                   <ul class="dropdown-menu dropdown-menu-right">
                     <li>
                       <a class="hidden" href="#" id="select-agency"
@@ -209,8 +225,10 @@
                   </ul>
                 </div>
               </div>
-            </section>
-          </div>
+
+              <div class="col-sm-2"></div>
+            </div>
+          </section>
         </div>
       </div>
     </header>

@@ -27,16 +27,24 @@ const applyColor = (colorStr) => {
   $(".large-num").css("color", colorStr);
   $(".card-block").css("border-color", colorStr);
 };
-
-const toggleSideNav = () => {
-  $(
-    ".sidenav .main-tab, .sidenav .close-btn, .sidenav .menu-text, .small-logo"
-  ).toggleClass("hidden");
-};
-
 // Customizing the card content
-const addCustomContent = (list) => {
-  for (const obj of list) {
+const addCustomContent = (agency) => {
+  const cardList = cardValues
+    .filter((record) => record.AgencyPKID === agency)
+    .map((record) => {
+      let { CardID, CardValue, CardValue2, CardReport, CardReport2 } = record;
+      CardValue = CardValue === "NULL" ? "" : CardValue;
+      CardValue2 = CardValue2 === "NULL" ? "" : CardValue2;
+      CardReport = CardReport === "NULL" ? "" : CardReport;
+      CardReport2 = CardReport2 === "NULL" ? "" : CardReport2;
+      return {
+        ID: CardID,
+        values: [CardValue, CardValue2],
+        report: [CardReport, CardReport2]
+      };
+    });
+  console.log("cardList :>> ", cardList);
+  for (const obj of cardList) {
     const { ID: cardId, values, report } = obj;
     for (const val of values) {
       const indxVal = values.indexOf(val);
@@ -48,7 +56,6 @@ const addCustomContent = (list) => {
     }
   }
 };
-
 let slideIndex = 1;
 const showSlides = (num) => {
   const slides = $(".cards");
@@ -63,7 +70,6 @@ const showSlides = (num) => {
     .show(600)
     .addClass("visible");
   $(dots[slideIndex - 1]).addClass("active");
-
   // Calculate the top margin necessary to center the card inside
   // card-block
   const blockHeight = $(".card-block").height();
@@ -71,7 +77,6 @@ const showSlides = (num) => {
   const lineHeight = $(".dot").height() / 2;
   const addedMargin = (blockHeight - cardHeight) / 2 - lineHeight;
   $(slides[slideIndex - 1]).css("margin-top", `${addedMargin}px`);
-
   applyColor(cardColors[slideIndex]);
 };
 
@@ -136,87 +141,20 @@ $(document).ready(() => {
   //! for the different requests to the back-end, using requestObj.
   //! =============================================================
   // const agencies =
-
+  // const cardValues =
   //! =============================================================
 
-  //* Side nav open at home page loading
-  $(".sidenav").width("20%");
-  toggleSideNav();
-
-  //* Opening side Nav
-  $(document).on("click", "#menu-btn", function (evnt) {
-    $(".sidenav").width("20%");
-    $(".card-btn").css("padding-left", "31%");
-    $(".btn-numbers").css("margin-left", "10%");
-
-    toggleSideNav();
-  });
-  // Enables customized tooltips
-  $("[data-toggle='tooltip']").tooltip();
-
-  //* Add user info.
-  let { fullname, rolename, UserLevel, AgencyName, PrevAgency } =
-    SESSION_VARIABLE[0];
-
-  //! =========================================
-  //! For Dev Env only. Can stay for Production.
-  //! =========================================
-
-  if (!AgencyName || AgencyName.startsWith("<%=")) {
-    fullname = "Kate Tornese (default)";
-    UserLevel = "1";
-    // rolename = "Program Data Editor Program Data Editor ";
-    rolename = "LAC TECH Support";
-    AgencyName = "Practice Agency";
-  }
-  //! =========================================
-  const welcomeLine = `
-    <div class="row">
-      <div class="col-sm-1"></div>
-      <div class="welcome-text col-sm-7">Hello ${fullname} (${AgencyName})
-      </div>
-      <div class="role-text col-sm-4" data-level=${UserLevel}>User Role: ${rolename}
-      </div>
-    </div>`;
-  $(".user-info").append(welcomeLine);
-
+  //* Hide menu closing hamburger button
+  $("#mySidenav .close-btn").addClass("hidden");
   //* Update card content with custom values and links.
-  const cardList = GetAgencyCardValues.map((record) => {
-    let { CardID, CardValue, CardValue2, CardReport, CardReport2 } = record;
-    CardValue = CardValue === "NULL" ? "" : CardValue;
-    CardValue2 = CardValue2 === "NULL" ? "" : CardValue2;
-    CardReport = CardReport === "NULL" ? "" : CardReport;
-    CardReport2 = CardReport2 === "NULL" ? "" : CardReport2;
-    return {
-      ID: CardID,
-      values: [CardValue, CardValue2],
-      report: [CardReport, CardReport2]
-    };
-  });
-  addCustomContent(cardList);
   //* Display the first card.
+  const agencyId = SESSION_VARIABLE[0].ID.startsWith("<%=")
+    ? "14"
+    : SESSION_VARIABLE[0].ID;
+  addCustomContent(agencyId);
   showSlides(slideIndex);
-  //* Open Agency selection modal depending on the user role and
-  //* if an agency as already been selected.
-  // if (
-  //   [
-  //     "LAC TECH Support", //! Those roles can select multiple agencies
-  //     "NYSED Staff",
-  //     "RAEN Director",
-  //     "LPA Editor",
-  //     "LPA Reviewer"
-  //   ].includes(rolename) &&
-  //   PrevAgency === "False"
-  // ) {
-  //   const optionListAgency = createOptionList(
-  //     createSummaryList(GetAgencyIndex.slice(0), "AgencyID", "AgencyName")
-  //   );
-  //   $("#agency-selector").append(optionListAgency).focus();
-  //   $("#select-agency").toggleClass("hidden");
-  //   PrevAgency = "True";
-  //   $("#modalBloc").modal("toggle");
-  //   $("#agency-selector").focus();
-  // }
+  //* Enable the Select Agency choice in user dropdown for authorized
+  //* users. Add the list of agencies to modal selection
   if (
     [
       "LAC TECH Support", //! Those roles can select multiple agencies
@@ -224,7 +162,7 @@ $(document).ready(() => {
       "RAEN Director",
       "LPA Editor",
       "LPA Reviewer"
-    ].includes(rolename)
+    ].includes($(".role-text").text())
   ) {
     $("#select-agency").toggleClass("hidden");
     const sortedAgencyList = agencies.sort((record1, record2) =>
@@ -235,42 +173,14 @@ $(document).ready(() => {
         : 0
     );
     const optionListAgency = createOptionList(
-      createSummaryList(sortedAgencyList, "ID", "AgencyName")
+      createSummaryList(sortedAgencyList, "ID", "AgencyName"),
+      agencyId
     );
     $("#agency-selector").append(optionListAgency);
   }
 
   //* ===================================
 
-  //* Closing sidenav by clicking close-btn or sidenav losing focus
-  $(document).on("click", ".close-btn", function (evnt) {
-    $(".dropdown-container").css("display", "none");
-    $(".main-tab .dropdown-btn").removeClass("active");
-    $(".sidenav").width("3%");
-    $(".card-btn").css("padding-left", "15%");
-    $(".btn-numbers").css("margin-left", "-17%");
-    toggleSideNav();
-  });
-  //* Selecting a menu item and displaying the sub-menu
-  $(document).on("click", ".dropdown-btn", function (evnt) {
-    $(".dropdown-container").css("display", "none");
-    $(".main-tab .dropdown-btn").removeClass("active");
-    $(this).siblings(".dropdown-container").css("display", "block");
-    $(this).toggleClass("active");
-  });
-  //* Selecting a submenu item
-  $(document).on("click", ".dropdown-container a", function (evnt) {
-    $(".dropdown-container").css("display", "none");
-    $(".main-tab .dropdown-btn").removeClass("active");
-    $(".sidenav").width("3%");
-    toggleSideNav();
-  });
-  //* Selecting another page in subnav bar
-  $("#sub-nav li").on("click", function (evnt) {
-    evnt.stopPropagation();
-    $("#sub-nav li").removeClass("blue-light-bg blue-text");
-    $(this).toggleClass("blue-light-bg blue-text");
-  });
   //* Display next or previous card when a chevron is clicked on
   $(document).on("click", ".prev, .next", function (evnt) {
     evnt.stopPropagation();
@@ -284,19 +194,13 @@ $(document).ready(() => {
     showSlides((slideIndex = selectedCardIndex));
   });
   //* Select Agency in dropdown list
-  $(document).on("change", "#agency-selector", function (evnt) {
-    evnt.stopPropagation();
+  $("#edit-form select").change(function (evnt) {
+    // evnt.stopPropagation();
     const selectedId = $(this).val();
-    const selectedAgencyName = $("#agency-selector option:selected").text();
-    const selectedAgency = agencies.find(
-      (record) => record.AgencyPKID === selectedId
-    );
-    SESSION_VARIABLE[0].AgencyPKID = selectedId;
-    SESSION_VARIABLE[0].AgencyName = selectedAgencyName
-      .replace("\n", "")
-      .trim();
-    SESSION_VARIABLE[0].AgencyID = selectedAgency.ID;
-
+    const selectedAgency = agencies.find((record) => record.ID === selectedId);
+    const { ID, AgencyID, AgencyName } = selectedAgency;
+    const sessionVar = SESSION_VARIABLE[0];
+    SESSION_VARIABLE[0] = { ID, AgencyID, AgencyName, ...sessionVar };
     const userFullName = SESSION_VARIABLE[0].fullname.startsWith("<%=")
       ? "Kate Tornese (default)"
       : SESSION_VARIABLE[0].fullname;
@@ -304,16 +208,17 @@ $(document).ready(() => {
       `Hello ${userFullName} (${SESSION_VARIABLE[0].AgencyName})`
     );
     $("#modalBloc").modal("toggle");
-
-    const newCardValues = cardValues.filter(
-      (record) => (record.AgencyPKID = selectedId)
-    );
-    const newCardContent = addCustomContent(newCardValues);
+    // Re-rendering cards with values from new agency
+    addCustomContent(selectedId);
+    showSlides(slideIndex);
   });
   //* Change agency => new agency selection
   $(document).on("click", "#select-agency", function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
     $("#modalBloc").modal("toggle");
+    $("#modalBloc").on("shown.bs.modal", function () {
+      $(this).find(".input-field:first-of-type :input").focus();
+    });
   });
 });
