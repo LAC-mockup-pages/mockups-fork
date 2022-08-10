@@ -19,14 +19,22 @@ header,
   padding: 0.4% 0%;
 }
 #loginform {
-  padding: 3% 0% 0% 8%;
+  padding: 3% 0% 0% 2%;
 }
 tbody > tr:hover {
   background-color: inherit;
 }
-.form-group:first-of-type {
-  padding-left: 3%;
-  font-size: 1.2em;
+.input-group,
+.controls {
+  height: 3vh;
+}
+.input-group input,
+.controls input {
+  height: 100%;
+  font-size: 0.8em;
+}
+.controls input {
+  padding: 1% 2%;
 }
 .forgot {
   padding-left: 28%;
