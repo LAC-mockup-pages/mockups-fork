@@ -3,10 +3,8 @@
 
 const createNews = (newsList) => {
   let newsItems = "";
-
   // newsList is an empty array
   if (newsList.length < 1) return "<li>No News</li>";
-
   for (const obj of newsList) {
     const { ID, newsTitle, newsArticle } = obj;
     const elementNews = `
@@ -29,6 +27,11 @@ $(document).ready(function () {
   //* At 1st rendering, add News Bulletin items from request
   const news = createNews(GetNewsBulletin);
   $("#news-panel").append(news);
+  // alert(
+  //   `Window width: ${window.innerWidth}\n
+  //   Window height: ${window.innerHeight}\n
+  //   Pixel density: ${window.devicePixelRatio}`
+  // );
 
   //* Selected news article displayed in modal
   $(document).on("click", "a.modalButton", function (evnt) {
@@ -37,10 +40,14 @@ $(document).ready(function () {
     const title = $(this).text();
     $("#myModal .modal-title").text(title);
     const newsArticle = $(this).data("news");
-
     $("#myModal .modal-body #myModalTextBox").text(newsArticle);
     $("body").on("hidden.bs.modal", "#myModal", function () {
       $(this).removeData("bs.modal");
     });
+  });
+
+  //* Modifying line-height depending on inner text length
+  $(".quick-links li").each(function (indx) {
+    if (Number($(this).height()) > 60) $(this).addClass("long-text");
   });
 });
