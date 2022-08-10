@@ -30,9 +30,15 @@ NB: Date is last modification date.
 
 To start a new page, create the folder in a new branch.
 
-Copy all the folders and files in `/starter` and paste them in the new folder.
+- Copy all the folders and files in `/starter` and paste them in the new folder.
 
-Edit `index.html` with the new page title and `.aspx` file name. Edit the `README.md` file.
+- Edit `index.html` with the new page title and `.aspx` file name. Edit the `README.md` file.
+
+- Customize the button set and the modal title in the modal section in `index.html`
+
+- Update the steps section below in `README.md`.
+
+---
 
 | Steps                   | Status | Date |
 | ----------------------- | ------ | ---- |
