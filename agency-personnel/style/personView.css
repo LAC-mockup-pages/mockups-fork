@@ -33,6 +33,15 @@
   height: 180px;
   overflow-y: scroll;
 }
+.non-instructional-hours-body tr td:first-of-type {
+  width: 20%;
+}
+.non-instructional-hours-body tr td:last-of-type {
+  text-align: center;
+}
+.non-instructional-hours-body tr td:not(:first-of-type, :last-of-type) {
+  text-align: right;
+}
 .bloc-additionalInfo .row {
   margin-right: 0px;
   margin-left: 0px;
