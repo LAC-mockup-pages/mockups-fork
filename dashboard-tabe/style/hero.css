@@ -1,0 +1,239 @@
+/* =================================== */
+/* Styling for local elements */
+/* =================================== */
+
+/* Hero */
+/* =================================== */
+
+.hero {
+  margin: 1% 8%;
+  height: fit-content;
+}
+
+.container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+.dashboard-bg {
+  background-color: #2479b5;
+}
+
+/* Button Block */
+/* =================================== */
+
+.col-md-1 {
+  width: 11.5%;
+}
+
+#button-bloc {
+  width: 8em;
+  margin: auto;
+  margin-top: 19em;
+  margin-left: 1em;
+}
+
+#button-bloc .btn {
+  height: 7em;
+  width: 7em;
+  margin-bottom: 1.7em;
+  border-radius: 10px;
+  background-image: linear-gradient(
+    180deg,
+    rgba(166, 166, 166, 0),
+    rgba(166, 166, 166, 1)
+  );
+}
+
+.back-button > a,
+.compare-button > a,
+.inform-button > p:last-of-type {
+  color: #333;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.question-mark {
+  font-size: 2.5em;
+  font-weight: 800;
+  margin: 0px 0px 0px 0px;
+  color: #2700ff;
+}
+
+.glyphicon {
+  font-size: large;
+  color: #2700ff;
+}
+
+/* Side Navigation Bar */
+/* =================================== */
+
+#side-nav {
+  margin: 1% 0% 1% 1%;
+  max-height: 45em;
+  overflow-y: scroll;
+}
+
+#side-nav .container-fluid {
+  padding-right: 0px;
+  padding-left: 1%;
+}
+
+.side-navbar-button {
+  padding-right: 5%;
+}
+
+.large-tile {
+  width: 100%;
+  height: 12em;
+  border-radius: 10px;
+  margin-bottom: 10%;
+}
+
+.large-tile > a {
+  color: #333;
+  font-size: 1.4em;
+  text-decoration: none;
+}
+
+.medium-tile {
+  width: 100%;
+  height: 6em;
+  border-radius: 10px;
+  margin-bottom: 10%;
+}
+
+.medium-tile > a {
+  color: #333;
+  font-size: 1.1em;
+  text-decoration: none;
+}
+
+.small-tile {
+  width: 100%;
+  height: 6em;
+  border-radius: 10px;
+  margin-bottom: 10%;
+  background-color: #d3e4f0;
+}
+
+.small-tile > a {
+  color: #333;
+  font-size: 1em;
+  text-decoration: none;
+}
+
+.hero button:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.5), 0 17px 50px 0 rgba(0, 0, 0, 0.3);
+}
+
+.tile-header,
+.tile-details {
+  width: 100%;
+  height: 50%;
+}
+
+.tile-header {
+  font-weight: 600;
+  padding: 3% 0% 0% 3%;
+  height: 40%;
+}
+
+.tile-details,
+.tile-details-small {
+  font-size: 1.1em;
+  font-weight: 800;
+  height: 60%;
+}
+
+.large-tile .tile-header {
+  font-size: 1.4em;
+  font-weight: 700;
+  margin-top: 4%;
+}
+
+.large-tile .tile-details {
+  font-size: 3em;
+  font-weight: 800;
+}
+#tile7 {
+  background-color: #d3e4f0;
+}
+.tile-details-small > .detail-table > tbody > tr > td {
+  line-height: 1.1em;
+  background-color: #d3e4f0;
+  font-size: 0.8em;
+  text-align: left;
+  border-top: none;
+  padding: 0em 0em 0em 0.5em;
+}
+
+.tile-details-small > .table > tbody > tr > td:last-of-type {
+  font-weight: 700;
+}
+
+.tile-details-small > .table > tbody > tr > td:first-of-type {
+  width: 40%;
+}
+
+.detail-table {
+  padding-left: 1%;
+}
+
+/* Center Part */
+/* =================================== */
+
+.stat-graph,
+.table1,
+.table2 {
+  height: 35em;
+  width: 90%;
+  background-color: #f5f5f5;
+  margin-top: 1.5%;
+}
+
+thead,
+th {
+  background-color: #2479b5;
+  text-align: left;
+}
+
+.table1,
+.table2 {
+  height: 9em;
+  color: #333;
+  overflow-y: scroll;
+}
+
+.table1 thead th,
+.table2 thead th {
+  position: sticky;
+  top: 0;
+  color: #d3e4f0;
+}
+
+.table > tbody > tr {
+  border-bottom: solid 1px #dddddd;
+}
+
+.table > tbody > tr:hover {
+  background-color: inherit;
+}
+
+.table > thead > tr > th,
+.table > tbody > tr > th,
+.table > tfoot > tr > th,
+.table > thead > tr > td,
+.table > tbody > tr > td,
+.table > tfoot > tr > td {
+  padding: 0px;
+  padding-left: 2px;
+  vertical-align: top;
+  font-size: 0.9em;
+  line-height: 1.8em;
+}
+
+#center-part {
+  padding-right: 0px;
+  padding-left: 0px;
+}

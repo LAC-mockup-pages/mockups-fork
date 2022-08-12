@@ -3,8 +3,10 @@
 const validateRecord = (dataList, requiredList) => {
   // Returns true if input is only alphanumerical + underscore, not empty string
   const alphaNumCheck = (str) => {
-    return !/[^\s\w-.,]/g.test(str);
+    // return !/[^\s\w-.,]/g.test(str);
+    return true;
   };
+
   const resultList = [];
   for (let field of dataList) {
     let { name, value } = field;
@@ -14,7 +16,7 @@ const validateRecord = (dataList, requiredList) => {
       case "ProfDevDate":
       case "Date":
         // Match the date format through regular expression
-        obj.correct = dateValid(value);
+        obj.correct = dateValid(dateISOToUS(value));
         break;
 
       default:

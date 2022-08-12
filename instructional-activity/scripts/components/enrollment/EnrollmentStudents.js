@@ -13,8 +13,9 @@ export const createStudentBloc = (dataList) => {
     Student_PKID: "Student_PKID",
     StudentID: "StudentID",
     StudentName: "Name",
-    EnrollDate: "Start Date",
-    InactiveDate: "End Date",
+    BirthDate: "Birth date",
+    EnrollDate: "Start date",
+    InactiveDate: "End date",
     InactiveReasonDesc: "Reason",
     TransferToDescription: "Transfer To",
     InactiveReason: "InactiveReason",
@@ -114,21 +115,21 @@ export const editStudent = (rowId) => {
   ${elementInput({
     keyVal: "EnrollDate",
     labelVal: "Start",
-    value: EnrollDate,
+    value: dateISOToUS(EnrollDate),
     labelClassVal: "",
     classVal: "",
     option: "",
     optionHidden: "form-group",
-    type: "text"
+    type: "date"
   })}${elementInput({
     keyVal: "InactiveDate",
     labelVal: "End",
-    value: InactiveDate,
+    value: dateISOToUS(InactiveDate),
     labelClassVal: "",
     classVal: "",
-    option: "placeholder='MM/DD/YYYY'",
+    option: "",
     optionHidden: "form-group",
-    type: "text"
+    type: "date"
   })}`;
 
   const activeStudent = InactiveDate ? "" : "disabled";

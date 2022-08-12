@@ -9,11 +9,14 @@ const createFormAddHistory = (formName, rowId = null) => {
   let result = "";
 
   for (const cell of selectedRow) {
-    let optionHidden = $(cell).attr("class").includes("hidden") ? "hidden" : "";
+    let optionHidden = $(cell).attr("class").includes("hidden")
+      ? "hidden form-group"
+      : "form-group";
     let keyVal = $(cell).attr("data-field");
     let labelVal = $(cell).attr("data-label") ? $(cell).attr("data-label") : "";
     let option = "";
     let value = rowId ? $(cell).text() : "";
+    let type = "text";
 
     if (["PersonnelStatID"].includes(keyVal)) {
       const selectedValue = rowId ? value : "";
@@ -28,8 +31,13 @@ const createFormAddHistory = (formName, rowId = null) => {
       // elementSelectModal() <== helperFunctions.js
       result += elementSelectModal(paramsSelect);
     } else {
-      if (keyVal === "PersonnelStatDesc") optionHidden = "hidden";
-      if (keyVal === "PersStatusDate") option = "placeholder='MM/DD/YYYY'";
+      if (keyVal === "PersonnelStatDesc") optionHidden += " hidden";
+      // if (keyVal === "PersStatusDate") {
+      //   type = "date";
+      //   if (rowId) {
+      //     value = dateISOToUS($(cell).text());
+      //   }
+      // }
       if (keyVal === "PersonnelID") value = $(cell).text();
       const paramsObj = {
         keyVal,
@@ -38,7 +46,8 @@ const createFormAddHistory = (formName, rowId = null) => {
         labelClassVal: "",
         classVal: "",
         option,
-        optionHidden
+        optionHidden,
+        type
       };
 
       result += elementInput(paramsObj);

@@ -13,7 +13,7 @@ export const createInstructorsBloc = () => {
     ["Instructors", "col-sm-9"]
   ]);
 
-  const hiddenFields = ["PersonnelID"];
+  const hiddenFields = ["PersonnelID", "Personnel_PKID"];
   const labelObj = { AssignDate: "Date Assigned", Name: "Name" };
 
   const body = tableBody(
@@ -46,8 +46,9 @@ export const addInstructor = () => {
     value: "",
     labelClassVal: "",
     classVal: "",
-    option: "placeholder='MM/DD/YYYY'",
-    optionHidden: "form-group"
+    option: "",
+    optionHidden: "form-group",
+    type: "date"
   });
 
   const selectInstructor = elementSelectModal({
@@ -73,11 +74,12 @@ export const editInstructor = (rowId) => {
   const dateAssigned = elementInput({
     keyVal: "AssignDate",
     labelVal: "Date Assigned",
-    value: instructor.AssignDate,
+    value: dateISOToUS(instructor.AssignDate),
     labelClassVal: "",
     classVal: "",
     option: "",
-    optionHidden: "form-group"
+    optionHidden: "form-group",
+    type: "date"
   });
 
   const instructorName = elementInput({

@@ -1,0 +1,111 @@
+/* Specific CSS rules */
+/* ================================== */
+
+.hero {
+  background-color: #f0f0f5;
+  margin: 2% auto;
+  padding-bottom: 1%;
+  border: solid #2479b5;
+  border-width: 2em 0;
+}
+
+/* Top section */
+/* ================================== */
+
+.top-band {
+  max-height: 15vh;
+  padding-right: 0px;
+}
+
+#menu-btn {
+  font-size: 25px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.icons {
+  margin-top: 1%;
+}
+
+.user-bloc {
+  margin-top: 4%;
+}
+
+.dropdown-user {
+  margin-top: 1%;
+}
+
+.help-mark {
+  font-size: 1.5em;
+  font-weight: 800;
+  padding-right: 9%;
+}
+
+.menu-open {
+  padding-left: 5%;
+  padding-top: 2%;
+}
+
+.dropdown-menu > li > a {
+  color: #333;
+  text-decoration: none;
+  font-size: 1.1em;
+}
+.dropdown-menu > li > a:hover {
+  font-size: 1.1em;
+}
+
+.glyphicon-log-out {
+  padding-right: 7%;
+}
+
+.welcome-text {
+  font-weight: 600;
+}
+
+.user-info {
+  color: #333;
+  text-align: inherit;
+  margin-top: -0.6%;
+}
+
+/* Side Nav bar */
+/* ================================== */
+
+.sidenav {
+  transition: width 0.4s ease;
+}
+
+.menu-top {
+  padding-bottom: 8%;
+}
+.menu-text {
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.5em;
+  background-color: #2479b5;
+  color: #d3e4f0;
+  text-align: center;
+  display: block;
+}
+
+.main-tab a {
+  font-size: 1.3em;
+}
+.main-tab .dropdown-btn {
+  font-size: 1.5em;
+}
+
+/* Main text */
+/* ================================== */
+
+.main-body {
+  box-sizing: border-box;
+  font-size: 1.7em;
+  font-weight: 600;
+  text-align: center;
+}
+
+.quick-link {
+  font-size: 1.7em;
+}
