@@ -252,7 +252,7 @@ $(document).ready(() => {
     evnt.stopPropagation();
     $("#modalBloc").modal("toggle");
     $("#edit-form").empty();
-
+    $(".modal-footer #save-btn").prop("disabled", false);
     const sourceId = $(this).attr("id");
     const tdList = $.makeArray($(`#${sourceId} td`).get());
     const result = tdList
@@ -338,6 +338,23 @@ $(document).ready(() => {
       saveMods(recordList, `${formId}-DELETE`, "agencyDataFund");
 
       $("#modalBloc").modal("toggle");
+    }
+  });
+  //* Checking date input validity
+  $(document).on("keyup", "#edit-form input[type='date']", function () {
+    const entryString = $(this).val();
+    $(this).css("background-color", "").removeAttr("title", "Invalid date");
+    // mm/dd/yyyy date format has a length of 11 characters
+    const lengthValid = entryString.length < 11;
+    if (!lengthValid) {
+      $(this).css("background-color", "#f7e095").attr("title", "Invalid date");
+      $(".modal-footer #save-btn").prop("disabled", true);
+    }
+    const invalidFields = $(
+      "#edit-form input[type='date'][title='Invalid date']"
+    );
+    if (!invalidFields.length) {
+      $(".modal-footer #save-btn").prop("disabled", false);
     }
   });
 });
