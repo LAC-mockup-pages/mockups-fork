@@ -189,7 +189,7 @@ const createNewRecord = (labelsList) => {
           " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
       }
       if (hiddenList.includes(key)) classOption += " hidden";
-      if (key === "ProfDevDate") placehold += " (MM/DD/YYYY)";
+      // if (key === "ProfDevDate") placehold += " (MM/DD/YYYY)";
 
       // inputNoLabel() <== helperFunctions()
       element = inputNoLabel({
@@ -327,6 +327,7 @@ const getRequired = () => {
 const saveMods = (fields, formName, tableName = "", requiredList = []) => {
   const { AgencyID, AuditUserID } = SESSION_VARIABLE[0];
   const result = { AgencyID, AuditUserID };
+  debugger;
   $(`${formName} input, select`).removeClass("yellow-bg");
   const fieldList = fields.slice(0);
 
@@ -353,10 +354,12 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
       let name = field.name;
 
       if (formName === "#new-entry" && name === "ProfDevFY") {
-        const dateEvent = fieldList.find((item) => item.name === "ProfDevDate")
-          .value;
+        const dateEvent = fieldList.find(
+          (item) => item.name === "ProfDevDate"
+        ).value;
         val = setFiscalYear(dateEvent);
       }
+      if (name === "ProfDevDate") val = dateISOToUS(val);
 
       result[name] = val;
     }
@@ -554,7 +557,17 @@ $(document).ready(() => {
     );
     $("#fees-box").val($("#fees-box").prop("checked") ? "True" : "False");
   });
-
+  //* Turns date input fields to date type
+  $(document).on("focusin", "#ProfDevDate", function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    $(this).attr("type", "date");
+  });
+  $(document).on("blur", "#ProfDevDate", function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    if (!$(this).val()) $(this).attr("type", "text");
+  });
   //* Changing values in checkboxes from new-record roster
   //* modal
   $(document).on("change", "#edit-form [type='checkbox']", function (evnt) {
