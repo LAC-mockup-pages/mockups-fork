@@ -13,10 +13,10 @@ const validateRecord = (dataList) => {
     const obj = { name, value };
     switch (name) {
       case "FacilityName":
-      case "Phone":
         obj.correct = value ? alphaNumCheck(value) : false;
         break;
       case "Email":
+      case "Phone":
         obj.correct = value ? true : false;
         break;
 
