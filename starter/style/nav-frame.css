@@ -13,38 +13,39 @@
 /* ================================== */
 
 .top-band {
-  max-height: fit-content;
+  max-height: 15vh;
   padding-right: 0px;
 }
+
 #menu-btn {
   font-size: 25px;
   cursor: pointer;
   font-weight: 500;
 }
+
 .icons {
-  text-align: center;
-  padding-right: 0px;
-  padding-left: 0px;
   margin-top: 1%;
 }
-.icons .row,
-.top-band .row {
-  margin-right: 0px;
-  margin-left: 0px;
+
+.user-bloc {
+  margin-top: 4%;
 }
-.icons a {
-  padding-right: 0px;
-  padding-left: 0px;
+
+.dropdown-user {
+  margin-top: 1%;
 }
+
 .help-mark {
   font-size: 1.5em;
   font-weight: 800;
   padding-right: 9%;
 }
+
 .menu-open {
   padding-left: 5%;
   padding-top: 2%;
 }
+
 .dropdown-menu > li > a {
   color: #333;
   text-decoration: none;
@@ -53,22 +54,19 @@
 .dropdown-menu > li > a:hover {
   font-size: 1.1em;
 }
+
 .glyphicon-log-out {
   padding-right: 7%;
 }
+
 .welcome-text {
   font-weight: 600;
 }
-.role-text {
-  font-size: 0.9em;
-}
+
 .user-info {
   color: #333;
   text-align: inherit;
   margin-top: -0.6%;
-}
-.quick-link {
-  font-size: 1.4em;
 }
 
 /* Side Nav bar */
@@ -77,6 +75,7 @@
 .sidenav {
   transition: width 0.4s ease;
 }
+
 .menu-top {
   padding-bottom: 8%;
 }
@@ -89,12 +88,14 @@
   text-align: center;
   display: block;
 }
+
 .main-tab a {
   font-size: 1.3em;
 }
 .main-tab .dropdown-btn {
   font-size: 1.5em;
 }
+
 /* Main text */
 /* ================================== */
 
@@ -103,4 +104,8 @@
   font-size: 1.7em;
   font-weight: 600;
   text-align: center;
+}
+
+.quick-link {
+  font-size: 1.7em;
 }
