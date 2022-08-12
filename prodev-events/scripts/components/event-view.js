@@ -17,7 +17,8 @@ const createViewBloc = (fieldList, selectObj, requiredList) => {
       labelVal = $(field).attr("data-label"),
       value = $(field).text(),
       labelClassVal = "",
-      option = "";
+      option = "",
+      type = "text";
 
     if (requiredList.includes(keyVal)) {
       labelClassVal = "class='red-text'";
@@ -45,6 +46,10 @@ const createViewBloc = (fieldList, selectObj, requiredList) => {
     } else {
       let optionHidden = " form-group";
       if (keyVal === "ID") optionHidden += " hidden";
+      if (keyVal === "ProfDevDate") {
+        type = "date";
+        value = dateISOToUS(value);
+      }
       bloc += elementInput({
         keyVal,
         labelVal,
@@ -52,7 +57,8 @@ const createViewBloc = (fieldList, selectObj, requiredList) => {
         labelClassVal,
         classVal: "",
         option,
-        optionHidden
+        optionHidden,
+        type
       });
     }
   }

@@ -44,7 +44,7 @@ const createNewRecord = (labelsList) => {
       }
       // if (hiddenList.includes(key)) classOption += " hidden";
       if (key === "Email") type = "email";
-
+      if (key === "Phone") type = "tel";
       // inputNoLabel() <== helperFunctions()
       element = inputNoLabel({
         key,
@@ -147,6 +147,7 @@ const createModalForm = (tdList) => {
           optionText: " a state"
         });
       } else {
+        const type = keyVal === "Phone" ? "tel" : "";
         return elementInput({
           keyVal,
           labelVal,
@@ -154,7 +155,8 @@ const createModalForm = (tdList) => {
           labelClassVal,
           classVal,
           option,
-          optionHidden
+          optionHidden,
+          type
         });
       }
     })
@@ -242,12 +244,7 @@ $(document).ready(() => {
 
   //* Data viewing
   $("#new-entry").append(createNewRecord(rowLabels));
-  $(".record-entry").append(`<div class="container-fluid buttons-bloc-new">
-    <button type="button" id="cancel-btn" form="new-entry"
-      class="btn btn-default pull-right">Cancel</button>
-    <button type="button" id="submit-btn" form="new-entry"
-      class="btn dark-blue-text blue-light-bg pull-right">Add</button>
-  </div>`);
+
   $("#main-table").append(createViewBloc());
 
   // Change text color from red (required) to black
@@ -297,5 +294,16 @@ $(document).ready(() => {
     const formId = "#" + $(this).attr("form");
     const newSource = $(formId).serializeArray();
     saveMods(newSource, formId, "Providers");
+  });
+  //* Phone numbers dynamic masking
+  //* On entry, format the numbers as US phone number (XXX)-XXX-XXXX
+  $(document).on("keyup", "form input[type='tel']", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const inputValue = $(this).val();
+    $(this).val(
+      inputValue.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, "($1)-$2-$3")
+    );
+    // console.log("Phone event hit ", $(this).val());
   });
 });

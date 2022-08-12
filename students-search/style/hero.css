@@ -1,0 +1,27 @@
+/* =============================== */
+/* Specific CSS rules  */
+/* =============================== */
+
+/* Search bar */
+/* =============================== */
+.student-search {
+  margin-top: 5%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 15vh;
+  padding: 1% 0 1% 0;
+  width: 80%;
+  border-radius: 5px;
+  font-size: 1.1em;
+}
+#search-input {
+  margin-left: 3%;
+  width: 60%;
+  height: 25%;
+  font-size: 1.1em;
+}
+.search-title {
+  font-size: 0.8em;
+  text-align: left;
+  padding: 0% 0% 1% 1%;
+}

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+    <script type="text/javascript">
+
+       const SESSION_VARIABLE = [{
+            AgencyID: '<%= Session["AgencyID"] %>',
+            AuditUserID: '<%= Session["UserID"] %>',
+            FiscalYear: '<%= Session["CFY"] %>',
+            rolename: '<%= Session["RoleName"] %>',
+            UserSiteID: '<%= Session["UserSiteID"] %>'
+        }];
+
+    </script>
+
+    
+    <script src="../Scripts/jqx-all.js" type="text/javascript"></script>
+    <script src="../Scripts/jqxchart.core.js" type="text/javascript"></script>
+    <script src="../Scripts/jqxchart.js" type="text/javascript"></script>
+    <script src="../Scripts/jqxdata.js" type="text/javascript"></script>
+    <link href="../Styles/jqx.base.css" rel="stylesheet" type="text/css" />
+
+    <script src="PM_Chart_MSG.js" type="text/javascript"></script>
+
+    <!-- CDN Location-->
+   <!-- https://cdnjs.cloudflare.com/ajax/libs/jqwidgets-->
+
+    <link href="App_Themes/ASISTS_3/css/main.css" rel="stylesheet" type="text/css" />
+    <link href="Styles/style_2020.css" rel="stylesheet" type="text/css" />
+
+
+</head>
+<body>
+
+    <script type="text/javascript">
+        function getAgency() { var sessionValue = SESSION_VARIABLE[0].AgencyID; return sessionValue }
+
+        function getAgencyName() { var sessionValue = '<%= Session["UserAgencyName"] %>'; return sessionValue }
+
+        function getnfy() { var nfy = '1'; return nfy }
+    </script>
+
+    <style>
+        .jqx-chart-label-text {
+            color: #ffffff;
+            fill: #ffffff;
+        }
+    </style>
+
+    <div class="col-md-8 responsive">
+
+        <div id='jqxChart' style="width: 100%; height: 400px"></div>
+        <table border='1' id="display" style="display: none;"></table>
+        <div style='margin-top: 10px;'>
+            <p>
+                <input style="float: left; color: #ffffff; border: none;" id="print" type="button" class="btn btn-primary" value="Print" />
+            </p>
+        </div>
+    </div>
+
+
+</body>
+</html>

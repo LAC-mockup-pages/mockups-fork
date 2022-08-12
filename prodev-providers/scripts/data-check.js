@@ -3,7 +3,8 @@
 const validateRecord = (dataList) => {
   // Returns true if input is only alphanumerical + underscore, not empty string
   const alphaNumCheck = (str) => {
-    return !/[^\s\w-.]/g.test(str);
+    // return !/[^\s\w-.]/g.test(str);
+    return true;
   };
   const resultList = [];
 
@@ -12,10 +13,10 @@ const validateRecord = (dataList) => {
     const obj = { name, value };
     switch (name) {
       case "ProviderName":
-      case "Phone":
         obj.correct = value ? alphaNumCheck(value) : false;
         break;
       case "Email":
+      case "Phone":
         obj.correct = value ? true : false;
         break;
       default:

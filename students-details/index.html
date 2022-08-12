@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- Custom links and scripts -->
+    <!-- ======================== -->
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../assets/favicon.ico"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+    />
+
+    <!-- Optional theme -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"
+    />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
+      defer
+    ></script>
+
+    <!-- Local links and scripts -->
+    <link rel="stylesheet" href="./style/index.css" type="text/css" />
+    <script src="../helpers/constants.js" type="text/javascript" defer></script>
+    <script
+      src="../helpers/helperFunctions.js"
+      type="text/javascript"
+      defer
+    ></script>
+    <script
+      type="text/javascript"
+      src="./scripts/data-server.js"
+      defer
+    ></script>
+    <script type="text/javascript" src="./scripts/nav-frame.js" defer></script>
+    <script type="module" src="./scripts/main.js" defer></script>
+
+    <!-- !============================= -->
+    <!-- ! File: /<YOUR_FILE>.aspx -->
+    <!-- !============================= -->
+
+    <title>Students Details</title>
+  </head>
+  <body>
+    <header>
+      <div class="container-fluid top-band">
+        <div class="row">
+          <div class="col-md-2 menu-open">
+            <span id="menu-btn"
+              >&#9776; <span class="hamburger-label">Menu</span>
+            </span>
+          </div>
+          <div class="top-logo col-md-3">
+            <div>
+              <a
+                href="../landing/index.html"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="Home page"
+              >
+                <img src="../assets/Main-Logo.png" class="main-logo" />
+              </a>
+            </div>
+          </div>
+          <div class="col-md-7">
+            <section class="icons row">
+              <div class="col-sm-8"></div>
+              <a
+                class="col-sm-1"
+                href="../404-page/index.html"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Add Students"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link">
+                  person_add_alt
+                </span></a
+              >
+              <a
+                class="col-sm-1"
+                href="../404-page/index.html"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Attendance"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link"> rule </span></a
+              >
+
+              <a
+                class="col-sm-1"
+                href="../404-page/index.html"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="NRS Program Evaluation Report"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link"> summarize </span></a
+              >
+              <a
+                class="col-sm-1"
+                href="../404-page/index.html"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="NYRS Program Evaluation Report"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link"> summarize </span></a
+              >
+            </section>
+            <section class="user-bloc row">
+              <div class="col-sm-10 user-info"></div>
+              <div class="col-sm-2 dropdown-user">
+                <div class="dropdown">
+                  <a
+                    href="#"
+                    class="dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="true"
+                    ><span
+                      class="glyphicon glyphicon-user"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="caret"></span
+                  ></a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li>
+                      <a href="../404-page/index.html" id="change-password">
+                        Change Password</a
+                      >
+                    </li>
+                    <li>
+                      <a href="../404-page/index.html" id="help-link"
+                        ><span class="help-mark">? </span> Help</a
+                      >
+                    </li>
+                    <li>
+                      <a href="/logout.aspx" id="logout-text"
+                        ><span
+                          class="glyphicon glyphicon-log-out"
+                          aria-hidden="true"
+                        ></span>
+                        Logout</a
+                      >
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </section>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Side Nav bar -->
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="close-btn hidden">&#9776;</a>
+      <div class="menu-top">
+        <img src="../assets/logo_sm.png" class="small-logo" />
+        <div class="menu-text hidden">Menu</div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#"
+          >Program information <span class="caret"></span
+        ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Agency</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span>
+            Personnel</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Staff
+            Development</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Edit EPE
+            Amend Log</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#"
+          >Students <span class="caret"></span
+        ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Add
+            Student</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Edit
+            Student</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#"
+          >Instructional Activity <span class="caret"></span
+        ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Add/Edit
+            Instructional Activity</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#"
+          >Management Reports <span class="caret"></span
+        ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span>
+            Instructional Offering Roster</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Data
+            Management</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Turnaround
+            Reports</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> TASC
+            Reports</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Staff
+            Development Reports</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Data
+            Exports</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#"
+          >Funding Reports<span class="caret"></span
+        ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
+            Tables</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
+            Tables Data Check</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIO / NRS
+            Data Checks</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
+            Program Evaluation</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> NRS Data
+            Checks</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> NRS
+            Program Evaluation</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> EPE
+            Reports</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Funding
+            Reports Prev. FY</a
+          >
+        </div>
+      </div>
+    </div>
+    <!-- End Side Nav bar -->
+    <!-- Main display -->
+    <main class="main-body container-fluid">
+      <!-- Sub NavBar -->
+      <div class="container-fluid blue-bg blue-light-text sub-navbar">
+        <ul id="sub-nav" class="nav-justified">
+          <li>
+            <a
+              class="blue-light-text blue-bg"
+              href="../students-search/index.html"
+              type="text/html"
+              >Student search</a
+            >
+          </li>
+          <li data-target="profile">
+            <a class="blue-light-text blue-bg" type="text/html">Profile</a>
+          </li>
+
+          <li class="blue-light-bg blue-text" data-target="details">
+            <a type="text/html">Student details</a>
+          </li>
+          <li data-target="assessments">
+            <a class="blue-light-text blue-bg" type="text/html">Assessments</a>
+          </li>
+          <li data-target="enrollment">
+            <a class="blue-light-text blue-bg" type="text/html">Enrollment</a>
+          </li>
+          <li data-target="goals">
+            <a class="blue-light-text blue-bg" type="text/html">Outcomes</a>
+          </li>
+          <li data-target="history">
+            <a type="text/html" class="blue-light-text blue-bg"
+              >Status history</a
+            >
+          </li>
+          <li data-target="casenotes">
+            <a type="text/html" class="blue-light-text blue-bg">Case notes</a>
+          </li>
+        </ul>
+      </div>
+      <!-- End Sub NavBar -->
+
+      <!-- Student display start -->
+      <div class="container-fluid row student-display">
+        <div class="row">
+          <div class="col-md-6">
+            <!-- Student information start -->
+            <section
+              class="student-info"
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Click to Edit"
+            >
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">Student information</div>
+              </div>
+              <form
+                class="form student-info-form"
+                role="form"
+                data-table="GetStudent"
+              >
+                <div class="input-field form-group">
+                  <label for="Last">Last name</label>
+                  <input
+                    required
+                    type="text"
+                    name="Last"
+                    disabled
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="Please fill this field"
+                  />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Middle">Middle</label>
+                  <input type="text" name="Middle" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="First">First name</label>
+                  <input required type="text" name="First" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="BirthDate">Birth date</label>
+                  <input required type="date" name="BirthDate" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="BeginDate">Start date</label>
+                  <input required type="date" name="BeginDate" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="LengthOfStay">Years of stay</label>
+                  <input type="text" name="LengthOfStay" disabled />
+                </div>
+              </form>
+            </section>
+            <!-- Student information end -->
+
+            <!-- Gender ethnicity start -->
+            <section
+              class="gender-ethnicity"
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Click to Edit"
+            >
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">Gender | Ethnicity</div>
+              </div>
+              <form
+                class="form gender-form"
+                role="form"
+                data-table="GetStudent"
+              >
+                <div class="input-field form-group">
+                  <label for="Sex">Gender</label>
+                  <select
+                    required
+                    disabled
+                    class="modal-select"
+                    name="Sex"
+                  ></select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="EthnicityID">Ethnicity</label>
+                  <select
+                    required
+                    disabled
+                    class="modal-select"
+                    name="EthnicityID"
+                  ></select>
+                </div>
+                <div class="race"></div>
+              </form>
+            </section>
+            <!-- Gender ethnicity end -->
+
+            <!-- Funding sources start -->
+            <section
+              class="funding-source"
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Click to Edit"
+            >
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="row">
+                  <div class="col-md-2">
+                    <button id="add-funding" class="btn btn-default">
+                      Add a record
+                    </button>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="sub-header-title">Funding sources</div>
+                  </div>
+                </div>
+              </div>
+              <form
+                class="form funding-form"
+                role="form"
+                data-table="GetFundingInfo"
+              ></form>
+            </section>
+            <!-- Funding sources end -->
+          </div>
+          <div class="col-md-6">
+            <!-- Contact info start -->
+            <section
+              class="contact-info"
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Click to Edit"
+            >
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">Contact information</div>
+              </div>
+              <form class="form contact-form" role="form">
+                <div class="input-field form-group">
+                  <label for="Address">Address</label>
+                  <input type="text" name="Address" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="City">City</label>
+                  <input type="text" name="City" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="State">State</label>
+                  <input type="text" name="State" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Zip">ZIP</label>
+                  <input type="text" name="Zip" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Phone">Phone</label>
+                  <input
+                    type="tel"
+                    name="Phone"
+                    disabled
+                    pattern="[\+]\d{2}[\(]\d{3}[\)]\d{3}[\-]\d{4}"
+                    placeholder="(XXX) XXX-XXXX"
+                  />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Phone2">Mobile phone</label>
+                  <input
+                    type="tel"
+                    name="Phone2"
+                    disabled
+                    pattern="[\+]\d{2}[\(]\d{3}[\)]\d{3}[\-]\d{4}"
+                    placeholder="(XXX) XXX-XXXX"
+                  />
+                </div>
+                <div class="input-field form-group">
+                  <label for="StudEmail">Email</label>
+                  <input type="text" name="StudEmail" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="EmergencyPhone">Emergency contact</label>
+                  <input
+                    type="tel"
+                    name="EmergencyPhone"
+                    disabled
+                    pattern="[\+]\d{2}[\(]\d{3}[\)]\d{3}[\-]\d{4}"
+                    placeholder="(XXX) XXX-XXXX"
+                  />
+                </div>
+                <div class="input-field form-group">
+                  <label for="EmergencyName">Name | Relation of contact</label>
+                  <input type="text" name="EmergencyName" disabled />
+                </div>
+              </form>
+            </section>
+            <!-- Contact info end -->
+
+            <!-- Work eligibility start -->
+            <section
+              class="SSN"
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Click to Edit"
+            >
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">Work eligibility</div>
+              </div>
+              <form class="form ssn-form" role="form">
+                <div class="input-field form-group">
+                  <label for="SSN">SSN</label>
+                  <input type="text" name="SSN" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="NoSSNVisa">SSN provided</label>
+                  <select
+                    class="modal-select"
+                    name="NoSSNVisa"
+                    disabled
+                  ></select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="NoSSNVisaStaff">Intake staff</label>
+                  <select class="modal-select" name="NoSSNVisaStaff" disabled>
+                    <option value="">Select a staff</option>
+                  </select>
+                </div>
+              </form>
+            </section>
+            <!-- Work eligibility end -->
+          </div>
+        </div>
+
+        <!-- Employment start -->
+        <section class="employment">
+          <div class="sub-header blue-bg blue-light-text">
+            <div class="row">
+              <div class="col-md-2">
+                <button id="add-employment" class="btn btn-default">
+                  Add a record
+                </button>
+              </div>
+              <div class="col-md-10">
+                <div class="sub-header-title">Employment history</div>
+              </div>
+            </div>
+          </div>
+          <form class="form employment-form" role="form">
+            <div class="tablescroll">
+              <table class="table table-bordered employment-table">
+                <thead>
+                  <tr class="blue-light-bg">
+                    <th>Status</th>
+                    <th>FY</th>
+                    <th>Employer</th>
+                    <th>Employment date</th>
+                    <th>Last employ. date</th>
+                    <th>Release date</th>
+                    <th>Annual income</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </div>
+          </form>
+        </section>
+        <!-- Employment end -->
+        <div class="row">
+          <div class="col-md-6">
+            <!-- Education start -->
+            <section
+              class="education"
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Click to Edit"
+            >
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="row">
+                  <div class="col-md-2">
+                    <button id="printing" class="btn btn-default">
+                      Print document
+                    </button>
+                  </div>
+                  <div class="col-md-10">
+                    <div class="sub-header-title">Educational background</div>
+                  </div>
+                </div>
+              </div>
+              <form class="form education-form" role="form">
+                <div class="input-field form-group">
+                  <label for="Grade">Highest grade completed in US</label>
+                  <select required class="modal-select" name="Grade" disabled>
+                    <option value>Select a grade</option>
+                  </select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="NYSGrade"
+                    >Highest grade completed in NY State</label
+                  >
+                  <select
+                    required
+                    class="modal-select"
+                    name="NYSGrade"
+                    disabled
+                  >
+                    <option value>Select a grade</option>
+                  </select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="LastSchoolNYS"
+                    >Last school district and school attended in NYS</label
+                  >
+                  <input type="text" name="LastSchoolNYS" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="CredentialUS"
+                    >Highest credential obtained in</label
+                  >
+                  <select
+                    required
+                    class="modal-select"
+                    name="CredentialUS"
+                    disabled
+                  ></select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="HighestCredential"
+                    >Highest credential obtained</label
+                  >
+                  <select
+                    required
+                    class="modal-select"
+                    name="HighestCredential"
+                    disabled
+                  ></select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="YearsUSSchools"
+                    >Years of schooling in other countries</label
+                  >
+                  <select
+                    required
+                    class="modal-select"
+                    name="YearsUSSchools"
+                    disabled
+                  >
+                    <option value>Select a value</option>
+                  </select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="UUID">UU ID</label>
+                  <input type="text" name="UUID" disabled />
+                </div>
+              </form>
+            </section>
+            <!-- Education end -->
+
+            <!-- Barriers start -->
+            <section
+              class="barriers"
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Click to Edit"
+            >
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">
+                  Barriers to learning / employment
+                </div>
+              </div>
+              <form
+                class="form barriers-form"
+                role="form"
+                data-table="GetStudent"
+              ></form>
+            </section>
+            <!-- Barriers end -->
+
+            <!-- Nationality start -->
+            <section
+              class="nationality"
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Click to Edit"
+            >
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">Nationality</div>
+              </div>
+              <form
+                class="form nationality-form"
+                role="form"
+                data-table="GetStudent_Additional"
+              >
+                <div class="input-field form-group">
+                  <label for="CountryID">Country of birth</label>
+                  <select class="modal-select" name="CountryID" disabled>
+                    <option value>Select a country</option>
+                  </select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="Status">Status</label>
+                  <select class="modal-select" name="Status" disabled>
+                    <option value>Select a status</option>
+                  </select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="DateSettled">Date of US settlement</label>
+                  <input type="date" name="DateSettled" disabled />
+                </div>
+                <div class="input-field form-group">
+                  <label for="Languages">Primary language</label>
+                  <input type="text" name="Languages" disabled />
+                </div>
+              </form>
+            </section>
+          </div>
+          <!-- Nationality end -->
+
+          <div class="col-md-6">
+            <!-- Parent | Children start -->
+            <section
+              class="parent"
+              data-toggle="tooltip"
+              data-original-title="Click to Edit"
+              data-placement="left"
+            >
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">Parent</div>
+              </div>
+              <form
+                class="form parent-form"
+                role="form"
+                data-table="GetStudent"
+              >
+                <div class="input-field form-group">
+                  <label for="Parent">Parent of a child/children</label>
+                  <select name="Parent" class="modal-select" disabled></select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="CustodialParent"
+                    >Guardian of a child/children</label
+                  >
+                  <select
+                    name="CustodialParent"
+                    class="modal-select"
+                    disabled
+                  ></select>
+                </div>
+                <div class="input-field form-group">
+                  <label for="SingleParent">Single parent</label>
+                  <select
+                    name="SingleParent"
+                    class="modal-select"
+                    disabled
+                  ></select>
+                </div>
+              </form>
+            </section>
+            <section class="children">
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">School aged children</div>
+              </div>
+              <form
+                class="form children-form"
+                role="form"
+                data-table="GetStudent"
+              >
+                <table class="table table-bordered children-table">
+                  <thead>
+                    <tr class="blue-light-bg">
+                      <th>PreSchool</th>
+                      <th>Elementary</th>
+                      <th>Junior HS</th>
+                      <th>High School</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr
+                      data-toggle="tooltip"
+                      data-original-title="Click to Edit"
+                      data-placement="left"
+                    >
+                      <td>
+                        <div class="input-field form-group">
+                          <input name="PreChild" disabled />
+                        </div>
+                      </td>
+                      <td>
+                        <div class="input-field form-group">
+                          <input name="ElemChild" disabled />
+                        </div>
+                      </td>
+                      <td>
+                        <div class="input-field form-group">
+                          <input name="JHSChild" disabled />
+                        </div>
+                      </td>
+                      <td>
+                        <div class="input-field form-group">
+                          <input name="HSChild" disabled />
+                        </div>
+                      </td>
+                    </tr>
+                    <tr
+                      data-toggle="tooltip"
+                      data-original-title="Click to Edit"
+                      data-placement="left"
+                    >
+                      <td>
+                        <div class="input-field form-group">
+                          <input name="PreChildSchool" disabled />
+                        </div>
+                      </td>
+                      <td>
+                        <div class="input-field form-group">
+                          <input name="ElemChildSchool" disabled />
+                        </div>
+                      </td>
+                      <td>
+                        <div class="input-field form-group">
+                          <input name="JHSChildSchool" disabled />
+                        </div>
+                      </td>
+                      <td>
+                        <div class="input-field form-group">
+                          <input name="HSChildSchool" disabled />
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </form>
+            </section>
+            <!-- Parent | Children end -->
+            <!-- Population | Publis assistance | Referral start -->
+            <section
+              class="population"
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Click to Edit"
+            >
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">Population categories</div>
+              </div>
+              <form
+                class="form population-form"
+                role="form"
+                data-table="GetStudent_Additional"
+              ></form>
+            </section>
+
+            <section class="assistance">
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="row">
+                  <div class="col-md-2">
+                    <button id="add-assistance" class="btn btn-default">
+                      Add a record
+                    </button>
+                  </div>
+                  <div class="sub-header-title col-md-10">
+                    Public assistance
+                  </div>
+                </div>
+              </div>
+
+              <form
+                class="form assistance-form"
+                role="form"
+                data-table="GetPAStatusInfo"
+              >
+                <table class="table table-bordered assistance-table">
+                  <thead>
+                    <tr class="blue-light-bg">
+                      <th>Type</th>
+                      <th>FY</th>
+                      <th>Case number</th>
+                      <th>Exhaust TANF</th>
+                    </tr>
+                  </thead>
+                  <tbody></tbody>
+                </table>
+              </form>
+            </section>
+            <section
+              class="referral"
+              data-toggle="tooltip"
+              data-placement="left"
+              title="Click to Edit"
+            >
+              <div class="sub-header blue-bg blue-light-text">
+                <div class="sub-header-title">Referral</div>
+              </div>
+              <form class="form referral-form" role="form">
+                <div class="input-field form-group">
+                  <label for="RefSource">Referral from other program</label>
+                  <select class="modal-select" name="RefSource" disabled>
+                    <option value>Select a referral</option>
+                  </select>
+                </div>
+              </form>
+            </section>
+            <!-- Population | Public assistance | Referral end -->
+          </div>
+        </div>
+      </div>
+      <!-- Student display end -->
+    </main>
+    <!-- End main display -->
+
+    <!-- Modal start -->
+    <div class="modal fade" id="modalBloc">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">
+              <span aria-hidden="true">&times;</span
+              ><span class="sr-only">Close</span>
+            </button>
+            <h4 class="modal-title"></h4>
+            <div class="required-text light-red-text">
+              Elements in red are required
+            </div>
+          </div>
+          <div class="modal-body">
+            <form class="form" role="form" id="edit-form"></form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              id="close-btn"
+              class="btn btn-default"
+              data-dismiss="modal"
+            >
+              Close without saving
+            </button>
+            <button type="button" id="save-btn" class="btn btn-primary">
+              Save changes
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End Modal -->
+  </body>
+</html>

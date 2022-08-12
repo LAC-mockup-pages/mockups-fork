@@ -19,8 +19,8 @@ export const createNewRecordForm = () => {
 
   const labelList = {
     CourseID: "Course ID",
-    StartDate: "Begin (MM/DD/YYYY)",
-    EndDate: "End (MM/DD/YYYY)"
+    StartDate: "Start date",
+    EndDate: "End date"
   };
   const selectList = {
     ClassType: ["Type", instructionTypeList],
