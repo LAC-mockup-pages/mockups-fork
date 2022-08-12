@@ -5,6 +5,7 @@
 // be displayed on a monthly basis.
 
 import { topBanner } from "../../main.js";
+import { createOptionList } from "../../utilities.js";
 
 const classDays = (dataObj) => {
   const weekDays = [
@@ -31,6 +32,32 @@ const classDays = (dataObj) => {
   return filteredList;
 };
 
+// Creates an array of objects {key,value} for AM/PM hours with 15minutes
+// increments (00, 15, 30, 45). Hours: 6am to 11pm included.
+const timeRange = () => {
+  const hourLoop = (start, end, period) => {
+    const range = [];
+    for (let i = start; i < end; i++) {
+      for (const minutes of ["00", "15", "30", "45"]) {
+        const hour = i < 10 ? `0${i}` : `${i}`;
+        const key = `${hour}:${minutes} ${period}`;
+        range.push({ key, value: key });
+      }
+    }
+    return range;
+  };
+  const morningRange = hourLoop(6, 12, "AM");
+  const noonRange = hourLoop(12, 13, "PM");
+  const afternoonRange = hourLoop(1, 11, "PM");
+  return [
+    { key: "", value: "" },
+    ...morningRange,
+    ...noonRange,
+    ...afternoonRange,
+    { key: "11:00 PM", value: "11:00 PM" }
+  ];
+};
+
 export const createSchedule = (dataObj) => {
   const weekDaysList = classDays(dataObj);
   let bodyTopRow = "";
@@ -51,20 +78,28 @@ export const createSchedule = (dataObj) => {
   <th class="weekday">Sun.</th>
  </thead>
  `;
-
   for (const record of weekDaysList) {
     const keyList = Object.keys(record);
+    const topOptions = createOptionList(timeRange(), record[keyList[0]]);
+    const bottomOptions = createOptionList(timeRange(), record[keyList[1]]);
     bodyTopRow += `
       <td>
-        <input class="schedule-input" disabled name=${keyList[0]}
-          value="${record[keyList[0]]}">
-      </td>`;
-
+        <select class="schedule-input" disabled name=${keyList[0]} value="${
+      record[keyList[0]]
+    }">
+          ${topOptions}
+        </select>
+      </td>
+      `;
     bodyBottomRow += `
       <td>
-        <input class="schedule-input" disabled name=${keyList[1]}
-          value="${record[keyList[1]]}">
-      </td>`;
+        <select class="schedule-input" disabled name=${keyList[1]} value="${
+      record[keyList[1]]
+    }">
+          ${bottomOptions}
+        </select>
+      </td>
+      `;
   }
 
   const scheduleBody = `

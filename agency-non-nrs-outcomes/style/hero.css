@@ -5,6 +5,10 @@
   border-radius: 5px;
 }
 
+.button-bloc {
+  margin-top: 0.5%;
+}
+
 #new-entry #Description {
   width: 60%;
 }
