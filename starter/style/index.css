@@ -1,0 +1,8 @@
+/* Styling */
+@import "../../main-styling/main.css";
+
+/* Styling for top section and side nav bar */
+@import "./nav-frame.css";
+
+/* Styling for local page */
+@import "./hero.css";
