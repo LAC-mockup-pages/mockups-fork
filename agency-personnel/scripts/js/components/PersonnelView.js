@@ -27,7 +27,6 @@ export const displayPersonnelDetails = (id) => {
   const addInfoBloc = addInfoView();
   const commentsBloc = commentsView();
   const contactsBloc = contactsView(identifier);
-
   const view = `
   <div class="container-fluid row personView" id=${id}>
     <div class="row">

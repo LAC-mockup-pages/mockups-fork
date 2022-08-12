@@ -4,7 +4,8 @@ const validateNewRecord = (dataList) => {
   // Returns true if input is only alphanumerical + underscore,
   // not empty string
   const alphaNumCheck = (str) => {
-    return !/[^\s\w-.]/g.test(str);
+    // return !/[^\s\w-.]/g.test(str);
+    return true;
   };
 
   let correct = true;
@@ -17,7 +18,7 @@ const validateNewRecord = (dataList) => {
         correct = field.value.length < 11 && field.value.length > 0;
         break;
       case "Telephone":
-        correct = field.value.length < 13 && field.value.length > 0;
+        correct = /\(\d{3}\)\-\d{3}\-\d{4}/.test(field.value);
         break;
       case "AgencyEmail":
         correct = true;
