@@ -59,6 +59,8 @@ export const topBanner = (title, list = null) => {
       "Professional Development",
       "Personnel Information",
       "Instructional Hours",
+      "Home Address",
+      "Work Address",
       "Additional Information",
       "Comments"
     ].includes(title)
@@ -148,8 +150,8 @@ const saveMods = (fields, formId, tableName = "") => {
     for (let field of fieldList) {
       if (field.name === "AgencyID") field.value = SESSION_VARIABLE[0].AgencyID;
 
-      // dateFormat() <== helperFunction.js
-      if (field.name === "PersStartDate") field.value = dateFormat(field.value);
+      // dateISOToUS() <== helperFunction.js
+      if (field.name.includes("Date")) field.value = dateISOToUS(field.value);
 
       if (field.name === "lengthstay") {
         const startDate = fieldList.filter(
@@ -159,17 +161,13 @@ const saveMods = (fields, formId, tableName = "") => {
       }
       result[field.name] = field.value;
     }
-
     const target = tableName ? tableName : formId;
-
     const resultList = [target, JSON.stringify(result)];
     console.table(result);
     //! =================================================
     //! JSON Object to send back to database
     console.log("result :", resultList);
     //! =================================================
-
-    //ToDO Reloading/resetting with new data
     if (formId === "#new-entry") {
       $(formId)[0].reset();
       $(`${formId} input, select`)
@@ -179,6 +177,7 @@ const saveMods = (fields, formId, tableName = "") => {
     } else {
       // location.reload();
     }
+    $("#modalBloc").modal("toggle");
   }
 };
 
@@ -196,7 +195,7 @@ const viewPersonnelList = (listObj) => {
   $("#view-bloc")
     .empty()
     .append(
-      `<table class="table">${headerLine}
+      `<table class="table personel">${headerLine}
         <tbody class="table-body">${rows}</tbody>
     </table>)`
     );
@@ -263,6 +262,18 @@ $(document).ready(() => {
     $(this).toggleClass("dark-text").prop("required", false);
   });
 
+  //* Modal title handling
+  $("#modalBloc").on("hidden.bs.modal", function () {
+    const modalTitleText = $(".modal-title").text();
+    if (modalTitleText.startsWith("Adding")) {
+    } else {
+      $(".modal-title").text("Adding a record");
+    }
+  });
+  $(document).on("focusin", "#PersStartDate", function (evnt) {
+    evnt.stopPropagation();
+    $(this).attr("type", "date");
+  });
   //* Adding a new team member
   $(document).on("click", "#add-new-member", function (evnt) {
     evnt.stopPropagation();
@@ -299,8 +310,8 @@ $(document).ready(() => {
     const value = $(this).val();
     const listPers = searchPersonnel(value);
     viewPersonnelList(listPers);
+    $(".personnel tbody tr:first-child").focus();
   });
-
   $(document).on("keypress", "#search-input", function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
@@ -312,7 +323,6 @@ $(document).ready(() => {
       $(this).val((value += String.fromCharCode(evnt.which)));
     }
   });
-
   $(document).on("click", "#search-btn", function (evnt) {
     evnt.stopPropagation();
     evnt.preventDefault();
@@ -357,7 +367,6 @@ $(document).ready(() => {
       evnt.stopPropagation();
       const selectedRecordId = $(this).attr("id");
       const blockName = selectedRecordId.split("-").slice(0, -1).join("-");
-
       let editForm = "";
       switch (blockName) {
         case "history":
@@ -372,19 +381,25 @@ $(document).ready(() => {
         case "progress-contact":
           editForm = createFormAddContact(blockName, selectedRecordId);
           break;
-
         default:
           editForm = defaultModal("no-table-defined-yet");
           break;
       }
-
       $("#modalBloc").modal("toggle");
+      $(".modal-title").text("Editing a record");
       $("#modal-form")
         .empty()
         .append(editForm[1])
         .attr("data-table", editForm[0])
         .attr("data-block", blockName);
-
+      // Add dynamic masking for date fields in modal
+      // Modifies the date to ISO format required by input type "date"
+      $("#modal-form input[name$='Date']")
+        .val(function (indx, value) {
+          // dateISOToUS() <== helpers/helperFunctions.js
+          return dateISOToUS(value);
+        })
+        .attr("type", "date");
       // Binding event trigger for real time updating total hours
       if (blockName === "non-instructional-hours") handleChangeNonInstHours();
     }
@@ -394,7 +409,6 @@ $(document).ready(() => {
   $(document).on("click", ".add-record-btn", function (evnt) {
     evnt.stopPropagation();
     const formName = $(this).attr("form");
-
     // Modify form depending on the block name
     let addForm = "";
     switch (formName) {
@@ -408,23 +422,22 @@ $(document).ready(() => {
       case "work-address":
         addForm = createModalFormAddress(formName);
         break;
-
       case "progress-contact":
         addForm = createFormAddContact(formName);
         break;
-
       default:
         addForm = defaultModal("no-table-defined-yet");
         break;
     }
-
     $("#modalBloc").modal("toggle");
     $("#modal-form")
       .empty()
       .append(addForm[1])
       .attr("data-table", addForm[0])
       .attr("data-block", formName);
-
+    // Add dynamic masking for date fields in modal
+    // Modifies the date to ISO format required by input type "date"
+    $("#modal-form input[name$='Date']").attr("type", "date");
     // Binding event triggers to blocks as needed
     if (formName === "non-instructional-hours") handleChangeNonInstHours();
     if (formName === "work-address") {
@@ -433,9 +446,8 @@ $(document).ready(() => {
   });
 
   //* Editing a block.
-  //* Applies to: Personnel Information, Home Address, Work Address,
-  //* Additional Info and Comments.
-
+  // Applies to: Personnel Information, Home Address, Work Address,
+  // Additional Info and Comments.
   $(document).on("click", ".color-select", function (evnt) {
     evnt.stopPropagation();
     const formId = $(this).attr("id");
@@ -469,7 +481,7 @@ $(document).ready(() => {
       });
     }
     $("#modalBloc").modal("toggle");
-    $(".modal-title").text("Editing");
+    $(".modal-title").text("Editing a record");
     $("#modal-form")
       .empty()
       .append(editFormContent)
@@ -481,6 +493,14 @@ $(document).ready(() => {
         .prop("disabled", false)
         .removeAttr("disabled");
     }
+    // Add dynamic masking for date fields in modal
+    // Modifies the date to ISO format required by input type "date"
+    $("#modal-form input[name$='Date']")
+      .val(function (indx, value) {
+        // dateISOToUS() <== helpers/helperFunctions.js
+        return dateISOToUS(value);
+      })
+      .attr("type", "date");
   });
 
   //* Save button in block top banner
@@ -510,7 +530,6 @@ $(document).ready(() => {
     const tableName = $("#modal-form").attr("data-table");
     const blockName = $("#modal-form").attr("data-block");
     let submittedData = $("#modal-form").serializeArray();
-
     if (blockName === "work-address") {
       const checkboxesValues = checkCanMailOrCall();
       submittedData = submittedData.filter(
@@ -518,10 +537,10 @@ $(document).ready(() => {
       );
       submittedData = [...submittedData, ...checkboxesValues];
     }
-    const ID = $(".personView").attr("id");
-    submittedData.unshift({ name: "ID", value: ID });
+    const PersPKID = $(".personView").attr("id");
+    submittedData.unshift({ name: "Personnel_PKID", value: PersPKID });
 
-    // console.log("submittedData :>> ", submittedData);
+    console.log("submittedData :>> ", submittedData);
 
     if (tableName === "NonInstHours")
       submittedData.push(addTotalHours(submittedData));
@@ -530,5 +549,17 @@ $(document).ready(() => {
     );
     saveMods(filteredData, "#modal-form", tableName);
     $("#modalBloc").modal("toggle");
+  });
+
+  //* Phone numbers dynamic masking
+  //* On entry, format the numbers as US phone number (XXX)-XXX-XXXX
+  $(document).on("keyup", "#modal-form input[type='tel']", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const inputValue = $(this).val();
+    $(this).val(
+      inputValue.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, "($1)-$2-$3")
+    );
+    console.log("Phone event hit ", $(this).val());
   });
 });
