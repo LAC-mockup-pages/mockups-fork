@@ -30,18 +30,21 @@
 .dob {
   text-align: right;
 }
+.light-red-text {
+  color: rgb(246, 133, 133);
+}
 section:not("student-info") {
   margin-top: 0.1%;
 }
 .student-info {
   height: 2.8em;
   padding-top: 0.4em;
-  border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  margin-bottom: 1%;
+  border-top-left-radius: 5px;
+  margin-bottom: 2px;
 }
 .sub-header {
-  line-height: 2.1em;
+  line-height: 30px;
   padding-left: 5px;
   font-size: 1em;
   font-weight: 600;
@@ -54,17 +57,16 @@ section:not("student-info") {
   padding-right: 1%;
   margin: 0.1% 0%;
 }
-.sub-header button {
-  font-weight: 600;
-  padding: 3px 4px;
-  margin: 0.1% 0%;
-}
-
 /* Tables */
 .table > thead > tr > th {
   color: #2479b5;
   font-weight: 600;
   font-size: 0.9em;
+}
+.table > thead > tr {
+  position: sticky;
+  top: 0px;
+  z-index: 10;
 }
 .tablescroll {
   overflow-y: auto;
@@ -72,14 +74,11 @@ section:not("student-info") {
   transition: max-height 200ms;
 }
 .visible {
-  max-height: 25em;
+  max-height: 20em;
 }
 .invisible {
   max-height: 0em;
   margin-bottom: 0.1%;
-}
-.current table > tbody > tr:hover {
-  background-color: inherit;
 }
 .editable:hover {
   background-color: #d3e4f0;
@@ -87,6 +86,17 @@ section:not("student-info") {
 }
 .not-editable:hover {
   background-color: inherit;
+}
+
+/* Add buttons */
+#add-wioa,
+#add-other,
+#add-nonnrs {
+  font-weight: 600;
+  padding: 3px 4px;
+  margin-right: 0px;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
 }
 
 /* Sections */
@@ -105,37 +115,22 @@ section:not(.current) .modal-select {
   opacity: 1;
   background-color: inherit;
 }
-.table thead > tr {
-  position: sticky;
-  top: 0px;
-  z-index: 10;
-}
-.tabe11 tbody > tr > td:nth-child(7),
-.hse tbody > tr > td:nth-child(4),
-.hse tbody > tr > td:nth-child(5),
-.hse tbody > tr > td:nth-child(6),
-.hse tbody > tr > td:nth-child(7),
-.hse tbody > tr > td:nth-child(8),
-.hse tbody > tr > td:nth-child(9),
-.tabe11 tbody > tr > td:nth-child(8),
-.tabe11 tbody > tr > td:nth-child(9) {
-  width: 4em;
-}
-input[name="SubScore1"],
-input[name="Writing"],
-input[name="Social"],
-input[name="Science"],
-input[name="Reading"],
-input[name="Math"],
-input[name="Score"],
-input[name="ScaleScore"],
-input[name="NRSLevel"] {
+.table:not(#edit-form) input[name="Quarter"],
+.table:not(#edit-form) input[name="OutcomeFY"],
+.table:not(#edit-form) input[name="Income"] {
   text-align: right;
 }
-.hse tbody > tr > td:nth-child(1),
-.tabe11 tbody > tr > td:nth-child(4) {
+.wioa tbody > tr > td:nth-child(2),
+.wioa tbody > tr > td:nth-child(3),
+.wioa tbody > tr > td:nth-child(6) {
+  width: 5em;
+}
+.wioa tbody > tr > td:nth-child(4),
+.wioa tbody > tr > td:nth-child(5) {
   width: 6em;
 }
-#edit-form input {
-  text-align: left;
+.other tbody > tr > td:nth-child(2),
+.other tbody > tr > td:nth-child(3),
+.other tbody > tr > td:nth-child(4) {
+  width: 7em;
 }
