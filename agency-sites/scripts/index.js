@@ -76,12 +76,14 @@ const createNewRecord = (labelsList) => {
         option =
           " required data-toggle='tooltip' data-placement='bottom' title='Please fill this field'";
       }
+      const type = key === "Telephone" ? "tel" : "";
       // inputNoLabel() <== helperFunctions()
       element = inputNoLabel({
         key,
         placehold,
         classOption,
-        option
+        option,
+        type
       });
     }
     result.push(element);
@@ -238,6 +240,7 @@ const createForm = (list) => {
         optionText: " a state"
       });
     } else {
+      const type = keyVal === "Telephone" ? "tel" : "";
       // elementInput() <== helperFunctions.js
       formContent += elementInput({
         keyVal,
@@ -246,7 +249,8 @@ const createForm = (list) => {
         labelClassVal,
         classVal,
         option,
-        optionHidden
+        optionHidden,
+        type
       });
     }
   }
@@ -324,12 +328,6 @@ $(document).ready(() => {
   // * Data viewing
   $("#new-entry").append(createNewRecord(rowLabels));
   $("#main-table").append(createViewBloc());
-  $(".site-entry").append(`<div class="container-fluid buttons-bloc-new">
-    <button type="button" id="cancel-btn" form="new-entry"
-      class="btn btn-default pull-right">Cancel</button>
-    <button type="button" id="submit-btn" form="new-entry"
-      class="btn dark-blue-text blue-light-bg pull-right">Add</button>
-  </div>`);
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
 
@@ -374,5 +372,16 @@ $(document).ready(() => {
     const formId = `#${$(this).attr("form")}`;
     const modifiedRecord = $(formId).serializeArray();
     saveMods(modifiedRecord, formId, "sitesDataServer");
+  });
+  //* Phone numbers dynamic masking
+  //* On entry, format the numbers as US phone number (XXX)-XXX-XXXX
+  $(document).on("keyup", "#edit-form input[type='tel']", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const inputValue = $(this).val();
+    $(this).val(
+      inputValue.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, "($1)-$2-$3")
+    );
+    // console.log("Phone event hit ", $(this).val());
   });
 });

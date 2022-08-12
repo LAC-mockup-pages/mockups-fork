@@ -258,7 +258,7 @@ const saveMods = (fields, formName, tableName = "", requiredList = []) => {
     for (const field of fieldList) {
       let val = field.value;
       let name = field.name;
-      result[name] = val;
+      result[name] = name.includes("Date") ? dateISOToUS(val) : val;
     }
     const target = tableName ? tableName : "No table name";
     const resultList = [formName, target, JSON.stringify(result)];
@@ -319,17 +319,6 @@ $(document).ready(() => {
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
 
-  // Add default date to date fields in #new-entry after focus out
-  // Field Begin value: "07/01/<CurrentFiscalYear>"
-  // Field End value: "06/30/<CurrentFiscalYear>"
-  $(document).on("focusout", "#StartDate, #EndDate", function (evnt) {
-    evnt.stopPropagation();
-    if (!$(this).val()) {
-      const [firstDay, lastDay] = setDefaultDate();
-      $(this).val($(this).attr("id") === "StartDate" ? firstDay : lastDay);
-    }
-  });
-
   // Change text color from red (required) to black
   // when a value is entered
   $(document).on("focusin", getRequired(), function (evnt) {
@@ -340,7 +329,7 @@ $(document).ready(() => {
   //* Displaying #new-entry
   $(document).on("click", ".record-entry", function (evnt) {
     evnt.stopPropagation();
-    $("#new-entry").toggleClass("hidden");
+    $("#new-entry").removeClass("hidden");
     $("#CourseID").focus();
   });
 
@@ -380,7 +369,7 @@ $(document).ready(() => {
   $(document).on("click", "#filter-apply-btn", function (evnt) {
     evnt.stopPropagation();
     courseList = GetCourse.slice(0);
-
+    $("#new-entry").addClass("hidden");
     const formId = "#" + $(this).attr("form");
     const filterList = $(formId).serializeArray();
     const [selectedYear, selectedCategory, selectedValue] = filterList;
@@ -413,6 +402,21 @@ $(document).ready(() => {
     $(this).toggleClass("dark-text").prop("required", false);
   });
 
+  //* Turns date input fields to date type
+  $(document).on("focusin", "#StartDate, #EndDate", function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    $(this).attr("type", "date");
+  });
+  $(document).on("blur", "#StartDate, #EndDate", function (evnt) {
+    evnt.preventDefault();
+    evnt.stopPropagation();
+    if (!$(this).val()) $(this).attr("type", "text");
+    if (!$(this).val()) {
+      const [firstDay, lastDay] = setDefaultDate();
+      $(this).val($(this).attr("id") === "StartDate" ? firstDay : lastDay);
+    }
+  });
   //* Adding a new record
   $(document).on("click", "#submit-btn", function (evnt) {
     evnt.stopPropagation();
@@ -685,7 +689,6 @@ $(document).ready(() => {
     $("#enrollment").addClass("selected-tab");
     $("#sub-nav .unselected-tab").removeClass("unselected-tab");
     $("#sub-nav .btn-link").prop("disabled", false).removeClass("disabled");
-
     // Enables customized tooltips
     $("[data-toggle='tooltip']").tooltip();
   });
@@ -728,19 +731,45 @@ $(document).ready(() => {
   });
 
   //* Selecting an enrolled student to edit
-  $(document).on("click", ".student-table tbody tr", function () {
-    const rowId = $(this).attr("id");
-    const modalContent = editStudent(rowId);
+  $(document).on(
+    "click",
+    ".student-table tbody tr td[data-name!='StudentName']",
+    function () {
+      const rowId = $(this).parent().attr("id");
+      const modalContent = editStudent(rowId);
 
-    $("#modalBloc").modal("toggle");
-    $("#edit-form")
-      .empty()
-      .append(modalContent)
-      .attr("data-bloc", "edit-student");
-    $(".modal-title").replaceWith(
-      "<h4 class='modal-title'>Editing a student</h4>"
-    );
-  });
+      $("#modalBloc").modal("toggle");
+      $("#edit-form")
+        .empty()
+        .append(modalContent)
+        .attr("data-bloc", "edit-student");
+      $(".modal-title").replaceWith(
+        "<h4 class='modal-title'>Editing a student</h4>"
+      );
+    }
+  );
+
+  //* Selecting a student name to display the student's profile in a diffferent tab
+  $(document).on(
+    "click",
+    ".student-table tbody tr td[data-name='StudentName']",
+    function (evnt) {
+      evnt.stopPropagation();
+      evnt.preventDefault();
+      const studentPKID = $(this)
+        .siblings("td[data-name='Student_PKID']")
+        .text();
+      //! =================================================
+      //! For development only
+      //! Modify the studentProfileURI value with production URI
+      //! =================================================
+      const studentProfileURI =
+        "http://alpha.asists.com/students-profile/stu_profile.aspx?stid=";
+      //! =================================================
+
+      window.open(`${studentProfileURI}${studentPKID}`, "_blank");
+    }
+  );
 
   //* Event handler for end date input in modal form
   //* when editing a student.
@@ -935,6 +964,21 @@ $(document).ready(() => {
     $(".hours-table").remove();
     $("#hours-bloc").append(dailyHoursView);
   });
+
+  //* Handling change in Schedule start time.
+  // The value selected in start time is set in end time.
+  $(document).on(
+    "change",
+    "#edit-form select[name$='StartTime']",
+    function (evnt) {
+      evnt.stopPropagation();
+      evnt.preventDefault();
+      const selectedTime = $(this).val();
+      const shortDay = $(this).attr("name").substr(0, 3);
+      console.log(`Day and Selected Time ==> ${shortDay} - ${selectedTime}`);
+      $(`#edit-form select[name=${shortDay}EndTime]`).val(selectedTime).focus();
+    }
+  );
 
   //* Saving Daily hours for students
   $(document).on("click", "#daily-hours-btn", function (evnt) {

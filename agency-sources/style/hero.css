@@ -9,3 +9,8 @@
 td:last-child {
   text-align: left;
 }
+
+[data-name="FY"],
+[data-name="Amount"] {
+  text-align: right;
+}

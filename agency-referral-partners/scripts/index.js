@@ -2,7 +2,12 @@
 
 // Isolate work objects and arrays from data source.
 const dataPartners = partnersData.slice(0);
-const countyList = countyData.slice(0);
+const countyList = countyData.slice(0).map((record) => {
+  let { FIPS, CountyDesc } = record;
+
+  CountyDesc = `${CountyDesc.slice(6)} ${CountyDesc.slice(0, 6)}`;
+  return { FIPS, CountyDesc };
+});
 const stateList = DDL_STATES.slice(0);
 
 const rowLabels = [
@@ -63,7 +68,7 @@ const createNewRecord = (labelsList) => {
       }
       if (hiddenList.includes(key)) classOption += " hidden";
       if (key === "ReferralSiteEmail") type = "email";
-
+      if (key === "Telephone") type = "tel";
       // inputNoLabel() <== helperFunctions()
       element = inputNoLabel({
         key,
@@ -205,6 +210,7 @@ const createForm = (list) => {
         optionText: " a state"
       });
     } else {
+      const type = keyVal === "Telephone" ? "tel" : "";
       // elementInput() <== helperFunctions.js
       formContent += elementInput({
         keyVal,
@@ -213,7 +219,8 @@ const createForm = (list) => {
         labelClassVal,
         classVal,
         option,
-        optionHidden
+        optionHidden,
+        type
       });
     }
   }
@@ -305,12 +312,6 @@ $(document).ready(() => {
   //* Data viewing
   $("#new-entry").append(createNewRecord(rowLabels));
   $("#main-table").append(createViewBloc());
-  $(".partner-entry").append(`<div class="container-fluid buttons-bloc-new">
-    <button type="button" id="cancel-btn" form="new-entry"
-      class="btn btn-default pull-right">Cancel</button>
-    <button type="button" id="submit-btn" form="new-entry"
-      class="btn dark-blue-text blue-light-bg pull-right">Add</button>
-  </div>`);
   // Enables customized tooltips
   $("[data-toggle='tooltip']").tooltip();
 
@@ -360,5 +361,17 @@ $(document).ready(() => {
     const formId = "#" + $(this).attr("form");
     const newSource = $(formId).serializeArray();
     saveMods(newSource, formId, "partnersData");
+  });
+
+  //* Phone numbers dynamic masking
+  //* On entry, format the numbers as US phone number (XXX)-XXX-XXXX
+  $(document).on("keyup", "form input[type='tel']", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const inputValue = $(this).val();
+    $(this).val(
+      inputValue.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, "($1)-$2-$3")
+    );
+    // console.log("Phone event hit ", $(this).val());
   });
 });
