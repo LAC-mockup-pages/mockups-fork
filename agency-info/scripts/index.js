@@ -1,5 +1,6 @@
 //* Actions and logic
 //! Add a <script> element in index.js pointing to data.js, then:
+//! In production comment out
 const agencyData = ag.slice(0); //! That is all that's needed
 
 // Labels used when DataObject keys need modifying
@@ -87,7 +88,7 @@ const renderViewBloc = (dataObj) => {
     SEDID,
     Division,
     ProgramManager,
-    EPERate,
+    EPERate: Number(EPERate).toFixed(2).toString(),
     PrepCode
   });
   const topRight = createBloc("topRight", {
@@ -117,6 +118,10 @@ const saveMods = (form) => {
   $(`${form} input, select`).removeClass("yellow-bg");
 
   const validatedList = validateNewRecord(submittedData);
+  console.log(
+    "🚀 / file: index.js / line 120 / saveMods / validatedList",
+    validatedList
+  );
   const checkFlag = validatedList.some((item) => !item.correct);
   if (checkFlag) {
     const list = validatedList.filter((obj) => !obj.correct);
@@ -137,6 +142,34 @@ const saveMods = (form) => {
   const resultList = ["ag", JSON.stringify(result)];
   //! =================================================
   //! JSON Object to send back to database
+
+    //! In production uncomment
+    //const formId = result.ProgramManager
+    //    ? 'Info_Upper' : 'Info_Lower';
+
+    //// createCredentials <== /helpers/helperFunctions.js
+    //const credentials = createCredentials();
+
+    //const saveObj = {
+    //    ...credentials,
+    //    ...result
+    //};
+
+    //import('./data_refresh.js')
+    //.then((module) => {
+    //    (async () => {
+    //        const saveflag = await module.SaveRefresh(formId, saveObj);
+
+    //        if (saveflag) {
+    //            $(".hero").empty().append(renderViewBloc(agencyData[0]));
+    //            $("#modal-bloc").modal("toggle");
+    //        }
+    //    })(); //async end
+
+    //});//data_refresh.js
+
+    //return;
+
   console.log(message, resultList);
   //! =================================================
 
@@ -227,6 +260,12 @@ $(document).ready(() => {
     }
     $("#edit-form").append(modalBloc);
     $("#AgencyEmail-view").attr("type", "email");
+    $("#Telephone-view").attr({
+      type: "tel",
+      pattern: "[(]d{3}[)-]d{3}[-]d{4}",
+      placeholder: "(XXX)-XXX-XXXX"
+    });
+    $("#AgencyName-view").prop("disabled", true);
   });
 
   // Save button in modal form
@@ -242,5 +281,16 @@ $(document).ready(() => {
     evnt.preventDefault();
     evnt.stopPropagation();
     $("#modal-bloc").modal("toggle");
+  });
+
+  //* Phone numbers dynamic masking
+  //* On entry, format the numbers as US phone number (XXX)-XXX-XXXX
+  $(document).on("keyup", "#edit-form input[type='tel']", function (evnt) {
+    evnt.stopPropagation();
+    evnt.preventDefault();
+    const inputValue = $(this).val();
+    $(this).val(
+      inputValue.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, "($1)-$2-$3")
+    );
   });
 });

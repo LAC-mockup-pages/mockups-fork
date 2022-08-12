@@ -54,6 +54,7 @@ export const createFormAddContact = (formName, rowId = null) => {
     let keyVal = $(cell).attr("data-field");
     let labelVal = $(cell).attr("data-label") ? $(cell).attr("data-label") : "";
     let option = "";
+    let type = "text";
     let value = rowId ? $(cell).text() : "";
     if (["Type", "ContactDesc"].includes(keyVal)) continue;
     if (keyVal === "ContactType") {
@@ -75,7 +76,7 @@ export const createFormAddContact = (formName, rowId = null) => {
       if (keyVal === "PersonnelID") value = $(cell).text();
       if (keyVal === "ContactDate") {
         classVal = "style='width:20%'";
-        option = "placeholder='MM/DD/YYYY'";
+        type = "date";
       }
       const paramsObj = {
         keyVal,
@@ -84,7 +85,8 @@ export const createFormAddContact = (formName, rowId = null) => {
         labelClassVal: "",
         classVal,
         option,
-        optionHidden
+        optionHidden,
+        type
       };
       result += elementInput(paramsObj);
     }

@@ -7,7 +7,6 @@ const handleChangeNonInstHours = () => {
     $(this).bind("change", function (evnt) {
       evnt.stopPropagation();
       const valueList = $("#modal-form").serializeArray().slice(3, 8);
-      console.log("valueList :>> ", valueList);
       const totalHours = valueList.reduce((total, field) => {
         const valNum = field.value ? Number(field.value) : 0;
         return total + valNum;
@@ -50,8 +49,8 @@ const createFormAddNonIntructionalHours = (formName, rowId = null) => {
         keyValue: keyVal,
         selectedValue,
         labelVal,
-        labelClassVal: "",
-        option
+        labelClassVal: "class='red-text'",
+        option: "required"
       };
 
       // elementSelectModal() <== helperFunctions.js
@@ -97,12 +96,12 @@ const addMonth = (recordList) => {
     "Nov",
     "Dec"
   ];
-
   for (const record of list) {
-    const Month = monthList[Number(record.PeriodID.substr(7, 2))];
+    const Month = `${
+      monthList[Number(record.PeriodID.substr(7, 2))]
+    } ${record.PeriodID.substr(3, 4)}`;
     resultList.push({ Month, ...record });
   }
-
   return resultList;
 };
 
@@ -129,9 +128,9 @@ const nonInstrHoursView = (PersonnelID) => {
     ["Prep", "col-sm-2"],
     ["Travel", "col-sm-1"],
     ["Training", "col-sm-2"],
-    ["Meeting", "col-sm-1"],
-    ["Extra", "col-sm-2"],
-    ["Total", "col-sm-1"]
+    ["Meeting", "col-sm-2"],
+    ["Extra", "col-sm-1"],
+    ["Total", "col-sm-2"]
   ]);
 
   const body = tableBody(
