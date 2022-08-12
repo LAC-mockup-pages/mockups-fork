@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../assets/favicon.ico"
+    />
+    <script
+      src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"
+      defer
+    ></script>
+
+    <!-- Latest compiled and minified CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"
+    />
+
+    <!-- Optional theme -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css"
+    />
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"
+      defer
+    ></script>
+
+    <!-- Moment.js library CDN-->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"
+      type="text/javascript"
+      defer
+    ></script>
+
+    <!-- Links and scripts for local app -->
+    <link
+      rel="stylesheet"
+      href="../dashboard-landing/style/index.css"
+      type="text/css"
+    />
+
+    <script src="../helpers/constants.js" type="text/javascript" defer></script>
+
+    <script
+      src="../navbar/scripts/index.js"
+      type="text/javascript"
+      defer
+    ></script>
+
+    <!-- !====================================== -->
+    <!-- ! File: /  -->
+    <!-- !====================================== -->
+
+    <title>Work in Progress</title>
+  </head>
+  <body>
+    <header>
+      <!-- NavBar -->
+      <div class="navbar blue-light-text blue-bg">
+        <div class="container-fluid">
+          <div class="row">
+            <!-- Logo -->
+            <div class="col-md-1 col-sm-1" id="main-logo">
+              <img
+                src="../assets/Main-Logo.png"
+                alt="Main Logo"
+                width="100%"
+                height="100%"
+              />
+            </div>
+            <!-- Nav Items -->
+            <div class="nav-items">
+              <div class="navbar-header col-md-10">
+                <div class="collapse navbar-collapse" id="parentMenu">
+                  <ul
+                    class="nav navbar-nav row"
+                    id="parentMenu1"
+                    role="menu"
+                    aria-labelledby="dropdownMenu"
+                  >
+                    <li class="dropdown">
+                      <a
+                        href="#"
+                        class="dropdown-toggle blue-light-text"
+                        data-toggle="dropdown"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="true"
+                        >Program Info <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a>Agency Info </a>
+                        </li>
+                        <li>
+                          <a>Personnel Info </a>
+                        </li>
+                        <li>
+                          <a>Staff Development </a>
+                        </li>
+                        <li>
+                          <a>Edit EPE Amend Log </a>
+                        </li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a
+                        href="#"
+                        class="dropdown-toggle blue-light-text"
+                        data-toggle="dropdown"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="true"
+                        >Student Info <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a>Add Student Info </a>
+                        </li>
+                        <li>
+                          <a>Edit Student Info </a>
+                        </li>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a
+                        href="#"
+                        class="dropdown-toggle blue-light-text"
+                        data-toggle="dropdown"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="true"
+                        >Instructional Activity <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a>Add New Course Offering </a>
+                        </li>
+                        <li>
+                          <a>Edit Instructional Activity </a>
+                        </li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a
+                        href="#"
+                        class="dropdown-toggle blue-light-text"
+                        data-toggle="dropdown"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="true"
+                        >Management Reports<span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a>Instructional Offering Roster </a>
+                        </li>
+                        <li>
+                          <a>Data Management </a>
+                        </li>
+                        <li>
+                          <a>Turnaround Reports </a>
+                        </li>
+                        <li>
+                          <a>TASC Reports </a>
+                        </li>
+                        <li>
+                          <a>Staff Development Reports </a>
+                        </li>
+                        <li>
+                          <a>TASC Reports </a>
+                        </li>
+                        <li role="separator" class="divider"></li>
+                        <li>
+                          <a>Data Exports </a>
+                        </li>
+                      </ul>
+                    </li>
+
+                    <li class="dropdown">
+                      <a
+                        href="#"
+                        class="dropdown-toggle blue-light-text"
+                        data-toggle="dropdown"
+                        role="button"
+                        aria-haspopup="true"
+                        aria-expanded="true"
+                        >Funding Reports Current FY <span class="caret"></span>
+                      </a>
+                      <ul class="dropdown-menu">
+                        <li>
+                          <a>WIOA / NRS Tables </a>
+                        </li>
+                        <li><a>WIOA / NRS Tables Data Check</a></li>
+                        <li><a>WIO / NRS Data Checks</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a>WIOA / NRS Program Evaluation</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a>NRS Data Checks</a></li>
+                        <li><a>NRS Program Evaluation</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a>EPE Reports</a></li>
+                        <li role="separator" class="divider"></li>
+
+                        <li>
+                          <a
+                            >Funding Reports Previous FY
+                            <span class="caret"></span
+                          ></a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <!-- Kebab Menu -->
+              <div
+                id="nav-icon"
+                class="col-md-1 dropdown-toggle"
+                data-toggle="dropdown"
+              >
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <ul class="dropdown-menu dropdown-menu-right blue-text">
+                  <li>Help</li>
+                  <li role="separator" class="divider"></li>
+                  <li>Logout</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- User Info -->
+        <div class="user-info blue-bg">
+          <div class="col-md-10">
+            <p>
+              Logged in as: Samantha PorterAnabella -
+              <span>Program Associate at the Practice Agency</span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+    <!-- Hero -->
+    <div class="container-fluid hero">
+      <h2 style="color: blue; text-align: center; margin-top: 10%">
+        This dashboard is coming soon in a future release.
+      </h2>
+      <h2 style="color: blue; text-align: center; margin-top: 10%">
+        Please click the back button to return to the landing page.
+      </h2>
+      <div class="container-fluid" style="height: 12vh; margin-top: 5%">
+        <button
+          type="button"
+          class="btn btn-default"
+          style="
+            height: 100%;
+            min-width: 10%;
+            margin-right: auto;
+            margin-left: 45%;
+            padding: 0px;
+            border-radius: 10px;
+            background-image: linear-gradient(
+              180deg,
+              rgba(166, 166, 166, 0),
+              rgba(166, 166, 166, 1)
+            );
+          "
+        >
+          <a
+            href="../dashboard-landing/index.html"
+            type="text/html"
+            style="
+              color: #333;
+              text-decoration: none;
+              font-weight: 800;
+              width: 100%;
+              height: 100%;
+            "
+          >
+            <p
+              class="glyphicon glyphicon-step-backward"
+              style="font-size: large; color: #2700ff"
+              aria-hidden="true"
+            ></p>
+            <p>Back to List</p>
+          </a>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>

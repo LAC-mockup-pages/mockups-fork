@@ -57,7 +57,8 @@ export const personView = (selectedID) => {
     if (key === "lengthstay") option = "disabled";
 
     if (["PersHomePhone", "PersMobilePhone"].includes(key)) {
-      value = phoneFormat(value);
+      type = "tel";
+      option += ` pattern="[\(]\d{3}[\)\-]\d{3}[\-]\d{4}" placeholder="(XXX)-XXX-XXXX"`;
     }
     if (["PersEmail", "PersAltEmail"].includes(key)) type = "email";
 
