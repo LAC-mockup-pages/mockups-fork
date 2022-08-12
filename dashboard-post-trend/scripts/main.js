@@ -5,14 +5,6 @@
 
 const tileSet = [
   {
-    id: "tile0",
-    header: "MSG",
-    background: "rgba(36,121,181,0), rgba(36,121,181,1)",
-    details: ["64%"],
-    formatDetails: "",
-    target: "../dashboard-msg/index.html"
-  },
-  {
     id: "tile1",
     header: "Post Test",
     background: "rgba(247,224,149,0), rgba(247,224,149,1)",
@@ -20,6 +12,15 @@ const tileSet = [
     formatDetails: "",
     target: "../dashboard-post/index.html"
   },
+  {
+    id: "tile0",
+    header: "MSG",
+    background: "rgba(36,121,181,0), rgba(36,121,181,1)",
+    details: ["64%"],
+    formatDetails: "",
+    target: "../dashboard-msg/index.html"
+  },
+
   {
     id: "tile2",
     header: "Employment Q2",
@@ -42,7 +43,7 @@ const tileSet = [
     background: "rgb(211,228,240)",
     details: [
       ["Enrolled:", "450"],
-      ["Hours:", "22890"]
+      ["Hours:", "22,000"]
     ],
     formatDetails: "tile-details-small",
     target: "../assets/coming-soon.html"
@@ -98,6 +99,12 @@ const tileSet = [
   }
 ];
 
+const dataSet1 = [
+  { Level: "Program Name", PostTest: "0.64" },
+  { Level: "Region Name", PostTest: "0.57" },
+  { Level: "State", PostTest: "0.55" }
+];
+
 const createDetailLines = (detailList) => {
   let rows = "";
   for (const list of detailList) {
@@ -108,9 +115,9 @@ const createDetailLines = (detailList) => {
 
   return `
   <table class="table table-condensed detail-table">
-  <tbody>
-  ${rows}
-  </tbody>
+    <tbody>
+      ${rows}
+    </tbody>
   </table>`;
 };
 const createTile = (dataObj, classButton, classTile) => {
@@ -136,27 +143,88 @@ const createTile = (dataObj, classButton, classTile) => {
   return tile;
 };
 
-//* Creates bloc of large tiles, 2 tiles per bloc.
-const createLargeTileBloc = (tileList) => {
+const createLeftNavBar = () => {
   let block = "";
-  for (const tile of tileList) {
-    block += createTile(tile, "col-md-4", "large-tile");
-  }
-  return `
-  <div class="container-fluid row">
-    <div class="col-md-2"></div>
-    ${block}
-    <div class="col-md-2"></div>
-  </div>`;
-};
+  for (const record of tileSet) {
+    let buttonClass = "side-navbar-button";
+    let tileClass = "";
 
-//* Creates bottom bloc of small tiles with 6 tiles.
-const createSmallTileBloc = (tileList) => {
-  let block = "";
-  for (const tile of tileList) {
-    block += createTile(tile, "col-md-2", "small-tile");
+    switch (record.id) {
+      case "tile1":
+        tileClass = "large-tile";
+        break;
+      case "tile0":
+      case "tile2":
+      case "tile3":
+        tileClass = "medium-tile";
+        break;
+      default:
+        tileClass = "small-tile";
+        break;
+    }
+
+    block += createTile(record, buttonClass, tileClass);
   }
   return block;
+};
+
+//TODO Add logic to reorder the tiles depending on the selected
+//TODO dashboard. Tiles 0 to 3 are always on top.
+//TODO If the top tile is not a large tile in the landing page
+//TODO tiles 0 to 3 come right after.
+const shuffleTileSet = (list, tileId) => {
+  const majorTiles = ["tile0", "tile1", "tile2", "tile3"];
+  let shuffledList = [];
+
+  if (majorTiles.includes(tileId)) {
+  }
+  return shuffledList;
+};
+
+// Input is a decimal number as a string, fraction of 1.
+// Output a percentage number as a string. "0.70"==>"70%"
+const percentFormat = (str) => {
+  return `${Math.round(Number(str) * 100)}%`;
+};
+
+const createTableHeader = (list) => {
+  const headers = list.map((str) => `<th>${str}</th>`).join("");
+  return `<thead><tr>${headers}</tr></thead>`;
+};
+
+// list = dataSet#
+const createTableBody = (list) => {
+  let body = "";
+  let orderedList = [];
+  if (list === dataSet1) {
+    orderedList = list.sort((item1, item2) =>
+      item1.Site < item2.Site ? -1 : item1.Site > item2.Site ? 1 : 0
+    );
+  } else {
+    orderedList = list.sort((item1, item2) =>
+      item1.Teacher < item2.Teacher ? -1 : item1.Teacher > item2.Teacher ? 1 : 0
+    );
+  }
+
+  for (const obj of orderedList) {
+    let row = "";
+    const link = ` href=${obj.ReportLink}`;
+    for (const key of Object.keys(obj)) {
+      if (key === "ReportLink") continue;
+      const value = key === "PostTest" ? percentFormat(obj[key]) : obj[key];
+      row += `<td class="cell-data">${value}</td>`;
+    }
+    body += `<tr${link}>${row}</tr$>`;
+  }
+  return `<tbody>${body}</tbody>`;
+};
+
+const createTable = (dataList) => {
+  const tableHeader = createTableHeader(
+    Object.keys(dataList[0]).filter((str) => str !== "ReportLink")
+  ).replace("PostTest", "Post Test");
+  const tableBody = createTableBody(dataList);
+  return `<table class="table">${tableHeader}${tableBody}</table>`;
 };
 
 //*=================================================
@@ -164,10 +232,9 @@ const createSmallTileBloc = (tileList) => {
 //*=================================================
 
 $(document).ready(() => {
-  const topBloc = createLargeTileBloc(tileSet.slice(0, 2));
-  const middleBloc = createLargeTileBloc(tileSet.slice(2, 4));
-  const bottomBloc = createSmallTileBloc(tileSet.slice(4));
-  $("#top-bloc").append(topBloc);
-  $("#middle-bloc").append(middleBloc);
-  $("#bottom-bloc").append(bottomBloc);
+  const leftNavBar = createLeftNavBar();
+  const table1 = createTable(dataSet1);
+
+  $("#side-nav").append(leftNavBar);
+  $(".table1").append(table1);
 });

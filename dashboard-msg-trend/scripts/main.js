@@ -42,7 +42,7 @@ const tileSet = [
     background: "rgb(211,228,240)",
     details: [
       ["Enrolled:", "450"],
-      ["Hours:", "22890"]
+      ["Hours:", "22,000"]
     ],
     formatDetails: "tile-details-small",
     target: "../assets/coming-soon.html"
@@ -98,6 +98,12 @@ const tileSet = [
   }
 ];
 
+const dataSet1 = [
+  { Level: "Program Name", MSG: "0.64" },
+  { Level: "Region Name", MSG: "0.57" },
+  { Level: "State", MSG: "0.55" }
+];
+
 const createDetailLines = (detailList) => {
   let rows = "";
   for (const list of detailList) {
@@ -136,27 +142,81 @@ const createTile = (dataObj, classButton, classTile) => {
   return tile;
 };
 
-//* Creates bloc of large tiles, 2 tiles per bloc.
-const createLargeTileBloc = (tileList) => {
+const createLeftNavBar = () => {
   let block = "";
-  for (const tile of tileList) {
-    block += createTile(tile, "col-md-4", "large-tile");
-  }
-  return `
-  <div class="container-fluid row">
-    <div class="col-md-2"></div>
-    ${block}
-    <div class="col-md-2"></div>
-  </div>`;
-};
+  for (const record of tileSet) {
+    let buttonClass = "side-navbar-button";
+    let tileClass = "";
 
-//* Creates bottom bloc of small tiles with 6 tiles.
-const createSmallTileBloc = (tileList) => {
-  let block = "";
-  for (const tile of tileList) {
-    block += createTile(tile, "col-md-2", "small-tile");
+    switch (record.id) {
+      case "tile0":
+        tileClass = "large-tile";
+        break;
+      case "tile1":
+      case "tile2":
+      case "tile3":
+        tileClass = "medium-tile";
+        break;
+      default:
+        tileClass = "small-tile";
+        break;
+    }
+
+    block += createTile(record, buttonClass, tileClass);
   }
   return block;
+};
+
+//TODO Add logic to reorder the tiles depending on the selected
+//TODO dashboard. Tiles 0 to 3 are always on top.
+//TODO If the top tile is not a large tile in the landing page
+//TODO tiles 0 to 3 come right after.
+const shuffleTileSet = (list, tileId) => {
+  const majorTiles = ["tile0", "tile1", "tile2", "tile3"];
+  let shuffledList = [];
+
+  if (majorTiles.includes(tileId)) {
+  }
+  return shuffledList;
+};
+
+const percentFormat = (str) => {
+  return `${Math.round(Number(str) * 100)}%`;
+};
+
+const createTableHeader = (list) => {
+  const headers = list.map((str) => `<th>${str}</th>`).join("");
+  return `<thead><tr>${headers}</tr></thead>`;
+};
+
+// list = dataSet#
+const createTableBody = (list) => {
+  let body = "";
+  let orderedList = [];
+  if (list === dataSet1) {
+    orderedList = list.sort((item1, item2) =>
+      item1.Site < item2.Site ? -1 : item1.Site > item2.Site ? 1 : 0
+    );
+  } else {
+    orderedList = list.sort((item1, item2) =>
+      item1.Teacher < item2.Teacher ? -1 : item1.Teacher > item2.Teacher ? 1 : 0
+    );
+  }
+  for (const obj of orderedList) {
+    let row = "";
+    for (const key of Object.keys(obj)) {
+      const value = key === "MSG" ? percentFormat(obj[key]) : obj[key];
+      row += `<td class="cell-data">${value}</td>`;
+    }
+    body += `<tr>${row}</tr>`;
+  }
+  return `<tbody>${body}</tbody>`;
+};
+
+const createTable = (dataList) => {
+  const tableHeader = createTableHeader(Object.keys(dataList[0]));
+  const tableBody = createTableBody(dataList);
+  return `<table class="table">${tableHeader}${tableBody}</table>`;
 };
 
 //*=================================================
@@ -164,10 +224,9 @@ const createSmallTileBloc = (tileList) => {
 //*=================================================
 
 $(document).ready(() => {
-  const topBloc = createLargeTileBloc(tileSet.slice(0, 2));
-  const middleBloc = createLargeTileBloc(tileSet.slice(2, 4));
-  const bottomBloc = createSmallTileBloc(tileSet.slice(4));
-  $("#top-bloc").append(topBloc);
-  $("#middle-bloc").append(middleBloc);
-  $("#bottom-bloc").append(bottomBloc);
+  const leftNavBar = createLeftNavBar();
+  const table1 = createTable(dataSet1);
+
+  $("#side-nav").append(leftNavBar);
+  $(".table1").append(table1);
 });
