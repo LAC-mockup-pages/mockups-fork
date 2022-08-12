@@ -2,8 +2,8 @@
 
 const SESSION_VARIABLE = [
   {
+    ID: '<%= Session["ID"] %>',
     AgencyID: '<%= Session["AgencyID"] %>',
-    AgencyPKID: '<%= Session["AgencyPKID"] %>',
     AgencyName: '<%= Session["AgencyName"] %>',
     AuditUserID: '<%= Session["UserID"] %>',
     FiscalYear: '<%= Session["CFY"] %>',
@@ -18,7 +18,6 @@ const SESSION_VARIABLE = [
     PrevAgency: "False"
   }
 ];
-
 const DDL_STATES = [
   { objKey: "AL", objValue: "Alabama" },
   { objKey: "AS", objValue: "American Samoa" },
