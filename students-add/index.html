@@ -2,9 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
 
+    <!-- Custom links and scripts -->
+    <!-- ======================== -->
     <link
       rel="icon"
       type="image/png"
@@ -15,6 +17,11 @@
       src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"
       defer
     ></script>
+
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
     <!-- Latest compiled and minified CSS -->
     <link
@@ -34,9 +41,20 @@
       defer
     ></script>
 
-    <!-- Links and scripts for local app -->
+    <!-- Luxon JS library from CDN - Dates and time management-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/luxon@2.0.1/build/global/luxon.min.js"
+      type="text/javascript"
+      defer
+    ></script>
 
-    <link rel="stylesheet" href="style/index.css" type="text/css" />
+    <!-- Luxon JS polyfill for IE 10 or 11-->
+    <script src="https://cdn.polyfill.io/v3/polyfill.js?features=default,String.prototype.repeat,Array.prototype.find,Array.prototype.findIndex,Math.trunc,Math.sign,Object.is"></script>
+
+    <!-- Local links and scripts -->
+    <link rel="stylesheet" href="./style/index.css" type="text/css" />
+
+    <script src="../helpers/constants.js" type="text/javascript" defer></script>
 
     <script
       src="../helpers/helperFunctions.js"
@@ -44,283 +62,964 @@
       defer
     ></script>
 
-    <script src="../helpers/constants.js" type="text/javascript" defer></script>
-
     <script
-      src="../navbar/scripts/index.js"
       type="text/javascript"
+      src="./scripts/data-server.js"
       defer
     ></script>
 
-    <script src="scripts/data.js" type="text/javascript" defer></script>
-
-    <script src="scripts/data-check.js" type="text/javascript" defer></script>
+    <script type="text/javascript" src="./scripts/nav-frame.js" defer></script>
 
     <script type="module" src="./scripts/main.js" defer></script>
 
     <!-- !============================= -->
-    <!-- ! File: /staff/prodev_info.aspx -->
-    <!-- ! File: /staff/prodev_roster.aspx -->
+    <!-- ! File: /<YOUR_FILE>.aspx -->
     <!-- !============================= -->
 
-    <title>Mock-up ProDev Events</title>
+    <title>ASISTS Add student</title>
   </head>
   <body>
     <header>
-      <!-- NavBar -->
-      <div class="navbar blue-light-text blue-bg">
-        <div class="container-fluid">
-          <div class="row">
-            <!-- Logo -->
-            <div class="col-md-1 col-sm-1" id="main-logo">
-              <img
-                src="../assets/Main-Logo.png"
-                alt="Main Logo"
-                width="100%"
-                height="100%"
-              />
+      <div class="container-fluid top-band">
+        <div class="row">
+          <div class="col-md-2 menu-open">
+            <span id="menu-btn"
+              >&#9776; <span class="hamburger-label">Menu</span>
+            </span>
+          </div>
+          <div class="top-logo col-md-3">
+            <div>
+              <a
+                href="../landing/index.html"
+                data-toggle="tooltip"
+                data-placement="right"
+                title="Home page"
+              >
+                <img src="../assets/Main-Logo.png" class="main-logo" />
+              </a>
             </div>
-            <!-- Nav Items -->
-            <div class="nav-items">
-              <div class="navbar-header col-md-10">
-                <div class="collapse navbar-collapse" id="parentMenu">
-                  <ul
-                    class="nav navbar-nav row"
-                    id="parentMenu1"
-                    role="menu"
-                    aria-labelledby="dropdownMenu"
-                  >
-                    <li class="dropdown">
-                      <a
-                        href="#"
-                        class="dropdown-toggle blue-light-text"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="true"
-                        >Program Info <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a>Agency Info </a>
-                        </li>
-                        <li>
-                          <a>Personnel Info </a>
-                        </li>
-                        <li>
-                          <a>Staff Development </a>
-                        </li>
-                        <li>
-                          <a>Edit EPE Amend Log </a>
-                        </li>
-                      </ul>
-                    </li>
+          </div>
+          <div class="col-md-7">
+            <section class="icons row">
+              <div class="col-sm-8"></div>
+              <a
+                class="col-sm-1"
+                href="../404-page/index.html"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Add Students"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link">
+                  person_add_alt
+                </span></a
+              >
+              <a
+                class="col-sm-1"
+                href="../404-page/index.html"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Attendance"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link"> rule </span></a
+              >
 
-                    <li class="dropdown">
-                      <a
-                        href="#"
-                        class="dropdown-toggle blue-light-text"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="true"
-                        >Student Info <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a>Add Student Info </a>
-                        </li>
-                        <li>
-                          <a>Edit Student Info </a>
-                        </li>
-                      </ul>
+              <a
+                class="col-sm-1"
+                href="../404-page/index.html"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="NRS Program Evaluation Report"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link"> summarize </span></a
+              >
+              <a
+                class="col-sm-1"
+                href="../404-page/index.html"
+                role="button"
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="NYRS Program Evaluation Report"
+                aria-haspopup="true"
+                aria-expanded="true"
+              >
+                <span class="material-icons quick-link"> summarize </span></a
+              >
+            </section>
+            <section class="user-bloc row">
+              <div class="col-sm-10 user-info"></div>
+              <div class="col-sm-2 dropdown-user">
+                <div class="dropdown">
+                  <a
+                    href="#"
+                    class="dropdown-toggle"
+                    data-toggle="dropdown"
+                    role="button"
+                    aria-haspopup="true"
+                    aria-expanded="true"
+                    ><span
+                      class="glyphicon glyphicon-user"
+                      aria-hidden="true"
+                    ></span>
+                    <span class="caret"></span
+                  ></a>
+                  <ul class="dropdown-menu dropdown-menu-right">
+                    <li>
+                      <a href="../404-page/index.html" id="change-password">
+                        Change Password</a
+                      >
                     </li>
-                    <li class="dropdown">
-                      <a
-                        href="#"
-                        class="dropdown-toggle blue-light-text"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="true"
-                        >Instructional Activity <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a>Add New Course Offering </a>
-                        </li>
-                        <li>
-                          <a>Edit Instructional Activity </a>
-                        </li>
-                      </ul>
+                    <li>
+                      <a href="../404-page/index.html" id="help-link"
+                        ><span class="help-mark">? </span> Help</a
+                      >
                     </li>
-
-                    <li class="dropdown">
-                      <a
-                        href="#"
-                        class="dropdown-toggle blue-light-text"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="true"
-                        >Management Reports<span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a>Instructional Offering Roster </a>
-                        </li>
-                        <li>
-                          <a>Data Management </a>
-                        </li>
-                        <li>
-                          <a>Turnaround Reports </a>
-                        </li>
-                        <li>
-                          <a>TASC Reports </a>
-                        </li>
-                        <li>
-                          <a>Staff Development Reports </a>
-                        </li>
-                        <li>
-                          <a>TASC Reports </a>
-                        </li>
-                        <li role="separator" class="divider"></li>
-                        <li>
-                          <a>Data Exports </a>
-                        </li>
-                      </ul>
-                    </li>
-
-                    <li class="dropdown">
-                      <a
-                        href="#"
-                        class="dropdown-toggle blue-light-text"
-                        data-toggle="dropdown"
-                        role="button"
-                        aria-haspopup="true"
-                        aria-expanded="true"
-                        >Funding Reports Current FY <span class="caret"></span>
-                      </a>
-                      <ul class="dropdown-menu">
-                        <li>
-                          <a>WIOA / NRS Tables </a>
-                        </li>
-                        <li><a>WIOA / NRS Tables Data Check</a></li>
-                        <li><a>WIO / NRS Data Checks</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a>WIOA / NRS Program Evaluation</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a>NRS Data Checks</a></li>
-                        <li><a>NRS Program Evaluation</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a>EPE Reports</a></li>
-                        <li role="separator" class="divider"></li>
-
-                        <li>
-                          <a
-                            >Funding Reports Previous FY
-                            <span class="caret"></span
-                          ></a>
-                        </li>
-                      </ul>
+                    <li>
+                      <a href="/logout.aspx" id="logout-text"
+                        ><span
+                          class="glyphicon glyphicon-log-out"
+                          aria-hidden="true"
+                        ></span>
+                        Logout</a
+                      >
                     </li>
                   </ul>
                 </div>
               </div>
-              <!-- Kebab Menu -->
-              <div
-                id="nav-icon"
-                class="col-md-1 dropdown-toggle"
-                data-toggle="dropdown"
+            </section>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Side Nav bar -->
+    <div id="mySidenav" class="sidenav">
+      <a href="javascript:void(0)" class="close-btn hidden">&#9776;</a>
+      <div class="menu-top">
+        <img src="../assets/logo_sm.png" class="small-logo" />
+        <div class="menu-text hidden">Menu</div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#"
+          >Program information <span class="caret"></span
+        ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Agency</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span>
+            Personnel</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Staff
+            Development</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Edit EPE
+            Amend Log</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#"
+          >Students <span class="caret"></span
+        ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Add
+            Student</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Edit
+            Student</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#"
+          >Instructional Activity <span class="caret"></span
+        ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Add/Edit
+            Instructional Activity</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#"
+          >Management Reports <span class="caret"></span
+        ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span>
+            Instructional Offering Roster</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Data
+            Management</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Turnaround
+            Reports</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> TASC
+            Reports</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Staff
+            Development Reports</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Data
+            Exports</a
+          >
+        </div>
+      </div>
+
+      <div class="hidden main-tab">
+        <a class="dropdown-btn" href="#"
+          >Funding Reports<span class="caret"></span
+        ></a>
+        <div class="dropdown-container">
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
+            Tables</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
+            Tables Data Check</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIO / NRS
+            Data Checks</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> WIOA / NRS
+            Program Evaluation</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> NRS Data
+            Checks</a
+          >
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> NRS
+            Program Evaluation</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> EPE
+            Reports</a
+          >
+          <a role="separator" class="divider"></a>
+          <a href="#"
+            ><span class="glyphicon glyphicon-chevron-right"> </span> Funding
+            Reports Prev. FY</a
+          >
+        </div>
+      </div>
+    </div>
+    <!-- End Side Nav bar -->
+    <!-- Main display -->
+    <main class="hero container">
+      <div class="container-fluid" id="entry-bloc"></div>
+      <section class="page-title blue-bg blue-light-text">
+        New Student Entry - ISRF
+        <div class="required-text blue-bg light-red-text">
+          Elements in red are required
+        </div>
+      </section>
+      <!-- Start Name | Contact | SSN | Gender | Race -->
+
+      <div class="sub-header blue-bg blue-light-text">
+        <div class="sub-header-title">Basic Information</div>
+      </div>
+
+      <form class="id-form form-style" role="form">
+        <!-- Name section  -->
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-4">
+            <label class="red-text" for="First">First name</label>
+            <input
+              class="medium-input"
+              id="first-name"
+              type="text"
+              name="First"
+              required
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Please fill this field"
+              autocomplete="off"
+            />
+          </div>
+          <div class="input-field form-group col-sm-4">
+            <label for="Middle">Middle initial</label>
+            <input
+              class="medium-input"
+              type="text"
+              id="middle-name"
+              name="Middle"
+              autocomplete="off"
+            />
+          </div>
+          <div class="input-field form-group col-sm-4">
+            <label class="red-text" for="Last">Last name</label>
+            <input
+              class="medium-input"
+              type="text"
+              id="last-name"
+              name="Last"
+              required
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Please fill this field"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+
+        <!-- DOB, start date -->
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-6">
+            <label class="red-text" for="BirthDate">Birth date</label>
+            <input
+              type="date"
+              id="birthdate"
+              name="BirthDate"
+              required
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Please fill this field"
+              autocomplete="off"
+            />
+          </div>
+          <div class="input-field form-group col-sm-6">
+            <label class="red-text" for="BeginDate">Original prog. start</label>
+            <input
+              id="begin-date"
+              type="date"
+              name="BeginDate"
+              required
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Please fill this field"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+      </form>
+
+      <!-- Address -->
+      <form class="contact-form">
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-6">
+            <label for="Address">Address</label>
+            <input id="address" type="text" name="Address" autocomplete="off" />
+          </div>
+        </div>
+
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-4">
+            <label for="City">City</label>
+            <input
+              class="medium-input"
+              type="text"
+              name="City"
+              autocomplete="off"
+              disabled
+            />
+          </div>
+
+          <div class="input-field form-group col-sm-4">
+            <label for="State">State</label>
+            <select
+              id="state-select"
+              class="modal-select"
+              name="State"
+              disabled
+            >
+              <option value>Select a state</option>
+            </select>
+          </div>
+          <div class="input-field form-group col-sm-4">
+            <label for="Zip">ZIP</label>
+            <input
+              class="medium-input"
+              type="text"
+              name="Zip"
+              autocomplete="off"
+              disabled
+            />
+          </div>
+        </div>
+
+        <!-- Contact info -->
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-4">
+            <label for="Phone">Home phone</label>
+            <input
+              class="medium-input"
+              type="text"
+              id="home-phone"
+              name="Phone"
+              placeholder="123-456-7890"
+              disabled
+            />
+          </div>
+          <div class="input-field form-group col-sm-4">
+            <label for="Phone2">Mobile phone</label>
+            <input
+              class="medium-input"
+              type="text"
+              name="Phone2"
+              id="mobile-phone"
+              placeholder="123-456-7890"
+              autocomplete="off"
+              disabled
+            />
+          </div>
+          <div class="input-field form-group col-sm-4">
+            <label for="StudEmail">Email</label>
+            <input
+              class="medium-input"
+              type="email"
+              name="StudEmail"
+              autocomplete="off"
+              disabled
+            />
+          </div>
+        </div>
+
+        <!-- Emergency contact -->
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-6">
+            <label for="EmergencyPhone">Emergency phone</label>
+            <input
+              type="text"
+              name="EmergencyPhone"
+              id="emergency-phone"
+              placeholder="123-456-7890"
+              autocomplete="off"
+              disabled
+            />
+          </div>
+          <div class="input-field form-group col-sm-6">
+            <label for="EmergencyName">Contact Name</label>
+            <input
+              type="text"
+              name="EmergencyName"
+              autocomplete="off"
+              disabled
+            />
+          </div>
+        </div>
+      </form>
+
+      <!-- SSN -->
+      <div class="sub-header blue-bg blue-light-text">
+        <div class="sub-header-title">Social Security Number</div>
+      </div>
+      <form class="ssn-form form-style" role="form">
+        <div class="container-fluid row">
+          <div class="col-sm-6">
+            <label for="SSN">Social Security number</label>
+            <div class="input-field form-group">
+              <label></label>
+              <input
+                type="text"
+                id="SSN"
+                name="SSN"
+                autocomplete="off"
+                placeholder="123-45-6789"
+                disabled
+              />
+            </div>
+          </div>
+          <div class="col-sm-6">
+            <label for="NoSSNVisaStaff"
+              >If SSN not provided, intake staff full name</label
+            >
+            <div class="input-field form-group">
+              <label></label>
+              <select
+                id="nossn-select"
+                class="modal-select"
+                name="NoSSNVisaStaff"
+                disabled
               >
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <ul class="dropdown-menu dropdown-menu-right blue-text">
-                  <li>Help</li>
-                  <li role="separator" class="divider"></li>
-                  <li>Logout</li>
-                </ul>
-              </div>
+                <option value>Select a staff</option>
+              </select>
             </div>
           </div>
         </div>
-        <!-- User Info -->
-        <div class="user-info blue-bg">
-          <div class="col-md-10">
-            <p>
-              Logged in as: Samantha PorterAnabella -
-              <span>Program Associate at the Practice Agency</span>
-            </p>
+      </form>
+      <div class="container-fluid row">
+        <div class="col-md-6">
+          <!-- Gender -->
+          <div class="sub-header blue-bg blue-light-text">
+            <div class="sub-header-title">Gender</div>
+          </div>
+          <form class="gender-form form-style" role="form">
+            <div class="input-field form-group">
+              <label class="red-text" for="Sex">Required</label>
+              <select
+                id="gender-select"
+                class="modal-select"
+                name="Sex"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
+                disabled
+              >
+                <option value>Select a gender</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+                <option value="N">Non-Binary/Gender Non-Conforming</option>
+              </select>
+            </div>
+          </form>
+
+          <!-- Employment -->
+          <div class="sub-header blue-bg blue-light-text">
+            <div class="sub-header-title">Employment Status</div>
+          </div>
+          <form class="employment-form form-style" role="form">
+            <div class="input-field form-group">
+              <label class="red-text" for="Employment">Status</label>
+              <select
+                id="employment-select"
+                class="modal-select"
+                name="Employment"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
+                disabled
+              >
+                <option value>Select a status</option>
+                <option value="A">Employed full-time</option>
+                <option value="B">Employed part-time</option>
+                <option value="C">Unemployed > 1 yr available</option>
+                <option value="D">Unemployed &#x003C;! 1 yr available</option>
+                <option value="E">Not available for employment</option>
+                <option value="F">Retired</option>
+                <option value="G">Inmate</option>
+                <option value="U">Unknown</option>
+                <option value="H">Empl - Received Term. Notice</option>
+                <option value="I">Empl - Military sep. Pending</option>
+              </select>
+            </div>
+            <div class="input-field form-group">
+              <label class="red-text" for="FY">Fiscal Year</label>
+              <select
+                id="FY-select"
+                class="modal-select small-input"
+                name="FY"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
+                disabled
+              ></select>
+            </div>
+          </form>
+        </div>
+
+        <!-- Race, Ethnicity -->
+        <div class="col-md-6">
+          <div class="sub-header blue-bg blue-light-text">
+            <div class="sub-header-title">Race | Ethnicity</div>
+          </div>
+          <form class="ethnicity-form form-style" role="form">
+            <div class="input-field form-group">
+              <label class="red-text" for="EthnicityID">Ethnicity</label>
+              <select
+                id="ethnicity-select"
+                class="modal-select"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
+                name="EthnicityID"
+                disabled
+              >
+                <option value>Select ONE</option>
+                <option value="H">Hispanic/Latino/a</option>
+                <option value="N">Non-Hispanic/Latino/a</option>
+              </select>
+              <div class="input-field form-group race-select">
+                <label class="red-text" for="RaceID">Race</label>
+                <select
+                  class="modal-select"
+                  name="RaceID"
+                  required
+                  data-toggle="tooltip"
+                  data-placement="bottom"
+                  title="Please fill this field"
+                  disabled
+                >
+                  <option value>Select AT LEAST ONE</option>
+                </select>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <!-- End Name | Contact | SSN | Gender | Race -->
+      <!-- Education  -->
+      <div class="sub-header blue-bg blue-light-text">
+        <div class="sub-header-title">Educational Background</div>
+      </div>
+
+      <form class="education-form form-style" role="form">
+        <div class="container-fluid row">
+          <div class="input-field form-group col-sm-6">
+            <label class="red-text" for="Grade"
+              >Highest grade completed in US</label
+            >
+            <select
+              id="usgrade-select"
+              class="modal-select"
+              name="Grade"
+              required
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Please fill this field"
+              disabled
+            >
+              <option value>Select a grade</option>
+            </select>
+          </div>
+          <div class="input-field form-group col-sm-6">
+            <label class="red-text" for="NYSGrade"
+              >Highest grade completed in NY State</label
+            >
+            <select
+              id="nysgrade-select"
+              class="modal-select"
+              name="NYSGrade"
+              required
+              data-toggle="tooltip"
+              data-placement="bottom"
+              title="Please fill this field"
+              disabled
+            >
+              <option value>Select a grade</option>
+            </select>
           </div>
         </div>
-      </div>
-      <!-- Sub NavBar -->
-      <div class="container-fluid blue-bg blue-light-text sub-navbar">
-        <ul id="sub-nav" class="nav-justified">
-          <li class="blue-light-bg">
-            <a
-              class="blue-light-bg blue-text"
-              href="../prodev-events/index.html"
-              type="text/html"
-              >Events</a
-            >
-          </li>
-          <li>
-            <a
-              class="blue-light-text blue-bg"
-              href="../prodev-facilitators/index.html"
-              type="text/html"
-              >Facilitators</a
-            >
-          </li>
-          <li>
-            <a
-              class="blue-light-text blue-bg"
-              href="../prodev-providers/index.html"
-              type="text/html"
-              >Providers</a
-            >
-          </li>
-          <li>
-            <a
-              class="blue-light-text blue-bg"
-              href="../prodev-locations/index.html"
-              type="text/html"
-              >Locations</a
-            >
-          </li>
-        </ul>
-      </div>
-    </header>
-    <!-- Hero -->
-    <div class="container-fluid hero">
-      <!-- New source entry-->
-      <div class="container-fluid record-entry blue-bg">
-        <div class="label-text blue-light-text">
-          New Event (Elements in red are required):
-        </div>
-        <form
-          class="form-inline blue-bg"
-          role="form"
-          id="new-entry"
-          aria-autocomplete="none"
-        ></form>
-      </div>
-      <!-- Sorting lock-->
-      <div class="blue-bg container-fluid" id="filter-bloc"></div>
-      <!-- Data viewing -->
-      <div class="data-view blue-bg" id="view-bloc">
-        <table class="table blue-bg" id="main-table"></table>
-      </div>
-    </div>
-    <a id="btn-top"
-      ><span class="glyphicon glyphicon-eject" aria-hidden="false"></span>
-      Top</a
-    >
 
-    <!-- Modal for Editing Top Bloc data -->
+        <div class="container-fluid row">
+          <div class="col-sm-6">
+            <div class="input-field form-group">
+              <label class="red-text" for="LastSchoolNYS"
+                >Last school attended (if NY State)</label
+              >
+              <input
+                type="text"
+                name="LastSchoolNYS"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
+                autocomplete="off"
+                disabled
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="container-fluid row">
+          <div class="col-sm-6">
+            <label class="red-text" for="CredentialUS"
+              >Highest credential obtained
+            </label>
+            <div class="input-field form-group">
+              <label></label>
+              <select
+                id="us-select"
+                class="modal-select"
+                name="CredentialUS"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
+                disabled
+              >
+                <option value="1" selected>in the US</option>
+                <option value="2">in another country</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-sm-6">
+            <label for="HighestCredential"> </label>
+            <div class="input-field form-group">
+              <label></label>
+              <select
+                id="cred-select"
+                class="modal-select"
+                name="HighestCredential"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
+                disabled
+              >
+                <option value>Select a credential</option>
+                <option value="1">Sec. school diploma or alt.</option>
+                <option value="2">High school equivalent</option>
+                <option value="3">Some post-secondary</option>
+                <option value="4">Post-secondary or professional degree</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="container-fluid row">
+          <div class="col-sm-6">
+            <div class="input-field form-group">
+              <label class="red-text" for="YearsUSSchools"
+                >Years of schooling in other Countries</label
+              >
+              <select
+                id="schoolingyears-select"
+                class="modal-select"
+                name="YearsUSSchools"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
+                disabled
+              >
+                <option value="">Select a number</option>
+                <option value="NA">NA</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="12P">12+</option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </form>
+
+      <div class="sub-header blue-bg blue-light-text">
+        <div class="sub-header-title">Parental | Child Information</div>
+      </div>
+      <form class="children-form row form-style" role="form">
+        <div class="col-sm-6">
+          <div class="input-field form-group">
+            <label for="Parent">Parent or guardian of a child/children</label>
+            <select
+              name="Parent"
+              id="parent-select"
+              class="modal-select"
+              disabled
+            >
+              <option value="0" selected>No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+          <div class="input-field form-group">
+            <label for="SingleParent">Single parent</label>
+            <select
+              name="SingleParent"
+              id="single-select"
+              class="modal-select"
+              disabled
+            >
+              <option value="0" selected>No</option>
+              <option value="1">Yes</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <table class="table table-condensed children-table">
+            <thead>
+              <th class="children-header">PreSchool</th>
+              <th class="children-header">Elementary</th>
+              <th class="children-header">Junior HS</th>
+              <th class="children-header">High School</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-data">
+                  <input
+                    class="cell-input"
+                    name="PreChild"
+                    value="0"
+                    disabled
+                  />
+                </td>
+                <td class="cell-data">
+                  <input
+                    class="cell-input"
+                    name="ElemChild"
+                    value="0"
+                    disabled
+                  />
+                </td>
+                <td class="cell-data">
+                  <input
+                    class="cell-input"
+                    name="JHSChild"
+                    value="0"
+                    disabled
+                  />
+                </td>
+                <td class="cell-data">
+                  <input class="cell-input" name="HSChild" value="0" disabled />
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </form>
+
+      <div class="sub-header blue-bg blue-light-text">
+        <div class="sub-header-title">Barriers to Learning | Employment</div>
+      </div>
+      <form class="barriers-form form-style" role="form">
+        <div class="container-fluid row">
+          <div class="col-sm-6">
+            <div class="input-field form-group barrier-group">
+              <label class="red-text" for="Barriers">Choose AT LEAST ONE</label>
+              <select
+                class="modal-select"
+                name="Barriers"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
+                disabled
+              >
+                <option value>Select a value</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-3">
+            <div class="input-field form-group">
+              <select
+                class="modal-select medium-input"
+                name="yes-no"
+                required
+                data-toggle="tooltip"
+                data-placement="bottom"
+                title="Please fill this field"
+                disabled
+              >
+                <option value>Select a value</option>
+                <option value="0">No</option>
+                <option value="1">Yes</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-sm-3"></div>
+        </div>
+      </form>
+      <!-- End Employment | Education | Children | Barriers -->
+      <div class="sub-header blue-bg blue-light-text">
+        <div class="sub-header-title">Survey</div>
+      </div>
+      <label class="red-text">Where did you hear about this program?</label>
+      <form class="survey-form form-style" role="form">
+        <div class="container-fluid row">
+          <div class="col-sm-1">State</div>
+          <div class="col-sm-1">Local</div>
+        </div>
+        <div class="container-fluid row">
+          <div class="col-sm-1">
+            <input type="checkbox" />
+          </div>
+          <div class="col-sm-1">
+            <input type="checkbox" />
+          </div>
+          <div class="col-sm-6">Ad on transit (bus, train, subway)</div>
+        </div>
+        <div class="container-fluid row">
+          <div class="col-sm-1">
+            <input type="checkbox" />
+          </div>
+          <div class="col-sm-1">
+            <input type="checkbox" />
+          </div>
+          <div class="col-sm-6">
+            Social media (Facebook, Instagram, Twitter)
+          </div>
+        </div>
+        <div class="container-fluid row">
+          <div class="col-sm-1">
+            <input type="checkbox" />
+          </div>
+          <div class="col-sm-1">
+            <input type="checkbox" />
+          </div>
+          <div class="col-sm-6">Radio ad</div>
+        </div>
+        <div class="container-fluid row">
+          <div class="col-sm-1">
+            <input type="checkbox" />
+          </div>
+          <div class="col-sm-1">
+            <input type="checkbox" />
+          </div>
+          <div class="col-sm-6">Flyer</div>
+        </div>
+        <div class="container-fluid row">
+          <div class="col-sm-1">
+            <input type="checkbox" />
+          </div>
+          <div class="col-sm-1">
+            <input type="checkbox" />
+          </div>
+          <div class="col-sm-6">Other (please specify)</div>
+        </div>
+      </form>
+
+      <div class="sub-header button-container blue-bg">
+        <div class="sub-header-title">
+          <button
+            type="button"
+            class="btn btn-default"
+            disabled
+            id="save-button"
+          >
+            Save entry
+          </button>
+        </div>
+      </div>
+    </main>
+    <!-- End main display -->
+
+    <!-- Start Modal possible duplicates -->
     <div class="modal fade" id="modalBloc">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -329,47 +1028,38 @@
               <span aria-hidden="true">&times;</span
               ><span class="sr-only">Close</span>
             </button>
-            <h4 class="modal-title">Adding a Participant</h4>
+            <h4 class="modal-title">Possible duplicates</h4>
           </div>
-          <div class="modal-body">
-            <form id="edit-form" role="form"></form>
+          <div class="modal-body container-fluid">
+            <section id="bar-container" class="hidden">
+              <label>Looking for duplicate records...</label>
+              <div class="progress">
+                <div
+                  id="load-bar"
+                  class="progress-bar progress-bar-info progress-bar-striped active"
+                  role="progressbar"
+                  aria-valuenow="50"
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                ></div>
+              </div>
+            </section>
+            <div class="container-fluid">
+              <table
+                id="duplicates-table"
+                class="table table-condensed"
+                data-duplicates="[]"
+              ></table>
+            </div>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="btn btn-default"
-              id="close-btn"
-              data-dismiss="modal"
-            >
-              Close without saving
-            </button>
-            <button
-              type="button"
-              class="btn btn-primary"
-              form="edit-form"
-              id="save-btn"
-            >
-              Save changes
-            </button>
-            <button
-              type="button"
-              class="btn btn-primary hidden"
-              form="edit-form"
-              id="edit-save-btn"
-            >
-              Save changes
-            </button>
-            <button
-              type="button"
-              class="btn btn-danger"
-              form="edit-form"
-              id="delete-btn"
-            >
-              Delete Participant
+            <button id="close-button" type="button" class="btn btn-default">
+              Close and continue new student entry
             </button>
           </div>
         </div>
       </div>
     </div>
+    <!-- End Modal possible duplicates -->
   </body>
 </html>
