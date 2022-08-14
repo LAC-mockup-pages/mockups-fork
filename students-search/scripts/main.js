@@ -30,7 +30,7 @@ $(document).ready(() => {
   //* =====================================
 
   //* Set focus on name input
-  $("#search-input").focus();
+  document.querySelector("#search-input").focus();
 
   //* =====================================
 
