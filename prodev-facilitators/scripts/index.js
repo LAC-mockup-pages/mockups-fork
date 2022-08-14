@@ -325,4 +325,13 @@ $(document).ready(() => {
     );
     // console.log("Phone event hit ", $(this).val());
   });
+  //* Focus on first visible and enabled input or select element in modal
+  $("#modalBloc").on("shown.bs.modal", function () {
+    $(this)
+      .find(".input-field")
+      .filter(":visible")
+      .children(":input:enabled")
+      .first()
+      .focus();
+  });
 });
