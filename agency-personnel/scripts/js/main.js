@@ -56,9 +56,9 @@ export const topBanner = (title, list = null) => {
   if (
     ![
       "Main Information",
-      "Professional Development",
+      "Professional Development (display only)",
       "Personnel Information",
-      "Instructional Hours",
+      "Instructional Hours (display only)",
       "Home Address",
       "Work Address",
       "Additional Information",
