@@ -81,8 +81,8 @@ $(document).ready(() => {
 
   //! =============================================================
   const { StudentName, BirthDate } = studentInfo;
-  $(".student-info .name").text(StudentName);
-  $(".student-info .long-id").text(`Date of birth: ${BirthDate}`);
+  $(".name").text(StudentName);
+  $(".dob").text(`Date of birth: ${BirthDate}`);
 
   // Populating history-table
   tableValues(historyList);

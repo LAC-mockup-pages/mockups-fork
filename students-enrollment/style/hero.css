@@ -14,33 +14,30 @@
 .student-display {
   text-align: initial;
   max-width: 83%;
-  background-color: #f0f0f5;
+  background-color: inherit;
   font-size: 0.8em;
   margin-right: auto;
   margin-left: auto;
-  margin-top: 1%;
-  border-bottom: 1.2em solid #2479b5;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
 }
-.name,
-.long-id {
-  font-size: 1.3em;
-}
-.long-id {
+.dob {
   text-align: right;
+}
+.page-title {
+  line-height: 2.3em;
+  font-size: 1.4em;
+  font-weight: 700;
+  padding-left: 1%;
+  margin: 3% 0% 1% 0%;
+  background-color: #d3e4f0;
+  border-radius: 0.8em;
+  border: 0.15em solid #2479b5;
+  color: #333;
+}
+section:not(.page-title) {
+  margin-top: 0.1%;
 }
 .light-red-text {
   color: rgb(246, 133, 133);
-}
-section:not(.student-info) {
-  margin-top: 1%;
-}
-.student-info {
-  height: 2.8em;
-  padding-top: 0.4em;
-  border-top-right-radius: 5px;
-  border-top-left-radius: 5px;
 }
 .sub-header {
   line-height: 30px;
@@ -48,13 +45,11 @@ section:not(.student-info) {
   font-size: 1em;
   font-weight: 600;
 }
-
 .sub-header-title {
   text-align: right;
   padding-right: 1%;
   margin: 0.5% 0%;
 }
-
 .form:not(#edit-form) .input-field > input {
   font-size: 0.9em;
   width: 100%;
@@ -65,7 +60,6 @@ section:not(.student-info) {
   font-size: 0.9em;
   border-bottom: none;
 }
-
 .form-group {
   line-height: 1.7vh;
   background-color: inherit;
@@ -82,6 +76,14 @@ section:not(.student-info) {
 }
 
 /* Tables */
+/* =============================== */
+.table tbody {
+  background-color: #f5f5f5;
+}
+.classes-table > tbody > tr:hover,
+.case-table > tbody > tr:hover {
+  background-color: #d3e4f0;
+}
 .table > thead > tr > th {
   color: #2479b5;
   font-weight: 600;
@@ -96,7 +98,6 @@ section:not(.student-info) {
   opacity: 1;
   background-color: inherit;
 }
-
 .form tbody > tr > td:nth-child(2),
 .form tbody > tr > td:nth-child(3) {
   width: 6em;
@@ -106,12 +107,12 @@ section:not(.student-info) {
 }
 
 /* Contact hours */
+/* =============================== */
 .active,
 .inactive {
   border-bottom: 2px solid #2479b5;
   cursor: pointer;
 }
-
 .contact-hours table > tbody > tr {
   background-color: inherit;
   color: rgb(115, 115, 115);
@@ -131,7 +132,6 @@ section:not(.student-info) {
   color: #2479b5;
   background-color: #d3e4f0;
 }
-
 .active {
   color: #d3e4f0;
   background-color: #2479b5;
@@ -145,10 +145,13 @@ section:not(.student-info) {
 }
 
 /* Enrollment */
+/* =============================== */
 
 /* Notes */
+/* =============================== */
 .notes {
   margin-bottom: 1em;
+  background-color: #f5f5f5;
 }
 .note-display,
 .note-edit {
@@ -168,7 +171,6 @@ section:not(.student-info) {
   margin-left: auto;
   margin-right: auto;
 }
-
 .note-display {
   font-weight: 400;
   font-size: 1.1em;

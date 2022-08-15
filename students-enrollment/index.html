@@ -377,11 +377,43 @@
 
       <!-- Student display start -->
       <div class="container-fluid student-display">
-        <section
-          class="student-info row container-fluid blue-bg blue-light-text"
-        >
+        <section class="page-title row">
+          <div class="col-md-1"></div>
           <div class="col-md-6 name">Student Name</div>
-          <div class="col-md-6 long-id">Birth date</div>
+          <div class="col-md-1"></div>
+          <div class="col-md-3 dob">Birth date</div>
+        </section>
+
+        <section class="classes">
+          <div class="sub-header blue-bg blue-light-text">
+            <div class="row">
+              <div class="col-md-2">
+                <button id="add-enrollment" class="btn btn-default">
+                  Add a record
+                </button>
+              </div>
+              <div class="col-md-10">
+                <div class="sub-header-title">Enrollment</div>
+              </div>
+            </div>
+          </div>
+          <div class="tablescroll">
+            <form class="form classes-form">
+              <table class="table table-bordered classes-table">
+                <thead>
+                  <tr class="blue-light-bg">
+                    <th>Course</th>
+                    <th>Started</th>
+                    <th>Left</th>
+                    <th>Reason</th>
+                    <th>Transfer to</th>
+                    <th>Active</th>
+                  </tr>
+                </thead>
+                <tbody></tbody>
+              </table>
+            </form>
+          </div>
         </section>
         <section class="case">
           <div class="sub-header blue-bg blue-light-text">
@@ -413,37 +445,6 @@
               </table>
             </div>
           </form>
-        </section>
-        <section class="classes">
-          <div class="sub-header blue-bg blue-light-text">
-            <div class="row">
-              <div class="col-md-2">
-                <button id="add-enrollment" class="btn btn-default">
-                  Add a record
-                </button>
-              </div>
-              <div class="col-md-10">
-                <div class="sub-header-title">Enrollment</div>
-              </div>
-            </div>
-          </div>
-          <div class="tablescroll">
-            <form class="form classes-form">
-              <table class="table table-bordered classes-table">
-                <thead>
-                  <tr class="blue-light-bg">
-                    <th>Course</th>
-                    <th>Started</th>
-                    <th>Left</th>
-                    <th>Reason</th>
-                    <th>Transfer to</th>
-                    <th>Active</th>
-                  </tr>
-                </thead>
-                <tbody></tbody>
-              </table>
-            </form>
-          </div>
         </section>
         <section class="contact-hours">
           <div class="container-fluid row">
@@ -501,7 +502,6 @@
             </table>
           </div>
         </section>
-
         <section class="notes">
           <div class="sub-header blue-bg blue-light-text">
             <div class="sub-header-title">Notes</div>
