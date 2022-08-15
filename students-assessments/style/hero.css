@@ -33,7 +33,7 @@
   border: 0.15em solid #2479b5;
   color: #333;
 }
-section:not("student-info") {
+section:not("page-title") {
   margin-top: 0.1%;
 }
 .sub-header {

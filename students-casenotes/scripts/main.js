@@ -113,7 +113,7 @@ $(document).ready(() => {
   // Populating student name and birthdate
   const { BirthDate, StudentName } = studentInfo;
   $(".name").text(StudentName);
-  $(".long-id").text(`Date of birth: ${BirthDate}`);
+  $(".dob").text(`Date of birth: ${BirthDate}`);
 
   // Populating Case notes table
   const content = createCaseNotesContent(notesList);
