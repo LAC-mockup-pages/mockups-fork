@@ -4,9 +4,10 @@
 export const titleSection = (dataObj) => {
   const { First, Last, Middle, BirthDate } = dataObj;
   const sectionContent = `
-  <div class="col-md-6 title-text">${Last}, ${First} ${Middle}</div>
-  <div class="col-md-6 title-text">Birth date: ${BirthDate}</div>
-  `;
+  <div class="col-md-1"></div>
+  <div class="col-md-6">${Last}, ${First} ${Middle}</div>
+  <div class="col-md-1"></div>
+  <div class="col-md-3">Birth date: ${BirthDate}</div>`;
   return [".page-title", sectionContent];
 };
 

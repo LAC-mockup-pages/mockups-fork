@@ -43,21 +43,15 @@
 
 .page-title {
   line-height: 2.3em;
-  font-size: 1.3em;
+  font-size: 1.4em;
   font-weight: 700;
   padding-left: 1%;
-  margin-bottom: 1%;
-  margin-top: 0.5%;
-  background-color: #2479b5;
-  /* background-color: #d3e4f0; */
-  border-radius: 1em;
-  border: 1px solid #2479b5;
+  margin: 3% 0% 1% 0%;
+  background-color: #d3e4f0;
+  border-radius: 0.8em;
+  border: 0.15em solid #2479b5;
+  color: #333;
 }
-
-.title-text {
-  color: #fff;
-}
-
 .title-text:last-of-type {
   text-align: right;
 }
