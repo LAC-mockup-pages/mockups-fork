@@ -82,6 +82,11 @@ section:not(.student-info) {
 }
 
 /* Tables */
+/* =============================== */
+
+.table > tbody > tr:hover {
+  background-color: #d3e4f0;
+}
 .table > thead > tr > th {
   color: #2479b5;
   font-weight: 600;
