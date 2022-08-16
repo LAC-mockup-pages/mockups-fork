@@ -300,4 +300,13 @@ $(document).ready(() => {
     const modifiedRecord = $(formId).serializeArray();
     saveMods(modifiedRecord, formId, "outcomesData");
   });
+  //* Focus on first visible and enabled input or select element in modal
+  $("#modalBloc").on("shown.bs.modal", function () {
+    $(this)
+      .find(".input-field")
+      .filter(":visible")
+      .children(":input:enabled")
+      .first()
+      .focus();
+  });
 });
