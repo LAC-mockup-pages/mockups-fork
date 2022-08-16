@@ -143,32 +143,32 @@ const saveMods = (form) => {
   //! =================================================
   //! JSON Object to send back to database
 
-    //! In production uncomment
-    //const formId = result.ProgramManager
-    //    ? 'Info_Upper' : 'Info_Lower';
+  //! In production uncomment
+  //const formId = result.ProgramManager
+  //    ? 'Info_Upper' : 'Info_Lower';
 
-    //// createCredentials <== /helpers/helperFunctions.js
-    //const credentials = createCredentials();
+  //// createCredentials <== /helpers/helperFunctions.js
+  //const credentials = createCredentials();
 
-    //const saveObj = {
-    //    ...credentials,
-    //    ...result
-    //};
+  //const saveObj = {
+  //    ...credentials,
+  //    ...result
+  //};
 
-    //import('./data_refresh.js')
-    //.then((module) => {
-    //    (async () => {
-    //        const saveflag = await module.SaveRefresh(formId, saveObj);
+  //import('./data_refresh.js')
+  //.then((module) => {
+  //    (async () => {
+  //        const saveflag = await module.SaveRefresh(formId, saveObj);
 
-    //        if (saveflag) {
-    //            $(".hero").empty().append(renderViewBloc(agencyData[0]));
-    //            $("#modal-bloc").modal("toggle");
-    //        }
-    //    })(); //async end
+  //        if (saveflag) {
+  //            $(".hero").empty().append(renderViewBloc(agencyData[0]));
+  //            $("#modal-bloc").modal("toggle");
+  //        }
+  //    })(); //async end
 
-    //});//data_refresh.js
+  //});//data_refresh.js
 
-    //return;
+  //return;
 
   console.log(message, resultList);
   //! =================================================
@@ -292,5 +292,14 @@ $(document).ready(() => {
     $(this).val(
       inputValue.replace(/(\d{3})\-?(\d{3})\-?(\d{4})/, "($1)-$2-$3")
     );
+  });
+  //* Focus on first visible and enabled input or select element in modal
+  $("#modal-bloc").on("shown.bs.modal", function () {
+    $(this)
+      .find(".input-field")
+      .filter(":visible")
+      .children(":input:enabled")
+      .first()
+      .focus();
   });
 });
