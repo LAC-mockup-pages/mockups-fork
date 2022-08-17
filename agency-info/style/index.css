@@ -1,4 +1,6 @@
-/* Styling from test-navbar-lac */
+/* Styling */
 @import "../../main-styling/main.css";
+
+@import "./nav-frame.css";
 
 @import "./hero.css";
