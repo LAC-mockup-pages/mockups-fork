@@ -102,11 +102,11 @@ const renderViewBloc = (dataObj) => {
   const bottomLeft = createBloc("bottomLeft", { ID, CSD, CPD, CD });
   const bottomRight = createBloc("bottomRight", { AD, SD });
   return `
-    <div class="container row" id="top-bloc" data-toggle='tooltip' data-placement='left' title="Click to Edit">
+    <div class="container-fluid row" id="top-bloc" data-toggle='tooltip' data-placement='left' title="Click to Edit">
       ${topLeft}${topRight}
     </div>
     <div class="separation"></div>
-    <div class="container row" id="bottom-bloc" data-toggle='tooltip' data-placement='left' title="Click to Edit">
+    <div class="container-fluid row" id="bottom-bloc" data-toggle='tooltip' data-placement='left' title="Click to Edit">
       ${bottomLeft}${bottomRight}
     </div>`;
 };
