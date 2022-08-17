@@ -391,6 +391,7 @@ $(document).ready(() => {
       .filter(":visible")
       .children(":input:enabled")
       .first()
-      .focus();
+      .focus()
+      .select();
   });
 });
